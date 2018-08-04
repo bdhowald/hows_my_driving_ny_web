@@ -128,7 +128,7 @@ class FetchViolations extends React.Component {
     let violations = [];
     let promises = [];
 
-    let queryString = 'https://howsmydrivingny.nyc/api/v1/' + '?plate_id=' + this.state.lookupPlateID + '&state=' + this.state.lookupState + '&fingerprint_id=' + this.state.fingerprintID + '&mixpanel_id=' + this.state.mixpanelID + '&lookup_source=' + 'web_client'
+    let queryString = 'https://api.howsmydrivingny.nyc/api/v1/' + '?plate_id=' + this.state.lookupPlateID + '&state=' + this.state.lookupState + '&fingerprint_id=' + this.state.fingerprintID + '&mixpanel_id=' + this.state.mixpanelID + '&lookup_source=' + 'web_client'
 
     if (this.state.lookupPlateType) {
       queryString += '&plate_type=' + this.state.lookupPlateType;
