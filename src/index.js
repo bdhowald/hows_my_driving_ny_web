@@ -286,7 +286,7 @@ class ViolationsList extends React.Component {
             <th onClick={() => (this.state.sortType == 'formatted_time' ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: 'formatted_time'}))}>Date</th>
             <th onClick={() => (this.state.sortType == 'humanized_description' ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: 'humanized_description'}))}>Type</th>
             <th onClick={() => (this.state.sortType == 'location' ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: 'location'}))}>Location</th>
-            <th className='d-none d-sm-block' onClick={() => (this.state.sortType == 'fine_amount' ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: 'fine_amount'}))}>Fines</th>
+            <th className='d-none d-sm-block' onClick={() => (this.state.sortType == 'total_fine_amount' ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: 'total_fine_amount'}))}>Fines</th>
           </tr>
         </thead>
         <tbody>
@@ -310,12 +310,12 @@ class ViolationsList extends React.Component {
                 if(aLocation > bLocation) return -1;
                 return (new Date(b.formatted_time) - new Date(a.formatted_time))
               }
-            } else if (that.state.sortType == 'fine_amount') {
-              let aFine = a.fine_amount ? a.fine_amount : 0
-              let bFine = b.fine_amount ? b.fine_amount : 0
+            } else if (that.state.sortType == 'total_fine_amount') {
+              let aFine = a.total_fine_amount ? parseFloat(a.total_fine_amount) : 0
+              let bFine = b.total_fine_amount ? parseFloat(b.total_fine_amount) : 0
 
               if (that.state.sortAscending) {
-                if(aFine < bFine) return -1;
+                if(parseFloat(aFine < bFine) return -1;
                 if(aFine > bFine) return 1;
                 return (new Date(a.formatted_time) - new Date(b.formatted_time))
               } else {
@@ -355,7 +355,7 @@ class ViolationsList extends React.Component {
           {violation.location} {violation.location == null ? violation.violation_county : ('(' + violation.violation_county + ')')}
         </td>
         <td className='d-none d-sm-block'>
-          {violation.fine_amount ? ('$' + violation.fine_amount) : 'N/A'}
+          {violation.total_fine_amount ? ('$' + violation.total_fine_amount) : 'N/A'}
         </td>
       </tr>
     )
