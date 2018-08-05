@@ -35,6 +35,10 @@ Geocode.enableDebug();
 
 class FetchViolations extends React.Component {
 
+  componentDidMount(){
+    document.title = "How's My Driving NY"
+  }
+
   constructor(props) {
     super(props);
 
