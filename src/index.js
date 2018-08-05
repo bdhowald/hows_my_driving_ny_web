@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './App';
+// import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 import Geocode from "react-geocode";
 
-import { ListGroup, ListGroupItem } from 'reactstrap';
+// import { ListGroup, ListGroupItem } from 'reactstrap';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
 import {
@@ -23,12 +23,9 @@ import './index.css';
 library.add(faAngleRight)
 
 const fp2      = require('fingerprintjs2');
-const http     = require('http');
-const https    = require('https');
 const mixpanel = require('mixpanel-browser');
 const q        = require('q');
 const rp       = require('request-promise');
-const url      = require('url');
 
 Geocode.enableDebug();
 
@@ -50,6 +47,7 @@ class FetchViolations extends React.Component {
       lookupPlateType: 'PAS',
       lookupState: 'NY',
       mixpanelID: null,
+      performingLookup: false,
       queriedVehicles: [],
       violations: {}
     }
@@ -64,14 +62,25 @@ class FetchViolations extends React.Component {
     });
   }
 
+  componentWillMount(){
+    let that = this;
+
+    if (!this.state.fingerprintID) {
+      new fp2({excludeAdBlock: true}).get((result, components) => {
+        console.log(result) // a hash, representing your device fingerprint
+        // console.log(components) // an array of FP components
+
+        that.state.fingerprintID = result
+      })
+    }
+  }
+
 
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value.toUpperCase()});
   }
 
   handleSubmit(event) {
-    let that = this;
-
     if (this.state.lookupPlateID && this.state.lookupState) {
 
       mixpanel.track('plate_lookup', {
@@ -80,19 +89,7 @@ class FetchViolations extends React.Component {
         state           : this.state.lookupState,
       })
 
-      if (this.state.fingerprintID) {
-        this.performLookup();
-      } else {
-        new fp2().get((result, components) => {
-          console.log(result) // a hash, representing your device fingerprint
-          console.log(components) // an array of FP components
-
-          that.state.fingerprintID = result
-
-          that.performLookup();
-        })
-      }
-
+      this.performLookup();
     }
 
     event.preventDefault();
@@ -129,10 +126,17 @@ class FetchViolations extends React.Component {
   performLookup() {
     let that = this;
 
-    let violations = [];
+    // Record that we are looking
+    this.setState({performingLookup: true})
+
     let promises = [];
 
-    let queryString = 'https://api.howsmydrivingny.nyc/api/v1/' + '?plate_id=' + this.state.lookupPlateID + '&state=' + this.state.lookupState + '&fingerprint_id=' + this.state.fingerprintID + '&mixpanel_id=' + this.state.mixpanelID + '&lookup_source=' + 'web_client'
+    let queryString = 'https://api.howsmydrivingny.nyc/api/v1/'
+    queryString += '?plate_id=' + this.state.lookupPlateID
+    queryString += '&state=' + this.state.lookupState
+    queryString += '&fingerprint_id=' + this.state.fingerprintID
+    queryString += '&mixpanel_id=' + this.state.mixpanelID
+    queryString += '&lookup_source=web_client'
 
     if (this.state.lookupPlateType) {
       queryString += '&plate_type=' + this.state.lookupPlateType;
@@ -172,7 +176,7 @@ class FetchViolations extends React.Component {
 
       existingList.unshift(newVehicle);
 
-      that.setState({queriedVehicles: existingList})
+      that.setState({performingLookup: false, queriedVehicles: existingList})
 
       // res.setHeader('Content-Type', 'application/json');
       // res.writeHead(200, {'Content-Type': 'application/javascript'});
@@ -223,7 +227,7 @@ class FetchViolations extends React.Component {
                       </div>
                       <div className='col-md'>
                         <div className='form-group'>
-                          <input className='form-control btn btn-primary' type="submit" value="Search" disabled={!this.state.lookupPlateID} />
+                          <input className='form-control btn btn-primary' type="submit" value="Search" disabled={!this.state.lookupPlateID || this.performingLookup} />
                         </div>
                       </div>
                     </div>
@@ -241,7 +245,7 @@ class FetchViolations extends React.Component {
                         </p>
                         <TwitterShareButton
                           url={'https://howsmydrivingny.nyc'}
-                          title={"I just looked up #" + vehicle.state + "_" + vehicle.plateID + "_" + vehicle.plateType + "'s " + vehicle.violations_count + " violations using @HowsMyDrivingNY: "}
+                          title={"I just looked up #" + vehicle.state + "_" + vehicle.plateID + "_" + vehicle.plateType + "'s " + vehicle.violations_count + (vehicle.violations_count === 1 ? ' violation' : ' violations') + " using @HowsMyDrivingNY: "}
                           className="Demo__some-network__share-button">
                           <TwitterIcon
                             size={32}
@@ -280,71 +284,73 @@ class ViolationsList extends React.Component {
   render() {
     let that = this;
     return (
-      <table className='table table-striped table-sm violations-table'>
-        <thead>
-          <tr>
-            <th onClick={() => (this.state.sortType == 'formatted_time' ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: 'formatted_time'}))}>Date</th>
-            <th onClick={() => (this.state.sortType == 'humanized_description' ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: 'humanized_description'}))}>Type</th>
-            <th onClick={() => (this.state.sortType == 'location' ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: 'location'}))}>Location</th>
-            <th className='d-none d-sm-block' onClick={() => (this.state.sortType == 'total_fine_amount' ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: 'total_fine_amount'}))}>Fines</th>
-          </tr>
-        </thead>
-        <tbody>
-          {that.state.violations.sort((a,b) => {
-            if (that.state.sortType == 'formatted_time') {
-              if (that.state.sortAscending) {
-                return new Date(a.formatted_time) - new Date(b.formatted_time)
-              } else {
-                return new Date(b.formatted_time) - new Date(a.formatted_time)
-              }
-            } else if (that.state.sortType == 'location') {
-              let aLocation = a.location + ' ' + (a.location == null ? a.violation_county : ('(' + a.violation_county + ')'))
-              let bLocation = b.location + ' ' + (b.location == null ? b.violation_county : ('(' + b.violation_county + ')'))
+      <div className='table-responsive'>
+        <table className='table table-striped table-sm violations-table'>
+          <thead>
+            <tr>
+              <th onClick={() => (this.state.sortType === 'formatted_time' ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: 'formatted_time'}))}>Date</th>
+              <th onClick={() => (this.state.sortType === 'humanized_description' ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: 'humanized_description'}))}>Type</th>
+              <th onClick={() => (this.state.sortType === 'location' ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: 'location'}))}>Location</th>
+              <th onClick={() => (this.state.sortType === 'total_fine_amount' ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: 'total_fine_amount'}))}>Fines</th>
+            </tr>
+          </thead>
+          <tbody>
+            {that.state.violations.sort((a,b) => {
+              if (that.state.sortType === 'formatted_time') {
+                if (that.state.sortAscending) {
+                  return new Date(a.formatted_time) - new Date(b.formatted_time)
+                } else {
+                  return new Date(b.formatted_time) - new Date(a.formatted_time)
+                }
+              } else if (that.state.sortType === 'location') {
+                let aLocation = a.location + ' ' + (a.location === null ? a.violation_county : ('(' + a.violation_county + ')'))
+                let bLocation = b.location + ' ' + (b.location === null ? b.violation_county : ('(' + b.violation_county + ')'))
 
-              if (that.state.sortAscending) {
-                if(aLocation < bLocation) return -1;
-                if(aLocation > bLocation) return 1;
-                return (new Date(a.formatted_time) - new Date(b.formatted_time))
-              } else {
-                if(aLocation < bLocation) return 1;
-                if(aLocation > bLocation) return -1;
-                return (new Date(b.formatted_time) - new Date(a.formatted_time))
-              }
-            } else if (that.state.sortType == 'total_fine_amount') {
-              let aFine = a.total_fine_amount ? parseFloat(a.total_fine_amount) : 0
-              let bFine = b.total_fine_amount ? parseFloat(b.total_fine_amount) : 0
+                if (that.state.sortAscending) {
+                  if(aLocation < bLocation) return -1;
+                  if(aLocation > bLocation) return 1;
+                  return (new Date(a.formatted_time) - new Date(b.formatted_time))
+                } else {
+                  if(aLocation < bLocation) return 1;
+                  if(aLocation > bLocation) return -1;
+                  return (new Date(b.formatted_time) - new Date(a.formatted_time))
+                }
+              } else if (that.state.sortType === 'total_fine_amount') {
+                let aFine = a.total_fine_amount ? parseFloat(a.total_fine_amount) : 0
+                let bFine = b.total_fine_amount ? parseFloat(b.total_fine_amount) : 0
 
-              if (that.state.sortAscending) {
-                if(aFine < bFine) return -1;
-                if(aFine > bFine) return 1;
-                return (new Date(a.formatted_time) - new Date(b.formatted_time))
+                if (that.state.sortAscending) {
+                  if(aFine < bFine) return -1;
+                  if(aFine > bFine) return 1;
+                  return (new Date(a.formatted_time) - new Date(b.formatted_time))
+                } else {
+                  if(aFine < bFine) return 1;
+                  if(aFine > bFine) return -1;
+                  return (new Date(b.formatted_time) - new Date(a.formatted_time))
+                }
               } else {
-                if(aFine < bFine) return 1;
-                if(aFine > bFine) return -1;
-                return (new Date(b.formatted_time) - new Date(a.formatted_time))
+                if (that.state.sortAscending) {
+                  if(a[that.state.sortType] < b[that.state.sortType]) return -1;
+                  if(a[that.state.sortType] > b[that.state.sortType]) return 1;
+                  return (new Date(a.formatted_time) - new Date(b.formatted_time))
+                } else {
+                  if(a[that.state.sortType] < b[that.state.sortType]) return 1;
+                  if(a[that.state.sortType] > b[that.state.sortType]) return -1;
+                  return (new Date(b.formatted_time) - new Date(a.formatted_time))
+                }
               }
-            } else {
-              if (that.state.sortAscending) {
-                if(a[that.state.sortType] < b[that.state.sortType]) return -1;
-                if(a[that.state.sortType] > b[that.state.sortType]) return 1;
-                return (new Date(a.formatted_time) - new Date(b.formatted_time))
-              } else {
-                if(a[that.state.sortType] < b[that.state.sortType]) return 1;
-                if(a[that.state.sortType] > b[that.state.sortType]) return -1;
-                return (new Date(b.formatted_time) - new Date(a.formatted_time))
-              }
-            }
-          }).map((violation) =>
-            that.renderListPart(violation)
-          )}
-        </tbody>
-      </table>
+            }).map((violation) =>
+              that.renderListPart(violation)
+            )}
+          </tbody>
+        </table>
+      </div>
     )
   }
 
   renderListPart(violation) {
     return (
-      <tr key={violation.summons_number} className={violation.humanized_description == 'School Zone Speed Camera Violation' ? 'violation-row table-warning' : (violation.humanized_description == 'Failure to Stop at Red Light' ? 'violation-row table-danger' : 'violation-row') }>
+      <tr key={violation.summons_number} className={violation.humanized_description === 'School Zone Speed Camera Violation' ? 'violation-row table-warning' : (violation.humanized_description === 'Failure to Stop at Red Light' ? 'violation-row table-danger' : 'violation-row') }>
         <td>
           {(new Date(violation.formatted_time).toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'}))}
         </td>
@@ -354,7 +360,7 @@ class ViolationsList extends React.Component {
         <td>
           {violation.location} {violation.location == null ? violation.violation_county : ('(' + violation.violation_county + ')')}
         </td>
-        <td className='d-none d-sm-block'>
+        <td>
           {violation.total_fine_amount ? ('$' + violation.total_fine_amount) : 'N/A'}
         </td>
       </tr>
