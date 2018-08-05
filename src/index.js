@@ -315,7 +315,7 @@ class ViolationsList extends React.Component {
               let bFine = b.total_fine_amount ? parseFloat(b.total_fine_amount) : 0
 
               if (that.state.sortAscending) {
-                if(parseFloat(aFine < bFine) return -1;
+                if(aFine < bFine) return -1;
                 if(aFine > bFine) return 1;
                 return (new Date(a.formatted_time) - new Date(b.formatted_time))
               } else {
