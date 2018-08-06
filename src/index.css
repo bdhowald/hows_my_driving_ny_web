@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic&subset=latin,latin-ext');
+
 body {
   background-color: #ef6296;
+  font-family: 'Roboto', 'Helvetica', sans-serif;
   margin: 0;
   padding: 0;
-  font-family: 'Helvetica', sans-serif;
 }
 
 div.jumbotron {
@@ -54,16 +56,46 @@ div.container-fluid div.row div.card {
   margin: 1rem 0;
 }
 
-div.container-fluid div.row div.card div.card-title {
+div.container-fluid div.row div.card div.card-header {
   display: flex;
   font-size: 1.5rem;
   font-weight: bold;
   justify-content: space-between;
 }
 
-div.container-fluid div.row div.card div.card-title div.card-text {
-  font-size: 1.5rem;
+div.container-fluid div.row div.card ul.list-group.list-group-flush {
+  margin: 0;
+  padding: 0;
 }
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item {
+  /*border: 0;*/
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding {
+  padding: 0;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.split-list-group-item {
+  padding: 0.75rem 1.25rem;
+  width: 100%;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.split-list-group-item:first-child {
+  border-right: 1px solid #ccc;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper span.see-violations-table-link {
+  font-style: italic;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive {
+  padding: 0.5rem 0 0;
+}
+
+/*div.container-fluid div.row div.card div.card-title div.card-text {
+  font-size: 1.5rem;
+}*/
 
 div.container-fluid div.row div.card ul.list-group {
   border-bottom: 1px solid #ddd;

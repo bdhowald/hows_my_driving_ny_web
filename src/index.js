@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 import Geocode from "react-geocode";
 
-// import { ListGroup, ListGroupItem } from 'reactstrap';
+import { Card, ListGroup, ListGroupItem } from 'reactstrap';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -155,8 +155,11 @@ class FetchViolations extends React.Component {
       returnedViolations.sort((a,b) => new Date(a.formatted_time) - new Date(b.formatted_time))
 
       const newVehicle = {
+        frequency: queryObj.frequency,
         plateID: that.state.lookupPlateID,
         plateType: that.state.lookupPlateType,
+        previous_count: queryObj.previous_count,
+        previous_date: queryObj.previous_date,
         state: that.state.lookupState,
         violations: returnedViolations,
         violations_count: queryObj.count,
@@ -238,24 +241,32 @@ class FetchViolations extends React.Component {
               <div className='vehicles'>
                 {this.state.queriedVehicles.map((vehicle) =>
                   <div key={vehicle.state + ':' + vehicle.plateID + ':' + vehicle.plateType} className='card vehicle'>
-                    <div className='card-body' style={{width: '100%'}} id={'x' + vehicle.violations.length}>
-                      <div className="card-title">
-                        <p className='card-text'>
-                          {vehicle.violations_count} violations for {vehicle.state}:{vehicle.plateID}:{vehicle.plateType}
-                        </p>
-                        <TwitterShareButton
-                          url={'https://howsmydrivingny.nyc'}
-                          title={"I just looked up #" + vehicle.state + "_" + vehicle.plateID + "_" + vehicle.plateType + "'s " + vehicle.violations_count + (vehicle.violations_count === 1 ? ' violation' : ' violations') + " using @HowsMyDrivingNY: "}
-                          className="Demo__some-network__share-button">
-                          <TwitterIcon
-                            size={32}
-                            round />
-                        </TwitterShareButton>
-                      </div>
-                      {vehicle.violations_count > 0 &&
-                        <ViolationsList vehicle={vehicle}/>
-                      }
+                    <div className="card-header">
+                      {vehicle.state}:{vehicle.plateID}:{vehicle.plateType}
+                      <TwitterShareButton
+                        url={'https://howsmydrivingny.nyc'}
+                        title={"I just looked up #" + vehicle.state + "_" + vehicle.plateID + "_" + vehicle.plateType + "'s " + vehicle.violations_count + (vehicle.violations_count === 1 ? ' violation' : ' violations') + " using @HowsMyDrivingNY: "}
+                        className="Demo__some-network__share-button">
+                        <TwitterIcon
+                          size={32}
+                          round />
+                      </TwitterShareButton>
                     </div>
+                    <ListGroup className='list-group-flush'>
+                      <ListGroupItem className='no-padding'>
+                        <div className='split-list-group-item'>
+                          Lookups: {vehicle.frequency}
+                        </div>
+                        {vehicle.previous_date &&
+                          <div className='split-list-group-item'>
+                            Recent: {new Date(vehicle.previous_date).toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})}
+                          </div>
+                        }
+                      </ListGroupItem>
+                      <ListGroupItem>
+                        <ViolationsList vehicle={vehicle}/>
+                      </ListGroupItem>
+                    </ListGroup>
                   </div>
                 )}
               </div>
@@ -267,26 +278,54 @@ class FetchViolations extends React.Component {
   }
 }
 
+//{vehicle.violations_count} violations for
+
 class ViolationsList extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      sortAscending: true,
-      sortType: 'formatted_time',
       vehicle: props.vehicle,
-      violations: props.vehicle.violations,
       visible: false
     }
   }
 
+  render() {
+    let that = this;
+
+    return (
+      <div className='violations-table-wrapper' style={{width: '100%'}}>
+        <div className='violations-table-header' onClick={() => (this.setState({visible: !this.state.visible}))}>
+          Violations: {this.state.vehicle.violations_count}
+          <span className='see-violations-table-link'> {this.state.visible ? '' : '(see violations)'}</span>
+        </div>
+        {this.state.vehicle.violations_count > 0 && this.state.visible &&
+          <ViolationsTable vehicle={this.state.vehicle}/>
+        }
+      </div>
+    )
+  }
+}
+
+class ViolationsTable extends React.Component {
+    constructor(props) {
+      super(props)
+
+      this.state = {
+        sortAscending: true,
+        sortType: 'formatted_time',
+        vehicle: props.vehicle,
+        violations: props.vehicle.violations,
+      }
+    }
 
   render() {
     let that = this;
+
     return (
       <div className='table-responsive'>
         <table className='table table-striped table-sm violations-table'>
-          <thead>
+          <thead className='thead-light'>
             <tr>
               <th onClick={() => (this.state.sortType === 'formatted_time' ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: 'formatted_time'}))}>Date</th>
               <th onClick={() => (this.state.sortType === 'humanized_description' ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: 'humanized_description'}))}>Type</th>
