@@ -9,8 +9,8 @@ import Geocode from "react-geocode";
 import { Card, ListGroup, ListGroupItem } from 'reactstrap';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 
 import {
   TwitterShareButton,
@@ -20,7 +20,7 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
-library.add(faAngleRight)
+library.add(faAngleDown, faAngleUp)
 
 const fp2      = require('fingerprintjs2');
 const mixpanel = require('mixpanel-browser');
@@ -156,15 +156,16 @@ class FetchViolations extends React.Component {
 
       const newVehicle = {
         frequency: queryObj.frequency,
+        newViolations: queryObj.previous_count ? (queryObj.count - queryObj.previous_count) : 0,
         plateID: that.state.lookupPlateID,
         plateType: that.state.lookupPlateType,
         previous_count: queryObj.previous_count,
         previous_date: queryObj.previous_date,
         state: that.state.lookupState,
+        streak_data: queryObj.streak_data,
         violations: returnedViolations,
         violations_count: queryObj.count,
       }
-
 
       let existingList = that.state.queriedVehicles;
 
@@ -259,10 +260,24 @@ class FetchViolations extends React.Component {
                         </div>
                         {vehicle.previous_date &&
                           <div className='split-list-group-item'>
-                            Recent: {new Date(vehicle.previous_date).toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})}
+                            Recent: {new Date(vehicle.previous_date).toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})} {vehicle.newViolations > 0 ? ('(' + vehicle.newViolations + ' new tickets)') : ''}
                           </div>
                         }
                       </ListGroupItem>
+                      {vehicle.streak_data.max_streak >= 5 &&
+                        <ListGroupItem className='list-group-item-warning'>
+                          <p>
+                            Under
+                            <a target='_blank' rel='noopener noreferrer' href='https://twitter.com/bradlander'>
+                              @bradlander
+                            </a>
+                            's
+                            <a target='_blank' rel='noopener noreferrer' href='http://legistar.council.nyc.gov/LegislationDetail.aspx?ID=3521908&GUID=A4FD4CFC-8AD8-4130-AA92-11BC56936F6D&Options=ID|Text|&Search=lander'>
+                              proposed legislation
+                            </a>, this vehicle could have been booted or impounded due to its {vehicle.streak_data.max_streak} camera violations (>= 5/year) from {new Date(vehicle.streak_data.min_streak_date).toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})} to {new Date(vehicle.streak_data.max_streak_date).toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})}.
+                          </p>
+                        </ListGroupItem>
+                      }
                       <ListGroupItem>
                         <ViolationsList vehicle={vehicle}/>
                       </ListGroupItem>
@@ -285,7 +300,6 @@ class ViolationsList extends React.Component {
     super(props)
 
     this.state = {
-      vehicle: props.vehicle,
       visible: false
     }
   }
@@ -296,11 +310,11 @@ class ViolationsList extends React.Component {
     return (
       <div className='violations-table-wrapper' style={{width: '100%'}}>
         <div className='violations-table-header' onClick={() => (this.setState({visible: !this.state.visible}))}>
-          Violations: {this.state.vehicle.violations_count}
-          <span className='see-violations-table-link'> {this.state.visible ? '' : '(see violations)'}</span>
+          Violations: {this.props.vehicle.violations_count}
+          <span className='see-violations-table-link'>{this.state.visible ? '(hide violations)' : (this.props.vehicle.violations_count > 0 ? '(see violations)' : '')}</span>
         </div>
-        {this.state.vehicle.violations_count > 0 && this.state.visible &&
-          <ViolationsTable vehicle={this.state.vehicle}/>
+        {this.props.vehicle.violations_count > 0 && this.state.visible &&
+          <ViolationsTable vehicle={this.props.vehicle}/>
         }
       </div>
     )
@@ -327,10 +341,7 @@ class ViolationsTable extends React.Component {
         <table className='table table-striped table-sm violations-table'>
           <thead className='thead-light'>
             <tr>
-              <th onClick={() => (this.state.sortType === 'formatted_time' ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: 'formatted_time'}))}>Date</th>
-              <th onClick={() => (this.state.sortType === 'humanized_description' ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: 'humanized_description'}))}>Type</th>
-              <th onClick={() => (this.state.sortType === 'location' ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: 'location'}))}>Location</th>
-              <th onClick={() => (this.state.sortType === 'total_fine_amount' ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: 'total_fine_amount'}))}>Fines</th>
+              {this.renderTableHeader()}
             </tr>
           </thead>
           <tbody>
@@ -342,8 +353,8 @@ class ViolationsTable extends React.Component {
                   return new Date(b.formatted_time) - new Date(a.formatted_time)
                 }
               } else if (that.state.sortType === 'location') {
-                let aLocation = a.location + ' ' + (a.location === null ? a.violation_county : ('(' + a.violation_county + ')'))
-                let bLocation = b.location + ' ' + (b.location === null ? b.violation_county : ('(' + b.violation_county + ')'))
+                let aLocation = a.violation_county + ' ' + (a.location === null ? '' : ('(' + a.location + ')'))
+                let bLocation = b.violation_county + ' ' + (b.location === null ? '' : ('(' + b.location + ')'))
 
                 if (that.state.sortAscending) {
                   if(aLocation < bLocation) return -1;
@@ -379,7 +390,7 @@ class ViolationsTable extends React.Component {
                 }
               }
             }).map((violation) =>
-              that.renderListPart(violation)
+              that.renderTablePart(violation)
             )}
           </tbody>
         </table>
@@ -387,7 +398,20 @@ class ViolationsTable extends React.Component {
     )
   }
 
-  renderListPart(violation) {
+  renderTableHeader() {
+    return (
+      [{sort_type: 'formatted_time', display_text: 'Date'}, {sort_type: 'humanized_description', display_text: 'Type'}, {sort_type: 'location', display_text: 'Location'}, {sort_type: 'total_fine_amount', display_text: 'Fines'}].map((headerType) =>
+        <th key={headerType.sort_type} className={this.state.sortType == headerType.sort_type ? 'sort-column' : ''} onClick={() => (this.state.sortType === headerType.sort_type ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: headerType.sort_type, sortAscending: false}))}>
+          {headerType.display_text}
+          {this.state.sortType == headerType.sort_type &&
+            <FontAwesomeIcon icon={this.state.sortAscending ? 'angle-down' : 'angle-up'} />
+          }
+        </th>
+      )
+    )
+  }
+
+  renderTablePart(violation) {
     return (
       <tr key={violation.summons_number} className={violation.humanized_description === 'School Zone Speed Camera Violation' ? 'violation-row table-warning' : (violation.humanized_description === 'Failure to Stop at Red Light' ? 'violation-row table-danger' : 'violation-row') }>
         <td>
@@ -397,7 +421,7 @@ class ViolationsTable extends React.Component {
           {violation.humanized_description}
         </td>
         <td>
-          {violation.location} {violation.location == null ? violation.violation_county : ('(' + violation.violation_county + ')')}
+          {violation.violation_county} {violation.location == null ? '' : ('(' + violation.location + ')')}
         </td>
         <td>
           {violation.total_fine_amount ? ('$' + violation.total_fine_amount) : 'N/A'}
