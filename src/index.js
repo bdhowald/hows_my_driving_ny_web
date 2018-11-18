@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 import Geocode from "react-geocode";
 
-import { Card, ListGroup, ListGroupItem } from 'reactstrap';
+import { ListGroup, ListGroupItem } from 'reactstrap';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -191,16 +191,17 @@ class FetchViolations extends React.Component {
       returnedViolations.sort((a,b) => new Date(a.formatted_time) - new Date(b.formatted_time))
 
       const newVehicle = {
-        frequency: queryObj.frequency,
-        newViolations: queryObj.previous_count ? (queryObj.count - queryObj.previous_count) : 0,
-        plateID: that.state.lookupPlateID,
-        plateType: that.state.lookupPlateType,
-        previous_count: queryObj.previous_count,
-        previous_date: queryObj.previous_date,
-        state: that.state.lookupState,
-        streak_data: queryObj.streak_data,
-        violations: returnedViolations,
-        violations_count: queryObj.count,
+        camera_streak_data:       queryObj.camera_streak_data || {},
+        fines:                    queryObj.fines,
+        newViolationCount:        queryObj.previous_violation_count ? (queryObj.violation_count - queryObj.previous_violation_count) : 0,
+        plateID:                  that.state.lookupPlateID,
+        plateType:                that.state.lookupPlateType,
+        previous_lookup_date:     queryObj.previous_lookup_date,
+        previous_violation_count: queryObj.previous_violation_count,
+        state:                    that.state.lookupState,
+        times_queried:            queryObj.times_queried,
+        violations:               returnedViolations,
+        violations_count:         queryObj.violations_count
       }
 
       let existingList = that.state.queriedVehicles;
@@ -248,9 +249,11 @@ class FetchViolations extends React.Component {
                       <div className='col-md'>
                         <div className='form-group'>
                           <select className='form-control' name='lookupState' value={this.state.lookupState} onChange={this.handleChange}>
-                            {[['99', '99'], ['Alberta (AB)', 'AB'], ['Alaska (AK)', 'AK'], ['Alabama (AL)', 'AL'], ['Arkansas (AR)', 'AR'], ['Arizona (AZ)', 'AZ'], ['British Columbia (BC)', 'BC'], ['California (CA)', 'CA'], ['Colorado (CO)', 'CO'], ['Connecticut (CT)', 'CT'], ['District of Columbia (DC)', 'DC'], ['Delaware (DE)', 'DE'], ['U.S. State Department (DP)', 'DP'], ['Florida (FL)', 'FL'], ['Federated States of Micronesia (FM)', 'FM'], ['Foreign (FO)', 'FO'], ['Georgia (GA)', 'GA'], ['Guam (GU)', 'GU'], ['Government (GV)', 'GV'], ['Hawaii (HI)', 'HI'], ['Iowa (IA)', 'IA'], ['Idaho (ID)', 'ID'], ['Illinois (IL)', 'IL'], ['Indiana (IN)', 'IN'], ['Kansas (KS)', 'KS'], ['Kentucky (KY)', 'KY'], ['Louisiana (LA)', 'LA'], ['Massachusetts (MA)', 'MA'], ['Manitoba (MB)', 'MB'], ['Maryland (MD)', 'MD'], ['Maine (ME)', 'ME'], ['Michigan (MI)', 'MI'], ['Minnesota (MN)', 'MN'], ['Missouri (MO)', 'MO'], ['Northern Mariana Islands (MP)', 'MP'], ['Mississippi (MS)', 'MS'], ['Montana (MT)', 'MT'], ['Mexico (MX)', 'MX'], ['New Brunswick (NB)', 'NB'], ['North Carolina (NC)', 'NC'], ['North Dakota (ND)', 'ND'], ['Nebraska (NE)', 'NE'], ['Newfoundland (NF)', 'NF'], ['New Hampshire (NH)', 'NH'], ['New Jersey (NJ)', 'NJ'], ['New Mexico (NM)', 'NM'], ['Nova Scotia (NS)', 'NS'], ['Northwest Territories (NT)', 'NT'], ['Nevada (NV)', 'NV'], ['New York (NY)', 'NY'], ['Ohio (OH)', 'OH'], ['Oklahoma (OK)', 'OK'], ['Ontario (ON)', 'ON'], ['Oregon (OR)', 'OR'], ['Pennsylvania (PA)', 'PA'], ['Prince Edward Island (PE)', 'PE'], ['Puerto Rico (PR)', 'PR'], ['Palau (PW)', 'PW'], ['Quebec (QC)', 'QC'], ['Rhode Island (RI)', 'RI'], ['South Carolina (SC)', 'SC'], ['South Dakota (SD)', 'SD'], ['Saskatchewan (SK)', 'SK'], ['Tennessee (TN)', 'TN'], ['Texas (TX)', 'TX'], ['Utah (UT)', 'UT'], ['Virginia (VA)', 'VA'], ['U.S. Virgin Islands (VI)', 'VI'], ['Vermont (VT)', 'VT'], ['Washington (WA)', 'WA'], ['Wisconsin (WI)', 'WI'], ['West Virginia (WV)', 'WV'], ['Wyoming (WY)', 'WY'], ['Yukon Territories (YT)', 'YT']].map((region) =>
-                              <option key={region[1]} value={region[1]}>{region[0]}</option>
-                            )}
+                            <optgroup label='Region'>
+                              {[['99', '99'], ['Alberta (AB)', 'AB'], ['Alaska (AK)', 'AK'], ['Alabama (AL)', 'AL'], ['Arkansas (AR)', 'AR'], ['Arizona (AZ)', 'AZ'], ['British Columbia (BC)', 'BC'], ['California (CA)', 'CA'], ['Colorado (CO)', 'CO'], ['Connecticut (CT)', 'CT'], ['District of Columbia (DC)', 'DC'], ['Delaware (DE)', 'DE'], ['U.S. State Department (DP)', 'DP'], ['Florida (FL)', 'FL'], ['Federated States of Micronesia (FM)', 'FM'], ['Foreign (FO)', 'FO'], ['Georgia (GA)', 'GA'], ['Guam (GU)', 'GU'], ['Government (GV)', 'GV'], ['Hawaii (HI)', 'HI'], ['Iowa (IA)', 'IA'], ['Idaho (ID)', 'ID'], ['Illinois (IL)', 'IL'], ['Indiana (IN)', 'IN'], ['Kansas (KS)', 'KS'], ['Kentucky (KY)', 'KY'], ['Louisiana (LA)', 'LA'], ['Massachusetts (MA)', 'MA'], ['Manitoba (MB)', 'MB'], ['Maryland (MD)', 'MD'], ['Maine (ME)', 'ME'], ['Michigan (MI)', 'MI'], ['Minnesota (MN)', 'MN'], ['Missouri (MO)', 'MO'], ['Northern Mariana Islands (MP)', 'MP'], ['Mississippi (MS)', 'MS'], ['Montana (MT)', 'MT'], ['Mexico (MX)', 'MX'], ['New Brunswick (NB)', 'NB'], ['North Carolina (NC)', 'NC'], ['North Dakota (ND)', 'ND'], ['Nebraska (NE)', 'NE'], ['Newfoundland (NF)', 'NF'], ['New Hampshire (NH)', 'NH'], ['New Jersey (NJ)', 'NJ'], ['New Mexico (NM)', 'NM'], ['Nova Scotia (NS)', 'NS'], ['Northwest Territories (NT)', 'NT'], ['Nevada (NV)', 'NV'], ['New York (NY)', 'NY'], ['Ohio (OH)', 'OH'], ['Oklahoma (OK)', 'OK'], ['Ontario (ON)', 'ON'], ['Oregon (OR)', 'OR'], ['Pennsylvania (PA)', 'PA'], ['Prince Edward Island (PE)', 'PE'], ['Puerto Rico (PR)', 'PR'], ['Palau (PW)', 'PW'], ['Quebec (QC)', 'QC'], ['Rhode Island (RI)', 'RI'], ['South Carolina (SC)', 'SC'], ['South Dakota (SD)', 'SD'], ['Saskatchewan (SK)', 'SK'], ['Tennessee (TN)', 'TN'], ['Texas (TX)', 'TX'], ['Utah (UT)', 'UT'], ['Virginia (VA)', 'VA'], ['U.S. Virgin Islands (VI)', 'VI'], ['Vermont (VT)', 'VT'], ['Washington (WA)', 'WA'], ['Wisconsin (WI)', 'WI'], ['West Virginia (WV)', 'WV'], ['Wyoming (WY)', 'WY'], ['Yukon Territories (YT)', 'YT']].map((region) =>
+                                <option key={region[1]} value={region[1]}>{region[0]}</option>
+                              )}
+                            </optgroup>
                           </select>
                         </div>
                       </div>
@@ -259,9 +262,11 @@ class FetchViolations extends React.Component {
                       <div className='col-md'>
                         <div className='form-group'>
                           <select className='form-control' name='lookupPlateType' value={this.state.lookupPlateType} onChange={this.handleChange}>
-                            {[['All-Terrain Vehicle', 'ATD, ATV'],['Ambulance', 'AMB'],['Bus/Vanpool', 'OMF, OML, OMO, OMR, OMS, OMV, VPL'],['Commercial', 'AGC, APP, CHC, CMB, COM, CSP, FAR, HAC, IRP, LOC, ORC, RGC, SPC, STG, THC, TRC'],['Coroner/Medical Examiner', 'CME'],['County Board of Supervisors', 'CBS'],['County Clerk', 'CCK'],['County Legislator', 'CLG'],['Dealer', 'DLR'],["Governor's Second Car", 'GAC'],['Hearse', 'HIR'],['In-Transit Permit', 'ITP'],['Limited-use Autos', 'LUA'],['Medallion Vehicle', 'OMT'],['Medical Doctor', 'MED'],['Motorboat', 'BOT'],['Motorcycle', 'HSM, LMA, LMB, LMC, MCD, MOT, ORM'],['New York Assembly', 'NYA'],['New York City Council', 'NYC'],['New York Press', 'SRN'],['New York Senate', 'NYS'],['Passenger', 'AGR, ARG, AYG, BOB, CMH, FPW, GSM, HAM, HIS, JWV, MCL, NLM, ORG, PAS, PHS, PPH, RGL, SOS, SPO, SRF, WUG'],['Political Subdivision', 'PSD'],['School Car', 'SCL'],['Snowmobile', 'SNO'],['State-owned Vehicle', 'STA'],['State Court Justice', 'JCA, JCL, JSC, SUP'],['Tow Truck', 'TOW'],['Trailer', 'HOU, LTR, SEM, TRA, TRL'],['U.S. Congress', 'USC'],['U.S. Senate', 'USS'],['Volunteer Ambulance Service', 'VAS']].map((type) =>
-                              <option key={type} value={type[1]}>{type[0]}</option>
-                            )}
+                            <optgroup label='License Plate Type'>
+                              {[['All-Terrain Vehicle', 'ATD, ATV'],['Ambulance', 'AMB'],['Bus/Vanpool', 'OMF, OML, OMO, OMR, OMS, OMV, VPL'],['Commercial', 'AGC, APP, CHC, CMB, COM, CSP, FAR, HAC, IRP, LOC, ORC, RGC, SPC, STG, THC, TRC'],['Coroner/Medical Examiner', 'CME'],['County Board of Supervisors', 'CBS'],['County Clerk', 'CCK'],['County Legislator', 'CLG'],['Dealer', 'DLR'],["Governor's Second Car", 'GAC'],['Hearse', 'HIR'],['In-Transit Permit', 'ITP'],['Limited-use Autos', 'LUA'],['Medallion Vehicle', 'OMT'],['Medical Doctor', 'MED'],['Motorboat', 'BOT'],['Motorcycle', 'HSM, LMA, LMB, LMC, MCD, MOT, ORM'],['New York Assembly', 'NYA'],['New York City Council', 'NYC'],['New York Press', 'SRN'],['New York Senate', 'NYS'],['Passenger', 'AGR, ARG, AYG, BOB, CMH, FPW, GSM, HAM, HIS, JWV, MCL, NLM, ORG, PAS, PHS, PPH, RGL, SOS, SPO, SRF, WUG'],['Political Subdivision', 'PSD'],['School Car', 'SCL'],['Snowmobile', 'SNO'],['State-owned Vehicle', 'STA'],['State Court Justice', 'JCA, JCL, JSC, SUP'],['Tow Truck', 'TOW'],['Trailer', 'HOU, LTR, SEM, TRA, TRL'],['U.S. Congress', 'USC'],['U.S. Senate', 'USS'],['Volunteer Ambulance Service', 'VAS']].map((type) =>
+                                <option key={type} value={type[1]}>{type[0]}</option>
+                              )}
+                            </optgroup>
                           </select>
                         </div>
                       </div>
@@ -292,15 +297,15 @@ class FetchViolations extends React.Component {
                     <ListGroup className='list-group-flush'>
                       <ListGroupItem className='no-padding'>
                         <div className='split-list-group-item'>
-                          Lookups: {vehicle.frequency}
+                          Lookups: {vehicle.times_queried}
                         </div>
-                        {vehicle.previous_date &&
+                        {vehicle.previous_lookup_date &&
                           <div className='split-list-group-item'>
-                            Recent: {new Date(vehicle.previous_date).toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})} {vehicle.newViolations > 0 ? ('(' + vehicle.newViolations + ' new tickets)') : ''}
+                            Recent: {new Date(vehicle.previous_lookup_date).toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})} {vehicle.newViolationCount > 0 ? ('(' + vehicle.newViolationCount + ' new tickets)') : ''}
                           </div>
                         }
                       </ListGroupItem>
-                      {vehicle.streak_data.max_streak >= 5 &&
+                      {vehicle.camera_streak_data.max_streak >= 5 &&
                         <ListGroupItem className='list-group-item-warning'>
                           <p>
                             Under
@@ -310,7 +315,7 @@ class FetchViolations extends React.Component {
                             's
                             <a target='_blank' rel='noopener noreferrer' href='http://legistar.council.nyc.gov/LegislationDetail.aspx?ID=3521908&GUID=A4FD4CFC-8AD8-4130-AA92-11BC56936F6D&Options=ID|Text|&Search=lander'>
                               proposed legislation
-                            </a>, this vehicle could have been booted or impounded due to its {vehicle.streak_data.max_streak} camera violations (>= 5/year) from {new Date(vehicle.streak_data.min_streak_date).toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})} to {new Date(vehicle.streak_data.max_streak_date).toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})}.
+                            </a>, this vehicle could have been booted or impounded due to its {vehicle.camera_streak_data.max_streak} camera violations (>= 5/year) from {new Date(vehicle.camera_streak_data.streak_start).toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})} to {new Date(vehicle.camera_streak_data.streak_end).toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})}.
                           </p>
                         </ListGroupItem>
                       }
