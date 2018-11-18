@@ -404,9 +404,9 @@ class ViolationsTable extends React.Component {
                   if(aLocation > bLocation) return -1;
                   return (new Date(b.formatted_time) - new Date(a.formatted_time))
                 }
-              } else if (that.state.sortType === 'total_fine_amount') {
-                let aFine = a.total_fine_amount ? parseFloat(a.total_fine_amount) : 0
-                let bFine = b.total_fine_amount ? parseFloat(b.total_fine_amount) : 0
+              } else if (that.state.sortType === 'total_fined') {
+                let aFine = a.fined ? (a.reduced ? parseFloat(a.fined - a.reduced) : parseFloat(a.fined)) : 0
+                let bFine = b.fined ? (b.reduced ? parseFloat(b.fined - b.reduced) : parseFloat(b.fined)) : 0
 
                 if (that.state.sortAscending) {
                   if(aFine < bFine) return -1;
@@ -439,7 +439,7 @@ class ViolationsTable extends React.Component {
 
   renderTableHeader() {
     return (
-      [{sort_type: 'formatted_time', display_text: 'Date'}, {sort_type: 'humanized_description', display_text: 'Type'}, {sort_type: 'location', display_text: 'Location'}, {sort_type: 'total_fine_amount', display_text: 'Fines'}].map((headerType) =>
+      [{sort_type: 'formatted_time', display_text: 'Date'}, {sort_type: 'humanized_description', display_text: 'Type'}, {sort_type: 'location', display_text: 'Location'}, {sort_type: 'total_fined', display_text: 'Fines'}].map((headerType) =>
         <th key={headerType.sort_type} className={this.state.sortType === headerType.sort_type ? 'sort-column' : ''} onClick={() => (this.state.sortType === headerType.sort_type ? this.setState({sortAscending: !this.state.sortAscending}) : this.setState({sortType: headerType.sort_type, sortAscending: false}))}>
           {headerType.display_text}
           {this.state.sortType === headerType.sort_type &&
@@ -463,7 +463,7 @@ class ViolationsTable extends React.Component {
           {violation.violation_county} {violation.location == null ? '' : ('(' + violation.location + ')')}
         </td>
         <td>
-          {violation.total_fine_amount ? ('$' + violation.total_fine_amount) : 'N/A'}
+          {violation.fined ? (violation.reduced ? ('$' + (violation.fined - violation.reduced)) : ('$' + violation.fined)) : 'N/A'}
         </td>
       </tr>
     )
