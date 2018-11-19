@@ -168,15 +168,15 @@ class FetchViolations extends React.Component {
     let promises = [];
 
     let queryString = 'https://api.howsmydrivingny.nyc/api/v1/'
-    queryString += '?plate_id=' + this.state.lookupPlateID
-    queryString += '&state=' + this.state.lookupState
+    queryString += '?'
+    queryString += ('plate=' + this.state.lookupPlateID + ':' + this.state.lookupState)
+    if (this.state.lookupPlateType) {
+      queryString += ':' + this.state.lookupPlateType;
+    }
     queryString += '&fingerprint_id=' + this.state.fingerprintID
     queryString += '&mixpanel_id=' + this.state.mixpanelID
     queryString += '&lookup_source=web_client'
 
-    if (this.state.lookupPlateType) {
-      queryString += '&plate_type=' + this.state.lookupPlateType;
-    }
 
     promises.push(
       rp(queryString)
@@ -184,40 +184,46 @@ class FetchViolations extends React.Component {
 
     q.all(promises).then(function(jsonResponse){
 
-
       let queryObj = JSON.parse(jsonResponse);
-      let returnedViolations = queryObj.violations;
 
-      returnedViolations.sort((a,b) => new Date(a.formatted_time) - new Date(b.formatted_time))
+      if (queryObj.data) {
 
-      const newVehicle = {
-        camera_streak_data:       queryObj.camera_streak_data || {},
-        fines:                    queryObj.fines,
-        newViolationCount:        queryObj.previous_violation_count ? (queryObj.violation_count - queryObj.previous_violation_count) : 0,
-        plateID:                  that.state.lookupPlateID,
-        plateType:                that.state.lookupPlateType,
-        previous_lookup_date:     queryObj.previous_lookup_date,
-        previous_violation_count: queryObj.previous_violation_count,
-        state:                    that.state.lookupState,
-        times_queried:            queryObj.times_queried,
-        violations:               returnedViolations,
-        violations_count:         queryObj.violations_count
+        let queriedVehicle = queryObj.data[0].vehicle;
+
+        let returnedViolations = queriedVehicle.violations;
+
+        returnedViolations.sort((a,b) => new Date(a.formatted_time) - new Date(b.formatted_time))
+
+        const newVehicle = {
+          camera_streak_data:       queriedVehicle.camera_streak_data || {},
+          fines:                    queriedVehicle.fines,
+          newViolationCount:        queriedVehicle.previous_violation_count ? (queriedVehicle.violation_count - queriedVehicle.previous_violation_count) : 0,
+          plateID:                  that.state.lookupPlateID,
+          plateType:                that.state.lookupPlateType,
+          previous_lookup_date:     queriedVehicle.previous_lookup_date,
+          previous_violation_count: queriedVehicle.previous_violation_count,
+          state:                    that.state.lookupState,
+          times_queried:            queriedVehicle.times_queried,
+          violations:               returnedViolations,
+          violations_count:         queriedVehicle.violations_count
+        }
+
+        let existingList = that.state.queriedVehicles;
+
+        const existingVehicle = existingList.find(obj => {
+          return obj.state === newVehicle.state && obj.plateID === newVehicle.plateID && obj.plateType === newVehicle.plateType
+        })
+
+        const index = existingList.indexOf(existingVehicle);
+        if (index > -1) {
+          existingList = existingList.slice(0, index).concat(existingList.slice(index + 1));
+        }
+
+        existingList.unshift(newVehicle);
+
+        that.setState({performingLookup: false, queriedVehicles: existingList})
+
       }
-
-      let existingList = that.state.queriedVehicles;
-
-      const existingVehicle = existingList.find(obj => {
-        return obj.state === newVehicle.state && obj.plateID === newVehicle.plateID && obj.plateType === newVehicle.plateType
-      })
-
-      const index = existingList.indexOf(existingVehicle);
-      if (index > -1) {
-        existingList = existingList.slice(0, index).concat(existingList.slice(index + 1));
-      }
-
-      existingList.unshift(newVehicle);
-
-      that.setState({performingLookup: false, queriedVehicles: existingList})
 
       // res.setHeader('Content-Type', 'application/json');
       // res.writeHead(200, {'Content-Type': 'application/javascript'});
