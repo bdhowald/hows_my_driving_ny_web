@@ -31,10 +31,10 @@ Geocode.enableDebug();
 
 
 const plateTypes = {
-  'ATD, ATV' :  'All-Terrain Vehicle',
+  'ATD,ATV' :  'All-Terrain Vehicle',
   'AMB' : 'Ambulance',
-  'OMF, OML, OMO, OMR, OMS, OMV, VPL' : 'Bus/Vanpool',
-  'AGC, APP, CHC, CMB, COM, CSP, FAR, HAC, IRP, LOC, ORC, RGC, SPC, STG, THC, TRC' : 'Commercial',
+  'OMF,OML,OMO,OMR,OMS,OMV,VPL' : 'Bus/Vanpool',
+  'AGC,APP,CHC,CMB,COM,CSP,FAR,HAC,IRP,LOC,ORC,RGC,SPC,STG,THC,TRC' : 'Commercial',
   'CME' : 'Coroner/Medical Examiner',
   'CBS' : 'County Board of Supervisors',
   'CCK' : 'County Clerk',
@@ -47,18 +47,18 @@ const plateTypes = {
   'OMT' : 'Medallion Vehicle',
   'MED' : 'Medical Doctor',
   'BOT' : 'Motorboat',
-  'HSM, LMA, LMB, LMC, MCD, MOT, ORM' : 'Motorcycle',
+  'HSM,LMA,LMB,LMC,MCD,MOT,ORM' : 'Motorcycle',
   'NYA' : 'New York Assembly',
   'NYC' : 'New York City Council',
   'SRN' : 'New York Press',
   'NYS' : 'New York Senate',
-  'AGR, ARG, AYG, BOB, CMH, FPW, GSM, HAM, HIS, JWV, MCL, NLM, ORG, PAS, PHS, PPH, RGL, SOS, SPO, SRF, WUG' : 'Passenger',
+  'AGR,ARG,AYG,BOB,CMH,FPW,GSM,HAM,HIS,JWV,MCL,NLM,ORG,PAS,PHS,PPH,RGL,SOS,SPO,SRF,WUG' : 'Passenger',
   'PSD' : 'Political Subdivision',
   'SCL' : 'School Car',
   'SNO' : 'Snowmobile',
   'STA' : 'State-owned Vehicle',
-  'JCA, JCL, JSC, SUP' : 'State Court Justice',
-  'HOU, LTR, SEM, TRA, TRL' : 'Trailer',
+  'JCA,JCL,JSC,SUP' : 'State Court Justice',
+  'HOU,LTR,SEM,TRA,TRL' : 'Trailer',
   'USC' : 'U.S. Congress',
   'USS' : 'U.S. Senate',
   'VAS' : 'Volunteer Ambulance Service'
@@ -79,7 +79,7 @@ class FetchViolations extends React.Component {
     this.state = {
       fingerprintID: null,
       lookupPlateID: '',
-      lookupPlateType: 'AGR, ARG, AYG, BOB, CMH, FPW, GSM, HAM, HIS, JWV, MCL, NLM, ORG, PAS, PHS, PPH, RGL, SOS, SPO, SRF, WUG',
+      lookupPlateType: 'AGR,ARG,AYG,BOB,CMH,FPW,GSM,HAM,HIS,JWV,MCL,NLM,ORG,PAS,PHS,PPH,RGL,SOS,SPO,SRF,WUG',
       lookupState: 'NY',
       mixpanelID: null,
       performingLookup: false,
@@ -269,7 +269,7 @@ class FetchViolations extends React.Component {
                         <div className='form-group'>
                           <select className='form-control' name='lookupPlateType' value={this.state.lookupPlateType} onChange={this.handleChange}>
                             <optgroup label='License Plate Type'>
-                              {[['All-Terrain Vehicle', 'ATD, ATV'],['Ambulance', 'AMB'],['Bus/Vanpool', 'OMF, OML, OMO, OMR, OMS, OMV, VPL'],['Commercial', 'AGC, APP, CHC, CMB, COM, CSP, FAR, HAC, IRP, LOC, ORC, RGC, SPC, STG, THC, TRC'],['Coroner/Medical Examiner', 'CME'],['County Board of Supervisors', 'CBS'],['County Clerk', 'CCK'],['County Legislator', 'CLG'],['Dealer', 'DLR'],["Governor's Second Car", 'GAC'],['Hearse', 'HIR'],['In-Transit Permit', 'ITP'],['Limited-use Autos', 'LUA'],['Medallion Vehicle', 'OMT'],['Medical Doctor', 'MED'],['Motorboat', 'BOT'],['Motorcycle', 'HSM, LMA, LMB, LMC, MCD, MOT, ORM'],['New York Assembly', 'NYA'],['New York City Council', 'NYC'],['New York Press', 'SRN'],['New York Senate', 'NYS'],['Passenger', 'AGR, ARG, AYG, BOB, CMH, FPW, GSM, HAM, HIS, JWV, MCL, NLM, ORG, PAS, PHS, PPH, RGL, SOS, SPO, SRF, WUG'],['Political Subdivision', 'PSD'],['School Car', 'SCL'],['Snowmobile', 'SNO'],['State-owned Vehicle', 'STA'],['State Court Justice', 'JCA, JCL, JSC, SUP'],['Tow Truck', 'TOW'],['Trailer', 'HOU, LTR, SEM, TRA, TRL'],['U.S. Congress', 'USC'],['U.S. Senate', 'USS'],['Volunteer Ambulance Service', 'VAS']].map((type) =>
+                              {[['All-Terrain Vehicle', 'ATD, ATV'],['Ambulance', 'AMB'],['Bus/Vanpool', 'OMF,OML,OMO,OMR,OMS,OMV,VPL'],['Commercial', 'AGC,APP,CHC,CMB,COM,CSP,FAR,HAC,IRP,LOC,ORC,RGC,SPC,STG,THC,TRC'],['Coroner/Medical Examiner', 'CME'],['County Board of Supervisors', 'CBS'],['County Clerk', 'CCK'],['County Legislator', 'CLG'],['Dealer', 'DLR'],["Governor's Second Car", 'GAC'],['Hearse', 'HIR'],['In-Transit Permit', 'ITP'],['Limited-use Autos', 'LUA'],['Medallion Vehicle', 'OMT'],['Medical Doctor', 'MED'],['Motorboat', 'BOT'],['Motorcycle', 'HSM,LMA,LMB,LMC,MCD,MOT,ORM'],['New York Assembly', 'NYA'],['New York City Council', 'NYC'],['New York Press', 'SRN'],['New York Senate', 'NYS'],['Passenger', 'AGR,ARG,AYG,BOB,CMH,FPW,GSM,HAM,HIS,JWV,MCL,NLM,ORG,PAS,PHS,PPH,RGL,SOS,SPO,SRF,WUG'],['Political Subdivision', 'PSD'],['School Car', 'SCL'],['Snowmobile', 'SNO'],['State-owned Vehicle', 'STA'],['State Court Justice', 'JCA,JCL,JSC,SUP'],['Tow Truck', 'TOW'],['Trailer', 'HOU,LTR,SEM,TRA,TRL'],['U.S. Congress', 'USC'],['U.S. Senate', 'USS'],['Volunteer Ambulance Service', 'VAS']].map((type) =>
                                 <option key={type} value={type[1]}>{type[0]}</option>
                               )}
                             </optgroup>
