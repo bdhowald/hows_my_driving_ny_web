@@ -160,6 +160,7 @@ class FetchViolations extends React.Component {
 
 
   performLookup() {
+
     let that = this;
 
     // Record that we are looking
@@ -169,7 +170,7 @@ class FetchViolations extends React.Component {
 
     let queryString = 'https://api.howsmydrivingny.nyc/api/v1/'
     queryString += '?'
-    queryString += ('plate=' + this.state.lookupPlateID + ':' + this.state.lookupState)
+    queryString += ('plate=' + encodeURIComponent(this.state.lookupPlateID) + ':' + this.state.lookupState)
     if (this.state.lookupPlateType) {
       queryString += ':' + this.state.lookupPlateType;
     }
