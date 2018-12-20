@@ -171,7 +171,7 @@ class FetchViolations extends React.Component {
     let queryString = 'https://api.howsmydrivingny.nyc/api/v1/'
     queryString += '?'
     queryString += ('plate=' + encodeURIComponent(this.state.lookupPlateID) + ':' + this.state.lookupState)
-    if (this.state.lookupPlateType) {
+    if (this.state.lookupPlateType !== 'NULL') {
       queryString += ':' + this.state.lookupPlateType;
     }
     queryString += '&fingerprint_id=' + this.state.fingerprintID
@@ -270,7 +270,7 @@ class FetchViolations extends React.Component {
                         <div className='form-group'>
                           <select className='form-control' name='lookupPlateType' value={this.state.lookupPlateType} onChange={this.handleChange}>
                             <optgroup label='License Plate Type'>
-                              {[['All-Terrain Vehicle', 'ATD, ATV'],['Ambulance', 'AMB'],['Bus/Vanpool', 'OMF,OML,OMO,OMR,OMS,OMV,VPL'],['Commercial', 'AGC,APP,CHC,CMB,COM,CSP,FAR,HAC,IRP,LOC,ORC,RGC,SPC,STG,THC,TRC'],['Coroner/Medical Examiner', 'CME'],['County Board of Supervisors', 'CBS'],['County Clerk', 'CCK'],['County Legislator', 'CLG'],['Dealer', 'DLR'],["Governor's Second Car", 'GAC'],['Hearse', 'HIR'],['In-Transit Permit', 'ITP'],['Limited-use Autos', 'LUA'],['Medallion Vehicle', 'OMT'],['Medical Doctor', 'MED'],['Motorboat', 'BOT'],['Motorcycle', 'HSM,LMA,LMB,LMC,MCD,MOT,ORM'],['New York Assembly', 'NYA'],['New York City Council', 'NYC'],['New York Press', 'SRN'],['New York Senate', 'NYS'],['Passenger', 'AGR,ARG,AYG,BOB,CMH,FPW,GSM,HAM,HIS,JWV,MCL,NLM,ORG,PAS,PHS,PPH,RGL,SOS,SPO,SRF,WUG'],['Political Subdivision', 'PSD'],['School Car', 'SCL'],['Snowmobile', 'SNO'],['State-owned Vehicle', 'STA'],['State Court Justice', 'JCA,JCL,JSC,SUP'],['Tow Truck', 'TOW'],['Trailer', 'HOU,LTR,SEM,TRA,TRL'],['U.S. Congress', 'USC'],['U.S. Senate', 'USS'],['Volunteer Ambulance Service', 'VAS']].map((type) =>
+                              {[['All-Terrain Vehicle', 'ATD, ATV'],['Ambulance', 'AMB'],['Bus/Vanpool', 'OMF,OML,OMO,OMR,OMS,OMV,VPL'],['Commercial', 'AGC,APP,CHC,CMB,COM,CSP,FAR,HAC,IRP,LOC,ORC,RGC,SPC,STG,THC,TRC'],['Coroner/Medical Examiner', 'CME'],['County Board of Supervisors', 'CBS'],['County Clerk', 'CCK'],['County Legislator', 'CLG'],['Dealer', 'DLR'],["Governor's Second Car", 'GAC'],['Hearse', 'HIR'],['In-Transit Permit', 'ITP'],['Limited-use Autos', 'LUA'],['Medallion Vehicle', 'OMT'],['Medical Doctor', 'MED'],['Motorboat', 'BOT'],['Motorcycle', 'HSM,LMA,LMB,LMC,MCD,MOT,ORM'],['New York Assembly', 'NYA'],['New York City Council', 'NYC'],['New York Press', 'SRN'],['New York Senate', 'NYS'],['No Plate Type', 'NULL'],['Passenger', 'AGR,ARG,AYG,BOB,CMH,FPW,GSM,HAM,HIS,JWV,MCL,NLM,ORG,PAS,PHS,PPH,RGL,SOS,SPO,SRF,WUG'],['Political Subdivision', 'PSD'],['School Car', 'SCL'],['Snowmobile', 'SNO'],['State-owned Vehicle', 'STA'],['State Court Justice', 'JCA,JCL,JSC,SUP'],['Tow Truck', 'TOW'],['Trailer', 'HOU,LTR,SEM,TRA,TRL'],['U.S. Congress', 'USC'],['U.S. Senate', 'USS'],['Volunteer Ambulance Service', 'VAS']].map((type) =>
                                 <option key={type} value={type[1]}>{type[0]}</option>
                               )}
                             </optgroup>
@@ -291,7 +291,7 @@ class FetchViolations extends React.Component {
                 {this.state.queriedVehicles.map((vehicle) =>
                   <div key={vehicle.state + ':' + vehicle.plateID + ':' + vehicle.plateType} className='card vehicle'>
                     <div className="card-header">
-                      {vehicle.state}:{vehicle.plateID} ({this.state.plateTypes[vehicle.plateType]})
+                      {vehicle.state}:{vehicle.plateID} {this.state.plateTypes[vehicle.plateType] ? '(' + this.state.plateTypes[vehicle.plateType] + ')' : null}
                       <TwitterShareButton
                         url={'https://howsmydrivingny.nyc'}
                         title={"I just looked up #" + vehicle.state + "_" + vehicle.plateID + "_" + vehicle.plateType + "'s " + vehicle.violations_count + (vehicle.violations_count === 1 ? ' violation' : ' violations') + " using @HowsMyDrivingNY: "}
