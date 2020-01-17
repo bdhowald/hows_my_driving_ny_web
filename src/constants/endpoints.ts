@@ -1,0 +1,1 @@
+export const HOWS_MY_DRIVING_NY_ENDPOINT = 'https://api.howsmydrivingny.nyc/api/v1/'
