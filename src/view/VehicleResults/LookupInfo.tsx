@@ -11,8 +11,8 @@ export default ({ vehicle }: { vehicle: Vehicle }) => {
   const lastQueriedDate = new Date(vehicle.previousLookupDate)
     .toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit'})
 
-  const newTicketsString = (vehicle.violationsCount > 0)
-    ? `(${vehicle.previousViolationCount - vehicle.violationsCount}) new tickets`
+  const newTicketsString = (vehicle.previousViolationCount - vehicle.violationsCount) > 0
+    ? `(${vehicle.previousViolationCount - vehicle.violationsCount} new tickets)`
     : ''
 
   const recentLookupString = `Recent: ${lastQueriedDate} ${newTicketsString}`
