@@ -6,7 +6,7 @@ import L10N from 'constants/display'
 import { Vehicle } from 'utils/types/responses'
 
 export default ({ vehicle }: { vehicle: Vehicle }) => {
-  const vehicleHashtag = `${vehicle.state}_${vehicle.plate}_${vehicle.plateTypes}`
+  const vehicleHashtag = `${vehicle.state}_${vehicle.plate}`
   const violationsString = `${vehicle.violationsCount} violation${vehicle.violationsCount === 1 ? '' : 's'}`
 
   return (
