@@ -113,10 +113,6 @@ export default ({ setQueriedVehiclesFn, queriedVehicles }: OwnProps) => {
         const queriedVehicle: Vehicle = firstLookup.vehicle;
         const returnedViolations: Violation[] = queriedVehicle.violations
 
-        const chronologicalViolations: Violation[] = returnedViolations.sort((a,b) =>
-          new Date(a.formattedTime).getTime() - new Date(b.formattedTime).getTime()
-        )
-
         const existingVehicle = queriedVehicles.find((vehicle: Vehicle) => {
           return vehicle.plate === queriedVehicle.plate &&
             vehicle.state === queriedVehicle.state &&
