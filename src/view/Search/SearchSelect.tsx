@@ -25,7 +25,7 @@ export default ({
 }: OwnProps) => {
   return (
     <Form.Control
-      as="select" name='plateType'
+      as="select" name={valueKey}
       onChange={handleChange}
       value={currentLookup[valueKey]}
     >
