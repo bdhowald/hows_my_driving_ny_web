@@ -88,7 +88,7 @@ export default ({ setQueriedVehiclesFn, queriedVehicles }: OwnProps) => {
   
     setLookupInFlight(true)
 
-    const plateString = plateType ? `${plate}:${state}:${plateTypes[plateType]?.codes}` : `${plate}:${state}`
+    const plateString = plateType ? `${plate.trim()}:${state}:${plateTypes[plateType]?.codes}` : `${plate}:${state}`
 
     let requestParams: VehicleQueryRequest = {
       lookupSource: 'web_client',
@@ -113,10 +113,12 @@ export default ({ setQueriedVehiclesFn, queriedVehicles }: OwnProps) => {
         const queriedVehicle: Vehicle = firstLookup.vehicle;
         const returnedViolations: Violation[] = queriedVehicle.violations
 
+        console.log(queriedVehicles)
         const existingVehicle = queriedVehicles.find((vehicle: Vehicle) => {
           return vehicle.plate === queriedVehicle.plate &&
             vehicle.state === queriedVehicle.state &&
-            vehicle.plateTypes === queriedVehicle.plateTypes
+            // hacky way to determine array equality
+            vehicle.plateTypes.toString() === queriedVehicle.plateTypes.toString()
         })
 
         const index = existingVehicle ? queriedVehicles.indexOf(existingVehicle) : -1
