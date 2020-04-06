@@ -30,6 +30,7 @@
     "@types/react-share": "^3.0.0",
     "@types/reactstrap": "^8.0.4",
     "@types/request-promise": "^4.1.44",
+    "@types/smoothscroll-polyfill": "^0.3.1",
     "abortcontroller-polyfill": "^1.4.0",
     "bootstrap": "^4.3.1",
     "fingerprintjs2": "^2.1.0",
@@ -47,6 +48,7 @@
     "react-share": "^4.0.1",
     "reactstrap": "^6.3.0",
     "redux-saga": "^1.0.5",
+    "smoothscroll-polyfill": "^0.4.4",
     "tslint": "^5.19.0",
     "tslint-react": "^4.0.0",
     "whatwg-fetch": "^3.0.0"
