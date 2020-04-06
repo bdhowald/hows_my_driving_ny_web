@@ -21,6 +21,7 @@ export type Vehicle = {
   previousViolationCount: number,
   state: string,
   timesQueried: number,
+  uniqueIdentifier: string,
   violations: Violation[],
   violationsCount: number,
 }

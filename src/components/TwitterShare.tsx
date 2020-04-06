@@ -11,7 +11,7 @@ export default ({ vehicle }: { vehicle: Vehicle }) => {
 
   return (
     <TwitterShareButton
-      url={L10N.sitewide.url}
+      url={`${L10N.sitewide.url}/${vehicle.uniqueIdentifier}`}
       title={`I just looked up #${vehicleHashtag}'s ${violationsString} using @HowsMyDrivingNY: `}
       className="Demo__some-network__share-button"
     >

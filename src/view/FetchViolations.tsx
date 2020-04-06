@@ -20,7 +20,7 @@ import Search from 'view/Search'
 import VehicleResults from 'view/VehicleResults'
 
 library.add(faAngleDown, faAngleUp)
-smoothscroll.polyfill();
+smoothscroll.polyfill()
 
 const FetchViolations = () => {
 
