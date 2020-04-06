@@ -2,7 +2,6 @@ import * as React from 'react'
 
 import { ListGroupItem } from 'reactstrap'
 
-import VehicleTwitterCard from 'view/VehicleResults/VehicleTwitterCard'
 import { Vehicle } from 'utils/types/responses'
 
 export default ({ vehicle }: { vehicle: Vehicle }) => {
@@ -20,7 +19,6 @@ export default ({ vehicle }: { vehicle: Vehicle }) => {
 
   return (
     <ListGroupItem className='no-padding'>
-      <VehicleTwitterCard vehicle={vehicle}/>
       <div className='split-list-group-item'>
         {lookups}
       </div>
