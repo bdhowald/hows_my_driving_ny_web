@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -22,12 +22,20 @@ library.add(faAngleDown, faAngleUp)
 
 const FetchViolations = () => {
 
-  let { uniqueIdentifier } = useParams()
+  const { uniqueIdentifier } = useParams()
+  const listRef = useRef<HTMLDivElement>(null)
 
   const [queriedVehicles, setQueriedVehicles] = useState<Array<Vehicle>>([])
 
   useEffect(() => {
     document.title = L10N.sitewide.title
+  })
+
+  useEffect(() => {
+    console.log(listRef)
+    if (listRef.current) {
+      listRef.current.scrollIntoView({behavior: 'smooth'})
+    }
   })
 
   return (
@@ -40,7 +48,7 @@ const FetchViolations = () => {
               queriedVehicles={queriedVehicles}
               setQueriedVehiclesFn={setQueriedVehicles}
             />
-            <VehicleResults vehicles={queriedVehicles} />
+            <VehicleResults vehicles={queriedVehicles} scrollRef={listRef}/>
           </div>
         </Row>
       </Container>

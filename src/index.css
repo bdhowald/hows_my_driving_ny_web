@@ -144,3 +144,7 @@ div.container-fluid div.row div.card ul.list-group li.list-group-item span.viola
 div.container-fluid div.row div.card ul.list-group li.list-group-item span.violation-time {
   margin: 0 1rem;
 }
+
+div.vehicles {
+  padding: 0.5rem 0 0;
+}

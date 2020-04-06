@@ -30,6 +30,7 @@ export default ({ vehicle }: {vehicle: Vehicle }) => {
         <Link linkTarget={bradLanderTwitterURL} linkText={bradLanderTwitterHandle} />
         's
         <Link linkTarget={recklessDriverAccountabilityActURL} linkText={'proposed legislation'} />
+        {' '}
         this vehicle could have been booted or impounded due to its {vehicle.cameraStreakData.maxStreak}
         {' '}
         camera violations (>= 5/year) from {streakMinDate} to {streakMaxDate}.
