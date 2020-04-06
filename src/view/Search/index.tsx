@@ -8,21 +8,26 @@ import Form from 'react-bootstrap/Form'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Row from 'react-bootstrap/Row'
 
-import { lookUpVehicle } from 'boundaries/http'
+import { getPreviousLookup, performNewLookup } from 'boundaries/http'
 import L10N from 'constants/display'
 import plateTypes, { PlateType } from 'constants/plateTypes'
 import regions from 'constants/regions'
 import { VehicleQueryRequest } from 'utils/types/requests'
-import { Vehicle, VehicleQueryResponse, Violation } from 'utils/types/responses'
+import { Vehicle, VehicleQueryResponse } from 'utils/types/responses'
 
 import SearchSelect from './SearchSelect'
 
 type OwnProps = {
+  previousLookupIdentifier?: string
   queriedVehicles: Vehicle[]
   setQueriedVehiclesFn: (arg0: Vehicle[]) => void
 }
 
-export default ({ setQueriedVehiclesFn, queriedVehicles }: OwnProps) => {
+export default ({
+  previousLookupIdentifier,
+  setQueriedVehiclesFn,
+  queriedVehicles
+}: OwnProps) => {
   const [fingerprintId, setFingerprintId] = useState<string | undefined>()
   const [currentLookup, setCurrentLookup] = useState<{
     plateId: string | undefined,
@@ -84,36 +89,15 @@ export default ({ setQueriedVehiclesFn, queriedVehicles }: OwnProps) => {
     }
   }
 
-  const performLookup = async (plate: string, plateType: PlateType | undefined, state: string) => {
-  
-    setLookupInFlight(true)
-
-    const plateString = plateType ? `${plate.trim()}:${state}:${plateTypes[plateType]?.codes}` : `${plate}:${state}`
-
-    let requestParams: VehicleQueryRequest = {
-      lookupSource: 'web_client',
-      plate: plateString
-    }
-    if (fingerprintId) {
-      requestParams.fingerprintId = fingerprintId
-    }
-    if (mixpanelId) {
-      requestParams.mixpanelId = mixpanelId
-    }
-
-  
-    const query: VehicleQueryResponse = await lookUpVehicle(requestParams)
-
+  const parseResults = (query: VehicleQueryResponse) => {
     const { data } = query
 
-    if (data && data[0]) {
+    if (data?.[0]) {
       const firstLookup = data[0]
 
       if (firstLookup.successfulLookup) {
-        const queriedVehicle: Vehicle = firstLookup.vehicle;
-        const returnedViolations: Violation[] = queriedVehicle.violations
+        const queriedVehicle: Vehicle = firstLookup.vehicle
 
-        console.log(queriedVehicles)
         const existingVehicle = queriedVehicles.find((vehicle: Vehicle) => {
           return vehicle.plate === queriedVehicle.plate &&
             vehicle.state === queriedVehicle.state &&
@@ -139,9 +123,43 @@ export default ({ setQueriedVehiclesFn, queriedVehicles }: OwnProps) => {
         }
       }
     }
+  }
+
+  const performLookup = async (plate: string, plateType: PlateType | undefined, state: string) => {
+
+    setLookupInFlight(true)
+
+    const plateString = plateType && plateTypes[plateType]?.codes ? `${plate.trim()}:${state}:${plateTypes[plateType]?.codes}` : `${plate}:${state}`
+
+    console.log(plateString)
+
+    let requestParams: VehicleQueryRequest = {
+      lookupSource: 'web_client',
+      plate: plateString
+    }
+    if (fingerprintId) {
+      requestParams.fingerprintId = fingerprintId
+    }
+    if (mixpanelId) {
+      requestParams.mixpanelId = mixpanelId
+    }
+
+    const query: VehicleQueryResponse = await performNewLookup(requestParams)
+    parseResults(query)
 
     setLookupInFlight(false)
   }
+
+  useEffect(() => {
+    const displayPreviousLookup = async () => {
+      if (previousLookupIdentifier) {
+        const query: VehicleQueryResponse = await getPreviousLookup(previousLookupIdentifier)
+        parseResults(query)
+      }
+    }
+    displayPreviousLookup()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [previousLookupIdentifier])
 
   const JumbotronHeader = () => (
     <>
@@ -157,18 +175,19 @@ export default ({ setQueriedVehiclesFn, queriedVehicles }: OwnProps) => {
       <Row>
         <Form className='form' onSubmit={handleSubmit}>
           <Form.Row>
-            <Col md>
+            <Col md={true}>
               <Form.Group>
                 <input
                   className='form-control'
+                  name='plateId'
                   onChange={handleInputChange}
                   placeholder='Enter a plate...'
-                  type="text" name='plateId'
+                  type="text"
                   value={currentLookup.plateId ?? ''}
                 />
               </Form.Group>
             </Col>
-            <Col md>
+            <Col md={true}>
               <Form.Group>
                 <SearchSelect
                   currentLookup={currentLookup}
@@ -185,7 +204,7 @@ export default ({ setQueriedVehiclesFn, queriedVehicles }: OwnProps) => {
             </Col>
           </Form.Row>
           <Form.Row>
-            <Col md>
+            <Col md={true}>
               <Form.Group>
                 <SearchSelect
                   currentLookup={currentLookup}
@@ -199,7 +218,7 @@ export default ({ setQueriedVehiclesFn, queriedVehicles }: OwnProps) => {
                 />
               </Form.Group>
             </Col>
-            <Col md>
+            <Col md={true}>
               <Form.Group>
                 <input
                   className='form-control btn btn-primary'

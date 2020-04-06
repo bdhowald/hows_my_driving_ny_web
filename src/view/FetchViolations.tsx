@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -9,8 +10,6 @@ import Row from 'react-bootstrap/Row'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
-// import Geocode from "react-geocode";
-
 
 import 'index.css'
 
@@ -21,9 +20,9 @@ import VehicleResults from 'view/VehicleResults'
 
 library.add(faAngleDown, faAngleUp)
 
-// Geocode.enableDebug();
-
 const FetchViolations = () => {
+
+  let { uniqueIdentifier } = useParams()
 
   const [queriedVehicles, setQueriedVehicles] = useState<Array<Vehicle>>([])
 
@@ -37,6 +36,7 @@ const FetchViolations = () => {
         <Row>
           <div className='col-md-12'>
             <Search
+              previousLookupIdentifier={uniqueIdentifier}
               queriedVehicles={queriedVehicles}
               setQueriedVehiclesFn={setQueriedVehicles}
             />

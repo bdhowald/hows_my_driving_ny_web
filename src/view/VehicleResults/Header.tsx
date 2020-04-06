@@ -11,7 +11,7 @@ export default ({vehicle}: {vehicle: Vehicle}) => {
   const getCardHeader = (vehicle: Vehicle) => {
     let plateCategory: string | undefined = undefined
     Object.entries(plateTypes).forEach(([_, type]) => {
-      if (vehicle.plateTypes.sort().toString() === type.codes.sort().toString()) {
+      if (vehicle.plateTypes?.sort().toString() === type.codes?.sort().toString()) {
         plateCategory = type.displayName
       }
     })

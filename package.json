@@ -4,7 +4,7 @@
   "private": true,
   "babel": {
     "presets": [
-        "@babel/typescript"
+      "@babel/typescript"
     ],
     "plugins": [
       "@babel/proposal-class-properties",
@@ -26,6 +26,7 @@
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "@types/react-fontawesome": "^1.6.4",
+    "@types/react-router-dom": "^5.1.3",
     "@types/react-share": "^3.0.0",
     "@types/reactstrap": "^8.0.4",
     "@types/request-promise": "^4.1.44",
@@ -41,8 +42,7 @@
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.4.1",
     "react-fontawesome": "^1.6.1",
-    "react-geocode": "^0.1.2",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.1.2",
     "react-share": "^4.0.1",
     "reactstrap": "^6.3.0",

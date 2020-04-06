@@ -214,7 +214,7 @@ const plateTypes = {
     displayName: 'New York Senate',
   },
   'none': {
-    codes: [],
+    codes: null,
     displayName: 'No Plate Type',
   },
   'passenger': {
