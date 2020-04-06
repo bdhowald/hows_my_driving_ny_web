@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import smoothscroll from 'smoothscroll-polyfill'
-smoothscroll.polyfill();
-
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 // import App from './App';
@@ -22,6 +20,7 @@ import Search from 'view/Search'
 import VehicleResults from 'view/VehicleResults'
 
 library.add(faAngleDown, faAngleUp)
+smoothscroll.polyfill();
 
 const FetchViolations = () => {
 
