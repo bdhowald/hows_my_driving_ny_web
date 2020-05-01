@@ -34,7 +34,6 @@ const FetchViolations = () => {
   })
 
   useEffect(() => {
-    console.log(listRef)
     if (listRef.current) {
       listRef.current.scrollIntoView({behavior: 'smooth'})
     }

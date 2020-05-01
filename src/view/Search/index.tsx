@@ -131,8 +131,6 @@ export default ({
 
     const plateString = plateType && plateTypes[plateType]?.codes ? `${plate.trim()}:${state}:${plateTypes[plateType]?.codes}` : `${plate}:${state}`
 
-    console.log(plateString)
-
     let requestParams: VehicleQueryRequest = {
       lookupSource: 'web_client',
       plate: plateString

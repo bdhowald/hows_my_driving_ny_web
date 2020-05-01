@@ -12,6 +12,8 @@ type OwnProps = {
   vehicle: Vehicle,
 }
 
+const LOCALE_ARGS = {year: 'numeric', month: '2-digit', day: '2-digit'}
+
 export default ({ vehicle }: OwnProps) => {
 
   const { violations } = vehicle
@@ -67,24 +69,35 @@ export default ({ vehicle }: OwnProps) => {
 
   const TableBody = ( props: TableBodyProps ): JSX.Element => (
     <tbody>
-      {props.violations.map(violation => (
-        <tr key={violation.summonsNumber} className={violation.humanizedDescription === 'School Zone Speed Camera Violation' ? 'violation-row table-warning' : (violation.humanizedDescription === 'Failure to Stop at Red Light' ? 'violation-row table-danger' : 'violation-row')}>
-          <td>
-            {(new Date(violation.formattedTime).toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'}))}
-          </td>
-          <td>
-            {violation.humanizedDescription}
-          </td>
-          <td>
-            {violation.violationCounty} {violation.location == null ? '' : ('(' + violation.location + ')')}
-          </td>
-          <td>
-            {violation.fineAmount ? (violation.reductionAmount ? ('$' + (violation.fineAmount - violation.reductionAmount)) : ('$' + violation.fineAmount)) : 'N/A'}
-          </td>
-        </tr>
+      {props.violations.map((violation: Violation) => (
+        <TableRow key={violation.summonsNumber} violation={violation}/>
       ))}
     </tbody>
   )
+
+  const TableRow = ( props: {violation: Violation}): JSX.Element => {
+    const { violation } = props
+    const violationTime = Date.parse(violation.formattedTime)
+      ? new Date(violation.formattedTime).toLocaleDateString('en-US', LOCALE_ARGS)
+      : 'N/A'
+
+    return (
+      <tr key={violation.summonsNumber} className={violation.humanizedDescription === 'School Zone Speed Camera Violation' ? 'violation-row table-warning' : (violation.humanizedDescription === 'Failure to Stop at Red Light' ? 'violation-row table-danger' : 'violation-row')}>
+        <td>
+          {violationTime}
+        </td>
+        <td>
+          {violation.humanizedDescription}
+        </td>
+        <td>
+          {violation.violationCounty} {violation.location == null ? '' : ('(' + violation.location + ')')}
+        </td>
+        <td>
+          {violation.fineAmount ? (violation.reductionAmount ? ('$' + (violation.fineAmount - violation.reductionAmount)) : ('$' + violation.fineAmount)) : 'N/A'}
+        </td>
+      </tr>
+    )
+  }
 
   return (
     <div className='table-responsive'>

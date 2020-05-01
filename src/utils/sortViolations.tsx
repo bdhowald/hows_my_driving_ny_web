@@ -7,6 +7,12 @@ export default (sortAscending: boolean, sortType: sorts, violations: Violation[]
     const bDate = new Date(b.formattedTime).getTime()
 
     if (sortType === sorts.DATE) {
+      if (!aDate) {
+        return 1
+      }
+      if (!bDate) {
+        return -1
+      }
       return sortAscending
         ? aDate - bDate
         : bDate - aDate
