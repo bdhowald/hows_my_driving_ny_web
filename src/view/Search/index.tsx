@@ -102,7 +102,7 @@ export default ({
           return vehicle.plate === queriedVehicle.plate &&
             vehicle.state === queriedVehicle.state &&
             // hacky way to determine array equality
-            vehicle.plateTypes.toString() === queriedVehicle.plateTypes?.toString()
+            vehicle.plateTypes?.toString() === queriedVehicle.plateTypes?.toString()
         })
 
         const index = existingVehicle ? queriedVehicles.indexOf(existingVehicle) : -1
