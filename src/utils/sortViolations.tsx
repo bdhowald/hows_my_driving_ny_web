@@ -1,4 +1,5 @@
 import sorts from 'constants/sortOptions'
+import getTotalFined from 'utils/getTotalFined'
 import { Violation } from 'utils/types/responses'
 
 export default (sortAscending: boolean, sortType: sorts, violations: Violation[]): Violation[] =>
@@ -17,7 +18,7 @@ export default (sortAscending: boolean, sortType: sorts, violations: Violation[]
         ? aDate - bDate
         : bDate - aDate
     }
-  
+
     if (sortType === sorts.LOCATION) {
       const aLocation = `${a.violationCounty} ${(a.location ? '' : `(${a.location})`)}`
       const bLocation = `${b.violationCounty} ${(b.location ? '' : `(${b.location})`)}`
@@ -34,8 +35,15 @@ export default (sortAscending: boolean, sortType: sorts, violations: Violation[]
     }
 
     if (sortType === sorts.FINED) {
-      let aFine = a.fineAmount ? (a.reductionAmount ? a.fineAmount - a.reductionAmount : a.fineAmount) : 0
-      let bFine = b.fineAmount ? (b.reductionAmount ? b.fineAmount - b.reductionAmount : b.fineAmount) : 0
+      const aFine: Number | null = getTotalFined(a)
+      const bFine: Number | null = getTotalFined(b)
+
+      if (!aFine) {
+        return 1
+      }
+      if (!bFine) {
+        return -1
+      }
 
       if (sortAscending) {
         return aFine === bFine ?
@@ -50,10 +58,10 @@ export default (sortAscending: boolean, sortType: sorts, violations: Violation[]
 
     // humanizedDescription
     return sortAscending ?
-      ((a.humanizedDescription === b.humanizedDescription) ? 
+      ((a.humanizedDescription === b.humanizedDescription) ?
         aDate - bDate :
         a.humanizedDescription < b.humanizedDescription ? -1 : 1) :
-      ((a.humanizedDescription === b.humanizedDescription) ? 
+      ((a.humanizedDescription === b.humanizedDescription) ?
         bDate - aDate :
         a.humanizedDescription < b.humanizedDescription ? 1 : -1)
   })

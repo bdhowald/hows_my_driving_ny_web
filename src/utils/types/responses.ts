@@ -5,9 +5,21 @@ export type VehicleLookup = {
 
 export type Vehicle = {
   cameraStreakData: {
-    maxStreak: number,
-    streakEnd: string,
-    streakStart: string,
+    cameraViolations: {
+      maxStreak: number,
+      streakEnd: string,
+      streakStart: string,
+    },
+    redLightCameraViolations: {
+      maxStreak: number,
+      streakEnd: string,
+      streakStart: string,
+    },
+    schoolZoneSpeedCameraViolations: {
+      maxStreak: number,
+      streakEnd: string,
+      streakStart: string,
+    },
   },
   fines: {
     totalFined: number,

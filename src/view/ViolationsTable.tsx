@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import sorts from 'constants/sortOptions'
 import sortViolations from 'utils/sortViolations'
+import getTotalFined from 'utils/getTotalFined'
 import { Vehicle, Violation } from 'utils/types/responses'
 
 
@@ -80,6 +81,7 @@ export default ({ vehicle }: OwnProps) => {
     const violationTime = Date.parse(violation.formattedTime)
       ? new Date(violation.formattedTime).toLocaleDateString('en-US', LOCALE_ARGS)
       : 'N/A'
+    const totalFined: Number | null = getTotalFined(violation)
 
     return (
       <tr key={violation.summonsNumber} className={violation.humanizedDescription === 'School Zone Speed Camera Violation' ? 'violation-row table-warning' : (violation.humanizedDescription === 'Failure to Stop at Red Light' ? 'violation-row table-danger' : 'violation-row')}>
@@ -93,7 +95,7 @@ export default ({ vehicle }: OwnProps) => {
           {violation.violationCounty} {violation.location == null ? '' : ('(' + violation.location + ')')}
         </td>
         <td>
-          {violation.fineAmount ? (violation.reductionAmount ? ('$' + (violation.fineAmount - violation.reductionAmount)) : ('$' + violation.fineAmount)) : 'N/A'}
+          {totalFined === null ? 'N/A' : ('$' + totalFined.toFixed(2))}
         </td>
       </tr>
     )
