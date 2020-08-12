@@ -35,7 +35,7 @@ export default ({
     state: string,
   }>({
     plateId: undefined,
-    plateType: 'passenger',
+    plateType: 'none',
     state: 'NY',
   })
   const [lookupInFlight, setLookupInFlight] = useState(false)
