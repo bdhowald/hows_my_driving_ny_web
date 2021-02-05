@@ -79,13 +79,15 @@ export default ({
     const { plateId, plateType, state } = currentLookup
 
     if (plateId && state) {
+      const trimmedPlate: string = plateId.trim()
+
       mixpanel.track('plate_lookup', {
-        plate           : plateId,
+        plate           : trimmedPlate,
         plate_type      : plateTypes,
         state           : state,
       })
 
-      performLookup(plateId, plateType, state);
+      performLookup(trimmedPlate, plateType, state);
     }
   }
 
