@@ -63,13 +63,40 @@ div.container-fluid div.row div.card div.card-header {
   justify-content: space-between;
 }
 
+div.container-fluid div.row div.card div.card-header div.share-icons {
+  display: flex;
+}
+
+div.container-fluid div.row div.card div.card-header div.share-icons button {
+  outline: none;
+}
+
+div.container-fluid div.row div.card div.card-header div.share-icons button.copy-button {
+  background: none;
+  border: none;
+}
+
+div.container-fluid div.row div.card div.card-header div.share-icons span.fa-layers .circle {
+  color: black;
+}
+
+div.container-fluid div.row div.card div.card-header div.share-icons span.fa-layers .copy {
+  color: white;
+}
+
+div.container-fluid div.row div.card div.card-header div.share-icons button.twitter-share-button {
+  background-color: transparent;
+  border: none;
+  font: inherit;
+  font-size: initial;
+  color: inherit;
+  cursor: pointer;
+  padding: 0px;
+}
+
 div.container-fluid div.row div.card ul.list-group.list-group-flush {
   margin: 0;
   padding: 0;
-}
-
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item {
-  /*border: 0;*/
 }
 
 div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding {

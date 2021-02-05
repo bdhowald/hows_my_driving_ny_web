@@ -13,7 +13,8 @@ export default ({ vehicle }: { vehicle: Vehicle }) => {
     <TwitterShareButton
       url={`${L10N.sitewide.url}/${vehicle.uniqueIdentifier}`}
       title={`I just looked up #${vehicleHashtag}'s ${violationsString} using @HowsMyDrivingNY: `}
-      className="Demo__some-network__share-button"
+      className="twitter-share-button"
+      resetButtonStyle={false}
     >
       <TwitterIcon
         size={32}
