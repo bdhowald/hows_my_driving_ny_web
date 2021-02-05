@@ -80,6 +80,10 @@ div.container-fluid div.row div.card div.card-header div.share-icons span.fa-lay
   color: black;
 }
 
+div.container-fluid div.row div.card div.card-header div.share-icons span.fa-layers .circle.pressed {
+  color: gray;
+}
+
 div.container-fluid div.row div.card div.card-header div.share-icons span.fa-layers .copy {
   color: white;
 }

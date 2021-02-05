@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Card from 'react-bootstrap/Card'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,6 +9,8 @@ import plateTypes from 'constants/plateTypes'
 import { Vehicle } from 'utils/types/responses'
 
 export default ({vehicle}: {vehicle: Vehicle}) => {
+
+  const [buttonPressedClass, setButtonPressedClass] = useState('')
 
   const getCardHeader = (vehicle: Vehicle) => {
     let plateCategory: string | undefined = undefined
@@ -27,11 +29,14 @@ export default ({vehicle}: {vehicle: Vehicle}) => {
       <div className='share-icons'>
         <button
           className='copy-button'
-          onClick={() => {
+          onMouseDown={() => setButtonPressedClass('pressed')}
+          onMouseUp={() => {
             navigator.clipboard.writeText(`${L10N.sitewide.url}/${vehicle.uniqueIdentifier}`)
-          }}>
+            setButtonPressedClass('')}
+          }
+        >
           <span className="fa-layers fa-fw">
-            <FontAwesomeIcon icon='circle' transform="grow-6" className='circle'/>
+            <FontAwesomeIcon icon='circle' transform="grow-6" className={`circle ${buttonPressedClass}`}/>
             <FontAwesomeIcon icon='copy' transform='shrink-4' className='copy' />
           </span>
         </button>
