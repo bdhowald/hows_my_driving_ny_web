@@ -8,8 +8,7 @@ export default ({ vehicle }: {vehicle: Vehicle }) => {
   const bradLanderTwitterHandle = '@bradlander'
   const bradLanderTwitterURL = 'https://twitter.com/bradlander'
 
-  const recklessDriverAccountabilityActURL = `http://legistar.council.nyc.gov/LegislationDetail.aspx
-    ?ID=3521908&GUID=A4FD4CFC-8AD8-4130-AA92-11BC56936F6D&Options=ID|Text|&Search=lander`
+  const recklessDriverAccountabilityActURL = `https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=3521908&GUID=A4FD4CFC-8AD8-4130-AA92-11BC56936F6D#:~:text=The%20bill%20will%20create%20a,Department%20of%20Transportation%20(DOT).`
 
   const Link = ({ linkTarget, linkText }: { linkTarget: string, linkText: string }) => (
     <a target='_blank' rel='noopener noreferrer' href={linkTarget}>{linkText}</a>
