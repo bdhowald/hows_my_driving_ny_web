@@ -10,17 +10,36 @@ type OwnProps = {
 
 export default ({ vehicle }: OwnProps) => {
   const [visible, setVisibility] = useState(true)
+  const [showFullText, setShowFullText] = useState(window.innerWidth > 768)
 
   const violationsCount = vehicle.violationsCount
 
   return (
     <div className='violations-table-wrapper' style={{width: '100%'}}>
-      <div className='violations-table-header' onClick={() => setVisibility(!visible)}>
+      <div className='violations-table-header'>
         Violations: {violationsCount}
-        <span className='see-violations-table-link'>{visible ? '(hide violations)' : (violationsCount > 0 ? '(see violations)' : '')}</span>
+        <span
+          className='see-violations-table-link'
+          onClick={(e) => {
+            e.stopPropagation()
+            setVisibility(!visible)
+          }}
+        >
+          {visible ? '(hide violations)' : (violationsCount > 0 ? '(see violations)' : '')}
+        </span>
+          | 
+        <span
+          className='see-full-violation-text-table-link'
+          onClick={(e) => {
+            e.stopPropagation()
+            setShowFullText(!showFullText)
+          }}
+        >
+          {showFullText ? '(hide full text)' : (violationsCount > 0 ? '(show full text)' : '')}
+        </span>
       </div>
       {violationsCount > 0 && visible &&
-        <ViolationsTable vehicle={vehicle}/>
+        <ViolationsTable showFullText={showFullText} vehicle={vehicle}/>
       }
     </div>
   )

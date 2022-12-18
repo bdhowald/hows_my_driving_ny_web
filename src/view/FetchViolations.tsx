@@ -24,7 +24,7 @@ smoothscroll.polyfill()
 
 const FetchViolations = () => {
 
-  const { uniqueIdentifier } = useParams()
+  const { uniqueIdentifier } = useParams<Record<string, string | undefined>>()
   const listRef = useRef<HTMLDivElement>(null)
 
   const [queriedVehicles, setQueriedVehicles] = useState<Array<Vehicle>>([])
@@ -45,7 +45,7 @@ const FetchViolations = () => {
         <Row>
           <div className='col-md-12'>
             <Search
-              previousLookupIdentifier={uniqueIdentifier}
+              previousLookupUniqueIdentifier={uniqueIdentifier}
               queriedVehicles={queriedVehicles}
               setQueriedVehiclesFn={setQueriedVehicles}
             />

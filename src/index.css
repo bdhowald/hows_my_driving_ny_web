@@ -132,8 +132,31 @@ div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.
   text-decoration: underline;
 }
 
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper span.see-full-violation-text-table-link {
+  font-style: italic;
+  margin: 0 0.25rem;
+  text-decoration: underline;
+}
+
 div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive {
   padding: 0.5rem 0 0;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table {
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tbody tr::after{
+    content: "";
+    display: inline-block;
+    min-height: 50px;
+    vertical-align: top;
+  }
+
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tbody tr td {
+    vertical-align: inherit;
+  }
 }
 
 div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table thead tr th.sort-column {
@@ -143,6 +166,71 @@ div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.
 div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table thead tr th.sort-column svg.svg-inline--fa {
   margin: 0 0.25rem;
 }
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tbody tr.sort-divider {
+  background-color: black;
+  color: white;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tbody tr.sort-divider th, td {
+  vertical-align: inherit;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tr.violation-details td.location span.borough {
+  margin: 0 0.25em 0 0;
+}
+
+/* div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tr.violation-row div {
+  -webkit-transition: max-height 2s ease;
+  -moz-transition: max-height 2s ease;
+  transition: max-height 2s ease;
+
+  max-height: 100px;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tr.violation-row.expanded div {
+  -webkit-transition: max-height 2s ease;
+  -moz-transition: max-height 2s ease;
+  transition: max-height 2s ease;
+
+  max-height: 400px;
+} */
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tr.violation-row td.violation-description div.humanized-description {
+  display: block;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tr.violation-row td.violation-description div.icons {
+  display: block;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tr.violation-row td.violation-description div.icons svg.svg-inline--fa {
+  margin: 0 0.25rem;
+}
+
+/* @media only screen and (min-width: 768px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tr.violation-row td.violation-description div.humanized-description {
+    display: block;
+  }
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tr.violation-row td.violation-description div.icons {
+    display: none;
+  }
+} */
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tr.violation-row td.location span.borough {
+  margin: 0 0.25em 0 0;
+}
+
+/* @media only screen and (max-width: 768px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tr.violation-row td.location span.location-description {
+    display: none;
+  }
+} */
+
+
+/* div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tr.violation-row td.violation-description svg.svg-inline--fa {
+  margin: 0 0.25rem;
+} */
 
 /*div.container-fluid div.row div.card div.card-title div.card-text {
   font-size: 1.5rem;

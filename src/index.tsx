@@ -6,10 +6,10 @@ import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import FetchViolations from 'view/FetchViolations'
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faAngleDown, faAngleUp, faCircle, faCopy } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faAngleUp, faBus, faCamera, faCircle, faCopy, faParking, faTachometerAlt, faTrafficLight } from '@fortawesome/free-solid-svg-icons';
 
 // Add Font Awesome icons
-library.add(faAngleDown, faAngleUp, faCircle, faCopy);
+library.add(faAngleDown, faAngleUp, faBus, faCamera, faCircle, faCopy, faParking, faTachometerAlt, faTrafficLight);
 
 const App = () => {
   return (

@@ -17,17 +17,19 @@ import { Vehicle, VehicleQueryResponse } from 'utils/types/responses'
 
 import SearchSelect from './SearchSelect'
 
-type OwnProps = {
-  previousLookupIdentifier?: string
+type FingerprintJSResponse = [{key: string, value: string}]
+
+type SearchPageProps = {
+  previousLookupUniqueIdentifier?: string
   queriedVehicles: Vehicle[]
   setQueriedVehiclesFn: (arg0: Vehicle[]) => void
 }
 
 export default ({
-  previousLookupIdentifier,
+  previousLookupUniqueIdentifier,
   setQueriedVehiclesFn,
   queriedVehicles
-}: OwnProps) => {
+}: SearchPageProps) => {
   const [fingerprintId, setFingerprintId] = useState<string | undefined>()
   const [currentLookup, setCurrentLookup] = useState<{
     plateId: string | undefined,
@@ -42,10 +44,9 @@ export default ({
   const [mixpanelId, setMixpanelId] = useState<string | undefined>()
   
   useEffect(() => {
-    type FingerprintJSResponse = [{key: string, value: string}]
     const getFingerprint = (): Promise<FingerprintJSResponse> =>
       new Promise(resolve => {
-        fp.get({ excludes: { adBlock: true}}, (components: any) => {
+        fp.get({ excludes: { adBlock: true }}, (components: any) => {
           resolve(components);
         })
       })
@@ -91,7 +92,7 @@ export default ({
     }
   }
 
-  const parseResults = (query: VehicleQueryResponse) => {
+  const parseLookupResults = (query: VehicleQueryResponse) => {
     const { data } = query
 
     if (data?.[0]) {
@@ -145,21 +146,20 @@ export default ({
     }
 
     const query: VehicleQueryResponse = await performNewLookup(requestParams)
-    parseResults(query)
+    parseLookupResults(query)
 
     setLookupInFlight(false)
   }
 
   useEffect(() => {
     const displayPreviousLookup = async () => {
-      if (previousLookupIdentifier) {
-        const query: VehicleQueryResponse = await getPreviousLookup(previousLookupIdentifier)
-        parseResults(query)
+      if (previousLookupUniqueIdentifier) {
+        const query: VehicleQueryResponse = await getPreviousLookup(previousLookupUniqueIdentifier)
+        parseLookupResults(query)
       }
     }
     displayPreviousLookup()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [previousLookupIdentifier])
+  }, [previousLookupUniqueIdentifier])
 
   const JumbotronHeader = () => (
     <>

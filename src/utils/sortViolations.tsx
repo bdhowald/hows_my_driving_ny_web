@@ -1,6 +1,5 @@
 import sorts from 'constants/sortOptions'
-import getTotalFined from 'utils/getTotalFined'
-import { Violation } from 'utils/types/responses'
+import { Violation } from 'models/Violation'
 
 export default (sortAscending: boolean, sortType: sorts, violations: Violation[]): Violation[] =>
   violations.sort((a: Violation, b: Violation) => {
@@ -35,8 +34,8 @@ export default (sortAscending: boolean, sortType: sorts, violations: Violation[]
     }
 
     if (sortType === sorts.FINED) {
-      const aFine: Number | null = getTotalFined(a)
-      const bFine: Number | null = getTotalFined(b)
+      const aFine: Number | null = (a.getTotalFined())
+      const bFine: Number | null = (b.getTotalFined())
 
       if (!aFine) {
         return 1

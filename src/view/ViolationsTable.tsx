@@ -3,21 +3,34 @@ import { useState } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import {
+  BUS_LANE_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION,
+  BUS_LANE_CAMERA_VIOLATION_CODE,
+  MOBILE_BUS_LANE_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION,
+  MOBILE_BUS_LANE_CAMERA_VIOLATION_CODE,
+  RED_LIGHT_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION,
+  RED_LIGHT_CAMERA_VIOLATION_CODE,
+  SCHOOL_ZONE_SPEED_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION,
+  SCHOOL_ZONE_SPEED_CAMERA_VIOLATION_CODE
+} from 'constants/violations'
 import sorts from 'constants/sortOptions'
+import { Violation } from 'models/Violation'
 import sortViolations from 'utils/sortViolations'
-import getTotalFined from 'utils/getTotalFined'
-import { Vehicle, Violation } from 'utils/types/responses'
+import { Vehicle } from 'utils/types/responses'
 
+
+const NUM_COLUMNS = 4
 
 type OwnProps = {
+  showFullText: boolean,
   vehicle: Vehicle,
 }
 
-const LOCALE_ARGS = {year: 'numeric', month: '2-digit', day: '2-digit'}
+export default ({ showFullText, vehicle }: OwnProps) => {
 
-export default ({ vehicle }: OwnProps) => {
+  const { violations: violationData } = vehicle
 
-  const { violations } = vehicle
+  const violations = violationData.map((dataObj) => new Violation(dataObj))
 
   const [currentSortType, setCurrentSortType] = useState(sorts.DATE)
   const [sortAscending, setSortAscending] = useState(true)
@@ -26,15 +39,19 @@ export default ({ vehicle }: OwnProps) => {
 
   const sortOptions = [
     {
+      colSpan: 2,
       displayText: 'Date',
       name: sorts.DATE,
     }, {
+      colSpan: 4,
       displayText: 'Violation',
       name: sorts.KIND,
     }, {
+      colSpan: 4,
       displayText: 'Location',
       name: sorts.LOCATION,
     }, {
+      colSpan: 2,
       displayText: 'Fines',
       name: sorts.FINED,
     }
@@ -68,34 +85,188 @@ export default ({ vehicle }: OwnProps) => {
     violations: Array<Violation>
   }
 
-  const TableBody = ( props: TableBodyProps ): JSX.Element => (
-    <tbody>
-      {props.violations.map((violation: Violation) => (
-        <TableRow key={violation.summonsNumber} violation={violation}/>
-      ))}
-    </tbody>
-  )
+  const TableBody = ( props: TableBodyProps ): JSX.Element => {
+
+    const SortDivider = (
+      { columnIndex, dividerText }: { columnIndex: number, dividerText: number | string }
+    ) => (
+      <tr className='sort-divider'>
+        {/* Filler columns before divider cell */}
+        {[...Array(columnIndex)].map((_, i) => <th key={i} colSpan={1} />)}
+
+        {/* // Divider cell */}
+        <th colSpan={1}>
+          {dividerText}
+        </th>
+
+        {/* // Filler columns after divider cell */}
+        {[...Array(NUM_COLUMNS - columnIndex - 1)].map((_, i) => <th key={i} colSpan={1} />)}
+      </tr>
+    )
+
+    const getDividerIfNeeded = (
+      currentLexicographicOrder: { value: string | number | null },
+      violation: Violation,
+    ) => {
+      let dividerValue = null
+      let columnIndex = null
+
+      switch (currentSortType) {
+        case sorts.DATE:
+          columnIndex = 0
+          dividerValue = new Date(violation.formattedTime).getFullYear()
+          break
+        case sorts.LOCATION:
+          columnIndex = 2
+          dividerValue = violation.getBorough()
+          break
+      }
+
+      // If this sort doesn't have dividers, ignore.
+      if (columnIndex === null || !dividerValue) {
+        return null
+      }
+      const needsDivider = !currentLexicographicOrder.value
+        || ((sortAscending && dividerValue > currentLexicographicOrder.value)
+        || (!sortAscending && dividerValue < currentLexicographicOrder.value))
+
+      if (needsDivider) {
+        currentLexicographicOrder.value = dividerValue
+        return <SortDivider columnIndex={columnIndex} dividerText={dividerValue} />
+      }
+      return null
+    }
+
+    const dividerCounter: { value: string | number | null } = { value: null }
+
+    return (
+      <tbody>
+        {props.violations.map((violation: Violation) => {
+          return (
+            <React.Fragment key={violation.summonsNumber}>
+              {getDividerIfNeeded(dividerCounter, violation)}
+              <TableRow violation={violation}/>
+            </React.Fragment>
+          )
+        })}
+      </tbody>
+    )
+  }
 
   const TableRow = ( props: {violation: Violation}): JSX.Element => {
     const { violation } = props
-    const violationTime = Date.parse(violation.formattedTime)
-      ? new Date(violation.formattedTime).toLocaleDateString('en-US', LOCALE_ARGS)
-      : 'N/A'
-    const totalFined: Number | null = getTotalFined(violation)
+    const totalFined: Number | null = violation.getTotalFined()
+
+    const [showDetails, setShowDetails] = useState<boolean>(false)
+
+    let violationIcon: 'bus' | 'parking' | 'tachometer-alt' | 'traffic-light'
+
+    switch(violation.violationCode) {
+      case BUS_LANE_CAMERA_VIOLATION_CODE:
+        violationIcon = 'bus'
+        break
+      case MOBILE_BUS_LANE_CAMERA_VIOLATION_CODE:
+        violationIcon = 'bus'
+        break
+      case RED_LIGHT_CAMERA_VIOLATION_CODE:
+        violationIcon = 'traffic-light'
+        break
+      case SCHOOL_ZONE_SPEED_CAMERA_VIOLATION_CODE:
+        violationIcon = 'tachometer-alt'
+        break
+      default:
+        violationIcon = 'parking'
+        break
+    }
+
+    let tableRowClass: 'table-danger' | 'table-primary' | 'table-warning' | ''
+
+    switch(violation.humanizedDescription) {
+      case BUS_LANE_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION:
+      case MOBILE_BUS_LANE_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION:
+        tableRowClass = 'table-primary'
+        break
+      case RED_LIGHT_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION:
+        tableRowClass = 'table-warning'
+        break;
+      case SCHOOL_ZONE_SPEED_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION:
+        tableRowClass = 'table-danger'
+        break;
+      default:
+        tableRowClass = ''
+        break;
+    }
+
+    if (showDetails) {
+      return (
+        <tr className={`violation-details ${tableRowClass}`} onClick={() => setShowDetails(!showDetails)}>
+          <td>
+            <div className='toggle'>
+              {violation.getViolationTime()}
+            </div>
+          </td>
+          <td className='violation-description'>
+            <div className='toggle'>
+              <div className='humanized-description'>
+                {violation.humanizedDescription}
+              </div>
+            </div>
+          </td>
+          <td className='location'>
+            <div className='toggle'>
+              {violation.getBorough() && (
+                <span className='borough'>
+                  {violation.getBorough()}
+                </span>
+              )}
+              <span className='location-description'>
+                {violation.getLocationDescription()}
+              </span>
+            </div>
+          </td>
+          <td>
+            <div className='toggle'>
+              {totalFined ? ('$' + totalFined.toFixed(2)) : 'N/A'}
+            </div>
+          </td>
+        </tr>
+      )
+    }
 
     return (
-      <tr key={violation.summonsNumber} className={violation.humanizedDescription === 'School Zone Speed Camera Violation' ? 'violation-row table-warning' : (violation.humanizedDescription === 'Failure to Stop at Red Light' ? 'violation-row table-danger' : 'violation-row')}>
+      <tr
+        className={`violation-row ${tableRowClass}`}
+        key={violation.summonsNumber}
+        onClick={() => setShowDetails(!showDetails)}
+      >
         <td>
-          {violationTime}
+          {violation.getViolationTime()}
+        </td>
+        <td className='violation-description'>
+          {showFullText ? (
+            <div className='humanized-description'>
+              {violation.humanizedDescription}
+            </div>
+          ) : (
+            <div className='icons'>
+              <FontAwesomeIcon icon={violationIcon}/>
+            </div>
+          )}
+        </td>
+        <td className='location'>
+          {violation.getBorough() && (
+            <span className='borough'>
+              {violation.getBorough()}
+            </span>
+          )}
+          {showFullText && (
+            <span className='location-description'>
+              {violation.getLocationDescription()}
+            </span>
+          )}
         </td>
         <td>
-          {violation.humanizedDescription}
-        </td>
-        <td>
-          {violation.violationCounty} {violation.location == null ? '' : ('(' + violation.location + ')')}
-        </td>
-        <td>
-          {totalFined === null ? 'N/A' : ('$' + totalFined.toFixed(2))}
+          {totalFined ? ('$' + totalFined.toFixed(2)) : 'N/A'}
         </td>
       </tr>
     )
