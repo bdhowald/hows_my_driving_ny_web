@@ -29,7 +29,7 @@ export default ({ vehicle }: OwnProps) => {
             {showFullText ? '(hide full text)' : (violationsCount > 0 ? '(show full text)' : '')}
           </span>
         )}
-         <span
+        <span
           className='see-violations-table-link'
           onClick={(e) => {
             e.stopPropagation()

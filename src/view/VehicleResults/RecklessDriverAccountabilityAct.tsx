@@ -14,7 +14,11 @@ export default ({ vehicle }: {vehicle: Vehicle }) => {
     <a target='_blank' rel='noopener noreferrer' href={linkTarget}>{linkText}</a>
   )
 
-  const dateFormat = {year: 'numeric', month: '2-digit', day: '2-digit'}
+  const dateFormat:{
+    day: '2-digit', month: '2-digit', year: 'numeric'
+  } = {
+    year: 'numeric', month: '2-digit', day: '2-digit'
+  }
 
   const maxRedLightViolationStreak = vehicle.cameraStreakData.redLightCameraViolations.maxStreak
   const maxSpeedCameraViolationsStreak = vehicle.cameraStreakData.schoolZoneSpeedCameraViolations.maxStreak

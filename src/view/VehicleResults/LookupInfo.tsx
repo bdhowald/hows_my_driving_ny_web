@@ -4,6 +4,11 @@ import { ListGroupItem } from 'reactstrap'
 
 import { Vehicle } from 'utils/types/responses'
 
+const DOLLAR_LOCALE_SETTINGS = {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2
+}
+
 export default ({ vehicle }: { vehicle: Vehicle }) => {
 
   const lastQueriedDate = new Date(vehicle.previousLookupDate)
@@ -33,11 +38,15 @@ export default ({ vehicle }: { vehicle: Vehicle }) => {
         <div className='summary-box'>
           <div className='split-list-group-item'>
             <div>Fined:</div>
-            <div className='summary-value'>${vehicle.fines.totalFined.toFixed(2)}</div>
+            <div className='summary-value'>${
+              vehicle.fines.totalFined.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)
+            }</div>
           </div>
           <div className='split-list-group-item'>
             <div>Reduced:</div>
-            <div className='summary-value'>${vehicle.fines.totalReduced.toFixed(2)}</div>
+            <div className='summary-value'>${
+              vehicle.fines.totalReduced.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)
+            }</div>
           </div>
         </div>
       </ListGroupItem>
@@ -45,11 +54,15 @@ export default ({ vehicle }: { vehicle: Vehicle }) => {
         <div className='summary-box'>
           <div className='split-list-group-item'>
             <div>Paid:</div>
-            <div className='summary-value'>${vehicle.fines.totalPaid.toFixed(2)}</div>
+            <div className='summary-value'>${
+              vehicle.fines.totalPaid.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)
+            }</div>
           </div>
           <div className='split-list-group-item'>
             <div>Outstanding:</div>
-            <div className='summary-value'>${vehicle.fines.totalOutstanding.toFixed(2)}</div>
+            <div className='summary-value'>${
+              vehicle.fines.totalOutstanding.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)
+            }</div>
           </div>
         </div>
       </ListGroupItem>
