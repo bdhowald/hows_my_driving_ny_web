@@ -18,7 +18,18 @@ export default ({ vehicle }: OwnProps) => {
     <div className='violations-table-wrapper' style={{width: '100%'}}>
       <div className='violations-table-header'>
         Violations: {violationsCount}
-        <span
+        {visible && (
+          <span
+            className='see-full-violation-text-table-link'
+            onClick={(e) => {
+              e.stopPropagation()
+              setShowFullText(!showFullText)
+            }}
+          >
+            {showFullText ? '(hide full text)' : (violationsCount > 0 ? '(show full text)' : '')}
+          </span>
+        )}
+         <span
           className='see-violations-table-link'
           onClick={(e) => {
             e.stopPropagation()
@@ -26,16 +37,6 @@ export default ({ vehicle }: OwnProps) => {
           }}
         >
           {visible ? '(hide violations)' : (violationsCount > 0 ? '(see violations)' : '')}
-        </span>
-          | 
-        <span
-          className='see-full-violation-text-table-link'
-          onClick={(e) => {
-            e.stopPropagation()
-            setShowFullText(!showFullText)
-          }}
-        >
-          {showFullText ? '(hide full text)' : (violationsCount > 0 ? '(show full text)' : '')}
         </span>
       </div>
       {violationsCount > 0 && visible &&

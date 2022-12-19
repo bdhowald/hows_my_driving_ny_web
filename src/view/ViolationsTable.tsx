@@ -157,8 +157,6 @@ export default ({ showFullText, vehicle }: OwnProps) => {
     const { violation } = props
     const totalFined: Number | null = violation.getTotalFined()
 
-    const [showDetails, setShowDetails] = useState<boolean>(false)
-
     let violationIcon: 'bus' | 'parking' | 'tachometer-alt' | 'traffic-light'
 
     switch(violation.violationCode) {
@@ -197,47 +195,10 @@ export default ({ showFullText, vehicle }: OwnProps) => {
         break;
     }
 
-    if (showDetails) {
-      return (
-        <tr className={`violation-details ${tableRowClass}`} onClick={() => setShowDetails(!showDetails)}>
-          <td>
-            <div className='toggle'>
-              {violation.getViolationTime()}
-            </div>
-          </td>
-          <td className='violation-description'>
-            <div className='toggle'>
-              <div className='humanized-description'>
-                {violation.humanizedDescription}
-              </div>
-            </div>
-          </td>
-          <td className='location'>
-            <div className='toggle'>
-              {violation.getBorough() && (
-                <span className='borough'>
-                  {violation.getBorough()}
-                </span>
-              )}
-              <span className='location-description'>
-                {violation.getLocationDescription()}
-              </span>
-            </div>
-          </td>
-          <td>
-            <div className='toggle'>
-              {totalFined ? ('$' + totalFined.toFixed(2)) : 'N/A'}
-            </div>
-          </td>
-        </tr>
-      )
-    }
-
     return (
       <tr
         className={`violation-row ${tableRowClass}`}
         key={violation.summonsNumber}
-        onClick={() => setShowDetails(!showDetails)}
       >
         <td>
           {violation.getViolationTime()}
