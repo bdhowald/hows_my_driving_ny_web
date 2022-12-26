@@ -1,0 +1,1 @@
+export const LOOKUP_IDENTIFIER_COOKIE = 'lookupIdentifiers'

@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 
 import fp from 'fingerprintjs2'
 import mixpanel from 'mixpanel-browser'
-
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Row from 'react-bootstrap/Row'
+import { useCookies } from 'react-cookie'
 
 import { getPreviousLookup, performNewLookup } from 'boundaries/http'
+import { LOOKUP_IDENTIFIER_COOKIE } from 'constants/cookies'
 import L10N from 'constants/display'
 import plateTypes, { PlateType } from 'constants/plateTypes'
 import regions from 'constants/regions'
@@ -19,37 +20,45 @@ import SearchSelect from './SearchSelect'
 
 type FingerprintJSResponse = [{key: string, value: string}]
 
+type PlateLookup = {
+  plateId: string | undefined,
+  plateType: PlateType | undefined,
+  state: string,
+}
+
 type SearchPageProps = {
-  previousLookupUniqueIdentifier?: string
+  lookupInFlight: boolean
+  previousLookupUniqueIdentifierFromQuery?: string
   queriedVehicles: Vehicle[]
-  setQueriedVehiclesFn: (arg0: Vehicle[]) => void
+  setLookupInFlight: React.Dispatch<React.SetStateAction<boolean>>
+  setQueriedVehiclesFn: React.Dispatch<React.SetStateAction<Vehicle[]>>
 }
 
 export default ({
-  previousLookupUniqueIdentifier,
+  lookupInFlight,
+  previousLookupUniqueIdentifierFromQuery,
+  queriedVehicles,
+  setLookupInFlight,
   setQueriedVehiclesFn,
-  queriedVehicles
 }: SearchPageProps) => {
   const [fingerprintId, setFingerprintId] = useState<string | undefined>()
-  const [currentLookup, setCurrentLookup] = useState<{
-    plateId: string | undefined,
-    plateType: PlateType | undefined,
-    state: string,
-  }>({
+  const [currentLookup, setCurrentLookup] = useState<PlateLookup>({
     plateId: undefined,
     plateType: 'none',
     state: 'NY',
   })
-  const [lookupInFlight, setLookupInFlight] = useState(false)
   const [mixpanelId, setMixpanelId] = useState<string | undefined>()
+
+  const [cookies, setCookie] = useCookies([LOOKUP_IDENTIFIER_COOKIE])
   
   useEffect(() => {
     const getFingerprint = (): Promise<FingerprintJSResponse> =>
       new Promise(resolve => {
         fp.get({ excludes: { adBlock: true }}, (components: any) => {
-          resolve(components);
+          resolve(components)
         })
       })
+
     if (!fingerprintId) {
       getFingerprint().then((fpResponse: FingerprintJSResponse) => {
         const values = fpResponse.map(function (component) { return component.value })
@@ -84,11 +93,11 @@ export default ({
 
       mixpanel.track('plate_lookup', {
         plate           : trimmedPlate,
-        plate_type      : plateTypes,
+        plate_type      : plateType,
         state           : state,
       })
 
-      performLookup(trimmedPlate, plateType, state);
+      performLookup(trimmedPlate, plateType, state)
     }
   }
 
@@ -108,31 +117,48 @@ export default ({
             vehicle.plateTypes?.toString() === queriedVehicle.plateTypes?.toString()
         })
 
-        const index = existingVehicle ? queriedVehicles.indexOf(existingVehicle) : -1
+        if (existingVehicle) {
+          // new list with stale lookup removed and fresh lookup added
+          setQueriedVehiclesFn(previousQueriedVehicles => {
+            const index = queriedVehicles.indexOf(existingVehicle)
 
-        if (index !== -1) {
-          const newList: Vehicle[] = [
-            ...queriedVehicles.slice(0, index),
-            ...queriedVehicles.slice(index + 1),
-            queriedVehicle
-          ]
-          setQueriedVehiclesFn(newList)
+            const newList: Vehicle[] = [
+              queriedVehicle,
+              ...previousQueriedVehicles.slice(0, index),
+              ...previousQueriedVehicles.slice(index + 1),
+            ]
+
+            setCookie(LOOKUP_IDENTIFIER_COOKIE, newList.map(
+              (vehicle) => vehicle.uniqueIdentifier).toString()
+            )
+            return newList
+          })
         } else {
-          const newList: Vehicle[] = [
-            queriedVehicle,
-            ...queriedVehicles
-          ]
-          setQueriedVehiclesFn(newList)
+          // lookup for vehicle not in existing list
+          setQueriedVehiclesFn(previousQueriedVehicles => {
+            const newList: Vehicle[] = [
+              queriedVehicle,
+              ...previousQueriedVehicles
+            ]
+
+            setCookie(LOOKUP_IDENTIFIER_COOKIE, newList.map(
+              (vehicle) => vehicle.uniqueIdentifier).toString()
+            )
+
+            return newList
+          })
         }
       }
     }
   }
 
   const performLookup = async (plate: string, plateType: PlateType | undefined, state: string) => {
-
+    // Prevent another button press/submission
     setLookupInFlight(true)
 
-    const plateString = plateType && plateTypes[plateType]?.codes ? `${plate.trim()}:${state}:${plateTypes[plateType]?.codes}` : `${plate}:${state}`
+    const plateString = plateType && plateTypes[plateType]?.codes
+      ? `${plate.trim()}:${state}:${plateTypes[plateType].codes}`
+      : `${plate.trim()}:${state}`
 
     let requestParams: VehicleQueryRequest = {
       lookupSource: 'web_client',
@@ -145,28 +171,150 @@ export default ({
       requestParams.mixpanelId = mixpanelId
     }
 
+    // Perform the search
     const query: VehicleQueryResponse = await performNewLookup(requestParams)
+
+    // Partse the results
     parseLookupResults(query)
 
+    // Re-enable button
     setLookupInFlight(false)
   }
 
   useEffect(() => {
     const displayPreviousLookup = async () => {
-      if (previousLookupUniqueIdentifier) {
-        const query: VehicleQueryResponse = await getPreviousLookup(previousLookupUniqueIdentifier)
+      if (previousLookupUniqueIdentifierFromQuery) {
+        // Prevent another button press/submission
+        setLookupInFlight(true)
+
+        // url is of format howsmydrivingny.nyc/xxxxxxxx
+        const query: VehicleQueryResponse = await getPreviousLookup(previousLookupUniqueIdentifierFromQuery)
+
+        // Partse the results
         parseLookupResults(query)
+
+        // Re-enable button
+        setLookupInFlight(false)
+      }
+
+      if (cookies[LOOKUP_IDENTIFIER_COOKIE]) {
+        // Previous lookups available in cookie
+        try {
+          // Get unique identifiers from cookie
+          const cookieString: string = cookies[
+            LOOKUP_IDENTIFIER_COOKIE
+          ] ?? ''
+          const uniqueIdentifiersFromCookies = cookieString.split(',').filter(
+            (value, index, self) => self.indexOf(value) === index
+          )
+
+          // Prevent another button press/submission
+          setLookupInFlight(true)
+
+          // Gather the promises for the previous lookups
+          const lookupPromises: Promise<VehicleQueryResponse>[] = uniqueIdentifiersFromCookies.map(
+            // query for each
+            async (uniqueIdentifier: string) => getPreviousLookup(uniqueIdentifier)
+          )
+
+          // Handle results
+          Promise.all(lookupPromises).then((queries) =>
+            queries.forEach((query) => parseLookupResults(query))
+          ).finally(() =>
+            setLookupInFlight(false)
+          )
+
+        } catch(e) {
+          // If queries return errors, blank out cookie
+          console.error('Error fetching previous lookups')
+          setCookie(LOOKUP_IDENTIFIER_COOKIE, null)
+        }
       }
     }
     displayPreviousLookup()
-  }, [previousLookupUniqueIdentifier])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const JumbotronHeader = () => (
     <>
       <h1 className='display-4'>{L10N.sitewide.title}</h1>
-      {L10N.queryPage.jumbotronHeaderText}
+      {L10N.query.jumbotronHeaderText}
       <hr className="my-1" />
     </>
+  )
+
+  const PlateInput = () => (
+    <Col md={true}>
+      <Form.Group>
+        <input
+          className='form-control'
+          name='plateId'
+          onChange={handleInputChange}
+          placeholder='Enter a plate...'
+          type="text"
+          value={currentLookup.plateId ?? ''}
+        />
+      </Form.Group>
+    </Col>
+  )
+
+  const PlateTypeSelect = () => (
+    <Col md={true}>
+      <Form.Group>
+        <SearchSelect
+          currentLookup={currentLookup}
+          handleChange={handleInputChange}
+          label='License Plate Type'
+          selectFn={Object.entries(plateTypes).map(([name, info]) =>
+            [name, info.displayName, info.codes] as [string, string, string[]]
+          ).map(type => (
+            <option
+              key={type[0]}
+              value={type[0]}
+            >
+              {type[1]}
+            </option>
+          ))}
+          valueKey='plateType'
+        />
+      </Form.Group>
+    </Col>
+  )
+
+  const RegionSelect = () => (
+    <Col md={true}>
+      <Form.Group>
+        <SearchSelect
+          currentLookup={currentLookup}
+          handleChange={handleInputChange}
+          label={'Region'}
+          selectFn={regions.map((region: { code: string, name: string} ) =>
+            [region.code, `${region.name} (${region.code})`] as [string, string]
+          ).map((region: [string, string]) => (
+            <option
+              key={region[0]}
+              value={region[0]}
+            >
+              {region[1]}
+            </option>
+          ))}
+          valueKey='state'
+        />
+      </Form.Group>
+    </Col>
+  )
+
+  const SearchButton = () => (
+    <Col md={true}>
+      <Form.Group>
+        <input
+          className='form-control btn btn-primary'
+          disabled={!currentLookup.plateId || lookupInFlight}
+          type="submit"
+          value="Search"
+        />
+      </Form.Group>
+    </Col>
   )
 
   return (
@@ -175,59 +323,12 @@ export default ({
       <Row>
         <Form className='form' onSubmit={handleSubmit}>
           <Form.Row>
-            <Col md={true}>
-              <Form.Group>
-                <input
-                  className='form-control'
-                  name='plateId'
-                  onChange={handleInputChange}
-                  placeholder='Enter a plate...'
-                  type="text"
-                  value={currentLookup.plateId ?? ''}
-                />
-              </Form.Group>
-            </Col>
-            <Col md={true}>
-              <Form.Group>
-                <SearchSelect
-                  currentLookup={currentLookup}
-                  handleChange={handleInputChange}
-                  label={'Region'}
-                  selectFn={regions.map((region: { code: string, name: string} ) =>
-                    [region.code, `${region.name} (${region.code})`] as [string, string]
-                  ).map((region: [string, string]) => 
-                    <option key={region[0]} value={region[0]}>{region[1]}</option>
-                  )}
-                  valueKey={'state'}
-                />
-              </Form.Group>
-            </Col>
+            <PlateInput />
+            <RegionSelect />
           </Form.Row>
           <Form.Row>
-            <Col md={true}>
-              <Form.Group>
-                <SearchSelect
-                  currentLookup={currentLookup}
-                  handleChange={handleInputChange}
-                  label={'License Plate Type'}
-                  selectFn={Object.entries(plateTypes).map(([name, info]) => 
-                    [name, info.displayName, info.codes] as [string, string, string[]]).map(type =>
-                    <option key={type[0]} value={type[0]}>{type[1]}</option>
-                  )}
-                  valueKey={'plateType'}
-                />
-              </Form.Group>
-            </Col>
-            <Col md={true}>
-              <Form.Group>
-                <input
-                  className='form-control btn btn-primary'
-                  disabled={!currentLookup.plateId || lookupInFlight}
-                  type="submit"
-                  value="Search"
-                />
-              </Form.Group>
-            </Col>
+            <PlateTypeSelect />
+            <SearchButton />
           </Form.Row>
         </Form>
       </Row>

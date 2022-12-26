@@ -23,6 +23,13 @@ div.jumbotron p.lead a.open-data-link {
   text-decoration: underline;
 }
 
+div.loader-wrapper {
+  margin: auto;
+  min-height: 10rem;
+  width: 50%;
+  text-align: center;
+}
+
 div.container-fluid {
   display: flex;
   flex-direction: column;
@@ -63,34 +70,37 @@ div.container-fluid div.row div.card div.card-header {
   justify-content: space-between;
 }
 
+div.container-fluid div.row div.card div.card-header button {
+  border: none;
+  outline: none;
+}
+
 div.container-fluid div.row div.card div.card-header div.share-icons {
   display: flex;
 }
 
-div.container-fluid div.row div.card div.card-header div.share-icons button {
-  outline: none;
-}
-
 div.container-fluid div.row div.card div.card-header div.share-icons button.copy-button {
   background: none;
-  border: none;
 }
 
-div.container-fluid div.row div.card div.card-header div.share-icons span.fa-layers .circle {
-  color: black;
-}
-
-div.container-fluid div.row div.card div.card-header div.share-icons span.fa-layers .circle.pressed {
+div.container-fluid div.row div.card div.card-header div.share-icons button.copy-button .circle.pressed {
   color: gray;
 }
 
-div.container-fluid div.row div.card div.card-header div.share-icons span.fa-layers .copy {
+div.container-fluid div.row div.card div.card-header div.share-icons button.copy-button span.fa-layers .circle {
+  color: black;
+}
+
+div.container-fluid div.row div.card div.card-header div.share-icons button.copy-button span.fa-layers .circle.pressed {
+  color: gray;
+}
+
+div.container-fluid div.row div.card div.card-header div.share-icons button.copy-button   span.fa-layers .copy {
   color: white;
 }
 
 div.container-fluid div.row div.card div.card-header div.share-icons button.twitter-share-button {
   background-color: transparent;
-  border: none;
   font: inherit;
   font-size: initial;
   color: inherit;
@@ -129,7 +139,7 @@ div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-p
 }
 
 div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.split-list-group-item {
-  padding: 0.75rem 1.25rem;
+  padding: 0.25rem 0.75rem;
   width: 100%;
 }
 
@@ -145,6 +155,11 @@ div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.
   display: flex;
   justify-content: space-between;
   padding: 0.25rem 0 0.5rem;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-header span.violations-count {
+  font-weight: bold;
+  margin-left: 0.25rem;
 }
 
 div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-header span.see-violations-table-link {

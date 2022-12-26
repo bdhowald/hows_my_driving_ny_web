@@ -48,13 +48,13 @@ const TableRow = (props: {showFullText: boolean, violation: Violation}): JSX.Ele
       break
     case RED_LIGHT_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION:
       tableRowClass = 'table-warning'
-      break;
+      break
     case SCHOOL_ZONE_SPEED_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION:
       tableRowClass = 'table-danger'
-      break;
+      break
     default:
       tableRowClass = ''
-      break;
+      break
   }
 
   return (

@@ -1,7 +1,7 @@
 import * as React from 'react'
-
 import { ListGroupItem } from 'reactstrap'
 
+import plateTypes from 'constants/plateTypes'
 import { Vehicle } from 'utils/types/responses'
 
 const DOLLAR_LOCALE_SETTINGS = {
@@ -18,8 +18,37 @@ export default ({ vehicle }: { vehicle: Vehicle }) => {
     ? `(${vehicle.previousViolationCount - vehicle.violationsCount} new tickets)`
     : ''
 
+  const getPlateTypesString = (vehicle: Vehicle) => {
+    let plateCategory: string | undefined = undefined
+    Object.entries(plateTypes).forEach(([_, type]) => {
+      if (vehicle.plateTypes?.sort().toString() === type.codes?.sort().toString()) {
+        plateCategory = type.displayName
+      }
+    })
+    const plateTypesString: string | undefined = vehicle.plateTypes ? plateCategory : ''
+    return plateTypesString
+  }
+
   return (
     <>
+      <ListGroupItem className='no-padding'>
+        <div className='summary-box'>
+          <div className='split-list-group-item'>
+            <div>Plate:</div>
+            <div className='summary-value'>{vehicle.plate}</div>
+          </div>
+          <div className='split-list-group-item'>
+            <div>Region:</div>
+            <div className='summary-value'>{vehicle.state}</div>
+          </div>
+          {vehicle.plateTypes && (
+            <div className='split-list-group-item'>
+              <div>Plate type:</div>
+              <div className='summary-value'>{getPlateTypesString(vehicle)}</div>
+            </div>
+          )}
+        </div>
+      </ListGroupItem>
       <ListGroupItem className='no-padding'>
         <div className='summary-box'>
           <div className='split-list-group-item'>

@@ -5,43 +5,67 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import TwitterShare from 'components/TwitterShare'
 import L10N from 'constants/display'
-import plateTypes from 'constants/plateTypes'
 import { Vehicle } from 'utils/types/responses'
 
-export default ({vehicle}: {vehicle: Vehicle}) => {
+export default ({
+  removeLookupFn, vehicle
+}: {
+  removeLookupFn: () => void, vehicle: Vehicle
+}) => {
+  const CopyButton = () => {
+    const [buttonPressedClass, setButtonPressedClass] = useState('')
 
-  const [buttonPressedClass, setButtonPressedClass] = useState('')
+    return (
+      <button
+        className='copy-button'
+        onClick={() => {
+          navigator.clipboard.writeText(`${L10N.sitewide.url}/${vehicle.uniqueIdentifier}`)
+          setButtonPressedClass('')
+        }}
+        onMouseDown={() => setButtonPressedClass('pressed')}
+        onMouseOut={() => {
+          setButtonPressedClass('')
+        }}
+      >
+        <span className="fa-layers fa-fw">
+          <FontAwesomeIcon icon='circle' transform="grow-6" className={`circle ${buttonPressedClass}`}/>
+          <FontAwesomeIcon icon='copy' transform='shrink-4' className='copy' />
+        </span>
+      </button>
+    )
+  }
 
-  const getCardHeader = (vehicle: Vehicle) => {
-    let plateCategory: string | undefined = undefined
-    Object.entries(plateTypes).forEach(([_, type]) => {
-      if (vehicle.plateTypes?.sort().toString() === type.codes?.sort().toString()) {
-        plateCategory = type.displayName
-      }
-    })
-    const plateTypesString: string | undefined = vehicle.plateTypes ? `(${plateCategory})` : ''
-    return `${vehicle.state}:${vehicle.plate} ${plateTypesString}`
+  const RemoveLookupButton = () => {
+    const [buttonPressedClass, setButtonPressedClass] = useState('')
+
+    return (
+      <button
+        className='remove-lookup-button'
+        onClick={() => {
+          removeLookupFn()
+          setButtonPressedClass('')
+        }}
+        onMouseDown={() => setButtonPressedClass('pressed')}
+        onMouseOut={() => {
+          setButtonPressedClass('')
+        }}
+      >
+        <FontAwesomeIcon
+          className={`circle ${buttonPressedClass}`}
+          icon='times-circle'
+          transform="grow-6"
+        />
+      </button>
+    )
   }
 
   return (
     <Card.Header>
-      {getCardHeader(vehicle)}
       <div className='share-icons'>
-        <button
-          className='copy-button'
-          onMouseDown={() => setButtonPressedClass('pressed')}
-          onMouseUp={() => {
-            navigator.clipboard.writeText(`${L10N.sitewide.url}/${vehicle.uniqueIdentifier}`)
-            setButtonPressedClass('')}
-          }
-        >
-          <span className="fa-layers fa-fw">
-            <FontAwesomeIcon icon='circle' transform="grow-6" className={`circle ${buttonPressedClass}`}/>
-            <FontAwesomeIcon icon='copy' transform='shrink-4' className='copy' />
-          </span>
-        </button>
+        <CopyButton />
         <TwitterShare vehicle={vehicle}/>
       </div>
+      <RemoveLookupButton />
     </Card.Header>
   )
 }

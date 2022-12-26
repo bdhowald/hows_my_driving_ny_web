@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useState } from 'react'
 
+import L10N from 'constants/display'
 import { Vehicle } from 'utils/types/responses'
 import ViolationsTable from 'view/ViolationsTable'
 
@@ -9,37 +10,59 @@ type OwnProps = {
 }
 
 export default ({ vehicle }: OwnProps) => {
-  const [visible, setVisibility] = useState(true)
+  const [violationsListIsVisible, setViolationsListVisibility] = useState(true)
   const [showFullText, setShowFullText] = useState(window.innerWidth > 768)
 
   const violationsCount = vehicle.violationsCount
+  const vehicleHasViolations = violationsCount > 0
+
+  const ShowFullViolationTextLink = () => (
+    <span
+      className='see-full-violation-text-table-link'
+      onClick={(e) => {
+        e.stopPropagation()
+        setShowFullText(!showFullText)
+      }}
+    >
+      {showFullText
+        ? `(${L10N.lookups.toggleFullViolationText.hide})`
+        : vehicleHasViolations
+        ? `(${L10N.lookups.toggleFullViolationText.show})`
+        : ''
+      }
+    </span>
+  )
+
+  const ShowViolationsLink = () => (
+    <span
+      className='see-violations-table-link'
+      onClick={(e) => {
+        e.stopPropagation()
+        setViolationsListVisibility(!violationsListIsVisible)
+      }}
+    >
+      {violationsListIsVisible && vehicleHasViolations
+        ? `(${L10N.lookups.toggleViolationsView.hide})`
+        : vehicleHasViolations
+        ? `(${L10N.lookups.toggleViolationsView.show})`
+        : ''
+      }
+    </span>
+  )
 
   return (
     <div className='violations-table-wrapper' style={{width: '100%'}}>
       <div className='violations-table-header'>
-        Violations: {violationsCount}
-        {visible && (
-          <span
-            className='see-full-violation-text-table-link'
-            onClick={(e) => {
-              e.stopPropagation()
-              setShowFullText(!showFullText)
-            }}
-          >
-            {showFullText ? '(hide full text)' : (violationsCount > 0 ? '(show full text)' : '')}
+        <div>
+          Violations:
+          <span className='violations-count'>
+            {violationsCount}
           </span>
-        )}
-        <span
-          className='see-violations-table-link'
-          onClick={(e) => {
-            e.stopPropagation()
-            setVisibility(!visible)
-          }}
-        >
-          {visible ? '(hide violations)' : (violationsCount > 0 ? '(see violations)' : '')}
-        </span>
+        </div>
+        {violationsListIsVisible && <ShowFullViolationTextLink />}
+        <ShowViolationsLink />
       </div>
-      {violationsCount > 0 && visible &&
+      {vehicleHasViolations && violationsListIsVisible &&
         <ViolationsTable showFullText={showFullText} vehicle={vehicle}/>
       }
     </div>

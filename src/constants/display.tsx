@@ -1,7 +1,17 @@
 import * as React from 'react'
 
 export default {
-  queryPage: {
+  lookups: {
+    toggleFullViolationText: {
+      hide: 'hide full text',
+      show: 'show full text',
+    },
+    toggleViolationsView: {
+      hide: 'hide violations',
+      show: 'show violations'
+    },
+  },
+  query: {
     jumbotronHeaderText: (
       <React.Fragment>
         <p className="lead">
@@ -17,5 +27,5 @@ export default {
   sitewide: {
     title: "How's My Driving NY",
     url: 'https://howsmydrivingny.nyc',
-  }
+  },
 }
