@@ -48,8 +48,7 @@ export default ({
     state: 'NY',
   })
   const [mixpanelId, setMixpanelId] = useState<string | undefined>()
-
-  const [cookies, setCookie] = useCookies([LOOKUP_IDENTIFIER_COOKIE])
+  const [cookies, setCookie, removeCookie] = useCookies([LOOKUP_IDENTIFIER_COOKIE])
   
   useEffect(() => {
     const getFingerprint = (): Promise<FingerprintJSResponse> =>
@@ -101,6 +100,14 @@ export default ({
     }
   }
 
+  const setOrRemoveLookupIdentifierCookie = (cookieString: string | undefined) => {
+    if (cookieString) {
+      setCookie(LOOKUP_IDENTIFIER_COOKIE, cookieString)
+      return
+    }
+    removeCookie(LOOKUP_IDENTIFIER_COOKIE)
+  }
+
   const parseLookupResults = (query: VehicleQueryResponse) => {
     const { data } = query
 
@@ -128,9 +135,16 @@ export default ({
               ...previousQueriedVehicles.slice(index + 1),
             ]
 
-            setCookie(LOOKUP_IDENTIFIER_COOKIE, newList.map(
-              (vehicle) => vehicle.uniqueIdentifier).toString()
+            const uniqueIdentifiersToSaveInCookie = newList.map((vehicle) =>
+              vehicle.uniqueIdentifier
+            ).filter((identifier) =>
+              identifier !== previousLookupUniqueIdentifierFromQuery
+            ).toString()
+
+            setOrRemoveLookupIdentifierCookie(
+              uniqueIdentifiersToSaveInCookie
             )
+
             return newList
           })
         } else {
@@ -141,8 +155,14 @@ export default ({
               ...previousQueriedVehicles
             ]
 
-            setCookie(LOOKUP_IDENTIFIER_COOKIE, newList.map(
-              (vehicle) => vehicle.uniqueIdentifier).toString()
+            const uniqueIdentifiersToSaveInCookie = newList.map((vehicle) =>
+              vehicle.uniqueIdentifier
+            ).filter((identifier) =>
+              identifier !== previousLookupUniqueIdentifierFromQuery
+            ).toString()
+
+            setOrRemoveLookupIdentifierCookie(
+              uniqueIdentifiersToSaveInCookie
             )
 
             return newList
@@ -188,7 +208,9 @@ export default ({
         setLookupInFlight(true)
 
         // url is of format howsmydrivingny.nyc/xxxxxxxx
-        const query: VehicleQueryResponse = await getPreviousLookup(previousLookupUniqueIdentifierFromQuery)
+        const query: VehicleQueryResponse = await getPreviousLookup(
+          previousLookupUniqueIdentifierFromQuery
+        )
 
         // Partse the results
         parseLookupResults(query)
@@ -227,7 +249,7 @@ export default ({
         } catch(e) {
           // If queries return errors, blank out cookie
           console.error('Error fetching previous lookups')
-          setCookie(LOOKUP_IDENTIFIER_COOKIE, null)
+          setOrRemoveLookupIdentifierCookie(undefined)
         }
       }
     }
