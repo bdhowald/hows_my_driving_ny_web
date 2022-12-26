@@ -243,21 +243,6 @@ export default ({
     </>
   )
 
-  const PlateInput = () => (
-    <Col md={true}>
-      <Form.Group>
-        <input
-          className='form-control'
-          name='plateId'
-          onChange={handleInputChange}
-          placeholder='Enter a plate...'
-          type="text"
-          value={currentLookup.plateId ?? ''}
-        />
-      </Form.Group>
-    </Col>
-  )
-
   const PlateTypeSelect = () => (
     <Col md={true}>
       <Form.Group>
@@ -323,7 +308,18 @@ export default ({
       <Row>
         <Form className='form' onSubmit={handleSubmit}>
           <Form.Row>
-            <PlateInput />
+            <Col md={true}>
+              <Form.Group>
+                <input
+                  className='form-control'
+                  name='plateId'
+                  onChange={handleInputChange}
+                  placeholder='Enter a plate...'
+                  type="text"
+                  value={currentLookup.plateId ?? ''}
+                />
+              </Form.Group>
+            </Col>
             <RegionSelect />
           </Form.Row>
           <Form.Row>
