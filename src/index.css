@@ -76,6 +76,7 @@ div.container-fluid div.row div.card div.card-header button {
 }
 
 div.container-fluid div.row div.card div.card-header button.remove-lookup-button {
+  color: black;
   background: none;
 }
 
