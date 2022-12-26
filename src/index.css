@@ -75,6 +75,10 @@ div.container-fluid div.row div.card div.card-header button {
   outline: none;
 }
 
+div.container-fluid div.row div.card div.card-header button.remove-lookup-button {
+  background: none;
+}
+
 div.container-fluid div.row div.card div.card-header div.share-icons {
   display: flex;
 }
@@ -95,7 +99,7 @@ div.container-fluid div.row div.card div.card-header div.share-icons button.copy
   color: gray;
 }
 
-div.container-fluid div.row div.card div.card-header div.share-icons button.copy-button   span.fa-layers .copy {
+div.container-fluid div.row div.card div.card-header div.share-icons button.copy-button span.fa-layers .copy {
   color: white;
 }
 
