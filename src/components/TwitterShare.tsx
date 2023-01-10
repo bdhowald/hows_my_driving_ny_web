@@ -5,7 +5,7 @@ import { TwitterShareButton, TwitterIcon } from 'react-share'
 import L10N from 'constants/display'
 import { Vehicle } from 'utils/types/responses'
 
-export default ({ vehicle }: { vehicle: Vehicle }) => {
+const TwitterShare = ({ vehicle }: { vehicle: Vehicle }) => {
   const vehicleHashtag = `${vehicle.state}_${vehicle.plate}`
   const violationsString = `${vehicle.violationsCount} violation${vehicle.violationsCount === 1 ? '' : 's'}`
 
@@ -17,10 +17,14 @@ export default ({ vehicle }: { vehicle: Vehicle }) => {
       resetButtonStyle={false}
     >
       <TwitterIcon
-        size={32}
-        round={true} 
         crossOrigin=""
+        round
+        size={32}
       />
     </TwitterShareButton>
   )
 }
+
+TwitterShare.displayName = 'TwitterShare'
+
+export default TwitterShare

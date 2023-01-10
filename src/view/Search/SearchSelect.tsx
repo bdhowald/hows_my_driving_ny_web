@@ -16,7 +16,7 @@ type OwnProps = {
   valueKey: 'plateId' | 'plateType' | 'state'
 }
 
-export default ({
+const SearchSelect = ({
   currentLookup,
   handleChange,
   label,
@@ -36,3 +36,7 @@ export default ({
     </Form.Control>
   )
 }
+
+SearchSelect.displayName = 'SearchSelect'
+
+export default SearchSelect

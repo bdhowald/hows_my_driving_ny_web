@@ -7,15 +7,12 @@
       "@babel/typescript"
     ],
     "plugins": [
-      "@babel/proposal-class-properties",
-      "@babel/proposal-object-rest-spread",
-      "@babel/plugin-proposal-optional-chaining"
+      "@babel/proposal-class-properties"
     ]
   },
   "dependencies": {
     "@babel/core": "^7.8.4",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
     "@babel/preset-typescript": "^7.8.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.22",
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
@@ -46,15 +43,13 @@
     "react-dom": "^16.4.1",
     "react-fontawesome": "^1.6.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.1.2",
-    "react-share": "^4.0.1",
+    "react-scripts": "5.0.1",
+    "react-share": "^4.4.1",
     "react-spinners": "^0.13.7",
     "react-transition-group": "1.x",
     "reactstrap": "^6.3.0",
     "redux-saga": "^1.0.5",
     "smoothscroll-polyfill": "^0.4.4",
-    "tslint": "^5.19.0",
-    "tslint-react": "^4.0.0",
     "whatwg-fetch": "^3.0.0"
   },
   "scripts": {
@@ -65,8 +60,14 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.8.3",
-    "awesome-typescript-loader": "^5.2.1",
-    "typescript": "^3.7.5"
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "@typescript-eslint/parser": "^5.48.1",
+    "eslint": "^8.31.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-react": "^7.31.11",
+    "ts-loader": "^9.4.2",
+    "typescript": "^3.7.5",
+    "webpack": "^5.0.0"
   },
   "browserslist": {
     "production": [

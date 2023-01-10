@@ -3,7 +3,7 @@ import React from 'react'
 import { ListGroupItem } from 'reactstrap'
 import { Vehicle } from 'utils/types/responses'
 
-export default ({ vehicle }: {vehicle: Vehicle }) => {
+const RecklessDriverAccountabilityAct = ({ vehicle }: {vehicle: Vehicle }) => {
 
   const bradLanderTwitterHandle = '@bradlander'
   const bradLanderTwitterURL = 'https://twitter.com/bradlander'
@@ -59,7 +59,7 @@ export default ({ vehicle }: {vehicle: Vehicle }) => {
       <p>
         Under
         <Link linkTarget={bradLanderTwitterURL} linkText={bradLanderTwitterHandle} />
-        's
+        &apos;s
         <Link linkTarget={recklessDriverAccountabilityActURL} linkText={'bill'} />
         {', '}
         this vehicle could be booted or impounded due to its {getBootingEligibilityString()}
@@ -67,3 +67,7 @@ export default ({ vehicle }: {vehicle: Vehicle }) => {
     </ListGroupItem>
   )
 }
+
+RecklessDriverAccountabilityAct.displayName = 'VehicleResults.RecklessDriverAccountabilityAct'
+
+export default RecklessDriverAccountabilityAct

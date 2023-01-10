@@ -17,7 +17,7 @@ type OwnProps = {
   vehicle: Vehicle,
 }
 
-export default ({ showFullText, vehicle }: OwnProps) => {
+const ViolationsTable = ({ showFullText, vehicle }: OwnProps) => {
 
   const { violations: violationData } = vehicle
 
@@ -162,3 +162,7 @@ export default ({ showFullText, vehicle }: OwnProps) => {
     </div>
   )
 }
+
+ViolationsTable.displayname = 'ViolationsTable'
+
+export default ViolationsTable

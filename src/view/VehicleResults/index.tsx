@@ -10,7 +10,7 @@ import Header from './Header'
 
 const COLOR_WHITE = '#ffffff'
 
-export default ({ lookupInFlight, removeLookupFn, scrollRef, vehicles }: {
+const VehicleResults = ({ lookupInFlight, removeLookupFn, scrollRef, vehicles }: {
   lookupInFlight: boolean
   removeLookupFn: (arg0: number) => void
   scrollRef: React.Ref<HTMLDivElement>
@@ -45,3 +45,7 @@ export default ({ lookupInFlight, removeLookupFn, scrollRef, vehicles }: {
     </div>
   )
 }
+
+VehicleResults.displayname = 'VehicleResults'
+
+export default VehicleResults

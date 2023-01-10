@@ -7,7 +7,7 @@ import L10N from 'constants/display'
 import { Vehicle } from 'utils/types/responses'
 import ViolationsTable from 'view/ViolationsTable'
 
-export default ({ vehicle }: { vehicle: Vehicle}) => {
+const ViolationsList = ({ vehicle }: { vehicle: Vehicle}) => {
   const [violationsListIsVisible, setViolationsListVisibility] = useState(true)
   const [showFullText, setShowFullText] = useState(window.innerWidth > 768)
 
@@ -68,3 +68,7 @@ export default ({ vehicle }: { vehicle: Vehicle}) => {
     </ListGroupItem>
   )
 }
+
+ViolationsList.displayName = 'ViolationsList'
+
+export default ViolationsList

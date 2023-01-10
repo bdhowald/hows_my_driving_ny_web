@@ -34,7 +34,7 @@ type SearchPageProps = {
   setQueriedVehiclesFn: React.Dispatch<React.SetStateAction<Vehicle[]>>
 }
 
-export default ({
+const Search = ({
   lookupInFlight,
   previousLookupUniqueIdentifierFromQuery,
   queriedVehicles,
@@ -266,7 +266,7 @@ export default ({
   )
 
   const PlateTypeSelect = () => (
-    <Col md={true}>
+    <Col md>
       <Form.Group>
         <SearchSelect
           currentLookup={currentLookup}
@@ -289,7 +289,7 @@ export default ({
   )
 
   const RegionSelect = () => (
-    <Col md={true}>
+    <Col md>
       <Form.Group>
         <SearchSelect
           currentLookup={currentLookup}
@@ -312,7 +312,7 @@ export default ({
   )
 
   const SearchButton = () => (
-    <Col md={true}>
+    <Col md>
       <Form.Group>
         <input
           className='form-control btn btn-primary'
@@ -330,7 +330,7 @@ export default ({
       <Row>
         <Form className='form' onSubmit={handleSubmit}>
           <Form.Row>
-            <Col md={true}>
+            <Col md>
               <Form.Group>
                 <input
                   className='form-control'
@@ -353,3 +353,7 @@ export default ({
     </Jumbotron>
   )
 }
+
+Search.displayName = 'Search'
+
+export default Search

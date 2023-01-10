@@ -9,7 +9,7 @@ type OwnProps = {
   vehicle: Vehicle,
 }
 
-export default ({ vehicle }: OwnProps) => {
+const ViolationsList = ({ vehicle }: OwnProps) => {
   const [violationsListIsVisible, setViolationsListVisibility] = useState(true)
   const [showFullText, setShowFullText] = useState(window.innerWidth > 768)
 
@@ -68,3 +68,7 @@ export default ({ vehicle }: OwnProps) => {
     </div>
   )
 }
+
+ViolationsList.displayName = 'ViolationsList'
+
+export default ViolationsList

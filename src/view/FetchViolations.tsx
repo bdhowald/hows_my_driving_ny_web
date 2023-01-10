@@ -61,7 +61,7 @@ const FetchViolations = () => {
 
   return (
     <div>
-      <Container fluid={true}>
+      <Container fluid>
         <Row>
           <div className='col-md-12'>
             <Search

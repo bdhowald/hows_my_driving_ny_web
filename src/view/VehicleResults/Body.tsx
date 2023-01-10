@@ -8,7 +8,7 @@ import LookupInfo from './LookupInfo'
 import RecklessDriverAccountabilityAct from './RecklessDriverAccountabilityAct'
 import ViolationsList from './ViolationsList'
 
-export default ({ vehicle }: { vehicle: Vehicle }) => {
+const Body = ({ vehicle }: { vehicle: Vehicle }) => {
 
   const cameraStreakData = vehicle.cameraStreakData
 
@@ -23,3 +23,7 @@ export default ({ vehicle }: { vehicle: Vehicle }) => {
     </ListGroup>
   )
 }
+
+Body.displayName = 'VehicleResults.Body'
+
+export default Body

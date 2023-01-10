@@ -9,7 +9,7 @@ const DOLLAR_LOCALE_SETTINGS = {
   maximumFractionDigits: 2
 }
 
-export default ({ vehicle }: { vehicle: Vehicle }) => {
+const LookupInfo = ({ vehicle }: { vehicle: Vehicle }) => {
 
   const lastQueriedDate = new Date(vehicle.previousLookupDate)
     .toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit'})
@@ -98,3 +98,7 @@ export default ({ vehicle }: { vehicle: Vehicle }) => {
     </>
   )
 }
+
+LookupInfo.displayName = 'VehicleResults.LookupInfo'
+
+export default LookupInfo

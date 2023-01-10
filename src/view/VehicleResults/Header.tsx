@@ -7,7 +7,7 @@ import TwitterShare from 'components/TwitterShare'
 import L10N from 'constants/display'
 import { Vehicle } from 'utils/types/responses'
 
-export default ({
+const Header = ({
   removeLookupFn, vehicle
 }: {
   removeLookupFn: () => void, vehicle: Vehicle
@@ -69,3 +69,7 @@ export default ({
     </Card.Header>
   )
 }
+
+Header.displayName = 'VehicleResults.Header'
+
+export default Header
