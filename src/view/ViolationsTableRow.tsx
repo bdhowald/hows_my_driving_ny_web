@@ -21,7 +21,11 @@ const TableRow = (props: {showFullText: boolean, violation: Violation}): JSX.Ele
 
   let violationIcon: 'bus' | 'parking' | 'tachometer-alt' | 'traffic-light'
 
-  switch(violation.violationCode) {
+  // Convert code from string to int and back to string
+  // to deal with leading zeros.
+  const violationCodeAsInt = parseInt(violation.violationCode)
+
+  switch(violationCodeAsInt.toString()) {
     case BUS_LANE_CAMERA_VIOLATION_CODE:
       violationIcon = 'bus'
       break
