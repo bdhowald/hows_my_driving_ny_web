@@ -17,6 +17,7 @@ const Header = ({
 
     return (
       <button
+        aria-label='copy link to lookup'
         className='copy-button'
         onClick={() => {
           navigator.clipboard.writeText(`${L10N.sitewide.url}/${vehicle.uniqueIdentifier}`)
@@ -40,6 +41,7 @@ const Header = ({
 
     return (
       <button
+        aria-label='remove lookup'
         className='remove-lookup-button'
         onClick={() => {
           removeLookupFn()
