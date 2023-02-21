@@ -64,18 +64,26 @@ const ViolationsTable = ({ showFullText, vehicle }: OwnProps) => {
   const TableHeader = (): JSX.Element => (
     <thead className='thead-light'>
       <tr>
-        {sortOptions.map(sortOption => (
-          <th
-            key={sortOption.name}
-            className={currentSortType === sortOption.name ? 'sort-column' : ''}
-            onClick={() => applySort(sortOption.name)}
-          >
-            {sortOption.displayText}
-            {currentSortType === sortOption.name &&
-              <FontAwesomeIcon icon={sortAscending ? 'angle-down' : 'angle-up'} />
-            }
-          </th>
-        ))}
+        {sortOptions.map(sortOption => {
+          const isSortTypeCurrentlySelected = currentSortType === sortOption.name
+          return (
+            <th
+              aria-sort={
+                isSortTypeCurrentlySelected
+                  ? (sortAscending ? 'ascending' : 'descending')
+                  : 'none'
+              }
+              key={sortOption.name}
+              className={isSortTypeCurrentlySelected ? 'sort-column' : ''}
+              onClick={() => applySort(sortOption.name)}
+            >
+              {sortOption.displayText}
+              {isSortTypeCurrentlySelected &&
+                <FontAwesomeIcon icon={sortAscending ? 'angle-down' : 'angle-up'} />
+              }
+            </th>
+          )
+        })}
       </tr>
     </thead>
   )
@@ -156,6 +164,9 @@ const ViolationsTable = ({ showFullText, vehicle }: OwnProps) => {
   return (
     <div className='table-responsive'>
       <table className='table table-striped table-sm violations-table'>
+        <caption>
+          {`New York City parking and camera violations for ${vehicle.state} vehicle with plate ${vehicle.plate}`}
+        </caption>
         <TableHeader />
         <TableBody violations={sortedViolations}/>
       </table>

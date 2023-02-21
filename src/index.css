@@ -200,6 +200,10 @@ div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.
   }
 }
 
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table thead tr th {
+  cursor: pointer;
+}
+
 div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table thead tr th.sort-column {
   color: #000;
 }
