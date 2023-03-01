@@ -317,6 +317,7 @@ const Search = ({
         <input
           className='form-control btn btn-primary'
           disabled={!currentLookup.plateId || lookupInFlight}
+          role="button"
           type="submit"
           value="Search"
         />
