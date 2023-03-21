@@ -88,7 +88,7 @@ const Search = ({
     const { plateId, plateType, state } = currentLookup
 
     if (plateId && state) {
-      const trimmedPlate: string = plateId.trim()
+      const trimmedPlate: string = plateId.replace(/\s/g, '')
 
       mixpanel.track('plate_lookup', {
         plate           : trimmedPlate,
@@ -177,8 +177,8 @@ const Search = ({
     setLookupInFlight(true)
 
     const plateString = plateType && plateTypes[plateType]?.codes
-      ? `${plate.trim()}:${state}:${plateTypes[plateType].codes}`
-      : `${plate.trim()}:${state}`
+      ? `${plate}:${state}:${plateTypes[plateType].codes}`
+      : `${plate}:${state}`
 
     let requestParams: VehicleQueryRequest = {
       lookupSource: 'web_client',
