@@ -59,6 +59,8 @@ const FetchViolations = () => {
     }
   })
 
+  console.log(`queriedVehicle identifiers: ${queriedVehicles.map((queriedVehicle) => queriedVehicle.uniqueIdentifier)}`)
+
   return (
     <div>
       <Container fluid>

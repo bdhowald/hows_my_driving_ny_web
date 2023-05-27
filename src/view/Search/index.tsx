@@ -78,7 +78,7 @@ const Search = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
     return setCurrentLookup({
       ...currentLookup,
-      ...{[e.currentTarget.name]: e.currentTarget.value}
+      ...{[e.currentTarget.name]: e.currentTarget.value.replace(/\s/g, '')}
     })
   }
 
@@ -88,7 +88,7 @@ const Search = ({
     const { plateId, plateType, state } = currentLookup
 
     if (plateId && state) {
-      const trimmedPlate: string = plateId.replace(/\s/g, '')
+      const trimmedPlate: string = plateId.trim()
 
       mixpanel.track('plate_lookup', {
         plate           : trimmedPlate,
@@ -127,7 +127,7 @@ const Search = ({
         if (existingVehicle) {
           // new list with stale lookup removed and fresh lookup added
           setQueriedVehiclesFn(previousQueriedVehicles => {
-            const index = queriedVehicles.indexOf(existingVehicle)
+            const index = previousQueriedVehicles.indexOf(existingVehicle)
 
             const newList: Vehicle[] = [
               queriedVehicle,
@@ -141,6 +141,8 @@ const Search = ({
               identifier !== previousLookupUniqueIdentifierFromQuery
             ).toString()
 
+            // Replace the old unique identifier for this vehicle
+            // with the new unique identifier for this lookup.
             setOrRemoveLookupIdentifierCookie(
               uniqueIdentifiersToSaveInCookie
             )
@@ -226,9 +228,14 @@ const Search = ({
           const cookieString: string = cookies[
             LOOKUP_IDENTIFIER_COOKIE
           ] ?? ''
+
+          // Filter out duplicate values and reverse the array.
+          // The cookies are stored with the most recent identifiers
+          // first, so searching for them in reverse order preserves
+          // the quality that top results are more recent.
           const uniqueIdentifiersFromCookies = cookieString.split(',').filter(
             (value, index, self) => self.indexOf(value) === index
-          )
+          ).reverse()
 
           // Prevent another button press/submission
           setLookupInFlight(true)
