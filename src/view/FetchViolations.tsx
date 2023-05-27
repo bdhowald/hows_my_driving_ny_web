@@ -43,7 +43,11 @@ const FetchViolations = () => {
 
     setCookie(LOOKUP_IDENTIFIER_COOKIE, remainingUniqueIdentifiers
       ? remainingUniqueIdentifiers.toString()
-      : null
+      : null,
+      {
+        maxAge: 31536000,
+        path: '/'
+      }
     )
 
     setQueriedVehicles(newList)

@@ -194,10 +194,11 @@ const Search = ({
   }
 
   const setOrRemoveLookupIdentifierCookie = (cookieString: string | undefined) => {
-    if (cookieString) {
-      if (cookies[LOOKUP_IDENTIFIER_COOKIE] && cookieString !== cookies[LOOKUP_IDENTIFIER_COOKIE] ) {
-        setCookie(LOOKUP_IDENTIFIER_COOKIE, cookieString)
-      }
+    if (cookieString !== cookies[LOOKUP_IDENTIFIER_COOKIE] ) {
+      setCookie(LOOKUP_IDENTIFIER_COOKIE, cookieString, {
+        maxAge: 31536000,
+        path: '/'
+      })
       return
     }
     removeCookie(LOOKUP_IDENTIFIER_COOKIE)
