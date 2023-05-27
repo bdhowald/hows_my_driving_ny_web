@@ -134,7 +134,6 @@ const Search = ({
   setLookupInFlight,
   setQueriedVehiclesFn,
 }: SearchPageProps) => {
-  console.log('I (Search) reloaded')
   const [fingerprintId, setFingerprintId] = useState<string | undefined>()
   const [currentLookup, setCurrentLookup] = useState<PlateLookup>({
     plateId: undefined,
