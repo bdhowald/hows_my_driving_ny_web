@@ -204,7 +204,11 @@ const Search = ({
     removeCookie(LOOKUP_IDENTIFIER_COOKIE)
   }
 
-  const parseLookupResults = (query: VehicleQueryResponse) => {
+  const parseLookupResults = (
+    query: VehicleQueryResponse,
+    fromPreviousLookupUniqueIdentifier: boolean = false,
+    expandResults: boolean = true
+  ) => {
     const { data } = query
 
     if (data?.[0]) {
@@ -213,6 +217,13 @@ const Search = ({
       if (firstLookup.successfulLookup) {
         const queriedVehicle: Vehicle = firstLookup.vehicle
 
+        // Should we show this vehicle or not?
+        queriedVehicle.expandResults = expandResults
+
+        // Is this the result of a previous lookup?
+        queriedVehicle.fromPreviousLookupUniqueIdentifier = fromPreviousLookupUniqueIdentifier
+
+        // Is this vehicle already being shown?
         const existingVehicle = queriedVehicles.find((vehicle: Vehicle) => {
           return vehicle.plate === queriedVehicle.plate &&
             vehicle.state === queriedVehicle.state &&
@@ -296,7 +307,7 @@ const Search = ({
     // Perform the search
     const query: VehicleQueryResponse = await performNewLookup(requestParams)
 
-    // Partse the results
+    // Parse the results
     parseLookupResults(query)
 
     // Re-enable button
@@ -314,8 +325,8 @@ const Search = ({
           previousLookupUniqueIdentifierFromQuery
         )
 
-        // Partse the results
-        parseLookupResults(query)
+        // Parse the results
+        parseLookupResults(query, true)
 
         // Re-enable button
         setLookupInFlight(false)
@@ -348,7 +359,7 @@ const Search = ({
 
           // Handle results
           Promise.all(lookupPromises).then((queries) =>
-            queries.forEach((query) => parseLookupResults(query))
+            queries.forEach((query) => parseLookupResults(query, false, false))
           ).finally(() =>
             setLookupInFlight(false)
           )

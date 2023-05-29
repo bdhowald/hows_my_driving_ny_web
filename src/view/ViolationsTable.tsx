@@ -162,9 +162,9 @@ const ViolationsTable = ({ showFullText, vehicle }: OwnProps) => {
   }
 
   return (
-    <div className='table-responsive'>
+    <div className='table-responsive violations-table-body'>
       <table className='table table-striped table-sm violations-table'>
-        <caption>{'Parking and camera violations'}</caption>
+        <caption>Parking and camera violations</caption>
         <TableHeader />
         <TableBody violations={sortedViolations}/>
       </table>

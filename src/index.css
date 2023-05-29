@@ -8,9 +8,6 @@ body {
 }
 
 div.jumbotron {
-  /*color: #333;
-  padding: 1rem;
-  text-align: center;*/
   background-color: transparent;
 }
 
@@ -33,6 +30,38 @@ div.loader-wrapper {
 div.container-fluid {
   display: flex;
   flex-direction: column;
+  min-width: 20em;
+}
+
+
+button.btn-primary {
+  background-color: #4824ff;
+  border-color: #4824ff;
+}
+button.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: #fff;
+  border-color: #4824ff;
+  color: #4824ff;
+}
+button.btn-primary:hover {
+  background-color: #fff;
+  border-color: #4824ff;
+  color: #4824ff;
+}
+
+button.btn-outline-primary {
+  border-color: #4824ff;
+  color: #4824ff;
+}
+button.btn-outline-primary:not(:disabled):not(.disabled):active {
+  background-color: #4824ff;
+  border-color: #4824ff;
+  color: #fff;
+}
+button.btn-outline-primary:hover {
+  background-color: #4824ff;
+  border-color: #4824ff;
+  color: #fff;
 }
 
 form.form {
@@ -132,100 +161,214 @@ div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.list
   text-decoration: underline;
 }
 
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.summary-box {
-  display: flex;
-  justify-content: space-evenly;
-  text-align: center;
-  width: 100%
-}
-
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.summary-box div.summary-value {
-  font-weight: bold;
-}
-
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.split-list-group-item {
-  padding: 0.25rem 0.75rem;
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row {
+  margin: 0;
   width: 100%;
 }
 
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.split-list-group-item {
-  border-right: 1px solid #ccc;
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  position: relative;
 }
 
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.split-list-group-item:last-child {
+@media only screen and (min-width: 320px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 360px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
+    padding: 0.75rem 2rem;
+  }
+}
+
+@media only screen and (min-width: 400px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
+    padding: 0.75rem 3rem;
+  }
+}
+
+@media only screen and (min-width: 440px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
+    padding: 0.75rem 4rem;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
+    padding: 0.75rem 5rem;
+  }
+}
+
+@media only screen and (min-width: 520px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
+    padding: 0.75rem 6rem;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
+    justify-content: space-around;
+    padding: 0.75rem 1.25rem;
+  }
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section > div {
+  margin: 0 0.5rem;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section:first-child {
+  border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+@media only screen and (min-width: 576px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section:first-child {
+    border-bottom: none;
+    border-right: 1px solid rgba(0,0,0,.125);
+  }
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section div.fines-reduced {
+  border-bottom: 0.125rem solid rgba(0,0,0,.5);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section div.summary-box {
+  display: block;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section div.summary-box.keys {
+  text-align: left;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section div.summary-box.keys.lookup-info {
+  min-width: 5em;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section div.summary-box.values {
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 576px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section div.summary-box.keys {
+    margin-right: 1rem;
+  }
+
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section div.summary-box.values {
+    margin-left: 1rem;
+  }
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section div.summary-box.values.fines {
+  display: flex;
+  text-align: right;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section div.summary-box.values.lookup-info {
+  text-align: right;
+}
+
+@media only screen and (min-width: 576px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section div.summary-box.values.lookup-info {
+    text-align: center;
+  }
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section div.summary-box.values.fines div.math-symbols {
+  font-weight: normal;
+  text-align: center;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section div.summary-box div {
+  line-height: 1.625rem;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section div.summary-box div.summary-value.region div.region-abbreviation {
+  display: initial;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section div.summary-box div.summary-value.region div.region-full-name {
+  display: none;
+}
+
+@media only screen and (min-width: 640px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section div.summary-box div.summary-value.region div.region-abbreviation {
+    display: none;
+  }
+
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section div.summary-box div.summary-value.region div.region-full-name {
+    display: initial;
+  }
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-box div.split-list-group-item {
+  border-right: none;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-box > div.split-list-group-item:last-child {
   border-right: none;
 }
 
 div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.25rem 0 0.5rem;
+  display: block;
 }
 
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-header span.violations-count {
-  font-weight: bold;
-  margin-left: 0.25rem;
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-header div.row div.col-12 {
+  margin-top: 0.5rem;
 }
 
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-header span.see-violations-table-link {
-  font-style: italic;
-  margin: 0 0.25rem;
-  text-decoration: underline;
-}
-
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-header span.see-full-violation-text-table-link {
-  font-style: italic;
-  margin: 0 0.25rem;
-  text-decoration: underline;
-}
-
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive {
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body {
   padding: 0.5rem 0 0;
 }
 
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table {
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table {
   text-align: center;
 }
 
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table caption {
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table caption {
   caption-side: top;
 }
 
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table thead tr th {
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table thead tr th {
   cursor: pointer;
 }
 
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table thead tr th.sort-column {
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table thead tr th.sort-column {
   color: #000;
 }
 
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table thead tr th.sort-column svg.svg-inline--fa {
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table thead tr th.sort-column svg.svg-inline--fa {
   margin: 0 0.25rem;
 }
 
 @media only screen and (max-width: 768px) {
-  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tbody tr::after{
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr::after{
     content: "";
     display: inline-block;
     min-height: 50px;
     vertical-align: top;
   }
 
-  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tbody tr td {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr td {
     vertical-align: inherit;
   }
 }
 
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tbody tr.sort-divider {
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.sort-divider {
   background-color: black;
   color: white;
 }
 
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tbody tr.sort-divider th, td {
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.sort-divider th, td {
   vertical-align: inherit;
 }
 
-/* div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tbody tr.violation-row div {
+/* div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row div {
   -webkit-transition: max-height 2s ease;
   -moz-transition: max-height 2s ease;
   transition: max-height 2s ease;
@@ -233,7 +376,7 @@ div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.
   max-height: 100px;
 }
 
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tbody tr.violation-row.expanded div {
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row.expanded div {
   -webkit-transition: max-height 2s ease;
   -moz-transition: max-height 2s ease;
   transition: max-height 2s ease;
@@ -241,24 +384,24 @@ div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.
   max-height: 400px;
 } */
 
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tbody tr.violation-row td.violation-description div.humanized-description {
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.violation-description div.humanized-description {
   display: block;
 }
 
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tbody tr.violation-row td.violation-description div.icons {
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.violation-description div.icons {
   display: block;
 }
 
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tbody tr.violation-row td.violation-description div.icons svg.svg-inline--fa {
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.violation-description div.icons svg.svg-inline--fa {
   margin: 0 0.25rem;
 }
 
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tbody tr.violation-row td.location span.borough {
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.location span.borough {
   margin: 0 0.25em 0 0;
 }
 
 
-/* div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tbody tr.violation-row td.violation-description svg.svg-inline--fa {
+/* div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.violation-description svg.svg-inline--fa {
   margin: 0 0.25rem;
 } */
 

@@ -8,7 +8,7 @@ export default {
     },
     toggleViolationsView: {
       hide: 'hide violations',
-      show: 'show violations'
+      noViolations: 'no violations',
     },
   },
   query: {

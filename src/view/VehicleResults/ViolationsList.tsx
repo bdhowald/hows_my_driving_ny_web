@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 
 import { ListGroupItem } from 'reactstrap'
@@ -8,58 +8,82 @@ import { Vehicle } from 'utils/types/responses'
 import ViolationsTable from 'view/ViolationsTable'
 
 const ViolationsList = ({ vehicle }: { vehicle: Vehicle}) => {
-  const [violationsListIsVisible, setViolationsListVisibility] = useState(true)
+  const [violationsListIsVisible, setViolationsListVisibility] = useState(vehicle.expandResults)
   const [showFullText, setShowFullText] = useState(window.innerWidth > 768)
 
   const violationsCount = vehicle.violationsCount
   const vehicleHasViolations = violationsCount > 0
 
-  const ShowFullViolationTextLink = () => (
-    <span
-      className='see-full-violation-text-table-link'
-      onClick={(e) => {
-        e.stopPropagation()
-        setShowFullText(!showFullText)
-      }}
-    >
-      {showFullText && vehicleHasViolations
-        ? `(${L10N.lookups.toggleFullViolationText.hide})`
-        : vehicleHasViolations
-        ? `(${L10N.lookups.toggleFullViolationText.show})`
-        : ''
-      }
-    </span>
-  )
+  useEffect(() => {
+    setViolationsListVisibility(vehicle.expandResults)
+  }, [vehicle.expandResults])
 
-  const ShowViolationsLink = () => (
-    <span
-      className='see-violations-table-link'
-      onClick={(e) => {
-        e.stopPropagation()
-        setViolationsListVisibility(!violationsListIsVisible)
-      }}
-    >
-      {violationsListIsVisible && vehicleHasViolations
-        ? `(${L10N.lookups.toggleViolationsView.hide})`
-        : vehicleHasViolations
-        ? `(${L10N.lookups.toggleViolationsView.show})`
-        : ''
-      }
-    </span>
-  )
+  const ShowFullViolationTextButton = () => {
+    if (!(violationsListIsVisible && vehicleHasViolations)) {
+      return <></>
+    }
+
+    return (
+      <button
+        aria-controls={`violations-table-${vehicle.uniqueIdentifier}`}
+        aria-expanded='false'
+        className="btn btn-outline-primary btn-block"
+        onClick={(e) => {
+          e.stopPropagation()
+          setShowFullText(!showFullText)
+        }}
+        type="button"
+      >
+        {showFullText
+          ? L10N.lookups.toggleFullViolationText.hide
+          : vehicleHasViolations
+          ? L10N.lookups.toggleFullViolationText.show
+          : ''
+        }
+      </button>
+    )
+  }
+
+  const ShowViolationsButton = () => {
+    const buttonText = vehicleHasViolations
+      ? (violationsListIsVisible
+        ? L10N.lookups.toggleViolationsView.hide
+        : `show ${violationsCount} violation${violationsCount === 0 ? '' : 's'}`
+      )
+      : L10N.lookups.toggleViolationsView.noViolations
+
+    return (
+      <button
+        className={`btn btn-block ${
+          vehicleHasViolations
+            ? 'btn-outline-primary'
+            : 'btn-outline-secondary'
+          }`
+        }
+        disabled={!vehicleHasViolations}
+        onClick={(e) => {
+          e.stopPropagation()
+          setViolationsListVisibility(!violationsListIsVisible)
+        }}
+        type="button"
+      >
+        {buttonText}
+      </button>
+    )
+  }
 
   return (
     <ListGroupItem>
       <div className='violations-table-wrapper' style={{width: '100%'}}>
         <div className='violations-table-header'>
-          <div>
-            Violations:
-            <span className='violations-count'>
-              {violationsCount}
-            </span>
+          <div className='row'>
+            <div className={`col-12 ${(violationsListIsVisible && vehicleHasViolations) ? 'col-md-6' : ''}`}>
+              <ShowViolationsButton />
+            </div>
+            <div className='col-12 col-md-6'>
+              <ShowFullViolationTextButton />
+            </div>
           </div>
-          {violationsListIsVisible && <ShowFullViolationTextLink />}
-          <ShowViolationsLink />
         </div>
         {vehicleHasViolations && violationsListIsVisible &&
           <ViolationsTable showFullText={showFullText} vehicle={vehicle}/>

@@ -29,18 +29,30 @@ const VehicleResult = (
 
 const CombinedVehicleResults = (
   { vehicles, removeLookupFn }: CombinedVehicleResultsProps
-) => (
-  <>
-    {vehicles.map((vehicle: Vehicle, index: number) => (
-      <VehicleResult
-        key={getKey(vehicle)}
-        index={index}
-        removeLookupFn={removeLookupFn}
-        vehicle={vehicle}
-      />
-    ))}
-  </>
-)
+) => {
+  vehicles.sort((a: Vehicle, b: Vehicle) => {
+    const aHasPriority = a.expandResults || a.fromPreviousLookupUniqueIdentifier
+    const bHasPriority = b.expandResults || b.fromPreviousLookupUniqueIdentifier
+
+    if (aHasPriority && !bHasPriority) {
+      return -1
+    }
+    return 0
+  })
+
+  return (
+    <>
+      {vehicles.map((vehicle: Vehicle, index: number) => (
+        <VehicleResult
+          key={getKey(vehicle)}
+          index={index}
+          removeLookupFn={removeLookupFn}
+          vehicle={vehicle}
+        />
+      ))}
+    </>
+  )
+}
 
 const vehicleResultsAreEqual = (
   prevProps: CombinedVehicleResultsProps,

@@ -2,6 +2,7 @@ import * as React from 'react'
 import { ListGroupItem } from 'reactstrap'
 
 import plateTypes from 'constants/plateTypes'
+import getRegionNameFromAbbreviation from 'utils/getRegionNameFromAbbreviation'
 import { Vehicle } from 'utils/types/responses'
 
 const DOLLAR_LOCALE_SETTINGS = {
@@ -11,12 +12,18 @@ const DOLLAR_LOCALE_SETTINGS = {
 
 const LookupInfo = ({ vehicle }: { vehicle: Vehicle }) => {
 
-  const lastQueriedDate = new Date(vehicle.previousLookupDate)
-    .toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit'})
+  const lastQueriedDateString = !!vehicle.previousLookupDate
+    ? new Date(vehicle.previousLookupDate).toLocaleDateString(
+      'en-US', { year: 'numeric', month: '2-digit', day: '2-digit'}
+    )
+    : 'Never'
 
-  const newTicketsString = (vehicle.previousViolationCount - vehicle.violationsCount) > 0
-    ? `(${vehicle.previousViolationCount - vehicle.violationsCount} new tickets)`
+  const newTicketsSinceLastLookup = vehicle.previousViolationCount - vehicle.violationsCount
+  const newTicketsString = (vehicle.previousLookupDate && newTicketsSinceLastLookup > 0)
+    ? `(${newTicketsSinceLastLookup} new ticket${newTicketsSinceLastLookup > 1 ? 's' : ''})`
     : ''
+
+  const showFines = !!vehicle.violationsCount
 
   const getPlateTypesString = (vehicle: Vehicle) => {
     let plateCategory: string | undefined = undefined
@@ -25,77 +32,77 @@ const LookupInfo = ({ vehicle }: { vehicle: Vehicle }) => {
         plateCategory = type.displayName
       }
     })
-    const plateTypesString: string | undefined = vehicle.plateTypes ? plateCategory : ''
+    const plateTypesString: string | undefined = vehicle.plateTypes ? plateCategory : 'All'
     return plateTypesString
   }
 
+  const totalFinedString = vehicle.fines.totalFined.toLocaleString(
+    'en-US', DOLLAR_LOCALE_SETTINGS
+  )
+  const totalPaidString = vehicle.fines.totalPaid.toLocaleString(
+    'en-US', DOLLAR_LOCALE_SETTINGS
+  )
+  const totalReducedString = vehicle.fines.totalReduced.toLocaleString(
+    'en-US', DOLLAR_LOCALE_SETTINGS
+  )
+  const totalOutstandingString = vehicle.fines.totalOutstanding.toLocaleString(
+    'en-US', DOLLAR_LOCALE_SETTINGS
+  )
+
+  const finesAriaLabel = `$${totalFinedString} fined - $${totalPaidString} paid - $${totalReducedString} reduced = $${totalOutstandingString} outstanding`
+
+  const smallColumnWidth = showFines ? 6 : 6
+
   return (
-    <>
-      <ListGroupItem className='no-padding'>
-        <div className='summary-box'>
-          <div className='split-list-group-item'>
+    <ListGroupItem className='no-padding'>
+      <div className='row'>
+        <div className={`summary-section col-xs-12 col-sm-${smallColumnWidth}`}>
+          <div className='summary-box keys lookup-info'>
             <div>Plate:</div>
-            <div className='summary-value'>{vehicle.plate}</div>
-          </div>
-          <div className='split-list-group-item'>
             <div>Region:</div>
-            <div className='summary-value'>{vehicle.state}</div>
-          </div>
-          {vehicle.plateTypes && (
-            <div className='split-list-group-item'>
-              <div>Plate type:</div>
-              <div className='summary-value'>{getPlateTypesString(vehicle)}</div>
-            </div>
-          )}
-        </div>
-      </ListGroupItem>
-      <ListGroupItem className='no-padding'>
-        <div className='summary-box'>
-          <div className='split-list-group-item'>
+            <div>Plate type:</div>
             <div>Lookups:</div>
-            <div className='summary-value'>{vehicle.timesQueried}</div>
+            <div>Recent:</div>
           </div>
-          {vehicle.previousLookupDate && (
-            <div className='split-list-group-item'>
-              <div>Recent:</div>
-              <div className='summary-value'>{`${lastQueriedDate} ${newTicketsString}`}</div>
+          <div className='summary-box values lookup-info'>
+            <div className='summary-value'>{vehicle.plate}</div>
+            <div className='summary-value region'>
+              <div className='region-abbreviation'>{vehicle.state}</div>
+              <div className='region-full-name'>
+                {getRegionNameFromAbbreviation(vehicle.state)}
+              </div>
             </div>
-          )}
-        </div>
-      </ListGroupItem>
-      <ListGroupItem className='no-padding'>
-        <div className='summary-box'>
-          <div className='split-list-group-item'>
-            <div>Fined:</div>
-            <div className='summary-value'>${
-              vehicle.fines.totalFined.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)
-            }</div>
-          </div>
-          <div className='split-list-group-item'>
-            <div>Reduced:</div>
-            <div className='summary-value'>${
-              vehicle.fines.totalReduced.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)
-            }</div>
+            <div className='summary-value'>{getPlateTypesString(vehicle)}</div>
+            <div className='summary-value'>{vehicle.timesQueried}</div>
+            <div className='summary-value'>{`${lastQueriedDateString} ${newTicketsString}`}</div>
           </div>
         </div>
-      </ListGroupItem>
-      <ListGroupItem  className='no-padding'>
-        <div className='summary-box'>
-          <div className='split-list-group-item'>
-            <div>Paid:</div>
-            <div className='summary-value'>${
-              vehicle.fines.totalPaid.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)
-            }</div>
+        {showFines && (
+          <div className='summary-section col-xs-12 col-sm-6'>
+            <div className='summary-box keys'>
+              <div>Fined:</div>
+              <div>Paid:</div>
+              <div className='fines-reduced'>Reduced:</div>
+              <div>Outstanding:</div>
+            </div>
+            <div className='summary-box values fines' role="math" aria-label={finesAriaLabel}>
+              <div className='math-symbols'>
+                <div>{'\u00A0\u00A0\u00A0'}</div>
+                <div>{'\u00A0\u00A0\u00A0'}</div>
+                <div className='fines-reduced'>–{'\u00A0'}</div>
+                <div>{'\u00A0\u00A0\u00A0'}</div>
+              </div>
+              <div className='amounts'>
+                <div>${totalFinedString}</div>
+                <div>${totalPaidString}</div>
+                <div className='fines-reduced'>${totalReducedString}</div>
+                <div>${totalOutstandingString}</div>
+              </div>
+            </div>
           </div>
-          <div className='split-list-group-item'>
-            <div>Outstanding:</div>
-            <div className='summary-value'>${
-              vehicle.fines.totalOutstanding.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)
-            }</div>
-          </div>
-        </div>
-      </ListGroupItem>
-    </>
+        )}
+      </div>
+    </ListGroupItem>
   )
 }
 
