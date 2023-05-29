@@ -173,7 +173,7 @@ const Search = ({
       ...currentLookup,
       ...{[changeEvent.currentTarget.name]: changeEvent.currentTarget.value.replace(/\s/g, '')}
     })
-  }, [])
+  }, [currentLookup])
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) =>{
     event.preventDefault()
@@ -195,12 +195,10 @@ const Search = ({
 
   const setOrRemoveLookupIdentifierCookie = (cookieString: string | undefined) => {
     if (cookieString) {
-      if (cookieString !== cookies[LOOKUP_IDENTIFIER_COOKIE] ) {
-        setCookie(LOOKUP_IDENTIFIER_COOKIE, cookieString, {
-          maxAge: 31536000,
-          path: '/'
-        })
-      }
+      setCookie(LOOKUP_IDENTIFIER_COOKIE, cookieString, {
+        maxAge: 31536000,
+        path: '/'
+      })
       return
     }
     removeCookie(LOOKUP_IDENTIFIER_COOKIE)
