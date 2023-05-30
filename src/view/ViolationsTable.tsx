@@ -162,7 +162,10 @@ const ViolationsTable = ({ showFullText, vehicle }: OwnProps) => {
   }
 
   return (
-    <div className='table-responsive violations-table-body'>
+    <div
+      className='table-responsive violations-table-body'
+      id={`violations-table-${vehicle.uniqueIdentifier}`}
+    >
       <table className='table table-striped table-sm violations-table'>
         <caption>Parking and camera violations</caption>
         <TableHeader />

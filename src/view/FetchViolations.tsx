@@ -61,7 +61,7 @@ const FetchViolations = () => {
     if (listRef.current) {
       listRef.current.scrollIntoView({behavior: 'smooth'})
     }
-  }, [])
+  }, [lookupInFlight])
 
   return (
     <div>

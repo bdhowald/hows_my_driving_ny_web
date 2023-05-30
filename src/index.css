@@ -33,32 +33,28 @@ div.container-fluid {
   min-width: 20em;
 }
 
+div.toast-container {
+  --bs-toast-zindex: 1090;
+  left: 50%;
+  pointer-events: none;
+  position: fixed;
+  top: 10%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  z-index: var(--bs-toast-zindex);
+}
 
-button.btn-primary {
-  background-color: #4824ff;
-  border-color: #4824ff;
+div.toast-container div.toast {
+  background-color: #333;
   color: #fff;
+  text-align: center;
+  max-width: none;
 }
 
-@media (hover: hover) {
-  button.btn-primary:not(:disabled):not(.disabled):active {
-    background-color: #fff;
-    color: #4824ff;
-  }
-  button.btn-primary:hover {
-    background-color: #fff;
-    color: #4824ff;
-  }
-}
-
-@media (hover: none) {
-  button.btn-primary:not(:disabled):not(.disabled):active {
-    background-color: #4824ff;
-    color: #fff;
-  }
-  button.btn-primary:hover {
-    background-color: #4824ff;
-    color: #fff;
+@media only screen and (min-width: 576px) {
+  div.toast-container div.toast {
+    font-size: 1rem;
+    padding: 1rem 2rem;
   }
 }
 
@@ -337,7 +333,7 @@ div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.
   }
 }
 
-@media not all and (hover: none) {
+@media (hover: none) {
   div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-header div.row div.col-12 button.btn-outline-primary:not(:disabled):not(.disabled):active {
     background-color: #fff;
     color: #4824ff;

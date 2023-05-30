@@ -25,8 +25,6 @@ const ViolationsList = ({ vehicle }: { vehicle: Vehicle}) => {
 
     return (
       <button
-        aria-controls={`violations-table-${vehicle.uniqueIdentifier}`}
-        aria-expanded='false'
         className="btn btn-outline-primary btn-block"
         onClick={(e) => {
           e.stopPropagation()
@@ -44,7 +42,12 @@ const ViolationsList = ({ vehicle }: { vehicle: Vehicle}) => {
     )
   }
 
-  const ShowViolationsButton = () => {
+  const ShowViolationsButton = ({ vehicle }: { vehicle: Vehicle}) => {
+    const newViolationsSinceLastLookup = 7//vehicle.previousViolationCount - vehicle.violationsCount
+    const newViolationsString = (vehicle.previousLookupDate && newViolationsSinceLastLookup > 0)
+      ? ` (${newViolationsSinceLastLookup} new)`
+      : ''
+
     const buttonText = vehicleHasViolations
       ? (violationsListIsVisible
         ? L10N.lookups.toggleViolationsView.hide
@@ -54,6 +57,8 @@ const ViolationsList = ({ vehicle }: { vehicle: Vehicle}) => {
 
     return (
       <button
+      aria-controls={`violations-table-${vehicle.uniqueIdentifier}`}
+      aria-expanded='false'
         className={`btn btn-block ${
           vehicleHasViolations
             ? 'btn-outline-primary'
@@ -68,6 +73,7 @@ const ViolationsList = ({ vehicle }: { vehicle: Vehicle}) => {
         type="button"
       >
         {buttonText}
+        <span>{newViolationsString}</span>
       </button>
     )
   }
@@ -78,7 +84,7 @@ const ViolationsList = ({ vehicle }: { vehicle: Vehicle}) => {
         <div className='violations-table-header'>
           <div className='row'>
             <div className={`col-12 ${(violationsListIsVisible && vehicleHasViolations) ? 'col-md-6' : ''}`}>
-              <ShowViolationsButton />
+              <ShowViolationsButton vehicle={vehicle}/>
             </div>
             <div className='col-12 col-md-6'>
               <ShowFullViolationTextButton />
