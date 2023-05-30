@@ -38,7 +38,7 @@ div.toast-container {
   left: 50%;
   pointer-events: none;
   position: fixed;
-  top: 10%;
+  top: 5%;
   transform: translate(-50%, -50%);
   width: 90%;
   z-index: var(--bs-toast-zindex);
