@@ -1,8 +1,4 @@
-const LOCALE_ARGS: {
-  day: '2-digit', month: '2-digit', year: 'numeric'
-} = {
-  year: 'numeric', month: '2-digit', day: '2-digit'
-}
+import L10N from 'constants/display'
 
 export class Violation {
   amountDue: number
@@ -123,7 +119,7 @@ export class Violation {
 
   getViolationTime(): string {
     return Date.parse(this.formattedTime)
-      ? new Date(this.formattedTime).toLocaleDateString('en-US', LOCALE_ARGS)
+      ? new Date(this.formattedTime).toLocaleDateString('en-US', L10N.sitewide.dateFormat)
       : 'N/A'
   }
 }
