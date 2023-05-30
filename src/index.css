@@ -459,6 +459,19 @@ div.container-fluid div.row div.card ul.list-group li.list-group-item span.viola
   margin: 0 1rem;
 }
 
-div.vehicles {
+div.container-fluid div.row div.vehicles {
   padding: 0.5rem 0 0;
+}
+
+div.container-fluid footer {
+  padding: 2rem 1rem 1rem;
+}
+
+div.container-fluid footer div.footer-content {
+  text-align: center;
+}
+
+div.container-fluid footer div.footer-content p a.self-link {
+  color: #000;
+  text-decoration: underline;
 }

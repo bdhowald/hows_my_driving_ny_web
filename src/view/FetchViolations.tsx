@@ -18,6 +18,8 @@ import { Vehicle } from 'utils/types/responses'
 import Search from 'view/Search'
 import VehicleResults from 'view/VehicleResults'
 
+import Footer from './Footer'
+
 library.add(faAngleDown, faAngleUp)
 smoothscroll.polyfill()
 
@@ -81,6 +83,11 @@ const FetchViolations = () => {
               scrollRef={listRef}
               vehicles={queriedVehicles}
             />
+          </div>
+        </Row>
+        <Row>
+          <div className='col-md-12'>
+            <Footer />
           </div>
         </Row>
       </Container>

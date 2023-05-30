@@ -25,7 +25,7 @@ export default {
     jumbotronHeaderText: (
       <React.Fragment>
         <p className="lead">
-          Search New York City <a className='open-data-link' href='https://data.cityofnewyork.us/browse?q=parking%20violations&sortBy=relevance'>parking & camera violations</a>
+          Search New York City <a className='open-data-link' href='https://data.cityofnewyork.us/browse?q=parking%20violations&sortBy=relevance' target='_blank' rel='noopener noreferrer'>parking & camera violations</a>
         </p>
       </React.Fragment>
     )
