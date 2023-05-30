@@ -43,7 +43,7 @@ const ViolationsList = ({ vehicle }: { vehicle: Vehicle}) => {
   }
 
   const ShowViolationsButton = ({ vehicle }: { vehicle: Vehicle}) => {
-    const newViolationsSinceLastLookup = 7//vehicle.previousViolationCount - vehicle.violationsCount
+    const newViolationsSinceLastLookup = vehicle.previousViolationCount - vehicle.violationsCount
     const newViolationsString = (vehicle.previousLookupDate && newViolationsSinceLastLookup > 0)
       ? ` (${newViolationsSinceLastLookup} new)`
       : ''
