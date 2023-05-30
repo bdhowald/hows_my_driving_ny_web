@@ -383,7 +383,9 @@ const Search = ({
             <Col md>
               <Form.Group>
                 <input
+                  autoComplete="off"
                   className='form-control'
+                  id='plate-input'
                   name='plateId'
                   onChange={handleInputChange}
                   placeholder='Enter a plate...'

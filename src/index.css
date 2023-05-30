@@ -69,6 +69,23 @@ form.form div.form-group {
 form.form div.form-group input {
   font-size: 0.875rem;
   height: 2.375rem;
+  text-transform: uppercase;
+}
+
+form.form div.form-group input::-webkit-input-placeholder {
+  text-transform: initial;
+}
+
+form.form div.form-group input::-moz-placeholder {
+  text-transform: initial;
+}
+
+form.form div.form-group input:-moz-placeholder {
+  text-transform: initial;
+}
+
+form.form div.form-group input::-ms-input-placeholder {
+    text-transform: initial;
 }
 
 form.form div.form-group select {
