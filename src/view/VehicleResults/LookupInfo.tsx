@@ -15,7 +15,7 @@ const LookupInfo = ({ vehicle }: { vehicle: Vehicle }) => {
 
   const lastQueriedDateString = !!vehicle.previousLookupDate
     ? new Date(vehicle.previousLookupDate).toLocaleDateString('en-US', L10N.sitewide.dateFormat)
-    : 'Never'
+    : null
 
   const showFines = !!vehicle.violationsCount
 
@@ -56,7 +56,9 @@ const LookupInfo = ({ vehicle }: { vehicle: Vehicle }) => {
             <div>Region:</div>
             <div>Plate type:</div>
             <div>Lookups:</div>
-            <div>Previous:</div>
+            {lastQueriedDateString && (
+              <div>Previous:</div>
+            )}
           </div>
           <div className='summary-box values lookup-info'>
             <div className='summary-value'>{vehicle.plate}</div>
@@ -68,7 +70,9 @@ const LookupInfo = ({ vehicle }: { vehicle: Vehicle }) => {
             </div>
             <div className='summary-value'>{getPlateTypesString(vehicle)}</div>
             <div className='summary-value'>{vehicle.timesQueried}</div>
-            <div className='summary-value'>{lastQueriedDateString}</div>
+            {lastQueriedDateString && (
+              <div className='summary-value'>{lastQueriedDateString}</div>
+            )}
           </div>
         </div>
         {showFines && (
