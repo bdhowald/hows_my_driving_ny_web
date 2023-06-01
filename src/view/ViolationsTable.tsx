@@ -167,7 +167,7 @@ const ViolationsTable = ({ showFullText, vehicle }: OwnProps) => {
       id={`violations-table-${vehicle.uniqueIdentifier}`}
     >
       <table className='table table-striped table-sm violations-table'>
-        <caption>Parking and camera violations</caption>
+        <caption>{`${vehicle.violationsCount} parking and camera violations`}</caption>
         <TableHeader />
         <TableBody violations={sortedViolations}/>
       </table>
