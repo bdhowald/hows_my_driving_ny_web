@@ -295,34 +295,29 @@ const SingleViolationFinesBreakdown = (props: SingleViolationFinesProps) => {
     )
   }
 
+  const remainingFinesLabel = isViolationInJudgment ? 'In judgment' : 'Outstanding'
+
   const interestAmountString = interestAmount !== undefined
-    ? `+ ${interestAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} interest `
+    ? `+ $${interestAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} in interest`
     : ''
   const penaltyAmountString = penaltyAmount !== undefined
-    ? `+ ${penaltyAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} penalties `
+    ? `+ $${penaltyAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} in penalties`
     : ''
   const reductionAmountString = reductionAmount !== undefined
-    ? `- ${reductionAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} reduced `
+    ? `- $${reductionAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} reduced`
     : ''
   const paymentAmountString = paymentAmount !== undefined
-    ? `- ${paymentAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} paid `
+    ? `- $${paymentAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} paid`
     : ''
 
   const dueAmountFormatted = dueAmount !== undefined
     ? dueAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)
     : '0.00'
   const dueAmountString = dueAmount !== undefined
-    ? `= ${dueAmountFormatted} oustanding`
+    ? `= $${dueAmountFormatted} ${isViolationInJudgment ? 'in judgment' :'oustanding'}`
     : ''
 
-  let finesAriaLabel = `$${fineAmountString} fined 
-$${interestAmountString} 
-$${penaltyAmountString} 
-$${reductionAmountString} 
-$${paymentAmountString} 
-$${dueAmountString}`
-
-  const remainingFinesLabel = isViolationInJudgment ? 'In judgment' : 'Outstanding'
+  let finesAriaLabel = `$${fineAmountString} fined ${interestAmountString} ${penaltyAmountString} ${reductionAmountString} ${paymentAmountString} ${dueAmountString}`
 
   return (
     <td className='fines fines-breakdown'>
