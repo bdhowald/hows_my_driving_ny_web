@@ -5,11 +5,13 @@ import { ListGroupItem } from 'reactstrap'
 
 import L10N from 'constants/display'
 import { Vehicle } from 'utils/types/responses'
-import ViolationsTable from 'view/ViolationsTable'
+
+import ViolationsTable from './ViolationsTable'
 
 const ViolationsList = ({ vehicle }: { vehicle: Vehicle}) => {
   const [violationsListIsVisible, setViolationsListVisibility] = useState(vehicle.expandResults)
   const [showFullText, setShowFullText] = useState(window.innerWidth > 768)
+  const [showFullFineData, setShowFullFineData] = useState(false)
 
   const violationsCount = vehicle.violationsCount
   const vehicleHasViolations = violationsCount > 0
@@ -17,6 +19,30 @@ const ViolationsList = ({ vehicle }: { vehicle: Vehicle}) => {
   useEffect(() => {
     setViolationsListVisibility(vehicle.expandResults)
   }, [vehicle.expandResults])
+
+  const ShowFullFineDataButton = () => {
+    if (!(violationsListIsVisible && vehicleHasViolations)) {
+      return <></>
+    }
+
+    return (
+      <button
+          className="btn btn-outline-primary btn-block"
+          onClick={(e) => {
+            e.stopPropagation()
+            setShowFullFineData(!showFullFineData)
+          }}
+          type="button"
+        >
+          {showFullFineData
+            ? L10N.lookups.toggleFullFinesView.hide
+            : vehicleHasViolations
+            ? L10N.lookups.toggleFullFinesView.show
+            : ''
+          }
+      </button>
+    )
+  }
 
   const ShowFullViolationTextButton = () => {
     if (!(violationsListIsVisible && vehicleHasViolations)) {
@@ -83,16 +109,23 @@ const ViolationsList = ({ vehicle }: { vehicle: Vehicle}) => {
       <div className='violations-table-wrapper' style={{width: '100%'}}>
         <div className='violations-table-header'>
           <div className='row'>
-            <div className={`col-12 ${(violationsListIsVisible && vehicleHasViolations) ? 'col-md-6' : ''}`}>
+            <div className={`col-12 ${(violationsListIsVisible && vehicleHasViolations) ? 'col-md-4' : ''}`}>
               <ShowViolationsButton vehicle={vehicle}/>
             </div>
-            <div className='col-12 col-md-6'>
+            <div className='col-12 col-md-4'>
+              <ShowFullFineDataButton />
+            </div>
+            <div className='col-12 col-md-4'>
               <ShowFullViolationTextButton />
             </div>
           </div>
         </div>
         {vehicleHasViolations && violationsListIsVisible &&
-          <ViolationsTable showFullText={showFullText} vehicle={vehicle}/>
+          <ViolationsTable
+            showFullFineData={showFullFineData}
+            showFullText={showFullText}
+            vehicle={vehicle}
+          />
         }
       </div>
     </ListGroupItem>

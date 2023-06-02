@@ -6,10 +6,7 @@ import plateTypes from 'constants/plateTypes'
 import getRegionNameFromAbbreviation from 'utils/getRegionNameFromAbbreviation'
 import { Vehicle } from 'utils/types/responses'
 
-const DOLLAR_LOCALE_SETTINGS = {
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2
-}
+import FinesBreakdown from './FinesBreakdown'
 
 const LookupInfo = ({ vehicle }: { vehicle: Vehicle }) => {
 
@@ -29,22 +26,6 @@ const LookupInfo = ({ vehicle }: { vehicle: Vehicle }) => {
     const plateTypesString: string | undefined = vehicle.plateTypes ? plateCategory : 'All'
     return plateTypesString
   }
-
-  const totalFinedString = vehicle.fines.totalFined.toLocaleString(
-    'en-US', DOLLAR_LOCALE_SETTINGS
-  )
-  const totalPaidString = vehicle.fines.totalPaid.toLocaleString(
-    'en-US', DOLLAR_LOCALE_SETTINGS
-  )
-  const totalReducedString = vehicle.fines.totalReduced.toLocaleString(
-    'en-US', DOLLAR_LOCALE_SETTINGS
-  )
-  const totalOutstandingString = vehicle.fines.totalOutstanding.toLocaleString(
-    'en-US', DOLLAR_LOCALE_SETTINGS
-  )
-
-  const finesAriaLabel = `$${totalFinedString} fined - $${totalPaidString} paid - $${totalReducedString} reduced = $${totalOutstandingString} outstanding`
-
   const smallColumnWidth = showFines ? 6 : 6
 
   return (
@@ -76,28 +57,12 @@ const LookupInfo = ({ vehicle }: { vehicle: Vehicle }) => {
           </div>
         </div>
         {showFines && (
-          <div className='summary-section col-xs-12 col-sm-6'>
-            <div className='summary-box keys'>
-              <div>Fined:</div>
-              <div>Paid:</div>
-              <div className='fines-reduced'>Reduced:</div>
-              <div>Outstanding:</div>
-            </div>
-            <div className='summary-box values fines' role="math" aria-label={finesAriaLabel}>
-              <div className='math-symbols'>
-                <div>{'\u00A0\u00A0\u00A0'}</div>
-                <div>{'\u00A0\u00A0\u00A0'}</div>
-                <div className='fines-reduced'>–{'\u00A0'}</div>
-                <div>{'\u00A0\u00A0\u00A0'}</div>
-              </div>
-              <div className='amounts'>
-                <div>${totalFinedString}</div>
-                <div>${totalPaidString}</div>
-                <div className='fines-reduced'>${totalReducedString}</div>
-                <div>${totalOutstandingString}</div>
-              </div>
-            </div>
-          </div>
+          <FinesBreakdown.CombinedViolationsFinesBreakdown
+            totalFined={vehicle.fines.totalFined}
+            totalOutstanding={vehicle.fines.totalOutstanding}
+            totalPaid={vehicle.fines.totalPaid}
+            totalReduced={vehicle.fines.totalReduced}
+          />
         )}
       </div>
     </ListGroupItem>

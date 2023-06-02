@@ -7,17 +7,19 @@ import sorts from 'constants/sortOptions'
 import { Violation } from 'models/Violation'
 import sortViolations from 'utils/sortViolations'
 import { Vehicle } from 'utils/types/responses'
-import TableRow from 'view/ViolationsTableRow'
+
+import TableRow from './ViolationsTableRow'
 
 
 const NUM_COLUMNS = 4
 
 type OwnProps = {
+  showFullFineData: boolean,
   showFullText: boolean,
   vehicle: Vehicle,
 }
 
-const ViolationsTable = ({ showFullText, vehicle }: OwnProps) => {
+const ViolationsTable = ({ showFullFineData, showFullText, vehicle }: OwnProps) => {
 
   const { violations: violationData } = vehicle
 
@@ -153,7 +155,11 @@ const ViolationsTable = ({ showFullText, vehicle }: OwnProps) => {
           return (
             <React.Fragment key={violation.summonsNumber}>
               {getDividerIfNeeded(dividerCounter, violation)}
-              <TableRow showFullText={showFullText} violation={violation}/>
+              <TableRow
+                showFullFineData={showFullFineData}
+                showFullText={showFullText}
+                violation={violation}
+              />
             </React.Fragment>
           )
         })}

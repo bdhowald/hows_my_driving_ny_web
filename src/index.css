@@ -223,8 +223,73 @@ div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-p
 
 @media only screen and (min-width: 576px) {
   div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
-    justify-content: space-around;
-    padding: 0.75rem 1.25rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
+    padding: 0.75rem 2rem;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
+    padding: 0.75rem 3rem;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
+    padding: 0.75rem 4rem;
+  }
+}
+
+@media only screen and (min-width: 880px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
+    padding: 0.75rem 5rem;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
+    padding: 0.75rem 6rem;
+  }
+}
+
+@media only screen and (min-width: 1040px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
+    padding: 0.75rem 7rem;
+  }
+}
+
+@media only screen and (min-width: 1120px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
+    padding: 0.75rem 8rem;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
+    padding: 0.75rem 9rem;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
+    padding: 0.75rem 10rem;
+  }
+}
+
+@media only screen and (min-width: 1360px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
+    padding: 0.75rem 11rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item.no-padding div.row div.summary-section {
+    padding: 0.75rem 12rem;
   }
 }
 
@@ -385,14 +450,11 @@ div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.
   margin: 0 0.25rem;
 }
 
-@media only screen and (max-width: 768px) {
-  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr::after{
-    content: "";
-    display: inline-block;
-    min-height: 50px;
-    vertical-align: top;
-  }
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr td {
+  vertical-align: inherit;
+}
 
+@media only screen and (max-width: 768px) {
   div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr td {
     vertical-align: inherit;
   }
@@ -422,6 +484,109 @@ div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.
 
   max-height: 400px;
 } */
+
+
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+@media only screen and (min-width: 520px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown {
+    padding: 0.5rem;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown {
+    padding: 1rem;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown {
+    padding: 1rem 2rem;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown {
+    padding: 1rem 3rem;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown {
+    padding: 1rem 4rem;
+  }
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown > div {
+  margin: 0 0.5rem;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown div.summary-box {
+  display: block;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown div.summary-box.keys {
+  text-align: left;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown div.summary-box.keys.lookup-info {
+  min-width: 5em;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown div.summary-box.values {
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 576px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown div.summary-box.keys {
+    margin-right: 1rem;
+  }
+
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown div.summary-box.values {
+    margin-left: 1rem;
+  }
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown div.summary-box.values.fines {
+  display: flex;
+  text-align: right;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown div.summary-box.values.lookup-info {
+  text-align: right;
+}
+
+@media only screen and (min-width: 576px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown div.summary-box.values.lookup-info {
+    text-align: center;
+  }
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown div.summary-box.values.fines div.math-symbols {
+  font-weight: normal;
+  text-align: center;
+}
+
+
+
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown div.fine-added {
+  border-bottom: 0.125rem solid rgba(0,0,0,.5);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown div.fine-subtracted {
+  border-bottom: 0.125rem solid rgba(0,0,0,.5);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+}
 
 div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.violation-description div.humanized-description {
   display: block;

@@ -12,6 +12,10 @@ const siteDateFormat: SiteDateFormat = {
 
 export default {
   lookups: {
+    toggleFullFinesView: {
+      hide: 'hide detailed fines',
+      show: 'show detailed fines',
+    },
     toggleFullViolationText: {
       hide: 'hide full text',
       show: 'show full text',

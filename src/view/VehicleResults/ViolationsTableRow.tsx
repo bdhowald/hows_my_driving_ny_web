@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { Violation } from 'models/Violation'
 
+import FinesBreakdown from './FinesBreakdown'
+
 import {
   BUS_LANE_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION,
   BUS_LANE_CAMERA_VIOLATION_CODE,
@@ -15,8 +17,14 @@ import {
   SCHOOL_ZONE_SPEED_CAMERA_VIOLATION_CODE
 } from 'constants/violations'
 
-const TableRow = (props: {showFullText: boolean, violation: Violation}): JSX.Element => {
-  const { showFullText, violation } = props
+type Props = {
+  showFullFineData: boolean
+  showFullText: boolean
+  violation: Violation
+}
+
+const TableRow = (props: Props): JSX.Element => {
+  const { showFullFineData, showFullText, violation } = props
   const totalFined: Number | null = violation.getTotalFined()
 
   let violationIcon: 'bus' | 'parking' | 'tachometer-alt' | 'traffic-light'
@@ -61,6 +69,10 @@ const TableRow = (props: {showFullText: boolean, violation: Violation}): JSX.Ele
       break
   }
 
+  const fineAmount = totalFined
+    ? ('$' + totalFined.toFixed(2))
+    : 'N/A'
+
   return (
     <tr
       className={`violation-row ${tableRowClass}`}
@@ -92,9 +104,15 @@ const TableRow = (props: {showFullText: boolean, violation: Violation}): JSX.Ele
           </span>
         )}
       </td>
-      <td>
-        {totalFined ? ('$' + totalFined.toFixed(2)) : 'N/A'}
-      </td>
+      <FinesBreakdown.SingleViolationFinesBreakdown
+        dueAmount={violation.amountDue}
+        fineAmount={violation.fineAmount}
+        interestAmount={violation.interestAmount}
+        paymentAmount={violation.paymentAmount}
+        penaltyAmount={violation.penaltyAmount}
+        reductionAmount={violation.reductionAmount}
+        showFullFineData={showFullFineData}
+      />
     </tr>
   )
 }
