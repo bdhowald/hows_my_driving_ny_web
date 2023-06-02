@@ -25,7 +25,6 @@ type Props = {
 
 const TableRow = (props: Props): JSX.Element => {
   const { showFullFineData, showFullText, violation } = props
-  const totalFined: Number | null = violation.getTotalFined()
 
   let violationIcon: 'bus' | 'parking' | 'tachometer-alt' | 'traffic-light'
 
@@ -69,13 +68,11 @@ const TableRow = (props: Props): JSX.Element => {
       break
   }
 
-  const fineAmount = totalFined
-    ? ('$' + totalFined.toFixed(2))
-    : 'N/A'
+  const padTableRow = !showFullFineData || violation.fineAmount == null
 
   return (
     <tr
-      className={`violation-row ${tableRowClass} ${showFullFineData ? '' : 'no-fines-breakdown'}`}
+      className={`violation-row ${tableRowClass} ${padTableRow ? 'no-fines-breakdown' : ''}`}
       key={violation.summonsNumber}
     >
       <td>

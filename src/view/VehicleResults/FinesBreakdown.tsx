@@ -277,8 +277,6 @@ const SingleViolationFinesBreakdown = (props: SingleViolationFinesProps) => {
     showFullFineData
   } = props
 
-  console.log(`fineAmount: ${fineAmount}`)
-
   if (!fineAmount) {
     return (
       <td className='fines'>N/A</td>
