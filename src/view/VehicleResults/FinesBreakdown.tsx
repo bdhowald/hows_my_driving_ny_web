@@ -268,50 +268,54 @@ const SingleViolationFinesSubtractionSymbols = (
 
 const SingleViolationFinesBreakdown = (props: SingleViolationFinesProps) => {
   const {
-    dueAmount = 0,
+    dueAmount,
     fineAmount,
     interestAmount,
-    paymentAmount = 0,
-    penaltyAmount = 0,
-    reductionAmount = 0,
+    paymentAmount,
+    penaltyAmount,
+    reductionAmount,
     showFullFineData
   } = props
 
-  if (!fineAmount || !showFullFineData) {
+  console.log(`fineAmount: ${fineAmount}`)
+
+  if (!fineAmount) {
     return (
       <td className='fines'>N/A</td>
     )
   }
 
-  const dueAmountString = dueAmount.toLocaleString(
-    'en-US', DOLLAR_LOCALE_SETTINGS
-  )
   const fineAmountString = fineAmount.toLocaleString(
     'en-US', DOLLAR_LOCALE_SETTINGS
   )
-  const interestAmountString = interestAmount
-    ? interestAmount.toLocaleString(
-      'en-US', DOLLAR_LOCALE_SETTINGS
-    )
-    : ''
-  const penaltyAmountString = penaltyAmount.toLocaleString(
-    'en-US', DOLLAR_LOCALE_SETTINGS
-  )
-  const reductionAmountString = reductionAmount.toLocaleString(
-    'en-US', DOLLAR_LOCALE_SETTINGS
-  )
-  const paymentAmountString = paymentAmount.toLocaleString(
-    'en-US', DOLLAR_LOCALE_SETTINGS
-  )
-  const totalFinedString = (fineAmount + (interestAmount ?? 0) + (penaltyAmount ?? 0)).toLocaleString(
-    'en-US', DOLLAR_LOCALE_SETTINGS
-  )
 
-  const finesAriaLabel = `$${fineAmountString} fined + 
-$${interestAmountString} interest + 
-$${penaltyAmountString} penalties - 
-$${reductionAmountString} reduced - 
-$${paymentAmountString} = 
+  if (!showFullFineData) {
+    return (
+      <td className='fines'>${fineAmountString}</td>
+    )
+  }
+
+  const interestAmountString = interestAmount
+    ? `+ ${interestAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} interest `
+    : ''
+  const penaltyAmountString = penaltyAmount
+    ? `+ ${penaltyAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} penalties `
+    : ''
+  const reductionAmountString = reductionAmount
+    ? `- ${reductionAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} reduced `
+    : ''
+  const paymentAmountString = paymentAmount
+    ? `- ${paymentAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} paid `
+    : ''
+  const dueAmountString = dueAmount
+    ? `= ${dueAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} oustanding`
+    : ''
+
+  let finesAriaLabel = `$${fineAmountString} fined 
+$${interestAmountString} 
+$${penaltyAmountString} 
+$${reductionAmountString} 
+$${paymentAmountString} 
 $${dueAmountString}`
 
   return (
