@@ -26,6 +26,7 @@ export type Vehicle = {
   expandResults?: boolean,
   fines: {
     totalFined: number,
+    totalInJudgment: number,
     totalOutstanding: number,
     totalPaid: number,
     totalReduced: number,

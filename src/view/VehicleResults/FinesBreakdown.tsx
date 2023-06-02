@@ -18,6 +18,7 @@ type SingleViolationFinesProps = {
 
 type CombinedViolationsFinesProps = {
   totalFined: number
+  totalInJudgment: number
   totalOutstanding: number
   totalPaid: number
   totalReduced: number
@@ -26,6 +27,7 @@ type CombinedViolationsFinesProps = {
 const CombinedViolationsFinesBreakdown = (props: CombinedViolationsFinesProps) => {
   const {
     totalFined,
+    totalInJudgment,
     totalOutstanding,
     totalPaid,
     totalReduced,
@@ -43,8 +45,13 @@ const CombinedViolationsFinesBreakdown = (props: CombinedViolationsFinesProps) =
   const totalOutstandingString = totalOutstanding.toLocaleString(
     'en-US', DOLLAR_LOCALE_SETTINGS
   )
+  const totalinJudgmentString = totalInJudgment.toLocaleString(
+    'en-US', DOLLAR_LOCALE_SETTINGS
+  )
 
   const finesAriaLabel = `$${totalFinedString} fined - $${totalPaidString} paid - $${totalReducedString} reduced = $${totalOutstandingString} outstanding`
+
+  const anyFinesInJudgment = totalInJudgment > 0
 
   return (
     <div className='summary-section col-xs-12 col-sm-6'>
@@ -53,6 +60,9 @@ const CombinedViolationsFinesBreakdown = (props: CombinedViolationsFinesProps) =
         <div>Paid:</div>
         <div className='fines-reduced'>Reduced:</div>
         <div>Outstanding:</div>
+        {anyFinesInJudgment && (
+          <div className='in-judgment'>In judgment:</div>
+        )}
       </div>
       <div className='summary-box values fines' role="math" aria-label={finesAriaLabel}>
         <div className='math-symbols'>
@@ -60,12 +70,18 @@ const CombinedViolationsFinesBreakdown = (props: CombinedViolationsFinesProps) =
           <div>{'\u00A0\u00A0\u00A0'}</div>
           <div className='fines-reduced'>–{'\u00A0'}</div>
           <div>{'\u00A0\u00A0\u00A0'}</div>
+          {anyFinesInJudgment && (
+            <div>{'\u00A0\u00A0\u00A0'}</div>
+          )}
         </div>
         <div className='amounts'>
           <div>${totalFinedString}</div>
           <div>${totalPaidString}</div>
           <div className='fines-reduced'>${totalReducedString}</div>
           <div>${totalOutstandingString}</div>
+          {anyFinesInJudgment && (
+            <div className='in-judgment'>${totalinJudgmentString}</div>
+          )}
         </div>
       </div>
     </div>
@@ -185,10 +201,6 @@ const SingleViolationFinesAdditionSymbols = (
 const SingleViolationFinesSubtractionAmounts = (
   { paymentAmount, reductionAmount }: { paymentAmount: number | undefined, reductionAmount: number | undefined }
 ) => {
-  // if (!paymentAmount && !reductionAmount) {
-  //   return <></>
-  // }
-
   const paymentAmountString = (paymentAmount ?? 0).toLocaleString(
     'en-US', DOLLAR_LOCALE_SETTINGS
   )
@@ -222,10 +234,6 @@ const SingleViolationFinesSubtractionAmounts = (
 const SingleViolationFinesSubtractionLabels = (
   { paymentAmountPresent, reductionAmountPresent }: { paymentAmountPresent: boolean, reductionAmountPresent: boolean }
 ) => {
-  // if (!paymentAmountPresent && !reductionAmountPresent) {
-  //   return <></>
-  // }
-
   if (paymentAmountPresent && reductionAmountPresent) {
     return (
       <>
@@ -249,10 +257,6 @@ const SingleViolationFinesSubtractionLabels = (
 const SingleViolationFinesSubtractionSymbols = (
   { paymentAmountPresent, reductionAmountPresent }: { paymentAmountPresent: boolean, reductionAmountPresent: boolean }
 ) => {
-  // if (!paymentAmountPresent && !reductionAmountPresent) {
-  //   return <></>
-  // }
-
   if (paymentAmountPresent && reductionAmountPresent) {
     return (
       <>

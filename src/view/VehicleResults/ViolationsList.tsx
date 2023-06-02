@@ -69,11 +69,6 @@ const ViolationsList = ({ vehicle }: { vehicle: Vehicle}) => {
   }
 
   const ShowViolationsButton = ({ vehicle }: { vehicle: Vehicle}) => {
-    const newViolationsSinceLastLookup = vehicle.previousViolationCount - vehicle.violationsCount
-    const newViolationsString = (vehicle.previousLookupDate && newViolationsSinceLastLookup > 0)
-      ? ` (${newViolationsSinceLastLookup} new)`
-      : ''
-
     const buttonText = vehicleHasViolations
       ? (violationsListIsVisible
         ? L10N.lookups.toggleViolationsView.hide
@@ -99,7 +94,6 @@ const ViolationsList = ({ vehicle }: { vehicle: Vehicle}) => {
         type="button"
       >
         {buttonText}
-        <span>{newViolationsString}</span>
       </button>
     )
   }
