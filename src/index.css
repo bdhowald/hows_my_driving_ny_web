@@ -66,7 +66,7 @@ form.form div.form-group {
   margin: 0.5rem;
 }
 
-form.form div.form-group input {
+form.form div.form-group input[type=text] {
   font-size: 0.875rem;
   height: 2.375rem;
   text-transform: uppercase;
