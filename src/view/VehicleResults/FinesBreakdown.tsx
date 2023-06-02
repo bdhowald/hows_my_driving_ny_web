@@ -295,20 +295,24 @@ const SingleViolationFinesBreakdown = (props: SingleViolationFinesProps) => {
     )
   }
 
-  const interestAmountString = interestAmount
+  const interestAmountString = interestAmount !== undefined
     ? `+ ${interestAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} interest `
     : ''
-  const penaltyAmountString = penaltyAmount
+  const penaltyAmountString = penaltyAmount !== undefined
     ? `+ ${penaltyAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} penalties `
     : ''
-  const reductionAmountString = reductionAmount
+  const reductionAmountString = reductionAmount !== undefined
     ? `- ${reductionAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} reduced `
     : ''
-  const paymentAmountString = paymentAmount
+  const paymentAmountString = paymentAmount !== undefined
     ? `- ${paymentAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} paid `
     : ''
-  const dueAmountString = dueAmount
-    ? `= ${dueAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} oustanding`
+
+  const dueAmountFormatted = dueAmount !== undefined
+    ? dueAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)
+    : '0.00'
+  const dueAmountString = dueAmount !== undefined
+    ? `= ${dueAmountFormatted} oustanding`
     : ''
 
   let finesAriaLabel = `$${fineAmountString} fined 
@@ -356,7 +360,7 @@ $${dueAmountString}`
             paymentAmount={paymentAmount}
             reductionAmount={reductionAmount}
           />
-          <div>${dueAmountString}</div>
+          <div>${dueAmountFormatted}</div>
         </div>
       </div>
     </td>

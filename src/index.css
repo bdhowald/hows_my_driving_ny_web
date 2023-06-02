@@ -450,6 +450,15 @@ div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.
   margin: 0 0.25rem;
 }
 
+@media only screen and (max-width: 768px) {
+  div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.table-responsive table tbody tr.no-fines-breakdown::after{
+    content: "";
+    display: inline-block;
+    min-height: 50px;
+    vertical-align: top;
+  }
+}
+
 div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr td {
   vertical-align: inherit;
 }

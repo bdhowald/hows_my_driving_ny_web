@@ -75,7 +75,7 @@ const TableRow = (props: Props): JSX.Element => {
 
   return (
     <tr
-      className={`violation-row ${tableRowClass}`}
+      className={`violation-row ${tableRowClass} ${showFullFineData ? '' : 'no-fines-breakdown'}`}
       key={violation.summonsNumber}
     >
       <td>
