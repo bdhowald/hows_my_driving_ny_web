@@ -9,6 +9,7 @@ type SingleViolationFinesProps = {
   dueAmount: number | undefined
   fineAmount: number | undefined
   interestAmount: number | undefined
+  isViolationInJudgment: boolean
   paymentAmount: number | undefined
   penaltyAmount: number | undefined
   reductionAmount: number | undefined
@@ -271,6 +272,7 @@ const SingleViolationFinesBreakdown = (props: SingleViolationFinesProps) => {
     dueAmount,
     fineAmount,
     interestAmount,
+    isViolationInJudgment,
     paymentAmount,
     penaltyAmount,
     reductionAmount,
@@ -320,6 +322,8 @@ $${reductionAmountString}
 $${paymentAmountString} 
 $${dueAmountString}`
 
+  const remainingFinesLabel = isViolationInJudgment ? 'In judgment' : 'Outstanding'
+
   return (
     <td className='fines fines-breakdown'>
       <div className='summary-box keys'>
@@ -332,7 +336,7 @@ $${dueAmountString}`
           paymentAmountPresent={!!paymentAmount}
           reductionAmountPresent={!!reductionAmount}
         />
-        <div>Outstanding:</div>
+        <div>{remainingFinesLabel}:</div>
       </div>
       <div className='summary-box values fines' role="math" aria-label={finesAriaLabel}>
         <div className='math-symbols'>

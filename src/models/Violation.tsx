@@ -16,6 +16,7 @@ export class Violation {
   issuerCommand: string
   issuerPrecinct: string
   issuingAgency: string
+  judgmentEntryDate: string
   lawSection: string
   location: string
   paymentAmount: number
@@ -65,6 +66,7 @@ export class Violation {
     this.issuerCommand = data.issuerCommand
     this.issuerPrecinct = data.issuerPrecinct
     this.issuingAgency = data.issuingAgency
+    this.judgmentEntryDate = data.judgmentEntryDate
     this.lawSection = data.lawSection
     this.location = data.location
     this.paymentAmount = data.paymentAmount

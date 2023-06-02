@@ -105,6 +105,7 @@ const TableRow = (props: Props): JSX.Element => {
         dueAmount={violation.amountDue}
         fineAmount={violation.fineAmount}
         interestAmount={violation.interestAmount}
+        isViolationInJudgment={!!violation.judgmentEntryDate}
         paymentAmount={violation.paymentAmount}
         penaltyAmount={violation.penaltyAmount}
         reductionAmount={violation.reductionAmount}
