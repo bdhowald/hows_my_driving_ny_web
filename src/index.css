@@ -582,9 +582,6 @@ div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.
   text-align: center;
 }
 
-
-
-
 div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown div.fine-added {
   border-bottom: 0.125rem solid rgba(0,0,0,.5);
   padding-bottom: 0.75rem;
@@ -595,6 +592,10 @@ div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.
   border-bottom: 0.125rem solid rgba(0,0,0,.5);
   padding-bottom: 0.75rem;
   margin-bottom: 0.75rem;
+}
+
+div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.fines-breakdown div.in-judgment {
+  font-style: italic;
 }
 
 div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body table tbody tr.violation-row td.violation-description div.humanized-description {

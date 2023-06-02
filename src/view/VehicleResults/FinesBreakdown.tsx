@@ -331,7 +331,7 @@ const SingleViolationFinesBreakdown = (props: SingleViolationFinesProps) => {
           paymentAmountPresent={!!paymentAmount}
           reductionAmountPresent={!!reductionAmount}
         />
-        <div>{remainingFinesLabel}:</div>
+        <div className={isViolationInJudgment ? 'in-judgment' : ''}>{remainingFinesLabel}:</div>
       </div>
       <div className='summary-box values fines' role="math" aria-label={finesAriaLabel}>
         <div className='math-symbols'>
@@ -357,7 +357,7 @@ const SingleViolationFinesBreakdown = (props: SingleViolationFinesProps) => {
             paymentAmount={paymentAmount}
             reductionAmount={reductionAmount}
           />
-          <div>${dueAmountFormatted}</div>
+          <div className={isViolationInJudgment ? 'in-judgment' : ''}>${dueAmountFormatted}</div>
         </div>
       </div>
     </td>
