@@ -59,7 +59,7 @@ const CombinedViolationsFinesBreakdown = (props: CombinedViolationsFinesProps) =
         <div>Fined:</div>
         <div>Paid:</div>
         <div className='fines-reduced'>Reduced:</div>
-        <div>Outstanding:</div>
+        <div>Owed:</div>
         {anyFinesInJudgment && (
           <div className='in-judgment'>In judgment:</div>
         )}
