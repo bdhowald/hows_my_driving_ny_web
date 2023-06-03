@@ -299,7 +299,9 @@ const SingleViolationFinesBreakdown = (props: SingleViolationFinesProps) => {
     )
   }
 
-  const remainingFinesLabel = isViolationInJudgment ? 'In judgment' : 'Outstanding'
+  const showViolationInJudgment = isViolationInJudgment && dueAmount && dueAmount > 0
+
+  const remainingFinesLabel = showViolationInJudgment ? 'In judgment' : 'Outstanding'
 
   const interestAmountString = interestAmount !== undefined
     ? `+ $${interestAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} in interest`
@@ -318,7 +320,7 @@ const SingleViolationFinesBreakdown = (props: SingleViolationFinesProps) => {
     ? dueAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)
     : '0.00'
   const dueAmountString = dueAmount !== undefined
-    ? `= $${dueAmountFormatted} ${isViolationInJudgment ? 'in judgment' :'oustanding'}`
+    ? `= $${dueAmountFormatted} ${showViolationInJudgment ? 'in judgment' :'oustanding'}`
     : ''
 
   let finesAriaLabel = `$${fineAmountString} fined ${interestAmountString} ${penaltyAmountString} ${reductionAmountString} ${paymentAmountString} ${dueAmountString}`
@@ -335,7 +337,7 @@ const SingleViolationFinesBreakdown = (props: SingleViolationFinesProps) => {
           paymentAmountPresent={!!paymentAmount}
           reductionAmountPresent={!!reductionAmount}
         />
-        <div className={isViolationInJudgment ? 'in-judgment' : ''}>{remainingFinesLabel}:</div>
+        <div className={showViolationInJudgment ? 'in-judgment' : ''}>{remainingFinesLabel}:</div>
       </div>
       <div className='summary-box values fines' role="math" aria-label={finesAriaLabel}>
         <div className='math-symbols'>
@@ -361,7 +363,7 @@ const SingleViolationFinesBreakdown = (props: SingleViolationFinesProps) => {
             paymentAmount={paymentAmount}
             reductionAmount={reductionAmount}
           />
-          <div className={isViolationInJudgment ? 'in-judgment' : ''}>${dueAmountFormatted}</div>
+          <div className={showViolationInJudgment ? 'in-judgment' : ''}>${dueAmountFormatted}</div>
         </div>
       </div>
     </td>
