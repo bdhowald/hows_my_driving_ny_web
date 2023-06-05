@@ -13,12 +13,12 @@ const siteDateFormat: SiteDateFormat = {
 export default {
   lookups: {
     toggleFullFinesView: {
-      hide: 'hide detailed fines',
-      show: 'show detailed fines',
+      hide: 'show fines summary',
+      show: 'show fines detail',
     },
     toggleFullViolationText: {
-      hide: 'hide full text',
-      show: 'show full text',
+      hide: 'show violation summary',
+      show: 'show full violation',
     },
     toggleViolationsView: {
       hide: 'hide violations',
