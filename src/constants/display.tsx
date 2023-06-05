@@ -14,7 +14,7 @@ export default {
   lookups: {
     toggleFullFinesView: {
       hide: 'show fines summary',
-      show: 'show fines detail',
+      show: 'show fines details',
     },
     toggleFullViolationText: {
       hide: 'show violation summary',
