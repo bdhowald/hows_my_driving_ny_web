@@ -124,6 +124,10 @@ div.container-fluid div.row div.card div.card-header div.share-icons {
   display: flex;
 }
 
+div.container-fluid div.row div.card div.card-header div.share-icons button {
+  padding: 0 0.25rem;
+}
+
 div.container-fluid div.row div.card div.card-header div.share-icons button.copy-button {
   background: none;
 }
@@ -150,7 +154,6 @@ div.container-fluid div.row div.card div.card-header div.share-icons button.twit
   font-size: initial;
   color: inherit;
   cursor: pointer;
-  padding: 0px;
 }
 
 div.container-fluid div.row div.card ul.list-group.list-group-flush {
