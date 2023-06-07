@@ -20,11 +20,10 @@ const ViolationsList = ({ vehicle }: { vehicle: Vehicle}) => {
     setViolationsListVisibility(vehicle.expandResults)
   }, [vehicle.expandResults])
 
-  const ShowFullFineDataButton = () => {
-    if (!(violationsListIsVisible && vehicleHasViolations)) {
-      return <></>
-    }
+  const shouldShowFullFineDataButton = violationsListIsVisible && vehicleHasViolations
+  const shouldShowFullViolationTextButton = violationsListIsVisible && vehicleHasViolations
 
+  const ShowFullFineDataButton = () => {
     return (
       <button
           className="btn btn-outline-primary btn-block"
@@ -45,10 +44,6 @@ const ViolationsList = ({ vehicle }: { vehicle: Vehicle}) => {
   }
 
   const ShowFullViolationTextButton = () => {
-    if (!(violationsListIsVisible && vehicleHasViolations)) {
-      return <></>
-    }
-
     return (
       <button
         className="btn btn-outline-primary btn-block"
@@ -106,12 +101,16 @@ const ViolationsList = ({ vehicle }: { vehicle: Vehicle}) => {
             <div className={`col-12 ${(violationsListIsVisible && vehicleHasViolations) ? 'col-md-4' : ''}`}>
               <ShowViolationsButton vehicle={vehicle}/>
             </div>
-            <div className='col-12 col-md-4'>
-              <ShowFullFineDataButton />
-            </div>
-            <div className='col-12 col-md-4'>
-              <ShowFullViolationTextButton />
-            </div>
+            {shouldShowFullFineDataButton && (
+              <div className='col-12 col-md-4'>
+                <ShowFullFineDataButton />
+              </div>
+            )}
+            {shouldShowFullViolationTextButton && (
+              <div className='col-12 col-md-4'>
+                <ShowFullViolationTextButton />
+              </div>
+            )}
           </div>
         </div>
         {vehicleHasViolations && violationsListIsVisible &&
