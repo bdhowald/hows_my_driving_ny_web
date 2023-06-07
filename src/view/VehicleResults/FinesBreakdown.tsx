@@ -24,6 +24,77 @@ type CombinedViolationsFinesProps = {
   totalReduced: number
 }
 
+const CombinedViolationsFinesSubtractionAmounts = (
+  { totalPaid, totalReduced }: { totalPaid: number | undefined, totalReduced: number | undefined }
+) => {
+  const totalPaidString = (totalPaid ?? 0).toLocaleString(
+    'en-US', DOLLAR_LOCALE_SETTINGS
+  )
+
+  const totalReducedString = (totalReduced ?? 0).toLocaleString(
+    'en-US', DOLLAR_LOCALE_SETTINGS
+  )
+
+  if (totalPaid && totalReduced) {
+    return (
+      <>
+        <div>${totalReducedString}</div>
+        <div className='fines-reduced'>${totalPaidString}</div>
+      </>
+    )
+  }
+
+  if (totalPaid) {
+    return (
+      <div className='fines-reduced'>${totalPaidString}</div>
+    )
+  }
+
+  return (
+    <div className='fines-reduced'>${totalReducedString}</div>
+  )
+}
+
+const CombinedViolationsFinesSubtractionLabels = (
+  { totalPaidPresent, totalReducedPresent }: { totalPaidPresent: boolean, totalReducedPresent: boolean }
+) => {
+  if (totalPaidPresent && totalReducedPresent) {
+    return (
+      <>
+        <div>Reduced:</div>
+        <div className='fines-reduced'>Paid:</div>
+      </>
+    )
+  }
+
+  if (totalReducedPresent) {
+    return (
+      <div className='fines-reduced'>Reduced:</div>
+    )
+  }
+
+  return (
+    <div className='fines-reduced'>Paid:</div>
+  )
+}
+
+const CombinedViolationsFinesSubtractionSymbols = (
+  { totalPaidPresent, totalReducedPresent }: { totalPaidPresent: boolean, totalReducedPresent: boolean }
+) => {
+  if (totalPaidPresent && totalReducedPresent) {
+    return (
+      <>
+        <div>{'\u00A0\u00A0\u00A0'}</div>
+        <div className='fines-reduced'>–{'\u00A0'}</div>
+      </>
+    )
+  }
+
+  return (
+    <div className='fines-reduced'>–{'\u00A0'}</div>
+  )
+}
+
 const CombinedViolationsFinesBreakdown = (props: CombinedViolationsFinesProps) => {
   const {
     totalFined,
@@ -57,8 +128,10 @@ const CombinedViolationsFinesBreakdown = (props: CombinedViolationsFinesProps) =
     <div className='summary-section col-xs-12 col-sm-6'>
       <div className='summary-box keys'>
         <div>Fined:</div>
-        <div>Paid:</div>
-        <div className='fines-reduced'>Reduced:</div>
+        <CombinedViolationsFinesSubtractionLabels
+          totalPaidPresent={!!totalPaid}
+          totalReducedPresent={!!totalReduced}
+        />
         <div>Owed:</div>
         {anyFinesInJudgment && (
           <div className='in-judgment'>In judgment:</div>
@@ -67,8 +140,10 @@ const CombinedViolationsFinesBreakdown = (props: CombinedViolationsFinesProps) =
       <div className='summary-box values fines' role="math" aria-label={finesAriaLabel}>
         <div className='math-symbols'>
           <div>{'\u00A0\u00A0\u00A0'}</div>
-          <div>{'\u00A0\u00A0\u00A0'}</div>
-          <div className='fines-reduced'>–{'\u00A0'}</div>
+          <CombinedViolationsFinesSubtractionSymbols
+            totalPaidPresent={!!totalPaid}
+            totalReducedPresent={!!totalPaid}
+          />
           <div>{'\u00A0\u00A0\u00A0'}</div>
           {anyFinesInJudgment && (
             <div>{'\u00A0\u00A0\u00A0'}</div>
@@ -76,8 +151,10 @@ const CombinedViolationsFinesBreakdown = (props: CombinedViolationsFinesProps) =
         </div>
         <div className='amounts'>
           <div>${totalFinedString}</div>
-          <div>${totalPaidString}</div>
-          <div className='fines-reduced'>${totalReducedString}</div>
+          <CombinedViolationsFinesSubtractionAmounts
+            totalPaid={totalPaid}
+            totalReduced={totalReduced}
+          />
           <div>${totalOutstandingString}</div>
           {anyFinesInJudgment && (
             <div className='in-judgment'>${totalinJudgmentString}</div>
