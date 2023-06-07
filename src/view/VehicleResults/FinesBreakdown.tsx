@@ -142,7 +142,7 @@ const CombinedViolationsFinesBreakdown = (props: CombinedViolationsFinesProps) =
           <div>{'\u00A0\u00A0\u00A0'}</div>
           <CombinedViolationsFinesSubtractionSymbols
             totalPaidPresent={!!totalPaid}
-            totalReducedPresent={!!totalPaid}
+            totalReducedPresent={!!totalReduced}
           />
           <div>{'\u00A0\u00A0\u00A0'}</div>
           {anyFinesInJudgment && (
