@@ -38,10 +38,16 @@ div.toast-container {
   left: 50%;
   pointer-events: none;
   position: fixed;
-  top: 5%;
-  transform: translate(-50%, -50%);
+  top: 2.5%;
+  transform: translate(-50%, 0%);
   width: 90%;
   z-index: var(--bs-toast-zindex);
+}
+
+@media only screen and (min-width: 576px) {
+  div.toast-container {
+    top: 5%;
+  }
 }
 
 div.toast-container div.toast {
