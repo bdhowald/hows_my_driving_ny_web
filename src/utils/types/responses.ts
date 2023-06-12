@@ -36,6 +36,7 @@ export type Vehicle = {
   plateTypes: string[],
   previousLookupDate: string,
   previousViolationCount: number,
+  rectifiedPlate: string,
   state: string,
   timesQueried: number,
   uniqueIdentifier: string,
