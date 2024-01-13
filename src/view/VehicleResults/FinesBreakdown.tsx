@@ -366,19 +366,21 @@ const SingleViolationFinesBreakdown = (props: SingleViolationFinesProps) => {
     )
   }
 
-  const fineAmountString = fineAmount.toLocaleString(
-    'en-US', DOLLAR_LOCALE_SETTINGS
-  )
-
   if (!showFullFineData) {
+    const netFined = fineAmount + (interestAmount ?? 0) + (penaltyAmount ?? 0) - (reductionAmount ?? 0)
+    const netFinedString = netFined.toLocaleString(
+      'en-US', DOLLAR_LOCALE_SETTINGS
+    )
     return (
-      <td className='fines'>${fineAmountString}</td>
+      <td className='fines'>${netFinedString}</td>
     )
   }
 
   const showViolationInJudgment = isViolationInJudgment && dueAmount && dueAmount > 0
 
   const remainingFinesLabel = showViolationInJudgment ? 'In judgment' : 'Outstanding'
+
+  const fineAmountString = fineAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)
 
   const interestAmountString = interestAmount !== undefined
     ? `+ $${interestAmount.toLocaleString('en-US', DOLLAR_LOCALE_SETTINGS)} in interest`
