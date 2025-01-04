@@ -5,4 +5,3 @@ enum Sort {
   LOCATION = 'location',
 }
 export default Sort
-export type SortType = keyof typeof Sort

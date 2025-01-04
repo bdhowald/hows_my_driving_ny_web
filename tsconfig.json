@@ -6,11 +6,8 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "jsx": "react",
-    "lib": [
-      "dom",
-      "es2017",
-    ],
+    "jsx": "react-jsx",
+    "lib": ["dom", "es2017"],
     "module": "esnext",
     "moduleResolution": "Node",
     "noEmit": true,
@@ -19,10 +16,8 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es6",
+    "target": "es6"
   },
   "target": "ES6",
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

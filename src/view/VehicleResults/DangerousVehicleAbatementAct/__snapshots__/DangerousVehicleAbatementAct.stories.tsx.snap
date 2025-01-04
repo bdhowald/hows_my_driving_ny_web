@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/VehicleResults/DangerousVehicleAbatementAct RedLightCameraAndSpeedCameraEligible smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item list-group-item-warning"
+                data-testid="dangerous-vehicle-abatement-act-notice"
+            >
+              <p>
+                Under the
+                <a target="_blank"
+                   rel="noopener noreferrer"
+                   href="https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=3521908&amp;GUID=A4FD4CFC-8AD8-4130-AA92-11BC56936F6D#:~:text=The%20bill%20will%20create%20a,Department%20of%20Transportation%20(DOT)."
+                >
+                  Dangerous Vehicle Abatement Act
+                </a>
+                &nbsp;this vehicle could have been booted or impounded for:
+              </p>
+              <ul>
+                <li>
+                  <span class="text-bg-warning">
+                    <span class="dvaa-violations-count">
+                      7
+                    </span>
+                    red light camera violations
+                  </span>
+                  <span>
+                    &nbsp;(&gt;= 5/year) from 06/27/2023 to 05/06/2024
+                  </span>
+                </li>
+                <li>
+                  <span class="text-bg-warning">
+                    <span class="dvaa-violations-count">
+                      20
+                    </span>
+                    school zone speed camera violations
+                  </span>
+                  <span>
+                    &nbsp;(&gt;= 15/year) from 12/31/2023 to 10/07/2024
+                  </span>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/DangerousVehicleAbatementAct RedLightCameraEligible smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item list-group-item-warning"
+                data-testid="dangerous-vehicle-abatement-act-notice"
+            >
+              <p>
+                Under the
+                <a target="_blank"
+                   rel="noopener noreferrer"
+                   href="https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=3521908&amp;GUID=A4FD4CFC-8AD8-4130-AA92-11BC56936F6D#:~:text=The%20bill%20will%20create%20a,Department%20of%20Transportation%20(DOT)."
+                >
+                  Dangerous Vehicle Abatement Act
+                </a>
+                &nbsp;this vehicle could have been booted or impounded for:
+              </p>
+              <ul>
+                <li>
+                  <span class="text-bg-warning">
+                    <span class="dvaa-violations-count">
+                      7
+                    </span>
+                    red light camera violations
+                  </span>
+                  <span>
+                    &nbsp;(&gt;= 5/year) from 06/27/2023 to 05/06/2024
+                  </span>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/DangerousVehicleAbatementAct SpeedCameraEligible smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item list-group-item-warning"
+                data-testid="dangerous-vehicle-abatement-act-notice"
+            >
+              <p>
+                Under the
+                <a target="_blank"
+                   rel="noopener noreferrer"
+                   href="https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=3521908&amp;GUID=A4FD4CFC-8AD8-4130-AA92-11BC56936F6D#:~:text=The%20bill%20will%20create%20a,Department%20of%20Transportation%20(DOT)."
+                >
+                  Dangerous Vehicle Abatement Act
+                </a>
+                &nbsp;this vehicle could have been booted or impounded for:
+              </p>
+              <ul>
+                <li>
+                  <span class="text-bg-warning">
+                    <span class="dvaa-violations-count">
+                      20
+                    </span>
+                    school zone speed camera violations
+                  </span>
+                  <span>
+                    &nbsp;(&gt;= 15/year) from 12/31/2023 to 10/07/2024
+                  </span>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

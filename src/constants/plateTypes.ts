@@ -34,9 +34,13 @@
 //   }, {
 //     codes: ['DLR'],
 //     displayName: 'Dealer',
-//     key: 'dealer', 
+//     key: 'dealer',
 //   }, {
-//     codes: ['GAC'],
+//     codes: ['EDU'],
+//     displayName: 'Educator',
+//     key: 'educator',
+//   }, {
+//     codes: ['GAC', 'GSC'],
 //     displayName: "Governor's Second Car",
 //     key: 'governorsSecondCar',
 //   }, {
@@ -110,6 +114,10 @@
 //     displayName: 'State Court Justice',
 //     key: 'stateCourtJustice',
 //   }, {
+//     codes: ['TMP'],
+//     displayName: 'Temporary',
+//     key: 'temporary'
+//   }, {
 //     codes: ['HOU', 'LTR', 'SEM', 'TRA', 'TRL'],
 //     displayName: 'Trailer',
 //     key: 'trailer',
@@ -129,133 +137,178 @@
 // ]
 
 const plateTypes = {
-  'allTerrainVehicle': {
+  allTerrainVehicle: {
     codes: ['ATD', 'ATV'],
     displayName: 'All-Terrain Vehicle',
   },
-  'ambulance': {
+  ambulance: {
     codes: ['AMB'],
     displayName: 'Ambulance',
   },
-  'busVanpool': {
+  busVanpool: {
     codes: ['OMF', 'OML', 'OMO', 'OMR', 'OMS', 'OMV', 'VPL'],
     displayName: 'Bus/Vanpool',
   },
-  'commercial': {
-    codes: ['AGC', 'APP', 'CHC', 'CMB', 'COM', 'CSP', 'FAR', 'HAC', 'IRP', 'LOC', 'ORC', 'RGC', 'SPC', 'STG', 'THC', 'TRC'],
+  commercial: {
+    codes: [
+      'AGC',
+      'APP',
+      'CHC',
+      'CMB',
+      'COM',
+      'CSP',
+      'FAR',
+      'HAC',
+      'IRP',
+      'LOC',
+      'ORC',
+      'RGC',
+      'SPC',
+      'STG',
+      'THC',
+      'TRC',
+    ],
     displayName: 'Commercial',
   },
-  'coronerMedicalExaminer': {
+  coronerMedicalExaminer: {
     codes: ['CME'],
     displayName: 'Coroner/Medical Examiner',
   },
-  'countyBoardOfSupervisors': {
+  countyBoardOfSupervisors: {
     codes: ['CBS'],
     displayName: 'County Board of Supervisors',
   },
-  'countyClerk': {
+  countyClerk: {
     codes: ['CCK'],
     displayName: 'County Clerk',
   },
-  'countyLegislator': {
+  countyLegislator: {
     codes: ['CLG'],
     displayName: 'County Legislator',
   },
-  'dealer': {
+  dealer: {
     codes: ['DLR'],
     displayName: 'Dealer',
   },
-  'governorsSecondCar': {
-    codes: ['GAC'],
+  educator: {
+    codes: ['EDU'],
+    displayName: 'Educator',
+  },
+  governorsSecondCar: {
+    codes: ['GAC', 'GSC'],
     displayName: "Governor's Second Car",
   },
-  'hearse': {
+  hearse: {
     codes: ['HIR'],
     displayName: 'Hearse',
   },
-  'inTransitPermit': {
+  inTransitPermit: {
     codes: ['ITP'],
     displayName: 'In-Transit Permit',
   },
-  'limitedUseAutos': {
+  limitedUseAuto: {
     codes: ['LUA'],
-    displayName: 'Limited-Use Autos',
+    displayName: 'Limited-Use Auto',
   },
-  'medallionVehicle': {
+  medallionVehicle: {
     codes: ['OMT'],
     displayName: 'Medallion Vehicle',
   },
-  'medicalDoctor': {
+  medicalDoctor: {
     codes: ['MED'],
     displayName: 'Medical Doctor',
   },
-  'motorboat': {
+  motorboat: {
     codes: ['BOT'],
     displayName: 'Motorboat',
   },
-  'motorcycle': {
+  motorcycle: {
     codes: ['HSM', 'LMA', 'LMB', 'LMC', 'MCD', 'MOT', 'ORM'],
     displayName: 'Motorcycle',
   },
-  'newYorkAssembly': {
+  newYorkAssembly: {
     codes: ['NYA'],
     displayName: 'New York Assembly',
   },
-  'newYorkCityCouncil': {
+  newYorkCityCouncil: {
     codes: ['NYC'],
     displayName: 'New York City Council',
   },
-  'newYorkPress': {
+  newYorkPress: {
     codes: ['SRN'],
     displayName: 'New York Press',
   },
-  'newYorkSenate': {
+  newYorkSenate: {
     codes: ['NYS'],
     displayName: 'New York Senate',
   },
-  'none': {
+  none: {
     codes: null,
     displayName: 'No Plate Type',
   },
-  'passenger': {
+  passenger: {
     codes: [
-      'AGR', 'ARG', 'AYG', 'BOB', 'CMH', 'FPW', 'GSM', 'HAM', 'HIS', 'JWV', 'MCL', 'NLM', 'ORG', 'PAS', 'PHS', 'PPH', 'RGL', 'SOS', 'SPO', 'SRF', 'WUG'
+      'AGR',
+      'ARG',
+      'AYG',
+      'BOB',
+      'CMH',
+      'FPW',
+      'GSM',
+      'HAM',
+      'HIS',
+      'JWV',
+      'MCL',
+      'NLM',
+      'ORG',
+      'PAS',
+      'PHS',
+      'PPH',
+      'RGL',
+      'SOS',
+      'SPO',
+      'SRF',
+      'WUG',
     ],
     displayName: 'Passenger',
   },
-  'politicalSubdivision': {
+  politicalSubdivision: {
     codes: ['PSD'],
     displayName: 'Political Subdivision',
   },
-  'schoolCar': {
+  schoolCar: {
     codes: ['SCL'],
     displayName: 'School Car',
   },
-  'snowmobile': {
+  snowmobile: {
     codes: ['SNO'],
     displayName: 'Snowmobile',
   },
-  'stateOwnedVehicle': {
+  stateOwnedVehicle: {
     codes: ['STA'],
     displayName: 'State-owned Vehicle',
   },
-  'stateCourtJustice': {
+  stateCourtJustice: {
     codes: ['JCA', 'JCL', 'JSC', 'SUP'],
     displayName: 'State Court Justice',
   },
-  'trailer': {
+  temporary: {
+    codes: ['TMP'],
+    displayName: 'Temporary',
+  },
+  trailer: {
     codes: ['HOU', 'LTR', 'SEM', 'TRA', 'TRL'],
     displayName: 'Trailer',
   },
-  'usCongress': {
+  usCongress: {
     codes: ['USC'],
     displayName: 'U.S. Congress',
   },
-  'usSenate': {
+  usSenate: {
     codes: ['USS'],
     displayName: 'U.S. Senate',
   },
-  'volunteerAmbulanceService': {
+  volunteerAmbulanceService: {
     codes: ['VAS'],
     displayName: 'Volunteer Ambulance Service',
   },
@@ -263,100 +316,102 @@ const plateTypes = {
 export default plateTypes
 export type PlateType = keyof typeof plateTypes
 
-
 export const plateTypesToPlateTypeCategoriesMap = {
-  'AGC': 'Commercial',
-  'AGC,APP,CHC,CMB,COM,CSP,FAR,HAC,IRP,LOC,ORC,RGC,SPC,STG,THC,TRC': 'Commercial',
-  'AMB': 'Ambulance',
-  'APP': 'Commercial',
-  'ARG': 'Passenger',
-  'ARG,AYG,BOB,CMH,FPW,GSM,HAM,HIS,JWV,MCL,NLM,ORG,PAS,PHS,PPH,RGL,SOS,SPO,SRF,WUG': 'Passenger',
-  'ATD': 'All-Terrain Vehicle',
+  AGC: 'Commercial',
+  'AGC,APP,CHC,CMB,COM,CSP,FAR,HAC,IRP,LOC,ORC,RGC,SPC,STG,THC,TRC':
+    'Commercial',
+  AMB: 'Ambulance',
+  APP: 'Commercial',
+  ARG: 'Passenger',
+  'ARG,AYG,BOB,CMH,FPW,GSM,HAM,HIS,JWV,MCL,NLM,ORG,PAS,PHS,PPH,RGL,SOS,SPO,SRF,WUG':
+    'Passenger',
+  ATD: 'All-Terrain Vehicle',
   'ATD,ATV': 'All-Terrain Vehicle',
-  'ATV': 'All-Terrain Vehicle',
-  'AYG': 'Passenger',
-  'BOB': 'Passenger',
-  'BOT': 'Motorboat',
-  'CBS': 'County Board of Supervisors',
-  'CCK': 'County Clerk',
-  'CHC': 'Commercial',
-  'CLG': 'County Legislator',
-  'CME': 'Coroner/Medical Examiner',
-  'CMB': 'Commercial',
-  'CMH': 'Passenger',
-  'COM': 'Commercial',
-  'CSP': 'Commercial',
-  'DLR': 'Dealer',
-  'FAR': 'Commercial',
-  'FPW': 'Passenger',
-  'GAC': 'Governor\'s Second Car',
-  'GSM': 'Passenger',
-  'HAC': 'Commercial',
-  'HAM': 'Passenger',
-  'HIR': 'Hearse',
-  'HIS': 'Passenger',
-  'HOU': 'Trailer',
+  ATV: 'All-Terrain Vehicle',
+  AYG: 'Passenger',
+  BOB: 'Passenger',
+  BOT: 'Motorboat',
+  CBS: 'County Board of Supervisors',
+  CCK: 'County Clerk',
+  CHC: 'Commercial',
+  CLG: 'County Legislator',
+  CME: 'Coroner/Medical Examiner',
+  CMB: 'Commercial',
+  CMH: 'Passenger',
+  COM: 'Commercial',
+  CSP: 'Commercial',
+  DLR: 'Dealer',
+  EDU: 'Educator',
+  FAR: 'Commercial',
+  FPW: 'Passenger',
+  GAC: "Governor's Second Car",
+  GSC: "Governor's Second Car",
+  GSM: 'Passenger',
+  HAC: 'Commercial',
+  HAM: 'Passenger',
+  HIR: 'Hearse',
+  HIS: 'Passenger',
+  HOU: 'Trailer',
   'HOU,LTR,SEM,TRA,TRL': 'Trailer',
-  'HSM': 'Motorcycle',
+  HSM: 'Motorcycle',
   'HSM,LMA,LMB,LMC,MCD,MOT,ORM': 'Motorcycle',
-  'IRP': 'Commercial',
-  'ITP': 'ITP',
-  'JCA': 'State Court Justice',
+  IRP: 'Commercial',
+  ITP: 'ITP',
+  JCA: 'State Court Justice',
   'JCA,JCL,JSC,SUP': 'State Court Justice',
-  'JCL': 'State Court Justice',
-  'JSC': 'State Court Justice',
-  'JWV': 'Passenger',
-  'LOC': 'Commercial',
-  'LMA': 'Motorcycle',
-  'LMB': 'Motorcycle',
-  'LMC': 'Motorcycle',
-  'LTR': 'Trailer',
-  'LUA': 'Limited-Use Autos',
-  'MCD': 'Motorcycle',
-  'MCL': 'Passenger',
-  'MED': 'Medical Doctor',
-  'MOT': 'Motorcycle',
-  'NLM': 'Passenger',
-  'NYA': 'New York Assembly',
-  'NYC': 'New York City Council',
-  'NYS': 'New York Senate',
-  'OMF': 'Bus/Vanpool',
+  JCL: 'State Court Justice',
+  JSC: 'State Court Justice',
+  JWV: 'Passenger',
+  LOC: 'Commercial',
+  LMA: 'Motorcycle',
+  LMB: 'Motorcycle',
+  LMC: 'Motorcycle',
+  LTR: 'Trailer',
+  LUA: 'Limited-Use Autos',
+  MCD: 'Motorcycle',
+  MCL: 'Passenger',
+  MED: 'Medical Doctor',
+  MOT: 'Motorcycle',
+  NLM: 'Passenger',
+  NYA: 'New York Assembly',
+  NYC: 'New York City Council',
+  NYS: 'New York Senate',
+  OMF: 'Bus/Vanpool',
   'OMF,OML,OMO,OMR,OMS,OMV,VPL': 'Bus/Vanpool',
-  'OML': 'Bus/Vanpool',
-  'OMO': 'Bus/Vanpool',
-  'OMR': 'Bus/Vanpool',
-  'OMS': 'Bus/Vanpool',
-  'OMT': 'Medallion Vehicle',
-  'OMV': 'Bus/Vanpool',
-  'ORC': 'Commercial',
-  'ORG': 'Passenger',
-  'ORM': 'Motorcycle',
-  'PAS': 'Passenger',
-  'PHS': 'Passenger',
-  'PPH': 'Passenger',
-  'PSD': 'Political Subdivision',
-  'RGC': 'Commercial',
-  'RGL': 'Passenger',
-  'SCL': 'School Car',
-  'SEM': 'Trailer',
-  'SNO': 'Snowmobile',
-  'SOS': 'Passenger',
-  'SPC': 'Commercial',
-  'SPO': 'Passenger',
-  'SRF': 'Passenger',
-  'STA': 'State-owned Vehicle',
-  'STG': 'Commercial',
-  'SUP': 'State Court Justice',
-  'SRN': 'New York Press',
-  'THC': 'Commercial',
-  'TRA': 'Trailer',
-  'TRC': 'Commercial',
-  'TRL': 'Trailer',
-  'USC': 'U.S. Congress',
-  'USS': 'U.S. Senate',
-  'VAS': 'Volunteer Ambulance Service',
-  'VPL': 'Bus/Vanpool',
-  'WUG': 'Passenger',
+  OML: 'Bus/Vanpool',
+  OMO: 'Bus/Vanpool',
+  OMR: 'Bus/Vanpool',
+  OMS: 'Bus/Vanpool',
+  OMT: 'Medallion Vehicle',
+  OMV: 'Bus/Vanpool',
+  ORC: 'Commercial',
+  ORG: 'Passenger',
+  ORM: 'Motorcycle',
+  PAS: 'Passenger',
+  PHS: 'Passenger',
+  PPH: 'Passenger',
+  PSD: 'Political Subdivision',
+  RGC: 'Commercial',
+  RGL: 'Passenger',
+  SCL: 'School Car',
+  SEM: 'Trailer',
+  SNO: 'Snowmobile',
+  SOS: 'Passenger',
+  SPC: 'Commercial',
+  SPO: 'Passenger',
+  SRF: 'Passenger',
+  STA: 'State-owned Vehicle',
+  STG: 'Commercial',
+  SUP: 'State Court Justice',
+  SRN: 'New York Press',
+  THC: 'Commercial',
+  TMP: 'Temporary',
+  TRA: 'Trailer',
+  TRC: 'Commercial',
+  TRL: 'Trailer',
+  USC: 'U.S. Congress',
+  USS: 'U.S. Senate',
+  VAS: 'Volunteer Ambulance Service',
+  VPL: 'Bus/Vanpool',
+  WUG: 'Passenger',
 }
-
-// export type PlateType = keyof typeof plateTypesToPlateTypeCategoriesMap

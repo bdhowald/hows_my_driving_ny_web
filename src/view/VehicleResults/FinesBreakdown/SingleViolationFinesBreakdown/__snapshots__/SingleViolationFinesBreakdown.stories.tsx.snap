@@ -1,0 +1,475 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/VehicleResults/FinesBreakdown/SingleViolationFinesBreakdown AllFields smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violations-table-wrapper">
+                <div class="table-responsive violations-table-body-wrapper">
+                  <table class="table table-striped table-sm violations-table">
+                    <tbody>
+                      <tr class="violation-row">
+                        <td class="fines">
+                          <div class="fines-breakdown">
+                            <div class="summary-box keys">
+                              <div>
+                                Initial:
+                              </div>
+                              <div>
+                                Interest:
+                              </div>
+                              <div class="fine-added">
+                                Penalties:
+                              </div>
+                              <div>
+                                Total:
+                              </div>
+                              <div>
+                                Reductions:
+                              </div>
+                              <div class="fine-subtracted">
+                                Paid:
+                              </div>
+                              <div class>
+                                Outstanding:
+                              </div>
+                            </div>
+                            <div class="summary-box values fines"
+                                 role="math"
+                                 aria-label="$50.00 fined + $20.00 in interest + $15.00 in penalties - $5.00 reduced - $10.00 paid = $70.00 oustanding"
+                            >
+                              <div class="math-symbols">
+                                <div>
+                                  &nbsp;&nbsp;&nbsp;
+                                </div>
+                                <div>
+                                  &nbsp;&nbsp;&nbsp;
+                                </div>
+                                <div class="fine-added">
+                                  +&nbsp;
+                                </div>
+                                <div>
+                                  &nbsp;&nbsp;&nbsp;
+                                </div>
+                                <div>
+                                  &nbsp;&nbsp;&nbsp;
+                                </div>
+                                <div class="fine-subtracted">
+                                  –&nbsp;
+                                </div>
+                                <div>
+                                  &nbsp;&nbsp;&nbsp;
+                                </div>
+                              </div>
+                              <div class="amounts">
+                                <div>
+                                  $50.00
+                                </div>
+                                <div>
+                                  $20.00
+                                </div>
+                                <div class="fine-added">
+                                  $15.00
+                                </div>
+                                <div>
+                                  $85.00
+                                </div>
+                                <div>
+                                  $5.00
+                                </div>
+                                <div class="fine-subtracted">
+                                  $10.00
+                                </div>
+                                <div class>
+                                  $70.00
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/FinesBreakdown/SingleViolationFinesBreakdown FineAndAdditions smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violations-table-wrapper">
+                <div class="table-responsive violations-table-body-wrapper">
+                  <table class="table table-striped table-sm violations-table">
+                    <tbody>
+                      <tr class="violation-row">
+                        <td class="fines">
+                          <div class="fines-breakdown">
+                            <div class="summary-box keys">
+                              <div>
+                                Initial:
+                              </div>
+                              <div>
+                                Interest:
+                              </div>
+                              <div class="fine-added">
+                                Penalties:
+                              </div>
+                              <div>
+                                Total:
+                              </div>
+                              <div class="fine-subtracted">
+                                Paid:
+                              </div>
+                              <div class>
+                                Outstanding:
+                              </div>
+                            </div>
+                            <div class="summary-box values fines"
+                                 role="math"
+                                 aria-label="$50.00 fined + $20.00 in interest + $10.00 in penalties - $0.00 reduced - $0.00 paid = $80.00 oustanding"
+                            >
+                              <div class="math-symbols">
+                                <div>
+                                  &nbsp;&nbsp;&nbsp;
+                                </div>
+                                <div>
+                                  &nbsp;&nbsp;&nbsp;
+                                </div>
+                                <div class="fine-added">
+                                  +&nbsp;
+                                </div>
+                                <div>
+                                  &nbsp;&nbsp;&nbsp;
+                                </div>
+                                <div class="fine-subtracted">
+                                  –&nbsp;
+                                </div>
+                                <div>
+                                  &nbsp;&nbsp;&nbsp;
+                                </div>
+                              </div>
+                              <div class="amounts">
+                                <div>
+                                  $50.00
+                                </div>
+                                <div>
+                                  $20.00
+                                </div>
+                                <div class="fine-added">
+                                  $10.00
+                                </div>
+                                <div>
+                                  $80.00
+                                </div>
+                                <div class="fine-subtracted">
+                                  $0.00
+                                </div>
+                                <div class>
+                                  $80.00
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/FinesBreakdown/SingleViolationFinesBreakdown FineAndSubtractions smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violations-table-wrapper">
+                <div class="table-responsive violations-table-body-wrapper">
+                  <table class="table table-striped table-sm violations-table">
+                    <tbody>
+                      <tr class="violation-row">
+                        <td class="fines">
+                          <div class="fines-breakdown">
+                            <div class="summary-box keys">
+                              <div>
+                                Initial:
+                              </div>
+                              <div>
+                                Reductions:
+                              </div>
+                              <div class="fine-subtracted">
+                                Paid:
+                              </div>
+                              <div class>
+                                Outstanding:
+                              </div>
+                            </div>
+                            <div class="summary-box values fines"
+                                 role="math"
+                                 aria-label="$50.00 fined + $0.00 in interest + $0.00 in penalties - $10.00 reduced - $20.00 paid = $20.00 oustanding"
+                            >
+                              <div class="math-symbols">
+                                <div>
+                                  &nbsp;&nbsp;&nbsp;
+                                </div>
+                                <div>
+                                  &nbsp;&nbsp;&nbsp;
+                                </div>
+                                <div class="fine-subtracted">
+                                  –&nbsp;
+                                </div>
+                                <div>
+                                  &nbsp;&nbsp;&nbsp;
+                                </div>
+                              </div>
+                              <div class="amounts">
+                                <div>
+                                  $50.00
+                                </div>
+                                <div>
+                                  $10.00
+                                </div>
+                                <div class="fine-subtracted">
+                                  $20.00
+                                </div>
+                                <div class>
+                                  $20.00
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/FinesBreakdown/SingleViolationFinesBreakdown FineOnly smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violations-table-wrapper">
+                <div class="table-responsive violations-table-body-wrapper">
+                  <table class="table table-striped table-sm violations-table">
+                    <tbody>
+                      <tr class="violation-row">
+                        <td class="fines">
+                          <div class="fines-breakdown">
+                            <div class="summary-box keys">
+                              <div>
+                                Initial:
+                              </div>
+                              <div class="fine-subtracted">
+                                Paid:
+                              </div>
+                              <div class>
+                                Outstanding:
+                              </div>
+                            </div>
+                            <div class="summary-box values fines"
+                                 role="math"
+                                 aria-label="$50.00 fined + $0.00 in interest + $0.00 in penalties - $0.00 reduced - $0.00 paid = $50.00 oustanding"
+                            >
+                              <div class="math-symbols">
+                                <div>
+                                  &nbsp;&nbsp;&nbsp;
+                                </div>
+                                <div class="fine-subtracted">
+                                  –&nbsp;
+                                </div>
+                                <div>
+                                  &nbsp;&nbsp;&nbsp;
+                                </div>
+                              </div>
+                              <div class="amounts">
+                                <div>
+                                  $50.00
+                                </div>
+                                <div class="fine-subtracted">
+                                  $0.00
+                                </div>
+                                <div class>
+                                  $50.00
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/FinesBreakdown/SingleViolationFinesBreakdown InJudgment smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violations-table-wrapper">
+                <div class="table-responsive violations-table-body-wrapper">
+                  <table class="table table-striped table-sm violations-table">
+                    <tbody>
+                      <tr class="violation-row">
+                        <td class="fines">
+                          <div class="fines-breakdown">
+                            <div class="summary-box keys">
+                              <div>
+                                Initial:
+                              </div>
+                              <div>
+                                Interest:
+                              </div>
+                              <div class="fine-added">
+                                Penalties:
+                              </div>
+                              <div>
+                                Total:
+                              </div>
+                              <div class="fine-subtracted">
+                                Paid:
+                              </div>
+                              <div class="in-judgment">
+                                In judgment:
+                              </div>
+                            </div>
+                            <div class="summary-box values fines"
+                                 role="math"
+                                 aria-label="$50.00 fined + $20.00 in interest + $17.69 in penalties - $0.00 reduced - $0.00 paid = $87.69 in judgment"
+                            >
+                              <div class="math-symbols">
+                                <div>
+                                  &nbsp;&nbsp;&nbsp;
+                                </div>
+                                <div>
+                                  &nbsp;&nbsp;&nbsp;
+                                </div>
+                                <div class="fine-added">
+                                  +&nbsp;
+                                </div>
+                                <div>
+                                  &nbsp;&nbsp;&nbsp;
+                                </div>
+                                <div class="fine-subtracted">
+                                  –&nbsp;
+                                </div>
+                                <div>
+                                  &nbsp;&nbsp;&nbsp;
+                                </div>
+                              </div>
+                              <div class="amounts">
+                                <div>
+                                  $50.00
+                                </div>
+                                <div>
+                                  $20.00
+                                </div>
+                                <div class="fine-added">
+                                  $17.69
+                                </div>
+                                <div>
+                                  $87.69
+                                </div>
+                                <div class="fine-subtracted">
+                                  $0.00
+                                </div>
+                                <div class="in-judgment">
+                                  $87.69
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/FinesBreakdown/SingleViolationFinesBreakdown NoFineData smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violations-table-wrapper">
+                <div class="table-responsive violations-table-body-wrapper">
+                  <table class="table table-striped table-sm violations-table">
+                    <tbody>
+                      <tr class="violation-row">
+                        <td class="fines">
+                          N/A
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

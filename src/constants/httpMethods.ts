@@ -1,7 +1,9 @@
-export default {
-  DELETE: 'DELETE',
-  GET: 'GET',
-  PATCH: 'PATCH',
-  POST: 'POST',
-  PUT: 'PUT',
+enum HttpMethod {
+  Delete = 'DELETE',
+  Get = 'GET',
+  Patch = 'PATCH',
+  Post = 'POST',
+  Put = 'PUT',
 }
+
+export default HttpMethod

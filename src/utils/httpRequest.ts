@@ -1,15 +1,16 @@
-// @ts-ignore
-import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only'
+import {
+  AbortController,
+  abortableFetch,
+  // @ts-expect-error - no types available
+} from 'abortcontroller-polyfill/dist/cjs-ponyfill'
 import { decamelizeKeys, camelizeKeys } from 'humps'
-import { CANCEL } from 'redux-saga'
-import { RequestPayloadType } from 'utils/entities'
-// @ts-ignore
+// import { CANCEL } from 'redux-saga'
+// @ts-expect-error - types should be available through lib.d.ts
 import { fetch } from 'whatwg-fetch'
 
-import queryString from 'query-string'
+import { RequestPayloadType } from 'utils/types/requests'
 
-const convertObjectToSearchParamsString = (paramsObject: Record<string, any>): string =>
-  queryString.stringify(paramsObject)
+const { fetchWithAbort } = abortableFetch(fetch)
 
 // 30 seconds
 const DEFAULT_TIMEOUT_MS = 30000
@@ -20,11 +21,11 @@ const getTimeout = (method: string, apiResource: string) => {
       () =>
         reject(
           new Error(
-            `Request ${method} ${apiResource} timed out after ${DEFAULT_TIMEOUT_MS / 1000} seconds`
-          )
+            `Request ${method} ${apiResource} timed out after ${DEFAULT_TIMEOUT_MS / 1000} seconds`,
+          ),
         ),
-      DEFAULT_TIMEOUT_MS
-    )
+      DEFAULT_TIMEOUT_MS,
+    ),
   )
 }
 
@@ -50,14 +51,21 @@ const getRequestUrl = (
 async function httpRequest(
   requestData: RequestPayloadType,
   signal?: EventTarget | void,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<any> {
-  const { method, payload, apiResource, paramsObject, url, headers } = requestData
+  const { method, payload, apiResource, paramsObject, url, headers } =
+    requestData
 
   // use native browser implementation if it supports aborting
-  const abortableFetch = ('signal' in new Request('')) ? window.fetch : fetch
+  const abortableFetch =
+    'signal' in new Request('') ? window.fetch : fetchWithAbort
 
-  const requestBody = payload ? { body: JSON.stringify(decamelizeKeys(payload)) } : {}
-  const isExternalRequest = Boolean(apiResource && apiResource.startsWith('http'))
+  const requestBody = payload
+    ? { body: JSON.stringify(decamelizeKeys(payload)) }
+    : {}
+  const isExternalRequest = Boolean(
+    apiResource && apiResource.startsWith('http'),
+  )
 
   const apiResourceForRequest = apiResource || ''
 
@@ -65,7 +73,7 @@ async function httpRequest(
     return Promise.race([
       abortableFetch(apiResource),
       getTimeout(method, apiResourceForRequest),
-    ]).then(response => response.json())
+    ]).then((response) => response.json())
   }
 
   const requestHeaders: Headers = new Headers({
@@ -73,9 +81,15 @@ async function httpRequest(
     ...headers,
   })
 
-  const paramString = paramsObject && convertObjectToSearchParamsString(paramsObject)
+  const paramString =
+    paramsObject && new URLSearchParams(paramsObject).toString()
 
-  const requestUrl = getRequestUrl(isExternalRequest, url || '', apiResourceForRequest, paramString)
+  const requestUrl = getRequestUrl(
+    isExternalRequest,
+    url || '',
+    apiResourceForRequest,
+    paramString,
+  )
   const requestObject = Object.assign(
     {},
     {
@@ -90,7 +104,7 @@ async function httpRequest(
   return Promise.race([
     fetch(requestUrl, requestObject),
     getTimeout(method, apiResourceForRequest),
-  ]).then(async response => {
+  ]).then(async (response) => {
     const body = await response.json()
     const formattedBody = camelizeKeys(body)
     const { statusText, status, ok, url } = response
@@ -114,22 +128,29 @@ async function httpRequest(
 // different applications that import this httpRequest interface can override its behavior without
 // changing the underlying library
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let requestMiddleware = (v: any) => v
 
-const requestFactory = (requestData: RequestPayloadType, signal?: EventTarget | void) => {
+const requestFactory = (
+  requestData: RequestPayloadType,
+  signal?: EventTarget | void,
+) => {
   // HACK Jest won't cooperate with AbortController polyfill unless it's applied like this
   const controller = (() => {
     try {
       return new AbortController()
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {
       return new AbortController()
     }
   })()
   const promise = httpRequest(requestData, signal || controller.signal)
-  // @ts-ignore
-  promise[CANCEL] = () => controller.abort()
+  // // @ts-expect-error
+  // promise[CANCEL] = () => controller.abort()
   return requestMiddleware(promise)
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 requestFactory.applyMiddleware = (middleware: any) => {
   requestMiddleware = middleware
 }
