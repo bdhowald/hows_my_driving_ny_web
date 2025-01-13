@@ -174,7 +174,7 @@ div.container-fluid
   button.remove-lookup-button {
   color: black;
   background: none;
-  padding: 0;
+  padding: 0 0.375rem;
 }
 
 div.container-fluid div.row div.card div.card-header div.share-icons {
