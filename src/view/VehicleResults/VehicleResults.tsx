@@ -142,7 +142,7 @@ const ShimmerLoader = () => {
       <div className={className}>
         {listToUse.map((columnWidth: number, i: number) => {
           return (
-            <span key={i} className={`placeholder col-${columnWidth}`}></span>
+            <span key={i} className={`placeholder col-${columnWidth}`} />
           )
         })}
       </div>
@@ -151,7 +151,7 @@ const ShimmerLoader = () => {
 
   return (
     <div className="vehicle card" aria-hidden="true">
-      <div className="card-header shimmer"></div>
+      <div className="card-header shimmer" />
       <ul className="list-group-flush list-group">
         <li className="no-padding list-group-item card-title placeholder-glow">
           <div className="row">
@@ -159,21 +159,21 @@ const ShimmerLoader = () => {
               <ShimmerColumn
                 textAlignDirection="left"
                 position="left"
-              ></ShimmerColumn>
+              />
               <ShimmerColumn
                 textAlignDirection="right"
                 position="left"
-              ></ShimmerColumn>
+              />
             </div>
             <div className="summary-section col-xs-12 col-sm-6">
               <ShimmerColumn
                 textAlignDirection="left"
                 position="right"
-              ></ShimmerColumn>
+              />
               <ShimmerColumn
                 textAlignDirection="right"
                 position="right"
-              ></ShimmerColumn>
+              />
             </div>
           </div>
         </li>
@@ -185,7 +185,7 @@ const ShimmerLoader = () => {
                   <a
                     className="btn btn-primary disabled placeholder col-12"
                     aria-disabled="true"
-                  ></a>
+                  />
                 </div>
               </div>
             </div>

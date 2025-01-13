@@ -49,7 +49,7 @@ const ErrorMessage = ({
         setErrorFunction(false)
       }}
       type="button"
-    ></button>
+    />
   </div>
 )
 ErrorMessage.displayName = 'ErrorMessage'
