@@ -200,6 +200,17 @@ div.container-fluid
   div.share-icons
   button.copy-button
   span.fa-layers
+  .circle {
+  color: black;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  div.card-header
+  div.share-icons
+  button.copy-button
+  span.fa-layers
   .copy {
   color: white;
 }
