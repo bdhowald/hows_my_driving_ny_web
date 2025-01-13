@@ -63,7 +63,7 @@ const ViolationsTableHeader = ({
               className={isSortTypeCurrentlySelected ? 'sort-column' : ''}
               onClick={() => updateSortFunction(sortOption.name)}
             >
-              {sortOption.displayText}
+              <span>{sortOption.displayText}</span>
               {isSortTypeCurrentlySelected && (
                 <FontAwesomeIcon
                   icon={sortIcon}
