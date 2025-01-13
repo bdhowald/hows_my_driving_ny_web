@@ -141,9 +141,7 @@ const ShimmerLoader = () => {
     return (
       <div className={className}>
         {listToUse.map((columnWidth: number, i: number) => {
-          return (
-            <span key={i} className={`placeholder col-${columnWidth}`} />
-          )
+          return <span key={i} className={`placeholder col-${columnWidth}`} />
         })}
       </div>
     )
@@ -156,24 +154,12 @@ const ShimmerLoader = () => {
         <li className="no-padding list-group-item card-title placeholder-glow">
           <div className="row">
             <div className="summary-section col-xs-12 col-sm-6">
-              <ShimmerColumn
-                textAlignDirection="left"
-                position="left"
-              />
-              <ShimmerColumn
-                textAlignDirection="right"
-                position="left"
-              />
+              <ShimmerColumn textAlignDirection="left" position="left" />
+              <ShimmerColumn textAlignDirection="right" position="left" />
             </div>
             <div className="summary-section col-xs-12 col-sm-6">
-              <ShimmerColumn
-                textAlignDirection="left"
-                position="right"
-              />
-              <ShimmerColumn
-                textAlignDirection="right"
-                position="right"
-              />
+              <ShimmerColumn textAlignDirection="left" position="right" />
+              <ShimmerColumn textAlignDirection="right" position="right" />
             </div>
           </div>
         </li>

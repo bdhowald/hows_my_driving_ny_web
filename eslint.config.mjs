@@ -7,7 +7,7 @@ import pluginReact from 'eslint-plugin-react'
 import stylisticJs from '@stylistic/eslint-plugin-js'
 
 /** @type {import('eslint').Linter.Config[]} */
-export default [
+export default tseslint.config(
   {
     ignores: ['**/*.test.js'],
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
@@ -57,4 +57,4 @@ export default [
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
-]
+)
