@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { CookiesProvider } from 'react-cookie'
 import * as reactRouterDom from 'react-router-dom'
 import { render, screen, waitFor } from '@testing-library/react'
 
@@ -50,6 +51,42 @@ describe('App', () => {
       // Lookup has appeared on the page from the route
       screen.getByText('Plate:')
       screen.getByText(plate)
+    })
+  })
+
+  it('should load a lookup only once if given a previous lookup unique identifier that is also present in the cookies', async () => {
+    const uniqueIdentifier = 'prev10us'
+    const previousLookupRoute = `/${uniqueIdentifier}`
+
+    const vehicle = VehicleFactory.build({ uniqueIdentifier })
+
+    // Set lookupIdentifiers cookie to have a previous lookup unique identifier
+    document.cookie = `lookupIdentifiers=${uniqueIdentifier}; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=None;`
+
+    const getPreviousLookupSpy = jest.spyOn(
+      boundaryFunctions,
+      'getPreviousLookup',
+    )
+
+    getPreviousLookupSpy.mockResolvedValue({
+      data: [
+        {
+          successfulLookup: true,
+          vehicle,
+        },
+      ],
+    })
+
+    render(
+      <CookiesProvider>
+        <reactRouterDom.MemoryRouter initialEntries={[previousLookupRoute]}>
+          <App />
+        </reactRouterDom.MemoryRouter>
+      </CookiesProvider>,
+    )
+
+    await waitFor(() => {
+      expect(getPreviousLookupSpy).toHaveBeenCalledTimes(1)
     })
   })
 })

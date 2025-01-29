@@ -137,7 +137,12 @@ const Search = ({
           // the quality that top results are more recent.
           const uniqueIdentifiersFromCookies = cookieString
             .split(',')
-            .filter((value, index, self) => self.indexOf(value) === index)
+            .filter(
+              (value, index, self) =>
+                self.indexOf(value) === index &&
+                // Don't lookup unique identifier twice if cookie value matches route.
+                value !== previousLookupUniqueIdentifierFromQuery,
+            )
             .reverse()
 
           // Gather the promises for the previous lookups
