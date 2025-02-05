@@ -1,8 +1,8 @@
-import getRegionNameFromAbbreviation from './getRegionNameFromAbbreviation'
+import getRegionFromAbbreviation from './getRegionFromAbbreviation'
 
-describe('getRegionNameFromAbbreviation', () => {
+describe('getRegionFromAbbreviation', () => {
   it('should detect abbreviations that do not represent a region as invalid', () => {
-    expect(getRegionNameFromAbbreviation('XX')).toBeUndefined()
+    expect(getRegionFromAbbreviation('XX')).toBeUndefined()
   })
 
   describe('valid regions', () => {
@@ -200,6 +200,10 @@ describe('getRegionNameFromAbbreviation', () => {
         name: 'Northwest Territories',
       },
       {
+        code: 'NU',
+        name: 'Nunavut',
+      },
+      {
         code: 'NV',
         name: 'Nevada',
       },
@@ -306,7 +310,13 @@ describe('getRegionNameFromAbbreviation', () => {
     ])(
       'successfully detects region $name with abbreviation $code',
       ({ code, name }) => {
-        expect(getRegionNameFromAbbreviation(code)).toBe(name)
+        const region = getRegionFromAbbreviation(code)
+
+        if (!region) {
+          fail('region is not defined')
+        }
+
+        expect(region.name).toBe(name)
       },
     )
   })

@@ -60,7 +60,7 @@ describe('LookupInfo', () => {
       expect(screen.getByText('Plate:')).toBeInTheDocument()
       expect(screen.getByText(plate)).toBeInTheDocument()
 
-      expect(screen.getByText('Region:')).toBeInTheDocument()
+      expect(screen.getByText('State:')).toBeInTheDocument()
       expect(screen.getByText(state)).toBeInTheDocument()
 
       expect(screen.getByText('Violations:')).toBeInTheDocument()
@@ -90,6 +90,146 @@ describe('LookupInfo', () => {
   })
 
   describe('render the correct language', () => {
+    it("should describe the region as 'State' when it is a U.S. state", () => {
+      const vehicle = VehicleFactory.build({
+        state: 'NY',
+      })
+
+      render(<LookupInfo vehicle={vehicle} />)
+
+      expect(screen.getByText('State:')).toBeInTheDocument()
+
+      expect(screen.queryByText('Province:')).not.toBeInTheDocument()
+      expect(screen.queryByText('Region:')).not.toBeInTheDocument()
+      expect(screen.queryByText('Territory:')).not.toBeInTheDocument()
+    })
+
+    it("should describe the region as 'Province' when it is a Canadian province", () => {
+      const vehicle = VehicleFactory.build({
+        state: 'AB',
+      })
+
+      render(<LookupInfo vehicle={vehicle} />)
+
+      expect(screen.getByText('Province:')).toBeInTheDocument()
+
+      expect(screen.queryByText('State:')).not.toBeInTheDocument()
+      expect(screen.queryByText('Region:')).not.toBeInTheDocument()
+      expect(screen.queryByText('Territory:')).not.toBeInTheDocument()
+    })
+
+    it("should describe the region as 'Territory' when it is a U.S. territory", () => {
+      const vehicle = VehicleFactory.build({
+        state: 'GU',
+      })
+
+      render(<LookupInfo vehicle={vehicle} />)
+
+      expect(screen.getByText('Territory:')).toBeInTheDocument()
+
+      expect(screen.queryByText('Province:')).not.toBeInTheDocument()
+      expect(screen.queryByText('State:')).not.toBeInTheDocument()
+      expect(screen.queryByText('Region:')).not.toBeInTheDocument()
+    })
+
+    it("should describe the region as 'Territory' when it is a Canadian territory", () => {
+      const vehicle = VehicleFactory.build({
+        state: 'NT',
+      })
+
+      render(<LookupInfo vehicle={vehicle} />)
+
+      expect(screen.getByText('Territory:')).toBeInTheDocument()
+
+      expect(screen.queryByText('Province:')).not.toBeInTheDocument()
+      expect(screen.queryByText('State:')).not.toBeInTheDocument()
+      expect(screen.queryByText('Region:')).not.toBeInTheDocument()
+    })
+
+    it("should describe the region as 'Region' when it is a District of Columbia plate", () => {
+      const vehicle = VehicleFactory.build({
+        state: 'DC',
+      })
+
+      render(<LookupInfo vehicle={vehicle} />)
+
+      expect(screen.getByText('Region:')).toBeInTheDocument()
+
+      expect(screen.queryByText('Province:')).not.toBeInTheDocument()
+      expect(screen.queryByText('State:')).not.toBeInTheDocument()
+      expect(screen.queryByText('Territory:')).not.toBeInTheDocument()
+    })
+
+    it("should describe the region as 'Region' when it is a U.S. commonwealth", () => {
+      const vehicle = VehicleFactory.build({
+        state: 'PR',
+      })
+
+      render(<LookupInfo vehicle={vehicle} />)
+
+      expect(screen.getByText('Region:')).toBeInTheDocument()
+
+      expect(screen.queryByText('Province:')).not.toBeInTheDocument()
+      expect(screen.queryByText('State:')).not.toBeInTheDocument()
+      expect(screen.queryByText('Territory:')).not.toBeInTheDocument()
+    })
+
+    it("should describe the region as 'Region' when it is a country", () => {
+      const vehicle = VehicleFactory.build({
+        state: 'MX',
+      })
+
+      render(<LookupInfo vehicle={vehicle} />)
+
+      expect(screen.getByText('Region:')).toBeInTheDocument()
+
+      expect(screen.queryByText('Province:')).not.toBeInTheDocument()
+      expect(screen.queryByText('State:')).not.toBeInTheDocument()
+      expect(screen.queryByText('Territory:')).not.toBeInTheDocument()
+    })
+
+    it("should describe the region as 'Region' when it is the U.S. State Dept.", () => {
+      const vehicle = VehicleFactory.build({
+        state: 'DP',
+      })
+
+      render(<LookupInfo vehicle={vehicle} />)
+
+      expect(screen.getByText('Region:')).toBeInTheDocument()
+
+      expect(screen.queryByText('Province:')).not.toBeInTheDocument()
+      expect(screen.queryByText('State:')).not.toBeInTheDocument()
+      expect(screen.queryByText('Territory:')).not.toBeInTheDocument()
+    })
+
+    it("should describe the region as 'Region' when it is a foreign plate", () => {
+      const vehicle = VehicleFactory.build({
+        state: 'FO',
+      })
+
+      render(<LookupInfo vehicle={vehicle} />)
+
+      expect(screen.getByText('Region:')).toBeInTheDocument()
+
+      expect(screen.queryByText('Province:')).not.toBeInTheDocument()
+      expect(screen.queryByText('State:')).not.toBeInTheDocument()
+      expect(screen.queryByText('Territory:')).not.toBeInTheDocument()
+    })
+
+    it("should describe the region as 'Region' when it is an unknown region, e.g. '99'", () => {
+      const vehicle = VehicleFactory.build({
+        state: '99',
+      })
+
+      render(<LookupInfo vehicle={vehicle} />)
+
+      expect(screen.getByText('Region:')).toBeInTheDocument()
+
+      expect(screen.queryByText('Province:')).not.toBeInTheDocument()
+      expect(screen.queryByText('State:')).not.toBeInTheDocument()
+      expect(screen.queryByText('Territory:')).not.toBeInTheDocument()
+    })
+
     it('should not show fines fields when there are no violations', () => {
       const vehicle = VehicleFactory.build({
         violations: [],

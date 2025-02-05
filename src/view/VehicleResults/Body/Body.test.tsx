@@ -14,7 +14,7 @@ describe('Body', () => {
 
       // LookupInfo element
       expect(screen.getByText('Plate:')).toBeInTheDocument()
-      expect(screen.getByText('Region:')).toBeInTheDocument()
+      expect(screen.getByText('State:')).toBeInTheDocument()
       expect(screen.getByText('Plate type:')).toBeInTheDocument()
       expect(screen.getByText('Violations:')).toBeInTheDocument()
       expect(screen.getByText('Lookups:')).toBeInTheDocument()
@@ -33,7 +33,7 @@ describe('Body', () => {
 
       // LookupInfo element
       expect(screen.getByText('Plate:')).toBeInTheDocument()
-      expect(screen.getByText('Region:')).toBeInTheDocument()
+      expect(screen.getByText('State:')).toBeInTheDocument()
       expect(screen.getByText('Plate type:')).toBeInTheDocument()
       expect(screen.getByText('Violations:')).toBeInTheDocument()
       expect(screen.getByText('Lookups:')).toBeInTheDocument()

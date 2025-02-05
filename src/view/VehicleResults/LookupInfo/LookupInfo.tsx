@@ -1,39 +1,60 @@
 import * as React from 'react'
 
 import L10N from 'constants/display'
+import { Region } from 'constants/regions'
 import Vehicle from 'models/Vehicle/Vehicle'
 
 import getPlateTypesString from 'utils/search/getPlateType/getPlateTypeDisplayString/getPlateTypeDisplayString'
-import getRegionNameFromAbbreviation from 'utils/displayResults/getRegionNameFromAbbreviation/getRegionNameFromAbbreviation'
+import getRegionFromAbbreviation from 'utils/displayResults/getRegionFromAbbreviation/getRegionFromAbbreviation'
 
 import FinesBreakdown from 'view/VehicleResults/FinesBreakdown/FinesBreakdown'
 
 const LookupSummaryKeyFields = ({
   lastQueriedDateStringPresent,
+  region,
 }: {
   lastQueriedDateStringPresent: boolean
-}) => (
-  <div className="summary-box keys lookup-info">
-    <div>Plate:</div>
-    <div>Region:</div>
-    <div>Plate type:</div>
-    <div>Violations:</div>
-    <div>Lookups:</div>
-    {lastQueriedDateStringPresent && <div>Previous:</div>}
-  </div>
-)
+  region: Region | undefined
+}) => {
+  const getRegionKeyName = (regionObject: Region | undefined) => {
+    if (!regionObject) {
+      return 'Region'
+    }
+    if (regionObject.type === 'province') {
+      return 'Province'
+    }
+    if (regionObject.type === 'state') {
+      return 'State'
+    }
+    if (regionObject.type === 'territory') {
+      return 'Territory'
+    }
+    return 'Region'
+  }
+
+  return (
+    <div className="summary-box keys lookup-info">
+      <div>Plate:</div>
+      <div>{getRegionKeyName(region)}:</div>
+      <div>Plate type:</div>
+      <div>Violations:</div>
+      <div>Lookups:</div>
+      {lastQueriedDateStringPresent && <div>Previous:</div>}
+    </div>
+  )
+}
 
 const LookupSummaryValueFields = ({
   lastQueriedDateString,
   plate,
-  state,
+  region,
   timesVehicleQueried,
   vehiclePlateTypes,
   violationsString,
 }: {
   lastQueriedDateString: string | undefined
   plate: string
-  state: string
+  region: Region | undefined
   timesVehicleQueried: number
   vehiclePlateTypes: string[] | undefined
   violationsString: string
@@ -41,10 +62,8 @@ const LookupSummaryValueFields = ({
   <div className="summary-box values lookup-info">
     <div className="summary-value">{plate}</div>
     <div className="summary-value region">
-      <div className="region-abbreviation">{state}</div>
-      <div className="region-full-name">
-        {getRegionNameFromAbbreviation(state)}
-      </div>
+      <div className="region-abbreviation">{region?.code ?? 'N/A'}</div>
+      <div className="region-full-name">{region?.name || 'N/A'}</div>
     </div>
     <div className="summary-value">
       {getPlateTypesString(vehiclePlateTypes)}
@@ -75,17 +94,20 @@ const LookupInfo = ({ vehicle }: { vehicle: Vehicle }) => {
 
   const showFines = !!vehicle.violationsCount
 
+  const region = getRegionFromAbbreviation(vehicle.state)
+
   return (
     <li className="list-group-item no-padding">
       <div className="row">
         <div className="summary-section col-xs-12 col-sm-6">
           <LookupSummaryKeyFields
             lastQueriedDateStringPresent={!!lastQueriedDateString}
+            region={region}
           />
           <LookupSummaryValueFields
             lastQueriedDateString={lastQueriedDateString}
             plate={vehicle.plate}
-            state={vehicle.state}
+            region={region}
             timesVehicleQueried={vehicle.timesQueried}
             vehiclePlateTypes={vehicle.plateTypes}
             violationsString={violationsString}

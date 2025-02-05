@@ -314,7 +314,7 @@ describe('FetchViolations', () => {
         screen.getByText('Plate:')
         screen.getByText(plate)
 
-        screen.getByText('Region:')
+        screen.getByText('State:')
         screen.getByText('NY')
 
         screen.getByText('Plate type:')
