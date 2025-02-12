@@ -235,6 +235,15 @@ const SingleViolationFinesBreakdown = (props: SingleViolationFinesProps) => {
       'en-US',
       L10N.sitewide.currency,
     )
+
+    if (netFinedString === '-0.00') {
+      // Due to error with floating-point numbers,
+      // we might end up with infinitesimal small numbers
+      // that round to negative or positive zero. When
+      // negative, we need to explicitly return positive.
+      return <>$0.00</>
+    }
+
     return <>${netFinedString}</>
   }
 

@@ -280,7 +280,7 @@ describe('ViolationsList', () => {
         />,
       )
 
-      const dateHeaderElement = screen.getByText('Date')
+      const dateHeaderElement = screen.getByTestId('table-header-date')
 
       // assert sort is by date (by default)
       expect(dateHeaderElement).toHaveClass('sort-column')
@@ -319,8 +319,8 @@ describe('ViolationsList', () => {
         />,
       )
 
-      const dateHeaderElement = screen.getByText('Date')
-      const locationHeaderElement = screen.getByText('Location')
+      const dateHeaderElement = screen.getByTestId('table-header-date')
+      const locationHeaderElement = screen.getByTestId('table-header-location')
 
       // assert sort is by date (by default)
       expect(dateHeaderElement).toHaveClass('sort-column')

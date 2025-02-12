@@ -191,6 +191,32 @@ describe('SingleViolationsFinesBreakdown', () => {
         ).toBeInTheDocument()
       },
     )
+
+    it('should ensure that fine amounts that sum to negative zero display as positive zero', () => {
+      // taken from real case
+      const dueAmount = 0
+      const paymentAmount = 0
+
+      const fineAmount = 115
+      const interestAmount = 1.21
+      const penaltyAmount = 60
+      const reductionAmount = 176.21
+
+      render(
+        <SingleViolationFinesBreakdown
+          dueAmount={dueAmount}
+          fineAmount={fineAmount}
+          interestAmount={interestAmount}
+          isViolationInJudgment={false}
+          paymentAmount={paymentAmount}
+          penaltyAmount={penaltyAmount}
+          reductionAmount={reductionAmount}
+          showFullFineData={false}
+        />,
+      )
+
+      expect(screen.getByText('$0.00')).toBeInTheDocument()
+    })
   })
 
   describe('show full fine data for a single violation', () => {

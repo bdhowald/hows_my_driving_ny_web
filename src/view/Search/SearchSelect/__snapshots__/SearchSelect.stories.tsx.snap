@@ -325,6 +325,9 @@ exports[`Components/Search/SearchSelect Regions smoke-test 1`] = `
                       <option value="NT">
                         Northwest Territories (NT)
                       </option>
+                      <option value="NU">
+                        Nunavut (NU)
+                      </option>
                       <option value="NV">
                         Nevada (NV)
                       </option>

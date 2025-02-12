@@ -15,7 +15,7 @@ exports[`Components/VehicleResults/LookupInfo NewViolationsSincePreviousLookup s
                       Plate:
                     </div>
                     <div>
-                      Region:
+                      State:
                     </div>
                     <div>
                       Plate type:
@@ -130,7 +130,7 @@ exports[`Components/VehicleResults/LookupInfo NoPreviousLookups smoke-test 1`] =
                       Plate:
                     </div>
                     <div>
-                      Region:
+                      State:
                     </div>
                     <div>
                       Plate type:
@@ -239,7 +239,7 @@ exports[`Components/VehicleResults/LookupInfo NoViolations smoke-test 1`] = `
                       Plate:
                     </div>
                     <div>
-                      Region:
+                      State:
                     </div>
                     <div>
                       Plate type:
@@ -305,7 +305,7 @@ exports[`Components/VehicleResults/LookupInfo ViolationsAndAPreviousLookup smoke
                       Plate:
                     </div>
                     <div>
-                      Region:
+                      State:
                     </div>
                     <div>
                       Plate type:

@@ -19,10 +19,13 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationsList Default sm
                     </caption>
                     <thead class="thead-light table-light">
                       <tr>
-                        <th aria-sort="ascending"
+                        <th data-testid="table-header-date"
+                            aria-sort="ascending"
                             class="sort-column"
                         >
-                          Date
+                          <span>
+                            Date
+                          </span>
                           <svg aria-labelledby="svg-inline--fa-title-angle-up"
                                data-prefix="fas"
                                data-icon="angle-up"
@@ -40,20 +43,29 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationsList Default sm
                             </path>
                           </svg>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-kind"
+                            aria-sort="none"
                             class
                         >
-                          Violation
+                          <span>
+                            Violation
+                          </span>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-location"
+                            aria-sort="none"
                             class
                         >
-                          Location
+                          <span>
+                            Location
+                          </span>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-fined"
+                            aria-sort="none"
                             class
                         >
-                          Fines
+                          <span>
+                            Fines
+                          </span>
                         </th>
                       </tr>
                     </thead>
@@ -304,10 +316,13 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationsList WithFullFi
                     </caption>
                     <thead class="thead-light table-light">
                       <tr>
-                        <th aria-sort="ascending"
+                        <th data-testid="table-header-date"
+                            aria-sort="ascending"
                             class="sort-column"
                         >
-                          Date
+                          <span>
+                            Date
+                          </span>
                           <svg aria-labelledby="svg-inline--fa-title-angle-up"
                                data-prefix="fas"
                                data-icon="angle-up"
@@ -325,20 +340,29 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationsList WithFullFi
                             </path>
                           </svg>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-kind"
+                            aria-sort="none"
                             class
                         >
-                          Violation
+                          <span>
+                            Violation
+                          </span>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-location"
+                            aria-sort="none"
                             class
                         >
-                          Location
+                          <span>
+                            Location
+                          </span>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-fined"
+                            aria-sort="none"
                             class
                         >
-                          Fines
+                          <span>
+                            Fines
+                          </span>
                         </th>
                       </tr>
                     </thead>
@@ -829,10 +853,13 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationsList WithFullFi
                     </caption>
                     <thead class="thead-light table-light">
                       <tr>
-                        <th aria-sort="ascending"
+                        <th data-testid="table-header-date"
+                            aria-sort="ascending"
                             class="sort-column"
                         >
-                          Date
+                          <span>
+                            Date
+                          </span>
                           <svg aria-labelledby="svg-inline--fa-title-angle-up"
                                data-prefix="fas"
                                data-icon="angle-up"
@@ -850,20 +877,29 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationsList WithFullFi
                             </path>
                           </svg>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-kind"
+                            aria-sort="none"
                             class
                         >
-                          Violation
+                          <span>
+                            Violation
+                          </span>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-location"
+                            aria-sort="none"
                             class
                         >
-                          Location
+                          <span>
+                            Location
+                          </span>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-fined"
+                            aria-sort="none"
                             class
                         >
-                          Fines
+                          <span>
+                            Fines
+                          </span>
                         </th>
                       </tr>
                     </thead>
@@ -1294,10 +1330,13 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationsList WithFullTe
                     </caption>
                     <thead class="thead-light table-light">
                       <tr>
-                        <th aria-sort="ascending"
+                        <th data-testid="table-header-date"
+                            aria-sort="ascending"
                             class="sort-column"
                         >
-                          Date
+                          <span>
+                            Date
+                          </span>
                           <svg aria-labelledby="svg-inline--fa-title-angle-up"
                                data-prefix="fas"
                                data-icon="angle-up"
@@ -1315,20 +1354,29 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationsList WithFullTe
                             </path>
                           </svg>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-kind"
+                            aria-sort="none"
                             class
                         >
-                          Violation
+                          <span>
+                            Violation
+                          </span>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-location"
+                            aria-sort="none"
                             class
                         >
-                          Location
+                          <span>
+                            Location
+                          </span>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-fined"
+                            aria-sort="none"
                             class
                         >
-                          Fines
+                          <span>
+                            Fines
+                          </span>
                         </th>
                       </tr>
                     </thead>

@@ -173,6 +173,9 @@ exports[`Components/Search/SearchControls LookupInFlight smoke-test 1`] = `
                           <option value="NT">
                             Northwest Territories (NT)
                           </option>
+                          <option value="NU">
+                            Nunavut (NU)
+                          </option>
                           <option value="NV">
                             Nevada (NV)
                           </option>
@@ -571,6 +574,9 @@ exports[`Components/Search/SearchControls NoLookupInFlightWithPlateEntered smoke
                           <option value="NT">
                             Northwest Territories (NT)
                           </option>
+                          <option value="NU">
+                            Nunavut (NU)
+                          </option>
                           <option value="NV">
                             Nevada (NV)
                           </option>
@@ -962,6 +968,9 @@ exports[`Components/Search/SearchControls NoPlateEntered smoke-test 1`] = `
                           </option>
                           <option value="NT">
                             Northwest Territories (NT)
+                          </option>
+                          <option value="NU">
+                            Nunavut (NU)
                           </option>
                           <option value="NV">
                             Nevada (NV)
@@ -1355,6 +1364,9 @@ exports[`Components/Search/SearchControls PlateTypeSelected smoke-test 1`] = `
                           </option>
                           <option value="NT">
                             Northwest Territories (NT)
+                          </option>
+                          <option value="NU">
+                            Nunavut (NU)
                           </option>
                           <option value="NV">
                             Nevada (NV)

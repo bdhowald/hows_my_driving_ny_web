@@ -148,6 +148,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
               </button>
               <button aria-label="share lookup to Twitter"
                       data-testid="twitter-share-button"
+                      networkname="twitter"
                       class="react-share__ShareButton twitter-share-button"
               >
                 <svg viewbox="0 0 64 64"
@@ -162,6 +163,28 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                   >
                   </circle>
                   <path d="M48,22.1c-1.2,0.5-2.4,0.9-3.8,1c1.4-0.8,2.4-2.1,2.9-3.6c-1.3,0.8-2.7,1.3-4.2,1.6 C41.7,19.8,40,19,38.2,19c-3.6,0-6.6,2.9-6.6,6.6c0,0.5,0.1,1,0.2,1.5c-5.5-0.3-10.3-2.9-13.5-6.9c-0.6,1-0.9,2.1-0.9,3.3 c0,2.3,1.2,4.3,2.9,5.5c-1.1,0-2.1-0.3-3-0.8c0,0,0,0.1,0,0.1c0,3.2,2.3,5.8,5.3,6.4c-0.6,0.1-1.1,0.2-1.7,0.2c-0.4,0-0.8,0-1.2-0.1 c0.8,2.6,3.3,4.5,6.1,4.6c-2.2,1.8-5.1,2.8-8.2,2.8c-0.5,0-1.1,0-1.6-0.1c2.9,1.9,6.4,2.9,10.1,2.9c12.1,0,18.7-10,18.7-18.7 c0-0.3,0-0.6,0-0.8C46,24.5,47.1,23.4,48,22.1z"
+                        fill="white"
+                  >
+                  </path>
+                </svg>
+              </button>
+              <button aria-label="share lookup to Bluesky"
+                      data-testid="bluesky-share-button"
+                      networkname="bluesky"
+                      class="react-share__ShareButton bluesky-share-button"
+              >
+                <svg viewbox="0 0 64 64"
+                     width="32"
+                     height="32"
+                     crossorigin
+                >
+                  <circle cx="32"
+                          cy="32"
+                          r="32"
+                          fill="#1185FE"
+                  >
+                  </circle>
+                  <path d="M21.945 18.886C26.015 21.941 30.393 28.137 32 31.461 33.607 28.137 37.985 21.941 42.055 18.886 44.992 16.681 49.75 14.975 49.75 20.403 49.75 21.487 49.128 29.51 48.764 30.813 47.497 35.341 42.879 36.496 38.772 35.797 45.951 37.019 47.778 41.067 43.833 45.114 36.342 52.801 33.066 43.186 32.227 40.722 32.073 40.27 32.001 40.059 32 40.238 31.999 40.059 31.927 40.27 31.773 40.722 30.934 43.186 27.658 52.801 20.167 45.114 16.222 41.067 18.049 37.019 25.228 35.797 21.121 36.496 16.503 35.341 15.236 30.813 14.872 29.51 14.25 21.487 14.25 20.403 14.25 14.975 19.008 16.681 21.945 18.886Z"
                         fill="white"
                   >
                   </path>
@@ -204,7 +227,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                       Plate:
                     </div>
                     <div>
-                      Region:
+                      State:
                     </div>
                     <div>
                       Plate type:
@@ -329,10 +352,13 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                     </caption>
                     <thead class="thead-light table-light">
                       <tr>
-                        <th aria-sort="ascending"
+                        <th data-testid="table-header-date"
+                            aria-sort="ascending"
                             class="sort-column"
                         >
-                          Date
+                          <span>
+                            Date
+                          </span>
                           <svg aria-labelledby="svg-inline--fa-title-angle-up"
                                data-prefix="fas"
                                data-icon="angle-up"
@@ -350,20 +376,29 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                             </path>
                           </svg>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-kind"
+                            aria-sort="none"
                             class
                         >
-                          Violation
+                          <span>
+                            Violation
+                          </span>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-location"
+                            aria-sort="none"
                             class
                         >
-                          Location
+                          <span>
+                            Location
+                          </span>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-fined"
+                            aria-sort="none"
                             class
                         >
-                          Fines
+                          <span>
+                            Fines
+                          </span>
                         </th>
                       </tr>
                     </thead>
@@ -511,6 +546,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
               </button>
               <button aria-label="share lookup to Twitter"
                       data-testid="twitter-share-button"
+                      networkname="twitter"
                       class="react-share__ShareButton twitter-share-button"
               >
                 <svg viewbox="0 0 64 64"
@@ -525,6 +561,28 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                   >
                   </circle>
                   <path d="M48,22.1c-1.2,0.5-2.4,0.9-3.8,1c1.4-0.8,2.4-2.1,2.9-3.6c-1.3,0.8-2.7,1.3-4.2,1.6 C41.7,19.8,40,19,38.2,19c-3.6,0-6.6,2.9-6.6,6.6c0,0.5,0.1,1,0.2,1.5c-5.5-0.3-10.3-2.9-13.5-6.9c-0.6,1-0.9,2.1-0.9,3.3 c0,2.3,1.2,4.3,2.9,5.5c-1.1,0-2.1-0.3-3-0.8c0,0,0,0.1,0,0.1c0,3.2,2.3,5.8,5.3,6.4c-0.6,0.1-1.1,0.2-1.7,0.2c-0.4,0-0.8,0-1.2-0.1 c0.8,2.6,3.3,4.5,6.1,4.6c-2.2,1.8-5.1,2.8-8.2,2.8c-0.5,0-1.1,0-1.6-0.1c2.9,1.9,6.4,2.9,10.1,2.9c12.1,0,18.7-10,18.7-18.7 c0-0.3,0-0.6,0-0.8C46,24.5,47.1,23.4,48,22.1z"
+                        fill="white"
+                  >
+                  </path>
+                </svg>
+              </button>
+              <button aria-label="share lookup to Bluesky"
+                      data-testid="bluesky-share-button"
+                      networkname="bluesky"
+                      class="react-share__ShareButton bluesky-share-button"
+              >
+                <svg viewbox="0 0 64 64"
+                     width="32"
+                     height="32"
+                     crossorigin
+                >
+                  <circle cx="32"
+                          cy="32"
+                          r="32"
+                          fill="#1185FE"
+                  >
+                  </circle>
+                  <path d="M21.945 18.886C26.015 21.941 30.393 28.137 32 31.461 33.607 28.137 37.985 21.941 42.055 18.886 44.992 16.681 49.75 14.975 49.75 20.403 49.75 21.487 49.128 29.51 48.764 30.813 47.497 35.341 42.879 36.496 38.772 35.797 45.951 37.019 47.778 41.067 43.833 45.114 36.342 52.801 33.066 43.186 32.227 40.722 32.073 40.27 32.001 40.059 32 40.238 31.999 40.059 31.927 40.27 31.773 40.722 30.934 43.186 27.658 52.801 20.167 45.114 16.222 41.067 18.049 37.019 25.228 35.797 21.121 36.496 16.503 35.341 15.236 30.813 14.872 29.51 14.25 21.487 14.25 20.403 14.25 14.975 19.008 16.681 21.945 18.886Z"
                         fill="white"
                   >
                   </path>
@@ -567,7 +625,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                       Plate:
                     </div>
                     <div>
-                      Region:
+                      State:
                     </div>
                     <div>
                       Plate type:
@@ -692,10 +750,13 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                     </caption>
                     <thead class="thead-light table-light">
                       <tr>
-                        <th aria-sort="ascending"
+                        <th data-testid="table-header-date"
+                            aria-sort="ascending"
                             class="sort-column"
                         >
-                          Date
+                          <span>
+                            Date
+                          </span>
                           <svg aria-labelledby="svg-inline--fa-title-angle-up"
                                data-prefix="fas"
                                data-icon="angle-up"
@@ -713,20 +774,29 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                             </path>
                           </svg>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-kind"
+                            aria-sort="none"
                             class
                         >
-                          Violation
+                          <span>
+                            Violation
+                          </span>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-location"
+                            aria-sort="none"
                             class
                         >
-                          Location
+                          <span>
+                            Location
+                          </span>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-fined"
+                            aria-sort="none"
                             class
                         >
-                          Fines
+                          <span>
+                            Fines
+                          </span>
                         </th>
                       </tr>
                     </thead>
@@ -885,6 +955,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListHidde
               </button>
               <button aria-label="share lookup to Twitter"
                       data-testid="twitter-share-button"
+                      networkname="twitter"
                       class="react-share__ShareButton twitter-share-button"
               >
                 <svg viewbox="0 0 64 64"
@@ -899,6 +970,28 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListHidde
                   >
                   </circle>
                   <path d="M48,22.1c-1.2,0.5-2.4,0.9-3.8,1c1.4-0.8,2.4-2.1,2.9-3.6c-1.3,0.8-2.7,1.3-4.2,1.6 C41.7,19.8,40,19,38.2,19c-3.6,0-6.6,2.9-6.6,6.6c0,0.5,0.1,1,0.2,1.5c-5.5-0.3-10.3-2.9-13.5-6.9c-0.6,1-0.9,2.1-0.9,3.3 c0,2.3,1.2,4.3,2.9,5.5c-1.1,0-2.1-0.3-3-0.8c0,0,0,0.1,0,0.1c0,3.2,2.3,5.8,5.3,6.4c-0.6,0.1-1.1,0.2-1.7,0.2c-0.4,0-0.8,0-1.2-0.1 c0.8,2.6,3.3,4.5,6.1,4.6c-2.2,1.8-5.1,2.8-8.2,2.8c-0.5,0-1.1,0-1.6-0.1c2.9,1.9,6.4,2.9,10.1,2.9c12.1,0,18.7-10,18.7-18.7 c0-0.3,0-0.6,0-0.8C46,24.5,47.1,23.4,48,22.1z"
+                        fill="white"
+                  >
+                  </path>
+                </svg>
+              </button>
+              <button aria-label="share lookup to Bluesky"
+                      data-testid="bluesky-share-button"
+                      networkname="bluesky"
+                      class="react-share__ShareButton bluesky-share-button"
+              >
+                <svg viewbox="0 0 64 64"
+                     width="32"
+                     height="32"
+                     crossorigin
+                >
+                  <circle cx="32"
+                          cy="32"
+                          r="32"
+                          fill="#1185FE"
+                  >
+                  </circle>
+                  <path d="M21.945 18.886C26.015 21.941 30.393 28.137 32 31.461 33.607 28.137 37.985 21.941 42.055 18.886 44.992 16.681 49.75 14.975 49.75 20.403 49.75 21.487 49.128 29.51 48.764 30.813 47.497 35.341 42.879 36.496 38.772 35.797 45.951 37.019 47.778 41.067 43.833 45.114 36.342 52.801 33.066 43.186 32.227 40.722 32.073 40.27 32.001 40.059 32 40.238 31.999 40.059 31.927 40.27 31.773 40.722 30.934 43.186 27.658 52.801 20.167 45.114 16.222 41.067 18.049 37.019 25.228 35.797 21.121 36.496 16.503 35.341 15.236 30.813 14.872 29.51 14.25 21.487 14.25 20.403 14.25 14.975 19.008 16.681 21.945 18.886Z"
                         fill="white"
                   >
                   </path>
@@ -941,7 +1034,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListHidde
                       Plate:
                     </div>
                     <div>
-                      Region:
+                      State:
                     </div>
                     <div>
                       Plate type:
@@ -1115,6 +1208,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListVisib
               </button>
               <button aria-label="share lookup to Twitter"
                       data-testid="twitter-share-button"
+                      networkname="twitter"
                       class="react-share__ShareButton twitter-share-button"
               >
                 <svg viewbox="0 0 64 64"
@@ -1129,6 +1223,28 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListVisib
                   >
                   </circle>
                   <path d="M48,22.1c-1.2,0.5-2.4,0.9-3.8,1c1.4-0.8,2.4-2.1,2.9-3.6c-1.3,0.8-2.7,1.3-4.2,1.6 C41.7,19.8,40,19,38.2,19c-3.6,0-6.6,2.9-6.6,6.6c0,0.5,0.1,1,0.2,1.5c-5.5-0.3-10.3-2.9-13.5-6.9c-0.6,1-0.9,2.1-0.9,3.3 c0,2.3,1.2,4.3,2.9,5.5c-1.1,0-2.1-0.3-3-0.8c0,0,0,0.1,0,0.1c0,3.2,2.3,5.8,5.3,6.4c-0.6,0.1-1.1,0.2-1.7,0.2c-0.4,0-0.8,0-1.2-0.1 c0.8,2.6,3.3,4.5,6.1,4.6c-2.2,1.8-5.1,2.8-8.2,2.8c-0.5,0-1.1,0-1.6-0.1c2.9,1.9,6.4,2.9,10.1,2.9c12.1,0,18.7-10,18.7-18.7 c0-0.3,0-0.6,0-0.8C46,24.5,47.1,23.4,48,22.1z"
+                        fill="white"
+                  >
+                  </path>
+                </svg>
+              </button>
+              <button aria-label="share lookup to Bluesky"
+                      data-testid="bluesky-share-button"
+                      networkname="bluesky"
+                      class="react-share__ShareButton bluesky-share-button"
+              >
+                <svg viewbox="0 0 64 64"
+                     width="32"
+                     height="32"
+                     crossorigin
+                >
+                  <circle cx="32"
+                          cy="32"
+                          r="32"
+                          fill="#1185FE"
+                  >
+                  </circle>
+                  <path d="M21.945 18.886C26.015 21.941 30.393 28.137 32 31.461 33.607 28.137 37.985 21.941 42.055 18.886 44.992 16.681 49.75 14.975 49.75 20.403 49.75 21.487 49.128 29.51 48.764 30.813 47.497 35.341 42.879 36.496 38.772 35.797 45.951 37.019 47.778 41.067 43.833 45.114 36.342 52.801 33.066 43.186 32.227 40.722 32.073 40.27 32.001 40.059 32 40.238 31.999 40.059 31.927 40.27 31.773 40.722 30.934 43.186 27.658 52.801 20.167 45.114 16.222 41.067 18.049 37.019 25.228 35.797 21.121 36.496 16.503 35.341 15.236 30.813 14.872 29.51 14.25 21.487 14.25 20.403 14.25 14.975 19.008 16.681 21.945 18.886Z"
                         fill="white"
                   >
                   </path>
@@ -1171,7 +1287,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListVisib
                       Plate:
                     </div>
                     <div>
-                      Region:
+                      State:
                     </div>
                     <div>
                       Plate type:
@@ -1296,10 +1412,13 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListVisib
                     </caption>
                     <thead class="thead-light table-light">
                       <tr>
-                        <th aria-sort="ascending"
+                        <th data-testid="table-header-date"
+                            aria-sort="ascending"
                             class="sort-column"
                         >
-                          Date
+                          <span>
+                            Date
+                          </span>
                           <svg aria-labelledby="svg-inline--fa-title-angle-up"
                                data-prefix="fas"
                                data-icon="angle-up"
@@ -1317,20 +1436,29 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListVisib
                             </path>
                           </svg>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-kind"
+                            aria-sort="none"
                             class
                         >
-                          Violation
+                          <span>
+                            Violation
+                          </span>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-location"
+                            aria-sort="none"
                             class
                         >
-                          Location
+                          <span>
+                            Location
+                          </span>
                         </th>
-                        <th aria-sort="none"
+                        <th data-testid="table-header-fined"
+                            aria-sort="none"
                             class
                         >
-                          Fines
+                          <span>
+                            Fines
+                          </span>
                         </th>
                       </tr>
                     </thead>

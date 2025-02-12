@@ -52,6 +52,7 @@ const ViolationsTableHeader = ({
 
           return (
             <th
+              data-testid={`table-header-${sortOption.name}`}
               aria-sort={
                 isSortTypeCurrentlySelected
                   ? sortAscending

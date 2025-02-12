@@ -21,7 +21,7 @@ import Card from 'react-bootstrap/Card'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
 
-import TwitterShare from 'components/TwitterShare/TwitterShare'
+import SocialShareButton from 'view/components/SocialShareButton/SocialShareButton'
 import L10N from 'constants/display'
 import Vehicle from 'models/Vehicle/Vehicle'
 // import RefreshLookupButton from 'view/VehicleResults/Header/RefreshLookupButton/RefreshLookupButton'
@@ -180,7 +180,8 @@ const Header = ({
   <Card.Header>
     <div className="share-icons">
       <CopyButton vehicleUniqueIdentifier={vehicle.uniqueIdentifier} />
-      <TwitterShare vehicle={vehicle} />
+      <SocialShareButton.Twitter vehicle={vehicle} />
+      <SocialShareButton.Bluesky vehicle={vehicle} />
     </div>
     {/* <RefreshLookupButton refreshLookupFunction={refreshLookupFunction} /> */}
     <RemoveLookupButton removeLookupFunction={removeLookupFunction} />

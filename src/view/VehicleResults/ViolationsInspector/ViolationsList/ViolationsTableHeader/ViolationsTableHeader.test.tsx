@@ -94,10 +94,12 @@ describe('ViolationsTableHeader', () => {
           { container: document.body.appendChild(tableElement) },
         )
 
-        const dateHeaderElement = screen.getByText('Date')
-        const finesHeaderElement = screen.getByText('Fines')
-        const locationHeaderElement = screen.getByText('Location')
-        const violationHeaderElement = screen.getByText('Violation')
+        const dateHeaderElement = screen.getByTestId('table-header-date')
+        const finesHeaderElement = screen.getByTestId('table-header-fined')
+        const locationHeaderElement = screen.getByTestId(
+          'table-header-location',
+        )
+        const violationHeaderElement = screen.getByTestId('table-header-kind')
 
         const sortIcon = screen.getByTitle('angle-up icon')
 
@@ -119,10 +121,12 @@ describe('ViolationsTableHeader', () => {
           { container: document.body.appendChild(tableElement) },
         )
 
-        const dateHeaderElement = screen.getByText('Date')
-        const finesHeaderElement = screen.getByText('Fines')
-        const locationHeaderElement = screen.getByText('Location')
-        const violationHeaderElement = screen.getByText('Violation')
+        const dateHeaderElement = screen.getByTestId('table-header-date')
+        const finesHeaderElement = screen.getByTestId('table-header-fined')
+        const locationHeaderElement = screen.getByTestId(
+          'table-header-location',
+        )
+        const violationHeaderElement = screen.getByTestId('table-header-kind')
 
         const sortIcon = screen.getByTitle('angle-down icon')
 
@@ -144,10 +148,12 @@ describe('ViolationsTableHeader', () => {
           { container: document.body.appendChild(tableElement) },
         )
 
-        const dateHeaderElement = screen.getByText('Date')
-        const finesHeaderElement = screen.getByText('Fines')
-        const locationHeaderElement = screen.getByText('Location')
-        const violationHeaderElement = screen.getByText('Violation')
+        const dateHeaderElement = screen.getByTestId('table-header-date')
+        const finesHeaderElement = screen.getByTestId('table-header-fined')
+        const locationHeaderElement = screen.getByTestId(
+          'table-header-location',
+        )
+        const violationHeaderElement = screen.getByTestId('table-header-kind')
 
         const sortIcon = screen.getByTitle('angle-up icon')
 
@@ -169,10 +175,12 @@ describe('ViolationsTableHeader', () => {
           { container: document.body.appendChild(tableElement) },
         )
 
-        const dateHeaderElement = screen.getByText('Date')
-        const finesHeaderElement = screen.getByText('Fines')
-        const locationHeaderElement = screen.getByText('Location')
-        const violationHeaderElement = screen.getByText('Violation')
+        const dateHeaderElement = screen.getByTestId('table-header-date')
+        const finesHeaderElement = screen.getByTestId('table-header-fined')
+        const locationHeaderElement = screen.getByTestId(
+          'table-header-location',
+        )
+        const violationHeaderElement = screen.getByTestId('table-header-kind')
 
         const sortIcon = screen.getByTitle('angle-down icon')
 
@@ -194,10 +202,12 @@ describe('ViolationsTableHeader', () => {
           { container: document.body.appendChild(tableElement) },
         )
 
-        const dateHeaderElement = screen.getByText('Date')
-        const finesHeaderElement = screen.getByText('Fines')
-        const locationHeaderElement = screen.getByText('Location')
-        const violationHeaderElement = screen.getByText('Violation')
+        const dateHeaderElement = screen.getByTestId('table-header-date')
+        const finesHeaderElement = screen.getByTestId('table-header-fined')
+        const locationHeaderElement = screen.getByTestId(
+          'table-header-location',
+        )
+        const violationHeaderElement = screen.getByTestId('table-header-kind')
 
         const sortIcon = screen.getByTitle('angle-up icon')
 
@@ -219,10 +229,12 @@ describe('ViolationsTableHeader', () => {
           { container: document.body.appendChild(tableElement) },
         )
 
-        const dateHeaderElement = screen.getByText('Date')
-        const finesHeaderElement = screen.getByText('Fines')
-        const locationHeaderElement = screen.getByText('Location')
-        const violationHeaderElement = screen.getByText('Violation')
+        const dateHeaderElement = screen.getByTestId('table-header-date')
+        const finesHeaderElement = screen.getByTestId('table-header-fined')
+        const locationHeaderElement = screen.getByTestId(
+          'table-header-location',
+        )
+        const violationHeaderElement = screen.getByTestId('table-header-kind')
 
         const sortIcon = screen.getByTitle('angle-down icon')
 
@@ -244,10 +256,12 @@ describe('ViolationsTableHeader', () => {
           { container: document.body.appendChild(tableElement) },
         )
 
-        const dateHeaderElement = screen.getByText('Date')
-        const finesHeaderElement = screen.getByText('Fines')
-        const locationHeaderElement = screen.getByText('Location')
-        const violationHeaderElement = screen.getByText('Violation')
+        const dateHeaderElement = screen.getByTestId('table-header-date')
+        const finesHeaderElement = screen.getByTestId('table-header-fined')
+        const locationHeaderElement = screen.getByTestId(
+          'table-header-location',
+        )
+        const violationHeaderElement = screen.getByTestId('table-header-kind')
 
         const sortIcon = screen.getByTitle('angle-up icon')
 
@@ -269,10 +283,12 @@ describe('ViolationsTableHeader', () => {
           { container: document.body.appendChild(tableElement) },
         )
 
-        const dateHeaderElement = screen.getByText('Date')
-        const finesHeaderElement = screen.getByText('Fines')
-        const locationHeaderElement = screen.getByText('Location')
-        const violationHeaderElement = screen.getByText('Violation')
+        const dateHeaderElement = screen.getByTestId('table-header-date')
+        const finesHeaderElement = screen.getByTestId('table-header-fined')
+        const locationHeaderElement = screen.getByTestId(
+          'table-header-location',
+        )
+        const violationHeaderElement = screen.getByTestId('table-header-kind')
 
         const sortIcon = screen.getByTitle('angle-down icon')
 

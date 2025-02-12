@@ -10700,10 +10700,10 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
-react-share@^5.1.1:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/react-share/-/react-share-5.1.1.tgz#7b29920795e72d6c4f2e4268b2fb6806343cb7e1"
-  integrity sha512-9rX6X4FiLwKi/eygTx6TWEKv0EuL15AdP6vnFMw5sA4UwTja0mgV4N3gAbkE9+5n3ry7BsBBeOnhaXbJ+jn9kQ==
+react-share@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/react-share/-/react-share-5.2.0.tgz#7627bff0227a82f0916e5ec5affab09f114f3bf5"
+  integrity sha512-0gFXnW1qMO4BITbf0lSX03J0GWmYPRqMXcP9obl+T+8nvFeOpqhiow8tGryeY9vx35fprQvri0Q0fkqb3t9uag==
   dependencies:
     classnames "^2.3.2"
     jsonp "^0.2.1"
