@@ -13,12 +13,14 @@ import Vehicle from 'models/Vehicle/Vehicle'
 
 const components = {
   [SocialMediaService.Bluesky]: {
+    accountHandle: '@howsmydrivingny.bsky.social',
     htmlElementName: 'bluesky-share-button',
     icon: BlueskyIcon,
     serviceName: 'Bluesky',
     shareButton: BlueskyShareButton,
   },
   [SocialMediaService.Twitter]: {
+    accountHandle: '@HowsMyDrivingNY',
     htmlElementName: 'twitter-share-button',
     icon: TwitterIcon,
     serviceName: 'Twitter',
@@ -42,12 +44,14 @@ const ShareButton = ({
   const serviceName = components[socialMediaService].serviceName
   const elementName = components[socialMediaService].htmlElementName
 
+  const accountHandle = components[socialMediaService].accountHandle
+
   return (
     <ShareButtonClass
       aria-label={`share lookup to ${serviceName}`}
       data-testid={elementName}
       url={`${L10N.sitewide.url}/${vehicle.uniqueIdentifier}`}
-      title={`I just looked up #${vehicleHashtag}'s ${violationsString} using @HowsMyDrivingNY: `}
+      title={`I just looked up #${vehicleHashtag}'s ${violationsString} using ${accountHandle}: `}
       className={elementName}
       resetButtonStyle={false}
     >
