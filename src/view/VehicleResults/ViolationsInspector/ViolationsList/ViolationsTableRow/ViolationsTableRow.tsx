@@ -15,6 +15,7 @@ import {
   SCHOOL_ZONE_SPEED_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION,
   SCHOOL_ZONE_SPEED_CAMERA_VIOLATION_CODE,
 } from 'constants/violations'
+import { NonParkingViolationCode } from 'utils/types/violationCodes'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
@@ -32,12 +33,6 @@ type Props = {
   showFullText: boolean
   violation: Violation
 }
-
-type NonParkingViolationCode =
-  | typeof BUS_LANE_CAMERA_VIOLATION_CODE
-  | typeof MOBILE_BUS_LANE_CAMERA_VIOLATION_CODE
-  | typeof RED_LIGHT_CAMERA_VIOLATION_CODE
-  | typeof SCHOOL_ZONE_SPEED_CAMERA_VIOLATION_CODE
 
 type ViolationIcon = 'bus' | 'parking' | 'tachometer-alt' | 'traffic-light'
 

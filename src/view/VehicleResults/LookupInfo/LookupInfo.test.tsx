@@ -2,6 +2,12 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
+import {
+  BusLaneCameraViolation,
+  MobileBusLaneCameraViolation,
+  RedLightCameraViolation,
+  SchoolZoneSpeedCameraViolation,
+} from '__fixtures__/models/Violation'
 
 import LookupInfo from './LookupInfo'
 
@@ -64,28 +70,86 @@ describe('LookupInfo', () => {
       expect(screen.getByText(state)).toBeInTheDocument()
 
       expect(screen.getByText('Violations:')).toBeInTheDocument()
+
       if (vehicle.violationsCount) {
         if (vehicle.previousViolationCount) {
           const numNewViolations =
             vehicle.violationsCount - vehicle.previousViolationCount
           if (numNewViolations === 0) {
             expect(
-              screen.getByText(vehicle.violationsCount),
+              screen.getByText(vehicle.violationsCount, {
+                selector: 'div.violation-total',
+              }),
             ).toBeInTheDocument()
           } else {
             expect(
               screen.getByText(
-                `${vehicle.violationsCount} (${numNewViolations} new)`,
+                `(${numNewViolations} new) ${vehicle.violationsCount}`,
               ),
             ).toBeInTheDocument()
           }
         } else {
-          expect(screen.getByText(vehicle.violationsCount)).toBeInTheDocument()
+          expect(
+            screen.getByText(vehicle.violationsCount, {
+              selector: 'div.violation-total',
+            }),
+          ).toBeInTheDocument()
         }
       }
 
       expect(screen.getByText('Lookups:')).toBeInTheDocument()
       expect(screen.getByText(vehicle.timesQueried)).toBeInTheDocument()
+    })
+  })
+
+  describe('render violation type counts', () => {
+    it('it should render the counts for different types of violations', () => {
+      const vehicle = VehicleFactory.build({
+        plate: 'ABC1234',
+        state: 'NY',
+        violations: [
+          // four bus lane violations (two mobile, two not)
+          BusLaneCameraViolation.build(),
+          BusLaneCameraViolation.build(),
+          MobileBusLaneCameraViolation.build(),
+          MobileBusLaneCameraViolation.build(),
+
+          // six red light camera violations
+          RedLightCameraViolation.build(),
+          RedLightCameraViolation.build(),
+          RedLightCameraViolation.build(),
+          RedLightCameraViolation.build(),
+          RedLightCameraViolation.build(),
+          RedLightCameraViolation.build(),
+
+          // 13 school zone speed camera violations
+          SchoolZoneSpeedCameraViolation.build(),
+          SchoolZoneSpeedCameraViolation.build(),
+          SchoolZoneSpeedCameraViolation.build(),
+          SchoolZoneSpeedCameraViolation.build(),
+          SchoolZoneSpeedCameraViolation.build(),
+          SchoolZoneSpeedCameraViolation.build(),
+          SchoolZoneSpeedCameraViolation.build(),
+          SchoolZoneSpeedCameraViolation.build(),
+          SchoolZoneSpeedCameraViolation.build(),
+          SchoolZoneSpeedCameraViolation.build(),
+          SchoolZoneSpeedCameraViolation.build(),
+          SchoolZoneSpeedCameraViolation.build(),
+          SchoolZoneSpeedCameraViolation.build(),
+        ],
+      })
+
+      render(<LookupInfo vehicle={vehicle} />)
+
+      // keys
+      expect(screen.getByText('Speeding:')).toBeInTheDocument()
+      expect(screen.getByText('Red Light:')).toBeInTheDocument()
+      expect(screen.getByText('Bus Lane:')).toBeInTheDocument()
+
+      // values
+      expect(screen.getByText('13')).toBeInTheDocument()
+      expect(screen.getByText('6')).toBeInTheDocument()
+      expect(screen.getByText('4')).toBeInTheDocument()
     })
   })
 
@@ -288,7 +352,7 @@ describe('LookupInfo', () => {
 
       render(<LookupInfo vehicle={vehicle} />)
 
-      expect(screen.queryByText('3 (1 new)')).toBeInTheDocument()
+      expect(screen.queryByText('(1 new) 3')).toBeInTheDocument()
     })
   })
 })

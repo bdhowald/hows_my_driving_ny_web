@@ -11,48 +11,70 @@ exports[`Components/VehicleResults/LookupInfo NewViolationsSincePreviousLookup s
               <div class="row">
                 <div class="summary-section col-xs-12 col-sm-6">
                   <div class="summary-box keys lookup-info">
-                    <div>
-                      Plate:
+                    <div class="vehicle-info-group vehicle-identity">
+                      <div>
+                        Plate:
+                      </div>
+                      <div>
+                        State:
+                      </div>
+                      <div>
+                        Plate type:
+                      </div>
                     </div>
-                    <div>
-                      State:
+                    <div class="vehicle-info-group vehicle-violations">
+                      <div class="violation-count-types">
+                        <div>
+                          Violations:
+                        </div>
+                        <div class="violation-count-type">
+                          Parking:
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      Plate type:
-                    </div>
-                    <div>
-                      Violations:
-                    </div>
-                    <div>
-                      Lookups:
-                    </div>
-                    <div>
-                      Previous:
+                    <div class="vehicle-info-group vehicle-lookups">
+                      <div>
+                        Lookups:
+                      </div>
+                      <div>
+                        Previous:
+                      </div>
                     </div>
                   </div>
                   <div class="summary-box values lookup-info">
-                    <div class="summary-value">
-                      ABC1234
-                    </div>
-                    <div class="summary-value region">
-                      <div class="region-abbreviation">
-                        NY
+                    <div class="vehicle-info-group vehicle-identity">
+                      <div>
+                        ABC1234
                       </div>
-                      <div class="region-full-name">
-                        New York
+                      <div class="region">
+                        <div class="region-abbreviation">
+                          NY
+                        </div>
+                        <div class="region-full-name">
+                          New York
+                        </div>
+                      </div>
+                      <div>
+                        All
                       </div>
                     </div>
-                    <div class="summary-value">
-                      All
+                    <div class="vehicle-info-group vehicle-violations">
+                      <div class="violation-counts">
+                        <div class="violation-total">
+                          (1 new) 3
+                        </div>
+                        <div class="violation-count">
+                          3
+                        </div>
+                      </div>
                     </div>
-                    <div class="summary-value">
-                      3 (1 new)
-                    </div>
-                    <div class="summary-value">
-                      2
-                    </div>
-                    <div class="summary-value">
-                      07/12/2023
+                    <div class="vehicle-info-group vehicle-lookups">
+                      <div>
+                        2
+                      </div>
+                      <div>
+                        07/12/2023
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -126,42 +148,64 @@ exports[`Components/VehicleResults/LookupInfo NoPreviousLookups smoke-test 1`] =
               <div class="row">
                 <div class="summary-section col-xs-12 col-sm-6">
                   <div class="summary-box keys lookup-info">
-                    <div>
-                      Plate:
+                    <div class="vehicle-info-group vehicle-identity">
+                      <div>
+                        Plate:
+                      </div>
+                      <div>
+                        State:
+                      </div>
+                      <div>
+                        Plate type:
+                      </div>
                     </div>
-                    <div>
-                      State:
+                    <div class="vehicle-info-group vehicle-violations">
+                      <div class="violation-count-types">
+                        <div>
+                          Violations:
+                        </div>
+                        <div class="violation-count-type">
+                          Parking:
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      Plate type:
-                    </div>
-                    <div>
-                      Violations:
-                    </div>
-                    <div>
-                      Lookups:
+                    <div class="vehicle-info-group vehicle-lookups">
+                      <div>
+                        Lookups:
+                      </div>
                     </div>
                   </div>
                   <div class="summary-box values lookup-info">
-                    <div class="summary-value">
-                      ABC1234
-                    </div>
-                    <div class="summary-value region">
-                      <div class="region-abbreviation">
-                        NY
+                    <div class="vehicle-info-group vehicle-identity">
+                      <div>
+                        ABC1234
                       </div>
-                      <div class="region-full-name">
-                        New York
+                      <div class="region">
+                        <div class="region-abbreviation">
+                          NY
+                        </div>
+                        <div class="region-full-name">
+                          New York
+                        </div>
+                      </div>
+                      <div>
+                        All
                       </div>
                     </div>
-                    <div class="summary-value">
-                      All
+                    <div class="vehicle-info-group vehicle-violations">
+                      <div class="violation-counts">
+                        <div class="violation-total">
+                          3
+                        </div>
+                        <div class="violation-count">
+                          3
+                        </div>
+                      </div>
                     </div>
-                    <div class="summary-value">
-                      3
-                    </div>
-                    <div class="summary-value">
-                      2
+                    <div class="vehicle-info-group vehicle-lookups">
+                      <div>
+                        2
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -235,48 +279,62 @@ exports[`Components/VehicleResults/LookupInfo NoViolations smoke-test 1`] = `
               <div class="row">
                 <div class="summary-section col-xs-12 col-sm-6">
                   <div class="summary-box keys lookup-info">
-                    <div>
-                      Plate:
+                    <div class="vehicle-info-group vehicle-identity">
+                      <div>
+                        Plate:
+                      </div>
+                      <div>
+                        State:
+                      </div>
+                      <div>
+                        Plate type:
+                      </div>
                     </div>
-                    <div>
-                      State:
+                    <div class="vehicle-info-group vehicle-violations">
+                      <div class="violation-count-types">
+                        <div>
+                          Violations:
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      Plate type:
-                    </div>
-                    <div>
-                      Violations:
-                    </div>
-                    <div>
-                      Lookups:
-                    </div>
-                    <div>
-                      Previous:
+                    <div class="vehicle-info-group vehicle-lookups">
+                      <div>
+                        Lookups:
+                      </div>
+                      <div>
+                        Previous:
+                      </div>
                     </div>
                   </div>
                   <div class="summary-box values lookup-info">
-                    <div class="summary-value">
-                      ABC1234
-                    </div>
-                    <div class="summary-value region">
-                      <div class="region-abbreviation">
-                        NY
+                    <div class="vehicle-info-group vehicle-identity">
+                      <div>
+                        ABC1234
                       </div>
-                      <div class="region-full-name">
-                        New York
+                      <div class="region">
+                        <div class="region-abbreviation">
+                          NY
+                        </div>
+                        <div class="region-full-name">
+                          New York
+                        </div>
+                      </div>
+                      <div>
+                        All
                       </div>
                     </div>
-                    <div class="summary-value">
-                      All
+                    <div class="vehicle-info-group vehicle-violations">
+                      <div class="summary-value">
+                        0
+                      </div>
                     </div>
-                    <div class="summary-value">
-                      0
-                    </div>
-                    <div class="summary-value">
-                      2
-                    </div>
-                    <div class="summary-value">
-                      07/12/2023
+                    <div class="vehicle-info-group vehicle-lookups">
+                      <div>
+                        2
+                      </div>
+                      <div>
+                        07/12/2023
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -301,48 +359,70 @@ exports[`Components/VehicleResults/LookupInfo ViolationsAndAPreviousLookup smoke
               <div class="row">
                 <div class="summary-section col-xs-12 col-sm-6">
                   <div class="summary-box keys lookup-info">
-                    <div>
-                      Plate:
+                    <div class="vehicle-info-group vehicle-identity">
+                      <div>
+                        Plate:
+                      </div>
+                      <div>
+                        State:
+                      </div>
+                      <div>
+                        Plate type:
+                      </div>
                     </div>
-                    <div>
-                      State:
+                    <div class="vehicle-info-group vehicle-violations">
+                      <div class="violation-count-types">
+                        <div>
+                          Violations:
+                        </div>
+                        <div class="violation-count-type">
+                          Parking:
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      Plate type:
-                    </div>
-                    <div>
-                      Violations:
-                    </div>
-                    <div>
-                      Lookups:
-                    </div>
-                    <div>
-                      Previous:
+                    <div class="vehicle-info-group vehicle-lookups">
+                      <div>
+                        Lookups:
+                      </div>
+                      <div>
+                        Previous:
+                      </div>
                     </div>
                   </div>
                   <div class="summary-box values lookup-info">
-                    <div class="summary-value">
-                      ABC1234
-                    </div>
-                    <div class="summary-value region">
-                      <div class="region-abbreviation">
-                        NY
+                    <div class="vehicle-info-group vehicle-identity">
+                      <div>
+                        ABC1234
                       </div>
-                      <div class="region-full-name">
-                        New York
+                      <div class="region">
+                        <div class="region-abbreviation">
+                          NY
+                        </div>
+                        <div class="region-full-name">
+                          New York
+                        </div>
+                      </div>
+                      <div>
+                        All
                       </div>
                     </div>
-                    <div class="summary-value">
-                      All
+                    <div class="vehicle-info-group vehicle-violations">
+                      <div class="violation-counts">
+                        <div class="violation-total">
+                          3
+                        </div>
+                        <div class="violation-count">
+                          3
+                        </div>
+                      </div>
                     </div>
-                    <div class="summary-value">
-                      3
-                    </div>
-                    <div class="summary-value">
-                      2
-                    </div>
-                    <div class="summary-value">
-                      07/12/2023
+                    <div class="vehicle-info-group vehicle-lookups">
+                      <div>
+                        2
+                      </div>
+                      <div>
+                        07/12/2023
+                      </div>
                     </div>
                   </div>
                 </div>

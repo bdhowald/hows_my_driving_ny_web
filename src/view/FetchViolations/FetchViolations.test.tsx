@@ -321,7 +321,7 @@ describe('FetchViolations', () => {
         screen.getByText('Commercial', { selector: 'div' })
 
         screen.getByText('Violations:')
-        screen.getByText('3 (1 new)')
+        screen.getByText('(1 new) 3')
 
         screen.getByText('Lookups:')
         screen.getByText('2')

@@ -63,6 +63,26 @@ export const ViolationFactory = Factory.define<Violation>(({ sequence }) => ({
   getViolationTime: () => '11/07/2024',
 }))
 
+export const BusLaneCameraViolation = ViolationFactory.params({
+  humanizedDescription: 'Bus Lane Violation',
+  violationCode: '05',
+})
+
+export const MobileBusLaneCameraViolation = ViolationFactory.params({
+  humanizedDescription: 'Mobile Bus Lane Violation',
+  violationCode: '12',
+})
+
+export const RedLightCameraViolation = ViolationFactory.params({
+  humanizedDescription: 'Failure to Stop at Red Light',
+  violationCode: '07',
+})
+
+export const SchoolZoneSpeedCameraViolation = ViolationFactory.params({
+  humanizedDescription: 'School Zone Speed Camera Violation',
+  violationCode: '36',
+})
+
 export const ViolationInJudgmentFactory = ViolationFactory.params({
   judgmentEntryDate: '2024-11-05',
 })

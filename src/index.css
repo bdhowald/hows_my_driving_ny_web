@@ -824,7 +824,71 @@ div.container-fluid
   div.row
   div.summary-section
   div.summary-box.keys.lookup-info {
-  min-width: 5em;
+  min-width: 6em;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.no-padding
+  div.row
+  div.summary-section
+  div.summary-box.keys.lookup-info
+  div.vehicle-info-group {
+  margin-bottom: 0.75rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.no-padding
+  div.row
+  div.summary-section
+  div.summary-box.keys.lookup-info
+  div.violation-count-types {
+  margin-bottom: 0.25rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.no-padding
+  div.row
+  div.summary-section
+  div.summary-box.keys.lookup-info
+  div.violation-count-types
+  > div:first-child {
+  margin-bottom: 0.25rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.no-padding
+  div.row
+  div.summary-section
+  div.summary-box.keys.lookup-info
+  div.violation-count-types
+  div.violation-count-type {
+  font-style: italic;
+  line-height: 1.5rem;
+  margin-left: 1em;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.no-padding
+  div.row
+  div.summary-section
+  div.summary-box.keys.lookup-info
+  div.violation-count-total {
+  margin-left: 1em;
 }
 
 div.container-fluid
@@ -909,6 +973,18 @@ div.container-fluid
   text-align: right;
 }
 
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.no-padding
+  div.row
+  div.summary-section
+  div.summary-box.values.lookup-info
+  div.vehicle-info-group {
+  margin-bottom: 0.75rem;
+}
+
 @media only screen and (min-width: 576px) {
   div.container-fluid
     div.row
@@ -918,10 +994,169 @@ div.container-fluid
     div.row
     div.summary-section
     div.summary-box.values.lookup-info {
+    min-width: 6rem;
     text-align: center;
   }
 }
 
+@media only screen and (min-width: 640px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section
+    div.summary-box.values.lookup-info {
+    min-width: 7rem;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section
+    div.summary-box.values.lookup-info {
+    min-width: 8rem;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section
+    div.summary-box.values.lookup-info {
+    min-width: 9rem;
+  }
+}
+
+@media only screen and (min-width: 880px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section
+    div.summary-box.values.lookup-info {
+    min-width: 10rem;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section
+    div.summary-box.values.lookup-info {
+    min-width: 11rem;
+  }
+}
+
+@media only screen and (min-width: 1040px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section
+    div.summary-box.values.lookup-info {
+    min-width: 12rem;
+  }
+}
+
+@media only screen and (min-width: 1120px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section
+    div.summary-box.values.lookup-info {
+    min-width: 13rem;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section
+    div.summary-box.values.lookup-info {
+    min-width: 14rem;
+  }
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.no-padding
+  div.row
+  div.summary-section
+  div.summary-box.values.lookup-info
+  div.violation-counts {
+  margin-bottom: 0.25rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.no-padding
+  div.row
+  div.summary-section
+  div.summary-box.values.lookup-info
+  div.violation-counts
+  > div:first-child {
+  margin-bottom: 0.25rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.no-padding
+  div.row
+  div.summary-section
+  div.summary-box.values.lookup-info
+  div.violation-counts
+  div.violation-count {
+  line-height: 1.5rem;
+  margin-left: auto;
+  max-width: 3rem;
+}
+
+@media only screen and (min-width: 576px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section
+    div.summary-box.values.lookup-info
+    div.violation-counts
+    div.violation-count {
+    margin: auto;
+  }
+}
 div.container-fluid
   div.row
   div.card
@@ -955,7 +1190,7 @@ div.container-fluid
   div.row
   div.summary-section
   div.summary-box
-  div.summary-value.region
+  div.region
   div.region-abbreviation {
   display: initial;
 }
@@ -968,12 +1203,12 @@ div.container-fluid
   div.row
   div.summary-section
   div.summary-box
-  div.summary-value.region
+  div.region
   div.region-full-name {
   display: none;
 }
 
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 960px) {
   div.container-fluid
     div.row
     div.card
@@ -982,7 +1217,7 @@ div.container-fluid
     div.row
     div.summary-section
     div.summary-box
-    div.summary-value.region
+    div.region
     div.region-abbreviation {
     display: none;
   }
@@ -995,7 +1230,7 @@ div.container-fluid
     div.row
     div.summary-section
     div.summary-box
-    div.summary-value.region
+    div.region
     div.region-full-name {
     display: initial;
   }
