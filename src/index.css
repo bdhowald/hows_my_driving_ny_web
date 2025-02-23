@@ -190,8 +190,21 @@ div.container-fluid
   div.card
   div.card-header
   div.share-icons
+  button {
+  background-color: transparent;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  div.card-header
+  div.share-icons
   button.copy-button {
   background: none;
+  line-height: 21px;
 }
 
 div.container-fluid
@@ -232,12 +245,17 @@ div.container-fluid
   div.card
   div.card-header
   div.share-icons
-  button.twitter-share-button {
-  background-color: transparent;
-  font: inherit;
+  button.bluesky-share-button {
   font-size: initial;
-  color: inherit;
-  cursor: pointer;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  div.card-header
+  div.share-icons
+  button.twitter-share-button {
+  font-size: initial;
 }
 
 div.container-fluid

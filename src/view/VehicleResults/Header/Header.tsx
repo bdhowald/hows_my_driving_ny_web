@@ -104,7 +104,7 @@ const CopyButton = ({
         <span className="fa-layers fa-fw">
           <FontAwesomeIcon
             icon={[iconClass as IconPrefix, 'circle']}
-            transform="grow-6"
+            transform="grow-5"
             className={`circle ${buttonPressedClass}`}
           />
           <FontAwesomeIcon

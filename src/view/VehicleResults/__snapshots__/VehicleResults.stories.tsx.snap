@@ -115,7 +115,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                        style="transform-origin: 0.5em 0.5em;"
                   >
                     <g transform="translate(256 256)">
-                      <g transform="translate(0, 0)  scale(1.375, 1.375)  rotate(0 0 0)">
+                      <g transform="translate(0, 0)  scale(1.3125, 1.3125)  rotate(0 0 0)">
                         <path fill="currentColor"
                               d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
                               transform="translate(-256 -256)"
@@ -535,7 +535,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                        style="transform-origin: 0.5em 0.5em;"
                   >
                     <g transform="translate(256 256)">
-                      <g transform="translate(0, 0)  scale(1.375, 1.375)  rotate(0 0 0)">
+                      <g transform="translate(0, 0)  scale(1.3125, 1.3125)  rotate(0 0 0)">
                         <path fill="currentColor"
                               d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
                               transform="translate(-256 -256)"
@@ -966,7 +966,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListHidde
                        style="transform-origin: 0.5em 0.5em;"
                   >
                     <g transform="translate(256 256)">
-                      <g transform="translate(0, 0)  scale(1.375, 1.375)  rotate(0 0 0)">
+                      <g transform="translate(0, 0)  scale(1.3125, 1.3125)  rotate(0 0 0)">
                         <path fill="currentColor"
                               d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
                               transform="translate(-256 -256)"
@@ -1241,7 +1241,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListVisib
                        style="transform-origin: 0.5em 0.5em;"
                   >
                     <g transform="translate(256 256)">
-                      <g transform="translate(0, 0)  scale(1.375, 1.375)  rotate(0 0 0)">
+                      <g transform="translate(0, 0)  scale(1.3125, 1.3125)  rotate(0 0 0)">
                         <path fill="currentColor"
                               d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
                               transform="translate(-256 -256)"
