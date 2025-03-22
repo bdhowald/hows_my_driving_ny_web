@@ -179,6 +179,10 @@ const applyStreetSpecificLocationFixes = (inputLocation: string): string => {
     /193rd Street-/,
     'between 193rd Street and',
   )
+  standardizedLocation = standardizedLocation.replace(
+    /Fultonmall/,
+    'Fulton Mall',
+  )
 
   return standardizedLocation
 }
