@@ -1,8 +1,8 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 import Vehicle from 'models/Vehicle/Vehicle'
 
+import ViolationCardList from './ViolationCardList/ViolationCardList'
 import ViolationsList from './ViolationsList/ViolationsList'
 import ViolationsListControls from './ViolationsListControls/ViolationsListControls'
 
@@ -10,11 +10,13 @@ const MAX_WIDTH_TO_HIDE_FULL_VIOLATION_TEXT_BY_DEFAULT = 768
 
 type ViolationsInspectorProps = {
   showViolationsList: boolean
+  useNewStyleView?: boolean
   vehicle: Vehicle
 }
 
 const ViolationsInspector = ({
   showViolationsList,
+  useNewStyleView,
   vehicle,
 }: ViolationsInspectorProps) => {
   const [violationsListIsVisible, setViolationsListVisibility] =
@@ -27,6 +29,20 @@ const ViolationsInspector = ({
 
   const violationsCount = vehicle.violationsCount
   const vehicleHasViolations = violationsCount > 0
+
+  if (useNewStyleView) {
+    return (
+      <li className="list-group-item">
+        <div className="violation-card-list-wrapper" style={{ width: '100%' }}>
+          <ViolationCardList
+            setViolationsListVisibilityFunction={setViolationsListVisibility}
+            vehicle={vehicle}
+            violationsListIsVisible={violationsListIsVisible}
+          />
+        </div>
+      </li>
+    )
+  }
 
   return (
     <li className="list-group-item">

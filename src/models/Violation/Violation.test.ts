@@ -19,11 +19,11 @@ describe('Violation', () => {
     })
 
     describe('getLocationDescription', () => {
-      it('should return `(${violation.location})` when violation.location is present', () => {
+      it('should return violation.location when violation.location is present', () => {
         const location = '123 Fake Street'
         const violation = new Violation({ location } as RawViolationData)
 
-        expect(violation.getLocationDescription()).toEqual(`(${location})`)
+        expect(violation.getLocationDescription()).toEqual(location)
       })
 
       it("should return 'N/A' when it is present", () => {
@@ -150,6 +150,50 @@ describe('Violation', () => {
       })
     })
 
+    describe('getViolationDate', () => {
+      it("should return 'N/A' when formattedTime is null", () => {
+        const violation = new Violation({} as RawViolationData)
+
+        expect(violation.getViolationDate()).toEqual('N/A')
+      })
+
+      it("should return 'N/A' when formattedTime is not a valid time", () => {
+        const formattedTime = 'Not a real time'
+        const violation = new Violation({ formattedTime } as RawViolationData)
+
+        expect(violation.getViolationDate()).toEqual('N/A')
+      })
+
+      it('should return the date formatted in a U.S. locale string when formattedTime is a valid time', () => {
+        const formattedTime = '2024-07-24T14:11:00.000-04:00'
+        const violation = new Violation({ formattedTime } as RawViolationData)
+
+        expect(violation.getViolationDate()).toEqual('07/24/2024')
+      })
+    })
+
+    describe('getViolationDateTime', () => {
+      it("should return 'N/A' when formattedTime is null", () => {
+        const violation = new Violation({} as RawViolationData)
+
+        expect(violation.getViolationDateTime()).toEqual('N/A')
+      })
+
+      it("should return 'N/A' when formattedTime is not a valid time", () => {
+        const formattedTime = 'Not a real time'
+        const violation = new Violation({ formattedTime } as RawViolationData)
+
+        expect(violation.getViolationDateTime()).toEqual('N/A')
+      })
+
+      it('should return the time formatted in a U.S. locale string when formattedTime is a valid time', () => {
+        const formattedTime = '2024-07-24T14:11:00.000-04:00'
+        const violation = new Violation({ formattedTime } as RawViolationData)
+
+        expect(violation.getViolationDateTime()).toEqual('07/24/2024 2:11 PM')
+      })
+    })
+
     describe('getViolationTime', () => {
       it("should return 'N/A' when formattedTime is null", () => {
         const violation = new Violation({} as RawViolationData)
@@ -168,7 +212,74 @@ describe('Violation', () => {
         const formattedTime = '2024-07-24T14:11:00.000-04:00'
         const violation = new Violation({ formattedTime } as RawViolationData)
 
-        expect(violation.getViolationTime()).toEqual('07/24/2024')
+        expect(violation.getViolationTime()).toEqual('2:11 PM')
+      })
+    })
+
+    describe('isCameraViolation', () => {
+      it("should return false for a 'No Standing - Bus Stop' violation", () => {
+        const violation = new Violation({
+          violationCode: '19',
+        } as RawViolationData)
+
+        expect(violation.isCameraViolation()).toEqual(false)
+      })
+
+      it('should return true for a bus lane camera violation', () => {
+        const violation = new Violation({
+          violationCode: '5',
+        } as RawViolationData)
+
+        expect(violation.isCameraViolation()).toEqual(true)
+      })
+
+      it('should return true for a red light camera violation', () => {
+        const violation = new Violation({
+          violationCode: '7',
+        } as RawViolationData)
+
+        expect(violation.isCameraViolation()).toEqual(true)
+      })
+
+      it('should return true for a mobile bus lane camera violation', () => {
+        const violation = new Violation({
+          violationCode: '12',
+        } as RawViolationData)
+
+        expect(violation.isCameraViolation()).toEqual(true)
+      })
+
+      it('should return true for a mobile MTA bus stop camera violation', () => {
+        const violation = new Violation({
+          humanizedDescription: 'Mobile MTA Bus Stop Violation',
+          violationCode: '43',
+        } as RawViolationData)
+
+        expect(violation.isCameraViolation()).toEqual(true)
+      })
+
+      it('should return true for a mobile MTA bus stop camera violation', () => {
+        const violation = new Violation({
+          humanizedDescription: 'Mobile MTA Double Parking Violation',
+          violationCode: '15',
+        } as RawViolationData)
+
+        expect(violation.isCameraViolation()).toEqual(true)
+      })
+
+      it('should return true for a school zone speed camera violation', () => {
+        const violation = new Violation({
+          violationCode: '36',
+        } as RawViolationData)
+
+        expect(violation.isCameraViolation()).toEqual(true)
+      })
+
+      it('should return the time formatted in a U.S. locale string when formattedTime is a valid time', () => {
+        const formattedTime = '2024-07-24T14:11:00.000-04:00'
+        const violation = new Violation({ formattedTime } as RawViolationData)
+
+        expect(violation.getViolationTime()).toEqual('2:11 PM')
       })
     })
   })

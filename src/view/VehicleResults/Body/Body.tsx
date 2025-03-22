@@ -1,5 +1,7 @@
-import * as React from 'react'
+import React from 'react'
+import { useCookies } from 'react-cookie'
 
+import { USE_NEW_STYLE_DISPLAY_COOKIE } from 'constants/cookies'
 import Vehicle from 'models/Vehicle/Vehicle'
 import LookupInfo from 'view/VehicleResults/LookupInfo/LookupInfo'
 import DangerousVehicleAbatementAct from 'view/VehicleResults/DangerousVehicleAbatementAct/DangerousVehicleAbatementAct'
@@ -11,11 +13,17 @@ type BodyProps = {
 }
 
 const Body = ({ showViolationsList, vehicle }: BodyProps) => {
+  const [cookies, _, __] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
+
+  const useNewStyleDisplayCookie = cookies[USE_NEW_STYLE_DISPLAY_COOKIE]
+
   const cameraStreakData = vehicle.cameraStreakData
 
   const showDangerousVehicleAbatementActNotice =
     cameraStreakData?.redLightCameraViolations?.maxStreak >= 5 ||
     cameraStreakData?.schoolZoneSpeedCameraViolations?.maxStreak >= 15
+
+  const useNewStyleDisplay = useNewStyleDisplayCookie && window.innerWidth < 576
 
   return (
     <ul className="list-group list-group-flush">
@@ -24,8 +32,9 @@ const Body = ({ showViolationsList, vehicle }: BodyProps) => {
         <DangerousVehicleAbatementAct vehicle={vehicle} />
       )}
       <ViolationsInspector
-        vehicle={vehicle}
         showViolationsList={showViolationsList}
+        useNewStyleView={useNewStyleDisplay}
+        vehicle={vehicle}
       />
     </ul>
   )

@@ -6,10 +6,20 @@ type SiteDateFormat = {
   year: 'numeric'
 }
 
+type SiteTimeFormat = {
+  hour: 'numeric'
+  minute: 'numeric'
+}
+
 const siteDateFormat: SiteDateFormat = {
   year: 'numeric',
   month: '2-digit',
   day: '2-digit',
+}
+
+const siteTimeFormat: SiteTimeFormat = {
+  hour: 'numeric',
+  minute: 'numeric',
 }
 
 export default {
@@ -58,6 +68,7 @@ export default {
       maximumFractionDigits: 2,
     },
     dateFormat: siteDateFormat,
+    timeFormat: siteTimeFormat,
     title: "How's My Driving NY",
     url: 'https://howsmydrivingny.nyc',
   },

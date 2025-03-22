@@ -1,4 +1,14 @@
 import L10N from 'constants/display'
+import {
+  BUS_LANE_CAMERA_VIOLATION_CODE,
+  MOBILE_BUS_LANE_CAMERA_VIOLATION_CODE,
+  MOBILE_MTA_BUS_STOP_VIOLATION_CODE,
+  MOBILE_MTA_BUS_STOP_VIOLATION_HUMANIZED_DESCRIPTION,
+  MOBILE_MTA_DOUBLE_PARKING_VIOLATION_CODE,
+  MOBILE_MTA_DOUBLE_PARKING_VIOLATION_HUMANIZED_DESCRIPTION,
+  RED_LIGHT_CAMERA_VIOLATION_CODE,
+  SCHOOL_ZONE_SPEED_CAMERA_VIOLATION_CODE,
+} from 'constants/violations'
 
 export type RawViolationData = {
   amountDue: number | undefined
@@ -6,6 +16,10 @@ export type RawViolationData = {
   feetFromCurb: string | undefined
   fineAmount: number | undefined
   formattedTime: string
+  fromDatabases: Array<{
+    endpoint: string
+    name: string
+  }>
   fromHoursInEffect: string | undefined
   houseNumber: string | undefined
   humanizedDescription: string
@@ -59,6 +73,10 @@ class Violation {
   feetFromCurb: string | undefined
   fineAmount: number | undefined
   formattedTime: string
+  fromDatabases: Array<{
+    endpoint: string
+    name: string
+  }>
   fromHoursInEffect: string | undefined
   houseNumber: string | undefined
   humanizedDescription: string
@@ -111,6 +129,7 @@ class Violation {
     this.feetFromCurb = data.feetFromCurb
     this.fineAmount = data.fineAmount
     this.formattedTime = data.formattedTime
+    this.fromDatabases = data.fromDatabases
     this.fromHoursInEffect = data.fromHoursInEffect
     this.houseNumber = data.houseNumber
     this.humanizedDescription = data.humanizedDescription
@@ -158,7 +177,7 @@ class Violation {
   }
 
   getLocationDescription(): string {
-    return this.location == null ? '' : `(${this.location})`
+    return this.location ? this.location : ''
   }
 
   getTotalFined(): number | null {
@@ -174,13 +193,65 @@ class Violation {
     return fineAmount + interestAmount + penaltyAmount - reductionAmount
   }
 
-  getViolationTime(): string {
+  getViolationDate(): string {
     return Date.parse(this.formattedTime)
       ? new Date(this.formattedTime).toLocaleDateString(
           'en-US',
           L10N.sitewide.dateFormat,
         )
       : 'N/A'
+  }
+
+  getViolationDateTime(): string {
+    const datePart = new Date(this.formattedTime).toLocaleDateString(
+      'en-US',
+      L10N.sitewide.dateFormat,
+    )
+    const timePart = new Date(this.formattedTime).toLocaleTimeString(
+      'en-US',
+      L10N.sitewide.timeFormat,
+    )
+    return Date.parse(this.formattedTime) ? `${datePart} ${timePart}` : 'N/A'
+  }
+
+  getViolationTime(): string {
+    return Date.parse(this.formattedTime)
+      ? new Date(this.formattedTime).toLocaleTimeString(
+          'en-US',
+          L10N.sitewide.timeFormat,
+        )
+      : 'N/A'
+  }
+
+  isCameraViolation(): boolean {
+    if (
+      [
+        BUS_LANE_CAMERA_VIOLATION_CODE,
+        MOBILE_BUS_LANE_CAMERA_VIOLATION_CODE,
+        RED_LIGHT_CAMERA_VIOLATION_CODE,
+        SCHOOL_ZONE_SPEED_CAMERA_VIOLATION_CODE,
+      ].includes(this.violationCode)
+    ) {
+      return true
+    }
+
+    if (
+      this.violationCode === MOBILE_MTA_BUS_STOP_VIOLATION_CODE &&
+      this.humanizedDescription ===
+        MOBILE_MTA_BUS_STOP_VIOLATION_HUMANIZED_DESCRIPTION
+    ) {
+      return true
+    }
+
+    if (
+      this.violationCode === MOBILE_MTA_DOUBLE_PARKING_VIOLATION_CODE &&
+      this.humanizedDescription ===
+        MOBILE_MTA_DOUBLE_PARKING_VIOLATION_HUMANIZED_DESCRIPTION
+    ) {
+      return true
+    }
+
+    return false
   }
 }
 

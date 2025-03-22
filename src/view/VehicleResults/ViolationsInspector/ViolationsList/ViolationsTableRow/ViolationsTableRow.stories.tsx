@@ -1,7 +1,12 @@
 import * as React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { ViolationFactory } from '__fixtures__/models/Violation'
+import {
+  BusLaneCameraViolationFactory,
+  RedLightCameraViolationFactory,
+  SchoolZoneSpeedCameraViolationFactory,
+  ViolationFactory,
+} from '__fixtures__/models/Violation'
 import { RawViolationData } from 'models/Violation/Violation'
 import Violation from 'models/Violation/Violation'
 
@@ -65,30 +70,24 @@ export const ParkingViolation: Story = {
 
 export const BusLaneCameraViolation: Story = {
   args: {
-    violation: ViolationFactory.build({
+    violation: BusLaneCameraViolationFactory.build({
       fineAmount: 100,
-      humanizedDescription: 'Bus Lane Violation',
-      violationCode: '5',
     }),
   },
 }
 
 export const RedLightCameraViolation: Story = {
   args: {
-    violation: ViolationFactory.build({
+    violation: RedLightCameraViolationFactory.build({
       fineAmount: 50,
-      humanizedDescription: 'Failure to Stop at Red Light',
-      violationCode: '7',
     }),
   },
 }
 
 export const SpeedCameraViolation: Story = {
   args: {
-    violation: ViolationFactory.build({
+    violation: SchoolZoneSpeedCameraViolationFactory.build({
       fineAmount: 50,
-      humanizedDescription: 'School Zone Speed Camera Violation',
-      violationCode: '36',
     }),
   },
 }
@@ -96,15 +95,13 @@ export const SpeedCameraViolation: Story = {
 export const ViolationWithFullFineData: Story = {
   args: {
     showFullFineData: true,
-    violation: ViolationFactory.build({
+    violation: BusLaneCameraViolationFactory.build({
       amountDue: 105,
       fineAmount: 100,
-      humanizedDescription: 'Bus Lane Violation',
       interestAmount: 10,
       paymentAmount: 20,
       penaltyAmount: 25,
       reductionAmount: 10,
-      violationCode: '5',
     }),
   },
 }
@@ -112,15 +109,13 @@ export const ViolationWithFullFineData: Story = {
 export const ViolationWithFullLocation: Story = {
   args: {
     showFullText: true,
-    violation: ViolationFactory.build({
+    violation: BusLaneCameraViolationFactory.build({
       fineAmount: 100,
       getLocationDescription: new Violation({} as RawViolationData)
         .getLocationDescription,
-      humanizedDescription: 'Bus Lane Violation',
       intersectingStreet: 'ST',
       location: 'Jay St @ Johnson St',
       streetName: 'SB JAY ST @ JOHNSON',
-      violationCode: '5',
     }),
   },
 }
@@ -129,12 +124,11 @@ export const ViolationWithFullFineDataAndFullLocation: Story = {
   args: {
     showFullFineData: true,
     showFullText: true,
-    violation: ViolationFactory.build({
+    violation: BusLaneCameraViolationFactory.build({
       amountDue: 105,
       fineAmount: 100,
       getLocationDescription: new Violation({} as RawViolationData)
         .getLocationDescription,
-      humanizedDescription: 'Bus Lane Violation',
       interestAmount: 10,
       intersectingStreet: 'ST',
       location: 'Jay St @ Johnson St',
@@ -142,7 +136,6 @@ export const ViolationWithFullFineDataAndFullLocation: Story = {
       penaltyAmount: 25,
       reductionAmount: 10,
       streetName: 'SB JAY ST @ JOHNSON',
-      violationCode: '5',
     }),
   },
 }

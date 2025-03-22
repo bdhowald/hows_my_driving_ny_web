@@ -8,9 +8,9 @@ export const ViolationFactory = Factory.define<Violation>(({ sequence }) => ({
   daysParkingInEffect: 'YYYYYYY',
   feetFromCurb: '0',
   fineAmount: undefined,
-  formattedTime: '2013-08-30T14:11:00.000-04:00',
-  formattedTimeEastern: '2013-08-30T14:11:00.000-04:00',
-  formattedTimeUtc: '2013-08-30T18:11:00.000Z',
+  formattedTime: '2024-11-07T22:47:00.000-05:00',
+  formattedTimeEastern: '2024-11-07T22:47:00.000-05:00',
+  formattedTimeUtc: '2024-11-08T03:47:00.000Z',
   fromDatabases: [
     {
       endpoint: 'https://data.cityofnewyork.us/resource/jt7v-77mi.json',
@@ -60,26 +60,33 @@ export const ViolationFactory = Factory.define<Violation>(({ sequence }) => ({
   getBorough: () => 'Brooklyn',
   getLocationDescription: () => '',
   getTotalFined: () => 123,
-  getViolationTime: () => '11/07/2024',
+  getViolationDate: () => '11/07/2024',
+  getViolationDateTime: () => '11/07/2024 10:47 PM',
+  getViolationTime: () => '10:47 PM',
+  isCameraViolation: () => false,
 }))
 
-export const BusLaneCameraViolation = ViolationFactory.params({
+export const BusLaneCameraViolationFactory = ViolationFactory.params({
   humanizedDescription: 'Bus Lane Violation',
+  isCameraViolation: () => true,
   violationCode: '05',
 })
 
-export const MobileBusLaneCameraViolation = ViolationFactory.params({
+export const MobileBusLaneCameraViolationFactory = ViolationFactory.params({
   humanizedDescription: 'Mobile Bus Lane Violation',
+  isCameraViolation: () => true,
   violationCode: '12',
 })
 
-export const RedLightCameraViolation = ViolationFactory.params({
+export const RedLightCameraViolationFactory = ViolationFactory.params({
   humanizedDescription: 'Failure to Stop at Red Light',
+  isCameraViolation: () => true,
   violationCode: '07',
 })
 
-export const SchoolZoneSpeedCameraViolation = ViolationFactory.params({
+export const SchoolZoneSpeedCameraViolationFactory = ViolationFactory.params({
   humanizedDescription: 'School Zone Speed Camera Violation',
+  isCameraViolation: () => true,
   violationCode: '36',
 })
 

@@ -1,0 +1,27 @@
+enum Color {
+  BLACK = 'Black',
+  BLACK_GRAY = 'Black Gray',
+  BLUE = 'Blue',
+  BROWN = 'Brown',
+  DARK_BLUE = 'Dark Blue',
+  DARK_GRAY = 'Dark Gray',
+  DARK_GREEN = 'Dark Green',
+  GOLD = 'Gold',
+  GRAY = 'Gray',
+  GREEN = 'Green',
+  LIGHT_GRAY = 'Light Gray',
+  LIGHT_GREEN = 'Light Green',
+  MAROON = 'Maroon',
+  ORANGE = 'Orange',
+  PURPLE = 'Purple',
+  RED = 'Red',
+  SILVER = 'Silver',
+  TAN = 'Tan',
+  UNKNOWN_COLOR = 'Unknown Color',
+  WHITE = 'White',
+  WHITE_BLUE = 'White Blue',
+  WHITE_GRAY = 'White Gray',
+  YELLOW = 'Yellow',
+}
+
+export default Color

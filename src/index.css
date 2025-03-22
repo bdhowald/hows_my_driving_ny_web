@@ -185,12 +185,7 @@ div.container-fluid div.row div.card div.card-header div.share-icons button {
   padding: 0 0.25rem;
 }
 
-div.container-fluid
-  div.row
-  div.card
-  div.card-header
-  div.share-icons
-  button {
+div.container-fluid div.row div.card div.card-header div.share-icons button {
   background-color: transparent;
   font: inherit;
   color: inherit;
@@ -522,6 +517,7 @@ div.container-fluid
   div.row
   div.summary-section {
   background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   display: flex;
   justify-content: space-between;
   padding: 0.75rem 1.25rem;
@@ -761,21 +757,8 @@ div.container-fluid
   ul.list-group-flush
   li.list-group-item.no-padding
   div.row
-  div.summary-section:first-child {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-}
-
-@media only screen and (min-width: 576px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section:first-child {
-    border-bottom: none;
-    border-right: 1px solid rgba(0, 0, 0, 0.125);
-  }
+  div.summary-section:last-child {
+  border-bottom: none;
 }
 
 div.container-fluid
@@ -821,92 +804,7 @@ div.container-fluid
   div.summary-section
   div.summary-box {
   display: block;
-}
-
-div.container-fluid
-  div.row
-  div.card
-  ul.list-group-flush
-  li.list-group-item.no-padding
-  div.row
-  div.summary-section
-  div.summary-box.keys {
-  text-align: left;
-}
-
-div.container-fluid
-  div.row
-  div.card
-  ul.list-group-flush
-  li.list-group-item.no-padding
-  div.row
-  div.summary-section
-  div.summary-box.keys.lookup-info {
-  min-width: 6em;
-}
-
-div.container-fluid
-  div.row
-  div.card
-  ul.list-group-flush
-  li.list-group-item.no-padding
-  div.row
-  div.summary-section
-  div.summary-box.keys.lookup-info
-  div.vehicle-info-group {
-  margin-bottom: 0.75rem;
-}
-
-div.container-fluid
-  div.row
-  div.card
-  ul.list-group-flush
-  li.list-group-item.no-padding
-  div.row
-  div.summary-section
-  div.summary-box.keys.lookup-info
-  div.violation-count-types {
-  margin-bottom: 0.25rem;
-}
-
-div.container-fluid
-  div.row
-  div.card
-  ul.list-group-flush
-  li.list-group-item.no-padding
-  div.row
-  div.summary-section
-  div.summary-box.keys.lookup-info
-  div.violation-count-types
-  > div:first-child {
-  margin-bottom: 0.25rem;
-}
-
-div.container-fluid
-  div.row
-  div.card
-  ul.list-group-flush
-  li.list-group-item.no-padding
-  div.row
-  div.summary-section
-  div.summary-box.keys.lookup-info
-  div.violation-count-types
-  div.violation-count-type {
-  font-style: italic;
-  line-height: 1.5rem;
-  margin-left: 1em;
-}
-
-div.container-fluid
-  div.row
-  div.card
-  ul.list-group-flush
-  li.list-group-item.no-padding
-  div.row
-  div.summary-section
-  div.summary-box.keys.lookup-info
-  div.violation-count-total {
-  margin-left: 1em;
+  width: 100%;
 }
 
 div.container-fluid
@@ -940,44 +838,10 @@ div.container-fluid
   li.list-group-item.no-padding
   div.row
   div.summary-section
-  div.summary-box.values {
-  font-weight: bold;
-}
-
-@media only screen and (min-width: 576px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section
-    div.summary-box.keys {
-    margin-right: 1rem;
-  }
-
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section
-    div.summary-box.values {
-    margin-left: 1rem;
-  }
-}
-
-div.container-fluid
-  div.row
-  div.card
-  ul.list-group-flush
-  li.list-group-item.no-padding
-  div.row
-  div.summary-section
-  div.summary-box.values.fines {
+  div.summary-box
+  > div.vehicle-info-group {
   display: flex;
-  text-align: right;
+  justify-content: space-between;
 }
 
 div.container-fluid
@@ -987,8 +851,10 @@ div.container-fluid
   li.list-group-item.no-padding
   div.row
   div.summary-section
-  div.summary-box.values.lookup-info {
-  text-align: right;
+  div.summary-box
+  div.vehicle-info-group
+  div.keys.lookup-info {
+  text-align: left;
 }
 
 div.container-fluid
@@ -998,127 +864,11 @@ div.container-fluid
   li.list-group-item.no-padding
   div.row
   div.summary-section
-  div.summary-box.values.lookup-info
-  div.vehicle-info-group {
-  margin-bottom: 0.75rem;
-}
-
-@media only screen and (min-width: 576px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section
-    div.summary-box.values.lookup-info {
-    min-width: 6rem;
-    text-align: center;
-  }
-}
-
-@media only screen and (min-width: 640px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section
-    div.summary-box.values.lookup-info {
-    min-width: 7rem;
-  }
-}
-
-@media only screen and (min-width: 720px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section
-    div.summary-box.values.lookup-info {
-    min-width: 8rem;
-  }
-}
-
-@media only screen and (min-width: 800px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section
-    div.summary-box.values.lookup-info {
-    min-width: 9rem;
-  }
-}
-
-@media only screen and (min-width: 880px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section
-    div.summary-box.values.lookup-info {
-    min-width: 10rem;
-  }
-}
-
-@media only screen and (min-width: 960px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section
-    div.summary-box.values.lookup-info {
-    min-width: 11rem;
-  }
-}
-
-@media only screen and (min-width: 1040px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section
-    div.summary-box.values.lookup-info {
-    min-width: 12rem;
-  }
-}
-
-@media only screen and (min-width: 1120px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section
-    div.summary-box.values.lookup-info {
-    min-width: 13rem;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section
-    div.summary-box.values.lookup-info {
-    min-width: 14rem;
-  }
+  div.summary-box
+  div.vehicle-info-group.vehicle-violations
+  div.keys.lookup-info
+  a.show-violations-aspect-details {
+  font-style: italic;
 }
 
 div.container-fluid
@@ -1128,8 +878,10 @@ div.container-fluid
   li.list-group-item.no-padding
   div.row
   div.summary-section
-  div.summary-box.values.lookup-info
-  div.violation-counts {
+  div.summary-box
+  div.vehicle-info-group
+  div.keys.lookup-info
+  div.violation-count-aspects {
   margin-bottom: 0.25rem;
 }
 
@@ -1140,9 +892,71 @@ div.container-fluid
   li.list-group-item.no-padding
   div.row
   div.summary-section
-  div.summary-box.values.lookup-info
-  div.violation-counts
-  > div:first-child {
+  div.summary-box
+  div.vehicle-info-group
+  div.keys.lookup-info
+  div.violation-count-aspects
+  div.violation-count-aspect-header {
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.5rem;
+  margin-left: 0.5rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.no-padding
+  div.row
+  div.summary-section
+  div.summary-box
+  div.vehicle-info-group
+  div.keys.lookup-info
+  div.violation-count-aspects
+  div.violation-count-aspect {
+  line-height: 1.5rem;
+  margin-left: 1em;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.no-padding
+  div.row
+  div.summary-section
+  div.summary-box
+  div.vehicle-info-group.vehicle-fines
+  div.values.lookup-info {
+  display: flex;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.no-padding
+  div.row
+  div.summary-section
+  div.summary-box
+  div.vehicle-info-group
+  div.values.lookup-info {
+  font-weight: bold;
+  text-align: right;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.no-padding
+  div.row
+  div.summary-section
+  div.summary-box
+  div.vehicle-info-group
+  div.values.lookup-info
+  div.violation-borough-counts {
   margin-bottom: 0.25rem;
 }
 
@@ -1153,28 +967,16 @@ div.container-fluid
   li.list-group-item.no-padding
   div.row
   div.summary-section
-  div.summary-box.values.lookup-info
-  div.violation-counts
+  div.summary-box
+  div.vehicle-info-group
+  div.values.lookup-info
+  div.violation-borough-counts
   div.violation-count {
   line-height: 1.5rem;
   margin-left: auto;
   max-width: 3rem;
 }
 
-@media only screen and (min-width: 576px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section
-    div.summary-box.values.lookup-info
-    div.violation-counts
-    div.violation-count {
-    margin: auto;
-  }
-}
 div.container-fluid
   div.row
   div.card
@@ -1182,10 +984,28 @@ div.container-fluid
   li.list-group-item.no-padding
   div.row
   div.summary-section
-  div.summary-box.values.fines
-  div.math-symbols {
-  font-weight: normal;
-  text-align: center;
+  div.summary-box
+  div.vehicle-info-group
+  div.values.lookup-info
+  div.violation-type-counts {
+  margin-bottom: 0.25rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.no-padding
+  div.row
+  div.summary-section
+  div.summary-box
+  div.vehicle-info-group
+  div.values.lookup-info
+  div.violation-type-counts
+  div.violation-count {
+  line-height: 1.5rem;
+  margin-left: auto;
+  max-width: 3rem;
 }
 
 div.container-fluid
@@ -1281,6 +1101,310 @@ div.container-fluid
   div.card
   ul.list-group-flush
   li.list-group-item
+  div.violation-card-list-wrapper {
+  width: 100%;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-caption {
+  color: #212529bf;
+  display: block;
+  margin: 0.25rem 0.5rem 0.75rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-controls {
+  background-color: white;
+  display: block;
+  padding: 0.5rem 0;
+  position: sticky;
+  top: 0%;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-controls
+  a.btn-primary.disabled.placeholder {
+  background-color: #4824ff;
+  border-color: #4824ff;
+  margin: 0 0.25rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-controls
+  div.row
+  div.d-grid.gap-2 {
+  padding: 0.5rem 1rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-controls
+  div.d-grid.gap-2
+  button.btn-outline-primary {
+  background-color: #fff;
+  border-color: #4824ff;
+  color: #4824ff;
+  width: 100%;
+}
+
+@media (hover: hover) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item
+    div.violation-card-list-wrapper
+    div.violation-card-list-controls
+    div.d-grid.gap-2
+    button.btn-outline-primary:not(:disabled):not(.disabled):active {
+    background-color: #4824ff;
+    color: #fff;
+  }
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item
+    div.violation-card-list-wrapper
+    div.violation-card-list-controls
+    div.d-grid.gap-2
+    button.btn-outline-primary:hover {
+    background-color: #4824ff;
+    color: #fff;
+  }
+}
+
+@media (hover: none) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item
+    div.violation-card-list-wrapper
+    div.violation-card-list-controls
+    div.d-grid.gap-2
+    button.btn-outline-primary:not(:disabled):not(.disabled):active {
+    background-color: #fff;
+    color: #4824ff;
+  }
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item
+    div.violation-card-list-wrapper
+    div.violation-card-list-controls
+    div.row
+    div.d-grid.gap-2
+    button.btn-outline-primary:hover {
+    background-color: #fff;
+    color: #4824ff;
+  }
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-sort-controls {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  display: flex;
+  margin: 0.5rem 0.25rem 0.5rem;
+  padding: 0.5rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-sort-controls
+  div.violation-card-list-sort-control {
+  padding: 0 0.25rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-sort-controls
+  div.violation-card-list-sort-control.active {
+  font-weight: bold;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-sort-controls
+  div.violation-card-list-sort-control.date {
+  width: 22%;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-sort-controls
+  div.violation-card-list-sort-control.fined {
+  width: 22%;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-sort-controls
+  div.violation-card-list-sort-control.kind {
+  width: 24%;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-sort-controls
+  div.violation-card-list-sort-control.location {
+  width: 32%;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-sort-controls
+  div.violation-card-list-sort-control
+  span.violation-card-list-sort-control-name {
+  margin-right: 0.125rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card-sort-divider:first-child {
+  margin-top: 0.25rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card {
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0.25rem;
+  padding: 0.5rem 0.25rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card
+  div.violation-card-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card
+  div.violation-card-row
+  a {
+  color: #000;
+  text-decoration-color: #000;
+  text-underline-offset: 0.125rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card
+  div.violation-card-row
+  div {
+  padding: 0.125rem 0.25rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card-sort-divider {
+  border-radius: 0.25rem;
+  color: white;
+  font-weight: bold;
+  margin: 1rem 0.25rem 0.25rem;
+  padding: 0.5rem 0.625rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
   div.violations-table-wrapper {
   width: 100%;
 }
@@ -1333,6 +1457,7 @@ div.container-fluid
   border-color: #4824ff;
   color: #4824ff;
   margin: 0 0.25rem;
+  width: calc(100% - 0.5rem);
 }
 
 @media (hover: hover) {
@@ -1561,22 +1686,6 @@ td {
   color: white;
 }
 
-/* div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body-wrapper table tbody tr.violation-row div {
-  -webkit-transition: max-height 2s ease;
-  -moz-transition: max-height 2s ease;
-  transition: max-height 2s ease;
-
-  max-height: 100px;
-}
-
-div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body-wrapper table tbody tr.violation-row.expanded div {
-  -webkit-transition: max-height 2s ease;
-  -moz-transition: max-height 2s ease;
-  transition: max-height 2s ease;
-
-  max-height: 400px;
-} */
-
 div.container-fluid
   div.row
   div.card
@@ -1590,6 +1699,7 @@ div.container-fluid
   td {
   box-shadow: none;
 }
+
 div.container-fluid
   div.row
   div.card
@@ -2015,14 +2125,6 @@ div.container-fluid
   margin: 0 0.25em 0 0;
 }
 
-/* div.container-fluid div.row div.card ul.list-group-flush li.list-group-item div.violations-table-wrapper div.violations-table-body-wrapper table tbody tr.violation-row td.violation-description svg.svg-inline--fa {
-  margin: 0 0.25rem;
-} */
-
-/*div.container-fluid div.row div.card div.card-title div.card-text {
-  font-size: 1.5rem;
-}*/
-
 div.container-fluid div.row div.card ul.list-group {
   border-bottom: 1px solid #ddd;
   margin: 1rem 0;
@@ -2031,7 +2133,6 @@ div.container-fluid div.row div.card ul.list-group {
 
 div.container-fluid div.row div.card ul.list-group div.violation-type-header {
   display: flex;
-  /*justify-content: space-between;*/
 }
 
 div.container-fluid
@@ -2086,4 +2187,89 @@ div.container-fluid footer div.footer-content {
 div.container-fluid footer div.footer-content p a.self-link {
   color: #000;
   text-decoration: underline;
+}
+
+div.offcanvas.offcanvas-bottom.show {
+  height: 75%;
+}
+
+div.offcanvas.show div.offcanvas-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+div.offcanvas.show
+  div.offcanvas-header
+  div.offcanvas-title
+  span.summons-number {
+  font-weight: bold;
+}
+
+div.offcanvas.show div.offcanvas-body div.violation-info {
+  padding: 0 0.125rem;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.violation-info
+  div.violation-info-aspect {
+  padding: 0.25rem 0;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.violation-info
+  div.violation-info-aspect
+  div.violation-info-aspect-header {
+  font-weight: bold;
+}
+
+div.offcanvas.show div.offcanvas-body div.violation-info div.fines-breakdown {
+  display: flex;
+  justify-content: space-between;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.violation-info
+  div.fines-breakdown
+  div.summary-box.values.fines {
+  display: flex;
+  text-align: right;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.violation-info
+  div.fines-breakdown
+  div.math-symbols {
+  font-weight: normal;
+  text-align: center;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.violation-info
+  div.fines-breakdown
+  div.fine-added {
+  border-bottom: 0.125rem solid rgba(0, 0, 0, 0.5);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.violation-info
+  div.fines-breakdown
+  div.fine-subtracted {
+  border-bottom: 0.125rem solid rgba(0, 0, 0, 0.5);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.violation-info
+  div.fines-breakdown
+  div.in-judgment {
+  font-style: italic;
 }

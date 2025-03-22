@@ -14,9 +14,9 @@ describe('ViolationsTable', () => {
     const violationDate = '11/07/2024'
 
     const violations = [
-      ViolationFactory.build({ getViolationTime: () => violationDate }),
-      ViolationFactory.build({ getViolationTime: () => violationDate }),
-      ViolationFactory.build({ getViolationTime: () => violationDate }),
+      ViolationFactory.build({ getViolationDate: () => violationDate }),
+      ViolationFactory.build({ getViolationDate: () => violationDate }),
+      ViolationFactory.build({ getViolationDate: () => violationDate }),
     ]
 
     test.each([
@@ -259,8 +259,8 @@ describe('ViolationsTable', () => {
         fineAmount: 50,
         formattedTime: '2018-04-26T14:11:00.000-04:00',
         getBorough: () => 'Staten Island',
-        getLocationDescription: () => '(123 Bay Street)',
-        getViolationTime: () => '04/26/2018',
+        getLocationDescription: () => '123 Bay Street',
+        getViolationDate: () => '04/26/2018',
         humanizedDescription: 'Bus Lane Violation',
         interestAmount: 0,
         paymentAmount: 0,
@@ -288,8 +288,8 @@ describe('ViolationsTable', () => {
         fineAmount: 100,
         formattedTime: '2021-02-17T07:27:00.000-04:00',
         getBorough: () => 'Brooklyn',
-        getLocationDescription: () => '(Jay Street @ Johnson Street)',
-        getViolationTime: () => '02/17/2021',
+        getLocationDescription: () => 'Jay Street @ Johnson Street',
+        getViolationDate: () => '02/17/2021',
         humanizedDescription: 'School Zone Speed Camera Violation',
         interestAmount: 10,
         paymentAmount: 20,

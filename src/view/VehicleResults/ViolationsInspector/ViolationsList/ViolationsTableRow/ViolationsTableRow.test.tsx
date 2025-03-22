@@ -110,7 +110,7 @@ describe('ViolationsTableRow', () => {
         amountDue,
         fineAmount,
         getBorough: () => borough,
-        getViolationTime: () => violationDate,
+        getViolationDate: () => violationDate,
         paymentAmount,
       })
 

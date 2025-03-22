@@ -22,17 +22,6 @@ const ViolationsTableBody = ({
   sortAscending,
   violations,
 }: ViolationsTableBodyProps): JSX.Element => {
-  /**
-   *
-   * @param {{
-   *   currentSortType {Sort}
-   *   showFullFineData {boolean}
-   *   showFullText {boolean}
-   *   sortAscending {boolean}
-   *   violations {Violation[]}
-   * }} props ViolationsTableBodyProps
-   * @returns
-   */
   const SortDivider = ({
     columnIndex,
     dividerText,

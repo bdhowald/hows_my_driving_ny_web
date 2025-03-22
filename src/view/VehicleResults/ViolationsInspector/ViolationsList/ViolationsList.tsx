@@ -1,13 +1,12 @@
-import * as React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 import Sort from 'constants/sortOptions'
 import Violation from 'models/Violation/Violation'
 import Vehicle from 'models/Vehicle/Vehicle'
 import sortViolations from 'utils/processResults/sortViolations/sortViolations'
 
-import ViolationsTableHeader from 'view/VehicleResults/ViolationsInspector/ViolationsList/ViolationsTableHeader/ViolationsTableHeader'
-import ViolationsTableBody from 'view/VehicleResults/ViolationsInspector/ViolationsList/ViolationsTableBody/ViolationsTableBody'
+import ViolationsTableHeader from './ViolationsTableHeader/ViolationsTableHeader'
+import ViolationsTableBody from './ViolationsTableBody/ViolationsTableBody'
 
 type OwnProps = {
   showFullFineData: boolean

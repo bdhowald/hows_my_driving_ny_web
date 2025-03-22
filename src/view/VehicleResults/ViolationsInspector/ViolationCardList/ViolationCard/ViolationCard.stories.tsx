@@ -1,0 +1,59 @@
+import * as React from 'react'
+import type { Meta, StoryObj } from '@storybook/react'
+
+import { ViolationFactory } from '__fixtures__/models/Violation'
+
+import ViolationCard from './ViolationCard'
+
+const meta: Meta<typeof ViolationCard> = {
+  title:
+    'Components/VehicleResults/ViolationsInspector/ViolationsList/ViolationCard',
+  component: ViolationCard,
+  decorators: [
+    (Story) => (
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-12">
+            <div className="vehicles">
+              <div className="vehicle card">
+                <ul className="list-group-flush list-group">
+                  <li className="list-group-item">
+                    <div>
+                      {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
+                      <Story />
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+  ],
+  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
+  tags: ['autodocs'],
+  parameters: {
+    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
+    layout: 'fullscreen',
+  },
+}
+
+type Story = StoryObj<typeof ViolationCard>
+
+const fineData = {
+  amountDue: 15,
+  fineAmount: 65,
+  interestAmount: 0.69,
+  paymentAmount: 75,
+  penaltyAmount: 25,
+  reductionAmount: 0.69,
+}
+
+export const Default: Story = {
+  args: {
+    violation: ViolationFactory.build(fineData),
+  },
+}
+
+export default meta

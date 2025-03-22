@@ -5,7 +5,10 @@ import Row from 'react-bootstrap/Row'
 import { useCookies } from 'react-cookie'
 
 import { getPreviousLookup } from 'boundaries/http'
-import { LOOKUP_IDENTIFIER_COOKIE } from 'constants/cookies'
+import {
+  LOOKUP_IDENTIFIER_COOKIE,
+  USE_NEW_STYLE_DISPLAY_COOKIE,
+} from 'constants/cookies'
 import L10N from 'constants/display'
 import { PlateType } from 'constants/plateTypes'
 import handleLookupResults from 'utils/processResults/handleLookupResults/handleLookupResults'
@@ -81,7 +84,25 @@ const Search = ({
   })
   const [cookies, setCookie, removeCookie] = useCookies([
     LOOKUP_IDENTIFIER_COOKIE,
+    USE_NEW_STYLE_DISPLAY_COOKIE,
   ])
+
+  useEffect(() => {
+    const queryParameters = new URLSearchParams(document.location.search)
+    const useNewStyleDisplayCookie = cookies[USE_NEW_STYLE_DISPLAY_COOKIE]
+
+    if (!useNewStyleDisplayCookie) {
+      const useNewStyleDisplayFeatureFlagIsEnabled =
+        Math.random() * 10 > 9.5 || queryParameters.get('useNewStyleDisplay')
+
+      if (useNewStyleDisplayFeatureFlagIsEnabled) {
+        setCookie(USE_NEW_STYLE_DISPLAY_COOKIE, 'true', {
+          maxAge: 31536000,
+          path: '/',
+        })
+      }
+    }
+  }, [])
 
   useEffect(() => {
     const uniqueIdentifiersToSaveInCookie =

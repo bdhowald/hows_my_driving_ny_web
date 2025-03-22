@@ -124,40 +124,44 @@ const CombinedViolationsFinesBreakdown = (
   const anyFinesInJudgment = totalInJudgment > 0
 
   return (
-    <div className="summary-section col-xs-12 col-sm-6">
-      <div className="summary-box keys">
-        <div>Fined:</div>
-        <CombinedViolationsFinesSubtractionLabels
-          totalPaidPresent={!!totalPaid}
-          totalReducedPresent={!!totalReduced}
-        />
-        <div>Owed:</div>
-        {anyFinesInJudgment && <div className="in-judgment">In judgment:</div>}
-      </div>
-      <div
-        className="summary-box values fines"
-        role="math"
-        aria-label={finesAriaLabel}
-      >
-        <div className="math-symbols">
-          <div>{NON_BREAKING_SPACES}</div>
-          <CombinedViolationsFinesSubtractionSymbols
+    <div className="summary-box">
+      <div className="vehicle-info-group vehicle-fines">
+        <div className="keys lookup-info">
+          <div>Fined:</div>
+          <CombinedViolationsFinesSubtractionLabels
             totalPaidPresent={!!totalPaid}
             totalReducedPresent={!!totalReduced}
           />
-          <div>{NON_BREAKING_SPACES}</div>
-          {anyFinesInJudgment && <div>{NON_BREAKING_SPACES}</div>}
-        </div>
-        <div className="amounts">
-          <div>${totalFinedString}</div>
-          <CombinedViolationsFinesSubtractionAmounts
-            totalPaid={totalPaid}
-            totalReduced={totalReduced}
-          />
-          <div>${totalOutstandingString}</div>
+          <div>Owed:</div>
           {anyFinesInJudgment && (
-            <div className="in-judgment">${totalinJudgmentString}</div>
+            <div className="in-judgment">In judgment:</div>
           )}
+        </div>
+        <div
+          className="values lookup-info"
+          role="math"
+          aria-label={finesAriaLabel}
+        >
+          <div className="math-symbols">
+            <div>{NON_BREAKING_SPACES}</div>
+            <CombinedViolationsFinesSubtractionSymbols
+              totalPaidPresent={!!totalPaid}
+              totalReducedPresent={!!totalReduced}
+            />
+            <div>{NON_BREAKING_SPACES}</div>
+            {anyFinesInJudgment && <div>{NON_BREAKING_SPACES}</div>}
+          </div>
+          <div className="amounts">
+            <div>${totalFinedString}</div>
+            <CombinedViolationsFinesSubtractionAmounts
+              totalPaid={totalPaid}
+              totalReduced={totalReduced}
+            />
+            <div>${totalOutstandingString}</div>
+            {anyFinesInJudgment && (
+              <div className="in-judgment">${totalinJudgmentString}</div>
+            )}
+          </div>
         </div>
       </div>
     </div>

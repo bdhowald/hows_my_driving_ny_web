@@ -124,7 +124,7 @@ const TableRow = (props: Props): JSX.Element => {
         )}
         {showFullText && (
           <span className="location-description">
-            {violation.getLocationDescription()}
+            ({violation.getLocationDescription()})
           </span>
         )}
       </>
@@ -137,7 +137,7 @@ const TableRow = (props: Props): JSX.Element => {
       key={violation.summonsNumber}
       data-testid={`summons ${violation.summonsNumber}`}
     >
-      <td>{violation.getViolationTime()}</td>
+      <td>{violation.getViolationDate()}</td>
       <td className="violation-description">{getViolationDescripton()}</td>
       <td className="location">{getViolationLocationDescription()}</td>
 

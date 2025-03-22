@@ -222,113 +222,119 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
             <li class="list-group-item no-padding">
               <div class="row">
                 <div class="summary-section col-xs-12 col-sm-6">
-                  <div class="summary-box keys lookup-info">
+                  <div class="summary-box">
                     <div class="vehicle-info-group vehicle-identity">
-                      <div>
-                        Plate:
-                      </div>
-                      <div>
-                        State:
-                      </div>
-                      <div>
-                        Plate type:
-                      </div>
-                    </div>
-                    <div class="vehicle-info-group vehicle-violations">
-                      <div class="violation-count-types">
+                      <div class="keys lookup-info">
                         <div>
-                          Violations:
+                          Plate:
                         </div>
-                        <div class="violation-count-type">
-                          Parking:
+                        <div>
+                          State:
                         </div>
-                      </div>
-                    </div>
-                    <div class="vehicle-info-group vehicle-lookups">
-                      <div>
-                        Lookups:
-                      </div>
-                    </div>
-                  </div>
-                  <div class="summary-box values lookup-info">
-                    <div class="vehicle-info-group vehicle-identity">
-                      <div>
-                        ABC1234
-                      </div>
-                      <div class="region">
-                        <div class="region-abbreviation">
-                          NY
+                        <div>
+                          Plate type:
                         </div>
-                        <div class="region-full-name">
-                          New York
+                        <div>
+                          Lookups:
                         </div>
                       </div>
-                      <div>
-                        All
-                      </div>
-                    </div>
-                    <div class="vehicle-info-group vehicle-violations">
-                      <div class="violation-counts">
-                        <div class="violation-total">
-                          3
+                      <div class="values lookup-info">
+                        <div>
+                          ABC1234
                         </div>
-                        <div class="violation-count">
-                          3
+                        <div class="region">
+                          <div class="region-abbreviation">
+                            NY
+                          </div>
+                          <div class="region-full-name">
+                            New York
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="vehicle-info-group vehicle-lookups">
-                      <div>
-                        2
+                        <div>
+                          All
+                        </div>
+                        <div>
+                          2
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="summary-section col-xs-12 col-sm-6">
-                  <div class="summary-box keys">
-                    <div>
-                      Fined:
-                    </div>
-                    <div>
-                      Reduced:
-                    </div>
-                    <div class="fines-reduced">
-                      Paid:
-                    </div>
-                    <div>
-                      Owed:
+                  <div class="summary-box">
+                    <div class="vehicle-info-group vehicle-violations">
+                      <div class="keys lookup-info">
+                        <div>
+                          Violations:
+                        </div>
+                        <div>
+                          (
+                          <a class="show-violations-aspect-details"
+                             href="#"
+                             target="_blank"
+                          >
+                            show details
+                          </a>
+                          )
+                        </div>
+                      </div>
+                      <div class="values lookup-info">
+                        <div class="violation-total">
+                          3
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="summary-box values fines"
-                       role="math"
-                       aria-label="$3,850.00 fined - $3,780.00 paid - $20.00 reduced = $50.00 outstanding"
-                  >
-                    <div class="math-symbols">
-                      <div>
-                        &nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="summary-section col-xs-12 col-sm-6">
+                  <div class="summary-box">
+                    <div class="vehicle-info-group vehicle-fines">
+                      <div class="keys lookup-info">
+                        <div>
+                          Fined:
+                        </div>
+                        <div>
+                          Reduced:
+                        </div>
+                        <div class="fines-reduced">
+                          Paid:
+                        </div>
+                        <div>
+                          Owed:
+                        </div>
                       </div>
-                      <div>
-                        &nbsp;&nbsp;&nbsp;
-                      </div>
-                      <div class="fines-reduced">
-                        –&nbsp;
-                      </div>
-                      <div>
-                        &nbsp;&nbsp;&nbsp;
-                      </div>
-                    </div>
-                    <div class="amounts">
-                      <div>
-                        $3,850.00
-                      </div>
-                      <div>
-                        $20.00
-                      </div>
-                      <div class="fines-reduced">
-                        $3,780.00
-                      </div>
-                      <div>
-                        $50.00
+                      <div class="values lookup-info"
+                           role="math"
+                           aria-label="$3,850.00 fined - $3,780.00 paid - $20.00 reduced = $50.00 outstanding"
+                      >
+                        <div class="math-symbols">
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                          <div class="fines-reduced">
+                            –&nbsp;
+                          </div>
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                        </div>
+                        <div class="amounts">
+                          <div>
+                            $3,850.00
+                          </div>
+                          <div>
+                            $20.00
+                          </div>
+                          <div class="fines-reduced">
+                            $3,780.00
+                          </div>
+                          <div>
+                            $50.00
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -426,10 +432,10 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                     </thead>
                     <tbody data-testid="violations-table-body">
                       <tr class="sort-divider"
-                          data-testid="sort-divider-date-ascending-2013"
+                          data-testid="sort-divider-date-ascending-2024"
                       >
                         <th colspan="1">
-                          2013
+                          2024
                         </th>
                         <th colspan="1">
                         </th>
@@ -442,7 +448,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                           data-testid="summons 7310127609"
                       >
                         <td>
-                          08/30/2013
+                          11/07/2024
                         </td>
                         <td class="violation-description">
                           <div class="humanized-description">
@@ -465,7 +471,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                           data-testid="summons 7310127610"
                       >
                         <td>
-                          08/30/2013
+                          11/07/2024
                         </td>
                         <td class="violation-description">
                           <div class="humanized-description">
@@ -488,7 +494,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                           data-testid="summons 7310127611"
                       >
                         <td>
-                          08/30/2013
+                          11/07/2024
                         </td>
                         <td class="violation-description">
                           <div class="humanized-description">
@@ -642,113 +648,119 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
             <li class="list-group-item no-padding">
               <div class="row">
                 <div class="summary-section col-xs-12 col-sm-6">
-                  <div class="summary-box keys lookup-info">
+                  <div class="summary-box">
                     <div class="vehicle-info-group vehicle-identity">
-                      <div>
-                        Plate:
-                      </div>
-                      <div>
-                        State:
-                      </div>
-                      <div>
-                        Plate type:
-                      </div>
-                    </div>
-                    <div class="vehicle-info-group vehicle-violations">
-                      <div class="violation-count-types">
+                      <div class="keys lookup-info">
                         <div>
-                          Violations:
+                          Plate:
                         </div>
-                        <div class="violation-count-type">
-                          Parking:
+                        <div>
+                          State:
                         </div>
-                      </div>
-                    </div>
-                    <div class="vehicle-info-group vehicle-lookups">
-                      <div>
-                        Lookups:
-                      </div>
-                    </div>
-                  </div>
-                  <div class="summary-box values lookup-info">
-                    <div class="vehicle-info-group vehicle-identity">
-                      <div>
-                        ABC1234
-                      </div>
-                      <div class="region">
-                        <div class="region-abbreviation">
-                          NY
+                        <div>
+                          Plate type:
                         </div>
-                        <div class="region-full-name">
-                          New York
+                        <div>
+                          Lookups:
                         </div>
                       </div>
-                      <div>
-                        All
-                      </div>
-                    </div>
-                    <div class="vehicle-info-group vehicle-violations">
-                      <div class="violation-counts">
-                        <div class="violation-total">
-                          3
+                      <div class="values lookup-info">
+                        <div>
+                          ABC1234
                         </div>
-                        <div class="violation-count">
-                          3
+                        <div class="region">
+                          <div class="region-abbreviation">
+                            NY
+                          </div>
+                          <div class="region-full-name">
+                            New York
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="vehicle-info-group vehicle-lookups">
-                      <div>
-                        2
+                        <div>
+                          All
+                        </div>
+                        <div>
+                          2
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="summary-section col-xs-12 col-sm-6">
-                  <div class="summary-box keys">
-                    <div>
-                      Fined:
-                    </div>
-                    <div>
-                      Reduced:
-                    </div>
-                    <div class="fines-reduced">
-                      Paid:
-                    </div>
-                    <div>
-                      Owed:
+                  <div class="summary-box">
+                    <div class="vehicle-info-group vehicle-violations">
+                      <div class="keys lookup-info">
+                        <div>
+                          Violations:
+                        </div>
+                        <div>
+                          (
+                          <a class="show-violations-aspect-details"
+                             href="#"
+                             target="_blank"
+                          >
+                            show details
+                          </a>
+                          )
+                        </div>
+                      </div>
+                      <div class="values lookup-info">
+                        <div class="violation-total">
+                          3
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="summary-box values fines"
-                       role="math"
-                       aria-label="$3,850.00 fined - $3,780.00 paid - $20.00 reduced = $50.00 outstanding"
-                  >
-                    <div class="math-symbols">
-                      <div>
-                        &nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="summary-section col-xs-12 col-sm-6">
+                  <div class="summary-box">
+                    <div class="vehicle-info-group vehicle-fines">
+                      <div class="keys lookup-info">
+                        <div>
+                          Fined:
+                        </div>
+                        <div>
+                          Reduced:
+                        </div>
+                        <div class="fines-reduced">
+                          Paid:
+                        </div>
+                        <div>
+                          Owed:
+                        </div>
                       </div>
-                      <div>
-                        &nbsp;&nbsp;&nbsp;
-                      </div>
-                      <div class="fines-reduced">
-                        –&nbsp;
-                      </div>
-                      <div>
-                        &nbsp;&nbsp;&nbsp;
-                      </div>
-                    </div>
-                    <div class="amounts">
-                      <div>
-                        $3,850.00
-                      </div>
-                      <div>
-                        $20.00
-                      </div>
-                      <div class="fines-reduced">
-                        $3,780.00
-                      </div>
-                      <div>
-                        $50.00
+                      <div class="values lookup-info"
+                           role="math"
+                           aria-label="$3,850.00 fined - $3,780.00 paid - $20.00 reduced = $50.00 outstanding"
+                      >
+                        <div class="math-symbols">
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                          <div class="fines-reduced">
+                            –&nbsp;
+                          </div>
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                        </div>
+                        <div class="amounts">
+                          <div>
+                            $3,850.00
+                          </div>
+                          <div>
+                            $20.00
+                          </div>
+                          <div class="fines-reduced">
+                            $3,780.00
+                          </div>
+                          <div>
+                            $50.00
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -846,10 +858,10 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                     </thead>
                     <tbody data-testid="violations-table-body">
                       <tr class="sort-divider"
-                          data-testid="sort-divider-date-ascending-2013"
+                          data-testid="sort-divider-date-ascending-2024"
                       >
                         <th colspan="1">
-                          2013
+                          2024
                         </th>
                         <th colspan="1">
                         </th>
@@ -862,7 +874,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                           data-testid="summons 7310127612"
                       >
                         <td>
-                          08/30/2013
+                          11/07/2024
                         </td>
                         <td class="violation-description">
                           <div class="humanized-description">
@@ -885,7 +897,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                           data-testid="summons 7310127613"
                       >
                         <td>
-                          08/30/2013
+                          11/07/2024
                         </td>
                         <td class="violation-description">
                           <div class="humanized-description">
@@ -908,7 +920,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                           data-testid="summons 7310127614"
                       >
                         <td>
-                          08/30/2013
+                          11/07/2024
                         </td>
                         <td class="violation-description">
                           <div class="humanized-description">
@@ -1073,113 +1085,119 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListHidde
             <li class="list-group-item no-padding">
               <div class="row">
                 <div class="summary-section col-xs-12 col-sm-6">
-                  <div class="summary-box keys lookup-info">
+                  <div class="summary-box">
                     <div class="vehicle-info-group vehicle-identity">
-                      <div>
-                        Plate:
-                      </div>
-                      <div>
-                        State:
-                      </div>
-                      <div>
-                        Plate type:
-                      </div>
-                    </div>
-                    <div class="vehicle-info-group vehicle-violations">
-                      <div class="violation-count-types">
+                      <div class="keys lookup-info">
                         <div>
-                          Violations:
+                          Plate:
                         </div>
-                        <div class="violation-count-type">
-                          Parking:
+                        <div>
+                          State:
                         </div>
-                      </div>
-                    </div>
-                    <div class="vehicle-info-group vehicle-lookups">
-                      <div>
-                        Lookups:
-                      </div>
-                    </div>
-                  </div>
-                  <div class="summary-box values lookup-info">
-                    <div class="vehicle-info-group vehicle-identity">
-                      <div>
-                        ABC1234
-                      </div>
-                      <div class="region">
-                        <div class="region-abbreviation">
-                          NY
+                        <div>
+                          Plate type:
                         </div>
-                        <div class="region-full-name">
-                          New York
+                        <div>
+                          Lookups:
                         </div>
                       </div>
-                      <div>
-                        All
-                      </div>
-                    </div>
-                    <div class="vehicle-info-group vehicle-violations">
-                      <div class="violation-counts">
-                        <div class="violation-total">
-                          3
+                      <div class="values lookup-info">
+                        <div>
+                          ABC1234
                         </div>
-                        <div class="violation-count">
-                          3
+                        <div class="region">
+                          <div class="region-abbreviation">
+                            NY
+                          </div>
+                          <div class="region-full-name">
+                            New York
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="vehicle-info-group vehicle-lookups">
-                      <div>
-                        2
+                        <div>
+                          All
+                        </div>
+                        <div>
+                          2
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="summary-section col-xs-12 col-sm-6">
-                  <div class="summary-box keys">
-                    <div>
-                      Fined:
-                    </div>
-                    <div>
-                      Reduced:
-                    </div>
-                    <div class="fines-reduced">
-                      Paid:
-                    </div>
-                    <div>
-                      Owed:
+                  <div class="summary-box">
+                    <div class="vehicle-info-group vehicle-violations">
+                      <div class="keys lookup-info">
+                        <div>
+                          Violations:
+                        </div>
+                        <div>
+                          (
+                          <a class="show-violations-aspect-details"
+                             href="#"
+                             target="_blank"
+                          >
+                            show details
+                          </a>
+                          )
+                        </div>
+                      </div>
+                      <div class="values lookup-info">
+                        <div class="violation-total">
+                          3
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="summary-box values fines"
-                       role="math"
-                       aria-label="$3,850.00 fined - $3,780.00 paid - $20.00 reduced = $50.00 outstanding"
-                  >
-                    <div class="math-symbols">
-                      <div>
-                        &nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="summary-section col-xs-12 col-sm-6">
+                  <div class="summary-box">
+                    <div class="vehicle-info-group vehicle-fines">
+                      <div class="keys lookup-info">
+                        <div>
+                          Fined:
+                        </div>
+                        <div>
+                          Reduced:
+                        </div>
+                        <div class="fines-reduced">
+                          Paid:
+                        </div>
+                        <div>
+                          Owed:
+                        </div>
                       </div>
-                      <div>
-                        &nbsp;&nbsp;&nbsp;
-                      </div>
-                      <div class="fines-reduced">
-                        –&nbsp;
-                      </div>
-                      <div>
-                        &nbsp;&nbsp;&nbsp;
-                      </div>
-                    </div>
-                    <div class="amounts">
-                      <div>
-                        $3,850.00
-                      </div>
-                      <div>
-                        $20.00
-                      </div>
-                      <div class="fines-reduced">
-                        $3,780.00
-                      </div>
-                      <div>
-                        $50.00
+                      <div class="values lookup-info"
+                           role="math"
+                           aria-label="$3,850.00 fined - $3,780.00 paid - $20.00 reduced = $50.00 outstanding"
+                      >
+                        <div class="math-symbols">
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                          <div class="fines-reduced">
+                            –&nbsp;
+                          </div>
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                        </div>
+                        <div class="amounts">
+                          <div>
+                            $3,850.00
+                          </div>
+                          <div>
+                            $20.00
+                          </div>
+                          <div class="fines-reduced">
+                            $3,780.00
+                          </div>
+                          <div>
+                            $50.00
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1348,113 +1366,119 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListVisib
             <li class="list-group-item no-padding">
               <div class="row">
                 <div class="summary-section col-xs-12 col-sm-6">
-                  <div class="summary-box keys lookup-info">
+                  <div class="summary-box">
                     <div class="vehicle-info-group vehicle-identity">
-                      <div>
-                        Plate:
-                      </div>
-                      <div>
-                        State:
-                      </div>
-                      <div>
-                        Plate type:
-                      </div>
-                    </div>
-                    <div class="vehicle-info-group vehicle-violations">
-                      <div class="violation-count-types">
+                      <div class="keys lookup-info">
                         <div>
-                          Violations:
+                          Plate:
                         </div>
-                        <div class="violation-count-type">
-                          Parking:
+                        <div>
+                          State:
                         </div>
-                      </div>
-                    </div>
-                    <div class="vehicle-info-group vehicle-lookups">
-                      <div>
-                        Lookups:
-                      </div>
-                    </div>
-                  </div>
-                  <div class="summary-box values lookup-info">
-                    <div class="vehicle-info-group vehicle-identity">
-                      <div>
-                        ABC1234
-                      </div>
-                      <div class="region">
-                        <div class="region-abbreviation">
-                          NY
+                        <div>
+                          Plate type:
                         </div>
-                        <div class="region-full-name">
-                          New York
+                        <div>
+                          Lookups:
                         </div>
                       </div>
-                      <div>
-                        All
-                      </div>
-                    </div>
-                    <div class="vehicle-info-group vehicle-violations">
-                      <div class="violation-counts">
-                        <div class="violation-total">
-                          3
+                      <div class="values lookup-info">
+                        <div>
+                          ABC1234
                         </div>
-                        <div class="violation-count">
-                          3
+                        <div class="region">
+                          <div class="region-abbreviation">
+                            NY
+                          </div>
+                          <div class="region-full-name">
+                            New York
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="vehicle-info-group vehicle-lookups">
-                      <div>
-                        2
+                        <div>
+                          All
+                        </div>
+                        <div>
+                          2
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="summary-section col-xs-12 col-sm-6">
-                  <div class="summary-box keys">
-                    <div>
-                      Fined:
-                    </div>
-                    <div>
-                      Reduced:
-                    </div>
-                    <div class="fines-reduced">
-                      Paid:
-                    </div>
-                    <div>
-                      Owed:
+                  <div class="summary-box">
+                    <div class="vehicle-info-group vehicle-violations">
+                      <div class="keys lookup-info">
+                        <div>
+                          Violations:
+                        </div>
+                        <div>
+                          (
+                          <a class="show-violations-aspect-details"
+                             href="#"
+                             target="_blank"
+                          >
+                            show details
+                          </a>
+                          )
+                        </div>
+                      </div>
+                      <div class="values lookup-info">
+                        <div class="violation-total">
+                          3
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="summary-box values fines"
-                       role="math"
-                       aria-label="$3,850.00 fined - $3,780.00 paid - $20.00 reduced = $50.00 outstanding"
-                  >
-                    <div class="math-symbols">
-                      <div>
-                        &nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="summary-section col-xs-12 col-sm-6">
+                  <div class="summary-box">
+                    <div class="vehicle-info-group vehicle-fines">
+                      <div class="keys lookup-info">
+                        <div>
+                          Fined:
+                        </div>
+                        <div>
+                          Reduced:
+                        </div>
+                        <div class="fines-reduced">
+                          Paid:
+                        </div>
+                        <div>
+                          Owed:
+                        </div>
                       </div>
-                      <div>
-                        &nbsp;&nbsp;&nbsp;
-                      </div>
-                      <div class="fines-reduced">
-                        –&nbsp;
-                      </div>
-                      <div>
-                        &nbsp;&nbsp;&nbsp;
-                      </div>
-                    </div>
-                    <div class="amounts">
-                      <div>
-                        $3,850.00
-                      </div>
-                      <div>
-                        $20.00
-                      </div>
-                      <div class="fines-reduced">
-                        $3,780.00
-                      </div>
-                      <div>
-                        $50.00
+                      <div class="values lookup-info"
+                           role="math"
+                           aria-label="$3,850.00 fined - $3,780.00 paid - $20.00 reduced = $50.00 outstanding"
+                      >
+                        <div class="math-symbols">
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                          <div class="fines-reduced">
+                            –&nbsp;
+                          </div>
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                        </div>
+                        <div class="amounts">
+                          <div>
+                            $3,850.00
+                          </div>
+                          <div>
+                            $20.00
+                          </div>
+                          <div class="fines-reduced">
+                            $3,780.00
+                          </div>
+                          <div>
+                            $50.00
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1552,10 +1576,10 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListVisib
                     </thead>
                     <tbody data-testid="violations-table-body">
                       <tr class="sort-divider"
-                          data-testid="sort-divider-date-ascending-2013"
+                          data-testid="sort-divider-date-ascending-2024"
                       >
                         <th colspan="1">
-                          2013
+                          2024
                         </th>
                         <th colspan="1">
                         </th>
@@ -1568,7 +1592,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListVisib
                           data-testid="summons 7310127603"
                       >
                         <td>
-                          08/30/2013
+                          11/07/2024
                         </td>
                         <td class="violation-description">
                           <div class="humanized-description">
@@ -1591,7 +1615,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListVisib
                           data-testid="summons 7310127604"
                       >
                         <td>
-                          08/30/2013
+                          11/07/2024
                         </td>
                         <td class="violation-description">
                           <div class="humanized-description">
@@ -1614,7 +1638,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListVisib
                           data-testid="summons 7310127605"
                       >
                         <td>
-                          08/30/2013
+                          11/07/2024
                         </td>
                         <td class="violation-description">
                           <div class="humanized-description">

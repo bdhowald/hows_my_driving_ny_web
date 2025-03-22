@@ -136,10 +136,10 @@ const ShimmerLoader = () => {
     const listToUse =
       position === 'left' ? positionLeftColumnWidths : positionRightColumnWidths
 
-    const className = `summary-box shimmer align-${textAlignDirection} position-${position} lookup-info`
+    const classNameString = `summary-box shimmer align-${textAlignDirection} position-${position} lookup-info`
 
     return (
-      <div className={className}>
+      <div className={classNameString}>
         {listToUse.map((columnWidth: number, i: number) => {
           return <span key={i} className={`placeholder col-${columnWidth}`} />
         })}

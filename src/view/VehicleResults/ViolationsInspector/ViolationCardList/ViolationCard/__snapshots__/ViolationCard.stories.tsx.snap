@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/VehicleResults/ViolationsInspector/ViolationsList/ViolationCard Default smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div>
+                <div class="violation-card bg-body-tertiary">
+                  <div class="violation-card-row">
+                    <div>
+                      <a data-bs-toggle="offcanvas"
+                         href="#showViolationDetails"
+                         role="button"
+                         aria-controls="showViolationDetails"
+                      >
+                        11/07/2024 10:47 PM
+                      </a>
+                    </div>
+                    <div>
+                      Brooklyn
+                    </div>
+                  </div>
+                  <div class="violation-card-row">
+                    <div>
+                      No Standing - Bus Stop
+                    </div>
+                    <div>
+                      $90.00
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
