@@ -104,6 +104,8 @@ const Search = ({
     const inControlGroup =
       randomVariable * 10 < 5.0 && !queryParamFeatureFlagEnabled
 
+    const inReserveGroup = !inControlGroup && !inExperimentalGroup
+
     if (!useNewStyleDisplayCookiePresent || queryParamFeatureFlagEnabled) {
       if (inExperimentalGroup) {
         setCookie(USE_NEW_STYLE_DISPLAY_COOKIE, 'true', {
@@ -118,6 +120,13 @@ const Search = ({
           path: '/',
         })
       }
+    }
+
+    if (inReserveGroup) {
+      setCookie(USE_NEW_STYLE_DISPLAY_COOKIE, 'none', {
+        maxAge: 31536000,
+        path: '/',
+      })
     }
   }, [])
 
