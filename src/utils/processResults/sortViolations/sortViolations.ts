@@ -21,8 +21,22 @@ export default (
     }
 
     if (sortType === Sort.LOCATION) {
-      const aLocation = `${a.violationCounty} ${a.location ? '' : `(${a.location})`}`
-      const bLocation = `${b.violationCounty} ${b.location ? '' : `(${b.location})`}`
+      let aLocation: string
+      let bLocation: string
+
+      // Temporary fix for discrepancy between Bronx/The Bronx
+      if (a.violationCounty === 'The Bronx') {
+        aLocation = `Bronx ${a.location ? '' : `(${a.location})`}`
+      } else {
+        aLocation = `${a.violationCounty} ${a.location ? '' : `(${a.location})`}`
+      }
+  
+      // Temporary fix for discrepancy between Bronx/The Bronx
+      if (b.violationCounty === 'The Bronx') {
+        bLocation = `Bronx ${b.location ? '' : `(${b.location})`}`
+      } else {
+        bLocation = `${b.violationCounty} ${b.location ? '' : `(${b.location})`}`
+      }
 
       if (sortAscending) {
         return aLocation === bLocation

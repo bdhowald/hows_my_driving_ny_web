@@ -93,7 +93,14 @@ const ViolationCardList = ({
         dividerValue = violation.humanizedDescription
         break
       case Sort.LOCATION:
-        dividerValue = violation.getBorough()
+        const borough = violation.getBorough()
+
+        if (borough === 'The Bronx') {
+          // Temporary fix for discrepancy between Bronx/The Bronx
+          dividerValue = 'Bronx'
+        } else {
+          dividerValue = borough
+        }
         break
     }
 
