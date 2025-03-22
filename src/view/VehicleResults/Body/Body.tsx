@@ -16,7 +16,7 @@ const Body = ({ showViolationsList, vehicle }: BodyProps) => {
   const [cookies, _, __] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
 
   const useNewStyleDisplayCookie = cookies[USE_NEW_STYLE_DISPLAY_COOKIE]
-  const useNewStyleDisplayCookieEnabled = useNewStyleDisplayCookie === 'true'
+  const useNewStyleDisplayCookieEnabled = useNewStyleDisplayCookie
 
   const cameraStreakData = vehicle.cameraStreakData
 

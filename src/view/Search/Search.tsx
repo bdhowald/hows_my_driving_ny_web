@@ -93,7 +93,7 @@ const Search = ({
       cookies[USE_NEW_STYLE_DISPLAY_COOKIE]
 
     const queryParamFeatureFlagEnabled =
-      queryParameters.get('useNewStyleDisplay') === 'true'
+      queryParameters.get('useNewStyleDisplay')
 
     // 5% of sessions are in experimental group (plus some internal testers)
     // 50% of sessions are in control group
