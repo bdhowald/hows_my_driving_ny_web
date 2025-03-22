@@ -89,14 +89,31 @@ const Search = ({
 
   useEffect(() => {
     const queryParameters = new URLSearchParams(document.location.search)
-    const useNewStyleDisplayCookie = cookies[USE_NEW_STYLE_DISPLAY_COOKIE]
+    const useNewStyleDisplayCookiePresent =
+      cookies[USE_NEW_STYLE_DISPLAY_COOKIE]
 
-    if (!useNewStyleDisplayCookie) {
-      const useNewStyleDisplayFeatureFlagIsEnabled =
-        Math.random() * 10 > 9.5 || queryParameters.get('useNewStyleDisplay')
+    const queryParamFeatureFlagEnabled =
+      queryParameters.get('useNewStyleDisplay') === 'true'
 
-      if (useNewStyleDisplayFeatureFlagIsEnabled) {
+    // 5% of sessions are in experimental group (plus some internal testers)
+    // 50% of sessions are in control group
+    // 45% of sessions are available for progressive rollout
+    const randomVariable = Math.random()
+    const inExperimentalGroup =
+      randomVariable * 10 > 9.5 || queryParamFeatureFlagEnabled
+    const inControlGroup =
+      randomVariable * 10 < 5.0 && !queryParamFeatureFlagEnabled
+
+    if (!useNewStyleDisplayCookiePresent || queryParamFeatureFlagEnabled) {
+      if (inExperimentalGroup) {
         setCookie(USE_NEW_STYLE_DISPLAY_COOKIE, 'true', {
+          maxAge: 31536000,
+          path: '/',
+        })
+      }
+
+      if (inControlGroup) {
+        setCookie(USE_NEW_STYLE_DISPLAY_COOKIE, 'false', {
           maxAge: 31536000,
           path: '/',
         })

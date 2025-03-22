@@ -16,6 +16,7 @@ const Body = ({ showViolationsList, vehicle }: BodyProps) => {
   const [cookies, _, __] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
 
   const useNewStyleDisplayCookie = cookies[USE_NEW_STYLE_DISPLAY_COOKIE]
+  const useNewStyleDisplayCookieEnabled = useNewStyleDisplayCookie === 'true'
 
   const cameraStreakData = vehicle.cameraStreakData
 
@@ -23,7 +24,8 @@ const Body = ({ showViolationsList, vehicle }: BodyProps) => {
     cameraStreakData?.redLightCameraViolations?.maxStreak >= 5 ||
     cameraStreakData?.schoolZoneSpeedCameraViolations?.maxStreak >= 15
 
-  const useNewStyleDisplay = useNewStyleDisplayCookie && window.innerWidth < 576
+  const useNewStyleDisplay =
+    useNewStyleDisplayCookieEnabled && window.innerWidth < 576
 
   return (
     <ul className="list-group list-group-flush">
