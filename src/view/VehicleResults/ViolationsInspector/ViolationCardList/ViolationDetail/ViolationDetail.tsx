@@ -59,11 +59,11 @@ const ViolationLocationLink = ({ violation }: { violation: Violation }) => {
     : GOOGLE_SEARCH_PREFIX
 
   const searchMapsQueryString =
-    `${searchMapsQueryStringBase}${standardizeLocation(
+    `${searchMapsQueryStringBase}${standardizeLocation.standardizeLinkedSearchLocation(
       violation.getLocationDescription(),
     )} ${violation.getBorough()}`.replace(/ /g, '+')
 
-  const fullLocation = `${standardizeLocation(violation.getLocationDescription())} (${violation.getBorough()})`
+  const fullLocation = `${standardizeLocation.standardizeDisplayedLocation(violation.getLocationDescription())} (${violation.getBorough()})`
 
   return (
     <ViolationDetailAspect header={'Location'}>

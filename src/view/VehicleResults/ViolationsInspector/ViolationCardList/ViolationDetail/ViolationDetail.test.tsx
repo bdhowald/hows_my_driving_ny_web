@@ -39,7 +39,7 @@ describe('ViolationDetail', () => {
       vehicleYear: '2019',
     })
 
-    const standardizedLocation = standardizeLocation(
+    const standardizedLocation = standardizeLocation.standardizeDisplayedLocation(
       violation.getLocationDescription(),
     )
 
