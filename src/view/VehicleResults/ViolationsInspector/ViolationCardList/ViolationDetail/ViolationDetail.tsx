@@ -75,6 +75,13 @@ const ViolationLocationLink = ({ violation }: { violation: Violation }) => {
 }
 
 const SummonsImage = ({ violation }: { violation: Violation }) => {
+  if (violation.isCameraViolation()) {
+    return (
+      <ViolationDetailAspect header={'Summons Image'}>
+        <>Not available for camera summons</>
+      </ViolationDetailAspect>
+    )
+  }
   if (!violation.summonsImage?.url || violation.isCameraViolation()) {
     return (
       <ViolationDetailAspect header={'Summons Image'}>
@@ -87,7 +94,7 @@ const SummonsImage = ({ violation }: { violation: Violation }) => {
   return (
     <ViolationDetailAspect header={'Summons Image'}>
       <a href={url} target="_blank" rel="noopener noreferrer">
-        See violation image
+        See summons image
       </a>
     </ViolationDetailAspect>
   )

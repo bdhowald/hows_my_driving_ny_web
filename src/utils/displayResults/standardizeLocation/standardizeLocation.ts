@@ -1,5 +1,5 @@
 const PLACENAME_REGEX =
-  /\s((?:st(?:\.|reet)?|dr(?:\.|ive)?|pl(?:\.|ace)?|(avenue (?![A-Za-z]))|(av (?![A-Za-z]))|(av. (?![A-Za-z]))|(ave (?![A-Za-z]))|(ave. (?![A-Za-z]))|rd|road|lane|drive|way|(court(?!\sSt(reet)?))|plaza|square|run|parkway|point|pike|square|driveway|trace|park|terrace|blvd|crescent))/i
+  /\s((?:st(?:\.|reet)?|dr(?:\.|ive)?|pl(?:\.|ace)?|(avenue (?![A-Za-z]))|(av (?![A-Za-z]))|(av. (?![A-Za-z]))|(ave (?![A-Za-z]))|(ave. (?![A-Za-z]))|rd|road|lane|drive|way|(court(?!\sSt(reet)?))|plaza|square|run|parkway|point|pike|square|driveway|trace|terrace|blvd|crescent))/i
 
 const standardizeDisplayedLocation = (location: string): string => {
   let standardizedLocation = location
@@ -114,14 +114,32 @@ const standardizeDisplayedLocation = (location: string): string => {
   standardizedLocation = standardizedLocation.replace(/\bSt\b\./g, 'Street')
 
   // Replace (front|rear)/of
-  standardizedLocation = standardizedLocation.replace(/(F|f)\/O(f)?/ig, '$1ront of')
-  standardizedLocation = standardizedLocation.replace(/(R|r)\/O(f)?/ig, '$1ear of')
+  standardizedLocation = standardizedLocation.replace(
+    /(F|f)\/O(f)?/gi,
+    '$1ront of',
+  )
+  standardizedLocation = standardizedLocation.replace(
+    /(R|r)\/O(f)?/gi,
+    '$1ear of',
+  )
 
   // Replace (ENSW)/of
-  standardizedLocation = standardizedLocation.replace(/(W|w)\/O(f)?/ig, '$1est of')
-  standardizedLocation = standardizedLocation.replace(/(S|s)\/O(f)?/ig, '$1outh of')
-  standardizedLocation = standardizedLocation.replace(/(N|n)\/O(f)?/ig, '$1orth of')
-  standardizedLocation = standardizedLocation.replace(/(E|e)\/O(f)?/ig, '$1ast of')
+  standardizedLocation = standardizedLocation.replace(
+    /(W|w)\/O(f)?/gi,
+    '$1est of',
+  )
+  standardizedLocation = standardizedLocation.replace(
+    /(S|s)\/O(f)?/gi,
+    '$1outh of',
+  )
+  standardizedLocation = standardizedLocation.replace(
+    /(N|n)\/O(f)?/gi,
+    '$1orth of',
+  )
+  standardizedLocation = standardizedLocation.replace(
+    /(E|e)\/O(f)?/gi,
+    '$1ast of',
+  )
 
   // Replace Abbreviations: East
   standardizedLocation = standardizedLocation.replace(
@@ -155,7 +173,9 @@ const standardizeDisplayedLocation = (location: string): string => {
   standardizedLocation = standardizedLocation.replace(/(\d)ft/g, '$1 feet')
 
   // Fix lowercased letters part of house number
-  standardizedLocation = standardizedLocation.replace(/(\d[a-z]) /g, (x) => x.toUpperCase())
+  standardizedLocation = standardizedLocation.replace(/(\d[a-z]) /g, (x) =>
+    x.toUpperCase(),
+  )
 
   // Fix specific bad location strings
   standardizedLocation = applyStreetSpecificLocationFixes(standardizedLocation)
@@ -166,7 +186,10 @@ const standardizeDisplayedLocation = (location: string): string => {
 const standardizeLinkedSearchLocation = (location: string): string => {
   let standardizedLocation = standardizeDisplayedLocation(location)
 
-  standardizedLocation = standardizedLocation.replace(/\s(?:\d)*feet (east|north|south|west) of\s/, ' and ')
+  standardizedLocation = standardizedLocation.replace(
+    /\s(?:\d)*feet (east|north|south|west) of\s/,
+    ' and ',
+  )
 
   return standardizedLocation
 }
@@ -183,6 +206,7 @@ const applyStreetSpecificLocationFixes = (inputLocation: string): string => {
     /Fultonmall/,
     'Fulton Mall',
   )
+  standardizedLocation = standardizedLocation.replace(/Mcdonald/, 'McDonald')
 
   return standardizedLocation
 }

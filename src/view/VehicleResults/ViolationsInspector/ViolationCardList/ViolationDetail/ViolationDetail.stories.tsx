@@ -95,6 +95,40 @@ export const NoSummonsImage: Story = {
   },
 }
 
+export const NoSummonsForCameraViolation: Story = {
+  args: {
+    hideOffCanvas,
+    showViolationDetail: true,
+    violationToInspect: ViolationFactory.build({
+      amountDue: 15,
+      fineAmount: 65,
+      fromDatabases: [
+        {
+          endpoint: 'https://data.cityofnewyork.us/resource/jt7v-77mi.json',
+          name: 'Parking Violations Issued - Fiscal Year 2014',
+        },
+      ],
+      getLocationDescription: () => '17th St and 8th Ave',
+      getBorough: () => 'Manhattan',
+      getTotalFined: () => 90.0,
+      humanizedDescription: 'Mobile MTA Bus Stop Violation',
+      interestAmount: 0.69,
+      isCameraViolation: () => true,
+      registrationState: 'NY',
+      paymentAmount: 75,
+      penaltyAmount: 25,
+      plateId: 'ABC1234',
+      plateType: 'PAS',
+      reductionAmount: 0.19,
+      vehicleBodyType: '4DSD',
+      vehicleColor: 'YW',
+      vehicleMake: 'KIA',
+      vehicleYear: '2019',
+      violationCode: '43',
+    }),
+  },
+}
+
 export const NoFines: Story = {
   args: {
     hideOffCanvas,

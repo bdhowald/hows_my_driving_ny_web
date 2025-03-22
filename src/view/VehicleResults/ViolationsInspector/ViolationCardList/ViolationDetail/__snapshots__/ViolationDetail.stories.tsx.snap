@@ -4,4 +4,6 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/Violati
 
 exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationDetail NoFines smoke-test 1`] = `""`;
 
+exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationDetail NoSummonsForCameraViolation smoke-test 1`] = `""`;
+
 exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationDetail NoSummonsImage smoke-test 1`] = `""`;

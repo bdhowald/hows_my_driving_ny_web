@@ -39,9 +39,10 @@ describe('ViolationDetail', () => {
       vehicleYear: '2019',
     })
 
-    const standardizedLocation = standardizeLocation.standardizeDisplayedLocation(
-      violation.getLocationDescription(),
-    )
+    const standardizedLocation =
+      standardizeLocation.standardizeDisplayedLocation(
+        violation.getLocationDescription(),
+      )
 
     it('should render a ViolationDetail component when it is visible', () => {
       render(
@@ -119,7 +120,7 @@ describe('ViolationDetail', () => {
       // Summons Image
       expect(screen.getByText('Summons Image')).toBeInTheDocument()
       expect(
-        screen.getByRole('link', { name: 'See violation image' }),
+        screen.getByRole('link', { name: 'See summons image' }),
       ).toHaveAttribute(
         'href',
         'https://nycserv.nyc.gov/NYCServWeb/ShowImage?searchID=12345',
@@ -247,8 +248,8 @@ describe('ViolationDetail', () => {
       />,
     )
 
-    expect(screen.queryByText('Violation')).toBeInTheDocument()
-    expect(screen.queryByText('Not available')).toBeInTheDocument()
+    expect(screen.getByText('Violation')).toBeInTheDocument()
+    expect(screen.getByText('Not available')).toBeInTheDocument()
   })
 
   it("should show 'No Location Available' for the location when there is no location data", () => {
@@ -275,8 +276,8 @@ describe('ViolationDetail', () => {
       />,
     )
 
-    expect(screen.queryByText('Location')).toBeInTheDocument()
-    expect(screen.queryByText('Not available')).toBeInTheDocument()
+    expect(screen.getByText('Location')).toBeInTheDocument()
+    expect(screen.getByText('Not available')).toBeInTheDocument()
   })
 
   it("should show 'Not available' for the vehicle description string when there is no vehicle data", () => {
@@ -304,8 +305,8 @@ describe('ViolationDetail', () => {
       />,
     )
 
-    expect(screen.queryByText('Vehicle')).toBeInTheDocument()
-    expect(screen.queryByText('Not available')).toBeInTheDocument()
+    expect(screen.getByText('Vehicle')).toBeInTheDocument()
+    expect(screen.getByText('Not available')).toBeInTheDocument()
   })
 
   it("should show 'N/A' for the fines when there is no fine data", () => {
@@ -319,29 +320,58 @@ describe('ViolationDetail', () => {
       />,
     )
 
-    expect(screen.queryByText('Fines')).toBeInTheDocument()
-    expect(screen.queryByText('N/A')).toBeInTheDocument()
+    expect(screen.getByText('Fines')).toBeInTheDocument()
+    expect(screen.getByText('N/A')).toBeInTheDocument()
   })
 
-  it("should show 'Not available' for the summons image when there is no summons image data", () => {
-    const violation = ViolationFactory.build({
-      // fine and location data to ensure only one 'Not available' on the page
-      fineAmount: 50,
-      getTotalFined: () => 50,
-      getLocationDescription: () => '17th St and 8th Ave',
+  describe('summons images', () => {
+    it("should show 'Not available' for the summons image when there is no summons image data", () => {
+      const violation = ViolationFactory.build({
+        // fine and location data to ensure only one 'Not available' on the page
+        fineAmount: 50,
+        getTotalFined: () => 50,
+        getLocationDescription: () => '17th St and 8th Ave',
+      })
+
+      render(
+        <ViolationDetail
+          hideOffCanvas={hideOffCanvasFunction}
+          showViolationDetail={true}
+          violationToInspect={violation}
+        />,
+      )
+
+      expect(screen.getByText('Summons Image')).toBeInTheDocument()
+      expect(screen.getByText('Not available')).toBeInTheDocument()
+      expect(screen.queryByText('See violation image')).not.toBeInTheDocument()
     })
 
-    render(
-      <ViolationDetail
-        hideOffCanvas={hideOffCanvasFunction}
-        showViolationDetail={true}
-        violationToInspect={violation}
-      />,
-    )
+    it("should show 'Not available for camera summons' for the summons image when it is a camera violation", () => {
+      const violation = ViolationFactory.build({
+        // fine and location data to ensure only one 'Not available' on the page
+        fineAmount: 50,
+        getTotalFined: () => 50,
+        getLocationDescription: () => '17th St and 8th Ave',
 
-    expect(screen.queryByText('Summons Image')).toBeInTheDocument()
-    expect(screen.queryByText('Not available')).toBeInTheDocument()
-    expect(screen.queryByText('See violation image')).not.toBeInTheDocument()
+        humanizedDescription: 'Mobile MTA Bus Stop Violation',
+        isCameraViolation: () => true,
+        violationCode: '43',
+      })
+
+      render(
+        <ViolationDetail
+          hideOffCanvas={hideOffCanvasFunction}
+          showViolationDetail={true}
+          violationToInspect={violation}
+        />,
+      )
+
+      expect(screen.getByText('Summons Image')).toBeInTheDocument()
+      expect(
+        screen.getByText('Not available for camera summons'),
+      ).toBeInTheDocument()
+      expect(screen.queryByText('See violation image')).not.toBeInTheDocument()
+    })
   })
 
   describe('should render a ViolationDetail component correctly given the window width', () => {
