@@ -252,7 +252,7 @@ describe('ViolationDetail', () => {
     expect(screen.getByText('Not available')).toBeInTheDocument()
   })
 
-  it("should show the borough for the location when the only location data is the borough", () => {
+  it('should show the borough for the location when the only location data is the borough', () => {
     const violation = ViolationFactory.build({
       // fine and summons image data to ensure only one 'Not available' on the page
       fineAmount: 50,

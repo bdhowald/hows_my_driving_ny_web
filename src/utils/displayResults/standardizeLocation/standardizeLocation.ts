@@ -187,7 +187,7 @@ const standardizeLinkedSearchLocation = (location: string): string => {
   let standardizedLocation = standardizeDisplayedLocation(location)
 
   standardizedLocation = standardizedLocation.replace(
-    /\s(?:\d)*\s*feet (east|north|south|west) of\s/ig,
+    /\s(?:\d)*\s*feet (east|north|south|west) of\s/gi,
     ' and ',
   )
 

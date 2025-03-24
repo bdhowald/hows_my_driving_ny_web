@@ -26,6 +26,7 @@ const ViolationCardList = ({
   const [sortAscending, setSortAscending] = useState(false)
 
   const violationsCount = vehicle.violationsCount
+  console.log(`vehicle.violationsCount: ${vehicle.violationsCount}`)
   const vehicleHasViolations = violationsCount > 0
 
   const updateSort = (sortType: Sort): void => {
@@ -92,7 +93,7 @@ const ViolationCardList = ({
       case Sort.KIND:
         dividerValue = violation.humanizedDescription
         break
-      case Sort.LOCATION:
+      case Sort.LOCATION: {
         const borough = violation.getBorough()
 
         if (borough === 'The Bronx') {
@@ -102,6 +103,7 @@ const ViolationCardList = ({
           dividerValue = borough
         }
         break
+      }
     }
 
     // If this sort doesn't have dividers, ignore.
@@ -122,6 +124,13 @@ const ViolationCardList = ({
   }
 
   const dividerCounter: { value: string | number | null } = { value: null }
+  const caption =
+    vehicle.violationsCount > 1
+      ? `${vehicle.violationsCount} parking and camera violations`
+      : `${vehicle.violationsCount} parking and camera violation`
+
+  console.log(`vehicleHasViolations: ${vehicleHasViolations}`)
+  console.log(`violationsListIsVisible: ${violationsListIsVisible}`)
 
   return (
     <>
@@ -134,9 +143,7 @@ const ViolationCardList = ({
       />
       {vehicleHasViolations && violationsListIsVisible && (
         <>
-          <div className="violation-card-list-caption">
-            {`${vehicle.violationsCount} parking and camera violations`}
-          </div>
+          <div className="violation-card-list-caption">{caption}</div>
           <ViolationCardListSortControls
             currentSortType={currentSortType}
             sortAscending={sortAscending}

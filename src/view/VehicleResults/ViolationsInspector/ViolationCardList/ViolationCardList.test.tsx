@@ -4,6 +4,8 @@ import { render, screen } from '@testing-library/react'
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
 import { ViolationFactory } from '__fixtures__/models/Violation'
 
+import Violation from 'models/Violation/Violation'
+
 import ViolationCardList from './ViolationCardList'
 
 describe('ViolationCardList', () => {
@@ -92,4 +94,89 @@ describe('ViolationCardList', () => {
     // violation fines
     expect(screen.getByText(fineString)).toBeInTheDocument()
   })
+
+  it('should render the right caption depending on the number of violations', () => {
+    const violation = ViolationFactory.build({
+      fineAmount: 60,
+      getTotalFined: () => 95,
+      interestAmount: 10.11,
+      penaltyAmount: 25,
+      reductionAmount: 0.11,
+    })
+    const vehicle = VehicleFactory.build({
+      violations: [violation],
+    })
+
+    render(
+      <ViolationCardList
+        setViolationsListVisibilityFunction={setViolationsListVisibility}
+        vehicle={vehicle}
+        violationsListIsVisible={true}
+      />,
+    )
+
+    const fineString = `$${violation.getTotalFined()}.00`
+
+    // violation datetime
+    expect(
+      screen.getByText(violation.getViolationDateTime()),
+    ).toBeInTheDocument()
+
+    // violation type
+    expect(screen.getByText(violation.humanizedDescription)).toBeInTheDocument()
+
+    // violation borough
+    expect(screen.getByText(violation.getBorough())).toBeInTheDocument()
+
+    // violation fines
+    expect(screen.getByText(fineString)).toBeInTheDocument()
+  })
+
+  test.each([
+    {
+      violationsCount: 0,
+    },
+    {
+      violationsCount: 1,
+    },
+    {
+      violationsCount: 2,
+    },
+  ])(
+    'should render the right caption when the number of violations is $violationsCount',
+    ({ violationsCount }) => {
+      const violations: Violation[] = new Array(violationsCount).fill(
+        ViolationFactory.build(),
+      )
+
+      const vehicle = VehicleFactory.build({
+        violations,
+        violationsCount: violations.length,
+      })
+
+      render(
+        <ViolationCardList
+          setViolationsListVisibilityFunction={setViolationsListVisibility}
+          vehicle={vehicle}
+          violationsListIsVisible={true}
+        />,
+      )
+
+      if (!violationsCount) {
+        expect(
+          screen.queryByText('parking and camera violation'),
+        ).not.toBeInTheDocument()
+      } else if (violationsCount === 1) {
+        expect(
+          screen.getByText('1 parking and camera violation'),
+        ).toBeInTheDocument()
+      } else if (violationsCount === 2) {
+        expect(
+          screen.getByText('2 parking and camera violations'),
+        ).toBeInTheDocument()
+      } else {
+        fail('number of violations is unexpected')
+      }
+    },
+  )
 })

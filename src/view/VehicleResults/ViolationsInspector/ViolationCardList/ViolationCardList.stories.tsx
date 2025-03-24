@@ -2,6 +2,7 @@ import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
+import { ViolationFactory } from '__fixtures__/models/Violation'
 
 import ViolationCardList from './ViolationCardList'
 
@@ -44,6 +45,10 @@ const meta: Meta<typeof ViolationCardList> = {
 type Story = StoryObj<typeof ViolationCardList>
 
 const vehicleWithViolations = VehicleFactory.build()
+const vehicleWithOneViolation = VehicleFactory.build({
+  violations: [ViolationFactory.build()],
+  violationsCount: 1,
+})
 const vehicleWithNoViolations = VehicleFactory.build({
   violations: [],
   violationsCount: 0,
@@ -55,6 +60,14 @@ export const VehicleWithViolationsListVisible: Story = {
   args: {
     setViolationsListVisibilityFunction,
     vehicle: vehicleWithViolations,
+    violationsListIsVisible: true,
+  },
+}
+
+export const VehicleWithViolationsListVisibleAndOnlyOneViolation: Story = {
+  args: {
+    setViolationsListVisibilityFunction,
+    vehicle: vehicleWithOneViolation,
     violationsListIsVisible: true,
   },
 }

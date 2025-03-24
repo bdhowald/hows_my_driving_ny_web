@@ -22,7 +22,9 @@ describe('standardizeLocation', () => {
     ])(
       'renders the search-friendly query text $standardizedLocation when called with $inputLocation',
       ({ inputLocation, standardizedLocation }) => {
-        expect(standardizeLocation.standardizeDisplayedLocation(inputLocation)).toBe(standardizedLocation)
+        expect(
+          standardizeLocation.standardizeDisplayedLocation(inputLocation),
+        ).toBe(standardizedLocation)
       },
     )
   })
@@ -48,7 +50,9 @@ describe('standardizeLocation', () => {
     ])(
       'renders the search-friendly query text $standardizedLocation when called with $inputLocation',
       ({ inputLocation, standardizedLocation }) => {
-        expect(standardizeLocation.standardizeLinkedSearchLocation(inputLocation)).toBe(standardizedLocation)
+        expect(
+          standardizeLocation.standardizeLinkedSearchLocation(inputLocation),
+        ).toBe(standardizedLocation)
       },
     )
   })

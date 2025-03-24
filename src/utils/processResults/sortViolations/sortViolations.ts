@@ -30,7 +30,7 @@ export default (
       } else {
         aLocation = `${a.violationCounty} ${a.location ? '' : `(${a.location})`}`
       }
-  
+
       // Temporary fix for discrepancy between Bronx/The Bronx
       if (b.violationCounty === 'The Bronx') {
         bLocation = `Bronx ${b.location ? '' : `(${b.location})`}`
