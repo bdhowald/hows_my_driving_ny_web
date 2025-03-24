@@ -100,7 +100,7 @@ const Search = ({
     // 45% of sessions are available for progressive rollout
     const randomVariable = Math.random()
     const inExperimentalGroup =
-      randomVariable * 10 > 9.5 || queryParamFeatureFlagEnabled
+      randomVariable * 10 > 9.5 || !!queryParamFeatureFlagEnabled
     const inControlGroup =
       randomVariable * 10 < 5.0 && !queryParamFeatureFlagEnabled
 
