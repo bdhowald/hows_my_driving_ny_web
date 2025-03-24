@@ -10,6 +10,7 @@ import getVehicleMake from 'utils/displayResults/getVehicleMake/getVehicleMake'
 import standardizeLocation from 'utils/displayResults/standardizeLocation/standardizeLocation'
 import FinesBreakdown from 'view/VehicleResults/FinesBreakdown/FinesBreakdown'
 
+const IOS_USER_AGENT_STRING = /iPad|iPhone|iPod/
 const SMALL_BREAKPOINT = 576
 
 type ToggleOffCanvasFunction = () => void
@@ -43,6 +44,16 @@ const ViolationDataSourceLink = ({
 
 const ViolationLocationLink = ({ violation }: { violation: Violation }) => {
   const locationDescription = violation.getLocationDescription()
+  const potentialBorough = violation.getBorough()
+  const borough = potentialBorough === 'N/A' ? null : potentialBorough
+
+  if (!locationDescription && borough) {
+    return (
+      <ViolationDetailAspect header={'Location'}>
+        <>{violation.violationCounty}</>
+      </ViolationDetailAspect>
+    )
+  }
 
   if (!locationDescription) {
     return (
@@ -52,7 +63,7 @@ const ViolationLocationLink = ({ violation }: { violation: Violation }) => {
     )
   }
 
-  const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+  const isiOS = IOS_USER_AGENT_STRING.test(navigator.userAgent)
 
   const searchMapsQueryStringBase = isiOS
     ? APPLE_SEARCH_PREFIX

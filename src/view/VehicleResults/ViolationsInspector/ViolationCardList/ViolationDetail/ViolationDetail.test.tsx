@@ -252,6 +252,35 @@ describe('ViolationDetail', () => {
     expect(screen.getByText('Not available')).toBeInTheDocument()
   })
 
+  it("should show the borough for the location when the only location data is the borough", () => {
+    const violation = ViolationFactory.build({
+      // fine and summons image data to ensure only one 'Not available' on the page
+      fineAmount: 50,
+      getTotalFined: () => 50,
+      summonsImage: {
+        url: 'https://nycserv.nyc.gov/NYCServWeb/ShowImage?searchID=12345',
+        description: 'View Summons',
+      },
+
+      getBorough: () => 'Staten Island',
+      intersectingStreet: undefined,
+      location: undefined,
+      violationCounty: 'Staten Island',
+    })
+
+    render(
+      <ViolationDetail
+        hideOffCanvas={hideOffCanvasFunction}
+        showViolationDetail={true}
+        violationToInspect={violation}
+      />,
+    )
+
+    expect(screen.getByText('Location')).toBeInTheDocument()
+    expect(screen.getByText('Staten Island')).toBeInTheDocument()
+    expect(screen.queryByText('Not available')).not.toBeInTheDocument()
+  })
+
   it("should show 'No Location Available' for the location when there is no location data", () => {
     const violation = ViolationFactory.build({
       // fine and summons image data to ensure only one 'Not available' on the page
