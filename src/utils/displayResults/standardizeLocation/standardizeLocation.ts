@@ -206,6 +206,10 @@ const standardizeLinkedSearchLocation = (location: string): string => {
     /\s(?:\d)*\s*feet (east|north|south|west) of\s/gi,
     ' and ',
   )
+  standardizedLocation = standardizedLocation.replace(
+    /(east|north|south|west) side of\s/gi,
+    '',
+  )
 
   return standardizedLocation
 }
@@ -223,6 +227,10 @@ const applyStreetSpecificLocationFixes = (inputLocation: string): string => {
     'Fulton Mall',
   )
   standardizedLocation = standardizedLocation.replace(/Mcdonald/, 'McDonald')
+  standardizedLocation = standardizedLocation.replace(
+    /Selfridge Street Ns Nansen Street 75' Wo/,
+    'North side of Nansen Street 75 feet west of Selfridge Street',
+  )
 
   return standardizedLocation
 }

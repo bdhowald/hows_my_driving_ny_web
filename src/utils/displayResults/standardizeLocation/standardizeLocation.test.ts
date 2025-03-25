@@ -112,6 +112,11 @@ describe('standardizeLocation', () => {
         inputLocation: '123 1 Avenue',
         standardizedLocation: '123 1st Avenue',
       },
+      {
+        inputLocation: "Selfridge Street Ns Nansen Street 75' Wo",
+        standardizedLocation:
+          'North side of Nansen Street 75 feet west of Selfridge Street',
+      },
     ])(
       'renders the search-friendly query text $standardizedLocation when called with $inputLocation',
       ({ inputLocation, standardizedLocation }) => {
@@ -139,6 +144,11 @@ describe('standardizeLocation', () => {
       {
         inputLocation: 'Van Duzer Street 100 feet north of Broad Street',
         standardizedLocation: 'Van Duzer Street and Broad Street',
+      },
+      {
+        inputLocation:
+          'North side of Nansen Street 75 feet west of Selfridge Street',
+        standardizedLocation: 'Nansen Street and Selfridge Street',
       },
     ])(
       'renders the search-friendly query text $standardizedLocation when called with $inputLocation',
