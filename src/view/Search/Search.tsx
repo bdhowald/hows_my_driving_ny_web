@@ -95,18 +95,18 @@ const Search = ({
     const queryParamFeatureFlagEnabled =
       queryParameters.get('useNewStyleDisplay')
 
-    // 10% of sessions are in experimental group (plus some internal testers)
-    // 50% of sessions are in control group
-    // 40% of sessions are available for progressive rollout
-    const randomVariable = Math.random()
-    const inExperimentalGroup =
-      randomVariable * 10 > 9.0 || !!queryParamFeatureFlagEnabled
-    const inControlGroup =
-      randomVariable * 10 < 5.0 && !queryParamFeatureFlagEnabled
-
-    const inReserveGroup = !inControlGroup && !inExperimentalGroup
-
     if (!useNewStyleDisplayCookiePresent || queryParamFeatureFlagEnabled) {
+      // 10% of sessions are in experimental group (plus some internal testers)
+      // 50% of sessions are in control group
+      // 40% of sessions are available for progressive rollout
+      const randomVariable = Math.random()
+      const inExperimentalGroup =
+        randomVariable * 10 > 9.0 || queryParamFeatureFlagEnabled === 'true'
+      const inControlGroup =
+        randomVariable * 10 < 5.0 && !queryParamFeatureFlagEnabled
+
+      const inReserveGroup = !inControlGroup && !inExperimentalGroup
+
       if (inExperimentalGroup) {
         setCookie(USE_NEW_STYLE_DISPLAY_COOKIE, 'true', {
           maxAge: 31536000,
@@ -120,13 +120,13 @@ const Search = ({
           path: '/',
         })
       }
-    }
 
-    if (inReserveGroup) {
-      setCookie(USE_NEW_STYLE_DISPLAY_COOKIE, 'none', {
-        maxAge: 31536000,
-        path: '/',
-      })
+      if (inReserveGroup) {
+        setCookie(USE_NEW_STYLE_DISPLAY_COOKIE, 'none', {
+          maxAge: 31536000,
+          path: '/',
+        })
+      }
     }
   }, [])
 
