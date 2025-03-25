@@ -1,8 +1,14 @@
 const PLACENAME_REGEX =
-  /\s((?:st(?:\.|reet)?|dr(?:\.|ive)?|pl(?:\.|ace)?|(avenue (?![A-Za-z]))|(av (?![A-Za-z]))|(av. (?![A-Za-z]))|(ave (?![A-Za-z]))|(ave. (?![A-Za-z]))|rd|road|lane|drive|way|(court(?!\sSt(reet)?))|plaza|square|run|parkway|point|pike|square|driveway|trace|terrace|blvd|crescent))/i
+  /\s((?:st(?:\.|reet)?|dr(?:\.|ive)?|pl(?:\.|ace)?|(avenue (?![A-Za-z]))|(av (?![A-Za-z]))|(av. (?![A-Za-z]))|(ave (?![A-Za-z]))|(ave. (?![A-Za-z]))|av$|av\.$|ave$|ave\.$|avenue$|l(?:a)?n(?:e)?|rd|road|lane|drive|way|(court(?!\sSt(reet)?))|plaza|square|run|parkway|point|pike|square|driveway|trace|terrace|blvd|crescent))/i
+
 
 const standardizeDisplayedLocation = (location: string): string => {
   let standardizedLocation = location
+
+  const numberSuffixRegex = /(st|nd|rd|th)(st|rd|av(e)?)/gi
+  standardizedLocation = standardizedLocation.replace(numberSuffixRegex, (_, x, y) => {
+    return `${x} ${y.charAt(0).toUpperCase() + y.slice(1)}`
+  })
 
   // Replace Abbreviations: at
   standardizedLocation = standardizedLocation.replace(/@/g, 'and')
@@ -66,8 +72,9 @@ const standardizeDisplayedLocation = (location: string): string => {
   standardizedLocation = standardizedLocation.replace(/\(w\/b\)/g, '')
 
   // Replace abbreviations: Avenue
+  standardizedLocation = standardizedLocation.replace(/\bAv\./g, 'Avenue')
+  standardizedLocation = standardizedLocation.replace(/\bAve\./g, 'Avenue')
   standardizedLocation = standardizedLocation.replace(/\bAv\b/g, 'Avenue')
-  standardizedLocation = standardizedLocation.replace(/\bAve\b\./g, 'Avenue')
   standardizedLocation = standardizedLocation.replace(/\bAve\b/g, 'Avenue')
 
   // Replace abbreviations: Boulevard
@@ -77,15 +84,15 @@ const standardizeDisplayedLocation = (location: string): string => {
     'Boulevard',
   )
   standardizedLocation = standardizedLocation.replace(/\bBlvd\b/g, 'Boulevard')
-  standardizedLocation = standardizedLocation.replace(/\bBv\b\./g, 'Boulevard')
+  standardizedLocation = standardizedLocation.replace(/\bBv\./g, 'Boulevard')
   standardizedLocation = standardizedLocation.replace(/\bBv\b/g, 'Boulevard')
 
   // Replace abbreviations: Boulevard
   standardizedLocation = standardizedLocation.replace(/\bBrg\b/g, 'Bridge')
 
   // Replace abbreviations: Court
+  standardizedLocation = standardizedLocation.replace(/\bCt\./g, 'Court')
   standardizedLocation = standardizedLocation.replace(/\bCt\b/g, 'Court')
-  standardizedLocation = standardizedLocation.replace(/\bCt\b\./g, 'Court')
 
   // Replace abbreviations: Expressway
   standardizedLocation = standardizedLocation.replace(
@@ -96,6 +103,10 @@ const standardizeDisplayedLocation = (location: string): string => {
     /\bExpwy\b\./g,
     'Expressway',
   )
+
+  // Replace abbreviations: Lane
+  standardizedLocation = standardizedLocation.replace(/\bLn\b/g, 'Lane')
+  standardizedLocation = standardizedLocation.replace(/\bLn\b\./g, 'Lane')
 
   // Replace abbreviations: Parkway
   standardizedLocation = standardizedLocation.replace(/\bPkwy\b/g, 'Parkway')
@@ -112,6 +123,9 @@ const standardizeDisplayedLocation = (location: string): string => {
   // Replace abbreviations: Street
   standardizedLocation = standardizedLocation.replace(/\bSt\b/g, 'Street')
   standardizedLocation = standardizedLocation.replace(/\bSt\b\./g, 'Street')
+
+  // Replace abbreviations: Service
+  standardizedLocation = standardizedLocation.replace(/\bSvc\b/g, 'Service')
 
   // Replace (front|rear)/of
   standardizedLocation = standardizedLocation.replace(

@@ -129,9 +129,6 @@ const ViolationCardList = ({
       ? `${vehicle.violationsCount} parking and camera violations`
       : `${vehicle.violationsCount} parking and camera violation`
 
-  console.log(`vehicleHasViolations: ${vehicleHasViolations}`)
-  console.log(`violationsListIsVisible: ${violationsListIsVisible}`)
-
   return (
     <>
       <ViolationCardListControls
