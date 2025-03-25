@@ -1,14 +1,16 @@
 const PLACENAME_REGEX =
   /\s((?:st(?:\.|reet)?|dr(?:\.|ive)?|pl(?:\.|ace)?|(avenue (?![A-Za-z]))|(av (?![A-Za-z]))|(av. (?![A-Za-z]))|(ave (?![A-Za-z]))|(ave. (?![A-Za-z]))|av$|av\.$|ave$|ave\.$|avenue$|l(?:a)?n(?:e)?|rd|road|lane|drive|way|(court(?!\sSt(reet)?))|plaza|square|run|parkway|point|pike|square|driveway|trace|terrace|blvd|crescent))/i
 
-
 const standardizeDisplayedLocation = (location: string): string => {
   let standardizedLocation = location
 
   const numberSuffixRegex = /(st|nd|rd|th)(st|rd|av(e)?)/gi
-  standardizedLocation = standardizedLocation.replace(numberSuffixRegex, (_, x, y) => {
-    return `${x} ${y.charAt(0).toUpperCase() + y.slice(1)}`
-  })
+  standardizedLocation = standardizedLocation.replace(
+    numberSuffixRegex,
+    (_, x, y) => {
+      return `${x} ${y.charAt(0).toUpperCase() + y.slice(1)}`
+    },
+  )
 
   // Replace Abbreviations: at
   standardizedLocation = standardizedLocation.replace(/@/g, 'and')

@@ -25,7 +25,8 @@ describe('standardizeLocation', () => {
       },
       {
         inputLocation: 'Grand Central Pkwy Svc Rd @ 72nd Rd',
-        standardizedLocation: 'Grand Central Parkway Service Road and 72nd Road',
+        standardizedLocation:
+          'Grand Central Parkway Service Road and 72nd Road',
       },
       {
         inputLocation: 'Queens Blvd @ 63rd Rd',
