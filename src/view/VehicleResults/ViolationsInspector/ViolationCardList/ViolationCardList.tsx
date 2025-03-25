@@ -26,7 +26,6 @@ const ViolationCardList = ({
   const [sortAscending, setSortAscending] = useState(false)
 
   const violationsCount = vehicle.violationsCount
-  console.log(`vehicle.violationsCount: ${vehicle.violationsCount}`)
   const vehicleHasViolations = violationsCount > 0
 
   const updateSort = (sortType: Sort): void => {
