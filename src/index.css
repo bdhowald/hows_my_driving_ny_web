@@ -104,7 +104,7 @@ form.form div.form-row div.form-group {
 }
 
 form.form div.form-row div.form-group input[type='text'] {
-  font-size: 0.875rem;
+  font-size: 1rem;
   height: 2.375rem;
   text-transform: uppercase;
 }
@@ -126,7 +126,7 @@ form.form div.form-row div.form-group input::-ms-input-placeholder {
 }
 
 form.form div.form-row div.form-group select {
-  font-size: 0.875rem;
+  font-size: 1rem;
   height: 2.375rem;
 }
 
