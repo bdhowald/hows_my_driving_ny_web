@@ -95,12 +95,12 @@ const Search = ({
     const queryParamFeatureFlagEnabled =
       queryParameters.get('useNewStyleDisplay')
 
-    // 5% of sessions are in experimental group (plus some internal testers)
+    // 10% of sessions are in experimental group (plus some internal testers)
     // 50% of sessions are in control group
-    // 45% of sessions are available for progressive rollout
+    // 40% of sessions are available for progressive rollout
     const randomVariable = Math.random()
     const inExperimentalGroup =
-      randomVariable * 10 > 9.5 || !!queryParamFeatureFlagEnabled
+      randomVariable * 10 > 9.0 || !!queryParamFeatureFlagEnabled
     const inControlGroup =
       randomVariable * 10 < 5.0 && !queryParamFeatureFlagEnabled
 
