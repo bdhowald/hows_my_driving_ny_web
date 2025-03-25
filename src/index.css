@@ -1367,6 +1367,19 @@ div.container-fluid
   div.violation-card-list
   div.violation-card
   div.violation-card-row
+  div:last-child {
+  text-align: right;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card
+  div.violation-card-row
   a {
   color: #000;
   text-decoration-color: #000;

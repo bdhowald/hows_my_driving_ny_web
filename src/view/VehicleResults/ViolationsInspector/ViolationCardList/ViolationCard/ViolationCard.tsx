@@ -34,6 +34,41 @@ const VIOLATION_DESCRIPTION_TO_ROW_CLASSNAME: Record<
     'bg-warning-subtle',
 }
 
+const ViolationDateTimeAspect = ({
+  violation,
+  inspectViolationFunction,
+}: {
+  violation: Violation
+  inspectViolationFunction: (violation: Violation) => void
+}) => {
+  const potentialDateTime = violation.getViolationDateTime()
+
+  if (potentialDateTime !== 'N/A') {
+    return (
+      <div>
+        <a
+          data-bs-toggle="offcanvas"
+          href="#showViolationDetails"
+          onClick={(e) => {
+            e.preventDefault()
+            inspectViolationFunction(violation)
+          }}
+          role="button"
+          aria-controls="showViolationDetails"
+        >
+          {violation.getViolationDateTime()}
+        </a>
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      <>{potentialDateTime}</>
+    </div>
+  )
+}
+
 const ViolationCard = ({
   index,
   inspectViolationFunction,
@@ -60,27 +95,20 @@ const ViolationCard = ({
 
   const tableRowClass = getViolationRowClassName(violation.humanizedDescription)
 
+  const violationDescription =
+    violation.humanizedDescription ?? 'No Description Available'
+
   return (
     <div className={`violation-card ${tableRowClass}`}>
       <div className="violation-card-row">
-        <div>
-          <a
-            data-bs-toggle="offcanvas"
-            href="#showViolationDetails"
-            onClick={(e) => {
-              e.preventDefault()
-              inspectViolationFunction(violation)
-            }}
-            role="button"
-            aria-controls="showViolationDetails"
-          >
-            {violation.getViolationDateTime()}
-          </a>
-        </div>
+        <ViolationDateTimeAspect
+          violation={violation}
+          inspectViolationFunction={inspectViolationFunction}
+        />
         <div>{violation.getBorough()}</div>
       </div>
       <div className="violation-card-row">
-        <div>{violation.humanizedDescription}</div>
+        <div>{violationDescription}</div>
         <div>
           <FinesBreakdown.SingleViolationFinesBreakdown
             dueAmount={violation.amountDue}

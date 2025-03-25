@@ -7,7 +7,7 @@ import ViolationCard from './ViolationCard'
 
 const meta: Meta<typeof ViolationCard> = {
   title:
-    'Components/VehicleResults/ViolationsInspector/ViolationsList/ViolationCard',
+    'Components/VehicleResults/ViolationsInspector/ViolationsCardList/ViolationCard',
   component: ViolationCard,
   decorators: [
     (Story) => (
@@ -18,9 +18,11 @@ const meta: Meta<typeof ViolationCard> = {
               <div className="vehicle card">
                 <ul className="list-group-flush list-group">
                   <li className="list-group-item">
-                    <div>
-                      {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-                      <Story />
+                    <div className="violation-card-list-wrapper">
+                      <div className="violation-card-list">
+                        {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
+                        <Story />
+                      </div>
                     </div>
                   </li>
                 </ul>
@@ -53,6 +55,39 @@ const fineData = {
 export const Default: Story = {
   args: {
     violation: ViolationFactory.build(fineData),
+  },
+}
+
+export const NoBoroughData: Story = {
+  args: {
+    violation: ViolationFactory.build({
+      ...fineData,
+      getBorough: () => 'No Borough Available',
+    }),
+  },
+}
+
+export const NoDateTime: Story = {
+  args: {
+    violation: ViolationFactory.build({
+      ...fineData,
+      getViolationDateTime: () => 'N/A',
+    }),
+  },
+}
+
+export const NoFineData: Story = {
+  args: {
+    violation: ViolationFactory.build(),
+  },
+}
+
+export const NoViolationDescription: Story = {
+  args: {
+    violation: ViolationFactory.build({
+      ...fineData,
+      humanizedDescription: undefined,
+    }),
   },
 }
 
