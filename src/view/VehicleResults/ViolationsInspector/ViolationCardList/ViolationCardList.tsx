@@ -90,7 +90,7 @@ const ViolationCardList = ({
           .toString()
         break
       case Sort.KIND:
-        dividerValue = violation.humanizedDescription
+        dividerValue = violation.humanizedDescription ?? 'No Description Available'
         break
       case Sort.LOCATION: {
         const borough = violation.getBorough()
