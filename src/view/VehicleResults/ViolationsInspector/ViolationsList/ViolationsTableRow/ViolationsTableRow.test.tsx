@@ -188,4 +188,49 @@ describe('ViolationsTableRow', () => {
 
     expect(tableRowElement.textContent).toContain(humanizedDescription)
   })
+
+  it('renders the the borough and address/intersection when showFullText is true', async () => {
+    const humanizedDescription = 'Bus Lane Violation'
+
+    const violation = ViolationFactory.build({
+      getBorough: () => 'Brooklyn',
+      getLocationDescription: () => '178 Stuyvesant Avenue',
+      humanizedDescription,
+      violationCode: '5',
+    })
+
+    render(
+      <TableRow showFullFineData={false} showFullText violation={violation} />,
+      { container: document.body.appendChild(tableRow) },
+    )
+
+    const tableRowElement = screen.getByTestId(
+      `summons ${violation.summonsNumber}`,
+    )
+
+    expect(tableRowElement.textContent).toContain('Brooklyn(178 Stuyvesant Avenue)')
+  })
+
+  it('renders the the borough only when showFullText is true but there is no address/location data', async () => {
+    const humanizedDescription = 'Bus Lane Violation'
+
+    const violation = ViolationFactory.build({
+      getBorough: () => 'Brooklyn',
+      getLocationDescription: () => '',
+      humanizedDescription,
+      violationCode: '5',
+    })
+
+    render(
+      <TableRow showFullFineData={false} showFullText violation={violation} />,
+      { container: document.body.appendChild(tableRow) },
+    )
+
+    const tableRowElement = screen.getByTestId(
+      `summons ${violation.summonsNumber}`,
+    )
+
+    expect(tableRowElement.textContent).toContain('Brooklyn')
+    expect(tableRowElement.textContent).not.toContain('()')
+  })
 })
