@@ -100,7 +100,11 @@ const Search = ({
     const queryParamFeatureFlagDisabled =
       queryParameters.get('useNewStyleDisplay') === 'false'
 
-    if (!useNewStyleDisplayCookiePresent || queryParamFeatureFlagEnabled || queryParamFeatureFlagDisabled) {
+    if (
+      !useNewStyleDisplayCookiePresent ||
+      queryParamFeatureFlagEnabled ||
+      queryParamFeatureFlagDisabled
+    ) {
       // 10% of sessions are in experimental group (plus some internal testers)
       // 50% of sessions are in control group
       // 40% of sessions are available for progressive rollout
@@ -108,7 +112,8 @@ const Search = ({
       const inExperimentalGroup =
         randomVariable * 10 > 9.0 || queryParamFeatureFlagEnabled
       const inControlGroup =
-        (randomVariable * 10 < 5.0 && !queryParamFeatureFlagEnabled) || queryParamFeatureFlagDisabled
+        (randomVariable * 10 < 5.0 && !queryParamFeatureFlagEnabled) ||
+        queryParamFeatureFlagDisabled
 
       const inReserveGroup = !inControlGroup && !inExperimentalGroup
 

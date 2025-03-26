@@ -72,15 +72,20 @@ export default (
     }
 
     // humanizedDescription
+    const aHumanizedDescription =
+      a.humanizedDescription ?? 'No Description Available'
+    const bHumanizedDescription =
+      b.humanizedDescription ?? 'No Description Available'
+
     return sortAscending
-      ? a.humanizedDescription === b.humanizedDescription
+      ? aHumanizedDescription === bHumanizedDescription
         ? aDate - bDate
-        : a.humanizedDescription < b.humanizedDescription
+        : aHumanizedDescription < bHumanizedDescription
           ? -1
           : 1
-      : a.humanizedDescription === b.humanizedDescription
+      : aHumanizedDescription === bHumanizedDescription
         ? bDate - aDate
-        : a.humanizedDescription < b.humanizedDescription
+        : aHumanizedDescription < bHumanizedDescription
           ? 1
           : -1
   })
