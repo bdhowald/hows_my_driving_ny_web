@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-
 import Card from 'react-bootstrap/Card'
+import { useCookies } from 'react-cookie'
 
+import { USE_NEW_STYLE_DISPLAY_COOKIE } from 'constants/cookies'
 import Vehicle from 'models/Vehicle/Vehicle'
 import VehicleDisplayResult from 'utils/types/vehicleDisplayResult'
 
@@ -194,16 +195,26 @@ const VehicleResults = ({
   removeLookupFunction: RemoveLookupFunctionType
   scrollRef: React.Ref<HTMLDivElement>
   vehicleDisplayResults: VehicleDisplayResult[]
-}) => (
-  <div className="vehicles" ref={lookupInFlight ? null : scrollRef}>
-    {lookupInFlight && <ShimmerLoader />}
-    <MemoizedCombinedVehicleResults
-      refreshLookupFunction={refreshLookupFunction}
-      removeLookupFunction={removeLookupFunction}
-      vehicleDisplayResults={vehicleDisplayResults}
-    />
-  </div>
-)
+}) => {
+  const [cookies, _, __] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
+
+  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
+  const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
+
+  return (
+    <div
+      className={`vehicles ${newStyleDisplayClassName}`}
+      ref={lookupInFlight ? null : scrollRef}
+    >
+      {lookupInFlight && <ShimmerLoader />}
+      <MemoizedCombinedVehicleResults
+        refreshLookupFunction={refreshLookupFunction}
+        removeLookupFunction={removeLookupFunction}
+        vehicleDisplayResults={vehicleDisplayResults}
+      />
+    </div>
+  )
+}
 
 VehicleResults.displayname = 'VehicleResults'
 

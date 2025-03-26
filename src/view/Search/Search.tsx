@@ -87,6 +87,8 @@ const Search = ({
     USE_NEW_STYLE_DISPLAY_COOKIE,
   ])
 
+  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
+
   useEffect(() => {
     const queryParameters = new URLSearchParams(document.location.search)
     const useNewStyleDisplayCookiePresent =
@@ -318,8 +320,10 @@ const Search = ({
     setLookupInFlight(false)
   }
 
+  const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
+
   return (
-    <div className="jumbotron">
+    <div className={`jumbotron ${newStyleDisplayClassName}`}>
       <JumbotronHeader />
       <Row>
         <SearchControls

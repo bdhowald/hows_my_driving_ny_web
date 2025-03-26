@@ -145,7 +145,10 @@ const ViolationCardList = ({
             sortAscending={sortAscending}
             updateSortFunction={updateSort}
           />
-          <div className="violation-card-list bg-body">
+          <div
+            className="violation-card-list bg-body"
+            data-testid="violation-card-list"
+          >
             {sortedViolations.map((violation: Violation, index: number) => (
               <React.Fragment key={index}>
                 {getDividerIfNeeded(dividerCounter, violation)}

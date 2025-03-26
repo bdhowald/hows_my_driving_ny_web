@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { useCookies } from 'react-cookie'
 
 import Borough from 'constants/boroughs'
+import { USE_NEW_STYLE_DISPLAY_COOKIE } from 'constants/cookies'
 import {
   BUS_LANE_CAMERA_VIOLATION_CODE,
   MOBILE_BUS_LANE_CAMERA_VIOLATION_CODE,
@@ -70,8 +72,6 @@ const ViolationAspectFields = (props: {
 }
 
 const ViolationSummary = ({ vehicle }: { vehicle: Vehicle }) => {
-  const [showViolationsBreakdown, setShowViolationsBreakDown] = useState(false)
-
   const getViolationBoroughCounts = (
     violations: Violation[],
   ): ViolationBoroughCounts => {
@@ -248,6 +248,9 @@ const ViolationSummary = ({ vehicle }: { vehicle: Vehicle }) => {
     return VIOLATION_TYPES.includes(x as ViolationType)
   }
 
+  const [showViolationsBreakdown, setShowViolationsBreakDown] = useState(false)
+  const [cookies, _, __] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
+
   const hasAtLeastOneViolation = vehicle.violationsCount > 0
 
   const newViolationsSinceLastLookup =
@@ -266,8 +269,11 @@ const ViolationSummary = ({ vehicle }: { vehicle: Vehicle }) => {
 
   const showShowDetailsLink = !showViolationsBreakdown && hasAtLeastOneViolation
 
+  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
+  const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
+
   return (
-    <div className="summary-box">
+    <div className={`summary-box ${newStyleDisplayClassName}`}>
       <div className="vehicle-info-group vehicle-violations">
         <div className="keys lookup-info">
           <div>Violations:</div>

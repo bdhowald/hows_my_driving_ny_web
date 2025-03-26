@@ -124,9 +124,7 @@ const TableRow = (props: Props): JSX.Element => {
           <span className="borough">{violation.getBorough()}</span>
         )}
         {showFullText && location && (
-          <span className="location-description">
-            ({location})
-          </span>
+          <span className="location-description">({location})</span>
         )}
       </>
     )

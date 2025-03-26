@@ -208,7 +208,9 @@ describe('ViolationsTableRow', () => {
       `summons ${violation.summonsNumber}`,
     )
 
-    expect(tableRowElement.textContent).toContain('Brooklyn(178 Stuyvesant Avenue)')
+    expect(tableRowElement.textContent).toContain(
+      'Brooklyn(178 Stuyvesant Avenue)',
+    )
   })
 
   it('renders the the borough only when showFullText is true but there is no address/location data', async () => {

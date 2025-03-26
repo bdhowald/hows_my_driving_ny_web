@@ -1,5 +1,7 @@
 import React from 'react'
+import { useCookies } from 'react-cookie'
 
+import { USE_NEW_STYLE_DISPLAY_COOKIE } from 'constants/cookies'
 import L10N from 'constants/display'
 import Vehicle from 'models/Vehicle/Vehicle'
 
@@ -115,6 +117,11 @@ const DangerousVehicleAbatementAct = ({ vehicle }: { vehicle: Vehicle }) => {
     return undefined
   }
 
+  const [cookies, _, __] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
+  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
+
+  const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
+
   const redLightCameraBootingEligibilityString =
     getRedLightCameraBootingEligibilityText()
   const speedCameraBootingEligibilityString =
@@ -129,7 +136,7 @@ const DangerousVehicleAbatementAct = ({ vehicle }: { vehicle: Vehicle }) => {
 
   return (
     <li
-      className={'list-group-item list-group-item-warning'}
+      className={`list-group-item list-group-item-warning ${newStyleDisplayClassName}`}
       data-testid="dangerous-vehicle-abatement-act-notice"
     >
       <p>
