@@ -105,12 +105,12 @@ const Search = ({
       queryParamFeatureFlagEnabled ||
       queryParamFeatureFlagDisabled
     ) {
-      // 10% of sessions are in experimental group (plus some internal testers)
+      // 25% of sessions are in experimental group (plus some internal testers)
       // 50% of sessions are in control group
-      // 40% of sessions are available for progressive rollout
+      // 25% of sessions are available for progressive rollout
       const randomVariable = Math.random()
       const inExperimentalGroup =
-        randomVariable * 10 > 9.0 || queryParamFeatureFlagEnabled
+        randomVariable * 10 > 7.5 || queryParamFeatureFlagEnabled
       const inControlGroup =
         (randomVariable * 10 < 5.0 && !queryParamFeatureFlagEnabled) ||
         queryParamFeatureFlagDisabled
