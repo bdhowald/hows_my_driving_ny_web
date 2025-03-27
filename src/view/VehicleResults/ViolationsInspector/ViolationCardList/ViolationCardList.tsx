@@ -158,7 +158,7 @@ const ViolationCardList = ({
     const floor = dividerValue
     const ceiling = dividerValue + FINE_DIVIDER_INCREMENT - 0.01
 
-    return `$${floor.toLocaleString('en-US', L10N.sitewide.currency)} – $${ceiling.toLocaleString('en-US', L10N.sitewide.currency)} `
+    return `$${floor} – $${ceiling.toLocaleString('en-US', L10N.sitewide.currency)} `
   }
 
   const dividerCounter: { value: string | number | null } = { value: null }
