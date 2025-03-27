@@ -1307,7 +1307,7 @@ div.container-fluid
   div.violation-card-list-wrapper
   div.violation-card-list-sort-controls
   div.violation-card-list-sort-control.date {
-  width: 22%;
+  width: 21.5%;
 }
 
 div.container-fluid
@@ -1318,7 +1318,7 @@ div.container-fluid
   div.violation-card-list-wrapper
   div.violation-card-list-sort-controls
   div.violation-card-list-sort-control.fined {
-  width: 22%;
+  width: 23.83%;
 }
 
 div.container-fluid
@@ -1329,7 +1329,7 @@ div.container-fluid
   div.violation-card-list-wrapper
   div.violation-card-list-sort-controls
   div.violation-card-list-sort-control.kind {
-  width: 24%;
+  width: 22%;
 }
 
 div.container-fluid
@@ -1340,7 +1340,7 @@ div.container-fluid
   div.violation-card-list-wrapper
   div.violation-card-list-sort-controls
   div.violation-card-list-sort-control.location {
-  width: 32%;
+  width: 32.67%;
 }
 
 div.container-fluid
