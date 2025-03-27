@@ -8,7 +8,7 @@ exports[`Components/FetchViolations/FetchViolations NoLookups smoke-test 1`] = `
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
-              <div class="jumbotron">
+              <div class="jumbotron ">
                 <h1 class="display-4">
                   How's My Driving NY
                 </h1>
@@ -405,7 +405,7 @@ exports[`Components/FetchViolations/FetchViolations NoLookups smoke-test 1`] = `
                   </form>
                 </div>
               </div>
-              <div class="vehicles">
+              <div class="vehicles ">
               </div>
             </div>
           </div>

@@ -4,7 +4,7 @@ exports[`Components/VehicleResults/VehicleResults LookupInFlight smoke-test 1`] 
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <div class="vehicles">
+      <div class="vehicles ">
         <div class="vehicle card"
              aria-hidden="true"
         >
@@ -93,7 +93,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <div class="vehicles">
+      <div class="vehicles ">
         <div data-testid="lookup-e5f6g7h8"
              class="vehicle card"
         >
@@ -261,26 +261,48 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                   </div>
                 </div>
                 <div class="summary-section col-xs-12 col-sm-6">
-                  <div class="summary-box">
+                  <div class="summary-box ">
                     <div class="vehicle-info-group vehicle-violations">
                       <div class="keys lookup-info">
                         <div>
                           Violations:
                         </div>
-                        <div>
-                          (
-                          <a class="show-violations-aspect-details"
-                             href="#"
-                             target="_blank"
-                          >
-                            show details
-                          </a>
-                          )
+                        <div class="violation-count-aspects">
+                          <div class="violation-count-aspect-header">
+                            Type:
+                          </div>
+                          <div class="violation-count-aspect">
+                            Parking:
+                          </div>
+                        </div>
+                        <div class="violation-count-aspects">
+                          <div class="violation-count-aspect-header">
+                            Borough:
+                          </div>
+                          <div class="violation-count-aspect">
+                            Brooklyn:
+                          </div>
                         </div>
                       </div>
                       <div class="values lookup-info">
                         <div class="violation-total">
                           3
+                        </div>
+                        <div class="violation-type-counts">
+                          <div class="violation-count">
+                            &nbsp;
+                          </div>
+                          <div class="violation-count">
+                            3
+                          </div>
+                        </div>
+                        <div class="violation-borough-counts">
+                          <div class="violation-count">
+                            &nbsp;
+                          </div>
+                          <div class="violation-count">
+                            3
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -687,26 +709,48 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                   </div>
                 </div>
                 <div class="summary-section col-xs-12 col-sm-6">
-                  <div class="summary-box">
+                  <div class="summary-box ">
                     <div class="vehicle-info-group vehicle-violations">
                       <div class="keys lookup-info">
                         <div>
                           Violations:
                         </div>
-                        <div>
-                          (
-                          <a class="show-violations-aspect-details"
-                             href="#"
-                             target="_blank"
-                          >
-                            show details
-                          </a>
-                          )
+                        <div class="violation-count-aspects">
+                          <div class="violation-count-aspect-header">
+                            Type:
+                          </div>
+                          <div class="violation-count-aspect">
+                            Parking:
+                          </div>
+                        </div>
+                        <div class="violation-count-aspects">
+                          <div class="violation-count-aspect-header">
+                            Borough:
+                          </div>
+                          <div class="violation-count-aspect">
+                            Brooklyn:
+                          </div>
                         </div>
                       </div>
                       <div class="values lookup-info">
                         <div class="violation-total">
                           3
+                        </div>
+                        <div class="violation-type-counts">
+                          <div class="violation-count">
+                            &nbsp;
+                          </div>
+                          <div class="violation-count">
+                            3
+                          </div>
+                        </div>
+                        <div class="violation-borough-counts">
+                          <div class="violation-count">
+                            &nbsp;
+                          </div>
+                          <div class="violation-count">
+                            3
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -956,7 +1000,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListHidde
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <div class="vehicles">
+      <div class="vehicles ">
         <div data-testid="lookup-e5f6g7h8"
              class="vehicle card"
         >
@@ -1124,26 +1168,48 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListHidde
                   </div>
                 </div>
                 <div class="summary-section col-xs-12 col-sm-6">
-                  <div class="summary-box">
+                  <div class="summary-box ">
                     <div class="vehicle-info-group vehicle-violations">
                       <div class="keys lookup-info">
                         <div>
                           Violations:
                         </div>
-                        <div>
-                          (
-                          <a class="show-violations-aspect-details"
-                             href="#"
-                             target="_blank"
-                          >
-                            show details
-                          </a>
-                          )
+                        <div class="violation-count-aspects">
+                          <div class="violation-count-aspect-header">
+                            Type:
+                          </div>
+                          <div class="violation-count-aspect">
+                            Parking:
+                          </div>
+                        </div>
+                        <div class="violation-count-aspects">
+                          <div class="violation-count-aspect-header">
+                            Borough:
+                          </div>
+                          <div class="violation-count-aspect">
+                            Brooklyn:
+                          </div>
                         </div>
                       </div>
                       <div class="values lookup-info">
                         <div class="violation-total">
                           3
+                        </div>
+                        <div class="violation-type-counts">
+                          <div class="violation-count">
+                            &nbsp;
+                          </div>
+                          <div class="violation-count">
+                            3
+                          </div>
+                        </div>
+                        <div class="violation-borough-counts">
+                          <div class="violation-count">
+                            &nbsp;
+                          </div>
+                          <div class="violation-count">
+                            3
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -1237,7 +1303,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListVisib
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <div class="vehicles">
+      <div class="vehicles ">
         <div data-testid="lookup-e5f6g7h8"
              class="vehicle card"
         >
@@ -1405,26 +1471,48 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListVisib
                   </div>
                 </div>
                 <div class="summary-section col-xs-12 col-sm-6">
-                  <div class="summary-box">
+                  <div class="summary-box ">
                     <div class="vehicle-info-group vehicle-violations">
                       <div class="keys lookup-info">
                         <div>
                           Violations:
                         </div>
-                        <div>
-                          (
-                          <a class="show-violations-aspect-details"
-                             href="#"
-                             target="_blank"
-                          >
-                            show details
-                          </a>
-                          )
+                        <div class="violation-count-aspects">
+                          <div class="violation-count-aspect-header">
+                            Type:
+                          </div>
+                          <div class="violation-count-aspect">
+                            Parking:
+                          </div>
+                        </div>
+                        <div class="violation-count-aspects">
+                          <div class="violation-count-aspect-header">
+                            Borough:
+                          </div>
+                          <div class="violation-count-aspect">
+                            Brooklyn:
+                          </div>
                         </div>
                       </div>
                       <div class="values lookup-info">
                         <div class="violation-total">
                           3
+                        </div>
+                        <div class="violation-type-counts">
+                          <div class="violation-count">
+                            &nbsp;
+                          </div>
+                          <div class="violation-count">
+                            3
+                          </div>
+                        </div>
+                        <div class="violation-borough-counts">
+                          <div class="violation-count">
+                            &nbsp;
+                          </div>
+                          <div class="violation-count">
+                            3
+                          </div>
                         </div>
                       </div>
                     </div>

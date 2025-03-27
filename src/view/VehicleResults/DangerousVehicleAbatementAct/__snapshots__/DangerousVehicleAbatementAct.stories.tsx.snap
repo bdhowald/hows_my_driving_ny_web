@@ -7,7 +7,7 @@ exports[`Components/VehicleResults/DangerousVehicleAbatementAct RedLightCameraAn
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
-            <li class="list-group-item list-group-item-warning"
+            <li class="list-group-item list-group-item-warning "
                 data-testid="dangerous-vehicle-abatement-act-notice"
             >
               <p>
@@ -60,7 +60,7 @@ exports[`Components/VehicleResults/DangerousVehicleAbatementAct RedLightCameraEl
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
-            <li class="list-group-item list-group-item-warning"
+            <li class="list-group-item list-group-item-warning "
                 data-testid="dangerous-vehicle-abatement-act-notice"
             >
               <p>
@@ -102,7 +102,7 @@ exports[`Components/VehicleResults/DangerousVehicleAbatementAct SpeedCameraEligi
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
-            <li class="list-group-item list-group-item-warning"
+            <li class="list-group-item list-group-item-warning "
                 data-testid="dangerous-vehicle-abatement-act-notice"
             >
               <p>
