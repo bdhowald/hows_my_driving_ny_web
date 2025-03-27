@@ -248,7 +248,10 @@ const ViolationSummary = ({ vehicle }: { vehicle: Vehicle }) => {
     return VIOLATION_TYPES.includes(x as ViolationType)
   }
 
-  const [showViolationsBreakdown, setShowViolationsBreakDown] = useState(false)
+  const isWideDisplay = window.innerWidth >= 576
+
+  const [showViolationsBreakdown, setShowViolationsBreakdown] =
+    useState(isWideDisplay)
   const [cookies, _, __] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
 
   const hasAtLeastOneViolation = vehicle.violationsCount > 0
@@ -291,7 +294,7 @@ const ViolationSummary = ({ vehicle }: { vehicle: Vehicle }) => {
                 href="#"
                 onClick={(e) => {
                   e.preventDefault()
-                  setShowViolationsBreakDown(true)
+                  setShowViolationsBreakdown(true)
                 }}
                 target="_blank"
               >

@@ -278,8 +278,9 @@ describe('FetchViolations', () => {
           'TRC',
         ],
         previousLookupDate: '2024-11-12T15:57:14.000Z',
-        previousViolationCount: 2,
+        previousViolationCount: 3,
         violations: [
+          ViolationFactory.build(),
           ViolationFactory.build(),
           ViolationFactory.build(),
           violation,
@@ -321,7 +322,7 @@ describe('FetchViolations', () => {
         screen.getByText('Commercial', { selector: 'div' })
 
         screen.getByText('Violations:')
-        screen.getByText('(1 new) 3')
+        screen.getByText('(1 new) 4')
 
         screen.getByText('Lookups:')
         screen.getByText('2')
@@ -344,7 +345,7 @@ describe('FetchViolations', () => {
         screen.getByText('show violation summary', { selector: 'button' })
 
         // ViolationsList component
-        screen.getByText('3 parking and camera violations')
+        screen.getByText('4 parking and camera violations')
 
         // ViolationsTableHeader
         screen.getByText('Date')

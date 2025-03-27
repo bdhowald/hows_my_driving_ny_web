@@ -17,7 +17,21 @@ import ViolationSummary from './ViolationSummary'
 describe('ViolationSummary', () => {
   describe('renders without error', () => {
     it('renders without error with the new-style display', () => {
-      const vehicle = VehicleFactory.build()
+      const vehicle = VehicleFactory.build({
+        violations: [
+          ViolationFactory.build({
+            humanizedDescription: 'No Standing - Bus Stop',
+            violationCode: '19',
+            violationCounty: 'Queens',
+          }),
+          ViolationFactory.build({
+            humanizedDescription: 'School Zone Speed Camera Violation',
+            violationCode: '36',
+            violationCounty: 'Staten Island',
+          }),
+        ],
+        violationsCount: 2,
+      })
 
       render(
         <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
@@ -30,7 +44,21 @@ describe('ViolationSummary', () => {
     })
 
     it('renders without error with the old-style display', () => {
-      const vehicle = VehicleFactory.build()
+      const vehicle = VehicleFactory.build({
+        violations: [
+          ViolationFactory.build({
+            humanizedDescription: 'No Standing - Bus Stop',
+            violationCode: '19',
+            violationCounty: 'Queens',
+          }),
+          ViolationFactory.build({
+            humanizedDescription: 'School Zone Speed Camera Violation',
+            violationCode: '36',
+            violationCounty: 'Staten Island',
+          }),
+        ],
+        violationsCount: 2,
+      })
 
       render(
         <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
@@ -45,301 +73,469 @@ describe('ViolationSummary', () => {
 
   describe('render violation aspect counts', () => {
     describe('new-style display', () => {
-      it('it should render the counts for different types of violations', async () => {
-        const vehicle = VehicleFactory.build({
-          plate: 'ABC1234',
-          state: 'NY',
-          violations: [
-            // four bus lane violations (two mobile, two not)
-            BusLaneCameraViolationFactory.build(),
-            BusLaneCameraViolationFactory.build(),
-            MobileBusLaneCameraViolationFactory.build(),
-            MobileBusLaneCameraViolationFactory.build(),
+      test.each([
+        {
+          width: 420,
+        },
+        {
+          width: 576,
+        },
+        {
+          width: 640,
+        },
+      ])(
+        'render the counts for different types of violations for a page $width wide',
+        async ({ width }) => {
+          // Change the viewport to show/hide the violations count depending on the width
+          global.innerWidth = width
 
-            // six red light camera violations
-            RedLightCameraViolationFactory.build(),
-            RedLightCameraViolationFactory.build(),
-            RedLightCameraViolationFactory.build(),
-            RedLightCameraViolationFactory.build(),
-            RedLightCameraViolationFactory.build(),
-            RedLightCameraViolationFactory.build(),
+          // Trigger the window resize event.
+          global.dispatchEvent(new Event('resize'))
 
-            // 13 school zone speed camera violations
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-          ],
-        })
+          const vehicle = VehicleFactory.build({
+            plate: 'ABC1234',
+            state: 'NY',
+            violations: [
+              // four bus lane violations (two mobile, two not)
+              BusLaneCameraViolationFactory.build(),
+              BusLaneCameraViolationFactory.build(),
+              MobileBusLaneCameraViolationFactory.build(),
+              MobileBusLaneCameraViolationFactory.build(),
 
-        render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
-            <ViolationSummary vehicle={vehicle} />
-          </CookiesProvider>,
-        )
+              // six red light camera violations
+              RedLightCameraViolationFactory.build(),
+              RedLightCameraViolationFactory.build(),
+              RedLightCameraViolationFactory.build(),
+              RedLightCameraViolationFactory.build(),
+              RedLightCameraViolationFactory.build(),
+              RedLightCameraViolationFactory.build(),
 
-        const showMoreDetailsLink = screen.getByRole('link', {
-          name: 'show details',
-          hidden: true,
-        })
+              // 13 school zone speed camera violations
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+            ],
+          })
 
-        expect(showMoreDetailsLink).toBeInTheDocument()
+          render(
+            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+              <ViolationSummary vehicle={vehicle} />
+            </CookiesProvider>,
+          )
 
-        // keys
-        expect(screen.queryByText('Speeding:')).not.toBeInTheDocument()
-        expect(screen.queryByText('Red Light:')).not.toBeInTheDocument()
-        expect(screen.queryByText('Bus Lane:')).not.toBeInTheDocument()
+          if (width < 576) {
+            const showMoreDetailsLink = screen.getByRole('link', {
+              name: 'show details',
+              hidden: true,
+            })
 
-        // values
-        expect(screen.queryByText('13')).not.toBeInTheDocument()
-        expect(screen.queryByText('6')).not.toBeInTheDocument()
-        expect(screen.queryByText('4')).not.toBeInTheDocument()
+            expect(showMoreDetailsLink).toBeInTheDocument()
 
-        // Click "show details" link
-        userEvent.click(showMoreDetailsLink)
+            // keys
+            expect(screen.queryByText('Speeding:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Red Light:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Bus Lane:')).not.toBeInTheDocument()
 
-        await waitFor(() => {
-          // keys
-          expect(screen.getByText('Speeding:')).toBeInTheDocument()
-          expect(screen.getByText('Red Light:')).toBeInTheDocument()
-          expect(screen.getByText('Bus Lane:')).toBeInTheDocument()
+            // values
+            expect(screen.queryByText('13')).not.toBeInTheDocument()
+            expect(screen.queryByText('6')).not.toBeInTheDocument()
+            expect(screen.queryByText('4')).not.toBeInTheDocument()
 
-          // values
-          expect(screen.getByText('13')).toBeInTheDocument()
-          expect(screen.getByText('6')).toBeInTheDocument()
-          expect(screen.getByText('4')).toBeInTheDocument()
-        })
-      })
+            // Click "show details" link
+            userEvent.click(showMoreDetailsLink)
 
-      it('it should render the counts for violations in different boroughs', async () => {
-        const vehicle = VehicleFactory.build({
-          plate: 'ABC1234',
-          state: 'NY',
-          violations: [
-            // three Bronx Violations
-            ViolationFactory.build({ violationCounty: 'Bronx' }),
-            ViolationFactory.build({ violationCounty: 'Bronx' }),
-            ViolationFactory.build({ violationCounty: 'Bronx' }),
+            await waitFor(() => {
+              // keys
+              expect(screen.getByText('Speeding:')).toBeInTheDocument()
+              expect(screen.getByText('Red Light:')).toBeInTheDocument()
+              expect(screen.getByText('Bus Lane:')).toBeInTheDocument()
 
-            // four Brooklyn violations
-            ViolationFactory.build({ violationCounty: 'Brooklyn' }),
-            ViolationFactory.build({ violationCounty: 'Brooklyn' }),
-            ViolationFactory.build({ violationCounty: 'Brooklyn' }),
-            ViolationFactory.build({ violationCounty: 'Brooklyn' }),
+              // values
+              expect(screen.getByText('13')).toBeInTheDocument()
+              expect(screen.getByText('6')).toBeInTheDocument()
+              expect(screen.getByText('4')).toBeInTheDocument()
+            })
+          } else {
+            const showMoreDetailsLink = screen.queryByRole('link', {
+              name: 'show details',
+              hidden: true,
+            })
 
-            // one Queens violation
-            ViolationFactory.build({ violationCounty: 'Queens' }),
+            expect(showMoreDetailsLink).not.toBeInTheDocument()
 
-            // two Staten Island violations
-            ViolationFactory.build({ violationCounty: 'Staten Island' }),
-            ViolationFactory.build({ violationCounty: 'Staten Island' }),
-          ],
-        })
+            // keys
+            expect(screen.queryByText('Speeding:')).toBeInTheDocument()
+            expect(screen.queryByText('Red Light:')).toBeInTheDocument()
+            expect(screen.queryByText('Bus Lane:')).toBeInTheDocument()
 
-        render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
-            <ViolationSummary vehicle={vehicle} />
-          </CookiesProvider>,
-        )
+            // values
+            expect(screen.queryByText('13')).toBeInTheDocument()
+            expect(screen.queryByText('6')).toBeInTheDocument()
+            expect(screen.queryByText('4')).toBeInTheDocument()
+          }
+        },
+      )
 
-        const showMoreDetailsLink = screen.getByRole('link', {
-          name: 'show details',
-          hidden: true,
-        })
+      test.each([
+        {
+          width: 420,
+        },
+        {
+          width: 576,
+        },
+        {
+          width: 640,
+        },
+      ])(
+        'render the counts for violations in different boroughs for a page $width wide',
+        async ({ width }) => {
+          // Change the viewport to show/hide the violations count depending on the width
+          global.innerWidth = width
 
-        expect(showMoreDetailsLink).toBeInTheDocument()
+          // Trigger the window resize event.
+          global.dispatchEvent(new Event('resize'))
 
-        // keys
-        expect(screen.queryByText('Bronx:')).not.toBeInTheDocument()
-        expect(screen.queryByText('Brooklyn:')).not.toBeInTheDocument()
-        expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
-        expect(screen.queryByText('Queens:')).not.toBeInTheDocument()
-        expect(screen.queryByText('Staten Island:')).not.toBeInTheDocument()
+          const vehicle = VehicleFactory.build({
+            plate: 'ABC1234',
+            state: 'NY',
+            violations: [
+              // three Bronx Violations
+              ViolationFactory.build({ violationCounty: 'Bronx' }),
+              ViolationFactory.build({ violationCounty: 'Bronx' }),
+              ViolationFactory.build({ violationCounty: 'Bronx' }),
 
-        // values
-        expect(screen.queryByText('3')).not.toBeInTheDocument()
-        expect(screen.queryByText('4')).not.toBeInTheDocument()
-        expect(screen.queryByText('1')).not.toBeInTheDocument()
-        expect(screen.queryByText('2')).not.toBeInTheDocument()
+              // four Brooklyn violations
+              ViolationFactory.build({ violationCounty: 'Brooklyn' }),
+              ViolationFactory.build({ violationCounty: 'Brooklyn' }),
+              ViolationFactory.build({ violationCounty: 'Brooklyn' }),
+              ViolationFactory.build({ violationCounty: 'Brooklyn' }),
 
-        // Click "show details" link
-        userEvent.click(showMoreDetailsLink)
+              // one Queens violation
+              ViolationFactory.build({ violationCounty: 'Queens' }),
 
-        await waitFor(() => {
-          // keys
-          expect(screen.queryByText('Bronx:')).toBeInTheDocument()
-          expect(screen.queryByText('Brooklyn:')).toBeInTheDocument()
-          expect(screen.queryByText('Queens:')).toBeInTheDocument()
-          expect(screen.queryByText('Staten Island:')).toBeInTheDocument()
+              // two Staten Island violations
+              ViolationFactory.build({ violationCounty: 'Staten Island' }),
+              ViolationFactory.build({ violationCounty: 'Staten Island' }),
+            ],
+          })
 
-          // mo Manhattan violations
-          expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
+          render(
+            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+              <ViolationSummary vehicle={vehicle} />
+            </CookiesProvider>,
+          )
 
-          // values
-          expect(screen.queryByText('3')).toBeInTheDocument()
-          expect(screen.queryByText('4')).toBeInTheDocument()
-          expect(screen.queryByText('1')).toBeInTheDocument()
-          expect(screen.queryByText('2')).toBeInTheDocument()
-        })
-      })
+          if (width < 576) {
+            const showMoreDetailsLink = screen.getByRole('link', {
+              name: 'show details',
+              hidden: true,
+            })
+
+            expect(showMoreDetailsLink).toBeInTheDocument()
+
+            // keys
+            expect(screen.queryByText('Bronx:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Brooklyn:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Queens:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Staten Island:')).not.toBeInTheDocument()
+
+            // values
+            expect(screen.queryByText('3')).not.toBeInTheDocument()
+            expect(screen.queryByText('4')).not.toBeInTheDocument()
+            expect(screen.queryByText('1')).not.toBeInTheDocument()
+            expect(screen.queryByText('2')).not.toBeInTheDocument()
+
+            // Click "show details" link
+            userEvent.click(showMoreDetailsLink)
+
+            await waitFor(() => {
+              // keys
+              expect(screen.queryByText('Bronx:')).toBeInTheDocument()
+              expect(screen.queryByText('Brooklyn:')).toBeInTheDocument()
+              expect(screen.queryByText('Queens:')).toBeInTheDocument()
+              expect(screen.queryByText('Staten Island:')).toBeInTheDocument()
+
+              // mo Manhattan violations
+              expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
+
+              // values
+              expect(screen.queryByText('3')).toBeInTheDocument()
+              expect(screen.queryByText('4')).toBeInTheDocument()
+              expect(screen.queryByText('1')).toBeInTheDocument()
+              expect(screen.queryByText('2')).toBeInTheDocument()
+            })
+          } else {
+            const showMoreDetailsLink = screen.queryByRole('link', {
+              name: 'show details',
+              hidden: true,
+            })
+
+            expect(showMoreDetailsLink).not.toBeInTheDocument()
+
+            // keys
+            expect(screen.queryByText('Bronx:')).toBeInTheDocument()
+            expect(screen.queryByText('Brooklyn:')).toBeInTheDocument()
+            expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Queens:')).toBeInTheDocument()
+            expect(screen.queryByText('Staten Island:')).toBeInTheDocument()
+
+            // values
+            expect(screen.queryByText('3')).toBeInTheDocument()
+            expect(screen.queryByText('4')).toBeInTheDocument()
+            expect(screen.queryByText('1')).toBeInTheDocument()
+            expect(screen.queryByText('2')).toBeInTheDocument()
+          }
+        },
+      )
     })
 
     describe('old-style display', () => {
-      it('it should render the counts for different types of violations', async () => {
-        const vehicle = VehicleFactory.build({
-          plate: 'ABC1234',
-          state: 'NY',
-          violations: [
-            // four bus lane violations (two mobile, two not)
-            BusLaneCameraViolationFactory.build(),
-            BusLaneCameraViolationFactory.build(),
-            MobileBusLaneCameraViolationFactory.build(),
-            MobileBusLaneCameraViolationFactory.build(),
+      let savedGlobalWidth: number
 
-            // six red light camera violations
-            RedLightCameraViolationFactory.build(),
-            RedLightCameraViolationFactory.build(),
-            RedLightCameraViolationFactory.build(),
-            RedLightCameraViolationFactory.build(),
-            RedLightCameraViolationFactory.build(),
-            RedLightCameraViolationFactory.build(),
-
-            // 13 school zone speed camera violations
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-            SchoolZoneSpeedCameraViolationFactory.build(),
-          ],
-        })
-
-        render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
-            <ViolationSummary vehicle={vehicle} />
-          </CookiesProvider>,
-        )
-
-        const showMoreDetailsLink = screen.getByRole('link', {
-          name: 'show details',
-          hidden: true,
-        })
-
-        expect(showMoreDetailsLink).toBeInTheDocument()
-
-        // keys
-        expect(screen.queryByText('Speeding:')).not.toBeInTheDocument()
-        expect(screen.queryByText('Red Light:')).not.toBeInTheDocument()
-        expect(screen.queryByText('Bus Lane:')).not.toBeInTheDocument()
-
-        // values
-        expect(screen.queryByText('13')).not.toBeInTheDocument()
-        expect(screen.queryByText('6')).not.toBeInTheDocument()
-        expect(screen.queryByText('4')).not.toBeInTheDocument()
-
-        // Click "show details" link
-        userEvent.click(showMoreDetailsLink)
-
-        await waitFor(() => {
-          // keys
-          expect(screen.getByText('Speeding:')).toBeInTheDocument()
-          expect(screen.getByText('Red Light:')).toBeInTheDocument()
-          expect(screen.getByText('Bus Lane:')).toBeInTheDocument()
-
-          // values
-          expect(screen.getByText('13')).toBeInTheDocument()
-          expect(screen.getByText('6')).toBeInTheDocument()
-          expect(screen.getByText('4')).toBeInTheDocument()
-        })
+      beforeEach(() => {
+        savedGlobalWidth = global.innerWidth
       })
 
-      it('it should render the counts for violations in different boroughs', async () => {
-        const vehicle = VehicleFactory.build({
-          plate: 'ABC1234',
-          state: 'NY',
-          violations: [
-            // three Bronx Violations
-            ViolationFactory.build({ violationCounty: 'Bronx' }),
-            ViolationFactory.build({ violationCounty: 'Bronx' }),
-            ViolationFactory.build({ violationCounty: 'Bronx' }),
-
-            // four Brooklyn violations
-            ViolationFactory.build({ violationCounty: 'Brooklyn' }),
-            ViolationFactory.build({ violationCounty: 'Brooklyn' }),
-            ViolationFactory.build({ violationCounty: 'Brooklyn' }),
-            ViolationFactory.build({ violationCounty: 'Brooklyn' }),
-
-            // one Queens violation
-            ViolationFactory.build({ violationCounty: 'Queens' }),
-
-            // two Staten Island violations
-            ViolationFactory.build({ violationCounty: 'Staten Island' }),
-            ViolationFactory.build({ violationCounty: 'Staten Island' }),
-          ],
-        })
-
-        render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
-            <ViolationSummary vehicle={vehicle} />
-          </CookiesProvider>,
-        )
-
-        const showMoreDetailsLink = screen.getByRole('link', {
-          name: 'show details',
-          hidden: true,
-        })
-
-        expect(showMoreDetailsLink).toBeInTheDocument()
-
-        // keys
-        expect(screen.queryByText('Bronx:')).not.toBeInTheDocument()
-        expect(screen.queryByText('Brooklyn:')).not.toBeInTheDocument()
-        expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
-        expect(screen.queryByText('Queens:')).not.toBeInTheDocument()
-        expect(screen.queryByText('Staten Island:')).not.toBeInTheDocument()
-
-        // values
-        expect(screen.queryByText('3')).not.toBeInTheDocument()
-        expect(screen.queryByText('4')).not.toBeInTheDocument()
-        expect(screen.queryByText('1')).not.toBeInTheDocument()
-        expect(screen.queryByText('2')).not.toBeInTheDocument()
-
-        // Click "show details" link
-        userEvent.click(showMoreDetailsLink)
-
-        await waitFor(() => {
-          // keys
-          expect(screen.queryByText('Bronx:')).toBeInTheDocument()
-          expect(screen.queryByText('Brooklyn:')).toBeInTheDocument()
-          expect(screen.queryByText('Queens:')).toBeInTheDocument()
-          expect(screen.queryByText('Staten Island:')).toBeInTheDocument()
-
-          // mo Manhattan violations
-          expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
-
-          // values
-          expect(screen.queryByText('3')).toBeInTheDocument()
-          expect(screen.queryByText('4')).toBeInTheDocument()
-          expect(screen.queryByText('1')).toBeInTheDocument()
-          expect(screen.queryByText('2')).toBeInTheDocument()
-        })
+      afterEach(() => {
+        global.innerWidth = savedGlobalWidth
       })
+
+      test.each([
+        {
+          width: 420,
+        },
+        {
+          width: 576,
+        },
+        {
+          width: 640,
+        },
+      ])(
+        'render the counts for different types of violations for a page $width wide',
+        async ({ width }) => {
+          // Change the viewport to show/hide the violations count depending on the width
+          global.innerWidth = width
+
+          // Trigger the window resize event.
+          global.dispatchEvent(new Event('resize'))
+
+          const vehicle = VehicleFactory.build({
+            plate: 'ABC1234',
+            state: 'NY',
+            violations: [
+              // four bus lane violations (two mobile, two not)
+              BusLaneCameraViolationFactory.build(),
+              BusLaneCameraViolationFactory.build(),
+              MobileBusLaneCameraViolationFactory.build(),
+              MobileBusLaneCameraViolationFactory.build(),
+
+              // six red light camera violations
+              RedLightCameraViolationFactory.build(),
+              RedLightCameraViolationFactory.build(),
+              RedLightCameraViolationFactory.build(),
+              RedLightCameraViolationFactory.build(),
+              RedLightCameraViolationFactory.build(),
+              RedLightCameraViolationFactory.build(),
+
+              // 13 school zone speed camera violations
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+              SchoolZoneSpeedCameraViolationFactory.build(),
+            ],
+          })
+
+          render(
+            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+              <ViolationSummary vehicle={vehicle} />
+            </CookiesProvider>,
+          )
+
+          if (width < 576) {
+            const showMoreDetailsLink = screen.getByRole('link', {
+              name: 'show details',
+              hidden: true,
+            })
+
+            expect(showMoreDetailsLink).toBeInTheDocument()
+
+            // keys
+            expect(screen.queryByText('Speeding:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Red Light:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Bus Lane:')).not.toBeInTheDocument()
+
+            // values
+            expect(screen.queryByText('13')).not.toBeInTheDocument()
+            expect(screen.queryByText('6')).not.toBeInTheDocument()
+            expect(screen.queryByText('4')).not.toBeInTheDocument()
+
+            // Click "show details" link
+            userEvent.click(showMoreDetailsLink)
+
+            await waitFor(() => {
+              // keys
+              expect(screen.getByText('Speeding:')).toBeInTheDocument()
+              expect(screen.getByText('Red Light:')).toBeInTheDocument()
+              expect(screen.getByText('Bus Lane:')).toBeInTheDocument()
+
+              // values
+              expect(screen.getByText('13')).toBeInTheDocument()
+              expect(screen.getByText('6')).toBeInTheDocument()
+              expect(screen.getByText('4')).toBeInTheDocument()
+            })
+          } else {
+            const showMoreDetailsLink = screen.queryByRole('link', {
+              name: 'show details',
+              hidden: true,
+            })
+
+            expect(showMoreDetailsLink).not.toBeInTheDocument()
+
+            // keys
+            expect(screen.queryByText('Speeding:')).toBeInTheDocument()
+            expect(screen.queryByText('Red Light:')).toBeInTheDocument()
+            expect(screen.queryByText('Bus Lane:')).toBeInTheDocument()
+
+            // values
+            expect(screen.queryByText('13')).toBeInTheDocument()
+            expect(screen.queryByText('6')).toBeInTheDocument()
+            expect(screen.queryByText('4')).toBeInTheDocument()
+          }
+        },
+      )
+
+      test.each([
+        {
+          width: 420,
+        },
+        {
+          width: 576,
+        },
+        {
+          width: 640,
+        },
+      ])(
+        'render the counts for violations in different boroughs for a page $width wide',
+        async ({ width }) => {
+          // Change the viewport to show/hide the violations count depending on the width
+          global.innerWidth = width
+
+          // Trigger the window resize event.
+          global.dispatchEvent(new Event('resize'))
+
+          const vehicle = VehicleFactory.build({
+            plate: 'ABC1234',
+            state: 'NY',
+            violations: [
+              // three Bronx Violations
+              ViolationFactory.build({ violationCounty: 'Bronx' }),
+              ViolationFactory.build({ violationCounty: 'Bronx' }),
+              ViolationFactory.build({ violationCounty: 'Bronx' }),
+
+              // four Brooklyn violations
+              ViolationFactory.build({ violationCounty: 'Brooklyn' }),
+              ViolationFactory.build({ violationCounty: 'Brooklyn' }),
+              ViolationFactory.build({ violationCounty: 'Brooklyn' }),
+              ViolationFactory.build({ violationCounty: 'Brooklyn' }),
+
+              // one Queens violation
+              ViolationFactory.build({ violationCounty: 'Queens' }),
+
+              // two Staten Island violations
+              ViolationFactory.build({ violationCounty: 'Staten Island' }),
+              ViolationFactory.build({ violationCounty: 'Staten Island' }),
+            ],
+          })
+
+          render(
+            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+              <ViolationSummary vehicle={vehicle} />
+            </CookiesProvider>,
+          )
+
+          if (width < 576) {
+            const showMoreDetailsLink = screen.getByRole('link', {
+              name: 'show details',
+              hidden: true,
+            })
+
+            expect(showMoreDetailsLink).toBeInTheDocument()
+
+            // keys
+            expect(screen.queryByText('Bronx:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Brooklyn:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Queens:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Staten Island:')).not.toBeInTheDocument()
+
+            // values
+            expect(screen.queryByText('3')).not.toBeInTheDocument()
+            expect(screen.queryByText('4')).not.toBeInTheDocument()
+            expect(screen.queryByText('1')).not.toBeInTheDocument()
+            expect(screen.queryByText('2')).not.toBeInTheDocument()
+
+            // Click "show details" link
+            userEvent.click(showMoreDetailsLink)
+
+            await waitFor(() => {
+              // keys
+              expect(screen.queryByText('Bronx:')).toBeInTheDocument()
+              expect(screen.queryByText('Brooklyn:')).toBeInTheDocument()
+              expect(screen.queryByText('Queens:')).toBeInTheDocument()
+              expect(screen.queryByText('Staten Island:')).toBeInTheDocument()
+
+              // mo Manhattan violations
+              expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
+
+              // values
+              expect(screen.queryByText('3')).toBeInTheDocument()
+              expect(screen.queryByText('4')).toBeInTheDocument()
+              expect(screen.queryByText('1')).toBeInTheDocument()
+              expect(screen.queryByText('2')).toBeInTheDocument()
+            })
+          } else {
+            const showMoreDetailsLink = screen.queryByRole('link', {
+              name: 'show details',
+              hidden: true,
+            })
+
+            expect(showMoreDetailsLink).not.toBeInTheDocument()
+
+            // keys
+            expect(screen.queryByText('Bronx:')).toBeInTheDocument()
+            expect(screen.queryByText('Brooklyn:')).toBeInTheDocument()
+            expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Queens:')).toBeInTheDocument()
+            expect(screen.queryByText('Staten Island:')).toBeInTheDocument()
+
+            // values
+            expect(screen.queryByText('3')).toBeInTheDocument()
+            expect(screen.queryByText('4')).toBeInTheDocument()
+            expect(screen.queryByText('1')).toBeInTheDocument()
+            expect(screen.queryByText('2')).toBeInTheDocument()
+          }
+        },
+      )
     })
   })
 })
