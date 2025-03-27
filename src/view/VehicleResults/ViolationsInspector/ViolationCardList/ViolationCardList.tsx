@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+import L10N from 'constants/display'
 import Sort from 'constants/sortOptions'
 import Vehicle from 'models/Vehicle/Vehicle'
 import Violation from 'models/Violation/Violation'
@@ -9,6 +10,8 @@ import ViolationCard from './ViolationCard/ViolationCard'
 import ViolationCardListControls from './ViolationCardListControls/ViolationCardListControls'
 import ViolationCardListSortControls from './ViolationCardListSortControls/ViolationCardListSortControls'
 import ViolationDetail from './ViolationDetail/ViolationDetail'
+
+const FINE_DIVIDER_INCREMENT = 25
 
 const ViolationCardList = ({
   setViolationsListVisibilityFunction,
@@ -81,7 +84,7 @@ const ViolationCardList = ({
      *
      * note: function expects violations to be sorted according to the sort type
      */
-    let dividerValue: null | string = null
+    let dividerValue: null | string | number = null
 
     switch (currentSortType) {
       case Sort.DATE:
@@ -104,23 +107,58 @@ const ViolationCardList = ({
         }
         break
       }
+      case Sort.FINED: {
+        dividerValue = getFinesSortDivider(violation.getTotalFined())
+        break
+      }
     }
 
     // If this sort doesn't have dividers, ignore.
-    if (!dividerValue) {
+    if (dividerValue === null) {
       return null
     }
 
     const needsDivider =
-      !currentLexicographicOrder.value ||
+      // first value in sort
+      currentLexicographicOrder.value === null ||
+      // data not available
+      (dividerValue === -1 && currentLexicographicOrder.value !== -1) ||
+      // sort is ascending and divider value has increased
       (sortAscending && dividerValue > currentLexicographicOrder.value) ||
+      // sort is descending and divider value has decreased
       (!sortAscending && dividerValue < currentLexicographicOrder.value)
 
     if (needsDivider) {
+      if (currentSortType === Sort.FINED) {
+        currentLexicographicOrder.value = dividerValue
+        return (
+          <SortDivider
+            dividerText={getFinesSortDividerText(dividerValue as number)}
+          />
+        )
+      }
       currentLexicographicOrder.value = dividerValue
-      return <SortDivider dividerText={dividerValue} />
+      return <SortDivider dividerText={dividerValue as string} />
     }
     return null
+  }
+
+  const getFinesSortDivider = (totalFined: number | null): number => {
+    if (totalFined === null) {
+      return -1
+    }
+    const rounded = Math.round(totalFined)
+    return Math.floor(rounded / FINE_DIVIDER_INCREMENT) * FINE_DIVIDER_INCREMENT
+  }
+
+  const getFinesSortDividerText = (dividerValue: number) => {
+    if (dividerValue === -1) {
+      return 'No Fine Data Available'
+    }
+    const floor = dividerValue
+    const ceiling = dividerValue + FINE_DIVIDER_INCREMENT - 0.01
+
+    return `$${floor.toLocaleString('en-US', L10N.sitewide.currency)} – $${ceiling.toLocaleString('en-US', L10N.sitewide.currency)} `
   }
 
   const dividerCounter: { value: string | number | null } = { value: null }

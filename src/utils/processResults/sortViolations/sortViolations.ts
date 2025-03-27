@@ -57,10 +57,10 @@ export default (
       const aFine: number | null = a.getTotalFined()
       const bFine: number | null = b.getTotalFined()
 
-      if (!aFine) {
+      if (aFine === null) {
         return 1
       }
-      if (!bFine) {
+      if (bFine === null) {
         return -1
       }
 

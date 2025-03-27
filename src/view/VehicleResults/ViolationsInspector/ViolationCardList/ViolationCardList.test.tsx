@@ -179,4 +179,103 @@ describe('ViolationCardList', () => {
       }
     },
   )
+
+  it('should render sort headers successfully', () => {
+    // violation
+    //   by date:
+    //     ↑: 1st
+    //     ↓: 2nd
+    //   by fines:
+    //     ↑: 2nd
+    //     ↓: 1st
+    //   by kind:
+    //     ↑: 1st
+    //     ↓: 2nd
+    //   by location:
+    //     ↑: 2nd
+    //     ↓: 1st
+    const busLaneViolationInStatenIslandIn2018WithFewerFines =
+      ViolationFactory.build({
+        amountDue: 50,
+        fineAmount: 50,
+        formattedTime: '2018-04-26T14:11:00.000-04:00',
+        getBorough: () => 'Staten Island',
+        getLocationDescription: () => '123 Bay Street',
+        getViolationDate: () => '04/26/2018',
+        humanizedDescription: 'Bus Lane Violation',
+        interestAmount: 0,
+        paymentAmount: 0,
+        penaltyAmount: 0,
+        reductionAmount: 0,
+        violationCode: '5',
+      })
+
+    // violation
+    //   by date:
+    //     ↑: 2nd
+    //     ↓: 1st
+    //   by fines:
+    //     ↑: 1st
+    //     ↓: 2nd
+    //   by kind:
+    //     ↑: 2nd
+    //     ↓: 1st
+    //   by location:
+    //     ↑: 1st
+    //     ↓: 2nd
+    const speedCameraViolationInBrooklynIn2021WithMoreFines =
+      ViolationFactory.build({
+        amountDue: 105,
+        fineAmount: 100,
+        formattedTime: '2021-02-17T07:27:00.000-05:00',
+        getBorough: () => 'Brooklyn',
+        getLocationDescription: () => 'Jay Street @ Johnson Street',
+        getViolationDate: () => '02/17/2021',
+        humanizedDescription: 'School Zone Speed Camera Violation',
+        interestAmount: 10,
+        paymentAmount: 20,
+        penaltyAmount: 25,
+        reductionAmount: 10,
+        violationCode: '36',
+      })
+
+    const violations = [
+      busLaneViolationInStatenIslandIn2018WithFewerFines,
+      speedCameraViolationInBrooklynIn2021WithMoreFines,
+    ]
+
+    const vehicle = VehicleFactory.build({
+      violations,
+      violationsCount: violations.length,
+    })
+
+    render(
+      <ViolationCardList
+        setViolationsListVisibilityFunction={setViolationsListVisibility}
+        vehicle={vehicle}
+        violationsListIsVisible={true}
+      />,
+    )
+
+    const violationCardListElement: HTMLElement = screen.getByTestId(
+      'violation-card-list',
+    )
+
+    // Four children, the two violations plus their sort labels by year, should be present
+    expect(violationCardListElement.children.length).toEqual(
+      violations.length + 2,
+    )
+
+    // Assert order of violations
+    const violationIn2018 = screen.getByText('04/26/2018 2:11 PM')
+    const violationIn2021 = screen.getByText('02/17/2021 7:27 AM')
+
+    expect(violationIn2018.compareDocumentPosition(violationIn2021)).toBe(
+      Node.DOCUMENT_POSITION_PRECEDING,
+    )
+
+    // table sort headers
+    expect(screen.getByTestId('sort-divider-date-descending-2018')).toBeTruthy()
+    expect(screen.getByTestId('sort-divider-date-descending-2021')).toBeTruthy()
+  })
 })

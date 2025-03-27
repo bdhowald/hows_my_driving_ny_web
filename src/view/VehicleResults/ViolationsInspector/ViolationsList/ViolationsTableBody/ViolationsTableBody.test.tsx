@@ -286,7 +286,7 @@ describe('ViolationsTable', () => {
       ViolationFactory.build({
         amountDue: 105,
         fineAmount: 100,
-        formattedTime: '2021-02-17T07:27:00.000-04:00',
+        formattedTime: '2021-02-17T07:27:00.000-05:00',
         getBorough: () => 'Brooklyn',
         getLocationDescription: () => 'Jay Street @ Johnson Street',
         getViolationDate: () => '02/17/2021',
