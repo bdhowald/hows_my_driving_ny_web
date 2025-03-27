@@ -117,6 +117,14 @@ describe('standardizeLocation', () => {
         standardizedLocation:
           'North side of Nansen Street 75 feet west of Selfridge Street',
       },
+      {
+        inputLocation: 'West of South 3rd Hewes Street',
+        standardizedLocation: 'Hewes Street west of South 3rd Street',
+      },
+      {
+        inputLocation: 'Fdr Dr @ E Houston St',
+        standardizedLocation: 'FDR Drive and East Houston Street',
+      },
     ])(
       'renders the search-friendly query text $standardizedLocation when called with $inputLocation',
       ({ inputLocation, standardizedLocation }) => {
@@ -149,6 +157,10 @@ describe('standardizeLocation', () => {
         inputLocation:
           'North side of Nansen Street 75 feet west of Selfridge Street',
         standardizedLocation: 'Nansen Street and Selfridge Street',
+      },
+      {
+        inputLocation: 'West of South 3rd Hewes Street',
+        standardizedLocation: 'Hewes Street and South 3rd Street',
       },
     ])(
       'renders the search-friendly query text $standardizedLocation when called with $inputLocation',

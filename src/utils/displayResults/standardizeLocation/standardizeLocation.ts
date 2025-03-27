@@ -12,9 +12,6 @@ const standardizeDisplayedLocation = (location: string): string => {
     },
   )
 
-  // Replace Abbreviations: at
-  standardizedLocation = standardizedLocation.replace(/@/g, 'and')
-
   // '1' -> '1st' regex
   const firstPrefixRegex = /(?<!1)(1)/g
   standardizedLocation = standardizedLocation.replace(
@@ -95,6 +92,10 @@ const standardizeDisplayedLocation = (location: string): string => {
   // Replace abbreviations: Court
   standardizedLocation = standardizedLocation.replace(/\bCt\./g, 'Court')
   standardizedLocation = standardizedLocation.replace(/\bCt\b/g, 'Court')
+
+  // Replace abbreviations: Drive
+  standardizedLocation = standardizedLocation.replace(/\bDr\./g, 'Drive')
+  standardizedLocation = standardizedLocation.replace(/\bDr\b/g, 'Drive')
 
   // Replace abbreviations: Expressway
   standardizedLocation = standardizedLocation.replace(
@@ -193,6 +194,9 @@ const standardizeDisplayedLocation = (location: string): string => {
     x.toUpperCase(),
   )
 
+  // Replace Abbreviations: at
+  standardizedLocation = standardizedLocation.replace(/@/g, 'and')
+
   // Fix specific bad location strings
   standardizedLocation = applyStreetSpecificLocationFixes(standardizedLocation)
 
@@ -209,6 +213,10 @@ const standardizeLinkedSearchLocation = (location: string): string => {
   standardizedLocation = standardizedLocation.replace(
     /(east|north|south|west) side of\s/gi,
     '',
+  )
+  standardizedLocation = standardizedLocation.replace(
+    /\s(east|north|south|west) of\s/gi,
+    ' and ',
   )
 
   return standardizedLocation
@@ -231,6 +239,11 @@ const applyStreetSpecificLocationFixes = (inputLocation: string): string => {
     /Selfridge Street Ns Nansen Street 75' Wo/,
     'North side of Nansen Street 75 feet west of Selfridge Street',
   )
+  standardizedLocation = standardizedLocation.replace(
+    /West of South 3rd Hewes Street/,
+    'Hewes Street west of South 3rd Street',
+  )
+  standardizedLocation = standardizedLocation.replace(/Fdr\s/, 'FDR ')
 
   return standardizedLocation
 }
