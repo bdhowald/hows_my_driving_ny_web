@@ -206,12 +206,12 @@ const VehicleResults = ({
       className={`vehicles ${newStyleDisplayClassName}`}
       ref={lookupInFlight ? null : scrollRef}
     >
-      {lookupInFlight && <ShimmerLoader />}
       <MemoizedCombinedVehicleResults
         refreshLookupFunction={refreshLookupFunction}
         removeLookupFunction={removeLookupFunction}
         vehicleDisplayResults={vehicleDisplayResults}
       />
+      {lookupInFlight && <ShimmerLoader />}
     </div>
   )
 }
