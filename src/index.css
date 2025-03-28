@@ -542,6 +542,15 @@ div.container-fluid
   div.card
   ul.list-group-flush
   li.list-group-item.list-group-item-warning
+  p:last-child {
+  margin-top: 0.5rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.list-group-item-warning
   p
   a {
   color: #000;

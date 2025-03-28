@@ -142,8 +142,12 @@ const DangerousVehicleAbatementAct = ({ vehicle }: { vehicle: Vehicle }) => {
       <p>
         Under the
         <Link
-          linkTarget={L10N.dangerousVehicleAbatementAct.legislationUrl}
-          linkText={L10N.dangerousVehicleAbatementAct.legislationName}
+          linkTarget={
+            L10N.legislation.dangerousVehicleAbatementAct.legislationUrl
+          }
+          linkText={
+            L10N.legislation.dangerousVehicleAbatementAct.legislationName
+          }
         />
         &nbsp;this vehicle could have been booted or impounded for:
       </p>

@@ -216,6 +216,6 @@ const VehicleResults = ({
   )
 }
 
-VehicleResults.displayname = 'VehicleResults'
+VehicleResults.displayName = 'VehicleResults'
 
 export default React.memo(VehicleResults)

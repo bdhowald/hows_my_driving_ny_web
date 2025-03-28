@@ -238,6 +238,6 @@ const ViolationDetail = ({
   )
 }
 
-ViolationDetail.displayname = 'ViolationDetail'
+ViolationDetail.displayName = 'ViolationDetail'
 
 export default ViolationDetail

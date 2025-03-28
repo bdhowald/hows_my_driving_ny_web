@@ -67,6 +67,6 @@ const ViolationsList = ({
   )
 }
 
-ViolationsList.displayname = 'ViolationsList'
+ViolationsList.displayName = 'ViolationsList'
 
 export default ViolationsList

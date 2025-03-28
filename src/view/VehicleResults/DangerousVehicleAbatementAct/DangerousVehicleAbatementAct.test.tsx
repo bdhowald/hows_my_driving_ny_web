@@ -62,7 +62,7 @@ describe('DangerousVehicleAbatementAct', () => {
             </CookiesProvider>,
           )
 
-          // Expect list controls to be visible
+          // Expect law name to be visible
           expect(
             screen.getByText('Dangerous Vehicle Abatement Act'),
           ).toBeInTheDocument()
@@ -124,7 +124,7 @@ describe('DangerousVehicleAbatementAct', () => {
             </CookiesProvider>,
           )
 
-          // Expect list controls to be visible
+          // Expect law name to be visible
           expect(
             screen.getByText('Dangerous Vehicle Abatement Act'),
           ).toBeInTheDocument()
