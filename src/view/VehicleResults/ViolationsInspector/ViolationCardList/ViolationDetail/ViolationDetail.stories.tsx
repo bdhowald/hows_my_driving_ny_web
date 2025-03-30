@@ -65,6 +65,39 @@ export const Default: Story = {
   },
 }
 
+export const NoIssuingAgency: Story = {
+  args: {
+    hideOffCanvas,
+    showViolationDetail: true,
+    violationToInspect: ViolationFactory.build({
+      amountDue: 15,
+      fineAmount: 65,
+      fromDatabases: [
+        {
+          dataUpdatedAt: '2017-11-15T17:04:39.000Z',
+          endpoint: 'https://data.cityofnewyork.us/resource/jt7v-77mi.json',
+          name: 'Parking Violations Issued - Fiscal Year 2014',
+        },
+      ],
+      getLocationDescription: () => '17th St and 8th Ave',
+      getBorough: () => 'Manhattan',
+      getTotalFined: () => 90.0,
+      interestAmount: 0.69,
+      issuingAgency: undefined,
+      registrationState: 'NY',
+      paymentAmount: 75,
+      penaltyAmount: 25,
+      plateId: 'ABC1234',
+      plateType: 'PAS',
+      reductionAmount: 0.19,
+      vehicleBodyType: '4DSD',
+      vehicleColor: 'YW',
+      vehicleMake: 'KIA',
+      vehicleYear: '2019',
+    }),
+  },
+}
+
 export const NoSummonsImage: Story = {
   args: {
     hideOffCanvas,
