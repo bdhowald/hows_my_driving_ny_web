@@ -108,6 +108,10 @@ const standardizeDisplayedLocation = (location: string): string => {
   )
 
   // Replace abbreviations: Lane
+  standardizedLocation = standardizedLocation.replace(/\bHwy\b/g, 'Highway')
+  standardizedLocation = standardizedLocation.replace(/\bHwy\b\./g, 'Highway')
+
+  // Replace abbreviations: Lane
   standardizedLocation = standardizedLocation.replace(/\bLn\b/g, 'Lane')
   standardizedLocation = standardizedLocation.replace(/\bLn\b\./g, 'Lane')
 
