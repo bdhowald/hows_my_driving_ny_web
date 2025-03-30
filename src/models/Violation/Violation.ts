@@ -17,6 +17,7 @@ export type RawViolationData = {
   fineAmount: number | undefined
   formattedTime: string
   fromDatabases: Array<{
+    dataUpdatedAt: string
     endpoint: string
     name: string
   }>
@@ -74,6 +75,7 @@ class Violation {
   fineAmount: number | undefined
   formattedTime: string
   fromDatabases: Array<{
+    dataUpdatedAt: string
     endpoint: string
     name: string
   }>

@@ -2249,6 +2249,16 @@ div.offcanvas.show
   font-weight: bold;
 }
 
+div.offcanvas.show
+  div.offcanvas-body
+  div.violation-info
+  div.violation-info-aspect
+  div.violation-info-aspect-body
+  ul.database-last-updated-at {
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
 div.offcanvas.show div.offcanvas-body div.violation-info div.fines-breakdown {
   display: flex;
   justify-content: space-between;

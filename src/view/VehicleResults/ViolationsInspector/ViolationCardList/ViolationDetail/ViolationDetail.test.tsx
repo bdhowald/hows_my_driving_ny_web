@@ -15,6 +15,7 @@ describe('ViolationDetail', () => {
       fineAmount: 65,
       fromDatabases: [
         {
+          dataUpdatedAt: '2017-11-15T17:04:39.000Z',
           endpoint: 'https://data.cityofnewyork.us/resource/jt7v-77mi.json',
           name: 'Parking Violations Issued - Fiscal Year 2014',
         },
@@ -409,6 +410,7 @@ describe('ViolationDetail', () => {
       fineAmount: 65,
       fromDatabases: [
         {
+          dataUpdatedAt: '2017-11-15T17:04:39.000Z',
           endpoint: 'https://data.cityofnewyork.us/resource/jt7v-77mi.json',
           name: 'Parking Violations Issued - Fiscal Year 2014',
         },

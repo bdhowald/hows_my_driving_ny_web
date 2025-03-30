@@ -1,6 +1,7 @@
 import React from 'react'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 
+import L10N from 'constants/display'
 import { APPLE_SEARCH_PREFIX, GOOGLE_SEARCH_PREFIX } from 'constants/endpoints'
 import Violation from 'models/Violation/Violation'
 import getRegionFromAbbreviation from 'utils/displayResults/getRegionFromAbbreviation/getRegionFromAbbreviation'
@@ -21,26 +22,45 @@ const ViolationDataSourceLink = ({
 }: {
   fromDatabases: Violation['fromDatabases']
   summonsNumber: Violation['summonsNumber']
-}) => (
-  <ViolationDetailAspect header={'Data Sources'}>
-    <ul>
-      {fromDatabases.map((fromDatabase, index) => (
-        <li key={index}>
-          <a
-            href={getOpenDataUrlForSummons(
-              fromDatabase.endpoint,
-              summonsNumber,
-            )}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {fromDatabase.name}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </ViolationDetailAspect>
-)
+}) => {
+  return (
+    <ViolationDetailAspect header={'Data Sources'}>
+      <ul>
+        {fromDatabases.map((fromDatabase, index) => {
+          const databaseLastUpdatedAtDate = new Date(fromDatabase.dataUpdatedAt)
+          const formattedDatabaseLastUpdatedAt = isFinite(
+            databaseLastUpdatedAtDate.valueOf(),
+          )
+            ? new Date(databaseLastUpdatedAtDate).toLocaleDateString(
+                'en-US',
+                L10N.sitewide.dateFormat,
+              )
+            : null
+
+          return (
+            <li key={index}>
+              <a
+                href={getOpenDataUrlForSummons(
+                  fromDatabase.endpoint,
+                  summonsNumber,
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {fromDatabase.name}
+              </a>
+              {formattedDatabaseLastUpdatedAt && (
+                <ul className="database-last-updated-at">
+                  <li>updated: {formattedDatabaseLastUpdatedAt}</li>
+                </ul>
+              )}
+            </li>
+          )
+        })}
+      </ul>
+    </ViolationDetailAspect>
+  )
+}
 
 const ViolationLocationLink = ({ violation }: { violation: Violation }) => {
   const locationDescription = violation.getLocationDescription()
