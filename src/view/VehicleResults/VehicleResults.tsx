@@ -124,7 +124,9 @@ const MemoizedCombinedVehicleResults = React.memo(
   vehicleResultsAreEqual,
 )
 
-const ShimmerLoader = () => {
+const ShimmerLoader = ({ useNewStyleDisplay }: { useNewStyleDisplay: boolean }) => {
+  const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
+
   const ShimmerColumn = ({
     textAlignDirection,
     position,
@@ -137,7 +139,7 @@ const ShimmerLoader = () => {
     const listToUse =
       position === 'left' ? positionLeftColumnWidths : positionRightColumnWidths
 
-    const classNameString = `summary-box shimmer align-${textAlignDirection} position-${position} lookup-info`
+    const classNameString = `summary-box shimmer align-${textAlignDirection} position-${position} lookup-info ${newStyleDisplayClassName}`
 
     return (
       <div className={classNameString}>
@@ -153,12 +155,12 @@ const ShimmerLoader = () => {
       <div className="card-header shimmer" />
       <ul className="list-group-flush list-group">
         <li className="no-padding list-group-item card-title placeholder-glow">
-          <div className="row">
-            <div className="summary-section col-xs-12 col-sm-6">
+          <div className={`row ${newStyleDisplayClassName}`}>
+            <div className={`summary-section col-xs-12 col-sm-6 ${newStyleDisplayClassName}`}>
               <ShimmerColumn textAlignDirection="left" position="left" />
               <ShimmerColumn textAlignDirection="right" position="left" />
             </div>
-            <div className="summary-section col-xs-12 col-sm-6">
+            <div className={`summary-section col-xs-12 col-sm-6 ${newStyleDisplayClassName}`}>
               <ShimmerColumn textAlignDirection="left" position="right" />
               <ShimmerColumn textAlignDirection="right" position="right" />
             </div>
@@ -211,7 +213,7 @@ const VehicleResults = ({
         removeLookupFunction={removeLookupFunction}
         vehicleDisplayResults={vehicleDisplayResults}
       />
-      {lookupInFlight && <ShimmerLoader />}
+      {lookupInFlight && <ShimmerLoader useNewStyleDisplay={useNewStyleDisplay}/>}
     </div>
   )
 }

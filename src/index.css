@@ -787,6 +787,223 @@ div.container-fluid
   /* End new-style display */
 }
 
+@media only screen and (min-width: 320px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 360px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section {
+    padding: 0.75rem 2rem;
+  }
+}
+
+@media only screen and (min-width: 400px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section {
+    padding: 0.75rem 3rem;
+  }
+}
+
+@media only screen and (min-width: 440px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section {
+    padding: 0.75rem 4rem;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section {
+    padding: 0.75rem 5rem;
+  }
+}
+
+@media only screen and (min-width: 520px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section {
+    padding: 0.75rem 6rem;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section {
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section {
+    padding: 0.75rem 2rem;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section {
+    padding: 0.75rem 3rem;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section {
+    padding: 0.75rem 4rem;
+  }
+}
+
+@media only screen and (min-width: 880px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section {
+    padding: 0.75rem 5rem;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section {
+    padding: 0.75rem 6rem;
+  }
+}
+
+@media only screen and (min-width: 1040px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section {
+    padding: 0.75rem 7rem;
+  }
+}
+
+@media only screen and (min-width: 1120px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section {
+    padding: 0.75rem 8rem;
+
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section {
+    padding: 0.75rem 9rem;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section {
+    padding: 0.75rem 10rem;
+  }
+}
+
+@media only screen and (min-width: 1360px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section {
+    padding: 0.75rem 11rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item.no-padding
+    div.row
+    div.summary-section {
+    padding: 0.75rem 12rem;
+  }
+}
+
 div.container-fluid
   div.row
   div.card
