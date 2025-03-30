@@ -45,9 +45,9 @@ const Body = ({ showViolationsList, vehicle }: BodyProps) => {
     cameraStreakData?.cameraViolations?.maxStreak >= 6
 
   const showDangerousVehicleAbatementActNotice =
-    (!displayOfIntelligentSpeedAssistanceNoticeEnabled &&
-      cameraStreakData?.redLightCameraViolations?.maxStreak >= 5) ||
-    cameraStreakData?.schoolZoneSpeedCameraViolations?.maxStreak >= 15
+    !displayOfIntelligentSpeedAssistanceNoticeEnabled &&
+      (cameraStreakData?.redLightCameraViolations?.maxStreak >= 5 ||
+    cameraStreakData?.schoolZoneSpeedCameraViolations?.maxStreak >= 15)
 
   return (
     <ul className="list-group list-group-flush">
