@@ -31,6 +31,7 @@ export type RawViolationData = {
   issuerCommand: string | undefined
   issuerPrecinct: number | undefined
   issuingAgency: string | undefined
+  issuingAgencySanitized: string | undefined
   judgmentEntryDate: string | undefined
   lawSection: string | undefined
   location: string | undefined
@@ -89,6 +90,7 @@ class Violation {
   issuerCommand: string | undefined
   issuerPrecinct: number | undefined
   issuingAgency: string | undefined
+  issuingAgencySanitized: string | undefined
   judgmentEntryDate: string | undefined
   lawSection: string | undefined
   location: string | undefined
@@ -142,6 +144,7 @@ class Violation {
     this.issuerCommand = data.issuerCommand
     this.issuerPrecinct = data.issuerPrecinct
     this.issuingAgency = data.issuingAgency
+    this.issuingAgencySanitized = data.issuingAgencySanitized
     this.judgmentEntryDate = data.judgmentEntryDate
     this.lawSection = data.lawSection
     this.location = data.location

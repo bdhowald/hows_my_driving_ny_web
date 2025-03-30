@@ -234,7 +234,7 @@ const ViolationDetail = ({
             <>{getVehicleDescriptionString()}</>
           </ViolationDetailAspect>
           <ViolationDetailAspect header={'Issuer'}>
-            <>{violationToInspect.issuingAgency ? violationToInspect.issuingAgency : 'Not available'}</>
+            <>{violationToInspect.issuingAgencySanitized ? violationToInspect.issuingAgencySanitized : 'Not available'}</>
           </ViolationDetailAspect>
           <ViolationDetailAspect header={'Fines'}>
             <div className="fines-breakdown-wrapper">
