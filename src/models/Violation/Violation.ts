@@ -31,7 +31,6 @@ export type RawViolationData = {
   issuerCommand: string | undefined
   issuerPrecinct: number | undefined
   issuingAgency: string | undefined
-  issuingAgencySanitized: string | undefined
   judgmentEntryDate: string | undefined
   lawSection: string | undefined
   location: string | undefined
@@ -41,6 +40,10 @@ export type RawViolationData = {
   plateType: string
   reductionAmount: number | undefined
   registrationState: string
+  sanitized: {
+    issuingAgency: string | undefined
+    vehicleBodyType: string | undefined
+  }
   streetCode1: string | undefined
   streetCode2: string | undefined
   streetCode3: string | undefined
@@ -90,7 +93,6 @@ class Violation {
   issuerCommand: string | undefined
   issuerPrecinct: number | undefined
   issuingAgency: string | undefined
-  issuingAgencySanitized: string | undefined
   judgmentEntryDate: string | undefined
   lawSection: string | undefined
   location: string | undefined
@@ -100,6 +102,10 @@ class Violation {
   plateType: string
   reductionAmount: number | undefined
   registrationState: string
+  sanitized: {
+    issuingAgency: string | undefined
+    vehicleBodyType: string | undefined
+  }
   streetCode1: string | undefined
   streetCode2: string | undefined
   streetCode3: string | undefined
@@ -144,7 +150,6 @@ class Violation {
     this.issuerCommand = data.issuerCommand
     this.issuerPrecinct = data.issuerPrecinct
     this.issuingAgency = data.issuingAgency
-    this.issuingAgencySanitized = data.issuingAgencySanitized
     this.judgmentEntryDate = data.judgmentEntryDate
     this.lawSection = data.lawSection
     this.location = data.location
@@ -154,6 +159,7 @@ class Violation {
     this.plateType = data.plateType
     this.reductionAmount = data.reductionAmount
     this.registrationState = data.registrationState
+    this.sanitized = data.sanitized
     this.streetCode1 = data.streetCode1
     this.streetCode2 = data.streetCode2
     this.streetCode3 = data.streetCode3

@@ -28,7 +28,6 @@ export const ViolationFactory = Factory.define<Violation>(({ sequence }) => ({
   issuerCommand: 'T302',
   issuerPrecinct: 68,
   issuingAgency: 'T',
-  issuingAgencySanitized: 'NYPD Traffic Enforcement',
   judgmentEntryDate: undefined,
   lawSection: '408',
   location: '8002 3rd Ave',
@@ -38,6 +37,10 @@ export const ViolationFactory = Factory.define<Violation>(({ sequence }) => ({
   plateType: 'PAS',
   reductionAmount: undefined,
   registrationState: 'NY',
+  sanitized: {
+    issuingAgency: 'NYPD Traffic Enforcement',
+    vehicleBodyType: 'Sedan',
+  },
   streetCode1: '5280',
   streetCode2: '10580',
   streetCode3: '10630',
