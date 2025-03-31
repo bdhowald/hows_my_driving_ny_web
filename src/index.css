@@ -570,6 +570,18 @@ div.container-fluid
   font-weight: bold;
 }
 
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.list-group-item-warning
+  ul
+  li
+  span.text-bg-warning
+  span.isa-camera-violations-count {
+  font-weight: bold;
+}
+
 /* Start old-style display */
 
 div.container-fluid
