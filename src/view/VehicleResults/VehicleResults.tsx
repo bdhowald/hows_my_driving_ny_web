@@ -124,7 +124,11 @@ const MemoizedCombinedVehicleResults = React.memo(
   vehicleResultsAreEqual,
 )
 
-const ShimmerLoader = ({ useNewStyleDisplay }: { useNewStyleDisplay: boolean }) => {
+const ShimmerLoader = ({
+  useNewStyleDisplay,
+}: {
+  useNewStyleDisplay: boolean
+}) => {
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
   const ShimmerColumn = ({
@@ -156,11 +160,15 @@ const ShimmerLoader = ({ useNewStyleDisplay }: { useNewStyleDisplay: boolean }) 
       <ul className="list-group-flush list-group">
         <li className="no-padding list-group-item card-title placeholder-glow">
           <div className={`row ${newStyleDisplayClassName}`}>
-            <div className={`summary-section col-xs-12 col-sm-6 ${newStyleDisplayClassName}`}>
+            <div
+              className={`summary-section col-xs-12 col-sm-6 ${newStyleDisplayClassName}`}
+            >
               <ShimmerColumn textAlignDirection="left" position="left" />
               <ShimmerColumn textAlignDirection="right" position="left" />
             </div>
-            <div className={`summary-section col-xs-12 col-sm-6 ${newStyleDisplayClassName}`}>
+            <div
+              className={`summary-section col-xs-12 col-sm-6 ${newStyleDisplayClassName}`}
+            >
               <ShimmerColumn textAlignDirection="left" position="right" />
               <ShimmerColumn textAlignDirection="right" position="right" />
             </div>
@@ -213,7 +221,9 @@ const VehicleResults = ({
         removeLookupFunction={removeLookupFunction}
         vehicleDisplayResults={vehicleDisplayResults}
       />
-      {lookupInFlight && <ShimmerLoader useNewStyleDisplay={useNewStyleDisplay}/>}
+      {lookupInFlight && (
+        <ShimmerLoader useNewStyleDisplay={useNewStyleDisplay} />
+      )}
     </div>
   )
 }
