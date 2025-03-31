@@ -40,6 +40,7 @@ export const ViolationFactory = Factory.define<Violation>(({ sequence }) => ({
   sanitized: {
     issuingAgency: 'NYPD Traffic Enforcement',
     vehicleBodyType: 'Sedan',
+    violationStatus: 'Hearing Held: Guilty',
   },
   streetCode1: '5280',
   streetCode2: '10580',
@@ -61,6 +62,7 @@ export const ViolationFactory = Factory.define<Violation>(({ sequence }) => ({
   violationLocation: '0068',
   violationPostCode: '32 -',
   violationPrecinct: 68,
+  violationStatus: 'HEARING HELD-GUILTY',
   violationTime: '0211P',
   getBorough: () => 'Brooklyn',
   getLocationDescription: () => '',

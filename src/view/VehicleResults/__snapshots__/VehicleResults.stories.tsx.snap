@@ -12,9 +12,9 @@ exports[`Components/VehicleResults/VehicleResults LookupInFlight smoke-test 1`] 
           </div>
           <ul class="list-group-flush list-group">
             <li class="no-padding list-group-item card-title placeholder-glow">
-              <div class="row">
-                <div class="summary-section col-xs-12 col-sm-6">
-                  <div class="summary-box shimmer align-left position-left lookup-info">
+              <div class="row ">
+                <div class="summary-section col-xs-12 col-sm-6 ">
+                  <div class="summary-box shimmer align-left position-left lookup-info ">
                     <span class="placeholder col-10">
                     </span>
                     <span class="placeholder col-8">
@@ -26,7 +26,7 @@ exports[`Components/VehicleResults/VehicleResults LookupInFlight smoke-test 1`] 
                     <span class="placeholder col-9">
                     </span>
                   </div>
-                  <div class="summary-box shimmer align-right position-left lookup-info">
+                  <div class="summary-box shimmer align-right position-left lookup-info ">
                     <span class="placeholder col-10">
                     </span>
                     <span class="placeholder col-8">
@@ -39,8 +39,8 @@ exports[`Components/VehicleResults/VehicleResults LookupInFlight smoke-test 1`] 
                     </span>
                   </div>
                 </div>
-                <div class="summary-section col-xs-12 col-sm-6">
-                  <div class="summary-box shimmer align-left position-right lookup-info">
+                <div class="summary-section col-xs-12 col-sm-6 ">
+                  <div class="summary-box shimmer align-left position-right lookup-info ">
                     <span class="placeholder col-9">
                     </span>
                     <span class="placeholder col-8">
@@ -52,7 +52,7 @@ exports[`Components/VehicleResults/VehicleResults LookupInFlight smoke-test 1`] 
                     <span class="placeholder col-8">
                     </span>
                   </div>
-                  <div class="summary-box shimmer align-right position-right lookup-info">
+                  <div class="summary-box shimmer align-right position-right lookup-info ">
                     <span class="placeholder col-9">
                     </span>
                     <span class="placeholder col-8">

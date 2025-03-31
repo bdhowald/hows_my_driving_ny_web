@@ -43,6 +43,7 @@ export type RawViolationData = {
   sanitized: {
     issuingAgency: string | undefined
     vehicleBodyType: string | undefined
+    violationStatus: string | undefined
   }
   streetCode1: string | undefined
   streetCode2: string | undefined
@@ -69,6 +70,7 @@ export type RawViolationData = {
   violationLocation: string | undefined
   violationPostCode: string | undefined
   violationPrecinct: number | undefined
+  violationStatus: string | undefined
   violationTime: string | undefined
 }
 
@@ -105,6 +107,7 @@ class Violation {
   sanitized: {
     issuingAgency: string | undefined
     vehicleBodyType: string | undefined
+    violationStatus: string | undefined
   }
   streetCode1: string | undefined
   streetCode2: string | undefined
@@ -131,6 +134,7 @@ class Violation {
   violationLocation: string | undefined
   violationPostCode: string | undefined
   violationPrecinct: number | undefined
+  violationStatus: string | undefined
   violationTime: string | undefined
 
   constructor(data: RawViolationData) {

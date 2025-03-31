@@ -193,6 +193,7 @@ const ViolationDetail = ({
   const region = getRegionFromAbbreviation(violationToInspect.registrationState)
   const regionNameOrAbbreviation =
     region?.name ?? violationToInspect.registrationState
+  const sanitizedViolationStatus = violationToInspect.sanitized.violationStatus
 
   const pageWidth = window.innerWidth
   const offCanvasPlacement = pageWidth >= SMALL_BREAKPOINT ? 'start' : 'bottom'
@@ -240,6 +241,11 @@ const ViolationDetail = ({
                 : 'Not available'}
             </>
           </ViolationDetailAspect>
+          {sanitizedViolationStatus && (
+            <ViolationDetailAspect header={'Status'}>
+              <>{sanitizedViolationStatus}</>
+            </ViolationDetailAspect>
+          )}
           <ViolationDetailAspect header={'Fines'}>
             <div className="fines-breakdown-wrapper">
               <FinesBreakdown.SingleViolationFinesBreakdown
