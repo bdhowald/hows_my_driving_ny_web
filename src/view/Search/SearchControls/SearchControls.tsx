@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import L10N from 'constants/display'
 import plateTypes from 'constants/plateTypes'
 import regions from 'constants/regions'
 import SearchSelect from 'view/Search/SearchSelect/SearchSelect'
@@ -89,6 +90,18 @@ const SearchControls = ({
   handleSubmit,
   lookupInFlight,
 }: SearchControlsProps) => {
+  const now = new Date()
+  const day = now.getDate()
+  const month = now.getMonth() + 1
+
+  const isAprilFoolsDay =
+    month === L10N.dates.aprilFoolsDay.month &&
+    day === L10N.dates.aprilFoolsDay.day
+
+  const placeholderText = isAprilFoolsDay
+    ? L10N.query.plateSearchInput.placeholderTextAprilFools
+    : L10N.query.plateSearchInput.placeholderText
+
   return (
     <form className="form" onSubmit={handleSubmit}>
       <div className="row form-row">
@@ -100,7 +113,7 @@ const SearchControls = ({
               id="plate-input"
               name="plateId"
               onChange={handleInputChange}
-              placeholder="Enter a plate..."
+              placeholder={placeholderText}
               type="text"
               value={currentLookup.plateId ?? ''}
             />

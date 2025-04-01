@@ -67,6 +67,18 @@ const JumbotronHeader = React.memo(() => (
 ))
 JumbotronHeader.displayName = 'JumbotronHeader'
 
+const JumbotronHeaderAprilFools = React.memo(() => (
+  <>
+    <h1 className="display-4">
+      How&apos;s My <span className="driving-strikethrough">Driving</span>{' '}
+      Walking NY
+    </h1>
+    {L10N.query.jumbotronHeaderTextAprilFools}
+    <hr className="opacity-25" />
+  </>
+))
+JumbotronHeaderAprilFools.displayName = 'JumbotronHeaderAprilFools'
+
 const Search = ({
   fingerprintId,
   lookupInFlight,
@@ -389,9 +401,21 @@ const Search = ({
 
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
+  const now = new Date()
+  const day = now.getDate()
+  const month = now.getMonth() + 1
+
+  const useAprilFoolsJumbotron =
+    month === L10N.dates.aprilFoolsDay.month &&
+    day === L10N.dates.aprilFoolsDay.day
+
   return (
     <div className={`jumbotron ${newStyleDisplayClassName}`}>
-      <JumbotronHeader />
+      {useAprilFoolsJumbotron ? (
+        <JumbotronHeaderAprilFools />
+      ) : (
+        <JumbotronHeader />
+      )}
       <Row>
         <SearchControls
           currentLookup={currentLookup}

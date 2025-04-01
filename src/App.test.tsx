@@ -17,7 +17,15 @@ describe('App', () => {
         <App />
       </reactRouterDom.MemoryRouter>,
     )
-    const linkElement = screen.getByText(/How's My Driving NY/i)
+    const now = new Date()
+    const day = now.getDate()
+    const month = now.getMonth() + 1
+
+    const isAprilFoolsDay = month === 4 && day === 1
+
+    const linkElement = isAprilFoolsDay
+      ? screen.getByText(/Walking NY/i)
+      : screen.getByText(/How's My Driving NY/i)
     expect(linkElement).toBeInTheDocument()
   })
 

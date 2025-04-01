@@ -23,6 +23,12 @@ const siteTimeFormat: SiteTimeFormat = {
 }
 
 export default {
+  dates: {
+    aprilFoolsDay: {
+      month: 4,
+      day: 1,
+    },
+  },
   legislation: {
     dangerousVehicleAbatementAct: {
       legislationName: 'Dangerous Vehicle Abatement Act',
@@ -87,8 +93,24 @@ export default {
         </p>
       </>
     ),
+    jumbotronHeaderTextAprilFools: (
+      <>
+        <p className="lead">
+          Search New York City{' '}
+          <a
+            className="open-data-link"
+            href="https://data.cityofnewyork.us/browse?q=parking%20violations&sortBy=relevance"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            pedestrian kvetching data
+          </a>
+        </p>
+      </>
+    ),
     plateSearchInput: {
       placeholderText: 'Enter a plate...',
+      placeholderTextAprilFools: 'Walking license plate...',
     },
   },
   sitewide: {

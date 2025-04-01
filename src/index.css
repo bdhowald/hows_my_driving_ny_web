@@ -51,6 +51,12 @@ div.container-fluid div.jumbotron h1.display-4 {
   line-height: 1.2;
 }
 
+/* Start April Fools only */
+div.container-fluid div.jumbotron h1.display-4 span.driving-strikethrough {
+  text-decoration: line-through;
+}
+/* End April Fools only */
+
 div.container-fluid div.jumbotron p.lead a.open-data-link {
   color: #000;
   text-decoration: underline;
