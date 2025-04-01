@@ -44,14 +44,16 @@ const DangerousVehicleAbatementAct = ({ vehicle }: { vehicle: Vehicle }) => {
     )
 
     const streakAmountAndTypeString = ` ${type} violations`
-    const streakRangeString = `(>= ${threshold}/year) from ${minDateLocaleString} to ${maxDateLocateString}`
+    const streakThresholdString = `>= ${threshold}/year`
+    const streakRangeString =`from ${minDateLocaleString} to ${maxDateLocateString}`
 
     return (
       <li>
-        <span className="text-bg-warning">
-          <span className="dvaa-violations-count">{streak}</span>
+        <span className="streak-count-and-type text-bg-warning">
+          <span className="streak-count">{streak}</span>
           {streakAmountAndTypeString}
         </span>
+        <span className="streak-threshold">&nbsp;{streakThresholdString}</span>
         <span>&nbsp;{streakRangeString}</span>
       </li>
     )
@@ -136,7 +138,7 @@ const DangerousVehicleAbatementAct = ({ vehicle }: { vehicle: Vehicle }) => {
 
   return (
     <li
-      className={`list-group-item list-group-item-warning ${newStyleDisplayClassName}`}
+      className={`dangerous-vehicle-notice list-group-item list-group-item-warning ${newStyleDisplayClassName}`}
       data-testid="dangerous-vehicle-abatement-act-notice"
     >
       <p>

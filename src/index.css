@@ -326,7 +326,7 @@ div.container-fluid
   div.row
   div.card
   ul.list-group-flush
-  li.list-group-item.list-group-item-warning {
+  li.list-group-item.dangerous-vehicle-notice {
   flex-direction: column;
   padding: 1em;
 }
@@ -336,7 +336,7 @@ div.container-fluid
     div.row
     div.card
     ul.list-group-flush
-    li.list-group-item.list-group-item-warning {
+    li.list-group-item.dangerous-vehicle-notice {
     padding: 1em;
   }
 }
@@ -346,7 +346,7 @@ div.container-fluid
     div.row
     div.card
     ul.list-group-flush
-    li.list-group-item.list-group-item-warning {
+    li.list-group-item.dangerous-vehicle-notice {
     padding: 1em 1.5em;
   }
 }
@@ -356,7 +356,7 @@ div.container-fluid
     div.row
     div.card
     ul.list-group-flush
-    li.list-group-item.list-group-item-warning {
+    li.list-group-item.dangerous-vehicle-notice {
     padding: 1em 2.5em;
   }
 }
@@ -366,7 +366,7 @@ div.container-fluid
     div.row
     div.card
     ul.list-group-flush
-    li.list-group-item.list-group-item-warning {
+    li.list-group-item.dangerous-vehicle-notice {
     padding: 1em 3.5em;
   }
 }
@@ -376,7 +376,7 @@ div.container-fluid
     div.row
     div.card
     ul.list-group-flush
-    li.list-group-item.list-group-item-warning {
+    li.list-group-item.dangerous-vehicle-notice {
     padding: 1em 4.5em;
   }
 }
@@ -386,7 +386,7 @@ div.container-fluid
     div.row
     div.card
     ul.list-group-flush
-    li.list-group-item.list-group-item-warning {
+    li.list-group-item.dangerous-vehicle-notice {
     padding: 1em 5.5em;
   }
 }
@@ -398,7 +398,7 @@ div.container-fluid
     div.row
     div.card
     ul.list-group-flush
-    li.list-group-item.list-group-item-warning {
+    li.list-group-item.dangerous-vehicle-notice {
     padding: 0.5em;
   }
 
@@ -410,7 +410,7 @@ div.container-fluid
     div.row
     div.card
     ul.list-group-flush
-    li.list-group-item.list-group-item-warning.new-style {
+    li.list-group-item.dangerous-vehicle-notice.new-style {
     padding: 1rem 0.5em;
   }
 
@@ -422,7 +422,7 @@ div.container-fluid
     div.row
     div.card
     ul.list-group-flush
-    li.list-group-item.list-group-item-warning {
+    li.list-group-item.dangerous-vehicle-notice {
     padding: 1em 1.5em;
   }
 }
@@ -432,7 +432,7 @@ div.container-fluid
     div.row
     div.card
     ul.list-group-flush
-    li.list-group-item.list-group-item-warning {
+    li.list-group-item.dangerous-vehicle-notice {
     padding: 1em 2.5em;
   }
 }
@@ -442,7 +442,7 @@ div.container-fluid
     div.row
     div.card
     ul.list-group-flush
-    li.list-group-item.list-group-item-warning {
+    li.list-group-item.dangerous-vehicle-notice {
     padding: 1em 3.5em;
   }
 }
@@ -452,7 +452,7 @@ div.container-fluid
     div.row
     div.card
     ul.list-group-flush
-    li.list-group-item.list-group-item-warning {
+    li.list-group-item.dangerous-vehicle-notice {
     padding: 1em 4.5em;
   }
 }
@@ -462,7 +462,7 @@ div.container-fluid
     div.row
     div.card
     ul.list-group-flush
-    li.list-group-item.list-group-item-warning {
+    li.list-group-item.dangerous-vehicle-notice {
     padding: 1em 5.5em;
   }
 }
@@ -472,7 +472,7 @@ div.container-fluid
     div.row
     div.card
     ul.list-group-flush
-    li.list-group-item.list-group-item-warning {
+    li.list-group-item.dangerous-vehicle-notice {
     padding: 1em 6.5em;
   }
 }
@@ -482,7 +482,7 @@ div.container-fluid
     div.row
     div.card
     ul.list-group-flush
-    li.list-group-item.list-group-item-warning {
+    li.list-group-item.dangerous-vehicle-notice {
     padding: 1em 7.5em;
   }
 }
@@ -492,7 +492,7 @@ div.container-fluid
     div.row
     div.card
     ul.list-group-flush
-    li.list-group-item.list-group-item-warning {
+    li.list-group-item.dangerous-vehicle-notice {
     padding: 1em 8.5em;
   }
 }
@@ -502,7 +502,7 @@ div.container-fluid
     div.row
     div.card
     ul.list-group-flush
-    li.list-group-item.list-group-item-warning {
+    li.list-group-item.dangerous-vehicle-notice {
     padding: 1em 9.5em;
   }
 }
@@ -512,7 +512,7 @@ div.container-fluid
     div.row
     div.card
     ul.list-group-flush
-    li.list-group-item.list-group-item-warning {
+    li.list-group-item.dangerous-vehicle-notice {
     padding: 1em 10.5em;
   }
 }
@@ -522,7 +522,7 @@ div.container-fluid
     div.row
     div.card
     ul.list-group-flush
-    li.list-group-item.list-group-item-warning {
+    li.list-group-item.dangerous-vehicle-notice {
     padding: 1em 11.5em;
   }
 }
@@ -531,7 +531,7 @@ div.container-fluid
   div.row
   div.card
   ul.list-group-flush
-  li.list-group-item.list-group-item-warning
+  li.list-group-item.dangerous-vehicle-notice
   p {
   margin-bottom: 0.5em;
   margin-left: 1em;
@@ -541,7 +541,7 @@ div.container-fluid
   div.row
   div.card
   ul.list-group-flush
-  li.list-group-item.list-group-item-warning
+  li.list-group-item.dangerous-vehicle-notice
   p:last-child {
   margin-top: 0.5rem;
 }
@@ -550,7 +550,7 @@ div.container-fluid
   div.row
   div.card
   ul.list-group-flush
-  li.list-group-item.list-group-item-warning
+  li.list-group-item.dangerous-vehicle-notice
   p
   a {
   color: #000;
@@ -562,23 +562,11 @@ div.container-fluid
   div.row
   div.card
   ul.list-group-flush
-  li.list-group-item.list-group-item-warning
+  li.list-group-item.dangerous-vehicle-notice
   ul
   li
-  span.text-bg-warning
-  span.dvaa-violations-count {
-  font-weight: bold;
-}
-
-div.container-fluid
-  div.row
-  div.card
-  ul.list-group-flush
-  li.list-group-item.list-group-item-warning
-  ul
-  li
-  span.text-bg-warning
-  span.isa-camera-violations-count {
+  span.streak-count-and-type
+  span.streak-count {
   font-weight: bold;
 }
 
