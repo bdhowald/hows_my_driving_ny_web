@@ -167,12 +167,20 @@ const standardizeDisplayedLocation = (location: string): string => {
     /(?<!Avenue )\b(E)\b/g,
     'East',
   )
+  standardizedLocation = standardizedLocation.replace(
+    /(?<!Avenue )\b(E)(\d+)/g,
+    'East $2',
+  )
   standardizedLocation = standardizedLocation.replace(/\bE\b\./g, 'East ')
 
   // Replace Abbreviations: North
   standardizedLocation = standardizedLocation.replace(
     /(?<!Avenue )\b(N)\b/g,
     'North',
+  )
+  standardizedLocation = standardizedLocation.replace(
+    /(?<!Avenue )\b(N)(\d+)/g,
+    'North $2',
   )
   standardizedLocation = standardizedLocation.replace(/\bN\b\./g, 'North ')
 
@@ -181,12 +189,20 @@ const standardizeDisplayedLocation = (location: string): string => {
     /(?<!Avenue )\b(S)\b/g,
     'South',
   )
+  standardizedLocation = standardizedLocation.replace(
+    /(?<!Avenue )\b(S)(\d+)/g,
+    'South $2',
+  )
   standardizedLocation = standardizedLocation.replace(/\bS\b\./g, 'South ')
 
   // Replace Abbreviations: West
   standardizedLocation = standardizedLocation.replace(
     /(?<!Avenue )\b(W)\b/g,
     'West',
+  )
+  standardizedLocation = standardizedLocation.replace(
+    /(?<!Avenue )\b(W)(\d+)/g,
+    'West $2',
   )
   standardizedLocation = standardizedLocation.replace(/\bW\b\./g, 'West ')
 

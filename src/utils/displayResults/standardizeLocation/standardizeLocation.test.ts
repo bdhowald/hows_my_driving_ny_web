@@ -129,6 +129,34 @@ describe('standardizeLocation', () => {
         inputLocation: 'Kings Hwy @ E 17th St',
         standardizedLocation: 'Kings Highway and East 17th Street',
       },
+      {
+        inputLocation: 'Lexington Ave @ E66th St',
+        standardizedLocation: 'Lexington Avenue and East 66th Street',
+      },
+      {
+        inputLocation: 'Lexington Ave @ W66th St',
+        standardizedLocation: 'Lexington Avenue and West 66th Street',
+      },
+      {
+        inputLocation: 'Lexington Ave @ E 66th St',
+        standardizedLocation: 'Lexington Avenue and East 66th Street',
+      },
+      {
+        inputLocation: 'Lexington Ave @ W 66th St',
+        standardizedLocation: 'Lexington Avenue and West 66th Street',
+      },
+      {
+        inputLocation: 'N1st St @ Kent Ave',
+        standardizedLocation: 'North 1st Street and Kent Avenue',
+      },
+      {
+        inputLocation: 'N 1st St @ Kent Ave',
+        standardizedLocation: 'North 1st Street and Kent Avenue',
+      },
+      {
+        inputLocation: 'S 1st St @ Kent Ave',
+        standardizedLocation: 'South 1st Street and Kent Avenue',
+      },
     ])(
       'renders the search-friendly query text $standardizedLocation when called with $inputLocation',
       ({ inputLocation, standardizedLocation }) => {
