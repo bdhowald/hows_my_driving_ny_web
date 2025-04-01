@@ -110,7 +110,7 @@ export default {
     ),
     plateSearchInput: {
       placeholderText: 'Enter a plate...',
-      placeholderTextAprilFools: 'Walking license plate...',
+      placeholderTextAprilFools: 'Pedestrian plate...',
     },
   },
   sitewide: {
