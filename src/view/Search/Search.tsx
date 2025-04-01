@@ -6,6 +6,7 @@ import { useCookies } from 'react-cookie'
 
 import { getPreviousLookup } from 'boundaries/http'
 import {
+  DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE,
   LOOKUP_IDENTIFIER_COOKIE,
   USE_NEW_STYLE_DISPLAY_COOKIE,
 } from 'constants/cookies'
@@ -83,6 +84,7 @@ const Search = ({
     state: 'NY',
   })
   const [cookies, setCookie, removeCookie] = useCookies([
+    DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE,
     LOOKUP_IDENTIFIER_COOKIE,
     USE_NEW_STYLE_DISPLAY_COOKIE,
   ])
@@ -91,14 +93,15 @@ const Search = ({
 
   useEffect(() => {
     const queryParameters = new URLSearchParams(document.location.search)
+
     const useNewStyleDisplayCookiePresent =
-      cookies[USE_NEW_STYLE_DISPLAY_COOKIE]
+      !!cookies[USE_NEW_STYLE_DISPLAY_COOKIE]
 
     const queryParamFeatureFlagEnabled =
-      queryParameters.get('useNewStyleDisplay') === 'true'
+      queryParameters.get(USE_NEW_STYLE_DISPLAY_COOKIE) === 'true'
 
     const queryParamFeatureFlagDisabled =
-      queryParameters.get('useNewStyleDisplay') === 'false'
+      queryParameters.get(USE_NEW_STYLE_DISPLAY_COOKIE) === 'false'
 
     if (
       !useNewStyleDisplayCookiePresent ||
@@ -133,6 +136,62 @@ const Search = ({
 
       if (inReserveGroup) {
         setCookie(USE_NEW_STYLE_DISPLAY_COOKIE, 'none', {
+          maxAge: 31536000,
+          path: '/',
+        })
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    const queryParameters = new URLSearchParams(document.location.search)
+
+    const displayIntelligentSpeedAssistanceNoticeCookie =
+      !!cookies[DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE]
+
+    const queryParamFeatureFlagEnabled =
+      queryParameters.get(
+        DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE,
+      ) === 'true'
+
+    const queryParamFeatureFlagDisabled =
+      queryParameters.get(
+        DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE,
+      ) === 'false'
+
+    if (
+      !displayIntelligentSpeedAssistanceNoticeCookie ||
+      queryParamFeatureFlagEnabled ||
+      queryParamFeatureFlagDisabled
+    ) {
+      // 25% of sessions are in experimental group (plus some internal testers)
+      // 50% of sessions are in control group
+      // 25% of sessions are available for progressive rollout
+      const randomVariable = Math.random()
+      const inExperimentalGroup =
+        randomVariable * 10 > 7.5 || queryParamFeatureFlagEnabled
+      const inControlGroup =
+        (randomVariable * 10 < 5.0 && !queryParamFeatureFlagEnabled) ||
+        queryParamFeatureFlagDisabled
+
+      const inReserveGroup = !inControlGroup && !inExperimentalGroup
+
+      if (inExperimentalGroup) {
+        setCookie(DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE, 'true', {
+          maxAge: 31536000,
+          path: '/',
+        })
+      }
+
+      if (inControlGroup) {
+        setCookie(DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE, 'false', {
+          maxAge: 31536000,
+          path: '/',
+        })
+      }
+
+      if (inReserveGroup) {
+        setCookie(DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE, 'none', {
           maxAge: 31536000,
           path: '/',
         })

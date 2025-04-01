@@ -44,8 +44,8 @@ const DangerousVehicleAbatementAct = ({ vehicle }: { vehicle: Vehicle }) => {
     )
 
     const streakAmountAndTypeString = ` ${type} violations`
-    const streakThresholdString = `>= ${threshold}/year`
-    const streakRangeString =`from ${minDateLocaleString} to ${maxDateLocateString}`
+    const streakThresholdString = `(>= ${threshold}/year)`
+    const streakRangeString = `from ${minDateLocaleString} to ${maxDateLocateString}`
 
     return (
       <li>

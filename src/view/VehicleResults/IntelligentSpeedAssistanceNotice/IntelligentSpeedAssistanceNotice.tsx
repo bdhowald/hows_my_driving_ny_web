@@ -52,7 +52,7 @@ const IntelligentSpeedAssistanceNotice = ({
 
     const streakAmountAndTypeString = ' red light and speed camera violations'
     const streakThresholdString = `(>= ${threshold}/year)`
-    const streakRangeString =`from ${minDateLocaleString} to ${maxDateLocateString}`
+    const streakRangeString = `from ${minDateLocaleString} to ${maxDateLocateString}`
 
     return (
       <li>

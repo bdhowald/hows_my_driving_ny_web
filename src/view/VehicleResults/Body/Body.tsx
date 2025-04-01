@@ -17,23 +17,13 @@ type BodyProps = {
 }
 
 const Body = ({ showViolationsList, vehicle }: BodyProps) => {
-  const queryParameters = new URLSearchParams(document.location.search)
-
   const [cookies, _, __] = useCookies([
     DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE,
     USE_NEW_STYLE_DISPLAY_COOKIE,
   ])
 
-  const displayOfIntelligentSpeedAssistanceNoticeEnabledByCookie =
-    cookies[DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE] === true
-
-  const displayOfIntelligentSpeedAssistanceNoticeEnabledByEnabledByQueryParam =
-    queryParameters.get(DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE) ===
-    'true'
-
   const displayOfIntelligentSpeedAssistanceNoticeEnabled =
-    displayOfIntelligentSpeedAssistanceNoticeEnabledByCookie ||
-    displayOfIntelligentSpeedAssistanceNoticeEnabledByEnabledByQueryParam
+    cookies[DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE] === true
 
   const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
 
