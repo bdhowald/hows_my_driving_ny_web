@@ -31,9 +31,8 @@ const ViolationDataSourceLink = ({
           const formattedDatabaseLastUpdatedAt = isFinite(
             databaseLastUpdatedAtDate.valueOf(),
           )
-            ? new Date(databaseLastUpdatedAtDate).toLocaleDateString(
-                'en-US',
-                L10N.sitewide.dateFormat,
+            ? L10N.sitewide.dateFormat.format(
+                new Date(databaseLastUpdatedAtDate),
               )
             : null
 

@@ -209,33 +209,31 @@ class Violation {
   }
 
   getViolationDate(): string {
-    return Date.parse(this.formattedTime)
-      ? new Date(this.formattedTime).toLocaleDateString(
-          'en-US',
-          L10N.sitewide.dateFormat,
-        )
-      : 'N/A'
+    return isNaN(Date.parse(this.formattedTime))
+      ? 'N/A'
+      : L10N.sitewide.dateFormat.format(new Date(this.formattedTime))
   }
 
   getViolationDateTime(): string {
-    const datePart = new Date(this.formattedTime).toLocaleDateString(
-      'en-US',
-      L10N.sitewide.dateFormat,
+    if (isNaN(Date.parse(this.formattedTime))) {
+      return 'N/A'
+    }
+    const datePart = L10N.sitewide.dateFormat.format(
+      new Date(this.formattedTime),
     )
-    const timePart = new Date(this.formattedTime).toLocaleTimeString(
-      'en-US',
-      L10N.sitewide.timeFormat,
+    if (isNaN(Date.parse(this.formattedTime))) {
+      return 'N/A'
+    }
+    const timePart = L10N.sitewide.timeFormat.format(
+      new Date(this.formattedTime),
     )
     return Date.parse(this.formattedTime) ? `${datePart} ${timePart}` : 'N/A'
   }
 
   getViolationTime(): string {
-    return Date.parse(this.formattedTime)
-      ? new Date(this.formattedTime).toLocaleTimeString(
-          'en-US',
-          L10N.sitewide.timeFormat,
-        )
-      : 'N/A'
+    return isNaN(Date.parse(this.formattedTime))
+      ? 'N/A'
+      : L10N.sitewide.timeFormat.format(new Date(this.formattedTime))
   }
 
   isCameraViolation(): boolean {

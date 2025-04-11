@@ -9,13 +9,15 @@ import getRegionFromAbbreviation from 'utils/displayResults/getRegionFromAbbrevi
 const PlateInfo = ({ vehicle }: { vehicle: Vehicle }) => {
   const getLastQueriedDateString = (
     vehiclePreviousLookupDate: string | undefined,
-  ) =>
-    vehiclePreviousLookupDate
-      ? new Date(vehiclePreviousLookupDate).toLocaleDateString(
-          'en-US',
-          L10N.sitewide.dateFormat,
-        )
-      : undefined
+  ) => {
+    if (!vehiclePreviousLookupDate) {
+      return undefined
+    }
+    if (isNaN(Date.parse(vehiclePreviousLookupDate))) {
+      return undefined
+    }
+    return L10N.sitewide.dateFormat.format(new Date(vehiclePreviousLookupDate))
+  }
 
   const getRegionKeyName = (regionObject: Region | undefined) => {
     if (!regionObject) {

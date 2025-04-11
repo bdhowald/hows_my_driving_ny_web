@@ -34,18 +34,12 @@ const DangerousVehicleAbatementAct = ({ vehicle }: { vehicle: Vehicle }) => {
     threshold: number
     type: string
   }): JSX.Element => {
-    const minDateLocaleString = minDate.toLocaleDateString(
-      'en-US',
-      L10N.sitewide.dateFormat,
-    )
-    const maxDateLocateString = maxDate.toLocaleDateString(
-      'en-US',
-      L10N.sitewide.dateFormat,
-    )
+    const minDateLocaleString = L10N.sitewide.dateFormat.format(minDate)
+    const maxDateLocaleString = L10N.sitewide.dateFormat.format(maxDate)
 
     const streakAmountAndTypeString = ` ${type} violations`
     const streakThresholdString = `(>= ${threshold}/year)`
-    const streakRangeString = `from ${minDateLocaleString} to ${maxDateLocateString}`
+    const streakRangeString = `from ${minDateLocaleString} to ${maxDateLocaleString}`
 
     return (
       <li>

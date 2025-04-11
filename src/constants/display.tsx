@@ -1,28 +1,16 @@
 import * as React from 'react'
 
-type SiteDateFormat = {
-  day: '2-digit'
-  month: '2-digit'
-  year: 'numeric'
-}
-
-type SiteTimeFormat = {
-  hour: 'numeric'
-  minute: 'numeric'
-  timeZone: 'America/New_York'
-}
-
-const siteDateFormat: SiteDateFormat = {
+const EASTERN_TIME_ZONE_DATE_FORMAT = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
   month: '2-digit',
   day: '2-digit',
-}
+})
 
-const siteTimeFormat: SiteTimeFormat = {
+const EASTERN_TIME_ZONE_TIME_FORMAT = new Intl.DateTimeFormat('en-US', {
   hour: 'numeric',
   minute: 'numeric',
   timeZone: 'America/New_York',
-}
+})
 
 export default {
   dates: {
@@ -120,8 +108,8 @@ export default {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     },
-    dateFormat: siteDateFormat,
-    timeFormat: siteTimeFormat,
+    dateFormat: EASTERN_TIME_ZONE_DATE_FORMAT,
+    timeFormat: EASTERN_TIME_ZONE_TIME_FORMAT,
     title: "How's My Driving NY",
     url: 'https://howsmydrivingny.nyc',
   },
