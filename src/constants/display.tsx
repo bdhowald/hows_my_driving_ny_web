@@ -9,6 +9,7 @@ type SiteDateFormat = {
 type SiteTimeFormat = {
   hour: 'numeric'
   minute: 'numeric'
+  timeZone: 'America/New_York'
 }
 
 const siteDateFormat: SiteDateFormat = {
@@ -20,6 +21,7 @@ const siteDateFormat: SiteDateFormat = {
 const siteTimeFormat: SiteTimeFormat = {
   hour: 'numeric',
   minute: 'numeric',
+  timeZone: 'America/New_York',
 }
 
 export default {
