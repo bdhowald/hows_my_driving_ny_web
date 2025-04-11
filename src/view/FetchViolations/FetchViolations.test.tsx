@@ -249,132 +249,265 @@ describe('FetchViolations', () => {
       })
     })
 
-    it('should populate the lookup on the page when a plate is queried', async () => {
-      const performNewLookupSpy = jest.spyOn(
-        boundaryFunctions,
-        'performNewLookup',
-      )
+    describe('new-style display', () => {
+      it('should populate the lookup on the page when a plate is queried', async () => {
+        const performNewLookupSpy = jest.spyOn(
+          boundaryFunctions,
+          'performNewLookup',
+        )
 
-      const violation = ViolationFactory.build({
-        amountDue: 15,
-        fineAmount: 65,
-        formattedTime: '2024-08-23T15:57:14.000Z',
-        interestAmount: 0.69,
-        location: '191 Netherland Ave',
-        humanizedDescription: 'Failure to Display Meter Receipt',
-        paymentAmount: 75,
-        penaltyAmount: 25,
-        reductionAmount: 0.69,
-        violationCounty: 'Staten Island',
-      })
+        const violation = ViolationFactory.build({
+          amountDue: 15,
+          fineAmount: 65,
+          formattedTime: '2024-08-23T15:57:14.000Z',
+          interestAmount: 0.69,
+          location: '191 Netherland Ave',
+          humanizedDescription: 'Failure to Display Meter Receipt',
+          paymentAmount: 75,
+          penaltyAmount: 25,
+          reductionAmount: 0.69,
+          violationCounty: 'Staten Island',
+        })
 
-      const vehicle = VehicleFactory.build({
-        fines: {
-          totalFined: 500,
-          totalInJudgment: 25,
-          totalOutstanding: 50,
-          totalPaid: 400,
-          totalReduced: 25,
-        },
-        plateTypes: [
-          'AGC',
-          'APP',
-          'CHC',
-          'CMB',
-          'COM',
-          'CSP',
-          'FAR',
-          'HAC',
-          'IRP',
-          'LOC',
-          'ORC',
-          'RGC',
-          'SPC',
-          'STG',
-          'THC',
-          'TRC',
-        ],
-        previousLookupDate: '2024-11-12T15:57:14.000Z',
-        previousViolationCount: 3,
-        violations: [
-          ViolationFactory.build(),
-          ViolationFactory.build(),
-          ViolationFactory.build(),
-          violation,
-        ],
-      })
-
-      performNewLookupSpy.mockResolvedValueOnce({
-        data: [
-          {
-            successfulLookup: true,
-            vehicle,
+        const vehicle = VehicleFactory.build({
+          fines: {
+            totalFined: 500,
+            totalInJudgment: 25,
+            totalOutstanding: 50,
+            totalPaid: 400,
+            totalReduced: 25,
           },
-        ],
+          plateTypes: [
+            'AGC',
+            'APP',
+            'CHC',
+            'CMB',
+            'COM',
+            'CSP',
+            'FAR',
+            'HAC',
+            'IRP',
+            'LOC',
+            'ORC',
+            'RGC',
+            'SPC',
+            'STG',
+            'THC',
+            'TRC',
+          ],
+          previousLookupDate: '2024-11-12T15:57:14.000Z',
+          previousViolationCount: 3,
+          violations: [
+            ViolationFactory.build(),
+            ViolationFactory.build(),
+            ViolationFactory.build(),
+            violation,
+          ],
+        })
+
+        performNewLookupSpy.mockResolvedValueOnce({
+          data: [
+            {
+              successfulLookup: true,
+              vehicle,
+            },
+          ],
+        })
+
+        render(
+          <CookiesProvider cookies={new Cookies('lookupIdentifiers=;useNewStyleDisplay=true;')}>
+            <FetchViolations />
+          </CookiesProvider>,
+        )
+
+        const plate = 'ABC1234'
+
+        const plateSearchInputHtmlElement = screen.getByRole('textbox')
+        userEvent.type(plateSearchInputHtmlElement, plate)
+
+        const searchButtonHtmlElement = screen.getByRole('button')
+        userEvent.click(searchButtonHtmlElement)
+
+        await waitFor(() => {
+          // LookupInfo component
+          screen.getByText('Plate:')
+          screen.getByText(plate)
+
+          screen.getByText('State:')
+          screen.getByText('NY')
+
+          screen.getByText('Plate type:')
+          screen.getByText('Commercial', { selector: 'div' })
+
+          screen.getByText('Violations:')
+          screen.getByText('(1 new) 4')
+
+          screen.getByText('Lookups:')
+          screen.getByText('2')
+
+          screen.getByText('Previous:')
+          screen.getByText('11/12/2024')
+
+          screen.getByText('Fined:')
+          screen.getByText('$500.00')
+
+          screen.getByText('Paid:')
+          screen.getByText('$400.00')
+
+          screen.getByText('Owed:')
+          screen.getByText('$50.00')
+
+          // ViolationsListControl component
+          screen.getByText('hide violations', { selector: 'button' })
+          screen.getByText('show fines details', { selector: 'button' })
+          screen.getByText('show violation summary', { selector: 'button' })
+
+          // ViolationsList component
+          screen.getByText('4 parking and camera violations')
+
+          // ViolationsTableHeader
+          screen.getByText('Date')
+          screen.getByText('Violation')
+          screen.getByText('Location')
+          screen.getByText('Fines')
+
+          // ViolationsTableBody
+          screen.getByText('08/23/2024')
+          screen.getByText('Staten Island')
+          screen.getByText('(191 Netherland Ave)')
+          screen.getByText('$90.00')
+        })
       })
+    })
 
-      render(
-        <CookiesProvider cookies={new Cookies('lookupIdentifiers=;')}>
-          <FetchViolations />
-        </CookiesProvider>,
-      )
+    describe('old-style display', () => {
+      it('should populate the lookup on the page when a plate is queried', async () => {
+        const performNewLookupSpy = jest.spyOn(
+          boundaryFunctions,
+          'performNewLookup',
+        )
 
-      const plate = 'ABC1234'
+        const violation = ViolationFactory.build({
+          amountDue: 15,
+          fineAmount: 65,
+          formattedTime: '2024-08-23T15:57:14.000Z',
+          interestAmount: 0.69,
+          location: '191 Netherland Ave',
+          humanizedDescription: 'Failure to Display Meter Receipt',
+          paymentAmount: 75,
+          penaltyAmount: 25,
+          reductionAmount: 0.69,
+          violationCounty: 'Staten Island',
+        })
 
-      const plateSearchInputHtmlElement = screen.getByRole('textbox')
-      userEvent.type(plateSearchInputHtmlElement, plate)
+        const vehicle = VehicleFactory.build({
+          fines: {
+            totalFined: 500,
+            totalInJudgment: 25,
+            totalOutstanding: 50,
+            totalPaid: 400,
+            totalReduced: 25,
+          },
+          plateTypes: [
+            'AGC',
+            'APP',
+            'CHC',
+            'CMB',
+            'COM',
+            'CSP',
+            'FAR',
+            'HAC',
+            'IRP',
+            'LOC',
+            'ORC',
+            'RGC',
+            'SPC',
+            'STG',
+            'THC',
+            'TRC',
+          ],
+          previousLookupDate: '2024-11-12T15:57:14.000Z',
+          previousViolationCount: 3,
+          violations: [
+            ViolationFactory.build(),
+            ViolationFactory.build(),
+            ViolationFactory.build(),
+            violation,
+          ],
+        })
 
-      const searchButtonHtmlElement = screen.getByRole('button')
-      userEvent.click(searchButtonHtmlElement)
+        performNewLookupSpy.mockResolvedValueOnce({
+          data: [
+            {
+              successfulLookup: true,
+              vehicle,
+            },
+          ],
+        })
 
-      await waitFor(() => {
-        // LookupInfo component
-        screen.getByText('Plate:')
-        screen.getByText(plate)
+        render(
+          <CookiesProvider cookies={new Cookies('lookupIdentifiers=;useNewStyleDisplay=false;')}>
+            <FetchViolations />
+          </CookiesProvider>,
+        )
 
-        screen.getByText('State:')
-        screen.getByText('NY')
+        const plate = 'ABC1234'
 
-        screen.getByText('Plate type:')
-        screen.getByText('Commercial', { selector: 'div' })
+        const plateSearchInputHtmlElement = screen.getByRole('textbox')
+        userEvent.type(plateSearchInputHtmlElement, plate)
 
-        screen.getByText('Violations:')
-        screen.getByText('(1 new) 4')
+        const searchButtonHtmlElement = screen.getByRole('button')
+        userEvent.click(searchButtonHtmlElement)
 
-        screen.getByText('Lookups:')
-        screen.getByText('2')
+        await waitFor(() => {
+          // LookupInfo component
+          screen.getByText('Plate:')
+          screen.getByText(plate)
 
-        screen.getByText('Previous:')
-        screen.getByText('11/12/2024')
+          screen.getByText('State:')
+          screen.getByText('NY')
 
-        screen.getByText('Fined:')
-        screen.getByText('$500.00')
+          screen.getByText('Plate type:')
+          screen.getByText('Commercial', { selector: 'div' })
 
-        screen.getByText('Paid:')
-        screen.getByText('$400.00')
+          screen.getByText('Violations:')
+          screen.getByText('(1 new) 4')
 
-        screen.getByText('Owed:')
-        screen.getByText('$50.00')
+          screen.getByText('Lookups:')
+          screen.getByText('2')
 
-        // ViolationsListControl component
-        screen.getByText('hide violations', { selector: 'button' })
-        screen.getByText('show fines details', { selector: 'button' })
-        screen.getByText('show violation summary', { selector: 'button' })
+          screen.getByText('Previous:')
+          screen.getByText('11/12/2024')
 
-        // ViolationsList component
-        screen.getByText('4 parking and camera violations')
+          screen.getByText('Fined:')
+          screen.getByText('$500.00')
 
-        // ViolationsTableHeader
-        screen.getByText('Date')
-        screen.getByText('Violation')
-        screen.getByText('Location')
-        screen.getByText('Fines')
+          screen.getByText('Paid:')
+          screen.getByText('$400.00')
 
-        // ViolationsTableBody
-        screen.getByText('08/23/2024')
-        screen.getByText('Staten Island')
-        screen.getByText('(191 Netherland Ave)')
-        screen.getByText('$90.00')
+          screen.getByText('Owed:')
+          screen.getByText('$50.00')
+
+          // ViolationsListControl component
+          screen.getByText('hide violations', { selector: 'button' })
+          screen.getByText('show fines details', { selector: 'button' })
+          screen.getByText('show violation summary', { selector: 'button' })
+
+          // ViolationsList component
+          screen.getByText('4 parking and camera violations')
+
+          // ViolationsTableHeader
+          screen.getByText('Date')
+          screen.getByText('Violation')
+          screen.getByText('Location')
+          screen.getByText('Fines')
+
+          // ViolationsTableBody
+          screen.getByText('08/23/2024')
+          screen.getByText('Staten Island')
+          screen.getByText('(191 Netherland Ave)')
+          screen.getByText('$90.00')
+        })
       })
     })
 
