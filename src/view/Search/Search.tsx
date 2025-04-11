@@ -107,7 +107,8 @@ const Search = ({
     const queryParameters = new URLSearchParams(document.location.search)
 
     const useNewStyleDisplayCookiePresent =
-      !!cookies[USE_NEW_STYLE_DISPLAY_COOKIE]
+      cookies[USE_NEW_STYLE_DISPLAY_COOKIE] !== null &&
+      cookies[USE_NEW_STYLE_DISPLAY_COOKIE] !== undefined
 
     const queryParamFeatureFlagEnabled =
       queryParameters.get(USE_NEW_STYLE_DISPLAY_COOKIE) === 'true'

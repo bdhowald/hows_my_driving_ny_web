@@ -315,7 +315,9 @@ describe('FetchViolations', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('lookupIdentifiers=;useNewStyleDisplay=true;')}>
+          <CookiesProvider
+            cookies={new Cookies('lookupIdentifiers=;useNewStyleDisplay=true;')}
+          >
             <FetchViolations />
           </CookiesProvider>,
         )
@@ -446,7 +448,11 @@ describe('FetchViolations', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('lookupIdentifiers=;useNewStyleDisplay=false;')}>
+          <CookiesProvider
+            cookies={
+              new Cookies('lookupIdentifiers=;useNewStyleDisplay=false;')
+            }
+          >
             <FetchViolations />
           </CookiesProvider>,
         )
