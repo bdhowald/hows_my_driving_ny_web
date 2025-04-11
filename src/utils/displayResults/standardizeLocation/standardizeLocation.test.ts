@@ -157,6 +157,26 @@ describe('standardizeLocation', () => {
         inputLocation: 'S 1st St @ Kent Ave',
         standardizedLocation: 'South 1st Street and Kent Avenue',
       },
+      {
+        inputLocation: 'E/o 1st St @ Kent Ave',
+        standardizedLocation: 'East of 1st Street and Kent Avenue',
+      },
+      {
+        inputLocation: 'N/o 1st St @ Kent Ave',
+        standardizedLocation: 'North of 1st Street and Kent Avenue',
+      },
+      {
+        inputLocation: 'S/o 1st St @ Kent Ave',
+        standardizedLocation: 'South of 1st Street and Kent Avenue',
+      },
+      {
+        inputLocation: 'W/o 1st St @ Kent Ave',
+        standardizedLocation: 'West of 1st Street and Kent Avenue',
+      },
+      {
+        inputLocation: 'Riverband S/p Police Parking',
+        standardizedLocation: 'Riverbank State Park',
+      },
     ])(
       'renders the search-friendly query text $standardizedLocation when called with $inputLocation',
       ({ inputLocation, standardizedLocation }) => {
