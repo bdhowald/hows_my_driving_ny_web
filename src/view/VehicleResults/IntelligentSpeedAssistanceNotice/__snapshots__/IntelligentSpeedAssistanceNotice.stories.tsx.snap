@@ -7,8 +7,8 @@ exports[`Components/VehicleResults/IntelligentSpeedAssistanceNotice Eligible smo
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
-            <li class="list-group-item list-group-item-warning "
-                data-testid="dangerous-vehicle-abatement-act-notice"
+            <li class="dangerous-vehicle-notice list-group-item list-group-item-primary "
+                data-testid="stop-super-speeders-notice"
             >
               <p>
                 Under bills proposed by
@@ -40,14 +40,17 @@ exports[`Components/VehicleResults/IntelligentSpeedAssistanceNotice Eligible smo
               </p>
               <ul>
                 <li>
-                  <span class="text-bg-warning">
-                    <span class="isa-camera-violations-count">
+                  <span class="streak-count-and-type text-bg-warning">
+                    <span class="streak-count">
                       8
                     </span>
                     red light and speed camera violations
                   </span>
+                  <span class="streak-threshold">
+                    &nbsp;(&gt;= 6/year)
+                  </span>
                   <span>
-                    &nbsp;(&gt;= 6/year) from 10/24/2023 to 10/12/2024
+                    &nbsp;from 10/24/2023 to 10/12/2024
                   </span>
                 </li>
               </ul>

@@ -7,7 +7,7 @@ exports[`Components/VehicleResults/DangerousVehicleAbatementAct RedLightCameraAn
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
-            <li class="list-group-item list-group-item-warning "
+            <li class="dangerous-vehicle-notice list-group-item list-group-item-warning "
                 data-testid="dangerous-vehicle-abatement-act-notice"
             >
               <p>
@@ -22,25 +22,31 @@ exports[`Components/VehicleResults/DangerousVehicleAbatementAct RedLightCameraAn
               </p>
               <ul>
                 <li>
-                  <span class="text-bg-warning">
-                    <span class="dvaa-violations-count">
+                  <span class="streak-count-and-type text-bg-warning">
+                    <span class="streak-count">
                       7
                     </span>
                     red light camera violations
                   </span>
+                  <span class="streak-threshold">
+                    &nbsp;(&gt;= 5/year)
+                  </span>
                   <span>
-                    &nbsp;(&gt;= 5/year) from 06/27/2023 to 05/06/2024
+                    &nbsp;from 06/27/2023 to 05/06/2024
                   </span>
                 </li>
                 <li>
-                  <span class="text-bg-warning">
-                    <span class="dvaa-violations-count">
+                  <span class="streak-count-and-type text-bg-warning">
+                    <span class="streak-count">
                       20
                     </span>
                     school zone speed camera violations
                   </span>
+                  <span class="streak-threshold">
+                    &nbsp;(&gt;= 15/year)
+                  </span>
                   <span>
-                    &nbsp;(&gt;= 15/year) from 12/31/2023 to 10/07/2024
+                    &nbsp;from 12/31/2023 to 10/07/2024
                   </span>
                 </li>
               </ul>
@@ -60,7 +66,7 @@ exports[`Components/VehicleResults/DangerousVehicleAbatementAct RedLightCameraEl
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
-            <li class="list-group-item list-group-item-warning "
+            <li class="dangerous-vehicle-notice list-group-item list-group-item-warning "
                 data-testid="dangerous-vehicle-abatement-act-notice"
             >
               <p>
@@ -75,14 +81,17 @@ exports[`Components/VehicleResults/DangerousVehicleAbatementAct RedLightCameraEl
               </p>
               <ul>
                 <li>
-                  <span class="text-bg-warning">
-                    <span class="dvaa-violations-count">
+                  <span class="streak-count-and-type text-bg-warning">
+                    <span class="streak-count">
                       7
                     </span>
                     red light camera violations
                   </span>
+                  <span class="streak-threshold">
+                    &nbsp;(&gt;= 5/year)
+                  </span>
                   <span>
-                    &nbsp;(&gt;= 5/year) from 06/27/2023 to 05/06/2024
+                    &nbsp;from 06/27/2023 to 05/06/2024
                   </span>
                 </li>
               </ul>
@@ -102,7 +111,7 @@ exports[`Components/VehicleResults/DangerousVehicleAbatementAct SpeedCameraEligi
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
-            <li class="list-group-item list-group-item-warning "
+            <li class="dangerous-vehicle-notice list-group-item list-group-item-warning "
                 data-testid="dangerous-vehicle-abatement-act-notice"
             >
               <p>
@@ -117,14 +126,17 @@ exports[`Components/VehicleResults/DangerousVehicleAbatementAct SpeedCameraEligi
               </p>
               <ul>
                 <li>
-                  <span class="text-bg-warning">
-                    <span class="dvaa-violations-count">
+                  <span class="streak-count-and-type text-bg-warning">
+                    <span class="streak-count">
                       20
                     </span>
                     school zone speed camera violations
                   </span>
+                  <span class="streak-threshold">
+                    &nbsp;(&gt;= 15/year)
+                  </span>
                   <span>
-                    &nbsp;(&gt;= 15/year) from 12/31/2023 to 10/07/2024
+                    &nbsp;from 12/31/2023 to 10/07/2024
                   </span>
                 </li>
               </ul>
