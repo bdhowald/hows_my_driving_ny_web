@@ -331,7 +331,9 @@ describe('ViolationSummary', () => {
               ViolationFactory.build({ violationCounty: 'Bronx' }),
 
               // one violation with no borough
-              ViolationFactory.build({ violationCounty: 'No Borough Available' }),
+              ViolationFactory.build({
+                violationCounty: 'No Borough Available',
+              }),
             ],
           })
 
@@ -355,7 +357,9 @@ describe('ViolationSummary', () => {
             expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
             expect(screen.queryByText('Queens:')).not.toBeInTheDocument()
             expect(screen.queryByText('Staten Island:')).not.toBeInTheDocument()
-            expect(screen.queryByText('No Borough Available:')).not.toBeInTheDocument()
+            expect(
+              screen.queryByText('No Borough Available:'),
+            ).not.toBeInTheDocument()
 
             // values
             expect(screen.queryByText('3')).not.toBeInTheDocument()
@@ -373,7 +377,9 @@ describe('ViolationSummary', () => {
               expect(screen.queryByText('Brooklyn:')).not.toBeInTheDocument()
               expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
               expect(screen.queryByText('Queens:')).not.toBeInTheDocument()
-              expect(screen.queryByText('Staten Island:')).not.toBeInTheDocument()
+              expect(
+                screen.queryByText('Staten Island:'),
+              ).not.toBeInTheDocument()
 
               // values
               expect(screen.queryByText('3')).toBeInTheDocument()
@@ -669,7 +675,9 @@ describe('ViolationSummary', () => {
               ViolationFactory.build({ violationCounty: 'Bronx' }),
 
               // one violation with no borough
-              ViolationFactory.build({ violationCounty: 'No Borough Available' }),
+              ViolationFactory.build({
+                violationCounty: 'No Borough Available',
+              }),
             ],
           })
 
@@ -693,7 +701,9 @@ describe('ViolationSummary', () => {
             expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
             expect(screen.queryByText('Queens:')).not.toBeInTheDocument()
             expect(screen.queryByText('Staten Island:')).not.toBeInTheDocument()
-            expect(screen.queryByText('No Borough Available:')).not.toBeInTheDocument()
+            expect(
+              screen.queryByText('No Borough Available:'),
+            ).not.toBeInTheDocument()
 
             // values
             expect(screen.queryByText('3')).not.toBeInTheDocument()
@@ -711,7 +721,9 @@ describe('ViolationSummary', () => {
               expect(screen.queryByText('Brooklyn:')).not.toBeInTheDocument()
               expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
               expect(screen.queryByText('Queens:')).not.toBeInTheDocument()
-              expect(screen.queryByText('Staten Island:')).not.toBeInTheDocument()
+              expect(
+                screen.queryByText('Staten Island:'),
+              ).not.toBeInTheDocument()
 
               // values
               expect(screen.queryByText('3')).toBeInTheDocument()

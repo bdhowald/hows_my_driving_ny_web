@@ -107,7 +107,10 @@ const ViolationSummary = ({ vehicle }: { vehicle: Vehicle }) => {
         if (violationBoroughCounts[violationBorough] > 0) {
           // No need to display 'No Borough Available' in a list of boroughs.
           // Shorten it to help with formatting the list.
-          const rectifiedViolationBorough = violationBorough === 'No Borough Available' ? 'Unknown' : violationBorough
+          const rectifiedViolationBorough =
+            violationBorough === 'No Borough Available'
+              ? 'Unknown'
+              : violationBorough
           violationBoroughList.push(
             React.createElement(
               'div',

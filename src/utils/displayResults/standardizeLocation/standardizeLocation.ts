@@ -222,7 +222,10 @@ const standardizeDisplayedLocation = (location: string): string => {
   standardizedLocation = standardizedLocation.replace(/@/g, 'and')
 
   // Strip cruft
-  standardizedLocation = standardizedLocation.replace(/-[a-z][0-9a-z]-[0-9]/g, '')
+  standardizedLocation = standardizedLocation.replace(
+    /-[a-z][0-9a-z]-[0-9]/g,
+    '',
+  )
   // standardizedLocation = standardizedLocation.replace(/-kz-4/g, '')
   // standardizedLocation = standardizedLocation.replace(/-xl-2/g, '')
   standardizedLocation = standardizedLocation.replace(/\(n\)/g, '')

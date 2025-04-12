@@ -8,7 +8,11 @@ import Vehicle from 'models/Vehicle/Vehicle'
 const RED_LIGHT_CAMERA_COUNT_THRESHOLD = 5
 const SPEED_CAMERA_COUNT_THRESHOLD = 15
 
-const DangerousVehicleAbatementActNotice = ({ vehicle }: { vehicle: Vehicle }) => {
+const DangerousVehicleAbatementActNotice = ({
+  vehicle,
+}: {
+  vehicle: Vehicle
+}) => {
   const Link = ({
     linkTarget,
     linkText,

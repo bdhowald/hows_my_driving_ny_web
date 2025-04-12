@@ -34,48 +34,50 @@ const meta: Meta<typeof Body> = {
 
 type Story = StoryObj<typeof Body>
 
-const vehicleEligibleForDangerousVehicleAbatementActNotice = VehicleFactory.build({
-  cameraStreakData: {
-    cameraViolations: {
-      maxStreak: 8,
-      streakEnd: '2024-10-12T16:51:00.000-04:00',
-      streakStart: '2023-10-24T14:39:00.000-04:00',
-      total: 13,
+const vehicleEligibleForDangerousVehicleAbatementActNotice =
+  VehicleFactory.build({
+    cameraStreakData: {
+      cameraViolations: {
+        maxStreak: 8,
+        streakEnd: '2024-10-12T16:51:00.000-04:00',
+        streakStart: '2023-10-24T14:39:00.000-04:00',
+        total: 13,
+      },
+      redLightCameraViolations: {
+        maxStreak: 7,
+        streakEnd: '2024-05-06T14:59:00.000-04:00',
+        streakStart: '2023-06-27T12:43:00.000-04:00',
+        total: 9,
+      },
+      schoolZoneSpeedCameraViolations: {
+        maxStreak: 2,
+        streakEnd: '2024-10-07T10:02:00.000-04:00',
+        streakStart: '2023-12-31T15:34:00.000-05:00',
+        total: 4,
+      },
     },
-    redLightCameraViolations: {
-      maxStreak: 7,
-      streakEnd: '2024-05-06T14:59:00.000-04:00',
-      streakStart: '2023-06-27T12:43:00.000-04:00',
-      total: 9,
-    },
-    schoolZoneSpeedCameraViolations: {
-      maxStreak: 2,
-      streakEnd: '2024-10-07T10:02:00.000-04:00',
-      streakStart: '2023-12-31T15:34:00.000-05:00',
-      total: 4,
-    },
-  },
-})
+  })
 
-const vehicleIneligibleForDangerousVehicleAbatementActNotice = VehicleFactory.build({
-  cameraStreakData: {
-    cameraViolations: {
-      maxStreak: 0,
-      streakEnd: null,
-      streakStart: null,
+const vehicleIneligibleForDangerousVehicleAbatementActNotice =
+  VehicleFactory.build({
+    cameraStreakData: {
+      cameraViolations: {
+        maxStreak: 0,
+        streakEnd: null,
+        streakStart: null,
+      },
+      redLightCameraViolations: {
+        maxStreak: 0,
+        streakEnd: null,
+        streakStart: null,
+      },
+      schoolZoneSpeedCameraViolations: {
+        maxStreak: 0,
+        streakEnd: null,
+        streakStart: null,
+      },
     },
-    redLightCameraViolations: {
-      maxStreak: 0,
-      streakEnd: null,
-      streakStart: null,
-    },
-    schoolZoneSpeedCameraViolations: {
-      maxStreak: 0,
-      streakEnd: null,
-      streakStart: null,
-    },
-  },
-})
+  })
 
 export const ViolationsListHidden: Story = {
   args: {
