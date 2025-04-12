@@ -249,6 +249,7 @@ describe('ViolationSummary', () => {
             expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
             expect(screen.queryByText('Queens:')).not.toBeInTheDocument()
             expect(screen.queryByText('Staten Island:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Unknown:')).not.toBeInTheDocument()
 
             // values
             expect(screen.queryByText('3')).not.toBeInTheDocument()
@@ -266,8 +267,9 @@ describe('ViolationSummary', () => {
               expect(screen.queryByText('Queens:')).toBeInTheDocument()
               expect(screen.queryByText('Staten Island:')).toBeInTheDocument()
 
-              // mo Manhattan violations
+              // no Manhattan violations
               expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
+              expect(screen.queryByText('Unknown:')).not.toBeInTheDocument()
 
               // values
               expect(screen.queryByText('3')).toBeInTheDocument()
@@ -289,12 +291,113 @@ describe('ViolationSummary', () => {
             expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
             expect(screen.queryByText('Queens:')).toBeInTheDocument()
             expect(screen.queryByText('Staten Island:')).toBeInTheDocument()
+            expect(screen.queryByText('Unknown:')).not.toBeInTheDocument()
 
             // values
             expect(screen.queryByText('3')).toBeInTheDocument()
             expect(screen.queryByText('4')).toBeInTheDocument()
             expect(screen.queryByText('1')).toBeInTheDocument()
             expect(screen.queryByText('2')).toBeInTheDocument()
+          }
+        },
+      )
+
+      test.each([
+        {
+          width: 420,
+        },
+        {
+          width: 576,
+        },
+        {
+          width: 640,
+        },
+      ])(
+        'render the counts for violations in different boroughs for a page $width wide including when violations have no borough data',
+        async ({ width }) => {
+          // Change the viewport to show/hide the violations count depending on the width
+          global.innerWidth = width
+
+          // Trigger the window resize event.
+          global.dispatchEvent(new Event('resize'))
+
+          const vehicle = VehicleFactory.build({
+            plate: 'ABC1234',
+            state: 'NY',
+            violations: [
+              // three Bronx Violations
+              ViolationFactory.build({ violationCounty: 'Bronx' }),
+              ViolationFactory.build({ violationCounty: 'Bronx' }),
+              ViolationFactory.build({ violationCounty: 'Bronx' }),
+
+              // one violation with no borough
+              ViolationFactory.build({ violationCounty: 'No Borough Available' }),
+            ],
+          })
+
+          render(
+            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+              <ViolationSummary vehicle={vehicle} />
+            </CookiesProvider>,
+          )
+
+          if (width < 576) {
+            const showMoreDetailsLink = screen.getByRole('link', {
+              name: 'show details',
+              hidden: true,
+            })
+
+            expect(showMoreDetailsLink).toBeInTheDocument()
+
+            // keys
+            expect(screen.queryByText('Bronx:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Brooklyn:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Queens:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Staten Island:')).not.toBeInTheDocument()
+            expect(screen.queryByText('No Borough Available:')).not.toBeInTheDocument()
+
+            // values
+            expect(screen.queryByText('3')).not.toBeInTheDocument()
+            expect(screen.queryByText('1')).not.toBeInTheDocument()
+
+            // Click "show details" link
+            userEvent.click(showMoreDetailsLink)
+
+            await waitFor(() => {
+              // keys
+              expect(screen.queryByText('Bronx:')).toBeInTheDocument()
+              expect(screen.queryByText('Unknown:')).toBeInTheDocument()
+
+              // no Manhattan violations
+              expect(screen.queryByText('Brooklyn:')).not.toBeInTheDocument()
+              expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
+              expect(screen.queryByText('Queens:')).not.toBeInTheDocument()
+              expect(screen.queryByText('Staten Island:')).not.toBeInTheDocument()
+
+              // values
+              expect(screen.queryByText('3')).toBeInTheDocument()
+              expect(screen.queryByText('1')).toBeInTheDocument()
+            })
+          } else {
+            const showMoreDetailsLink = screen.queryByRole('link', {
+              name: 'show details',
+              hidden: true,
+            })
+
+            expect(showMoreDetailsLink).not.toBeInTheDocument()
+
+            // keys
+            expect(screen.queryByText('Bronx:')).toBeInTheDocument()
+            expect(screen.queryByText('Brooklyn:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Unknown:')).toBeInTheDocument()
+            expect(screen.queryByText('Queens:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Staten Island:')).not.toBeInTheDocument()
+
+            // values
+            expect(screen.queryByText('3')).toBeInTheDocument()
+            expect(screen.queryByText('1')).toBeInTheDocument()
           }
         },
       )
@@ -504,7 +607,7 @@ describe('ViolationSummary', () => {
               expect(screen.queryByText('Queens:')).toBeInTheDocument()
               expect(screen.queryByText('Staten Island:')).toBeInTheDocument()
 
-              // mo Manhattan violations
+              // no Manhattan violations
               expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
 
               // values
@@ -533,6 +636,106 @@ describe('ViolationSummary', () => {
             expect(screen.queryByText('4')).toBeInTheDocument()
             expect(screen.queryByText('1')).toBeInTheDocument()
             expect(screen.queryByText('2')).toBeInTheDocument()
+          }
+        },
+      )
+
+      test.each([
+        {
+          width: 420,
+        },
+        {
+          width: 576,
+        },
+        {
+          width: 640,
+        },
+      ])(
+        'render the counts for violations in different boroughs for a page $width wide including when violations have no borough data',
+        async ({ width }) => {
+          // Change the viewport to show/hide the violations count depending on the width
+          global.innerWidth = width
+
+          // Trigger the window resize event.
+          global.dispatchEvent(new Event('resize'))
+
+          const vehicle = VehicleFactory.build({
+            plate: 'ABC1234',
+            state: 'NY',
+            violations: [
+              // three Bronx Violations
+              ViolationFactory.build({ violationCounty: 'Bronx' }),
+              ViolationFactory.build({ violationCounty: 'Bronx' }),
+              ViolationFactory.build({ violationCounty: 'Bronx' }),
+
+              // one violation with no borough
+              ViolationFactory.build({ violationCounty: 'No Borough Available' }),
+            ],
+          })
+
+          render(
+            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+              <ViolationSummary vehicle={vehicle} />
+            </CookiesProvider>,
+          )
+
+          if (width < 576) {
+            const showMoreDetailsLink = screen.getByRole('link', {
+              name: 'show details',
+              hidden: true,
+            })
+
+            expect(showMoreDetailsLink).toBeInTheDocument()
+
+            // keys
+            expect(screen.queryByText('Bronx:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Brooklyn:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Queens:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Staten Island:')).not.toBeInTheDocument()
+            expect(screen.queryByText('No Borough Available:')).not.toBeInTheDocument()
+
+            // values
+            expect(screen.queryByText('3')).not.toBeInTheDocument()
+            expect(screen.queryByText('1')).not.toBeInTheDocument()
+
+            // Click "show details" link
+            userEvent.click(showMoreDetailsLink)
+
+            await waitFor(() => {
+              // keys
+              expect(screen.queryByText('Bronx:')).toBeInTheDocument()
+              expect(screen.queryByText('Unknown:')).toBeInTheDocument()
+
+              // no Manhattan violations
+              expect(screen.queryByText('Brooklyn:')).not.toBeInTheDocument()
+              expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
+              expect(screen.queryByText('Queens:')).not.toBeInTheDocument()
+              expect(screen.queryByText('Staten Island:')).not.toBeInTheDocument()
+
+              // values
+              expect(screen.queryByText('3')).toBeInTheDocument()
+              expect(screen.queryByText('1')).toBeInTheDocument()
+            })
+          } else {
+            const showMoreDetailsLink = screen.queryByRole('link', {
+              name: 'show details',
+              hidden: true,
+            })
+
+            expect(showMoreDetailsLink).not.toBeInTheDocument()
+
+            // keys
+            expect(screen.queryByText('Bronx:')).toBeInTheDocument()
+            expect(screen.queryByText('Brooklyn:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Unknown:')).toBeInTheDocument()
+            expect(screen.queryByText('Queens:')).not.toBeInTheDocument()
+            expect(screen.queryByText('Staten Island:')).not.toBeInTheDocument()
+
+            // values
+            expect(screen.queryByText('3')).toBeInTheDocument()
+            expect(screen.queryByText('1')).toBeInTheDocument()
           }
         },
       )

@@ -105,11 +105,14 @@ const ViolationSummary = ({ vehicle }: { vehicle: Vehicle }) => {
     VIOLATION_BOROUGHS.forEach(
       (violationBorough: ViolationBorough, index: number) => {
         if (violationBoroughCounts[violationBorough] > 0) {
+          // No need to display 'No Borough Available' in a list of boroughs.
+          // Shorten it to help with formatting the list.
+          const rectifiedViolationBorough = violationBorough === 'No Borough Available' ? 'Unknown' : violationBorough
           violationBoroughList.push(
             React.createElement(
               'div',
               { className: 'violation-count-aspect', key: index },
-              `${convertCamelCaseToTitleCase(violationBorough)}:`,
+              `${convertCamelCaseToTitleCase(rectifiedViolationBorough)}:`,
             ),
           )
         }
