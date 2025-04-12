@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
 
-import DangerousVehicleAbatementAct from './DangerousVehicleAbatementAct'
+import DangerousVehicleAbatementActNotice from './DangerousVehicleAbatementActNotice'
 
 describe('DangerousVehicleAbatementAct', () => {
   describe('renders without error', () => {
@@ -58,7 +58,7 @@ describe('DangerousVehicleAbatementAct', () => {
 
           render(
             <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
-              <DangerousVehicleAbatementAct vehicle={vehicle} />
+              <DangerousVehicleAbatementActNotice vehicle={vehicle} />
             </CookiesProvider>,
           )
 
@@ -120,7 +120,7 @@ describe('DangerousVehicleAbatementAct', () => {
 
           render(
             <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
-              <DangerousVehicleAbatementAct vehicle={vehicle} />
+              <DangerousVehicleAbatementActNotice vehicle={vehicle} />
             </CookiesProvider>,
           )
 
@@ -155,7 +155,7 @@ describe('DangerousVehicleAbatementAct', () => {
 
         render(
           <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
-            <DangerousVehicleAbatementAct vehicle={vehicle} />
+            <DangerousVehicleAbatementActNotice vehicle={vehicle} />
           </CookiesProvider>,
         )
 
@@ -218,7 +218,7 @@ describe('DangerousVehicleAbatementAct', () => {
 
         render(
           <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
-            <DangerousVehicleAbatementAct vehicle={vehicle} />
+            <DangerousVehicleAbatementActNotice vehicle={vehicle} />
           </CookiesProvider>,
         )
 
@@ -267,7 +267,7 @@ describe('DangerousVehicleAbatementAct', () => {
 
         render(
           <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
-            <DangerousVehicleAbatementAct vehicle={vehicle} />
+            <DangerousVehicleAbatementActNotice vehicle={vehicle} />
           </CookiesProvider>,
         )
 
@@ -324,7 +324,7 @@ describe('DangerousVehicleAbatementAct', () => {
 
         render(
           <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
-            <DangerousVehicleAbatementAct vehicle={vehicle} />
+            <DangerousVehicleAbatementActNotice vehicle={vehicle} />
           </CookiesProvider>,
         )
 
@@ -387,7 +387,7 @@ describe('DangerousVehicleAbatementAct', () => {
 
         render(
           <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
-            <DangerousVehicleAbatementAct vehicle={vehicle} />
+            <DangerousVehicleAbatementActNotice vehicle={vehicle} />
           </CookiesProvider>,
         )
 
@@ -436,7 +436,7 @@ describe('DangerousVehicleAbatementAct', () => {
 
         render(
           <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
-            <DangerousVehicleAbatementAct vehicle={vehicle} />
+            <DangerousVehicleAbatementActNotice vehicle={vehicle} />
           </CookiesProvider>,
         )
 
@@ -500,7 +500,7 @@ describe('DangerousVehicleAbatementAct', () => {
         expect(() =>
           render(
             <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
-              <DangerousVehicleAbatementAct vehicle={vehicle} />
+              <DangerousVehicleAbatementActNotice vehicle={vehicle} />
             </CookiesProvider>,
           ),
         ).toThrow('Camera data does not conform to any known configuration.')
@@ -534,7 +534,7 @@ describe('DangerousVehicleAbatementAct', () => {
         expect(() =>
           render(
             <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
-              <DangerousVehicleAbatementAct vehicle={vehicle} />
+              <DangerousVehicleAbatementActNotice vehicle={vehicle} />
             </CookiesProvider>,
           ),
         ).toThrow('Camera data does not conform to any known configuration.')

@@ -49,9 +49,7 @@ describe('IntelligentSpeedAssistanceNotice', () => {
             screen.getByText('intelligent speed assistance technology'),
           ).toBeInTheDocument()
           // Expect number of violations to be visible
-          expect(
-            screen.getByText('20'),
-          ).toBeInTheDocument()
+          expect(screen.getByText('20')).toBeInTheDocument()
           // Expect camera violations language to be visible
           expect(
             screen.getByText('red light and speed camera violations'),
@@ -109,9 +107,7 @@ describe('IntelligentSpeedAssistanceNotice', () => {
             screen.getByText('intelligent speed assistance technology'),
           ).toBeInTheDocument()
           // Expect number of violations to be visible
-          expect(
-            screen.getByText('20'),
-          ).toBeInTheDocument()
+          expect(screen.getByText('20')).toBeInTheDocument()
           // Expect camera violations language to be visible
           expect(
             screen.getByText('red light and speed camera violations'),

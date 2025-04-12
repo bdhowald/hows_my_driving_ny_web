@@ -3,11 +3,11 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
 
-import DangerousVehicleAbatementAct from './DangerousVehicleAbatementAct'
+import DangerousVehicleAbatementActNotice from './DangerousVehicleAbatementActNotice'
 
-const meta: Meta<typeof DangerousVehicleAbatementAct> = {
+const meta: Meta<typeof DangerousVehicleAbatementActNotice> = {
   title: 'Components/VehicleResults/DangerousVehicleAbatementAct',
-  component: DangerousVehicleAbatementAct,
+  component: DangerousVehicleAbatementActNotice,
   decorators: [
     (Story) => (
       <div className="container-fluid">
@@ -34,7 +34,7 @@ const meta: Meta<typeof DangerousVehicleAbatementAct> = {
   },
 }
 
-type Story = StoryObj<typeof DangerousVehicleAbatementAct>
+type Story = StoryObj<typeof DangerousVehicleAbatementActNotice>
 
 export const RedLightCameraEligible: Story = {
   args: {

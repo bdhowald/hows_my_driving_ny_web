@@ -7,8 +7,8 @@ import {
 } from 'constants/cookies'
 import Vehicle from 'models/Vehicle/Vehicle'
 import LookupInfo from 'view/VehicleResults/LookupInfo/LookupInfo'
-import DangerousVehicleAbatementAct from 'view/VehicleResults/DangerousVehicleAbatementAct/DangerousVehicleAbatementAct'
-import IntelligentSpeedAssistanceNotice from 'view/VehicleResults/IntelligentSpeedAssistanceNotice/IntelligentSpeedAssistanceNotice'
+import DangerousVehicleAbatementActNotice from 'view/VehicleResults/Notices/DangerousVehicleAbatementActNotice/DangerousVehicleAbatementActNotice'
+import IntelligentSpeedAssistanceNotice from 'view/VehicleResults/Notices/IntelligentSpeedAssistanceNotice/IntelligentSpeedAssistanceNotice'
 import ViolationsInspector from 'view/VehicleResults/ViolationsInspector/ViolationsInspector'
 
 type BodyProps = {
@@ -46,7 +46,7 @@ const Body = ({ showViolationsList, vehicle }: BodyProps) => {
         <IntelligentSpeedAssistanceNotice vehicle={vehicle} />
       )}
       {showDangerousVehicleAbatementActNotice && (
-        <DangerousVehicleAbatementAct vehicle={vehicle} />
+        <DangerousVehicleAbatementActNotice vehicle={vehicle} />
       )}
       <ViolationsInspector
         showViolationsList={showViolationsList}

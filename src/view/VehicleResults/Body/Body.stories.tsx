@@ -34,7 +34,7 @@ const meta: Meta<typeof Body> = {
 
 type Story = StoryObj<typeof Body>
 
-const vehicleEligibleForDangerousVehicleAbatementAct = VehicleFactory.build({
+const vehicleEligibleForDangerousVehicleAbatementActNotice = VehicleFactory.build({
   cameraStreakData: {
     cameraViolations: {
       maxStreak: 8,
@@ -57,7 +57,7 @@ const vehicleEligibleForDangerousVehicleAbatementAct = VehicleFactory.build({
   },
 })
 
-const vehicleIneligibleForDangerousVehicleAbatementAct = VehicleFactory.build({
+const vehicleIneligibleForDangerousVehicleAbatementActNotice = VehicleFactory.build({
   cameraStreakData: {
     cameraViolations: {
       maxStreak: 0,
@@ -80,25 +80,25 @@ const vehicleIneligibleForDangerousVehicleAbatementAct = VehicleFactory.build({
 export const ViolationsListHidden: Story = {
   args: {
     showViolationsList: false,
-    vehicle: vehicleIneligibleForDangerousVehicleAbatementAct,
+    vehicle: vehicleIneligibleForDangerousVehicleAbatementActNotice,
   },
 }
 export const ViolationsListVisible: Story = {
   args: {
     showViolationsList: true,
-    vehicle: vehicleIneligibleForDangerousVehicleAbatementAct,
+    vehicle: vehicleIneligibleForDangerousVehicleAbatementActNotice,
   },
 }
 export const ViolationsListHiddenWithDangerousVehicleAbatementAct: Story = {
   args: {
     showViolationsList: false,
-    vehicle: vehicleEligibleForDangerousVehicleAbatementAct,
+    vehicle: vehicleEligibleForDangerousVehicleAbatementActNotice,
   },
 }
 export const ViolationsListVisibleWithDangerousVehicleAbatementAct: Story = {
   args: {
     showViolationsList: true,
-    vehicle: vehicleEligibleForDangerousVehicleAbatementAct,
+    vehicle: vehicleEligibleForDangerousVehicleAbatementActNotice,
   },
 }
 export const NoViolations: Story = {
