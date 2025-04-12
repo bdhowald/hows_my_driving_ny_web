@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { createContext, useEffect, useRef, useState } from 'react'
 
 import FingerprintJS, { Agent } from '@fingerprintjs/fingerprintjs'
 import mixpanel, { Mixpanel } from 'mixpanel-browser'
@@ -21,6 +21,8 @@ import Search from 'view/Search/Search'
 import VehicleResults from 'view/VehicleResults/VehicleResults'
 
 smoothscroll.polyfill()
+
+export const MixpanelContext = createContext<Mixpanel | undefined>(undefined)
 
 const FetchViolations = () => {
   const { uniqueIdentifier } = useParams<Record<string, string | undefined>>()
@@ -136,37 +138,39 @@ const FetchViolations = () => {
   }
 
   return (
-    <div>
-      <Container fluid>
-        <Row>
-          <div className="col-md-12">
-            <Search
-              lookupInFlight={lookupInFlight}
-              fingerprintId={fingerprintId}
-              mixpanelInstance={mixpanelInstance}
-              previousLookupUniqueIdentifierFromQuery={uniqueIdentifier}
-              queriedVehicles={queriedVehicles}
-              searchError={searchError}
-              setSearchErrorFunction={setSearchError}
-              setLookupInFlight={setLookupInFlight}
-              setQueriedVehiclesFunction={setQueriedVehicles}
-            />
-            <VehicleResults
-              lookupInFlight={lookupInFlight}
-              refreshLookupFunction={refreshLookup}
-              removeLookupFunction={removeLookup}
-              scrollRef={listRef}
-              vehicleDisplayResults={queriedVehicles}
-            />
-          </div>
-        </Row>
-        <Row>
-          <div className="col-md-12">
-            <Footer />
-          </div>
-        </Row>
-      </Container>
-    </div>
+    <MixpanelContext.Provider value={mixpanelInstance}>
+      <div>
+        <Container fluid>
+          <Row>
+            <div className="col-md-12">
+              <Search
+                lookupInFlight={lookupInFlight}
+                fingerprintId={fingerprintId}
+                mixpanelInstance={mixpanelInstance}
+                previousLookupUniqueIdentifierFromQuery={uniqueIdentifier}
+                queriedVehicles={queriedVehicles}
+                searchError={searchError}
+                setSearchErrorFunction={setSearchError}
+                setLookupInFlight={setLookupInFlight}
+                setQueriedVehiclesFunction={setQueriedVehicles}
+              />
+              <VehicleResults
+                lookupInFlight={lookupInFlight}
+                refreshLookupFunction={refreshLookup}
+                removeLookupFunction={removeLookup}
+                scrollRef={listRef}
+                vehicleDisplayResults={queriedVehicles}
+              />
+            </div>
+          </Row>
+          <Row>
+            <div className="col-md-12">
+              <Footer />
+            </div>
+          </Row>
+        </Container>
+      </div>
+    </MixpanelContext.Provider>
   )
 }
 
