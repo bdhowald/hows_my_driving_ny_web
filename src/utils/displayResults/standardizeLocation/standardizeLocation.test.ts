@@ -189,6 +189,22 @@ describe('standardizeLocation', () => {
         inputLocation: '150 Haven',
         standardizedLocation: '150 Haven Avenue',
       },
+      {
+        inputLocation: 'E Tremont Ave @ St Lawrence Ave',
+        standardizedLocation: 'East Tremont Avenue and Saint Lawrence Avenue',
+      },
+      {
+        inputLocation: 'Bronxdale Ave. (w/b)@ Cruger Ave.-xl-2',
+        standardizedLocation: 'Bronxdale Avenue and Cruger Avenue',
+      },
+      {
+        inputLocation: 'Ocean Pkwy. (n)@ Church Ave.-k1-3',
+        standardizedLocation: 'Ocean Parkway and Church Avenue',
+      },
+      {
+        inputLocation: '4th Ave.(n/b)@ 18th St.-kz-4',
+        standardizedLocation: '4th Avenue and 18th Street',
+      },
     ])(
       'renders the search-friendly query text $standardizedLocation when called with $inputLocation',
       ({ inputLocation, standardizedLocation }) => {
