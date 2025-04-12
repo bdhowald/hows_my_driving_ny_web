@@ -346,6 +346,7 @@ const Search = ({
         plate: trimmedPlate,
         plate_type: plateType,
         state: state,
+        useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE],
       })
 
       performLookupAndHandleResults(trimmedPlate, plateType, state)
