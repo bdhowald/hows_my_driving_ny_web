@@ -177,6 +177,18 @@ describe('standardizeLocation', () => {
         inputLocation: 'Riverband S/p Police Parking',
         standardizedLocation: 'Riverbank State Park',
       },
+      {
+        inputLocation: '1045 St Nich',
+        standardizedLocation: '1045 Saint Nicholas Avenue',
+      },
+      {
+        inputLocation: 'E 107 E 125 St',
+        standardizedLocation: '107 East 125th Street',
+      },
+      {
+        inputLocation: '150 Haven',
+        standardizedLocation: '150 Haven Avenue',
+      },
     ])(
       'renders the search-friendly query text $standardizedLocation when called with $inputLocation',
       ({ inputLocation, standardizedLocation }) => {

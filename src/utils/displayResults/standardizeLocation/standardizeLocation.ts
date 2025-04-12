@@ -4,6 +4,9 @@ const PLACENAME_REGEX =
 const standardizeDisplayedLocation = (location: string): string => {
   let standardizedLocation = location
 
+  // Fix specific bad location strings
+  standardizedLocation = applyStreetSpecificLocationFixes(standardizedLocation)
+
   const numberSuffixRegex = /(st|nd|rd|th)(st|rd|av(e)?)/gi
   standardizedLocation = standardizedLocation.replace(
     numberSuffixRegex,
@@ -217,9 +220,6 @@ const standardizeDisplayedLocation = (location: string): string => {
   // Replace Abbreviations: at
   standardizedLocation = standardizedLocation.replace(/@/g, 'and')
 
-  // Fix specific bad location strings
-  standardizedLocation = applyStreetSpecificLocationFixes(standardizedLocation)
-
   return standardizedLocation
 }
 
@@ -267,6 +267,18 @@ const applyStreetSpecificLocationFixes = (inputLocation: string): string => {
   standardizedLocation = standardizedLocation.replace(
     /Riverband S\/p Police Parking/,
     'Riverbank State Park',
+  )
+  standardizedLocation = standardizedLocation.replace(
+    /1045 St Nich/,
+    '1045 Saint Nicholas Avenue',
+  )
+  standardizedLocation = standardizedLocation.replace(
+    /E 107 E 125 St/,
+    '107 East 125th Street',
+  )
+  standardizedLocation = standardizedLocation.replace(
+    /150 Haven/,
+    '150 Haven Avenue',
   )
 
   return standardizedLocation
