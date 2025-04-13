@@ -407,6 +407,56 @@ describe('ViolationSummary', () => {
           }
         },
       )
+
+      test.each([
+        {
+          width: 420,
+        },
+        {
+          width: 576,
+        },
+        {
+          width: 640,
+        },
+      ])(
+        'not render the counts for violations in different boroughs when there are no violations',
+        async ({ width }) => {
+          // Change the viewport to show/hide the violations count depending on the width
+          global.innerWidth = width
+
+          // Trigger the window resize event.
+          global.dispatchEvent(new Event('resize'))
+
+          const vehicle = VehicleFactory.build({
+            plate: 'ABC1234',
+            state: 'NY',
+            violations: [],
+          })
+
+          render(
+            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+              <ViolationSummary vehicle={vehicle} />
+            </CookiesProvider>,
+          )
+
+          const showMoreDetailsLink = screen.queryByRole('link', {
+            name: 'show details',
+            hidden: true,
+          })
+
+          expect(showMoreDetailsLink).not.toBeInTheDocument()
+
+          // keys
+          expect(screen.queryByText('Bronx:')).not.toBeInTheDocument()
+          expect(screen.queryByText('Brooklyn:')).not.toBeInTheDocument()
+          expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
+          expect(screen.queryByText('Queens:')).not.toBeInTheDocument()
+          expect(screen.queryByText('Staten Island:')).not.toBeInTheDocument()
+          expect(
+            screen.queryByText('No Borough Available:'),
+          ).not.toBeInTheDocument()
+        },
+      )
     })
 
     describe('old-style display', () => {
@@ -749,6 +799,56 @@ describe('ViolationSummary', () => {
             expect(screen.queryByText('3')).toBeInTheDocument()
             expect(screen.queryByText('1')).toBeInTheDocument()
           }
+        },
+      )
+
+      test.each([
+        {
+          width: 420,
+        },
+        {
+          width: 576,
+        },
+        {
+          width: 640,
+        },
+      ])(
+        'not render the counts for violations in different boroughs when there are no violations',
+        async ({ width }) => {
+          // Change the viewport to show/hide the violations count depending on the width
+          global.innerWidth = width
+
+          // Trigger the window resize event.
+          global.dispatchEvent(new Event('resize'))
+
+          const vehicle = VehicleFactory.build({
+            plate: 'ABC1234',
+            state: 'NY',
+            violations: [],
+          })
+
+          render(
+            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+              <ViolationSummary vehicle={vehicle} />
+            </CookiesProvider>,
+          )
+
+          const showMoreDetailsLink = screen.queryByRole('link', {
+            name: 'show details',
+            hidden: true,
+          })
+
+          expect(showMoreDetailsLink).not.toBeInTheDocument()
+
+          // keys
+          expect(screen.queryByText('Bronx:')).not.toBeInTheDocument()
+          expect(screen.queryByText('Brooklyn:')).not.toBeInTheDocument()
+          expect(screen.queryByText('Manhattan:')).not.toBeInTheDocument()
+          expect(screen.queryByText('Queens:')).not.toBeInTheDocument()
+          expect(screen.queryByText('Staten Island:')).not.toBeInTheDocument()
+          expect(
+            screen.queryByText('No Borough Available:'),
+          ).not.toBeInTheDocument()
         },
       )
     })

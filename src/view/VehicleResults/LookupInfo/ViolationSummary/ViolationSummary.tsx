@@ -255,12 +255,11 @@ const ViolationSummary = ({ vehicle }: { vehicle: Vehicle }) => {
   }
 
   const isWideDisplay = window.innerWidth >= 576
+  const hasAtLeastOneViolation = vehicle.violationsCount > 0
 
   const [showViolationsBreakdown, setShowViolationsBreakdown] =
-    useState(isWideDisplay)
+    useState(isWideDisplay && hasAtLeastOneViolation)
   const [cookies, _, __] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
-
-  const hasAtLeastOneViolation = vehicle.violationsCount > 0
 
   const newViolationsSinceLastLookup =
     vehicle.violationsCount - (vehicle.previousViolationCount ?? 0)
