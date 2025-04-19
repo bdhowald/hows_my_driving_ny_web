@@ -9,52 +9,54 @@ exports[`Components/VehicleResults/FinesBreakdown/CombinedViolationsFinesBreakdo
           <ul class="list-group-flush list-group">
             <li class="no-padding list-group-item">
               <div class="row">
-                <div class="summary-box">
-                  <div class="vehicle-info-group vehicle-fines">
-                    <div class="keys lookup-info">
-                      <div>
-                        Fined:
-                      </div>
-                      <div>
-                        Reduced:
-                      </div>
-                      <div class="fines-reduced">
-                        Paid:
-                      </div>
-                      <div>
-                        Owed:
-                      </div>
-                    </div>
-                    <div class="values lookup-info"
-                         role="math"
-                         aria-label="$200.00 fined - $50.00 paid - $125.00 reduced = $75.00 outstanding"
-                    >
-                      <div class="math-symbols">
+                <div class="summary-section col-xs-12 col-sm-6">
+                  <div class="summary-box">
+                    <div class="vehicle-info-group vehicle-fines">
+                      <div class="keys lookup-info">
                         <div>
-                          &nbsp;&nbsp;&nbsp;
+                          Fined:
                         </div>
                         <div>
-                          &nbsp;&nbsp;&nbsp;
+                          Reduced:
                         </div>
                         <div class="fines-reduced">
-                          –&nbsp;
+                          Paid:
                         </div>
                         <div>
-                          &nbsp;&nbsp;&nbsp;
+                          Owed:
                         </div>
                       </div>
-                      <div class="amounts">
-                        <div>
-                          $200.00
+                      <div class="values lookup-info"
+                           role="math"
+                           aria-label="$200.00 fined - $50.00 paid - $125.00 reduced = $75.00 outstanding"
+                      >
+                        <div class="math-symbols">
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                          <div class="fines-reduced">
+                            –&nbsp;
+                          </div>
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
                         </div>
-                        <div>
-                          $125.00
-                        </div>
-                        <div class="fines-reduced">
-                          $50.00
-                        </div>
-                        <div>
-                          $75.00
+                        <div class="amounts">
+                          <div>
+                            $200.00
+                          </div>
+                          <div>
+                            $125.00
+                          </div>
+                          <div class="fines-reduced">
+                            $50.00
+                          </div>
+                          <div>
+                            $75.00
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -79,43 +81,45 @@ exports[`Components/VehicleResults/FinesBreakdown/CombinedViolationsFinesBreakdo
           <ul class="list-group-flush list-group">
             <li class="no-padding list-group-item">
               <div class="row">
-                <div class="summary-box">
-                  <div class="vehicle-info-group vehicle-fines">
-                    <div class="keys lookup-info">
-                      <div>
-                        Fined:
-                      </div>
-                      <div class="fines-reduced">
-                        Paid:
-                      </div>
-                      <div>
-                        Owed:
-                      </div>
-                    </div>
-                    <div class="values lookup-info"
-                         role="math"
-                         aria-label="$0.00 fined - $0.00 paid - $0.00 reduced = $0.00 outstanding"
-                    >
-                      <div class="math-symbols">
+                <div class="summary-section col-xs-12 col-sm-6">
+                  <div class="summary-box">
+                    <div class="vehicle-info-group vehicle-fines">
+                      <div class="keys lookup-info">
                         <div>
-                          &nbsp;&nbsp;&nbsp;
+                          Fined:
                         </div>
                         <div class="fines-reduced">
-                          –&nbsp;
+                          Paid:
                         </div>
                         <div>
-                          &nbsp;&nbsp;&nbsp;
+                          Owed:
                         </div>
                       </div>
-                      <div class="amounts">
-                        <div>
-                          $0.00
+                      <div class="values lookup-info"
+                           role="math"
+                           aria-label="$0.00 fined - $0.00 paid - $0.00 reduced = $0.00 outstanding"
+                      >
+                        <div class="math-symbols">
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                          <div class="fines-reduced">
+                            –&nbsp;
+                          </div>
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
                         </div>
-                        <div class="fines-reduced">
-                          $0.00
-                        </div>
-                        <div>
-                          $0.00
+                        <div class="amounts">
+                          <div>
+                            $0.00
+                          </div>
+                          <div class="fines-reduced">
+                            $0.00
+                          </div>
+                          <div>
+                            $0.00
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -140,43 +144,45 @@ exports[`Components/VehicleResults/FinesBreakdown/CombinedViolationsFinesBreakdo
           <ul class="list-group-flush list-group">
             <li class="no-padding list-group-item">
               <div class="row">
-                <div class="summary-box">
-                  <div class="vehicle-info-group vehicle-fines">
-                    <div class="keys lookup-info">
-                      <div>
-                        Fined:
-                      </div>
-                      <div class="fines-reduced">
-                        Paid:
-                      </div>
-                      <div>
-                        Owed:
-                      </div>
-                    </div>
-                    <div class="values lookup-info"
-                         role="math"
-                         aria-label="$200.00 fined - $0.00 paid - $0.00 reduced = $0.00 outstanding"
-                    >
-                      <div class="math-symbols">
+                <div class="summary-section col-xs-12 col-sm-6">
+                  <div class="summary-box">
+                    <div class="vehicle-info-group vehicle-fines">
+                      <div class="keys lookup-info">
                         <div>
-                          &nbsp;&nbsp;&nbsp;
+                          Fined:
                         </div>
                         <div class="fines-reduced">
-                          –&nbsp;
+                          Paid:
                         </div>
                         <div>
-                          &nbsp;&nbsp;&nbsp;
+                          Owed:
                         </div>
                       </div>
-                      <div class="amounts">
-                        <div>
-                          $200.00
+                      <div class="values lookup-info"
+                           role="math"
+                           aria-label="$200.00 fined - $0.00 paid - $0.00 reduced = $0.00 outstanding"
+                      >
+                        <div class="math-symbols">
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                          <div class="fines-reduced">
+                            –&nbsp;
+                          </div>
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
                         </div>
-                        <div class="fines-reduced">
-                          $0.00
-                        </div>
-                        <div>
-                          $0.00
+                        <div class="amounts">
+                          <div>
+                            $200.00
+                          </div>
+                          <div class="fines-reduced">
+                            $0.00
+                          </div>
+                          <div>
+                            $0.00
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -201,61 +207,63 @@ exports[`Components/VehicleResults/FinesBreakdown/CombinedViolationsFinesBreakdo
           <ul class="list-group-flush list-group">
             <li class="no-padding list-group-item">
               <div class="row">
-                <div class="summary-box">
-                  <div class="vehicle-info-group vehicle-fines">
-                    <div class="keys lookup-info">
-                      <div>
-                        Fined:
-                      </div>
-                      <div>
-                        Reduced:
-                      </div>
-                      <div class="fines-reduced">
-                        Paid:
-                      </div>
-                      <div>
-                        Owed:
-                      </div>
-                      <div class="in-judgment">
-                        In judgment:
-                      </div>
-                    </div>
-                    <div class="values lookup-info"
-                         role="math"
-                         aria-label="$200.00 fined - $50.00 paid - $125.00 reduced = $75.00 outstanding"
-                    >
-                      <div class="math-symbols">
+                <div class="summary-section col-xs-12 col-sm-6">
+                  <div class="summary-box">
+                    <div class="vehicle-info-group vehicle-fines">
+                      <div class="keys lookup-info">
                         <div>
-                          &nbsp;&nbsp;&nbsp;
+                          Fined:
                         </div>
                         <div>
-                          &nbsp;&nbsp;&nbsp;
+                          Reduced:
                         </div>
                         <div class="fines-reduced">
-                          –&nbsp;
+                          Paid:
                         </div>
                         <div>
-                          &nbsp;&nbsp;&nbsp;
-                        </div>
-                        <div>
-                          &nbsp;&nbsp;&nbsp;
-                        </div>
-                      </div>
-                      <div class="amounts">
-                        <div>
-                          $200.00
-                        </div>
-                        <div>
-                          $125.00
-                        </div>
-                        <div class="fines-reduced">
-                          $50.00
-                        </div>
-                        <div>
-                          $75.00
+                          Owed:
                         </div>
                         <div class="in-judgment">
-                          $50.00
+                          In judgment:
+                        </div>
+                      </div>
+                      <div class="values lookup-info"
+                           role="math"
+                           aria-label="$200.00 fined - $50.00 paid - $125.00 reduced = $75.00 outstanding"
+                      >
+                        <div class="math-symbols">
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                          <div class="fines-reduced">
+                            –&nbsp;
+                          </div>
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                          <div>
+                            &nbsp;&nbsp;&nbsp;
+                          </div>
+                        </div>
+                        <div class="amounts">
+                          <div>
+                            $200.00
+                          </div>
+                          <div>
+                            $125.00
+                          </div>
+                          <div class="fines-reduced">
+                            $50.00
+                          </div>
+                          <div>
+                            $75.00
+                          </div>
+                          <div class="in-judgment">
+                            $50.00
+                          </div>
                         </div>
                       </div>
                     </div>

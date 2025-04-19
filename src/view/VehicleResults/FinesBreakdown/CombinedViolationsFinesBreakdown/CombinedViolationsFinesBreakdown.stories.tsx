@@ -18,8 +18,10 @@ const meta: Meta<typeof FinesBreakdown.CombinedViolationsFinesBreakdown> = {
                 <ul className="list-group-flush list-group">
                   <li className="no-padding list-group-item">
                     <div className="row">
-                      {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it */}
-                      <Story />
+                      <div className="summary-section col-xs-12 col-sm-6">
+                        {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it */}
+                        <Story />
+                      </div>
                     </div>
                   </li>
                 </ul>
