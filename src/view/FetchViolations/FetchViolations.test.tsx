@@ -259,7 +259,7 @@ describe('FetchViolations', () => {
         const violation = ViolationFactory.build({
           amountDue: 15,
           fineAmount: 65,
-          formattedTime: '2024-08-23T15:57:14.000Z',
+          formattedTime: '2024-08-23T15:57:14.000-04:00',
           interestAmount: 0.69,
           location: '191 Netherland Ave',
           humanizedDescription: 'Failure to Display Meter Receipt',
@@ -314,6 +314,9 @@ describe('FetchViolations', () => {
           ],
         })
 
+        // I'm not sure why this is necessary. Somehow cookies below in CookiesProvider are reset unexpectedly.
+        document.cookie = `useNewStyleDisplay=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=None;`
+
         render(
           <CookiesProvider
             cookies={new Cookies('lookupIdentifiers=;useNewStyleDisplay=true;')}
@@ -359,24 +362,21 @@ describe('FetchViolations', () => {
           screen.getByText('Owed:')
           screen.getByText('$50.00')
 
-          // ViolationsListControl component
+          // ViolationCardListControl component
           screen.getByText('hide violations', { selector: 'button' })
-          screen.getByText('show fines details', { selector: 'button' })
-          screen.getByText('show violation summary', { selector: 'button' })
 
           // ViolationsList component
           screen.getByText('4 parking and camera violations')
 
           // ViolationsTableHeader
           screen.getByText('Date')
-          screen.getByText('Violation')
-          screen.getByText('Location')
+          screen.getByText('Type')
+          screen.getByText('Borough')
           screen.getByText('Fines')
 
           // ViolationsTableBody
-          screen.getByText('08/23/2024')
+          screen.getByText('08/23/2024 3:57 PM')
           screen.getByText('Staten Island')
-          screen.getByText('(191 Netherland Ave)')
           screen.getByText('$90.00')
         })
       })
@@ -392,7 +392,7 @@ describe('FetchViolations', () => {
         const violation = ViolationFactory.build({
           amountDue: 15,
           fineAmount: 65,
-          formattedTime: '2024-08-23T15:57:14.000Z',
+          formattedTime: '2024-08-23T15:57:14.000-04:00',
           interestAmount: 0.69,
           location: '191 Netherland Ave',
           humanizedDescription: 'Failure to Display Meter Receipt',
