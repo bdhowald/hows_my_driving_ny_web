@@ -205,6 +205,10 @@ describe('standardizeLocation', () => {
         inputLocation: '4th Ave.(n/b)@ 18th St.-kz-4',
         standardizedLocation: '4th Avenue and 18th Street',
       },
+      {
+        inputLocation: 'Ocean Pkwy(n/b)@ave.x-ln-3',
+        standardizedLocation: 'Ocean Parkway and Avenue X',
+      },
     ])(
       'renders the search-friendly query text $standardizedLocation when called with $inputLocation',
       ({ inputLocation, standardizedLocation }) => {
