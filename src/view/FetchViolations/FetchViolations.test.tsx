@@ -315,7 +315,8 @@ describe('FetchViolations', () => {
         })
 
         // I'm not sure why this is necessary. Somehow cookies below in CookiesProvider are reset unexpectedly.
-        document.cookie = `useNewStyleDisplay=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=None;`
+        document.cookie =
+          'useNewStyleDisplay=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=None;'
 
         render(
           <CookiesProvider

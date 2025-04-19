@@ -122,24 +122,26 @@ const ViolationCardList = ({
     currentSortType,
   )
 
-  const memoizedViolationCardGroups = useMemo(() => {
-    return [...partitionedViolations.keys()].map((bucketName: string | number) => {
-      const bucket = partitionedViolations.get(bucketName) as Violation[]
-      const vehicleKey = `${vehicle.state}:${vehicle.plate}:${vehicle.plateTypes ? vehicle.plateTypes : ''}`
-      const versionedIndex = `${vehicleKey}-${bucketName}-${currentSortType}-${sortAscending}`
-      return (
-        <ViolationCardGroup
-          bucket={bucket as Violation[]}
-          bucketName={bucketName}
-          currentSortType={currentSortType}
-          index={versionedIndex}
-          key={versionedIndex}
-          showOffCanvasFunction={showOffCanvas}
-          sortAscending={sortAscending}
-        />
-      )
-    })
-  }, [currentSortType, sortAscending])
+  const memoizedViolationCardGroups = useMemo(
+    () =>
+      [...partitionedViolations.keys()].map((bucketName: string | number) => {
+        const bucket = partitionedViolations.get(bucketName) as Violation[]
+        const vehicleKey = `${vehicle.state}:${vehicle.plate}:${vehicle.plateTypes ? vehicle.plateTypes : ''}`
+        const versionedIndex = `${vehicleKey}-${bucketName}-${currentSortType}-${sortAscending}`
+        return (
+          <ViolationCardGroup
+            bucket={bucket as Violation[]}
+            bucketName={bucketName}
+            currentSortType={currentSortType}
+            index={versionedIndex}
+            key={versionedIndex}
+            showOffCanvasFunction={showOffCanvas}
+            sortAscending={sortAscending}
+          />
+        )
+      }),
+    [currentSortType, sortAscending],
+  )
 
   return (
     <>

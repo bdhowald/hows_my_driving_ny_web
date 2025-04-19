@@ -9,7 +9,8 @@ import Violation from 'models/Violation/Violation'
 import ViolationCardGroup from './ViolationCardGroup'
 
 const meta: Meta<typeof ViolationCardGroup> = {
-  title: 'Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCardGroup',
+  title:
+    'Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCardGroup',
   component: ViolationCardGroup,
   decorators: [
     (Story) => (
@@ -64,7 +65,7 @@ export const Default: Story = {
     index: 'NY:ABC1234:-2024-date-true',
     showOffCanvasFunction,
     sortAscending: true,
-  }
+  },
 }
 
 export default meta

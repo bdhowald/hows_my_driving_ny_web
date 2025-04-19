@@ -13,9 +13,15 @@ describe('ViolationCardGroup', () => {
   const showOffCanvasFunction = (_: Violation) => null
 
   const violations = [
-    ViolationFactory.build({ getViolationDateTime: () => '11/06/2024 3:13 PM' }),
-    ViolationFactory.build({ getViolationDateTime: () => '11/07/2024 10:24 AM' }),
-    ViolationFactory.build({ getViolationDateTime: () => '11/08/2024 7:44 AM' }),
+    ViolationFactory.build({
+      getViolationDateTime: () => '11/06/2024 3:13 PM',
+    }),
+    ViolationFactory.build({
+      getViolationDateTime: () => '11/07/2024 10:24 AM',
+    }),
+    ViolationFactory.build({
+      getViolationDateTime: () => '11/08/2024 7:44 AM',
+    }),
   ]
 
   describe('renders without error', () => {
@@ -69,9 +75,8 @@ describe('ViolationCardGroup', () => {
       />,
     )
 
-    const violationCardGroupVisibilityToggle = screen.getByText(
-      '3 violations [–]',
-    )
+    const violationCardGroupVisibilityToggle =
+      screen.getByText('3 violations [–]')
     expect(violationCardGroupVisibilityToggle).toBeInTheDocument()
 
     userEvent.click(violationCardGroupVisibilityToggle)

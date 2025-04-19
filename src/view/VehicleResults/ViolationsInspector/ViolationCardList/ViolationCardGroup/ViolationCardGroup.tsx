@@ -16,12 +16,12 @@ const SortDivider = ({
   setGroupIsVisibleFunction,
   sortAscending,
 }: {
-  currentSortType: Sort,
-  dividerText: string,
-  groupIsVisible: boolean,
-  numberOfElements: number,
+  currentSortType: Sort
+  dividerText: string
+  groupIsVisible: boolean
+  numberOfElements: number
   setGroupIsVisibleFunction: () => void
-  sortAscending: boolean,
+  sortAscending: boolean
 }) => {
   const dividerTextTestIdPart = dividerText
     .toString()
@@ -37,10 +37,7 @@ const SortDivider = ({
       data-testid={`sort-divider-${currentSortType}-${sortAscending ? 'ascending' : 'descending'}-${dividerTextTestIdPart}`}
     >
       <span className="divider-group-name">{dividerText}</span>
-      <span
-        className="collapsible-toggle"
-        onClick={setGroupIsVisibleFunction}
-      >
+      <span className="collapsible-toggle" onClick={setGroupIsVisibleFunction}>
         {numberOfViolationsString} {expandedState}
       </span>
     </div>
@@ -55,12 +52,12 @@ const ViolationCardGroup = ({
   showOffCanvasFunction,
   sortAscending,
 }: {
-  bucketName: string | number,
-  bucket: Violation[],
-  currentSortType: Sort,
+  bucketName: string | number
+  bucket: Violation[]
+  currentSortType: Sort
   index: string | number
-  showOffCanvasFunction: (violation: Violation) => void,
-  sortAscending: boolean,
+  showOffCanvasFunction: (violation: Violation) => void
+  sortAscending: boolean
 }) => {
   const [groupIsVisible, setGroupIsVisible] = useState(true)
 
@@ -88,14 +85,15 @@ const ViolationCardGroup = ({
         setGroupIsVisibleFunction={() => setGroupIsVisible(!groupIsVisible)}
         sortAscending={sortAscending}
       />
-      {groupIsVisible && bucket.map((violation: Violation, index: number) => (
-        <ViolationCard
-          key={`${index}-card`}
-          index={index}
-          inspectViolationFunction={showOffCanvasFunction}
-          violation={violation}
-        />
-      ))}
+      {groupIsVisible &&
+        bucket.map((violation: Violation, index: number) => (
+          <ViolationCard
+            key={`${index}-card`}
+            index={index}
+            inspectViolationFunction={showOffCanvasFunction}
+            violation={violation}
+          />
+        ))}
     </React.Fragment>
   )
 }
