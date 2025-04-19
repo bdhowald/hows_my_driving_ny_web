@@ -83,16 +83,6 @@ exports[`Components/VehicleResults/LookupInfo/ViolationInfo NoViolations smoke-t
                         <div>
                           Violations:
                         </div>
-                        <div class="violation-count-aspects">
-                          <div class="violation-count-aspect-header">
-                            Type:
-                          </div>
-                        </div>
-                        <div class="violation-count-aspects">
-                          <div class="violation-count-aspect-header">
-                            Borough:
-                          </div>
-                        </div>
                       </div>
                       <div class="values lookup-info">
                         <div class="violation-total">
