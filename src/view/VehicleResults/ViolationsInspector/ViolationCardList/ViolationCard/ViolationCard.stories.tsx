@@ -7,7 +7,7 @@ import ViolationCard from './ViolationCard'
 
 const meta: Meta<typeof ViolationCard> = {
   title:
-    'Components/VehicleResults/ViolationsInspector/ViolationsCardList/ViolationCard',
+    'Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCard',
   component: ViolationCard,
   decorators: [
     (Story) => (
