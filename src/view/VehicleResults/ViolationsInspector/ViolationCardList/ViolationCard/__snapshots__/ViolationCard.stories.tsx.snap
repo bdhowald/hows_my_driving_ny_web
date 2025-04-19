@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components/VehicleResults/ViolationsInspector/ViolationsCardList/ViolationCard Default smoke-test 1`] = `
+exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCard Default smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
@@ -45,7 +45,7 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationsCardList/Violat
 </div>
 `;
 
-exports[`Components/VehicleResults/ViolationsInspector/ViolationsCardList/ViolationCard NoBoroughData smoke-test 1`] = `
+exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCard NoBoroughData smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
@@ -90,7 +90,7 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationsCardList/Violat
 </div>
 `;
 
-exports[`Components/VehicleResults/ViolationsInspector/ViolationsCardList/ViolationCard NoDateTime smoke-test 1`] = `
+exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCard NoDateTime smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
@@ -129,7 +129,7 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationsCardList/Violat
 </div>
 `;
 
-exports[`Components/VehicleResults/ViolationsInspector/ViolationsCardList/ViolationCard NoFineData smoke-test 1`] = `
+exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCard NoFineData smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
@@ -174,7 +174,7 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationsCardList/Violat
 </div>
 `;
 
-exports[`Components/VehicleResults/ViolationsInspector/ViolationsCardList/ViolationCard NoViolationDescription smoke-test 1`] = `
+exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCard NoViolationDescription smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
