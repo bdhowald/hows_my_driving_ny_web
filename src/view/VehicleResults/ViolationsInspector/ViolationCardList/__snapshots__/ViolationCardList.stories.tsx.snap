@@ -160,8 +160,11 @@ exports[`Components/VehicleResults/ViolationsInspector VehicleWithViolationsList
                   <div class="violation-card-sort-divider bg-dark"
                        data-testid="sort-divider-date-descending-2024"
                   >
-                    <span>
+                    <span class="divider-group-name">
                       2024
+                    </span>
+                    <span class="collapsible-toggle">
+                      3 violations [–]
                     </span>
                   </div>
                   <div class="violation-card bg-body-tertiary">
@@ -334,8 +337,11 @@ exports[`Components/VehicleResults/ViolationsInspector VehicleWithViolationsList
                   <div class="violation-card-sort-divider bg-dark"
                        data-testid="sort-divider-date-descending-2024"
                   >
-                    <span>
+                    <span class="divider-group-name">
                       2024
+                    </span>
+                    <span class="collapsible-toggle">
+                      1 violation [–]
                     </span>
                   </div>
                   <div class="violation-card bg-body-tertiary">

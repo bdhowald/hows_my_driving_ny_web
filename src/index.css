@@ -1678,9 +1678,34 @@ div.container-fluid
   div.violation-card-sort-divider {
   border-radius: 0.25rem;
   color: white;
-  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
   margin: 1rem 0.25rem 0.25rem;
   padding: 0.5rem 0.625rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card-sort-divider
+  span.collapsible-toggle {
+  font-weight: 300;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card-sort-divider
+  span.divider-group-name {
+  font-weight: bold;
 }
 
 div.container-fluid
