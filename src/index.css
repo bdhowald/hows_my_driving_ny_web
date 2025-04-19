@@ -1706,6 +1706,9 @@ div.container-fluid
   div.violation-card-sort-divider
   span.divider-group-name {
   font-weight: bold;
+  max-width: 10rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 div.container-fluid
