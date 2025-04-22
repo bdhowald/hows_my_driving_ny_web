@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { useCookies } from 'react-cookie'
 
+import { USE_NEW_STYLE_DISPLAY_COOKIE } from 'constants/cookies'
 import L10N from 'constants/display'
 import Sort from 'constants/sortOptions'
 import Violation from 'models/Violation/Violation'
 
+import { MixpanelContext } from 'view/FetchViolations/FetchViolations'
 import ViolationCard from 'view/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCard/ViolationCard'
 
 const FINE_DIVIDER_INCREMENT = 25
@@ -59,7 +62,9 @@ const ViolationCardGroup = ({
   showOffCanvasFunction: (violation: Violation) => void
   sortAscending: boolean
 }) => {
+  const [cookies, _] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
   const [groupIsVisible, setGroupIsVisible] = useState(true)
+  const mixpanelInstance = useContext(MixpanelContext)
 
   const getFinesSortDividerText = (dividerValue: number) => {
     if (dividerValue === -1) {
@@ -82,7 +87,13 @@ const ViolationCardGroup = ({
         }
         groupIsVisible={groupIsVisible}
         numberOfElements={bucket.length}
-        setGroupIsVisibleFunction={() => setGroupIsVisible(!groupIsVisible)}
+        setGroupIsVisibleFunction={() => {
+          setGroupIsVisible(!groupIsVisible)
+          mixpanelInstance?.track('toggle_violation_group', {
+            location: 'ViolationCardGroup',
+            useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE],
+          })
+        }}
         sortAscending={sortAscending}
       />
       {groupIsVisible &&
