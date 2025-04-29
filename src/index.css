@@ -1664,8 +1664,203 @@ div.container-fluid
   div.violation-card-list
   div.violation-card
   div.violation-card-row
-  div {
+  > div {
   padding: 0.125rem 0.25rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card.expanded-details {
+  padding: 0 0.25rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card.expanded-details
+  div.violation-card-row {
+  padding: 0.5rem 0;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card.expanded-details
+  div.violation-card-row:first-child {
+  border-bottom: 0.0625rem solid #ccc;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card.expanded-details
+  div.violation-card-row
+  > div {
+  flex: 1;
+  padding: 0.125rem 0.25rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card.expanded-details
+  div.violation-card-row
+  div.expanded-location {
+  display: flex;
+  flex: 1;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card.expanded-details
+  div.violation-card-row
+  div.expanded-location
+  div.violation-location {
+  align-items: start;
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card.expanded-details
+  div.violation-card-row
+  div.expanded-location
+  div.violation-borough-abbreviation {
+  align-items: end;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 0.5rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card.expanded-details
+  div.violation-card-row
+  div.expanded-location
+  div.violation-borough-abbreviation
+  span {
+  border: 0.125rem solid black;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  padding: 0.125rem 0.25rem;
+  text-align: center;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card.expanded-details
+  div.violation-card-row
+  div.fines-breakdown {
+  display: flex;
+  justify-content: space-between;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card.expanded-details
+  div.violation-card-row
+  div.fines-breakdown
+  div.fine-added {
+  border-bottom: 0.125rem solid rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card.expanded-details
+  div.violation-card-row
+  div.fines-breakdown
+  div.fine-subtracted {
+  border-bottom: 0.125rem solid rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card.expanded-details
+  div.violation-card-row
+  div.fines-breakdown
+  div.summary-box.keys {
+  text-align: left;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list
+  div.violation-card.expanded-details
+  div.violation-card-row
+  div.fines-breakdown
+  div.summary-box.values {
+  display: flex;
+  justify-content: space-between;
 }
 
 div.container-fluid

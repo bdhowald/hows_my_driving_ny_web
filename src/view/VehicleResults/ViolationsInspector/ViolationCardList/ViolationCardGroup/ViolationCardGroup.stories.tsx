@@ -63,6 +63,47 @@ export const Default: Story = {
     bucketName: '2024',
     currentSortType: Sort.DATE,
     index: 'NY:ABC1234:-2024-date-true',
+    showFullFineData: false,
+    showFullLocationData: false,
+    showOffCanvasFunction,
+    sortAscending: true,
+  },
+}
+
+export const ShowFullFineData: Story = {
+  args: {
+    bucket: violations,
+    bucketName: '2024',
+    currentSortType: Sort.DATE,
+    index: 'NY:ABC1234:-2024-date-true',
+    showFullFineData: true,
+    showFullLocationData: false,
+    showOffCanvasFunction,
+    sortAscending: true,
+  },
+}
+
+export const ShowFullLocationData: Story = {
+  args: {
+    bucket: violations,
+    bucketName: '2024',
+    currentSortType: Sort.DATE,
+    index: 'NY:ABC1234:-2024-date-true',
+    showFullFineData: false,
+    showFullLocationData: true,
+    showOffCanvasFunction,
+    sortAscending: true,
+  },
+}
+
+export const ShowFullFineAndLocationData: Story = {
+  args: {
+    bucket: violations,
+    bucketName: '2024',
+    currentSortType: Sort.DATE,
+    index: 'NY:ABC1234:-2024-date-true',
+    showFullFineData: true,
+    showFullLocationData: true,
     showOffCanvasFunction,
     sortAscending: true,
   },

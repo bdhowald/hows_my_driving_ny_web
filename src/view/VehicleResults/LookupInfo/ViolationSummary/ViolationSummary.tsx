@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useCookies } from 'react-cookie'
 
 import Borough from 'constants/boroughs'
+import { SMALL_BREAKPOINT } from 'constants/breakpoints'
 import { USE_NEW_STYLE_DISPLAY_COOKIE } from 'constants/cookies'
 import {
   BUS_LANE_CAMERA_VIOLATION_CODE,
@@ -254,7 +255,7 @@ const ViolationSummary = ({ vehicle }: { vehicle: Vehicle }) => {
     return VIOLATION_TYPES.includes(x as ViolationType)
   }
 
-  const isWideDisplay = window.innerWidth >= 576
+  const isWideDisplay = window.innerWidth >= SMALL_BREAKPOINT
   const hasAtLeastOneViolation = vehicle.violationsCount > 0
 
   const [showViolationsBreakdown, setShowViolationsBreakdown] = useState(

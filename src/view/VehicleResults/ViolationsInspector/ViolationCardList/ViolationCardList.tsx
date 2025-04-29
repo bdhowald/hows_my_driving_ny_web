@@ -26,6 +26,8 @@ const ViolationCardList = ({
   // Set default sort: by date ascending (chronological)
   const [currentSortType, setCurrentSortType] = useState(Sort.DATE)
   const [sortAscending, setSortAscending] = useState(false)
+  const [showFullFineData, setShowFullFineData] = useState(false)
+  const [showFullLocationData, setShowFullLocationData] = useState(false)
 
   const violationsCount = vehicle.violationsCount
   const vehicleHasViolations = violationsCount > 0
@@ -40,6 +42,10 @@ const ViolationCardList = ({
       setSortAscending(true)
     }
   }
+
+  const toggleShowFullFineData = () => setShowFullFineData(!showFullFineData)
+  const toggleShowFullLocationData = () =>
+    setShowFullLocationData(!showFullLocationData)
 
   const [showViolationDetail, setshowViolationDetail] = useState(false)
   const [violationToInspect, setViolationToInspect] =
@@ -135,12 +141,14 @@ const ViolationCardList = ({
             currentSortType={currentSortType}
             index={versionedIndex}
             key={versionedIndex}
+            showFullFineData={showFullFineData}
+            showFullLocationData={showFullLocationData}
             showOffCanvasFunction={showOffCanvas}
             sortAscending={sortAscending}
           />
         )
       }),
-    [currentSortType, sortAscending],
+    [currentSortType, showFullFineData, showFullLocationData, sortAscending],
   )
 
   return (
@@ -149,6 +157,10 @@ const ViolationCardList = ({
         setViolationsListVisibilityFunction={
           setViolationsListVisibilityFunction
         }
+        showFullFineData={showFullFineData}
+        showFullLocationData={showFullLocationData}
+        toggleShowFullFineDataFunction={toggleShowFullFineData}
+        toggleShowFullLocationDataFunction={toggleShowFullLocationData}
         vehicle={vehicle}
         violationsListIsVisible={violationsListIsVisible}
       />

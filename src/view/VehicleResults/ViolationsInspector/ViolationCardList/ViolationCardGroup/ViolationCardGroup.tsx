@@ -52,6 +52,8 @@ const ViolationCardGroup = ({
   bucketName,
   currentSortType,
   index,
+  showFullFineData,
+  showFullLocationData,
   showOffCanvasFunction,
   sortAscending,
 }: {
@@ -59,6 +61,8 @@ const ViolationCardGroup = ({
   bucket: Violation[]
   currentSortType: Sort
   index: string | number
+  showFullFineData: boolean
+  showFullLocationData: boolean
   showOffCanvasFunction: (violation: Violation) => void
   sortAscending: boolean
 }) => {
@@ -102,6 +106,8 @@ const ViolationCardGroup = ({
             key={`${index}-card`}
             index={index}
             inspectViolationFunction={showOffCanvasFunction}
+            showFullFineData={showFullFineData}
+            showFullLocationData={showFullLocationData}
             violation={violation}
           />
         ))}

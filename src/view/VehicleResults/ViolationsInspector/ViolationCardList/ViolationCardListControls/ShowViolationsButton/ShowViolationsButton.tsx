@@ -42,7 +42,7 @@ const ShowViolationsButton = ({
   return (
     <button
       aria-controls={`violations-table-${vehicle.uniqueIdentifier}`}
-      aria-expanded="false"
+      aria-expanded={violationsListIsVisible}
       className={`btn btn-block ${buttonOutlineStyle}`}
       disabled={!vehicleHasViolations}
       onClick={(e) => {

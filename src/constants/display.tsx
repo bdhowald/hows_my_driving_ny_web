@@ -54,6 +54,10 @@ export default {
     },
   },
   lookups: {
+    toggleFullLocationView: {
+      hide: 'show location summary',
+      show: 'show full location',
+    },
     toggleFullFinesView: {
       hide: 'show fines summary',
       show: 'show fines details',

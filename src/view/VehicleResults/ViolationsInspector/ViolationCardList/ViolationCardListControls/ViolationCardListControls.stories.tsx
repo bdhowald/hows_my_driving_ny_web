@@ -48,11 +48,13 @@ const vehicleWithNoViolations = VehicleFactory.build({
 })
 
 const setViolationsListVisibilityFunction = () => null
+const toggleShowFullFineDataFunction = () => null
+const toggleShowFullLocationDataFunction = () => null
 
-export const VehicleWithViolationsListVisible: Story = {
+export const VehicleWithNoViolationsListVisible: Story = {
   args: {
     setViolationsListVisibilityFunction,
-    vehicle: vehicleWithViolations,
+    vehicle: vehicleWithNoViolations,
     violationsListIsVisible: true,
   },
 }
@@ -65,12 +67,56 @@ export const VehicleWithViolationsListNotVisible: Story = {
   },
 }
 
-export const VehicleWithNoViolationsListVisible: Story = {
-  args: {
-    setViolationsListVisibilityFunction,
-    vehicle: vehicleWithNoViolations,
-    violationsListIsVisible: true,
-  },
-}
+export const VehicleWithViolationsListVisibleFinesSummaryAndLocationSummary: Story =
+  {
+    args: {
+      setViolationsListVisibilityFunction,
+      showFullFineData: false,
+      showFullLocationData: false,
+      toggleShowFullFineDataFunction,
+      toggleShowFullLocationDataFunction,
+      vehicle: vehicleWithViolations,
+      violationsListIsVisible: true,
+    },
+  }
+
+export const VehicleWithViolationsListVisibleFinesDetailsAndLocationSummary: Story =
+  {
+    args: {
+      setViolationsListVisibilityFunction,
+      showFullFineData: true,
+      showFullLocationData: false,
+      toggleShowFullFineDataFunction,
+      toggleShowFullLocationDataFunction,
+      vehicle: vehicleWithViolations,
+      violationsListIsVisible: true,
+    },
+  }
+
+export const VehicleWithViolationsListVisibleFinesSummaryAndLocationDetails: Story =
+  {
+    args: {
+      setViolationsListVisibilityFunction,
+      showFullFineData: false,
+      showFullLocationData: true,
+      toggleShowFullFineDataFunction,
+      toggleShowFullLocationDataFunction,
+      vehicle: vehicleWithViolations,
+      violationsListIsVisible: true,
+    },
+  }
+
+export const VehicleWithViolationsListVisibleFinesDetailsAndLocationDetails: Story =
+  {
+    args: {
+      setViolationsListVisibilityFunction,
+      showFullFineData: true,
+      showFullLocationData: true,
+      toggleShowFullFineDataFunction,
+      toggleShowFullLocationDataFunction,
+      vehicle: vehicleWithViolations,
+      violationsListIsVisible: true,
+    },
+  }
 
 export default meta

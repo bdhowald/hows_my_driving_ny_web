@@ -1,6 +1,7 @@
 import React from 'react'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 
+import { SMALL_BREAKPOINT } from 'constants/breakpoints'
 import L10N from 'constants/display'
 import { APPLE_SEARCH_PREFIX, GOOGLE_SEARCH_PREFIX } from 'constants/endpoints'
 import Violation from 'models/Violation/Violation'
@@ -12,7 +13,6 @@ import standardizeLocation from 'utils/displayResults/standardizeLocation/standa
 import FinesBreakdown from 'view/VehicleResults/FinesBreakdown/FinesBreakdown'
 
 const IOS_USER_AGENT_STRING = /iPad|iPhone|iPod/
-const SMALL_BREAKPOINT = 576
 
 type ToggleOffCanvasFunction = () => void
 

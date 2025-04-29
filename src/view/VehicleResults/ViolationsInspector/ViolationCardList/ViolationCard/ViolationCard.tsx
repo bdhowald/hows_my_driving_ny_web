@@ -87,10 +87,14 @@ const ViolationDateTimeAspect = ({
 const ViolationCard = ({
   index,
   inspectViolationFunction,
+  showFullFineData,
+  showFullLocationData,
   violation,
 }: {
   index: number
   inspectViolationFunction: (violation: Violation) => void
+  showFullFineData: boolean
+  showFullLocationData: boolean
   violation: Violation
 }) => {
   const getViolationRowClassName = (
@@ -110,8 +114,50 @@ const ViolationCard = ({
 
   const tableRowClass = getViolationRowClassName(violation.humanizedDescription)
 
+  const violationLocation = violation.location ?? 'No Location Available'
+
   const violationDescription =
     violation.humanizedDescription ?? 'No Description Available'
+
+  if (showFullFineData || showFullLocationData) {
+    return (
+      <div className={`violation-card expanded-details ${tableRowClass}`}>
+        <div className="violation-card-row">
+          <ViolationDateTimeAspect
+            violation={violation}
+            inspectViolationFunction={inspectViolationFunction}
+          />
+          {showFullLocationData ? (
+            <div className="expanded-location">
+              <div className="violation-location">
+                <span>{violationLocation}</span>
+              </div>
+              <div className="violation-borough-abbreviation">
+                <span>{violation.getBorough()}</span>
+              </div>
+            </div>
+          ) : (
+            <div>{violation.getBorough()}</div>
+          )}
+        </div>
+        <div className="violation-card-row">
+          <div>{violationDescription}</div>
+          <div>
+            <FinesBreakdown.SingleViolationFinesBreakdown
+              dueAmount={violation.amountDue}
+              fineAmount={violation.fineAmount}
+              interestAmount={violation.interestAmount}
+              isViolationInJudgment={!!violation.judgmentEntryDate}
+              paymentAmount={violation.paymentAmount}
+              penaltyAmount={violation.penaltyAmount}
+              reductionAmount={violation.reductionAmount}
+              showFullFineData={showFullFineData}
+            />
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className={`violation-card ${tableRowClass}`}>

@@ -25,18 +25,44 @@ describe('ViolationCardGroup', () => {
   ]
 
   describe('renders without error', () => {
-    it('should render without error', () => {
-      render(
-        <ViolationCardGroup
-          bucket={violations}
-          bucketName="2024"
-          currentSortType={Sort.DATE}
-          index="NY:ABC1234:-2024-date-true"
-          showOffCanvasFunction={showOffCanvasFunction}
-          sortAscending={true}
-        />,
-      )
-    })
+    test.each([
+      // Show full fine and location data
+      {
+        showFullFineData: true,
+        showFullLocationData: true,
+      },
+      // Show full fine data only
+      {
+        showFullFineData: true,
+        showFullLocationData: false,
+      },
+      // Show full location data only
+      {
+        showFullFineData: false,
+        showFullLocationData: true,
+      },
+      // Show summaries only
+      {
+        showFullFineData: false,
+        showFullLocationData: false,
+      },
+    ])(
+      'should render without error',
+      ({ showFullFineData, showFullLocationData }) => {
+        render(
+          <ViolationCardGroup
+            bucket={violations}
+            bucketName="2024"
+            currentSortType={Sort.DATE}
+            index="NY:ABC1234:-2024-date-true"
+            showFullFineData={showFullFineData}
+            showFullLocationData={showFullLocationData}
+            showOffCanvasFunction={showOffCanvasFunction}
+            sortAscending={true}
+          />,
+        )
+      },
+    )
   })
 
   it('should display the group header and group violations when expanded', () => {
@@ -46,6 +72,8 @@ describe('ViolationCardGroup', () => {
         bucketName="2024"
         currentSortType={Sort.DATE}
         index="NY:ABC1234:-2024-date-true"
+        showFullFineData={false}
+        showFullLocationData={false}
         showOffCanvasFunction={showOffCanvasFunction}
         sortAscending={true}
       />,
@@ -70,6 +98,8 @@ describe('ViolationCardGroup', () => {
         bucketName="2024"
         currentSortType={Sort.DATE}
         index="NY:ABC1234:-2024-date-true"
+        showFullFineData={false}
+        showFullLocationData={false}
         showOffCanvasFunction={showOffCanvasFunction}
         sortAscending={true}
       />,

@@ -67,6 +67,28 @@ export const NoBoroughData: Story = {
   },
 }
 
+export const FullFineData: Story = {
+  args: {
+    showFullFineData: true,
+    violation: ViolationFactory.build(fineData),
+  },
+}
+
+export const FullLocationData: Story = {
+  args: {
+    showFullLocationData: true,
+    violation: ViolationFactory.build(fineData),
+  },
+}
+
+export const FullFineAndLocationData: Story = {
+  args: {
+    showFullFineData: true,
+    showFullLocationData: true,
+    violation: ViolationFactory.build(fineData),
+  },
+}
+
 export const NoDateTime: Story = {
   args: {
     violation: ViolationFactory.build({
