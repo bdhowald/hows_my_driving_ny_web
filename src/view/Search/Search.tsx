@@ -212,6 +212,61 @@ const Search = ({
     }
   }, [])
 
+  const retrieveLookupsFromCookieIdentifiers = () => {
+    // Prevent another button press/submission
+    setLookupInFlight(true)
+
+    // Previous lookups available in cookie
+    try {
+      // Get unique identifiers from cookie
+      const cookieString: string = cookies[LOOKUP_IDENTIFIER_COOKIE] ?? ''
+
+      // Filter out duplicate values and reverse the array.
+      // The cookies are stored with the most recent identifiers
+      // first, so searching for them in reverse order preserves
+      // the quality that top results are more recent.
+      const uniqueIdentifiersFromCookies = cookieString
+        .split(',')
+        .filter(
+          (value, index, self) =>
+            self.indexOf(value) === index &&
+            // Don't lookup unique identifier twice if cookie value matches route.
+            value !== previousLookupUniqueIdentifierFromQuery,
+        )
+        .reverse()
+
+      // Gather the promises for the previous lookups
+      const lookupPromises: Promise<VehicleQueryResponse>[] =
+        uniqueIdentifiersFromCookies.map(
+          // query for each
+          async (uniqueIdentifier: string) =>
+            getPreviousLookup(uniqueIdentifier),
+        )
+
+      // Handle results
+      Promise.all(lookupPromises)
+        .then((queries) =>
+          queries.forEach((response) =>
+            handleLookupResults({
+              response,
+              fromPreviousLookupUniqueIdentifier: false,
+              expandResults: false,
+              setQueriedVehiclesFunction,
+            }),
+          ),
+        )
+        .catch((error) => {
+          if (error) {
+            setSearchErrorFunction(true)
+          }
+        })
+        .finally(() => setLookupInFlight(false))
+    } catch (_: unknown) {
+      // If queries return errors, blank out cookie
+      setOrRemoveLookupIdentifierCookie(undefined)
+    }
+  }
+
   useEffect(() => {
     const uniqueIdentifiersToSaveInCookie =
       constructLookupIdentifierCookie(queriedVehicles)
@@ -252,58 +307,7 @@ const Search = ({
       }
 
       if (cookies[LOOKUP_IDENTIFIER_COOKIE]) {
-        // Prevent another button press/submission
-        setLookupInFlight(true)
-
-        // Previous lookups available in cookie
-        try {
-          // Get unique identifiers from cookie
-          const cookieString: string = cookies[LOOKUP_IDENTIFIER_COOKIE] ?? ''
-
-          // Filter out duplicate values and reverse the array.
-          // The cookies are stored with the most recent identifiers
-          // first, so searching for them in reverse order preserves
-          // the quality that top results are more recent.
-          const uniqueIdentifiersFromCookies = cookieString
-            .split(',')
-            .filter(
-              (value, index, self) =>
-                self.indexOf(value) === index &&
-                // Don't lookup unique identifier twice if cookie value matches route.
-                value !== previousLookupUniqueIdentifierFromQuery,
-            )
-            .reverse()
-
-          // Gather the promises for the previous lookups
-          const lookupPromises: Promise<VehicleQueryResponse>[] =
-            uniqueIdentifiersFromCookies.map(
-              // query for each
-              async (uniqueIdentifier: string) =>
-                getPreviousLookup(uniqueIdentifier),
-            )
-
-          // Handle results
-          Promise.all(lookupPromises)
-            .then((queries) =>
-              queries.forEach((response) =>
-                handleLookupResults({
-                  response,
-                  fromPreviousLookupUniqueIdentifier: false,
-                  expandResults: false,
-                  setQueriedVehiclesFunction,
-                }),
-              ),
-            )
-            .catch((error) => {
-              if (error) {
-                setSearchErrorFunction(true)
-              }
-            })
-            .finally(() => setLookupInFlight(false))
-        } catch (_: unknown) {
-          // If queries return errors, blank out cookie
-          setOrRemoveLookupIdentifierCookie(undefined)
-        }
+        retrieveLookupsFromCookieIdentifiers()
       }
     }
     displayPreviousLookup()
@@ -373,6 +377,13 @@ const Search = ({
   ) => {
     // Prevent another button press/submission
     setLookupInFlight(true)
+
+    if (searchError) {
+      // If we are recovering from a previous query error,
+      // try to retrieve the previous lookups first. Otherwise,
+      // we'll lose all of our previous queries.
+      retrieveLookupsFromCookieIdentifiers()
+    }
 
     const mixpanelId = mixpanel?.get_distinct_id()
 
