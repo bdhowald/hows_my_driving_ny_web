@@ -1744,7 +1744,7 @@ div.container-fluid
   div.violation-location {
   align-items: start;
   display: flex;
-  flex: 2;
+  flex: 13;
   flex-direction: column;
   justify-content: center;
   text-align: left;
@@ -1763,7 +1763,7 @@ div.container-fluid
   div.violation-borough-abbreviation {
   align-items: end;
   display: flex;
-  flex: 1;
+  flex: 7;
   flex-direction: column;
   justify-content: center;
   margin-left: 0.5rem;
