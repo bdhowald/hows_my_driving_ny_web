@@ -427,7 +427,7 @@ describe('LookupInfo', () => {
           </CookiesProvider>,
         )
 
-        expect(screen.queryByText('Previous:')).not.toBeInTheDocument()
+        expect(screen.queryByText('Last Queried:')).not.toBeInTheDocument()
       })
 
       it('should show the previous lookup field when there is a previous lookup', () => {
@@ -441,7 +441,7 @@ describe('LookupInfo', () => {
           </CookiesProvider>,
         )
 
-        expect(screen.queryByText('Previous:')).toBeInTheDocument()
+        expect(screen.queryByText('Last Queried:')).toBeInTheDocument()
       })
 
       it('should show the number of new violations since a previous lookup', () => {
@@ -690,7 +690,7 @@ describe('LookupInfo', () => {
           </CookiesProvider>,
         )
 
-        expect(screen.queryByText('Previous:')).not.toBeInTheDocument()
+        expect(screen.queryByText('Last Queried:')).not.toBeInTheDocument()
       })
 
       it('should show the previous lookup field when there is a previous lookup', () => {
@@ -704,7 +704,7 @@ describe('LookupInfo', () => {
           </CookiesProvider>,
         )
 
-        expect(screen.queryByText('Previous:')).toBeInTheDocument()
+        expect(screen.queryByText('Last Queried:')).toBeInTheDocument()
       })
 
       it('should show the number of new violations since a previous lookup', () => {

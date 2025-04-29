@@ -49,7 +49,7 @@ const PlateInfo = ({ vehicle }: { vehicle: Vehicle }) => {
           <div>{getRegionKeyName(region)}:</div>
           <div>Plate type:</div>
           <div>Lookups:</div>
-          {!!lastQueriedDateString && <div>Previous:</div>}
+          {!!lastQueriedDateString && <div>Last Queried:</div>}
         </div>
         <div className="values lookup-info">
           <div>{vehicle.plate}</div>
