@@ -378,7 +378,7 @@ const Search = ({
     // Prevent another button press/submission
     setLookupInFlight(true)
 
-    if (searchError) {
+    if (searchError && cookies[LOOKUP_IDENTIFIER_COOKIE]) {
       // If we are recovering from a previous query error,
       // try to retrieve the previous lookups first. Otherwise,
       // we'll lose all of our previous queries.
