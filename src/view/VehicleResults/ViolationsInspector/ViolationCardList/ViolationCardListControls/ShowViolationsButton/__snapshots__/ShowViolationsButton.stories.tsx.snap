@@ -13,7 +13,7 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/Violati
                   <div class="row">
                     <div class="d-grid gap-2">
                       <button aria-controls="violations-table-e5f6g7h8"
-                              aria-expanded="false"
+                              aria-expanded="true"
                               class="btn btn-block btn-outline-secondary"
                               disabled
                               type="button"
@@ -78,7 +78,7 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/Violati
                   <div class="row">
                     <div class="d-grid gap-2">
                       <button aria-controls="violations-table-e5f6g7h8"
-                              aria-expanded="false"
+                              aria-expanded="true"
                               class="btn btn-block btn-outline-primary"
                               type="button"
                       >

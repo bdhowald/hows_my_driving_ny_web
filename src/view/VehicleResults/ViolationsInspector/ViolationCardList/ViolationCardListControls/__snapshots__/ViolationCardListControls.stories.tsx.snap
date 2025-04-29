@@ -15,7 +15,7 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/Violati
                   <div class="row">
                     <div class="d-grid gap-2">
                       <button aria-controls="violations-table-e5f6g7h8"
-                              aria-expanded="false"
+                              aria-expanded="true"
                               class="btn btn-block btn-outline-secondary"
                               disabled
                               type="button"
@@ -69,7 +69,7 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/Violati
 </div>
 `;
 
-exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCardListControls VehicleWithViolationsListVisible smoke-test 1`] = `
+exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCardListControls VehicleWithViolationsListVisibleFinesDetailsAndLocationDetails smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
@@ -84,11 +84,153 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/Violati
                   <div class="row">
                     <div class="d-grid gap-2">
                       <button aria-controls="violations-table-e5f6g7h8"
-                              aria-expanded="false"
+                              aria-expanded="true"
                               class="btn btn-block btn-outline-primary"
                               type="button"
                       >
                         hide violations
+                      </button>
+                      <button class="btn btn-block btn-outline-primary"
+                              type="button"
+                      >
+                        show fines summary
+                      </button>
+                      <button class="btn btn-block btn-outline-primary"
+                              type="button"
+                      >
+                        show location summary
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCardListControls VehicleWithViolationsListVisibleFinesDetailsAndLocationSummary smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violation-card-list-wrapper">
+                <div class="violation-card-list-controls"
+                     data-testid="vehicle-violation-card-list-controls"
+                >
+                  <div class="row">
+                    <div class="d-grid gap-2">
+                      <button aria-controls="violations-table-e5f6g7h8"
+                              aria-expanded="true"
+                              class="btn btn-block btn-outline-primary"
+                              type="button"
+                      >
+                        hide violations
+                      </button>
+                      <button class="btn btn-block btn-outline-primary"
+                              type="button"
+                      >
+                        show fines summary
+                      </button>
+                      <button class="btn btn-block btn-outline-primary"
+                              type="button"
+                      >
+                        show full location
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCardListControls VehicleWithViolationsListVisibleFinesSummaryAndLocationDetails smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violation-card-list-wrapper">
+                <div class="violation-card-list-controls"
+                     data-testid="vehicle-violation-card-list-controls"
+                >
+                  <div class="row">
+                    <div class="d-grid gap-2">
+                      <button aria-controls="violations-table-e5f6g7h8"
+                              aria-expanded="true"
+                              class="btn btn-block btn-outline-primary"
+                              type="button"
+                      >
+                        hide violations
+                      </button>
+                      <button class="btn btn-block btn-outline-primary"
+                              type="button"
+                      >
+                        show fines details
+                      </button>
+                      <button class="btn btn-block btn-outline-primary"
+                              type="button"
+                      >
+                        show location summary
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCardListControls VehicleWithViolationsListVisibleFinesSummaryAndLocationSummary smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violation-card-list-wrapper">
+                <div class="violation-card-list-controls"
+                     data-testid="vehicle-violation-card-list-controls"
+                >
+                  <div class="row">
+                    <div class="d-grid gap-2">
+                      <button aria-controls="violations-table-e5f6g7h8"
+                              aria-expanded="true"
+                              class="btn btn-block btn-outline-primary"
+                              type="button"
+                      >
+                        hide violations
+                      </button>
+                      <button class="btn btn-block btn-outline-primary"
+                              type="button"
+                      >
+                        show fines details
+                      </button>
+                      <button class="btn btn-block btn-outline-primary"
+                              type="button"
+                      >
+                        show full location
                       </button>
                     </div>
                   </div>

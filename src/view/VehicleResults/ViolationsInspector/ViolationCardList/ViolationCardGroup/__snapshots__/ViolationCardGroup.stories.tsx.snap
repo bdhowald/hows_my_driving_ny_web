@@ -104,3 +104,372 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/Violati
   </div>
 </div>
 `;
+
+exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCardGroup ShowFullFineAndLocationData smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violation-card-list-wrapper"
+                   style="width: 100%;"
+              >
+                <div class="violation-card-list bg-body">
+                  <div class="violation-card-sort-divider bg-dark"
+                       data-testid="sort-divider-date-ascending-2024"
+                  >
+                    <span class="divider-group-name">
+                      2024
+                    </span>
+                    <span class="collapsible-toggle">
+                      3 violations [–]
+                    </span>
+                  </div>
+                  <div class="violation-card expanded-details bg-body-tertiary">
+                    <div class="violation-card-row">
+                      <div>
+                        <a data-bs-toggle="offcanvas"
+                           href="#showViolationDetails"
+                           role="button"
+                           aria-controls="showViolationDetails"
+                        >
+                          11/07/2024 10:47 PM
+                        </a>
+                      </div>
+                      <div class="expanded-location">
+                        <div class="violation-location">
+                          <span>
+                            8002 3rd Ave
+                          </span>
+                        </div>
+                        <div class="violation-borough-abbreviation">
+                          <span>
+                            Brooklyn
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="violation-card-row">
+                      <div>
+                        No Standing - Bus Stop
+                      </div>
+                      <div>
+                        N/A
+                      </div>
+                    </div>
+                  </div>
+                  <div class="violation-card expanded-details bg-body-secondary">
+                    <div class="violation-card-row">
+                      <div>
+                        <a data-bs-toggle="offcanvas"
+                           href="#showViolationDetails"
+                           role="button"
+                           aria-controls="showViolationDetails"
+                        >
+                          11/07/2024 10:47 PM
+                        </a>
+                      </div>
+                      <div class="expanded-location">
+                        <div class="violation-location">
+                          <span>
+                            8002 3rd Ave
+                          </span>
+                        </div>
+                        <div class="violation-borough-abbreviation">
+                          <span>
+                            Brooklyn
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="violation-card-row">
+                      <div>
+                        No Standing - Bus Stop
+                      </div>
+                      <div>
+                        N/A
+                      </div>
+                    </div>
+                  </div>
+                  <div class="violation-card expanded-details bg-body-tertiary">
+                    <div class="violation-card-row">
+                      <div>
+                        <a data-bs-toggle="offcanvas"
+                           href="#showViolationDetails"
+                           role="button"
+                           aria-controls="showViolationDetails"
+                        >
+                          11/07/2024 10:47 PM
+                        </a>
+                      </div>
+                      <div class="expanded-location">
+                        <div class="violation-location">
+                          <span>
+                            8002 3rd Ave
+                          </span>
+                        </div>
+                        <div class="violation-borough-abbreviation">
+                          <span>
+                            Brooklyn
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="violation-card-row">
+                      <div>
+                        No Standing - Bus Stop
+                      </div>
+                      <div>
+                        N/A
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCardGroup ShowFullFineData smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violation-card-list-wrapper"
+                   style="width: 100%;"
+              >
+                <div class="violation-card-list bg-body">
+                  <div class="violation-card-sort-divider bg-dark"
+                       data-testid="sort-divider-date-ascending-2024"
+                  >
+                    <span class="divider-group-name">
+                      2024
+                    </span>
+                    <span class="collapsible-toggle">
+                      3 violations [–]
+                    </span>
+                  </div>
+                  <div class="violation-card expanded-details bg-body-tertiary">
+                    <div class="violation-card-row">
+                      <div>
+                        <a data-bs-toggle="offcanvas"
+                           href="#showViolationDetails"
+                           role="button"
+                           aria-controls="showViolationDetails"
+                        >
+                          11/07/2024 10:47 PM
+                        </a>
+                      </div>
+                      <div>
+                        Brooklyn
+                      </div>
+                    </div>
+                    <div class="violation-card-row">
+                      <div>
+                        No Standing - Bus Stop
+                      </div>
+                      <div>
+                        N/A
+                      </div>
+                    </div>
+                  </div>
+                  <div class="violation-card expanded-details bg-body-secondary">
+                    <div class="violation-card-row">
+                      <div>
+                        <a data-bs-toggle="offcanvas"
+                           href="#showViolationDetails"
+                           role="button"
+                           aria-controls="showViolationDetails"
+                        >
+                          11/07/2024 10:47 PM
+                        </a>
+                      </div>
+                      <div>
+                        Brooklyn
+                      </div>
+                    </div>
+                    <div class="violation-card-row">
+                      <div>
+                        No Standing - Bus Stop
+                      </div>
+                      <div>
+                        N/A
+                      </div>
+                    </div>
+                  </div>
+                  <div class="violation-card expanded-details bg-body-tertiary">
+                    <div class="violation-card-row">
+                      <div>
+                        <a data-bs-toggle="offcanvas"
+                           href="#showViolationDetails"
+                           role="button"
+                           aria-controls="showViolationDetails"
+                        >
+                          11/07/2024 10:47 PM
+                        </a>
+                      </div>
+                      <div>
+                        Brooklyn
+                      </div>
+                    </div>
+                    <div class="violation-card-row">
+                      <div>
+                        No Standing - Bus Stop
+                      </div>
+                      <div>
+                        N/A
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCardGroup ShowFullLocationData smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violation-card-list-wrapper"
+                   style="width: 100%;"
+              >
+                <div class="violation-card-list bg-body">
+                  <div class="violation-card-sort-divider bg-dark"
+                       data-testid="sort-divider-date-ascending-2024"
+                  >
+                    <span class="divider-group-name">
+                      2024
+                    </span>
+                    <span class="collapsible-toggle">
+                      3 violations [–]
+                    </span>
+                  </div>
+                  <div class="violation-card expanded-details bg-body-tertiary">
+                    <div class="violation-card-row">
+                      <div>
+                        <a data-bs-toggle="offcanvas"
+                           href="#showViolationDetails"
+                           role="button"
+                           aria-controls="showViolationDetails"
+                        >
+                          11/07/2024 10:47 PM
+                        </a>
+                      </div>
+                      <div class="expanded-location">
+                        <div class="violation-location">
+                          <span>
+                            8002 3rd Ave
+                          </span>
+                        </div>
+                        <div class="violation-borough-abbreviation">
+                          <span>
+                            Brooklyn
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="violation-card-row">
+                      <div>
+                        No Standing - Bus Stop
+                      </div>
+                      <div>
+                        N/A
+                      </div>
+                    </div>
+                  </div>
+                  <div class="violation-card expanded-details bg-body-secondary">
+                    <div class="violation-card-row">
+                      <div>
+                        <a data-bs-toggle="offcanvas"
+                           href="#showViolationDetails"
+                           role="button"
+                           aria-controls="showViolationDetails"
+                        >
+                          11/07/2024 10:47 PM
+                        </a>
+                      </div>
+                      <div class="expanded-location">
+                        <div class="violation-location">
+                          <span>
+                            8002 3rd Ave
+                          </span>
+                        </div>
+                        <div class="violation-borough-abbreviation">
+                          <span>
+                            Brooklyn
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="violation-card-row">
+                      <div>
+                        No Standing - Bus Stop
+                      </div>
+                      <div>
+                        N/A
+                      </div>
+                    </div>
+                  </div>
+                  <div class="violation-card expanded-details bg-body-tertiary">
+                    <div class="violation-card-row">
+                      <div>
+                        <a data-bs-toggle="offcanvas"
+                           href="#showViolationDetails"
+                           role="button"
+                           aria-controls="showViolationDetails"
+                        >
+                          11/07/2024 10:47 PM
+                        </a>
+                      </div>
+                      <div class="expanded-location">
+                        <div class="violation-location">
+                          <span>
+                            8002 3rd Ave
+                          </span>
+                        </div>
+                        <div class="violation-borough-abbreviation">
+                          <span>
+                            Brooklyn
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="violation-card-row">
+                      <div>
+                        No Standing - Bus Stop
+                      </div>
+                      <div>
+                        N/A
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
