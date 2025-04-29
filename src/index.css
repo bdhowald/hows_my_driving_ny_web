@@ -1744,7 +1744,7 @@ div.container-fluid
   div.violation-location {
   align-items: start;
   display: flex;
-  flex: 3;
+  flex: 2;
   flex-direction: column;
   justify-content: center;
   text-align: left;
