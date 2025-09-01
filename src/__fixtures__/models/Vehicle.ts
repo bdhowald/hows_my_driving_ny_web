@@ -90,6 +90,7 @@ export const VehicleFactory = Factory.define<Vehicle, VehicleTransientParams>(
         totalReduced: 20,
       },
       fromPreviousLookupUniqueIdentifier: false,
+      lookupDate: '2025-09-01T22:52:02.000Z',
       plate: 'ABC1234',
       plateTypes: undefined,
       previousLookupDate: undefined,

@@ -6,17 +6,29 @@ import Vehicle from 'models/Vehicle/Vehicle'
 import getPlateTypesString from 'utils/search/getPlateType/getPlateTypeDisplayString/getPlateTypeDisplayString'
 import getRegionFromAbbreviation from 'utils/displayResults/getRegionFromAbbreviation/getRegionFromAbbreviation'
 
+const MAX_DATE_DIFF_TO_BE_CONSIDERED_RECENT = 1000 * 5 * 60
+
 const PlateInfo = ({ vehicle }: { vehicle: Vehicle }) => {
-  const getLastQueriedDateString = (
-    vehiclePreviousLookupDate: string | undefined,
-  ) => {
-    if (!vehiclePreviousLookupDate) {
+  const getDateStringforDisplay = (
+    lookupDateAsString: string | undefined,
+  ): string | undefined => {
+    if (!lookupDateAsString) {
       return undefined
     }
-    if (isNaN(Date.parse(vehiclePreviousLookupDate))) {
+    if (isNaN(Date.parse(lookupDateAsString))) {
       return undefined
     }
-    return L10N.sitewide.dateFormat.format(new Date(vehiclePreviousLookupDate))
+    const now = new Date()
+    const lookupDateAsDate = new Date(lookupDateAsString)
+
+    if (
+      now.getTime() - lookupDateAsDate.getTime() <=
+      MAX_DATE_DIFF_TO_BE_CONSIDERED_RECENT
+    ) {
+      return 'Now'
+    }
+
+    return L10N.sitewide.dateFormat.format(new Date(lookupDateAsString))
   }
 
   const getRegionKeyName = (regionObject: Region | undefined) => {
@@ -35,9 +47,10 @@ const PlateInfo = ({ vehicle }: { vehicle: Vehicle }) => {
     return 'Region'
   }
 
-  const lastQueriedDateString = getLastQueriedDateString(
+  const lastQueriedLookupDateString = getDateStringforDisplay(
     vehicle.previousLookupDate,
   )
+  const thisQueryLookupDateString = getDateStringforDisplay(vehicle.lookupDate)
 
   const region = getRegionFromAbbreviation(vehicle.state)
 
@@ -49,7 +62,8 @@ const PlateInfo = ({ vehicle }: { vehicle: Vehicle }) => {
           <div>{getRegionKeyName(region)}:</div>
           <div>Plate type:</div>
           <div>Lookups:</div>
-          {!!lastQueriedDateString && <div>Last Queried:</div>}
+          {!!thisQueryLookupDateString && <div>Queried On:</div>}
+          {!!lastQueriedLookupDateString && <div>Last Queried:</div>}
         </div>
         <div className="values lookup-info">
           <div>{vehicle.plate}</div>
@@ -59,7 +73,10 @@ const PlateInfo = ({ vehicle }: { vehicle: Vehicle }) => {
           </div>
           <div>{getPlateTypesString(vehicle.plateTypes)}</div>
           <div>{vehicle.timesQueried}</div>
-          {lastQueriedDateString && <div>{lastQueriedDateString}</div>}
+          {thisQueryLookupDateString && <div>{thisQueryLookupDateString}</div>}
+          {lastQueriedLookupDateString && (
+            <div>{lastQueriedLookupDateString}</div>
+          )}
         </div>
       </div>
     </div>

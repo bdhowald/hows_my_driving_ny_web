@@ -7,6 +7,7 @@ type Vehicle = {
   expandResults?: boolean
   fines: VehicleFineData
   fromPreviousLookupUniqueIdentifier?: boolean
+  lookupDate: string
   plate: string
   plateTypes: string[] | undefined
   previousLookupDate: string | undefined

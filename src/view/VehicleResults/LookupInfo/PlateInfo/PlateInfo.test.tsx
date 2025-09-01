@@ -36,25 +36,53 @@ describe('PlateInfo', () => {
     })
   })
 
-  describe('previous lookup info', () => {
-    it('should not show the previous lookup field when there are no previous lookups', () => {
-      const vehicle = VehicleFactory.build({
-        previousLookupDate: undefined,
+  describe('lookup dates', () => {
+    describe('current lookup date', () => {
+      it('should show the lookup date of the current lookup', () => {
+        const vehicle = VehicleFactory.build({
+          lookupDate: '2025-08-31T12:43:27.000Z',
+        })
+
+        render(<PlateInfo vehicle={vehicle} />)
+
+        expect(screen.getByText('Queried On:')).toBeInTheDocument()
+        expect(screen.getByText('08/31/2025')).toBeInTheDocument()
       })
 
-      render(<PlateInfo vehicle={vehicle} />)
+      it("should show 'Now' as the lookup date of the current lookup if it was created in the past five minutes", () => {
+        jest.useFakeTimers().setSystemTime(new Date('2025-08-31T12:43:27.000Z'))
 
-      expect(screen.queryByText('Last Queried:')).not.toBeInTheDocument()
+        const vehicle = VehicleFactory.build({
+          lookupDate: '2025-08-31T12:41:18.000Z',
+        })
+
+        render(<PlateInfo vehicle={vehicle} />)
+
+        expect(screen.getByText('Queried On:')).toBeInTheDocument()
+        expect(screen.getByText('Now')).toBeInTheDocument()
+      })
     })
 
-    it('should show the previous lookup field when there is a previous lookup', () => {
-      const vehicle = VehicleFactory.build({
-        previousLookupDate: '2023-07-12T13:17:54.000Z',
+    describe('previous lookup info', () => {
+      it('should not show the previous lookup field when there are no previous lookups', () => {
+        const vehicle = VehicleFactory.build({
+          previousLookupDate: undefined,
+        })
+
+        render(<PlateInfo vehicle={vehicle} />)
+
+        expect(screen.queryByText('Last Queried:')).not.toBeInTheDocument()
       })
 
-      render(<PlateInfo vehicle={vehicle} />)
+      it('should show the previous lookup field when there is a previous lookup', () => {
+        const vehicle = VehicleFactory.build({
+          previousLookupDate: '2023-07-12T13:17:54.000Z',
+        })
 
-      expect(screen.queryByText('Last Queried:')).toBeInTheDocument()
+        render(<PlateInfo vehicle={vehicle} />)
+
+        expect(screen.queryByText('Last Queried:')).toBeInTheDocument()
+      })
     })
   })
 

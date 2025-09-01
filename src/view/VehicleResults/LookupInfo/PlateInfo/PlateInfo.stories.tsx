@@ -47,6 +47,15 @@ export const HasPlateTypes: Story = {
     vehicle: VehicleFactory.build({ plateTypes: ['NYS'] }),
   },
 }
+export const HasPreviousLookups: Story = {
+  args: {
+    vehicle: VehicleFactory.build({
+      previousLookupDate: '2023-07-12T13:17:54.000Z',
+      previousViolationCount: 1,
+      timesQueried: 2,
+    }),
+  },
+}
 export const NoPlateTypes: Story = {
   args: {
     vehicle: VehicleFactory.build(),
@@ -55,6 +64,13 @@ export const NoPlateTypes: Story = {
 export const NoPreviousLookups: Story = {
   args: {
     vehicle: VehicleFactory.build({ timesQueried: 1 }),
+  },
+}
+export const QueriedRecently: Story = {
+  args: {
+    vehicle: VehicleFactory.build({
+      lookupDate: new Date().toISOString(),
+    }),
   },
 }
 
