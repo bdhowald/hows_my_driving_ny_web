@@ -71,7 +71,7 @@ describe('PlateInfo', () => {
 
         render(<PlateInfo vehicle={vehicle} />)
 
-        expect(screen.queryByText('Last Queried:')).not.toBeInTheDocument()
+        expect(screen.queryByText('Prev. Queried:')).not.toBeInTheDocument()
       })
 
       it('should show the previous lookup field when there is a previous lookup', () => {
@@ -81,7 +81,7 @@ describe('PlateInfo', () => {
 
         render(<PlateInfo vehicle={vehicle} />)
 
-        expect(screen.queryByText('Last Queried:')).toBeInTheDocument()
+        expect(screen.queryByText('Prev. Queried:')).toBeInTheDocument()
       })
     })
   })

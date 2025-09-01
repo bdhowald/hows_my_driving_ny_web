@@ -6,7 +6,6 @@ exports[`Components/SocialShareButton/BlueskySocialShareButton ReadyToShare smok
     <div class="col-md-12">
       <button aria-label="share lookup to Bluesky"
               data-testid="bluesky-share-button"
-              networkname="bluesky"
               class="react-share__ShareButton bluesky-share-button"
       >
         <svg viewbox="0 0 64 64"

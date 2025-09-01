@@ -351,7 +351,7 @@ describe('FetchViolations', () => {
           screen.getByText('Lookups:')
           screen.getByText('2')
 
-          screen.getByText('Last Queried:')
+          screen.getByText('Prev. Queried:')
           screen.getByText('11/12/2024')
 
           screen.getByText('Fined:')
@@ -483,7 +483,7 @@ describe('FetchViolations', () => {
           screen.getByText('Lookups:')
           screen.getByText('2')
 
-          screen.getByText('Last Queried:')
+          screen.getByText('Prev. Queried:')
           screen.getByText('11/12/2024')
 
           screen.getByText('Fined:')

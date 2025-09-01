@@ -26,7 +26,10 @@ exports[`Components/VehicleResults/LookupInfo NewViolationsSincePreviousLookup s
                           Lookups:
                         </div>
                         <div>
-                          Last Queried:
+                          Queried On:
+                        </div>
+                        <div>
+                          Prev. Queried:
                         </div>
                       </div>
                       <div class="values lookup-info">
@@ -46,6 +49,9 @@ exports[`Components/VehicleResults/LookupInfo NewViolationsSincePreviousLookup s
                         </div>
                         <div>
                           2
+                        </div>
+                        <div>
+                          09/01/2025
                         </div>
                         <div>
                           07/12/2023
@@ -190,6 +196,9 @@ exports[`Components/VehicleResults/LookupInfo NoPreviousLookups smoke-test 1`] =
                         <div>
                           Lookups:
                         </div>
+                        <div>
+                          Queried On:
+                        </div>
                       </div>
                       <div class="values lookup-info">
                         <div>
@@ -208,6 +217,9 @@ exports[`Components/VehicleResults/LookupInfo NoPreviousLookups smoke-test 1`] =
                         </div>
                         <div>
                           2
+                        </div>
+                        <div>
+                          09/01/2025
                         </div>
                       </div>
                     </div>
@@ -350,7 +362,10 @@ exports[`Components/VehicleResults/LookupInfo NoViolations smoke-test 1`] = `
                           Lookups:
                         </div>
                         <div>
-                          Last Queried:
+                          Queried On:
+                        </div>
+                        <div>
+                          Prev. Queried:
                         </div>
                       </div>
                       <div class="values lookup-info">
@@ -370,6 +385,9 @@ exports[`Components/VehicleResults/LookupInfo NoViolations smoke-test 1`] = `
                         </div>
                         <div>
                           2
+                        </div>
+                        <div>
+                          09/01/2025
                         </div>
                         <div>
                           07/12/2023
@@ -430,7 +448,10 @@ exports[`Components/VehicleResults/LookupInfo ViolationsAndAPreviousLookup smoke
                           Lookups:
                         </div>
                         <div>
-                          Last Queried:
+                          Queried On:
+                        </div>
+                        <div>
+                          Prev. Queried:
                         </div>
                       </div>
                       <div class="values lookup-info">
@@ -450,6 +471,9 @@ exports[`Components/VehicleResults/LookupInfo ViolationsAndAPreviousLookup smoke
                         </div>
                         <div>
                           2
+                        </div>
+                        <div>
+                          09/01/2025
                         </div>
                         <div>
                           07/12/2023

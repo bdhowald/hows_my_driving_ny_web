@@ -25,6 +25,9 @@ exports[`Components/VehicleResults/Body NoViolations smoke-test 1`] = `
                         <div>
                           Lookups:
                         </div>
+                        <div>
+                          Queried On:
+                        </div>
                       </div>
                       <div class="values lookup-info">
                         <div>
@@ -43,6 +46,9 @@ exports[`Components/VehicleResults/Body NoViolations smoke-test 1`] = `
                         </div>
                         <div>
                           2
+                        </div>
+                        <div>
+                          09/01/2025
                         </div>
                       </div>
                     </div>
@@ -121,6 +127,9 @@ exports[`Components/VehicleResults/Body ViolationsListHidden smoke-test 1`] = `
                         <div>
                           Lookups:
                         </div>
+                        <div>
+                          Queried On:
+                        </div>
                       </div>
                       <div class="values lookup-info">
                         <div>
@@ -139,6 +148,9 @@ exports[`Components/VehicleResults/Body ViolationsListHidden smoke-test 1`] = `
                         </div>
                         <div>
                           2
+                        </div>
+                        <div>
+                          09/01/2025
                         </div>
                       </div>
                     </div>
@@ -301,6 +313,9 @@ exports[`Components/VehicleResults/Body ViolationsListHiddenWithDangerousVehicle
                         <div>
                           Lookups:
                         </div>
+                        <div>
+                          Queried On:
+                        </div>
                       </div>
                       <div class="values lookup-info">
                         <div>
@@ -319,6 +334,9 @@ exports[`Components/VehicleResults/Body ViolationsListHiddenWithDangerousVehicle
                         </div>
                         <div>
                           2
+                        </div>
+                        <div>
+                          09/01/2025
                         </div>
                       </div>
                     </div>
@@ -511,6 +529,9 @@ exports[`Components/VehicleResults/Body ViolationsListVisible smoke-test 1`] = `
                         <div>
                           Lookups:
                         </div>
+                        <div>
+                          Queried On:
+                        </div>
                       </div>
                       <div class="values lookup-info">
                         <div>
@@ -529,6 +550,9 @@ exports[`Components/VehicleResults/Body ViolationsListVisible smoke-test 1`] = `
                         </div>
                         <div>
                           2
+                        </div>
+                        <div>
+                          09/01/2025
                         </div>
                       </div>
                     </div>
@@ -847,6 +871,9 @@ exports[`Components/VehicleResults/Body ViolationsListVisibleWithDangerousVehicl
                         <div>
                           Lookups:
                         </div>
+                        <div>
+                          Queried On:
+                        </div>
                       </div>
                       <div class="values lookup-info">
                         <div>
@@ -865,6 +892,9 @@ exports[`Components/VehicleResults/Body ViolationsListVisibleWithDangerousVehicl
                         </div>
                         <div>
                           2
+                        </div>
+                        <div>
+                          09/01/2025
                         </div>
                       </div>
                     </div>

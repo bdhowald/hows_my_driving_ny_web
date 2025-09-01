@@ -63,7 +63,7 @@ const PlateInfo = ({ vehicle }: { vehicle: Vehicle }) => {
           <div>Plate type:</div>
           <div>Lookups:</div>
           {!!thisQueryLookupDateString && <div>Queried On:</div>}
-          {!!lastQueriedLookupDateString && <div>Last Queried:</div>}
+          {!!lastQueriedLookupDateString && <div>Prev. Queried:</div>}
         </div>
         <div className="values lookup-info">
           <div>{vehicle.plate}</div>
