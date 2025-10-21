@@ -1,5 +1,5 @@
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
-import VehicleDisplayResult from 'utils/types/vehicleDisplayResult'
+import VehicleDisplayResult from 'types/vehicleDisplayResult'
 
 import handleLookupResults from './handleLookupResults'
 

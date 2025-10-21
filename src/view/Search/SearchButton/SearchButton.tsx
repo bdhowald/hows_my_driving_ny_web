@@ -11,7 +11,7 @@ const SearchButton = React.memo(
       <div className="form-group">
         <button
           className="form-control btn btn-primary"
-          disabled={!plateIdPresent || lookupInFlight || true}
+          disabled={!plateIdPresent || lookupInFlight}
           role="button"
           type="submit"
           value="Search"

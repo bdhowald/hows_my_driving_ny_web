@@ -6,8 +6,8 @@ import {
 } from 'constants/endpoints'
 import HttpMethod from 'constants/httpMethods'
 import request from 'utils/httpRequest'
-import { VehicleQueryRequest } from 'utils/types/requests'
-import { VehicleQueryResponse } from 'utils/types/responses'
+import { VehicleQueryRequest } from 'types/requests'
+import { VehicleQueryResponse } from 'types/responses'
 
 export const getPreviousLookup = (
   previousLookupIdentifier: string,

@@ -15,7 +15,7 @@ import {
   SCHOOL_ZONE_SPEED_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION,
   SCHOOL_ZONE_SPEED_CAMERA_VIOLATION_CODE,
 } from 'constants/violations'
-import { NonParkingViolationCode } from 'utils/types/violationCodes'
+import { NonParkingViolationCode } from 'types/violationCodes'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {

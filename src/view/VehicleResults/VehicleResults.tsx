@@ -4,7 +4,7 @@ import { useCookies } from 'react-cookie'
 
 import { USE_NEW_STYLE_DISPLAY_COOKIE } from 'constants/cookies'
 import Vehicle from 'models/Vehicle/Vehicle'
-import VehicleDisplayResult from 'utils/types/vehicleDisplayResult'
+import VehicleDisplayResult from 'types/vehicleDisplayResult'
 
 import Body from './Body/Body'
 import Header from './Header/Header'

@@ -13,7 +13,7 @@ import {
 import Vehicle from 'models/Vehicle/Vehicle'
 import Violation from 'models/Violation/Violation'
 import convertCamelCaseToTitleCase from 'utils/displayResults/convertCamelCaseToTitleCase/convertCamelCaseToTitleCase'
-import { NonParkingViolationCode } from 'utils/types/violationCodes'
+import { NonParkingViolationCode } from 'types/violationCodes'
 
 const NO_BOROUGH_AVAILABLE = 'No Borough Available'
 

@@ -1,7 +1,7 @@
 import { performNewLookup } from 'boundaries/http'
 import plateTypes, { PlateType } from 'constants/plateTypes'
-import { VehicleQueryRequest } from 'utils/types/requests'
-import { VehicleQueryResponse } from 'utils/types/responses'
+import { VehicleQueryRequest } from 'types/requests'
+import { VehicleQueryResponse } from 'types/responses'
 
 const performLookup = async (
   plate: string,

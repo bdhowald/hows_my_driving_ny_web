@@ -1,4 +1,4 @@
-import VehicleDisplayResult from 'utils/types/vehicleDisplayResult'
+import VehicleDisplayResult from 'types/vehicleDisplayResult'
 
 const findVehicleInList = (
   vehicleDisplayResultList: VehicleDisplayResult[],

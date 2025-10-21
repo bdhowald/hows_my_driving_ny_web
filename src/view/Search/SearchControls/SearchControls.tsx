@@ -5,7 +5,7 @@ import plateTypes from 'constants/plateTypes'
 import regions from 'constants/regions'
 import SearchSelect from 'view/Search/SearchSelect/SearchSelect'
 import SearchButton from 'view/Search/SearchButton/SearchButton'
-import PlateLookup from 'utils/types/plateLookup'
+import PlateLookup from 'types/plateLookup'
 
 type SearchControlsProps = {
   currentLookup: PlateLookup

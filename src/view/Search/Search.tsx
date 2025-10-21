@@ -14,9 +14,9 @@ import L10N from 'constants/display'
 import { PlateType } from 'constants/plateTypes'
 import handleLookupResults from 'utils/processResults/handleLookupResults/handleLookupResults'
 import performLookup from 'utils/search/performLookup/performLookup'
-import PlateLookup from 'utils/types/plateLookup'
-import VehicleDisplayResult from 'utils/types/vehicleDisplayResult'
-import { VehicleQueryResponse } from 'utils/types/responses'
+import PlateLookup from 'types/plateLookup'
+import VehicleDisplayResult from 'types/vehicleDisplayResult'
+import { VehicleQueryResponse } from 'types/responses'
 
 import SearchControls from 'view/Search/SearchControls/SearchControls'
 

@@ -1,7 +1,7 @@
 import findVehicleInList from 'utils/processResults/findVehicleInList/findVehicleInList'
 import insertLookupIntoListOfQueriedVehicles from 'utils/processResults/insertLookupIntoListOfQueriedVehicles/insertLookupIntoListOfQueriedVehicles'
-import VehicleDisplayResult from 'utils/types/vehicleDisplayResult'
-import { VehicleQueryResponse } from 'utils/types/responses'
+import VehicleDisplayResult from 'types/vehicleDisplayResult'
+import { VehicleQueryResponse } from 'types/responses'
 
 const handleLookupResults = ({
   response,

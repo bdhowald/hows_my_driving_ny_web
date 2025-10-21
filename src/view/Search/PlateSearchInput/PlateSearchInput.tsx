@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import L10N from 'constants/display'
-import PlateLookup from 'utils/types/plateLookup'
+import PlateLookup from 'types/plateLookup'
 
 type PlateSearchInputProps = {
   currentLookup: PlateLookup
