@@ -4,7 +4,7 @@ export type QueuedCall = {
 }
 
 export interface Tracker {
-  getDistinctId: () => string,
-  identify?: (userId: string, traits: Record<string, any>) => void,
+  getDistinctId: () => string
+  identify?: (userId: string, traits: Record<string, any>) => void
   track?: (eventName: string, eventProperties: Record<string, any>) => void
 }

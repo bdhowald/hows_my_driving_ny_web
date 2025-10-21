@@ -10,7 +10,7 @@ class AnalyticsTracker {
   }
 
   beginTracking() {
-    if(!this.isTrackerReady) {
+    if (!this.isTrackerReady) {
       this.isTrackerReady = true
       this.flushQueuedEvents()
     }
@@ -25,7 +25,7 @@ class AnalyticsTracker {
     }
   }
 
-  getDistinctId(trackerName :string): string | undefined {
+  getDistinctId(trackerName: string): string | undefined {
     const tracker = this.trackers.get(trackerName)
     if (!tracker) {
       return
@@ -34,7 +34,7 @@ class AnalyticsTracker {
   }
 
   identify(userId: string, traits: Record<string, any> = {}) {
-    this.trackers.forEach(tracker => {
+    this.trackers.forEach((tracker) => {
       if (tracker.identify) {
         tracker.identify(userId, traits)
       }
@@ -42,7 +42,7 @@ class AnalyticsTracker {
   }
 
   trackEvent(eventName: string, eventProperties: Record<string, any> = {}) {
-    this.trackers.forEach(tracker => {
+    this.trackers.forEach((tracker) => {
       if (tracker.track) {
         tracker.track(eventName, eventProperties)
       }

@@ -25,7 +25,7 @@ const PlateInfo = ({ vehicle }: { vehicle: Vehicle }) => {
     if (
       compareToCurrentTime &&
       now.getTime() - lookupDateAsDate.getTime() <=
-      MAX_DATE_DIFF_TO_BE_CONSIDERED_RECENT
+        MAX_DATE_DIFF_TO_BE_CONSIDERED_RECENT
     ) {
       return 'Now'
     }
@@ -50,10 +50,12 @@ const PlateInfo = ({ vehicle }: { vehicle: Vehicle }) => {
   }
 
   const thisQueryLookupDateString = getDateStringforDisplay(
-    vehicle.lookupDate, true
+    vehicle.lookupDate,
+    true,
   )
   const lastQueriedLookupDateString = getDateStringforDisplay(
-    vehicle.previousLookupDate, false
+    vehicle.previousLookupDate,
+    false,
   )
 
   const region = getRegionFromAbbreviation(vehicle.state)

@@ -1,10 +1,7 @@
 import { Factory } from 'fishery'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
-import {
-  VehicleLookupResult,
-  VehicleQueryResponse,
-} from 'types/responses'
+import { VehicleLookupResult, VehicleQueryResponse } from 'types/responses'
 
 export const VehicleLookupResultFactory = Factory.define<VehicleLookupResult>(
   () => ({

@@ -24,7 +24,9 @@ import VehicleResults from 'view/VehicleResults/VehicleResults'
 
 smoothscroll.polyfill()
 
-export const TrackingContext = createContext<AnalyticsTracker | undefined>(undefined)
+export const TrackingContext = createContext<AnalyticsTracker | undefined>(
+  undefined,
+)
 
 const FetchViolations = () => {
   const { uniqueIdentifier } = useParams<Record<string, string | undefined>>()
@@ -42,7 +44,9 @@ const FetchViolations = () => {
   const [fingerprintId, setFingerprintId] = useState<string | undefined>()
 
   // Create tracker for all analytics
-  const [tracker] = useState<AnalyticsTracker | undefined>(new AnalyticsTracker())
+  const [tracker] = useState<AnalyticsTracker | undefined>(
+    new AnalyticsTracker(),
+  )
 
   useEffect(() => {
     const getFingerprint = async () => {
@@ -78,7 +82,7 @@ const FetchViolations = () => {
     mixpanel.init('f8491ce35ed8262c61e16e6b6abb83b3', {
       loaded: (mixpanel: Mixpanel) => {
         const mixpanelTracker = new MixpanelTracker({
-          mixpanelInstance: mixpanel
+          mixpanelInstance: mixpanel,
         })
 
         tracker?.addTracker('mixpanel', mixpanelTracker)
@@ -116,9 +120,10 @@ const FetchViolations = () => {
 
         tracker?.trackEvent('user_saw_search_error', {
           action: 'refresh_lookup',
-          message: error && typeof(error) === 'object' && 'message' in error
-            ? error.message
-            : undefined
+          message:
+            error && typeof error === 'object' && 'message' in error
+              ? error.message
+              : undefined,
         })
       }
     }

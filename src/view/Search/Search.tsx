@@ -215,9 +215,10 @@ const Search = ({
   const trackUserReceivedError = (error: unknown, action: string) => {
     tracker?.trackEvent('user_saw_search_error', {
       action,
-      message: error && typeof(error) === 'object' && 'message' in error
-        ? error.message
-        : undefined
+      message:
+        error && typeof error === 'object' && 'message' in error
+          ? error.message
+          : undefined,
     })
   }
 
