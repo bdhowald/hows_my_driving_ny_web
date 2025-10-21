@@ -213,13 +213,10 @@ const Search = ({
   }, [])
 
   const trackUserReceivedError = (error: unknown, action: string) => {
-    const wrappedError = error instanceof Error
-      ? error
-      : new Error(
-        typeof error === 'string'
-          ? error
-          : JSON.stringify(error)
-        )
+    const wrappedError =
+      error instanceof Error
+        ? error
+        : new Error(typeof error === 'string' ? error : JSON.stringify(error))
 
     tracker?.trackEvent('user_saw_search_error', {
       action,
@@ -263,7 +260,7 @@ const Search = ({
 
       // Handle results
       Promise.all(lookupPromises)
-        .then((queries) =>
+        .then((queries) => {
           queries.forEach((response) =>
             handleLookupResults({
               response,
@@ -271,8 +268,11 @@ const Search = ({
               expandResults: false,
               setQueriedVehiclesFunction,
             }),
-          ),
-        )
+          )
+          tracker?.trackEvent('lookups_retrieved_from_cookies', {
+            numLookups: lookupPromises.length,
+          })
+        })
         .catch((error) => {
           if (error) {
             setSearchErrorFunction(true)
