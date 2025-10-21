@@ -213,12 +213,20 @@ const Search = ({
   }, [])
 
   const trackUserReceivedError = (error: unknown, action: string) => {
+    const wrappedError = error instanceof Error
+      ? error
+      : new Error(
+        typeof error === 'string'
+          ? error
+          : JSON.stringify(error)
+        )
+
     tracker?.trackEvent('user_saw_search_error', {
       action,
-      message:
-        error && typeof error === 'object' && 'message' in error
-          ? error.message
-          : undefined,
+      message: wrappedError.message,
+      stack: wrappedError.stack,
+      raw: String(error),
+      online: navigator.onLine,
     })
   }
 
