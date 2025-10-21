@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { useCookies } from 'react-cookie'
 
 import { USE_NEW_STYLE_DISPLAY_COOKIE } from 'constants/cookies'
-import { MixpanelContext } from 'view/FetchViolations/FetchViolations'
+import { TrackingContext } from 'view/FetchViolations/FetchViolations'
 
 import {
   BUS_LANE_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION,
@@ -47,9 +47,10 @@ const ViolationDateTimeAspect = ({
 }) => {
   const [cookies, _] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
 
-  const mixpanelInstance = useContext(MixpanelContext)
+  const tracker = useContext(TrackingContext)
+
   const trackShowViolationDetails = () => {
-    mixpanelInstance?.track('show_violation_details', {
+    tracker?.trackEvent('show_violation_details', {
       location: 'ViolationCard',
       useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE],
     })

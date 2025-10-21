@@ -14,6 +14,8 @@ import Vehicle from 'models/Vehicle/Vehicle'
 import getPlateTypeName from 'utils/search/getPlateType/getPlateTypeName/getPlateTypeName'
 import handleLookupResults from 'utils/processResults/handleLookupResults/handleLookupResults'
 import performLookup from 'utils/search/performLookup/performLookup'
+import AnalyticsTracker from 'utils/analytics/tracking'
+import MixpanelTracker from 'utils/analytics/trackers/mixpanel'
 import { VehicleQueryResponse } from 'types/responses'
 import VehicleDisplayResult from 'types/vehicleDisplayResult'
 import Footer from 'view/Footer/Footer'
@@ -22,7 +24,7 @@ import VehicleResults from 'view/VehicleResults/VehicleResults'
 
 smoothscroll.polyfill()
 
-export const MixpanelContext = createContext<Mixpanel | undefined>(undefined)
+export const TrackingContext = createContext<AnalyticsTracker | undefined>(undefined)
 
 const FetchViolations = () => {
   const { uniqueIdentifier } = useParams<Record<string, string | undefined>>()
@@ -38,7 +40,9 @@ const FetchViolations = () => {
   const [fingerprintAgent, setFingerprintAgent] =
     useState<Promise<Agent> | null>(null)
   const [fingerprintId, setFingerprintId] = useState<string | undefined>()
-  const [mixpanelInstance, setMixpanelInstance] = useState<Mixpanel>()
+
+  // Create tracker for all analytics
+  const [tracker] = useState<AnalyticsTracker | undefined>(new AnalyticsTracker())
 
   useEffect(() => {
     const getFingerprint = async () => {
@@ -73,7 +77,11 @@ const FetchViolations = () => {
   useEffect(() => {
     mixpanel.init('f8491ce35ed8262c61e16e6b6abb83b3', {
       loaded: (mixpanel: Mixpanel) => {
-        setMixpanelInstance(mixpanel)
+        const mixpanelTracker = new MixpanelTracker({
+          mixpanelInstance: mixpanel
+        })
+
+        tracker?.addTracker('mixpanel', mixpanelTracker)
       },
     })
   }, [])
@@ -91,7 +99,7 @@ const FetchViolations = () => {
         plateType,
         vehicle.state,
         fingerprintId,
-        mixpanel.get_distinct_id(),
+        tracker?.getDistinctId('mixpanel'),
       )
 
       // If query successful, reset error state
@@ -105,6 +113,13 @@ const FetchViolations = () => {
     } catch (error: unknown) {
       if (error) {
         setSearchError(true)
+
+        tracker?.trackEvent('user_saw_search_error', {
+          action: 'refresh_lookup',
+          message: error && typeof(error) === 'object' && 'message' in error
+            ? error.message
+            : undefined
+        })
       }
     }
 
@@ -138,7 +153,7 @@ const FetchViolations = () => {
   }
 
   return (
-    <MixpanelContext.Provider value={mixpanelInstance}>
+    <TrackingContext.Provider value={tracker}>
       <div>
         <Container fluid>
           <Row>
@@ -146,7 +161,6 @@ const FetchViolations = () => {
               <Search
                 lookupInFlight={lookupInFlight}
                 fingerprintId={fingerprintId}
-                mixpanelInstance={mixpanelInstance}
                 previousLookupUniqueIdentifierFromQuery={uniqueIdentifier}
                 queriedVehicles={queriedVehicles}
                 searchError={searchError}
@@ -170,7 +184,7 @@ const FetchViolations = () => {
           </Row>
         </Container>
       </div>
-    </MixpanelContext.Provider>
+    </TrackingContext.Provider>
   )
 }
 

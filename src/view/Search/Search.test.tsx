@@ -61,7 +61,6 @@ describe('Search', () => {
             <Search
               fingerprintId={undefined}
               lookupInFlight={lookupInFlight}
-              mixpanelInstance={undefined}
               previousLookupUniqueIdentifierFromQuery={uniqueIdentifier}
               queriedVehicles={[]}
               searchError={false}

@@ -6,7 +6,7 @@ import L10N from 'constants/display'
 import Sort from 'constants/sortOptions'
 import Violation from 'models/Violation/Violation'
 
-import { MixpanelContext } from 'view/FetchViolations/FetchViolations'
+import { TrackingContext } from 'view/FetchViolations/FetchViolations'
 import ViolationCard from 'view/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCard/ViolationCard'
 
 const FINE_DIVIDER_INCREMENT = 25
@@ -68,7 +68,7 @@ const ViolationCardGroup = ({
 }) => {
   const [cookies, _] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
   const [groupIsVisible, setGroupIsVisible] = useState(true)
-  const mixpanelInstance = useContext(MixpanelContext)
+  const tracker = useContext(TrackingContext)
 
   const getFinesSortDividerText = (dividerValue: number) => {
     if (dividerValue === -1) {
@@ -93,7 +93,7 @@ const ViolationCardGroup = ({
         numberOfElements={bucket.length}
         setGroupIsVisibleFunction={() => {
           setGroupIsVisible(!groupIsVisible)
-          mixpanelInstance?.track('toggle_violation_group', {
+          tracker?.trackEvent('toggle_violation_group', {
             location: 'ViolationCardGroup',
             useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE],
           })

@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 
-import mixpanel, { Mixpanel } from 'mixpanel-browser'
 import Row from 'react-bootstrap/Row'
 import { useCookies } from 'react-cookie'
 
@@ -19,6 +18,7 @@ import VehicleDisplayResult from 'types/vehicleDisplayResult'
 import { VehicleQueryResponse } from 'types/responses'
 
 import SearchControls from 'view/Search/SearchControls/SearchControls'
+import { TrackingContext } from 'view/FetchViolations/FetchViolations'
 
 type InputChangeType =
   | React.ChangeEvent<HTMLInputElement>
@@ -27,7 +27,6 @@ type InputChangeType =
 type SearchPageProps = {
   fingerprintId: string | undefined
   lookupInFlight: boolean
-  mixpanelInstance: Mixpanel | undefined
   previousLookupUniqueIdentifierFromQuery?: string
   queriedVehicles: VehicleDisplayResult[]
   searchError: boolean
@@ -82,7 +81,6 @@ JumbotronHeaderAprilFools.displayName = 'JumbotronHeaderAprilFools'
 const Search = ({
   fingerprintId,
   lookupInFlight,
-  mixpanelInstance,
   previousLookupUniqueIdentifierFromQuery,
   queriedVehicles,
   searchError,
@@ -100,6 +98,8 @@ const Search = ({
     LOOKUP_IDENTIFIER_COOKIE,
     USE_NEW_STYLE_DISPLAY_COOKIE,
   ])
+
+  const tracker = useContext(TrackingContext)
 
   const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
 
@@ -212,6 +212,15 @@ const Search = ({
     }
   }, [])
 
+  const trackUserReceivedError = (error: unknown, action: string) => {
+    tracker?.trackEvent('user_saw_search_error', {
+      action,
+      message: error && typeof(error) === 'object' && 'message' in error
+        ? error.message
+        : undefined
+    })
+  }
+
   const retrieveLookupsFromCookieIdentifiers = () => {
     // Prevent another button press/submission
     setLookupInFlight(true)
@@ -258,6 +267,8 @@ const Search = ({
         .catch((error) => {
           if (error) {
             setSearchErrorFunction(true)
+
+            trackUserReceivedError(error, 'retrieve_lookups_from_cookie')
           }
         })
         .finally(() => setLookupInFlight(false))
@@ -299,6 +310,8 @@ const Search = ({
         } catch (error: unknown) {
           if (error) {
             setSearchErrorFunction(true)
+
+            trackUserReceivedError(error, 'display_previous_lookup')
           }
         }
 
@@ -346,7 +359,7 @@ const Search = ({
     if (plateId && state) {
       const trimmedPlate: string = plateId.trim()
 
-      mixpanelInstance?.track('plate_lookup', {
+      tracker?.trackEvent('plate_lookup', {
         plate: trimmedPlate,
         plate_type: plateType,
         state: state,
@@ -385,7 +398,7 @@ const Search = ({
       retrieveLookupsFromCookieIdentifiers()
     }
 
-    const mixpanelId = mixpanel?.get_distinct_id()
+    const mixpanelId = tracker?.getDistinctId('mixpanel')
 
     try {
       // Perform the search
@@ -405,6 +418,8 @@ const Search = ({
     } catch (error: unknown) {
       if (error) {
         setSearchErrorFunction(true)
+
+        trackUserReceivedError(error, 'perform_lookup')
       }
     }
 
