@@ -8,7 +8,7 @@ import { decamelizeKeys, camelizeKeys } from 'humps'
 // @ts-expect-error - types should be available through lib.d.ts
 import { fetch } from 'whatwg-fetch'
 
-import { RequestPayloadType } from 'utils/types/requests'
+import { RequestPayloadType } from 'types/requests'
 
 const { fetchWithAbort } = abortableFetch(fetch)
 
@@ -51,7 +51,6 @@ const getRequestUrl = (
 async function httpRequest(
   requestData: RequestPayloadType,
   signal?: EventTarget | void,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<any> {
   const { method, payload, apiResource, paramsObject, url, headers } =
     requestData
@@ -128,7 +127,6 @@ async function httpRequest(
 // different applications that import this httpRequest interface can override its behavior without
 // changing the underlying library
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let requestMiddleware = (v: any) => v
 
 const requestFactory = (
@@ -139,7 +137,6 @@ const requestFactory = (
   const controller = (() => {
     try {
       return new AbortController()
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {
       return new AbortController()
     }
@@ -150,7 +147,6 @@ const requestFactory = (
   return requestMiddleware(promise)
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 requestFactory.applyMiddleware = (middleware: any) => {
   requestMiddleware = middleware
 }
