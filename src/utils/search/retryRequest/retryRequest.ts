@@ -9,17 +9,6 @@ type RetryOptions = {
   shouldRetry?: (error?: any) => boolean
 }
 
-// const makeRequestWithRetries = async (
-//   {
-//     asyncRequestFn,
-//     maxRetries = 5,
-//     baseDelay = BASE_DELAY,
-//     shouldRetry = (args: any) => true,
-//     onRetry = (args: any) => {},
-//     jitter = true,
-//   }: RetryOptions
-// ): Promise<AxiosResponse> => {
-
 /**
  *
  * Makes a request with retry capability, taking in arguments like max retries,
