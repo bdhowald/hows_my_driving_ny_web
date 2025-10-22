@@ -13,6 +13,7 @@ import L10N from 'constants/display'
 import { PlateType } from 'constants/plateTypes'
 import handleLookupResults from 'utils/processResults/handleLookupResults/handleLookupResults'
 import performLookup from 'utils/search/performLookup/performLookup'
+import retryRequest from 'utils/search/retryRequest/retryRequest'
 import PlateLookup from 'types/plateLookup'
 import VehicleDisplayResult from 'types/vehicleDisplayResult'
 import { VehicleQueryResponse } from 'types/responses'
@@ -251,15 +252,16 @@ const Search = ({
         .reverse()
 
       // Gather the promises for the previous lookups
-      const lookupPromises: Promise<VehicleQueryResponse>[] =
-        uniqueIdentifiersFromCookies.map(
+      const lookupPromisesWithRetry: Promise<VehicleQueryResponse>[] =
+        uniqueIdentifiersFromCookies.map((identifier: string) =>
           // query for each
-          async (uniqueIdentifier: string) =>
-            getPreviousLookup(uniqueIdentifier),
+          retryRequest({
+            asyncRequestFunction: () => getPreviousLookup(identifier),
+          }),
         )
 
       // Handle results
-      Promise.all(lookupPromises)
+      Promise.all(lookupPromisesWithRetry)
         .then((queries) => {
           queries.forEach((response) =>
             handleLookupResults({
@@ -270,7 +272,7 @@ const Search = ({
             }),
           )
           tracker?.trackEvent('lookups_retrieved_from_cookies', {
-            numLookups: lookupPromises.length,
+            numLookups: lookupPromisesWithRetry.length,
           })
         })
         .catch((error) => {
