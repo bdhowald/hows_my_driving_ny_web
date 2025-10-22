@@ -413,13 +413,10 @@ const Search = ({
 
     try {
       // Perform the search
-      const response: VehicleQueryResponse = await performLookup(
-        plate,
-        plateType,
-        state,
-        fingerprintId,
-        mixpanelId,
-      )
+      const response: VehicleQueryResponse = await retryRequest({
+        asyncRequestFunction: () =>
+          performLookup(plate, plateType, state, fingerprintId, mixpanelId),
+      })
 
       // If query successful, reset error state
       setSearchErrorFunction(false)
