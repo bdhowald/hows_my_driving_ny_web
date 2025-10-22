@@ -308,9 +308,10 @@ const Search = ({
 
         try {
           // url is of format howsmydrivingny.nyc/xxxxxxxx
-          const response: VehicleQueryResponse = await getPreviousLookup(
-            previousLookupUniqueIdentifierFromQuery,
-          )
+          const response: VehicleQueryResponse = await retryRequest({
+            asyncRequestFunction: () =>
+              getPreviousLookup(previousLookupUniqueIdentifierFromQuery),
+          })
 
           // Parse the results
           handleLookupResults({
