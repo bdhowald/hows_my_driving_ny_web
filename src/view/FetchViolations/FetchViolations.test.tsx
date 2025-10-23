@@ -60,6 +60,7 @@ describe('FetchViolations', () => {
       performNewLookupSpy.mockResolvedValueOnce({
         data: [
           {
+            statusCode: 201,
             successfulLookup: true,
             vehicle: VehicleFactory.build(),
           },
@@ -105,6 +106,7 @@ describe('FetchViolations', () => {
         .mockResolvedValueOnce({
           data: [
             {
+              statusCode: 201,
               successfulLookup: true,
               vehicle: VehicleFactory.build(queries[0]),
             },
@@ -113,6 +115,7 @@ describe('FetchViolations', () => {
         .mockResolvedValueOnce({
           data: [
             {
+              statusCode: 201,
               successfulLookup: true,
               vehicle: VehicleFactory.build(queries[1]),
             },
@@ -121,6 +124,7 @@ describe('FetchViolations', () => {
         .mockResolvedValueOnce({
           data: [
             {
+              statusCode: 201,
               successfulLookup: true,
               vehicle: VehicleFactory.build(queries[2]),
             },
@@ -215,6 +219,7 @@ describe('FetchViolations', () => {
       performNewLookupSpy.mockResolvedValueOnce({
         data: [
           {
+            statusCode: 201,
             successfulLookup: true,
             vehicle: VehicleFactory.build(),
           },
@@ -308,6 +313,7 @@ describe('FetchViolations', () => {
         performNewLookupSpy.mockResolvedValueOnce({
           data: [
             {
+              statusCode: 201,
               successfulLookup: true,
               vehicle,
             },
@@ -442,6 +448,7 @@ describe('FetchViolations', () => {
         performNewLookupSpy.mockResolvedValueOnce({
           data: [
             {
+              statusCode: 201,
               successfulLookup: true,
               vehicle,
             },
@@ -554,6 +561,62 @@ describe('FetchViolations', () => {
       })
     })
 
+    it('should display an error message from the server if available', async () => {
+      const performNewLookupSpy = jest.spyOn(
+        boundaryFunctions,
+        'performNewLookup',
+      )
+
+      performNewLookupSpy.mockRejectedValue({
+        body: {
+          data: [
+            {
+              error:
+                'Sorry, a plate and state could not be inferred from NYC:NY',
+              statusCode: 400,
+              successfulLookup: false,
+            },
+          ],
+        },
+        ok: false,
+        status: 400,
+        statusText: '',
+        url: 'https://api.howsmydrivingny.nyc',
+      })
+
+      render(
+        <CookiesProvider cookies={new Cookies('lookupIdentifiers=;')}>
+          <FetchViolations />
+        </CookiesProvider>,
+      )
+
+      const plate = 'NYC'
+
+      const plateSearchInputHtmlElement = screen.getByRole('textbox')
+      userEvent.type(plateSearchInputHtmlElement, plate)
+
+      const searchButtonHtmlElement = screen.getByRole('button')
+      userEvent.click(searchButtonHtmlElement)
+
+      await waitFor(
+        () => {
+          const alertMessage = screen.getByRole('alert')
+          const errorText =
+            'Sorry, a plate and state could not be inferred from NYC:NY'
+          expect(alertMessage).toBeInTheDocument()
+          expect(alertMessage.textContent).toEqual(errorText)
+
+          expect(performNewLookupSpy).toHaveBeenCalledWith(
+            expect.objectContaining({
+              lookupSource: 'web_client',
+              plate: 'NYC:NY',
+            }),
+          )
+        },
+        { timeout: 5000 },
+      )
+    }, 10000)
+
     it('should not scroll when the lookup errors out', async () => {
       const scrollIntoViewFunction = jest.fn()
 
@@ -610,6 +673,7 @@ describe('FetchViolations', () => {
       performNewLookupSpy.mockResolvedValueOnce({
         data: [
           {
+            statusCode: 201,
             successfulLookup: true,
             vehicle: VehicleFactory.build(),
           },
@@ -664,6 +728,7 @@ describe('FetchViolations', () => {
       performNewLookupSpy.mockResolvedValueOnce({
         data: [
           {
+            statusCode: 201,
             successfulLookup: true,
             vehicle,
           },
@@ -725,6 +790,7 @@ describe('FetchViolations', () => {
       performNewLookupSpy.mockResolvedValueOnce({
         data: [
           {
+            statusCode: 201,
             successfulLookup: true,
             vehicle,
           },
@@ -793,6 +859,7 @@ describe('FetchViolations', () => {
       getPreviousLookupSpy.mockResolvedValueOnce({
         data: [
           {
+            statusCode: 200,
             successfulLookup: true,
             vehicle,
           },

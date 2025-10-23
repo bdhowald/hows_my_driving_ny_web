@@ -31,25 +31,11 @@ describe('handleLookupResults', () => {
     expect(setQueriedVehiclesFunction).not.toHaveBeenCalled()
   })
 
-  it('does not set queried vehicles when the response contains a response with an unsuccessful lookup', () => {
-    const response = {
-      data: [
-        {
-          successfulLookup: false,
-          vehicle: VehicleFactory.build(),
-        },
-      ],
-    }
-
-    handleLookupResults({ response, setQueriedVehiclesFunction })
-
-    expect(setQueriedVehiclesFunction).not.toHaveBeenCalled()
-  })
-
   it('sets queried vehicles when the response contains a response with an successful lookup', () => {
     const response = {
       data: [
         {
+          statusCode: 200,
           successfulLookup: true,
           vehicle: VehicleFactory.build(),
         },
@@ -75,6 +61,7 @@ describe('handleLookupResults', () => {
     const response = {
       data: [
         {
+          statusCode: 201,
           successfulLookup: true,
           vehicle,
         },
@@ -119,6 +106,7 @@ describe('handleLookupResults', () => {
     const response = {
       data: [
         {
+          statusCode: 201,
           successfulLookup: true,
           vehicle: newVehicle,
         },
@@ -157,6 +145,7 @@ describe('handleLookupResults', () => {
     const response = {
       data: [
         {
+          statusCode: 201,
           successfulLookup: true,
           vehicle: newVehicle,
         },

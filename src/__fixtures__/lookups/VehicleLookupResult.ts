@@ -5,6 +5,7 @@ import { VehicleLookupResult, VehicleQueryResponse } from 'types/responses'
 
 export const VehicleLookupResultFactory = Factory.define<VehicleLookupResult>(
   () => ({
+    statusCode: 200,
     successfulLookup: true,
     vehicle: VehicleFactory.build(),
   }),
@@ -15,8 +16,3 @@ export const ApiLookupResultFactory = Factory.define<VehicleQueryResponse>(
     data: [VehicleLookupResultFactory.build()],
   }),
 )
-
-export const UnsuccessfulVehicleLookupResultFactory =
-  VehicleLookupResultFactory.build({
-    successfulLookup: false,
-  })

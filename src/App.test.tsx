@@ -43,6 +43,7 @@ describe('App', () => {
     getPreviousLookupSpy.mockResolvedValueOnce({
       data: [
         {
+          statusCode: 200,
           successfulLookup: true,
           vehicle,
         },
@@ -79,6 +80,7 @@ describe('App', () => {
     getPreviousLookupSpy.mockResolvedValue({
       data: [
         {
+          statusCode: 200,
           successfulLookup: true,
           vehicle,
         },

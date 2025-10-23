@@ -29,7 +29,6 @@ const retryRequest = async ({
     try {
       return await asyncRequestFunction()
     } catch (error) {
-      console.log(error)
       if (attempt === maxRetries) {
         console.log(
           `Requests failed after ${maxRetries + 1} attempts, throwing error`,

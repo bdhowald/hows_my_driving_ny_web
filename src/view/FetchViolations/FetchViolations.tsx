@@ -37,7 +37,7 @@ const FetchViolations = () => {
   const [queriedVehicles, setQueriedVehicles] = useState<
     Array<VehicleDisplayResult>
   >([])
-  const [searchError, setSearchError] = useState<boolean>(false)
+  const [searchError, setSearchError] = useState<boolean | string>(false)
 
   const [fingerprintAgent, setFingerprintAgent] =
     useState<Promise<Agent> | null>(null)

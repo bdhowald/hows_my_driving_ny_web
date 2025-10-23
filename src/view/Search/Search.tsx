@@ -17,6 +17,8 @@ import retryRequest from 'utils/search/retryRequest/retryRequest'
 import PlateLookup from 'types/plateLookup'
 import VehicleDisplayResult from 'types/vehicleDisplayResult'
 import { VehicleQueryResponse } from 'types/responses'
+import isApiErrorObject from 'utils/types/isApiErrorObject/isApiErrorObject'
+import isErrorQueryResponse from 'utils/types/isErrorQueryResponse/isErrorQueryResponse'
 
 import SearchControls from 'view/Search/SearchControls/SearchControls'
 import { TrackingContext } from 'view/FetchViolations/FetchViolations'
@@ -30,32 +32,40 @@ type SearchPageProps = {
   lookupInFlight: boolean
   previousLookupUniqueIdentifierFromQuery?: string
   queriedVehicles: VehicleDisplayResult[]
-  searchError: boolean
+  searchError: boolean | string
   setLookupInFlight: React.Dispatch<React.SetStateAction<boolean>>
   setQueriedVehiclesFunction: React.Dispatch<
     React.SetStateAction<VehicleDisplayResult[]>
   >
-  setSearchErrorFunction: React.Dispatch<React.SetStateAction<boolean>>
+  setSearchErrorFunction: React.Dispatch<React.SetStateAction<boolean | string>>
 }
 
 const ErrorMessage = ({
+  errorMessage,
   setErrorFunction,
 }: {
+  errorMessage: string | undefined
   setErrorFunction: (arg0: boolean) => void
-}) => (
-  <div className="alert alert-warning" role="alert">
-    <span className="alert-text">Oops! Please try again.</span>
-    <button
-      aria-label="Close"
-      className="btn-close"
-      data-bs-dismiss="alert"
-      onClick={() => {
-        setErrorFunction(false)
-      }}
-      type="button"
-    />
-  </div>
-)
+}) => {
+  const errorMessageToDisplay = errorMessage
+    ? errorMessage
+    : 'Oops! Please try again.'
+
+  return (
+    <div className="alert alert-warning" role="alert">
+      <span className="alert-text">{errorMessageToDisplay}</span>
+      <button
+        aria-label="Close"
+        className="btn-close"
+        data-bs-dismiss="alert"
+        onClick={() => {
+          setErrorFunction(false)
+        }}
+        type="button"
+      />
+    </div>
+  )
+}
 ErrorMessage.displayName = 'ErrorMessage'
 
 const JumbotronHeader = React.memo(() => (
@@ -427,7 +437,16 @@ const Search = ({
       handleLookupResults({ response, setQueriedVehiclesFunction })
     } catch (error: unknown) {
       if (error) {
-        setSearchErrorFunction(true)
+        if (isApiErrorObject(error) && isErrorQueryResponse(error.body)) {
+          const errorBody = error.body
+          const { data } = errorBody
+
+          if (typeof data[0].error === 'string') {
+            setSearchErrorFunction(data[0].error)
+          }
+        } else {
+          setSearchErrorFunction(true)
+        }
 
         trackUserReceivedError(error, 'perform_lookup')
       }
@@ -462,7 +481,10 @@ const Search = ({
           lookupInFlight={lookupInFlight}
         />
         {searchError && (
-          <ErrorMessage setErrorFunction={setSearchErrorFunction} />
+          <ErrorMessage
+            errorMessage={searchError === true ? undefined : searchError}
+            setErrorFunction={setSearchErrorFunction}
+          />
         )}
       </Row>
     </div>
