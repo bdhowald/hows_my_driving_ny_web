@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Cookies, CookiesProvider } from 'react-cookie'
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import Search from './Search'
 
@@ -98,5 +99,29 @@ describe('Search', () => {
         }
       },
     )
+
+    it('should ensure only uppercase letters for entered plate input', () => {
+      render(
+        <Search
+          fingerprintId={undefined}
+          lookupInFlight={false}
+          previousLookupUniqueIdentifierFromQuery={undefined}
+          queriedVehicles={[]}
+          searchError={false}
+          setLookupInFlight={setLookupInFlight}
+          setQueriedVehiclesFunction={setQueriedVehicles}
+          setSearchErrorFunction={setSearchError}
+        />,
+      )
+
+      const lowercaseText = 'abc1234'
+
+      const plateSearchInputHtmlElement = screen.getByRole('textbox')
+      userEvent.type(plateSearchInputHtmlElement, lowercaseText)
+
+      expect(plateSearchInputHtmlElement).toHaveValue(
+        lowercaseText.toUpperCase(),
+      )
+    })
   })
 })

@@ -355,8 +355,9 @@ const Search = ({
       return setCurrentLookup({
         ...currentLookup,
         ...{
-          [changeEvent.currentTarget.name]:
-            changeEvent.currentTarget.value.replace(/\s/g, ''),
+          [changeEvent.currentTarget.name]: changeEvent.currentTarget.value
+            .replace(/\s/g, '')
+            .toUpperCase(),
         },
       })
     },
