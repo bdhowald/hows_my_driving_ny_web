@@ -10,6 +10,7 @@ import {
   USE_NEW_STYLE_DISPLAY_COOKIE,
 } from 'constants/cookies'
 import L10N from 'constants/display'
+import HttpStatusCode from 'constants/httpStatusCode'
 import { PlateType } from 'constants/plateTypes'
 import handleLookupResults from 'utils/processResults/handleLookupResults/handleLookupResults'
 import performLookup from 'utils/search/performLookup/performLookup'
@@ -223,18 +224,43 @@ const Search = ({
     }
   }, [])
 
+  const getErrorType = (statusCode: number | undefined) => {
+    if (statusCode === undefined) {
+      return 'unknown error'
+    }
+    if (
+      statusCode >= HttpStatusCode.BadRequest &&
+      statusCode < HttpStatusCode.InternalServerError
+    ) {
+      return 'client error'
+    }
+    if (
+      statusCode >= HttpStatusCode.InternalServerError &&
+      statusCode <= HttpStatusCode.NetworkAuthenticationRequired
+    ) {
+      return 'server error'
+    }
+    return 'unknown error (status code unexpected)'
+  }
+
   const trackUserReceivedError = (error: unknown, action: string) => {
     const wrappedError =
       error instanceof Error
         ? error
         : new Error(typeof error === 'string' ? error : JSON.stringify(error))
 
+    const statusCode =
+      isApiErrorObject(error) && isErrorQueryResponse(error.body)
+        ? error.body.data[0].statusCode
+        : undefined
+
     tracker?.trackEvent('user_saw_search_error', {
       action,
+      errorType: getErrorType(statusCode),
       message: wrappedError.message,
-      stack: wrappedError.stack,
-      raw: String(error),
       online: navigator.onLine,
+      raw: String(error),
+      stack: wrappedError.stack,
     })
   }
 
@@ -441,8 +467,10 @@ const Search = ({
           const errorBody = error.body
           const { data } = errorBody
 
-          if (typeof data[0].error === 'string') {
-            setSearchErrorFunction(data[0].error)
+          const erroredLookup = data[0]
+
+          if (typeof erroredLookup.error === 'string') {
+            setSearchErrorFunction(erroredLookup.error)
           }
         } else {
           setSearchErrorFunction(true)
