@@ -55,7 +55,7 @@ const retryRequest = async ({
     attempt++
   }
 
-  throw new Error('Unexpected exit from makeRequestWithRetries')
+  throw new Error('Unexpected exit from retryRequest')
 }
 
 export default retryRequest
