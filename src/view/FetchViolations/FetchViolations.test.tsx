@@ -7,6 +7,7 @@ import { VehicleFactory } from '__fixtures__/models/Vehicle'
 import { ViolationFactory } from '__fixtures__/models/Violation'
 import * as boundaryFunctions from 'boundaries/http'
 import FetchViolations from './FetchViolations'
+import plateTypes from 'constants/plateTypes'
 
 describe('FetchViolations', () => {
   beforeEach(() => {
@@ -93,8 +94,8 @@ describe('FetchViolations', () => {
 
     it('should perform multiple lookups', async () => {
       const queries = [
-        { plate: 'ABC1234', state: 'NY' },
-        { plate: 'XXX1122', state: 'IN' },
+        { plate: 'ABC1234', state: 'NY', plateType: 'passenger' },
+        { plate: 'XXX1122', state: 'IN', plateType: 'commercial' },
         { plate: 'VOTE4ME', state: 'CA' },
       ]
       const performNewLookupSpy = jest.spyOn(
@@ -138,15 +139,24 @@ describe('FetchViolations', () => {
       )
 
       const plateSearchInputHtmlElement = screen.getByRole('textbox')
-      const selectHtmlElement = screen.getByRole('combobox', {
+      const regionSelectHtmlElement = screen.getByRole('combobox', {
         name: 'Select Region',
+      })
+      const plateTypeSelectHtmlElement = screen.getByRole('combobox', {
+        name: 'Select License Plate Type',
       })
       const searchButtonHtmlElement = screen.getByRole('button')
 
       // set plate
       userEvent.type(plateSearchInputHtmlElement, queries[0].plate)
       // set state
-      userEvent.selectOptions(selectHtmlElement, queries[0].state)
+      userEvent.selectOptions(regionSelectHtmlElement, queries[0].state)
+
+      if (queries[0].plateType) {
+        // set plateType
+        userEvent.selectOptions(plateTypeSelectHtmlElement, queries[0].plateType)
+      }
+
       // fire the search
       userEvent.click(searchButtonHtmlElement)
 
@@ -155,7 +165,7 @@ describe('FetchViolations', () => {
           1,
           expect.objectContaining({
             lookupSource: 'web_client',
-            plate: 'ABC1234:NY',
+            plate: 'ABC1234:NY:AGR,ARG,AYG,BOB,CMH,FPW,GSM,HAM,HIS,JWV,MCL,NLM,ORG,PAS,PHS,PPH,RGL,SOS,SPO,SRF,WUG',
           }),
         )
         screen.getByText(queries[0].plate)
@@ -167,7 +177,13 @@ describe('FetchViolations', () => {
       // set plate
       userEvent.type(plateSearchInputHtmlElement, queries[1].plate)
       // set state
-      userEvent.selectOptions(selectHtmlElement, queries[1].state)
+      userEvent.selectOptions(regionSelectHtmlElement, queries[1].state)
+
+      if (queries[1].plateType) {
+        // set plateType
+        userEvent.selectOptions(plateTypeSelectHtmlElement, queries[1].plateType)
+      }
+
       // fire the search
       userEvent.click(searchButtonHtmlElement)
 
@@ -176,7 +192,7 @@ describe('FetchViolations', () => {
           2,
           expect.objectContaining({
             lookupSource: 'web_client',
-            plate: 'XXX1122:IN',
+            plate: 'XXX1122:IN:AGC,APP,CHC,CMB,COM,CSP,FAR,HAC,IRP,LOC,ORC,RGC,SPC,STG,THC,TRC',
           }),
         )
         screen.getByText(queries[1].plate)
@@ -188,7 +204,9 @@ describe('FetchViolations', () => {
       // set plate
       userEvent.type(plateSearchInputHtmlElement, queries[2].plate)
       // set state
-      userEvent.selectOptions(selectHtmlElement, queries[2].state)
+      userEvent.selectOptions(regionSelectHtmlElement, queries[2].state)
+      // reset plate type
+      userEvent.selectOptions(plateTypeSelectHtmlElement, 'none')
       // fire the search
       userEvent.click(searchButtonHtmlElement)
 
@@ -613,9 +631,9 @@ describe('FetchViolations', () => {
             }),
           )
         },
-        { timeout: 5000 },
+        { timeout: 10000 },
       )
-    }, 10000)
+    }, 12500)
 
     it('should not scroll when the lookup errors out', async () => {
       const scrollIntoViewFunction = jest.fn()

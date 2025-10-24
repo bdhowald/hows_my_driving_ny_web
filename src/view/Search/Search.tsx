@@ -388,12 +388,14 @@ const Search = ({
 
   const handleInputChange = useCallback(
     (changeEvent: InputChangeType) => {
+      const modififedInputValue = changeEvent.currentTarget.name === 'plateId'
+        ? changeEvent.currentTarget.value.replace(/\s/g, '').toUpperCase()
+        : changeEvent.currentTarget.value.replace(/\s/g, '')
+
       return setCurrentLookup({
         ...currentLookup,
         ...{
-          [changeEvent.currentTarget.name]: changeEvent.currentTarget.value
-            .replace(/\s/g, '')
-            .toUpperCase(),
+          [changeEvent.currentTarget.name]: modififedInputValue,
         },
       })
     },
