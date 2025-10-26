@@ -296,6 +296,8 @@ const Search = ({
           }),
         )
 
+      const start = new Date()
+
       // Handle results
       Promise.all(lookupPromisesWithRetry)
         .then((queries) => {
@@ -307,8 +309,12 @@ const Search = ({
               setQueriedVehiclesFunction,
             }),
           )
+
+          const finish = new Date()
+
           tracker?.trackEvent('lookups_retrieved_from_cookies', {
             numLookups: lookupPromisesWithRetry.length,
+            timeToComplete: `${finish.getTime() - start.getTime()} seconds`,
           })
         })
         .catch((error) => {
