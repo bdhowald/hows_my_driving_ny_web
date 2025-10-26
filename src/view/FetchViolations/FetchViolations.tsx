@@ -92,6 +92,7 @@ const FetchViolations = () => {
         tracker?.addTracker('mixpanel', mixpanelTracker)
       },
       record_idle_timeout_ms: MIXPANEL_IDLE_TIMEOUT_MILLISECONDS,
+      record_mask_text_selector: '',  // nothing here is secret or PII
       record_sessions_percent: MIXPANEL_RECORD_SESSIONS_PERCENT,
     })
   }, [])
