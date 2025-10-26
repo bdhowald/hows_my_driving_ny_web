@@ -342,6 +342,11 @@ const Search = ({
         // Prevent another button press/submission
         setLookupInFlight(true)
 
+        tracker?.trackEvent('display_previous_lookup', {
+          uniqueIdentifier: previousLookupUniqueIdentifierFromQuery,
+          useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE],
+        })
+
         try {
           // url is of format howsmydrivingny.nyc/xxxxxxxx
           const response: VehicleQueryResponse = await retryRequest({
