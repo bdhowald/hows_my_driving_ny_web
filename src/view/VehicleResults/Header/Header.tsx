@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import {
   IconDefinition,
@@ -21,9 +21,10 @@ import Card from 'react-bootstrap/Card'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
 
-import SocialShareButton from 'view/components/SocialShareButton/SocialShareButton'
 import L10N from 'constants/display'
 import Vehicle from 'models/Vehicle/Vehicle'
+import SocialShareButton from 'view/components/SocialShareButton/SocialShareButton'
+import { TrackingContext } from 'view/FetchViolations/FetchViolations'
 // import RefreshLookupButton from 'view/VehicleResults/Header/RefreshLookupButton/RefreshLookupButton'
 
 // Add Font Awesome icons
@@ -47,6 +48,8 @@ const CopyButton = ({
   const [showTooltip, setShowTooltip] = useState(false)
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null)
 
+  const tracker = useContext(TrackingContext)
+
   const hideTooltipAfterClick = () => {
     if (timeoutId) {
       clearTimeout(timeoutId)
@@ -68,6 +71,10 @@ const CopyButton = ({
       className="copy-button"
       data-testid="copy-button"
       onClick={() => {
+        tracker?.trackEvent('user_copied_link_to_lookup', {
+          uniqueIdentifier: vehicleUniqueIdentifier,
+        })
+
         navigator.clipboard.writeText(
           `${L10N.sitewide.url}/${vehicleUniqueIdentifier}`,
         )

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import SocialMediaService from 'constants/socialMedia'
 
 import {
@@ -10,6 +10,7 @@ import {
 
 import L10N from 'constants/display'
 import Vehicle from 'models/Vehicle/Vehicle'
+import { TrackingContext } from 'view/FetchViolations/FetchViolations'
 
 const components = {
   [SocialMediaService.Bluesky]: {
@@ -46,10 +47,18 @@ const ShareButton = ({
 
   const accountHandle = components[socialMediaService].accountHandle
 
+  const tracker = useContext(TrackingContext)
+
   return (
     <ShareButtonClass
       aria-label={`share lookup to ${serviceName}`}
       data-testid={elementName}
+      onClick={() => {
+        tracker?.trackEvent('user_shared_lookup_to_social_media', {
+          socialMediaService: serviceName,
+          uniqueIdentifier: vehicle.uniqueIdentifier,
+        })
+      }}
       url={`${L10N.sitewide.url}/${vehicle.uniqueIdentifier}`}
       title={`I just looked up #${vehicleHashtag}'s ${violationsString} using ${accountHandle}: `}
       className={elementName}
