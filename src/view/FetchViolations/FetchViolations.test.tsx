@@ -154,7 +154,10 @@ describe('FetchViolations', () => {
 
       if (queries[0].plateType) {
         // set plateType
-        userEvent.selectOptions(plateTypeSelectHtmlElement, queries[0].plateType)
+        userEvent.selectOptions(
+          plateTypeSelectHtmlElement,
+          queries[0].plateType,
+        )
       }
 
       // fire the search
@@ -165,7 +168,8 @@ describe('FetchViolations', () => {
           1,
           expect.objectContaining({
             lookupSource: 'web_client',
-            plate: 'ABC1234:NY:AGR,ARG,AYG,BOB,CMH,FPW,GSM,HAM,HIS,JWV,MCL,NLM,ORG,PAS,PHS,PPH,RGL,SOS,SPO,SRF,WUG',
+            plate:
+              'ABC1234:NY:AGR,ARG,AYG,BOB,CMH,FPW,GSM,HAM,HIS,JWV,MCL,NLM,ORG,PAS,PHS,PPH,RGL,SOS,SPO,SRF,WUG',
           }),
         )
         screen.getByText(queries[0].plate)
@@ -181,7 +185,10 @@ describe('FetchViolations', () => {
 
       if (queries[1].plateType) {
         // set plateType
-        userEvent.selectOptions(plateTypeSelectHtmlElement, queries[1].plateType)
+        userEvent.selectOptions(
+          plateTypeSelectHtmlElement,
+          queries[1].plateType,
+        )
       }
 
       // fire the search
@@ -192,7 +199,8 @@ describe('FetchViolations', () => {
           2,
           expect.objectContaining({
             lookupSource: 'web_client',
-            plate: 'XXX1122:IN:AGC,APP,CHC,CMB,COM,CSP,FAR,HAC,IRP,LOC,ORC,RGC,SPC,STG,THC,TRC',
+            plate:
+              'XXX1122:IN:AGC,APP,CHC,CMB,COM,CSP,FAR,HAC,IRP,LOC,ORC,RGC,SPC,STG,THC,TRC',
           }),
         )
         screen.getByText(queries[1].plate)
