@@ -10,6 +10,10 @@ import { useCookies } from 'react-cookie'
 
 import { LOOKUP_IDENTIFIER_COOKIE, MAX_AGE } from 'constants/cookies'
 import L10N from 'constants/display'
+import {
+  MIXPANEL_IDLE_TIMEOUT_MILLISECONDS,
+  MIXPANEL_RECORD_SESSIONS_PERCENT,
+} from 'constants/tracking'
 import Vehicle from 'models/Vehicle/Vehicle'
 import getPlateTypeName from 'utils/search/getPlateType/getPlateTypeName/getPlateTypeName'
 import handleLookupResults from 'utils/processResults/handleLookupResults/handleLookupResults'
@@ -87,6 +91,8 @@ const FetchViolations = () => {
 
         tracker?.addTracker('mixpanel', mixpanelTracker)
       },
+      record_idle_timeout_ms: MIXPANEL_IDLE_TIMEOUT_MILLISECONDS,
+      record_sessions_percent: MIXPANEL_RECORD_SESSIONS_PERCENT,
     })
   }, [])
 
