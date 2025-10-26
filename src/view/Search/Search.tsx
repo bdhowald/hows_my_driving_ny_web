@@ -422,13 +422,6 @@ const Search = ({
     if (plateId && state) {
       const trimmedPlate: string = plateId.trim()
 
-      tracker?.trackEvent('plate_lookup', {
-        plate: trimmedPlate,
-        plate_type: plateType,
-        state: state,
-        useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE],
-      })
-
       performLookupAndHandleResults(trimmedPlate, plateType, state)
     }
   }
@@ -451,6 +444,8 @@ const Search = ({
     plateType: PlateType | undefined,
     state: string,
   ) => {
+    const start = new Date()
+
     // Prevent another button press/submission
     setLookupInFlight(true)
 
@@ -469,6 +464,17 @@ const Search = ({
         asyncRequestFunction: () =>
           performLookup(plate, plateType, state, fingerprintId, mixpanelId),
       })
+
+      const finish = new Date()
+
+      tracker?.trackEvent('plate_lookup', {
+        plate,
+        plate_type: plateType,
+        state,
+        timeToComplete: `${finish.getTime() - start.getTime()} seconds`,
+        useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE],
+      })
+
 
       // If query successful, reset error state
       setSearchErrorFunction(false)
