@@ -12,6 +12,7 @@ import {
 import L10N from 'constants/display'
 import HttpStatusCode from 'constants/httpStatusCode'
 import { PlateType } from 'constants/plateTypes'
+import { MILLISECONDS_IN_SECOND } from 'constants/time'
 import handleLookupResults from 'utils/processResults/handleLookupResults/handleLookupResults'
 import performLookup from 'utils/search/performLookup/performLookup'
 import retryRequest from 'utils/search/retryRequest/retryRequest'
@@ -314,7 +315,7 @@ const Search = ({
 
           tracker?.trackEvent('lookups_retrieved_from_cookies', {
             numLookups: lookupPromisesWithRetry.length,
-            timeToComplete: `${finish.getTime() - start.getTime()} seconds`,
+            timeToComplete: `${(finish.getTime() - start.getTime()) / MILLISECONDS_IN_SECOND} seconds`,
           })
         })
         .catch((error) => {
@@ -471,10 +472,9 @@ const Search = ({
         plate,
         plate_type: plateType,
         state,
-        timeToComplete: `${finish.getTime() - start.getTime()} seconds`,
+        timeToComplete: `${(finish.getTime() - start.getTime()) / MILLISECONDS_IN_SECOND} seconds`,
         useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE],
       })
-
 
       // If query successful, reset error state
       setSearchErrorFunction(false)
