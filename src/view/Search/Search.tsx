@@ -315,7 +315,7 @@ const Search = ({
 
           tracker?.trackEvent('lookups_retrieved_from_cookies', {
             numLookups: lookupPromisesWithRetry.length,
-            timeToComplete: `${(finish.getTime() - start.getTime()) / MILLISECONDS_IN_SECOND} seconds`,
+            timeToCompleteInSeconds: (finish.getTime() - start.getTime()) / MILLISECONDS_IN_SECOND,
           })
         })
         .catch((error) => {
@@ -472,7 +472,7 @@ const Search = ({
         plate,
         plate_type: plateType,
         state,
-        timeToComplete: `${(finish.getTime() - start.getTime()) / MILLISECONDS_IN_SECOND} seconds`,
+        timeToCompleteInSeconds: (finish.getTime() - start.getTime()) / MILLISECONDS_IN_SECOND,
         useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE],
       })
 
