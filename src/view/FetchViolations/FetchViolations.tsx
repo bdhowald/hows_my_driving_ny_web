@@ -56,7 +56,7 @@ const FetchViolations = () => {
 
   // Create tracker for all analytics
   const [tracker] = useState<AnalyticsTracker | undefined>(
-    new AnalyticsTracker(),
+    new AnalyticsTracker(['mixpanel']),
   )
 
   useEffect(() => {

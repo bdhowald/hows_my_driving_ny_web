@@ -7,6 +7,7 @@ type MixpanelContext = {
 }
 
 class MixpanelTracker implements Tracker {
+  public name = 'mixpanel'
   private mixpanelInstance: MixpanelContext['mixpanelInstance']
 
   constructor(context: MixpanelContext) {

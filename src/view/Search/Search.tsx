@@ -318,6 +318,7 @@ const Search = ({
             numLookups: lookupPromisesWithRetry.length,
             timeToCompleteInSeconds:
               (finish.getTime() - start.getTime()) / MILLISECONDS_IN_SECOND,
+            useNewStyleDisplay,
           })
         })
         .catch((error) => {
