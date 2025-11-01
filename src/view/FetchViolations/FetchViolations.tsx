@@ -8,7 +8,11 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import { useCookies } from 'react-cookie'
 
-import { LOOKUP_IDENTIFIER_COOKIE, MAX_AGE } from 'constants/cookies'
+import {
+  LOOKUP_IDENTIFIER_COOKIE,
+  MAX_AGE,
+  USE_NEW_STYLE_DISPLAY_COOKIE,
+} from 'constants/cookies'
 import L10N from 'constants/display'
 import {
   MIXPANEL_IDLE_TIMEOUT_MILLISECONDS,
@@ -36,7 +40,10 @@ const FetchViolations = () => {
   const { uniqueIdentifier } = useParams<Record<string, string | undefined>>()
   const listRef = useRef<HTMLDivElement>(null)
 
-  const [cookies, setCookie] = useCookies([LOOKUP_IDENTIFIER_COOKIE])
+  const [cookies, setCookie] = useCookies([
+    LOOKUP_IDENTIFIER_COOKIE,
+    USE_NEW_STYLE_DISPLAY_COOKIE,
+  ])
   const [lookupInFlight, setLookupInFlight] = useState(false)
   const [queriedVehicles, setQueriedVehicles] = useState<
     Array<VehicleDisplayResult>
@@ -120,6 +127,7 @@ const FetchViolations = () => {
       handleLookupResults({
         response,
         setQueriedVehiclesFunction: setQueriedVehicles,
+        useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true,
       })
     } catch (error: unknown) {
       if (error) {

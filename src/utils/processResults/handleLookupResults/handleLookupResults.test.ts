@@ -26,7 +26,11 @@ describe('handleLookupResults', () => {
   it('does not set queried vehicles when the response contains a response with no data', () => {
     const response = { data: [] }
 
-    handleLookupResults({ response, setQueriedVehiclesFunction })
+    handleLookupResults({
+      response,
+      setQueriedVehiclesFunction,
+      useNewStyleDisplay: false,
+    })
 
     expect(setQueriedVehiclesFunction).not.toHaveBeenCalled()
   })
@@ -42,7 +46,11 @@ describe('handleLookupResults', () => {
       ],
     }
 
-    handleLookupResults({ response, setQueriedVehiclesFunction })
+    handleLookupResults({
+      response,
+      setQueriedVehiclesFunction,
+      useNewStyleDisplay: false,
+    })
 
     expect(setQueriedVehiclesFunction).toHaveBeenCalled()
   })
@@ -75,6 +83,7 @@ describe('handleLookupResults', () => {
     handleLookupResults({
       response,
       setQueriedVehiclesFunction: setQueriedVehicles,
+      useNewStyleDisplay: false,
     })
 
     expect(mockedinsertLookupIntoListOfQueriedVehicles).toHaveBeenCalledWith(
@@ -120,6 +129,7 @@ describe('handleLookupResults', () => {
     handleLookupResults({
       response,
       setQueriedVehiclesFunction: setQueriedVehicles,
+      useNewStyleDisplay: false,
     })
 
     expect(mockedinsertLookupIntoListOfQueriedVehicles).toHaveBeenCalledWith(
@@ -159,6 +169,7 @@ describe('handleLookupResults', () => {
     handleLookupResults({
       response,
       setQueriedVehiclesFunction: setQueriedVehicles,
+      useNewStyleDisplay: false,
     })
 
     expect(

@@ -2,19 +2,24 @@ import findVehicleInList from 'utils/processResults/findVehicleInList/findVehicl
 import insertLookupIntoListOfQueriedVehicles from 'utils/processResults/insertLookupIntoListOfQueriedVehicles/insertLookupIntoListOfQueriedVehicles'
 import VehicleDisplayResult from 'types/vehicleDisplayResult'
 import { VehicleQueryResponse } from 'types/responses'
+import AnalyticsTracker from 'utils/analytics/tracking'
 
 const handleLookupResults = ({
-  response,
-  fromPreviousLookupUniqueIdentifier = false,
   expandResults = true,
+  fromPreviousLookupUniqueIdentifier = false,
+  response,
   setQueriedVehiclesFunction,
+  tracker,
+  useNewStyleDisplay,
 }: {
-  response: VehicleQueryResponse
-  fromPreviousLookupUniqueIdentifier?: boolean
   expandResults?: boolean
+  fromPreviousLookupUniqueIdentifier?: boolean
+  response: VehicleQueryResponse
   setQueriedVehiclesFunction: React.Dispatch<
     React.SetStateAction<VehicleDisplayResult[]>
   >
+  tracker?: AnalyticsTracker | undefined
+  useNewStyleDisplay: boolean
 }): void => {
   /**
    * This function does a lot...
@@ -86,7 +91,12 @@ const handleLookupResults = ({
       existingVehicleDisplayResultFromList.vehicle.uniqueIdentifier !==
       queriedVehicleDisplayResult.vehicle.uniqueIdentifier
     ) {
-      // Do not update state if we just have the same data
+      tracker?.trackEvent('plate_lookup_for_vehicle_already_in_results', {
+        plate: firstLookup.vehicle.plate,
+        plate_type: firstLookup.vehicle.plateTypes,
+        state: firstLookup.vehicle.state,
+        useNewStyleDisplay,
+      })
 
       // new list with stale display result removed and fresh display result added
       const newList: VehicleDisplayResult[] =

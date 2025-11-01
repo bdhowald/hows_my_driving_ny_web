@@ -304,10 +304,11 @@ const Search = ({
         .then((queries) => {
           queries.forEach((response) =>
             handleLookupResults({
-              response,
-              fromPreviousLookupUniqueIdentifier: false,
               expandResults: false,
+              fromPreviousLookupUniqueIdentifier: false,
+              response,
               setQueriedVehiclesFunction,
+              useNewStyleDisplay,
             }),
           )
 
@@ -315,7 +316,8 @@ const Search = ({
 
           tracker?.trackEvent('lookups_retrieved_from_cookies', {
             numLookups: lookupPromisesWithRetry.length,
-            timeToCompleteInSeconds: (finish.getTime() - start.getTime()) / MILLISECONDS_IN_SECOND,
+            timeToCompleteInSeconds:
+              (finish.getTime() - start.getTime()) / MILLISECONDS_IN_SECOND,
           })
         })
         .catch((error) => {
@@ -351,7 +353,7 @@ const Search = ({
 
         tracker?.trackEvent('display_previous_lookup', {
           uniqueIdentifier: previousLookupUniqueIdentifierFromQuery,
-          useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE],
+          useNewStyleDisplay,
         })
 
         try {
@@ -366,6 +368,7 @@ const Search = ({
             response,
             fromPreviousLookupUniqueIdentifier: true,
             setQueriedVehiclesFunction,
+            useNewStyleDisplay,
           })
         } catch (error: unknown) {
           if (error) {
@@ -472,15 +475,21 @@ const Search = ({
         plate,
         plate_type: plateType,
         state,
-        timeToCompleteInSeconds: (finish.getTime() - start.getTime()) / MILLISECONDS_IN_SECOND,
-        useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE],
+        timeToCompleteInSeconds:
+          (finish.getTime() - start.getTime()) / MILLISECONDS_IN_SECOND,
+        useNewStyleDisplay,
       })
 
       // If query successful, reset error state
       setSearchErrorFunction(false)
 
       // Parse the results
-      handleLookupResults({ response, setQueriedVehiclesFunction })
+      handleLookupResults({
+        response,
+        setQueriedVehiclesFunction,
+        tracker,
+        useNewStyleDisplay,
+      })
     } catch (error: unknown) {
       if (error) {
         if (isApiErrorObject(error) && isErrorQueryResponse(error.body)) {
