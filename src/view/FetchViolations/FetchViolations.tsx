@@ -20,7 +20,7 @@ import {
 } from 'constants/tracking'
 import Vehicle from 'models/Vehicle/Vehicle'
 import getPlateTypeName from 'utils/search/getPlateType/getPlateTypeName/getPlateTypeName'
-import handleLookupResults from 'utils/processResults/handleLookupResults/handleLookupResults'
+import getListOfQueriedVehiclesAfterResponse from 'utils/processResults/getListOfQueriedVehiclesAfterResponse/getListOfQueriedVehiclesAfterResponse'
 import performLookup from 'utils/search/performLookup/performLookup'
 import AnalyticsTracker from 'utils/analytics/tracking'
 import MixpanelTracker from 'utils/analytics/trackers/mixpanel'
@@ -124,11 +124,13 @@ const FetchViolations = () => {
       setSearchError(false)
 
       // Parse the results
-      handleLookupResults({
-        response,
-        setQueriedVehiclesFunction: setQueriedVehicles,
-        useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true,
-      })
+      setQueriedVehicles((previouslyQueriedVehicleDisplayResults) =>
+        getListOfQueriedVehiclesAfterResponse({
+          previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
+          response,
+          useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true,
+        })
+      )
     } catch (error: unknown) {
       if (error) {
         setSearchError(true)

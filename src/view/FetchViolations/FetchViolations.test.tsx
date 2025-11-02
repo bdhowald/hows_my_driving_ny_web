@@ -557,7 +557,12 @@ describe('FetchViolations', () => {
         'performNewLookup',
       )
 
-      performNewLookupSpy.mockRejectedValueOnce(new Error('something broke'))
+      // Simulate failure with three failed retries
+      performNewLookupSpy
+        .mockRejectedValueOnce(new Error('something broke'))
+        .mockRejectedValueOnce(new Error('something broke'))
+        .mockRejectedValueOnce(new Error('something broke'))
+        .mockRejectedValueOnce(new Error('something broke'))
 
       render(
         <CookiesProvider cookies={new Cookies('lookupIdentifiers=;')}>
@@ -584,8 +589,8 @@ describe('FetchViolations', () => {
         const alertMessage = screen.getByRole('alert')
         expect(alertMessage).toBeInTheDocument()
         expect(alertMessage.textContent).toEqual('Oops! Please try again.')
-      })
-    })
+      }, { timeout: 10000 })
+    }, 12500)
 
     it('should display an error message from the server if available', async () => {
       const performNewLookupSpy = jest.spyOn(
@@ -655,7 +660,12 @@ describe('FetchViolations', () => {
         'performNewLookup',
       )
 
-      performNewLookupSpy.mockRejectedValueOnce(new Error('something broke'))
+      // Simulate failure with three failed retries
+      performNewLookupSpy
+        .mockRejectedValueOnce(new Error('something broke'))
+        .mockRejectedValueOnce(new Error('something broke'))
+        .mockRejectedValueOnce(new Error('something broke'))
+        .mockRejectedValueOnce(new Error('something broke'))
 
       render(
         <CookiesProvider cookies={new Cookies('lookupIdentifiers=;')}>
@@ -683,7 +693,7 @@ describe('FetchViolations', () => {
         )
 
         expect(screen.getByRole('alert')).toBeInTheDocument()
-      })
+      }, { timeout: 5000 })
 
       await waitFor(() => {
         expect(scrollIntoViewFunction).not.toHaveBeenCalled()

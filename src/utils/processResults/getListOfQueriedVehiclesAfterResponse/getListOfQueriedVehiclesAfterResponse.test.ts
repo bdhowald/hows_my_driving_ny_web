@@ -1,70 +1,71 @@
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
 import VehicleDisplayResult from 'types/vehicleDisplayResult'
 
-import handleLookupResults from './handleLookupResults'
+import handleLookupResults from './getListOfQueriedVehiclesAfterResponse'
 
-const mockedinsertLookupIntoListOfQueriedVehicles = jest.fn()
+// const mockedinsertLookupIntoListOfQueriedVehicles = jest.fn()
 
-jest.mock(
-  'utils/processResults/insertLookupIntoListOfQueriedVehicles/insertLookupIntoListOfQueriedVehicles',
-  () => ({
-    ...jest.requireActual(
-      'utils/processResults/insertLookupIntoListOfQueriedVehicles/insertLookupIntoListOfQueriedVehicles',
-    ),
-    __esModule: true,
-    default: (
-      a: VehicleDisplayResult | undefined,
-      b: VehicleDisplayResult[],
-      c: VehicleDisplayResult,
-    ) => mockedinsertLookupIntoListOfQueriedVehicles(a, b, c),
-  }),
-)
+// jest.mock(
+//   'utils/processResults/insertLookupIntoListOfQueriedVehicles/insertLookupIntoListOfQueriedVehicles',
+//   () => ({
+//     ...jest.requireActual(
+//       'utils/processResults/insertLookupIntoListOfQueriedVehicles/insertLookupIntoListOfQueriedVehicles',
+//     ),
+//     __esModule: true,
+//     default: (
+//       a: VehicleDisplayResult | undefined,
+//       b: VehicleDisplayResult[],
+//       c: VehicleDisplayResult,
+//     ) => mockedinsertLookupIntoListOfQueriedVehicles(a, b, c),
+//   }),
+// )
 
 describe('handleLookupResults', () => {
-  const setQueriedVehiclesFunction = jest.fn()
 
-  it('does not set queried vehicles when the response contains a response with no data', () => {
+  it('returns a blank list when the response contains a response with no data and the existing list is blank', () => {
     const response = { data: [] }
 
-    handleLookupResults({
+    const results = handleLookupResults({
+      previouslyQueriedVehicles: [],
       response,
-      setQueriedVehiclesFunction,
       useNewStyleDisplay: false,
     })
 
-    expect(setQueriedVehiclesFunction).not.toHaveBeenCalled()
+    expect(results).toEqual([])
   })
 
-  it('sets queried vehicles when the response contains a response with an successful lookup', () => {
+  it('returns list with newly queried vehicle when the response contains a response with a successful lookup', () => {
+    const vehicle = VehicleFactory.build()
+    
     const response = {
       data: [
         {
           statusCode: 200,
           successfulLookup: true,
-          vehicle: VehicleFactory.build(),
+          vehicle,
         },
       ],
     }
 
-    handleLookupResults({
+    const results = handleLookupResults({
+      previouslyQueriedVehicles: [],
       response,
-      setQueriedVehiclesFunction,
       useNewStyleDisplay: false,
     })
 
-    expect(setQueriedVehiclesFunction).toHaveBeenCalled()
+    const expected = {
+      expandResults: true,
+      fromPreviousLookupUniqueIdentifier: false,
+      vehicle,
+    }
+
+    expect(results).toEqual([expected])
   })
 
   it('inserts a lookup into a list of queried vehicles where it does not already exist', async () => {
     const vehicle = VehicleFactory.build()
 
-    const existingVehicleDisplayResultFromList = undefined
     const previouslyQueriedVehicleDisplayResults: VehicleDisplayResult[] = []
-    const queriedVehicleDisplayResult: VehicleDisplayResult = {
-      expandResults: true,
-      fromPreviousLookupUniqueIdentifier: false,
-      vehicle,
-    }
 
     const response = {
       data: [
@@ -76,21 +77,19 @@ describe('handleLookupResults', () => {
       ],
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const setQueriedVehicles = (callback: any) =>
-      callback(previouslyQueriedVehicleDisplayResults)
-
-    handleLookupResults({
+    const results = handleLookupResults({
+      previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
       response,
-      setQueriedVehiclesFunction: setQueriedVehicles,
       useNewStyleDisplay: false,
     })
 
-    expect(mockedinsertLookupIntoListOfQueriedVehicles).toHaveBeenCalledWith(
-      existingVehicleDisplayResultFromList,
-      previouslyQueriedVehicleDisplayResults,
-      queriedVehicleDisplayResult,
-    )
+    const expected = {
+      expandResults: true,
+      fromPreviousLookupUniqueIdentifier: false,
+      vehicle,
+    }
+
+    expect(results).toEqual([expected])
   })
 
   it('inserts a lookup into a list of queried vehicles where it already exists', async () => {
@@ -122,21 +121,19 @@ describe('handleLookupResults', () => {
       ],
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const setQueriedVehicles = (callback: any) =>
-      callback(previouslyQueriedVehicleDisplayResults)
-
-    handleLookupResults({
+    const results = handleLookupResults({
+      previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
       response,
-      setQueriedVehiclesFunction: setQueriedVehicles,
       useNewStyleDisplay: false,
     })
 
-    expect(mockedinsertLookupIntoListOfQueriedVehicles).toHaveBeenCalledWith(
-      existingVehicleDisplayResultFromList,
-      previouslyQueriedVehicleDisplayResults,
-      queriedVehicleDisplayResult,
-    )
+    const expected = {
+      expandResults: true,
+      fromPreviousLookupUniqueIdentifier: false,
+      vehicle: newVehicle,
+    }
+
+    expect(results).toEqual([expected])
   })
 
   it('takes no action if the lookup is identical (has the same unique identifier) as one in the list', async () => {
@@ -162,18 +159,12 @@ describe('handleLookupResults', () => {
       ],
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const setQueriedVehicles = (callback: any) =>
-      callback(previouslyQueriedVehicleDisplayResults)
-
-    handleLookupResults({
+    const results = handleLookupResults({
+      previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
       response,
-      setQueriedVehiclesFunction: setQueriedVehicles,
       useNewStyleDisplay: false,
     })
 
-    expect(
-      mockedinsertLookupIntoListOfQueriedVehicles,
-    ).not.toHaveBeenCalledWith()
+    expect(results).toEqual([existingVehicleDisplayResultFromList])
   })
 })

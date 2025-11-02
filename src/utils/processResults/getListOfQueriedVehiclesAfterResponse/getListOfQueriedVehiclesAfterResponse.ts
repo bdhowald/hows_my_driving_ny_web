@@ -4,23 +4,21 @@ import VehicleDisplayResult from 'types/vehicleDisplayResult'
 import { VehicleQueryResponse } from 'types/responses'
 import AnalyticsTracker from 'utils/analytics/tracking'
 
-const handleLookupResults = ({
+const getListOfQueriedVehiclesAfterResponse = ({
   expandResults = true,
   fromPreviousLookupUniqueIdentifier = false,
+  previouslyQueriedVehicles,
   response,
-  setQueriedVehiclesFunction,
   tracker,
   useNewStyleDisplay,
 }: {
   expandResults?: boolean
   fromPreviousLookupUniqueIdentifier?: boolean
+  previouslyQueriedVehicles: VehicleDisplayResult[]
   response: VehicleQueryResponse
-  setQueriedVehiclesFunction: React.Dispatch<
-    React.SetStateAction<VehicleDisplayResult[]>
-  >
   tracker?: AnalyticsTracker | undefined
   useNewStyleDisplay: boolean
-}): void => {
+}): VehicleDisplayResult[] => {
   /**
    * This function does a lot...
    *
@@ -51,7 +49,7 @@ const handleLookupResults = ({
   if (!data?.[0]) {
     // There is no data object or the results array is empty.
     // TODO: do something useful here
-    return
+    return previouslyQueriedVehicles
   }
 
   const firstLookup = data[0]
@@ -59,58 +57,56 @@ const handleLookupResults = ({
   if (!firstLookup.successfulLookup) {
     // The lookup was not successful.
     // TODO: do something useful here
-    return
+    return previouslyQueriedVehicles
   }
 
-  setQueriedVehiclesFunction((previouslyQueriedVehicleDisplayResults) => {
-    const queriedVehicleDisplayResult: VehicleDisplayResult = {
-      expandResults,
-      fromPreviousLookupUniqueIdentifier,
-      vehicle: firstLookup.vehicle,
-    }
+  const queriedVehicleDisplayResult: VehicleDisplayResult = {
+    expandResults,
+    fromPreviousLookupUniqueIdentifier,
+    vehicle: firstLookup.vehicle,
+  }
 
-    const existingVehicleDisplayResultFromList = findVehicleInList(
-      previouslyQueriedVehicleDisplayResults,
-      queriedVehicleDisplayResult,
-    )
+  const existingVehicleDisplayResultFromList = findVehicleInList(
+    previouslyQueriedVehicles,
+    queriedVehicleDisplayResult,
+  )
 
-    if (!existingVehicleDisplayResultFromList) {
-      // vehicle display result not already in list
-      const newList: VehicleDisplayResult[] =
-        insertLookupIntoListOfQueriedVehicles(
-          existingVehicleDisplayResultFromList,
-          previouslyQueriedVehicleDisplayResults,
-          queriedVehicleDisplayResult,
-        )
+  if (!existingVehicleDisplayResultFromList) {
+    // vehicle display result not already in list
+    const newList: VehicleDisplayResult[] =
+      insertLookupIntoListOfQueriedVehicles(
+        existingVehicleDisplayResultFromList,
+        previouslyQueriedVehicles,
+        queriedVehicleDisplayResult,
+      )
 
-      return newList
-    }
+    return newList
+  }
 
-    // vehicle display result already in list
-    if (
-      existingVehicleDisplayResultFromList.vehicle.uniqueIdentifier !==
-      queriedVehicleDisplayResult.vehicle.uniqueIdentifier
-    ) {
-      tracker?.trackEvent('plate_lookup_for_vehicle_already_in_results', {
-        plate: firstLookup.vehicle.plate,
-        plate_type: firstLookup.vehicle.plateTypes,
-        state: firstLookup.vehicle.state,
-        useNewStyleDisplay,
-      })
+  // vehicle display result already in list
+  if (
+    existingVehicleDisplayResultFromList.vehicle.uniqueIdentifier !==
+    queriedVehicleDisplayResult.vehicle.uniqueIdentifier
+  ) {
+    tracker?.trackEvent('plate_lookup_for_vehicle_already_in_results', {
+      plate: firstLookup.vehicle.plate,
+      plate_type: firstLookup.vehicle.plateTypes,
+      state: firstLookup.vehicle.state,
+      useNewStyleDisplay,
+    })
 
-      // new list with stale display result removed and fresh display result added
-      const newList: VehicleDisplayResult[] =
-        insertLookupIntoListOfQueriedVehicles(
-          existingVehicleDisplayResultFromList,
-          previouslyQueriedVehicleDisplayResults,
-          queriedVehicleDisplayResult,
-        )
+    // new list with stale display result removed and fresh display result added
+    const newList: VehicleDisplayResult[] =
+      insertLookupIntoListOfQueriedVehicles(
+        existingVehicleDisplayResultFromList,
+        previouslyQueriedVehicles,
+        queriedVehicleDisplayResult,
+      )
 
-      return newList
-    }
+    return newList
+  }
 
-    return previouslyQueriedVehicleDisplayResults
-  })
+  return previouslyQueriedVehicles
 }
 
-export default handleLookupResults
+export default getListOfQueriedVehiclesAfterResponse

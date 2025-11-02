@@ -13,7 +13,7 @@ import L10N from 'constants/display'
 import HttpStatusCode from 'constants/httpStatusCode'
 import { PlateType } from 'constants/plateTypes'
 import { MILLISECONDS_IN_SECOND } from 'constants/time'
-import handleLookupResults from 'utils/processResults/handleLookupResults/handleLookupResults'
+import getListOfQueriedVehiclesAfterResponse from 'utils/processResults/getListOfQueriedVehiclesAfterResponse/getListOfQueriedVehiclesAfterResponse'
 import performLookup from 'utils/search/performLookup/performLookup'
 import retryRequest from 'utils/search/retryRequest/retryRequest'
 import PlateLookup from 'types/plateLookup'
@@ -303,13 +303,15 @@ const Search = ({
       Promise.all(lookupPromisesWithRetry)
         .then((queries) => {
           queries.forEach((response) =>
-            handleLookupResults({
-              expandResults: false,
-              fromPreviousLookupUniqueIdentifier: false,
-              response,
-              setQueriedVehiclesFunction,
-              useNewStyleDisplay,
-            }),
+            setQueriedVehiclesFunction((previouslyQueriedVehicleDisplayResults) =>
+              getListOfQueriedVehiclesAfterResponse({
+                expandResults: false,
+                fromPreviousLookupUniqueIdentifier: false,
+                previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
+                response,
+                useNewStyleDisplay,
+              })
+            )
           )
 
           const finish = new Date()
@@ -365,12 +367,14 @@ const Search = ({
           })
 
           // Parse the results
-          handleLookupResults({
-            response,
-            fromPreviousLookupUniqueIdentifier: true,
-            setQueriedVehiclesFunction,
-            useNewStyleDisplay,
-          })
+          setQueriedVehiclesFunction((previouslyQueriedVehicleDisplayResults) =>
+            getListOfQueriedVehiclesAfterResponse({
+              response,
+              fromPreviousLookupUniqueIdentifier: true,
+              previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
+              useNewStyleDisplay,
+            })
+          )
         } catch (error: unknown) {
           if (error) {
             setSearchErrorFunction(true)
@@ -485,12 +489,14 @@ const Search = ({
       setSearchErrorFunction(false)
 
       // Parse the results
-      handleLookupResults({
-        response,
-        setQueriedVehiclesFunction,
-        tracker,
-        useNewStyleDisplay,
-      })
+      setQueriedVehiclesFunction((previouslyQueriedVehicleDisplayResults) =>
+        getListOfQueriedVehiclesAfterResponse({
+          response,
+          previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
+          tracker,
+          useNewStyleDisplay,
+        })
+      )
     } catch (error: unknown) {
       if (error) {
         if (isApiErrorObject(error) && isErrorQueryResponse(error.body)) {
