@@ -342,14 +342,6 @@ const Search = ({
               // If query successful, reset error state
               setSearchErrorFunction(false)
 
-              const finish = new Date()
-
-              tracker?.trackEvent('lookups_retrieved_from_cookies', {
-                numLookups: lookupRequestsWithRetry.length,
-                timeToCompleteInSeconds:
-                  (finish.getTime() - start.getTime()) / MILLISECONDS_IN_SECOND,
-                useNewStyleDisplay,
-              })
               return
             }
 
@@ -372,6 +364,15 @@ const Search = ({
                   useNewStyleDisplay,
                 }),
             )
+          })
+
+          const finish = new Date()
+
+          tracker?.trackEvent('lookups_retrieved_from_cookies', {
+            numLookups: lookupRequestsWithRetry.length,
+            timeToCompleteInSeconds:
+              (finish.getTime() - start.getTime()) / MILLISECONDS_IN_SECOND,
+            useNewStyleDisplay,
           })
 
           if (numFailedResponses > 0) {
