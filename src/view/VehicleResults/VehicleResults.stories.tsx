@@ -49,6 +49,7 @@ export const ResultsWithViolationsListVisible: Story = {
       {
         expandResults: true,
         fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
         vehicle: VehicleFactory.build(),
       },
     ],
@@ -63,6 +64,7 @@ export const ResultsWithViolationsListHidden: Story = {
       {
         expandResults: false,
         fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
         vehicle: VehicleFactory.build(),
       },
     ],
@@ -77,11 +79,13 @@ export const ResultsWithMultipleVehicles: Story = {
       {
         expandResults: true,
         fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
         vehicle: VehicleFactory.build(),
       },
       {
         expandResults: true,
         fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
         vehicle: VehicleFactory.build(),
       },
     ],

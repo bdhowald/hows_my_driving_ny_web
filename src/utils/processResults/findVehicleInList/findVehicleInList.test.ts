@@ -12,12 +12,14 @@ describe('findVehicleInList', () => {
       const vehicleDisplayResult = {
         expandResults: false,
         fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
         vehicle: VehicleFactory.build({ plate, plateTypes, state }),
       }
 
       const duplicateVehicleDisplayResult = {
         expandResults: false,
         fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
         vehicle: VehicleFactory.build({ plate, plateTypes, state }),
       }
 
@@ -54,12 +56,14 @@ describe('findVehicleInList', () => {
       const vehicleDisplayResult = {
         expandResults: false,
         fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
         vehicle: VehicleFactory.build({ plate, plateTypes, state }),
       }
 
       const duplicateVehicleDisplayResult = {
         expandResults: false,
         fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
         vehicle: VehicleFactory.build({ plate, plateTypes, state }),
       }
 
@@ -85,6 +89,7 @@ describe('findVehicleInList', () => {
       const vehicleDisplayResult = {
         expandResults: false,
         fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
         vehicle,
       }
 
@@ -96,6 +101,7 @@ describe('findVehicleInList', () => {
       const duplicateVehicleDisplayResult = {
         expandResults: false,
         fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
         vehicle: duplicateVehicle,
       }
 
@@ -119,6 +125,7 @@ describe('findVehicleInList', () => {
       const vehicleDisplayResult = {
         expandResults: false,
         fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
         vehicle,
       }
 
@@ -130,6 +137,7 @@ describe('findVehicleInList', () => {
       const duplicateVehicleDisplayResult = {
         expandResults: false,
         fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
         vehicle: duplicateVehicle,
       }
 
@@ -152,6 +160,7 @@ describe('findVehicleInList', () => {
       const vehicleDisplayResult = {
         expandResults: false,
         fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
         vehicle,
       }
 
@@ -163,6 +172,7 @@ describe('findVehicleInList', () => {
       const duplicateVehicleDisplayResult = {
         expandResults: false,
         fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
         vehicle: duplicateVehicle,
       }
 
@@ -203,6 +213,7 @@ describe('findVehicleInList', () => {
       const vehicleDisplayResult = {
         expandResults: false,
         fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
         vehicle,
       }
 
@@ -214,6 +225,7 @@ describe('findVehicleInList', () => {
       const duplicateVehicleDisplayResult = {
         expandResults: false,
         fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
         vehicle: duplicateVehicle,
       }
 
@@ -221,6 +233,39 @@ describe('findVehicleInList', () => {
         findVehicleInList(
           [duplicateVehicleDisplayResult],
           vehicleDisplayResult,
+        ),
+      ).toBeFalsy()
+    })
+
+    it('should return false if queried vehicle is a placeholder for an unsuccessful query', () => {
+      const plateTypes = undefined
+
+      const actualVehicle = VehicleFactory.build({
+        plate: 'ABC1234',
+        plateTypes,
+        state: 'NY',
+      })
+
+      const actualVehicleDisplayResult = {
+        expandResults: false,
+        fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
+        vehicle: actualVehicle,
+      }
+
+      const placeholderVehicleDisplayResult = {
+        expandResults: false,
+        fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: false as false,
+        vehicle: {
+          uniqueIdentifier: 'abcd1234',
+        },
+      }
+
+      expect(
+        findVehicleInList(
+          [actualVehicleDisplayResult],
+          placeholderVehicleDisplayResult,
         ),
       ).toBeFalsy()
     })

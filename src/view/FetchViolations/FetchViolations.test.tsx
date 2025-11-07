@@ -7,7 +7,6 @@ import { VehicleFactory } from '__fixtures__/models/Vehicle'
 import { ViolationFactory } from '__fixtures__/models/Violation'
 import * as boundaryFunctions from 'boundaries/http'
 import FetchViolations from './FetchViolations'
-import plateTypes from 'constants/plateTypes'
 
 describe('FetchViolations', () => {
   beforeEach(() => {
@@ -578,18 +577,21 @@ describe('FetchViolations', () => {
       const searchButtonHtmlElement = screen.getByRole('button')
       userEvent.click(searchButtonHtmlElement)
 
-      await waitFor(() => {
-        expect(performNewLookupSpy).toHaveBeenCalledWith(
-          expect.objectContaining({
-            lookupSource: 'web_client',
-            plate: 'ABC1234:NY',
-          }),
-        )
+      await waitFor(
+        () => {
+          expect(performNewLookupSpy).toHaveBeenCalledWith(
+            expect.objectContaining({
+              lookupSource: 'web_client',
+              plate: 'ABC1234:NY',
+            }),
+          )
 
-        const alertMessage = screen.getByRole('alert')
-        expect(alertMessage).toBeInTheDocument()
-        expect(alertMessage.textContent).toEqual('Oops! Please try again.')
-      }, { timeout: 10000 })
+          const alertMessage = screen.getByRole('alert')
+          expect(alertMessage).toBeInTheDocument()
+          expect(alertMessage.textContent).toEqual('Oops! Please try again.')
+        },
+        { timeout: 10000 },
+      )
     }, 12500)
 
     it('should display an error message from the server if available', async () => {
@@ -684,16 +686,19 @@ describe('FetchViolations', () => {
       const searchButtonHtmlElement = screen.getByRole('button')
       userEvent.click(searchButtonHtmlElement)
 
-      await waitFor(() => {
-        expect(performNewLookupSpy).toHaveBeenCalledWith(
-          expect.objectContaining({
-            lookupSource: 'web_client',
-            plate: 'ABC1234:NY',
-          }),
-        )
+      await waitFor(
+        () => {
+          expect(performNewLookupSpy).toHaveBeenCalledWith(
+            expect.objectContaining({
+              lookupSource: 'web_client',
+              plate: 'ABC1234:NY',
+            }),
+          )
 
-        expect(screen.getByRole('alert')).toBeInTheDocument()
-      }, { timeout: 5000 })
+          expect(screen.getByRole('alert')).toBeInTheDocument()
+        },
+        { timeout: 5000 },
+      )
 
       await waitFor(() => {
         expect(scrollIntoViewFunction).not.toHaveBeenCalled()
@@ -913,5 +918,190 @@ describe('FetchViolations', () => {
         screen.getByText(plate)
       })
     })
+
+    it('should preserve previous lookups, even if querying for them temporarily fails', async () => {
+      const previousLookupPlate = 'ABC1234'
+      const previousLookupUniqueIdentifier = 'prev10us'
+      const previousLookupVehicle = VehicleFactory.build({
+        plate: previousLookupPlate,
+        uniqueIdentifier: previousLookupUniqueIdentifier,
+      })
+
+      const newLookupPlate = 'NYC1111'
+      const newLookupUniqueIdentifier = 'new0uery'
+      const newLookupVehicle = VehicleFactory.build({
+        plate: newLookupPlate,
+        uniqueIdentifier: newLookupUniqueIdentifier,
+      })
+
+      const originalCookiesString = `lookupIdentifiers=${previousLookupUniqueIdentifier};useNewStyleDisplay=true;`
+      const persistentCookiesThroughRefresh = new Cookies(originalCookiesString)
+
+      // Set lookupIdentifiers cookie to have a previous lookup unique identifier
+      document.cookie = `${originalCookiesString}; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=None;`
+
+      const getPreviousLookupSpy = jest.spyOn(
+        boundaryFunctions,
+        'getPreviousLookup',
+      )
+
+      // Simulate failure with three failed retries
+      getPreviousLookupSpy
+        .mockRejectedValueOnce(new Error('something broke'))
+        .mockRejectedValueOnce(new Error('something broke'))
+        .mockRejectedValueOnce(new Error('something broke'))
+        .mockRejectedValueOnce(new Error('something broke'))
+
+      const { unmount } = render(
+        <CookiesProvider cookies={persistentCookiesThroughRefresh}>
+          <FetchViolations />
+        </CookiesProvider>,
+      )
+
+      await waitFor(
+        () => {
+          screen.getByText('Oops! Please try again.')
+        },
+        { timeout: 10000 },
+      )
+
+      // Simulate successful new lookup
+      getPreviousLookupSpy.mockResolvedValueOnce({
+        data: [
+          {
+            statusCode: 200,
+            successfulLookup: true,
+            vehicle: newLookupVehicle,
+          },
+        ],
+      })
+
+      const plateSearchInputHtmlElement = screen.getByRole('textbox')
+      userEvent.type(plateSearchInputHtmlElement, newLookupPlate)
+
+      const searchButtonHtmlElement = screen.getByRole('button', {
+        name: 'Search',
+      })
+      userEvent.click(searchButtonHtmlElement)
+
+      // Wait for new lookup
+      await waitFor(() => {
+        // Lookup has appeared on the page.
+        screen.getByText('Plate:')
+        screen.getByText(newLookupPlate)
+      })
+
+      // Simulate fetching of all lookups in cookies
+      getPreviousLookupSpy
+        .mockResolvedValueOnce({
+          data: [
+            {
+              statusCode: 200,
+              successfulLookup: true,
+              vehicle: newLookupVehicle,
+            },
+          ],
+        })
+        .mockResolvedValueOnce({
+          data: [
+            {
+              statusCode: 200,
+              successfulLookup: true,
+              vehicle: previousLookupVehicle,
+            },
+          ],
+        })
+
+      // unmount component and render to simulate refresh of page
+      unmount()
+
+      render(
+        <CookiesProvider cookies={persistentCookiesThroughRefresh}>
+          <FetchViolations />
+        </CookiesProvider>,
+      )
+
+      await waitFor(() => {
+        // Both lookups have appeared on the page.
+        screen.getByText(newLookupPlate)
+        screen.getByText(previousLookupPlate)
+      })
+    }, 12500)
   })
+
+  it('should handle a new lookup even when querying existing lookups', async () => {
+    const previousLookupPlate = 'ABC1234'
+    const previousLookupUniqueIdentifier = 'prev10us'
+    const previousLookupVehicle = VehicleFactory.build({
+      plate: previousLookupPlate,
+      uniqueIdentifier: previousLookupUniqueIdentifier,
+    })
+
+    const newLookupPlate = 'NYC1111'
+    const newLookupUniqueIdentifier = 'new0uery'
+    const newLookupVehicle = VehicleFactory.build({
+      plate: newLookupPlate,
+      uniqueIdentifier: newLookupUniqueIdentifier,
+    })
+
+    const originalCookiesString = `lookupIdentifiers=${previousLookupUniqueIdentifier};useNewStyleDisplay=true;`
+    const persistentCookiesThroughRefresh = new Cookies(originalCookiesString)
+
+    // Set lookupIdentifiers cookie to have a previous lookup unique identifier
+    document.cookie = `${originalCookiesString}; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=None;`
+
+    const getPreviousLookupSpy = jest.spyOn(
+      boundaryFunctions,
+      'getPreviousLookup',
+    )
+    const performNewLookupSpy = jest.spyOn(
+      boundaryFunctions,
+      'performNewLookup',
+    )
+
+    // Simulate successful old lookup
+    getPreviousLookupSpy.mockResolvedValueOnce({
+      data: [
+        {
+          statusCode: 200,
+          successfulLookup: true,
+          vehicle: previousLookupVehicle,
+        },
+      ],
+    })
+
+    // Simulate successful new lookup
+    performNewLookupSpy.mockResolvedValueOnce({
+      data: [
+        {
+          statusCode: 200,
+          successfulLookup: true,
+          vehicle: newLookupVehicle,
+        },
+      ],
+    })
+
+    render(
+      <CookiesProvider cookies={persistentCookiesThroughRefresh}>
+        <FetchViolations />
+      </CookiesProvider>,
+    )
+
+    const plateSearchInputHtmlElement = screen.getByRole('textbox')
+    userEvent.type(plateSearchInputHtmlElement, newLookupPlate)
+
+    const searchButtonHtmlElement = screen.getByRole('button', {
+      name: 'Search',
+    })
+    userEvent.click(searchButtonHtmlElement)
+
+    await waitFor(
+      () => {
+        // Both lookups have appeared on the page.
+        screen.getByText(newLookupPlate)
+        screen.getByText(previousLookupPlate)
+      },
+      { timeout: 5000 },
+    )
+  }, 12500)
 })

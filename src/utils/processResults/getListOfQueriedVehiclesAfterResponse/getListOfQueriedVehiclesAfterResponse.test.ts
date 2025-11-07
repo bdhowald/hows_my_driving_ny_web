@@ -1,62 +1,47 @@
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
-import VehicleDisplayResult from 'types/vehicleDisplayResult'
+import {
+  VehicleDisplayErrorResult,
+  VehicleDisplaySuccessResult,
+} from 'types/vehicleDisplayResult'
 
-import handleLookupResults from './getListOfQueriedVehiclesAfterResponse'
+import getListOfQueriedVehiclesAfterResponse from './getListOfQueriedVehiclesAfterResponse'
 
-// const mockedinsertLookupIntoListOfQueriedVehicles = jest.fn()
-
-// jest.mock(
-//   'utils/processResults/insertLookupIntoListOfQueriedVehicles/insertLookupIntoListOfQueriedVehicles',
-//   () => ({
-//     ...jest.requireActual(
-//       'utils/processResults/insertLookupIntoListOfQueriedVehicles/insertLookupIntoListOfQueriedVehicles',
-//     ),
-//     __esModule: true,
-//     default: (
-//       a: VehicleDisplayResult | undefined,
-//       b: VehicleDisplayResult[],
-//       c: VehicleDisplayResult,
-//     ) => mockedinsertLookupIntoListOfQueriedVehicles(a, b, c),
-//   }),
-// )
-
-describe('handleLookupResults', () => {
-
-  it('returns a blank list when the response contains a response with no data and the existing list is blank', () => {
-    const response = { data: [] }
-
-    const results = handleLookupResults({
-      previouslyQueriedVehicles: [],
-      response,
-      useNewStyleDisplay: false,
-    })
-
-    expect(results).toEqual([])
-  })
-
+describe('getListOfQueriedVehiclesAfterResponse', () => {
   it('returns list with newly queried vehicle when the response contains a response with a successful lookup', () => {
     const vehicle = VehicleFactory.build()
-    
-    const response = {
-      data: [
-        {
-          statusCode: 200,
-          successfulLookup: true,
-          vehicle,
-        },
-      ],
-    }
 
-    const results = handleLookupResults({
+    const results = getListOfQueriedVehiclesAfterResponse({
       previouslyQueriedVehicles: [],
-      response,
+      queriedVehicle: vehicle,
       useNewStyleDisplay: false,
     })
 
     const expected = {
       expandResults: true,
       fromPreviousLookupUniqueIdentifier: false,
+      isSuccessfulLookup: true,
       vehicle,
+    }
+
+    expect(results).toEqual([expected])
+  })
+
+  it('returns list with failed vehicle query when the response contains a response with an unsuccessful lookup', () => {
+    const vehiclePlaceholder: VehicleDisplayErrorResult['vehicle'] = {
+      uniqueIdentifier: 'abc1234,',
+    }
+
+    const results = getListOfQueriedVehiclesAfterResponse({
+      previouslyQueriedVehicles: [],
+      queriedVehicle: vehiclePlaceholder,
+      useNewStyleDisplay: false,
+    })
+
+    const expected = {
+      expandResults: true,
+      fromPreviousLookupUniqueIdentifier: false,
+      isSuccessfulLookup: false,
+      vehicle: vehiclePlaceholder,
     }
 
     expect(results).toEqual([expected])
@@ -65,27 +50,19 @@ describe('handleLookupResults', () => {
   it('inserts a lookup into a list of queried vehicles where it does not already exist', async () => {
     const vehicle = VehicleFactory.build()
 
-    const previouslyQueriedVehicleDisplayResults: VehicleDisplayResult[] = []
+    const previouslyQueriedVehicleDisplayResults: VehicleDisplaySuccessResult[] =
+      []
 
-    const response = {
-      data: [
-        {
-          statusCode: 201,
-          successfulLookup: true,
-          vehicle,
-        },
-      ],
-    }
-
-    const results = handleLookupResults({
+    const results = getListOfQueriedVehiclesAfterResponse({
       previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
-      response,
+      queriedVehicle: vehicle,
       useNewStyleDisplay: false,
     })
 
     const expected = {
       expandResults: true,
       fromPreviousLookupUniqueIdentifier: false,
+      isSuccessfulLookup: true,
       vehicle,
     }
 
@@ -99,72 +76,93 @@ describe('handleLookupResults', () => {
     const existingVehicleDisplayResultFromList = {
       expandResults: true,
       fromPreviousLookupUniqueIdentifier: false,
+      isSuccessfulLookup: true as true,
       vehicle: oldVehicle,
     }
-    const previouslyQueriedVehicleDisplayResults: VehicleDisplayResult[] = [
-      existingVehicleDisplayResultFromList,
-    ]
+    const previouslyQueriedVehicleDisplayResults: VehicleDisplaySuccessResult[] =
+      [existingVehicleDisplayResultFromList]
 
-    const queriedVehicleDisplayResult: VehicleDisplayResult = {
-      expandResults: true,
-      fromPreviousLookupUniqueIdentifier: false,
-      vehicle: newVehicle,
-    }
-
-    const response = {
-      data: [
-        {
-          statusCode: 201,
-          successfulLookup: true,
-          vehicle: newVehicle,
-        },
-      ],
-    }
-
-    const results = handleLookupResults({
+    const results = getListOfQueriedVehiclesAfterResponse({
       previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
-      response,
+      queriedVehicle: newVehicle,
       useNewStyleDisplay: false,
     })
 
     const expected = {
       expandResults: true,
       fromPreviousLookupUniqueIdentifier: false,
+      isSuccessfulLookup: true as true,
       vehicle: newVehicle,
     }
 
     expect(results).toEqual([expected])
   })
 
-  it('takes no action if the lookup is identical (has the same unique identifier) as one in the list', async () => {
-    const oldVehicle = VehicleFactory.build({ uniqueIdentifier: 'abcd1234' })
-    const newVehicle = VehicleFactory.build({ uniqueIdentifier: 'abcd1234' })
+  it('does not insert a lookup into a list of queried vehicles where it already exists when that lookup failed', async () => {
+    const uniqueIdentifier = 'abcd1234'
+    const existingVehicle = VehicleFactory.build({ uniqueIdentifier })
 
     const existingVehicleDisplayResultFromList = {
       expandResults: true,
       fromPreviousLookupUniqueIdentifier: false,
-      vehicle: oldVehicle,
+      isSuccessfulLookup: true as true,
+      vehicle: existingVehicle,
     }
-    const previouslyQueriedVehicleDisplayResults: VehicleDisplayResult[] = [
-      existingVehicleDisplayResultFromList,
-    ]
+    const previouslyQueriedVehicleDisplayResults: VehicleDisplaySuccessResult[] =
+      [existingVehicleDisplayResultFromList]
+    const failedQueriedVehicleResult = { uniqueIdentifier }
 
-    const response = {
-      data: [
-        {
-          statusCode: 201,
-          successfulLookup: true,
-          vehicle: newVehicle,
-        },
-      ],
-    }
-
-    const results = handleLookupResults({
+    const results = getListOfQueriedVehiclesAfterResponse({
       previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
-      response,
+      queriedVehicle: failedQueriedVehicleResult,
       useNewStyleDisplay: false,
     })
 
-    expect(results).toEqual([existingVehicleDisplayResultFromList])
+    const expected = {
+      expandResults: true,
+      fromPreviousLookupUniqueIdentifier: false,
+      isSuccessfulLookup: true as true,
+      vehicle: existingVehicle,
+    }
+
+    expect(results).toEqual([expected])
+  })
+
+  it('does not insert a lookup into a list of queried vehicles where the existing result is more recent', async () => {
+    const recentLookupDate = '2025-09-01T22:52:02.183Z'
+    const stalerLookupDate = '2025-09-01T22:52:02.000Z'
+
+    const recentVehicle = VehicleFactory.build({
+      lookupDate: recentLookupDate,
+      uniqueIdentifier: 'efgh5678',
+    })
+    const stalerVehicle = VehicleFactory.build({
+      lookupDate: stalerLookupDate,
+      uniqueIdentifier: 'abcd1234',
+    })
+
+    const existingVehicleDisplayResultFromList = {
+      expandResults: true,
+      fromPreviousLookupUniqueIdentifier: false,
+      isSuccessfulLookup: true as true,
+      vehicle: recentVehicle,
+    }
+    const previouslyQueriedVehicleDisplayResults: VehicleDisplaySuccessResult[] =
+      [existingVehicleDisplayResultFromList]
+
+    const results = getListOfQueriedVehiclesAfterResponse({
+      previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
+      queriedVehicle: stalerVehicle,
+      useNewStyleDisplay: false,
+    })
+
+    const expected = {
+      expandResults: true,
+      fromPreviousLookupUniqueIdentifier: false,
+      isSuccessfulLookup: true as true,
+      vehicle: recentVehicle,
+    }
+
+    expect(results).toEqual([expected])
   })
 })

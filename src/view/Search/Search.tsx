@@ -5,6 +5,7 @@ import { useCookies } from 'react-cookie'
 
 import { getPreviousLookup } from 'boundaries/http'
 import {
+  DEFAULT_COOKIE_PATH,
   DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE,
   LOOKUP_IDENTIFIER_COOKIE,
   USE_NEW_STYLE_DISPLAY_COOKIE,
@@ -13,14 +14,19 @@ import L10N from 'constants/display'
 import HttpStatusCode from 'constants/httpStatusCode'
 import { PlateType } from 'constants/plateTypes'
 import { MILLISECONDS_IN_SECOND } from 'constants/time'
+import useLookupIdentifierCookie from 'hooks/useLookupIdentifierCookie'
 import getListOfQueriedVehiclesAfterResponse from 'utils/processResults/getListOfQueriedVehiclesAfterResponse/getListOfQueriedVehiclesAfterResponse'
+import getQueriedVehicleFromResponse from 'utils/processResults/getQueriedVehicleFromResponse/getQueriedVehicleFromResponse'
 import performLookup from 'utils/search/performLookup/performLookup'
 import retryRequest from 'utils/search/retryRequest/retryRequest'
-import PlateLookup from 'types/plateLookup'
-import VehicleDisplayResult from 'types/vehicleDisplayResult'
-import { VehicleQueryResponse } from 'types/responses'
 import isApiErrorObject from 'utils/types/isApiErrorObject/isApiErrorObject'
 import isErrorQueryResponse from 'utils/types/isErrorQueryResponse/isErrorQueryResponse'
+import PlateLookup from 'types/plateLookup'
+import {
+  VehicleDisplayErrorResult,
+  VehicleDisplayResult,
+} from 'types/vehicleDisplayResult'
+import { VehicleQueryResponse } from 'types/responses'
 
 import SearchControls from 'view/Search/SearchControls/SearchControls'
 import { TrackingContext } from 'view/FetchViolations/FetchViolations'
@@ -35,7 +41,10 @@ type SearchPageProps = {
   previousLookupUniqueIdentifierFromQuery?: string
   queriedVehicles: VehicleDisplayResult[]
   searchError: boolean | string
-  setLookupInFlight: React.Dispatch<React.SetStateAction<boolean>>
+  setExistingQueriesInFlightFunction: React.Dispatch<
+    React.SetStateAction<boolean>
+  >
+  setLookupInFlightFunction: React.Dispatch<React.SetStateAction<boolean>>
   setQueriedVehiclesFunction: React.Dispatch<
     React.SetStateAction<VehicleDisplayResult[]>
   >
@@ -97,7 +106,8 @@ const Search = ({
   previousLookupUniqueIdentifierFromQuery,
   queriedVehicles,
   searchError,
-  setLookupInFlight,
+  setExistingQueriesInFlightFunction,
+  setLookupInFlightFunction,
   setQueriedVehiclesFunction,
   setSearchErrorFunction,
 }: SearchPageProps) => {
@@ -106,11 +116,14 @@ const Search = ({
     plateType: 'none',
     state: 'NY',
   })
-  const [cookies, setCookie, removeCookie] = useCookies([
+  const [cookies, setCookie] = useCookies([
     DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE,
     LOOKUP_IDENTIFIER_COOKIE,
     USE_NEW_STYLE_DISPLAY_COOKIE,
   ])
+
+  const { readLookupIdentifierCookie, syncIdentifiersToIdentifierCookie } =
+    useLookupIdentifierCookie()
 
   const tracker = useContext(TrackingContext)
 
@@ -149,21 +162,21 @@ const Search = ({
       if (inExperimentalGroup) {
         setCookie(USE_NEW_STYLE_DISPLAY_COOKIE, 'true', {
           maxAge: 31536000,
-          path: '/',
+          path: DEFAULT_COOKIE_PATH,
         })
       }
 
       if (inControlGroup) {
         setCookie(USE_NEW_STYLE_DISPLAY_COOKIE, 'false', {
           maxAge: 31536000,
-          path: '/',
+          path: DEFAULT_COOKIE_PATH,
         })
       }
 
       if (inReserveGroup) {
         setCookie(USE_NEW_STYLE_DISPLAY_COOKIE, 'none', {
           maxAge: 31536000,
-          path: '/',
+          path: DEFAULT_COOKIE_PATH,
         })
       }
     }
@@ -205,21 +218,21 @@ const Search = ({
       if (inExperimentalGroup) {
         setCookie(DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE, 'true', {
           maxAge: 31536000,
-          path: '/',
+          path: DEFAULT_COOKIE_PATH,
         })
       }
 
       if (inControlGroup) {
         setCookie(DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE, 'false', {
           maxAge: 31536000,
-          path: '/',
+          path: DEFAULT_COOKIE_PATH,
         })
       }
 
       if (inReserveGroup) {
         setCookie(DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE, 'none', {
           maxAge: 31536000,
-          path: '/',
+          path: DEFAULT_COOKIE_PATH,
         })
       }
     }
@@ -267,61 +280,103 @@ const Search = ({
 
   const retrieveLookupsFromCookieIdentifiers = () => {
     // Prevent another button press/submission
-    setLookupInFlight(true)
+    setExistingQueriesInFlightFunction(true)
 
     // Previous lookups available in cookie
     try {
       // Get unique identifiers from cookie
-      const cookieString: string = cookies[LOOKUP_IDENTIFIER_COOKIE] ?? ''
+      const uniqueIdentifiersFromCookies = readLookupIdentifierCookie()
 
-      // Filter out duplicate values and reverse the array.
-      // The cookies are stored with the most recent identifiers
-      // first, so searching for them in reverse order preserves
-      // the quality that top results are more recent.
-      const uniqueIdentifiersFromCookies = cookieString
-        .split(',')
-        .filter(
+      // Filter out duplicate values.
+      const uniqueIdentifiersWithoutDuplicates =
+        uniqueIdentifiersFromCookies.filter(
           (value, index, self) =>
             self.indexOf(value) === index &&
             // Don't lookup unique identifier twice if cookie value matches route.
             value !== previousLookupUniqueIdentifierFromQuery,
         )
-        .reverse()
 
       // Gather the promises for the previous lookups
-      const lookupPromisesWithRetry: Promise<VehicleQueryResponse>[] =
-        uniqueIdentifiersFromCookies.map((identifier: string) =>
+      const lookupRequestsWithRetry: {
+        promise: Promise<VehicleQueryResponse>
+        uniqueIdentifier: string
+      }[] = uniqueIdentifiersWithoutDuplicates.map((identifier: string) => ({
+        promise: retryRequest({
           // query for each
-          retryRequest({
-            asyncRequestFunction: () => getPreviousLookup(identifier),
-          }),
-        )
+          asyncRequestFunction: () => {
+            return getPreviousLookup(identifier)
+          },
+        }),
+        uniqueIdentifier: identifier,
+      }))
 
       const start = new Date()
 
+      let numFailedResponses = 0
+
       // Handle results
-      Promise.all(lookupPromisesWithRetry)
-        .then((queries) => {
-          queries.forEach((response) =>
-            setQueriedVehiclesFunction((previouslyQueriedVehicleDisplayResults) =>
-              getListOfQueriedVehiclesAfterResponse({
-                expandResults: false,
-                fromPreviousLookupUniqueIdentifier: false,
-                previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
-                response,
+      Promise.allSettled(lookupRequestsWithRetry.map((r) => r.promise))
+        .then((allResponses) => {
+          allResponses.forEach((settledResponse, index) => {
+            const { status } = settledResponse
+
+            if (status === 'fulfilled') {
+              const { value: response } = settledResponse
+              const queriedVehicle = getQueriedVehicleFromResponse(response)
+              if (!queriedVehicle) {
+                return
+              }
+
+              setQueriedVehiclesFunction(
+                (previouslyQueriedVehicleDisplayResults) =>
+                  getListOfQueriedVehiclesAfterResponse({
+                    expandResults: false,
+                    fromPreviousLookupUniqueIdentifier: false,
+                    previouslyQueriedVehicles:
+                      previouslyQueriedVehicleDisplayResults,
+                    queriedVehicle,
+                    useNewStyleDisplay,
+                  }),
+              )
+
+              // If query successful, reset error state
+              setSearchErrorFunction(false)
+
+              const finish = new Date()
+
+              tracker?.trackEvent('lookups_retrieved_from_cookies', {
+                numLookups: lookupRequestsWithRetry.length,
+                timeToCompleteInSeconds:
+                  (finish.getTime() - start.getTime()) / MILLISECONDS_IN_SECOND,
                 useNewStyleDisplay,
               })
+              return
+            }
+
+            numFailedResponses += 1
+
+            const failedRequest = lookupRequestsWithRetry[index]
+            const failedQueryVehiclePlaceholder: VehicleDisplayErrorResult['vehicle'] =
+              {
+                uniqueIdentifier: failedRequest.uniqueIdentifier,
+              }
+
+            setQueriedVehiclesFunction(
+              (previouslyQueriedVehicleDisplayResults) =>
+                getListOfQueriedVehiclesAfterResponse({
+                  expandResults: false,
+                  fromPreviousLookupUniqueIdentifier: false,
+                  previouslyQueriedVehicles:
+                    previouslyQueriedVehicleDisplayResults,
+                  queriedVehicle: failedQueryVehiclePlaceholder,
+                  useNewStyleDisplay,
+                }),
             )
-          )
-
-          const finish = new Date()
-
-          tracker?.trackEvent('lookups_retrieved_from_cookies', {
-            numLookups: lookupPromisesWithRetry.length,
-            timeToCompleteInSeconds:
-              (finish.getTime() - start.getTime()) / MILLISECONDS_IN_SECOND,
-            useNewStyleDisplay,
           })
+
+          if (numFailedResponses > 0) {
+            throw `${numFailedResponses} lookups failed. Please try again.`
+          }
         })
         .catch((error) => {
           if (error) {
@@ -330,29 +385,30 @@ const Search = ({
             trackUserReceivedError(error, 'retrieve_lookups_from_cookie')
           }
         })
-        .finally(() => setLookupInFlight(false))
-    } catch (_: unknown) {
-      // If queries return errors, blank out cookie
-      setOrRemoveLookupIdentifierCookie(undefined)
+        .finally(() => setExistingQueriesInFlightFunction(false))
+    } catch (error: unknown) {
+      // If there is some unexpected synchronous error not with the requests themselves
+      setSearchErrorFunction(true)
+
+      trackUserReceivedError(error, 'retrieve_lookups_from_cookie')
     }
   }
 
   useEffect(() => {
-    const uniqueIdentifiersToSaveInCookie =
-      constructLookupIdentifierCookie(queriedVehicles)
+    // Update cookie from unique identifiers
+    const uniqueIdentifiersFromCurrentlyQueriedVehicles =
+      getLookupIdentifiersForCurrentlyQueriedVehicles(queriedVehicles)
 
-    // Replace the old unique identifier for this vehicle
-    // with the new unique identifier for this lookup.
-    if (uniqueIdentifiersToSaveInCookie) {
-      setOrRemoveLookupIdentifierCookie(uniqueIdentifiersToSaveInCookie)
-    }
+    syncIdentifiersToIdentifierCookie(
+      uniqueIdentifiersFromCurrentlyQueriedVehicles,
+    )
   }, [queriedVehicles])
 
   useEffect(() => {
     const displayPreviousLookup = async () => {
       if (previousLookupUniqueIdentifierFromQuery) {
         // Prevent another button press/submission
-        setLookupInFlight(true)
+        setExistingQueriesInFlightFunction(true)
 
         tracker?.trackEvent('display_previous_lookup', {
           uniqueIdentifier: previousLookupUniqueIdentifierFromQuery,
@@ -366,14 +422,22 @@ const Search = ({
               getPreviousLookup(previousLookupUniqueIdentifierFromQuery),
           })
 
+          // If query successful, reset error state
+          setSearchErrorFunction(false)
+
+          const queriedVehicle = getQueriedVehicleFromResponse(response)
+          if (!queriedVehicle) {
+            return
+          }
+
           // Parse the results
           setQueriedVehiclesFunction((previouslyQueriedVehicleDisplayResults) =>
             getListOfQueriedVehiclesAfterResponse({
-              response,
               fromPreviousLookupUniqueIdentifier: true,
               previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
+              queriedVehicle,
               useNewStyleDisplay,
-            })
+            }),
           )
         } catch (error: unknown) {
           if (error) {
@@ -384,7 +448,7 @@ const Search = ({
         }
 
         // Re-enable button
-        setLookupInFlight(false)
+        setExistingQueriesInFlightFunction(false)
       }
 
       if (cookies[LOOKUP_IDENTIFIER_COOKIE]) {
@@ -394,9 +458,9 @@ const Search = ({
     displayPreviousLookup()
   }, [])
 
-  const constructLookupIdentifierCookie = (
+  const getLookupIdentifiersForCurrentlyQueriedVehicles = (
     vehicleDisplayResults: VehicleDisplayResult[],
-  ): string =>
+  ): string[] =>
     vehicleDisplayResults
       .map(
         (vehicleDisplayResult) => vehicleDisplayResult.vehicle.uniqueIdentifier,
@@ -404,7 +468,6 @@ const Search = ({
       .filter(
         (identifier) => identifier !== previousLookupUniqueIdentifierFromQuery,
       )
-      .toString()
 
   const handleInputChange = useCallback(
     (changeEvent: InputChangeType) => {
@@ -435,19 +498,6 @@ const Search = ({
     }
   }
 
-  const setOrRemoveLookupIdentifierCookie = (
-    cookieString: string | undefined,
-  ) => {
-    if (cookieString) {
-      setCookie(LOOKUP_IDENTIFIER_COOKIE, cookieString, {
-        maxAge: 31536000,
-        path: '/',
-      })
-      return
-    }
-    removeCookie(LOOKUP_IDENTIFIER_COOKIE)
-  }
-
   const performLookupAndHandleResults = async (
     plate: string,
     plateType: PlateType | undefined,
@@ -456,7 +506,7 @@ const Search = ({
     const start = new Date()
 
     // Prevent another button press/submission
-    setLookupInFlight(true)
+    setLookupInFlightFunction(true)
 
     if (searchError && cookies[LOOKUP_IDENTIFIER_COOKIE]) {
       // If we are recovering from a previous query error,
@@ -488,14 +538,19 @@ const Search = ({
       // If query successful, reset error state
       setSearchErrorFunction(false)
 
+      const queriedVehicle = getQueriedVehicleFromResponse(response)
+      if (!queriedVehicle) {
+        return
+      }
+
       // Parse the results
       setQueriedVehiclesFunction((previouslyQueriedVehicleDisplayResults) =>
         getListOfQueriedVehiclesAfterResponse({
-          response,
+          queriedVehicle,
           previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
           tracker,
           useNewStyleDisplay,
-        })
+        }),
       )
     } catch (error: unknown) {
       if (error) {
@@ -517,7 +572,7 @@ const Search = ({
     }
 
     // Re-enable button
-    setLookupInFlight(false)
+    setLookupInFlightFunction(false)
   }
 
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''

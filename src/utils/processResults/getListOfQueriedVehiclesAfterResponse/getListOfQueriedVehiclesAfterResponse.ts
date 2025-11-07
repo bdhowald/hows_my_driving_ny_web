@@ -1,21 +1,27 @@
 import findVehicleInList from 'utils/processResults/findVehicleInList/findVehicleInList'
 import insertLookupIntoListOfQueriedVehicles from 'utils/processResults/insertLookupIntoListOfQueriedVehicles/insertLookupIntoListOfQueriedVehicles'
-import VehicleDisplayResult from 'types/vehicleDisplayResult'
-import { VehicleQueryResponse } from 'types/responses'
+import {
+  FailedQueryVehiclePlaceholder,
+  VehicleDisplayResult,
+} from 'types/vehicleDisplayResult'
+import { VehicleLookupResult } from 'types/responses'
 import AnalyticsTracker from 'utils/analytics/tracking'
+import isCompleteVehicleResult from 'utils/types/isCompleteVehicleResult/isCompleteVehicleResult'
 
 const getListOfQueriedVehiclesAfterResponse = ({
   expandResults = true,
   fromPreviousLookupUniqueIdentifier = false,
   previouslyQueriedVehicles,
-  response,
+  queriedVehicle,
+  retainLookupForRequeriedVehicle = false,
   tracker,
   useNewStyleDisplay,
 }: {
   expandResults?: boolean
   fromPreviousLookupUniqueIdentifier?: boolean
   previouslyQueriedVehicles: VehicleDisplayResult[]
-  response: VehicleQueryResponse
+  queriedVehicle: VehicleLookupResult['vehicle'] | FailedQueryVehiclePlaceholder
+  retainLookupForRequeriedVehicle?: boolean
   tracker?: AnalyticsTracker | undefined
   useNewStyleDisplay: boolean
 }): VehicleDisplayResult[] => {
@@ -32,81 +38,84 @@ const getListOfQueriedVehiclesAfterResponse = ({
    *   ... and the lookup identifiers (`uniqueIdentifier`) don't match...
    *   then we have performed a new query for a vehicle already in our list
    *
-   * 4a. use the passed in (as a prop) function to set the list of queried vehicles, which...
-   * 5a. constructs a new list by splicing out the previous lookup of the recently-queried vehicle and
-   *     adding the new lookup to the front of the list (array)
-   * 6a. joins the mapped list of unique identifiers and replaces the existing cookie value with the new value
+   * 4a. constructs a new list (depending on `retainLookupForRequeriedVehicle`):
+   *   - when `retainLookupForRequeriedVehicle` is false
+   *     - splice out the previous lookup of the recently-queried vehicle
+   *   - when `retainLookupForRequeriedVehicle` is true
+   *     - take no action
+   *
+   *   - finally, add the new lookup to the front of the list (array)
+   *
+   * 5a. return the new list
    *
    * Else if the recently queried vehicle is not in the list of queried vehicles...
    *
-   * 4b. use the passed in (as a prop) function to set the list of queried vehicles, which...
-   * 5b. constructs a new list by adding the new lookup to the front of the list (array)
-   * 6b. joins the mapped list of unique identifiers and replaces the existing cookie value with the new value
+   * 4b. constructs a new list by adding the new lookup to the front of the list (array)
+   * 5b. return the new list
    */
+  let queriedVehicleDisplayResult: VehicleDisplayResult
 
-  const { data } = response
-
-  if (!data?.[0]) {
-    // There is no data object or the results array is empty.
-    // TODO: do something useful here
-    return previouslyQueriedVehicles
+  if (isCompleteVehicleResult(queriedVehicle)) {
+    queriedVehicleDisplayResult = {
+      expandResults,
+      fromPreviousLookupUniqueIdentifier,
+      isSuccessfulLookup: true,
+      vehicle: queriedVehicle,
+    }
+  } else {
+    queriedVehicleDisplayResult = {
+      expandResults,
+      fromPreviousLookupUniqueIdentifier,
+      isSuccessfulLookup: false,
+      vehicle: queriedVehicle,
+    }
   }
 
-  const firstLookup = data[0]
+  const existingVehicleDisplayResultFromList = retainLookupForRequeriedVehicle
+    ? undefined
+    : findVehicleInList(previouslyQueriedVehicles, queriedVehicleDisplayResult)
 
-  if (!firstLookup.successfulLookup) {
-    // The lookup was not successful.
-    // TODO: do something useful here
-    return previouslyQueriedVehicles
-  }
+  // This can happen if a user queries a plate while an
+  // older request for that same plate is outstanding.
+  // When the older request succeeds, it can come in after
+  // the newer request, and would otherwise displace it.
+  const newResultStale =
+    queriedVehicleDisplayResult.isSuccessfulLookup &&
+    existingVehicleDisplayResultFromList?.isSuccessfulLookup &&
+    queriedVehicleDisplayResult.vehicle.lookupDate <
+      existingVehicleDisplayResultFromList.vehicle.lookupDate
 
-  const queriedVehicleDisplayResult: VehicleDisplayResult = {
-    expandResults,
-    fromPreviousLookupUniqueIdentifier,
-    vehicle: firstLookup.vehicle,
-  }
+  // This should only ever happen in development due to
+  // strict-mode calling useEffect blocks twice
+  const existingResultSuccessfulAndNewResultUnsuccessful =
+    !queriedVehicleDisplayResult.isSuccessfulLookup &&
+    !!existingVehicleDisplayResultFromList?.isSuccessfulLookup
 
-  const existingVehicleDisplayResultFromList = findVehicleInList(
+  const resultToInsertIntoList =
+    existingResultSuccessfulAndNewResultUnsuccessful || newResultStale
+      ? existingVehicleDisplayResultFromList
+      : queriedVehicleDisplayResult
+
+  // vehicle display result not already in list
+  const newList: VehicleDisplayResult[] = insertLookupIntoListOfQueriedVehicles(
+    existingVehicleDisplayResultFromList,
     previouslyQueriedVehicles,
-    queriedVehicleDisplayResult,
+    resultToInsertIntoList,
   )
 
-  if (!existingVehicleDisplayResultFromList) {
-    // vehicle display result not already in list
-    const newList: VehicleDisplayResult[] =
-      insertLookupIntoListOfQueriedVehicles(
-        existingVehicleDisplayResultFromList,
-        previouslyQueriedVehicles,
-        queriedVehicleDisplayResult,
-      )
-
-    return newList
+  if (existingVehicleDisplayResultFromList) {
+    // vehicle display result already in list
+    if (isCompleteVehicleResult(queriedVehicle)) {
+      tracker?.trackEvent('plate_lookup_for_vehicle_already_in_results', {
+        plate: queriedVehicle.plate,
+        plate_type: queriedVehicle.plateTypes,
+        state: queriedVehicle.state,
+        useNewStyleDisplay,
+      })
+    }
   }
 
-  // vehicle display result already in list
-  if (
-    existingVehicleDisplayResultFromList.vehicle.uniqueIdentifier !==
-    queriedVehicleDisplayResult.vehicle.uniqueIdentifier
-  ) {
-    tracker?.trackEvent('plate_lookup_for_vehicle_already_in_results', {
-      plate: firstLookup.vehicle.plate,
-      plate_type: firstLookup.vehicle.plateTypes,
-      state: firstLookup.vehicle.state,
-      useNewStyleDisplay,
-    })
-
-    // new list with stale display result removed and fresh display result added
-    const newList: VehicleDisplayResult[] =
-      insertLookupIntoListOfQueriedVehicles(
-        existingVehicleDisplayResultFromList,
-        previouslyQueriedVehicles,
-        queriedVehicleDisplayResult,
-      )
-
-    return newList
-  }
-
-  return previouslyQueriedVehicles
+  return newList
 }
 
 export default getListOfQueriedVehiclesAfterResponse

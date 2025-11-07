@@ -7,6 +7,7 @@ import Search from './Search'
 
 describe('Search', () => {
   describe('renders without error', () => {
+    const setExistingQueriesInFlight = () => null
     const setLookupInFlight = () => null
     const setQueriedVehicles = () => null
     const setSearchError = () => null
@@ -65,7 +66,8 @@ describe('Search', () => {
               previousLookupUniqueIdentifierFromQuery={uniqueIdentifier}
               queriedVehicles={[]}
               searchError={false}
-              setLookupInFlight={setLookupInFlight}
+              setExistingQueriesInFlightFunction={setExistingQueriesInFlight}
+              setLookupInFlightFunction={setLookupInFlight}
               setQueriedVehiclesFunction={setQueriedVehicles}
               setSearchErrorFunction={setSearchError}
             />
@@ -108,7 +110,8 @@ describe('Search', () => {
           previousLookupUniqueIdentifierFromQuery={undefined}
           queriedVehicles={[]}
           searchError={false}
-          setLookupInFlight={setLookupInFlight}
+          setExistingQueriesInFlightFunction={setExistingQueriesInFlight}
+          setLookupInFlightFunction={setLookupInFlight}
           setQueriedVehiclesFunction={setQueriedVehicles}
           setSearchErrorFunction={setSearchError}
         />,

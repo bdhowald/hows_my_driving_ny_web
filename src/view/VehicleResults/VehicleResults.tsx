@@ -4,7 +4,11 @@ import { useCookies } from 'react-cookie'
 
 import { USE_NEW_STYLE_DISPLAY_COOKIE } from 'constants/cookies'
 import Vehicle from 'models/Vehicle/Vehicle'
-import VehicleDisplayResult from 'types/vehicleDisplayResult'
+import {
+  VehicleDisplayResult,
+  VehicleDisplaySuccessResult,
+} from 'types/vehicleDisplayResult'
+import isCompleteVehicleResult from 'utils/types/isCompleteVehicleResult/isCompleteVehicleResult'
 
 import Body from './Body/Body'
 import Header from './Header/Header'
@@ -78,10 +82,14 @@ const CombinedVehicleResults = ({
     },
   )
 
+  const displayableVehicleDisplayResults = vehicleDisplayResults.filter(
+    (r) => r.isSuccessfulLookup && isCompleteVehicleResult(r.vehicle),
+  ) as VehicleDisplaySuccessResult[]
+
   return (
     <>
-      {vehicleDisplayResults.map(
-        (vehicleDisplayResult: VehicleDisplayResult, index: number) => {
+      {displayableVehicleDisplayResults.map(
+        (vehicleDisplayResult: VehicleDisplaySuccessResult, index: number) => {
           const showViolationsList = vehicleDisplayResult.expandResults
 
           return (
@@ -155,7 +163,11 @@ const ShimmerLoader = ({
   }
 
   return (
-    <div className="vehicle card" aria-hidden="true">
+    <div
+      className="vehicle card"
+      aria-hidden="true"
+      data-testid="shimmer-loader"
+    >
       <div className="card-header shimmer" />
       <ul className="list-group-flush list-group">
         <li className="no-padding list-group-item card-title placeholder-glow">
@@ -194,12 +206,14 @@ const ShimmerLoader = ({
 }
 
 const VehicleResults = ({
+  existingQueriesInFlight,
   lookupInFlight,
   refreshLookupFunction,
   removeLookupFunction,
   scrollRef,
   vehicleDisplayResults,
 }: {
+  existingQueriesInFlight: boolean
   lookupInFlight: boolean
   refreshLookupFunction: RefreshLookupFunctionType
   removeLookupFunction: RemoveLookupFunctionType
@@ -211,19 +225,21 @@ const VehicleResults = ({
   const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
+  const showQueriesInFlight = existingQueriesInFlight || lookupInFlight
+
   return (
     <div
       className={`vehicles ${newStyleDisplayClassName}`}
       ref={lookupInFlight ? null : scrollRef}
     >
+      {showQueriesInFlight && (
+        <ShimmerLoader useNewStyleDisplay={useNewStyleDisplay} />
+      )}
       <MemoizedCombinedVehicleResults
         refreshLookupFunction={refreshLookupFunction}
         removeLookupFunction={removeLookupFunction}
         vehicleDisplayResults={vehicleDisplayResults}
       />
-      {lookupInFlight && (
-        <ShimmerLoader useNewStyleDisplay={useNewStyleDisplay} />
-      )}
     </div>
   )
 }

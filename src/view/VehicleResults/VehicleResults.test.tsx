@@ -16,6 +16,7 @@ describe('VehicleResults', () => {
       const vehicleDisplayResult = {
         expandResults: false,
         fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
         vehicle,
       }
       const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
@@ -23,6 +24,7 @@ describe('VehicleResults', () => {
       render(
         <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
           <VehicleResults
+            existingQueriesInFlight={false}
             lookupInFlight={false}
             refreshLookupFunction={refreshLookupFunction}
             removeLookupFunction={removeLookupFunction}
@@ -43,6 +45,7 @@ describe('VehicleResults', () => {
       const vehicleDisplayResult = {
         expandResults: false,
         fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
         vehicle,
       }
       const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
@@ -50,6 +53,7 @@ describe('VehicleResults', () => {
       render(
         <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
           <VehicleResults
+            existingQueriesInFlight={false}
             lookupInFlight={false}
             refreshLookupFunction={refreshLookupFunction}
             removeLookupFunction={removeLookupFunction}
@@ -63,6 +67,60 @@ describe('VehicleResults', () => {
       expect(
         screen.getByTestId(`lookup-${vehicle.uniqueIdentifier}`),
       ).toBeInTheDocument()
+    })
+
+    it('should render a shimmer component when existing queries are in flight', () => {
+      const vehicle = VehicleFactory.build()
+      const vehicleDisplayResult = {
+        expandResults: false,
+        fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
+        vehicle,
+      }
+      const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
+
+      render(
+        <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <VehicleResults
+            existingQueriesInFlight={true}
+            lookupInFlight={false}
+            refreshLookupFunction={refreshLookupFunction}
+            removeLookupFunction={removeLookupFunction}
+            scrollRef={ref}
+            vehicleDisplayResults={[vehicleDisplayResult]}
+          />
+          ,
+        </CookiesProvider>,
+      )
+
+      expect(screen.getByTestId('shimmer-loader')).toBeInTheDocument()
+    })
+
+    it('should render a shimmer component when a new query is in flight', () => {
+      const vehicle = VehicleFactory.build()
+      const vehicleDisplayResult = {
+        expandResults: false,
+        fromPreviousLookupUniqueIdentifier: false,
+        isSuccessfulLookup: true,
+        vehicle,
+      }
+      const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
+
+      render(
+        <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <VehicleResults
+            existingQueriesInFlight={false}
+            lookupInFlight={true}
+            refreshLookupFunction={refreshLookupFunction}
+            removeLookupFunction={removeLookupFunction}
+            scrollRef={ref}
+            vehicleDisplayResults={[vehicleDisplayResult]}
+          />
+          ,
+        </CookiesProvider>,
+      )
+
+      expect(screen.getByTestId('shimmer-loader')).toBeInTheDocument()
     })
   })
 })

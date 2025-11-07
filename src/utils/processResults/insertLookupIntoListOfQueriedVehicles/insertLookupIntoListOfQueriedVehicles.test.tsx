@@ -1,10 +1,10 @@
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
-import VehicleDisplayResult from 'types/vehicleDisplayResult'
+import { VehicleDisplayResult } from 'types/vehicleDisplayResult'
 
 import insertLookupIntoListOfQueriedVehicles from './insertLookupIntoListOfQueriedVehicles'
 
 describe('insertLookupIntoListOfQueriedVehicles', () => {
-  it('inserts a lookup into a list of queried vehicles where it already exists', () => {
+  it('inserts a successful lookup into a list of queried vehicles where it already exists', () => {
     const plate = 'ABC1234'
     const plateTypes = undefined
     const state = 'NY'
@@ -29,12 +29,14 @@ describe('insertLookupIntoListOfQueriedVehicles', () => {
     const oldVehicleDisplayResult = {
       expandResults: false,
       fromPreviousLookupUniqueIdentifier: false,
+      isSuccessfulLookup: true,
       vehicle: oldLookup,
     }
 
     const newVehicleDisplayResult = {
       expandResults: false,
       fromPreviousLookupUniqueIdentifier: false,
+      isSuccessfulLookup: true,
       vehicle: newLookup,
     }
 
@@ -53,6 +55,52 @@ describe('insertLookupIntoListOfQueriedVehicles', () => {
     expect(newList).toEqual([newVehicleDisplayResult])
   })
 
+  it('inserts an unsuccessful existing lookup into a list of queried vehicles', () => {
+    const plate = 'ABC1234'
+    const plateTypes = undefined
+    const state = 'NY'
+
+    const anotherLookup = VehicleFactory.build({
+      plate,
+      plateTypes,
+      state,
+      uniqueIdentifier: '03wqu3ry',
+    })
+
+    const anotherVehicleDisplayResult = {
+      expandResults: false,
+      fromPreviousLookupUniqueIdentifier: false,
+      isSuccessfulLookup: true,
+      vehicle: anotherLookup,
+    }
+
+    const failedVehicleDisplayResult = {
+      expandResults: false,
+      fromPreviousLookupUniqueIdentifier: false,
+      isSuccessfulLookup: false as false,
+      vehicle: {
+        uniqueIdentifier: 'n1dqu3ry',
+      },
+    }
+
+    const previousDisplayResultOfQueriedVehicle = undefined
+    const previouslyQueriedVehicleDisplayResults: VehicleDisplayResult[] = [
+      anotherVehicleDisplayResult,
+    ]
+    const queriedVehicleDisplayResult = failedVehicleDisplayResult
+
+    const newList = insertLookupIntoListOfQueriedVehicles(
+      previousDisplayResultOfQueriedVehicle,
+      previouslyQueriedVehicleDisplayResults,
+      queriedVehicleDisplayResult,
+    )
+
+    expect(newList).toEqual([
+      failedVehicleDisplayResult,
+      anotherVehicleDisplayResult,
+    ])
+  })
+
   it('inserts a lookup into a list of queried vehicles where it does not exist', () => {
     const plate = 'ABC1234'
     const plateTypes = undefined
@@ -61,6 +109,7 @@ describe('insertLookupIntoListOfQueriedVehicles', () => {
     const vehicleDisplayResult = {
       expandResults: false,
       fromPreviousLookupUniqueIdentifier: false,
+      isSuccessfulLookup: true,
       vehicle: VehicleFactory.build({ plate, plateTypes, state }),
     }
 

@@ -7,6 +7,7 @@ exports[`Components/VehicleResults/VehicleResults LookupInFlight smoke-test 1`] 
       <div class="vehicles ">
         <div class="vehicle card"
              aria-hidden="true"
+             data-testid="shimmer-loader"
         >
           <div class="card-header shimmer">
           </div>

@@ -1,4 +1,4 @@
-import VehicleDisplayResult from 'types/vehicleDisplayResult'
+import { VehicleDisplayResult } from 'types/vehicleDisplayResult'
 
 const insertLookupIntoListOfQueriedVehicles = (
   previousDisplayResultOfQueriedVehicle: VehicleDisplayResult | undefined,

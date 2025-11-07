@@ -1,9 +1,23 @@
 import Vehicle from 'models/Vehicle/Vehicle'
 
-type VehicleDisplayResult = {
+export type FailedQueryVehiclePlaceholder = {
+  uniqueIdentifier: string
+}
+
+export type VehicleDisplaySuccessResult = {
   expandResults: boolean
   fromPreviousLookupUniqueIdentifier: boolean
+  isSuccessfulLookup: true
   vehicle: Vehicle
 }
 
-export default VehicleDisplayResult
+export type VehicleDisplayErrorResult = {
+  expandResults: boolean
+  fromPreviousLookupUniqueIdentifier: boolean
+  isSuccessfulLookup: false
+  vehicle: FailedQueryVehiclePlaceholder
+}
+
+export type VehicleDisplayResult =
+  | VehicleDisplaySuccessResult
+  | VehicleDisplayErrorResult

@@ -8,24 +8,22 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import { useCookies } from 'react-cookie'
 
-import {
-  LOOKUP_IDENTIFIER_COOKIE,
-  MAX_AGE,
-  USE_NEW_STYLE_DISPLAY_COOKIE,
-} from 'constants/cookies'
+import { USE_NEW_STYLE_DISPLAY_COOKIE } from 'constants/cookies'
 import L10N from 'constants/display'
 import {
   MIXPANEL_IDLE_TIMEOUT_MILLISECONDS,
   MIXPANEL_RECORD_SESSIONS_PERCENT,
 } from 'constants/tracking'
+import useLookupIdentifierCookie from 'hooks/useLookupIdentifierCookie'
 import Vehicle from 'models/Vehicle/Vehicle'
 import getPlateTypeName from 'utils/search/getPlateType/getPlateTypeName/getPlateTypeName'
 import getListOfQueriedVehiclesAfterResponse from 'utils/processResults/getListOfQueriedVehiclesAfterResponse/getListOfQueriedVehiclesAfterResponse'
+import getQueriedVehicleFromResponse from 'utils/processResults/getQueriedVehicleFromResponse/getQueriedVehicleFromResponse'
 import performLookup from 'utils/search/performLookup/performLookup'
 import AnalyticsTracker from 'utils/analytics/tracking'
 import MixpanelTracker from 'utils/analytics/trackers/mixpanel'
 import { VehicleQueryResponse } from 'types/responses'
-import VehicleDisplayResult from 'types/vehicleDisplayResult'
+import { VehicleDisplayResult } from 'types/vehicleDisplayResult'
 import Footer from 'view/Footer/Footer'
 import Search from 'view/Search/Search'
 import VehicleResults from 'view/VehicleResults/VehicleResults'
@@ -40,11 +38,12 @@ const FetchViolations = () => {
   const { uniqueIdentifier } = useParams<Record<string, string | undefined>>()
   const listRef = useRef<HTMLDivElement>(null)
 
-  const [cookies, setCookie] = useCookies([
-    LOOKUP_IDENTIFIER_COOKIE,
-    USE_NEW_STYLE_DISPLAY_COOKIE,
-  ])
+  const [cookies, _] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
+
+  const { removeLookupFromIdentifierCookie } = useLookupIdentifierCookie()
+
   const [lookupInFlight, setLookupInFlight] = useState(false)
+  const [existingQueriesInFlight, setExistingQueriesInFlight] = useState(false)
   const [queriedVehicles, setQueriedVehicles] = useState<
     Array<VehicleDisplayResult>
   >([])
@@ -123,13 +122,18 @@ const FetchViolations = () => {
       // If query successful, reset error state
       setSearchError(false)
 
+      const queriedVehicle = getQueriedVehicleFromResponse(response)
+      if (!queriedVehicle) {
+        return
+      }
+
       // Parse the results
       setQueriedVehicles((previouslyQueriedVehicleDisplayResults) =>
         getListOfQueriedVehiclesAfterResponse({
           previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
-          response,
+          queriedVehicle,
           useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true,
-        })
+        }),
       )
     } catch (error: unknown) {
       if (error) {
@@ -161,22 +165,9 @@ const FetchViolations = () => {
       ...queriedVehicles.slice(0, indexToRemove),
       ...queriedVehicles.slice(indexToRemove + 1),
     ]
-    const queriedUniqueIdentifiers = cookies[LOOKUP_IDENTIFIER_COOKIE]
-      ? cookies[LOOKUP_IDENTIFIER_COOKIE].split(',')
-      : []
+    const removedVehicle = queriedVehicles[indexToRemove].vehicle
 
-    const remainingUniqueIdentifiers = queriedUniqueIdentifiers.filter(
-      (_: unknown, index: number) => index !== indexToRemove,
-    )
-
-    setCookie(
-      LOOKUP_IDENTIFIER_COOKIE,
-      remainingUniqueIdentifiers ? remainingUniqueIdentifiers.toString() : null,
-      {
-        maxAge: MAX_AGE,
-        path: '/',
-      },
-    )
+    removeLookupFromIdentifierCookie(removedVehicle.uniqueIdentifier)
 
     setQueriedVehicles(newList)
   }
@@ -193,11 +184,13 @@ const FetchViolations = () => {
                 previousLookupUniqueIdentifierFromQuery={uniqueIdentifier}
                 queriedVehicles={queriedVehicles}
                 searchError={searchError}
-                setSearchErrorFunction={setSearchError}
-                setLookupInFlight={setLookupInFlight}
+                setExistingQueriesInFlightFunction={setExistingQueriesInFlight}
+                setLookupInFlightFunction={setLookupInFlight}
                 setQueriedVehiclesFunction={setQueriedVehicles}
+                setSearchErrorFunction={setSearchError}
               />
               <VehicleResults
+                existingQueriesInFlight={existingQueriesInFlight}
                 lookupInFlight={lookupInFlight}
                 refreshLookupFunction={refreshLookup}
                 removeLookupFunction={removeLookup}
