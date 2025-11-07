@@ -232,7 +232,9 @@ const VehicleResults = ({
       className={`vehicles ${newStyleDisplayClassName}`}
       ref={lookupInFlight ? null : scrollRef}
     >
-      {showQueriesInFlight && (
+      {lookupInFlight && (
+        // Display loader above results when a current lookup is in flight,
+        // regardless of whether existing results are still being queried.
         <ShimmerLoader useNewStyleDisplay={useNewStyleDisplay} />
       )}
       <MemoizedCombinedVehicleResults
@@ -240,6 +242,11 @@ const VehicleResults = ({
         removeLookupFunction={removeLookupFunction}
         vehicleDisplayResults={vehicleDisplayResults}
       />
+      {(existingQueriesInFlight && !lookupInFlight) && (
+        // Display loader below results when a current lookup is not in flight,
+        // but existing queries in flight are (show below any new lookup we have).
+        <ShimmerLoader useNewStyleDisplay={useNewStyleDisplay} />
+      )}
     </div>
   )
 }
