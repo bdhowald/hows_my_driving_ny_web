@@ -39,6 +39,7 @@ const FetchViolations = () => {
   const listRef = useRef<HTMLDivElement>(null)
 
   const [cookies, _] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
+  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
 
   const { removeLookupFromIdentifierCookie } = useLookupIdentifierCookie()
 
@@ -132,7 +133,7 @@ const FetchViolations = () => {
         getListOfQueriedVehiclesAfterResponse({
           previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
           queriedVehicle,
-          useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true,
+          useNewStyleDisplay,
         }),
       )
     } catch (error: unknown) {
@@ -152,6 +153,7 @@ const FetchViolations = () => {
           stack: wrappedError.stack,
           raw: String(error),
           online: navigator.onLine,
+          useNewStyleDisplay,
         })
       }
     }
@@ -168,6 +170,11 @@ const FetchViolations = () => {
     const removedVehicle = queriedVehicles[indexToRemove].vehicle
 
     removeLookupFromIdentifierCookie(removedVehicle.uniqueIdentifier)
+
+    tracker?.trackEvent('remove_lookup', {
+      uniqueIdentifier: removedVehicle.uniqueIdentifier,
+      useNewStyleDisplay,
+    })
 
     setQueriedVehicles(newList)
   }
