@@ -415,6 +415,18 @@ describe('FetchViolations', () => {
     })
 
     describe('old-style display', () => {
+      beforeEach(() => {
+        window.history.pushState(
+          {},
+          'Page Title',
+          `/?${window.location.search}&useNewStyleDisplay=false`,
+        )
+      })
+
+      afterEach(() => {
+        window.history.replaceState({}, 'Clean up', '/')
+      })
+
       it('should populate the lookup on the page when a plate is queried', async () => {
         const performNewLookupSpy = jest.spyOn(
           boundaryFunctions,
@@ -480,12 +492,10 @@ describe('FetchViolations', () => {
           ],
         })
 
+        console.log(window.location.search)
+
         render(
-          <CookiesProvider
-            cookies={
-              new Cookies('lookupIdentifiers=;useNewStyleDisplay=false;')
-            }
-          >
+          <CookiesProvider cookies={new Cookies('lookupIdentifiers=;')}>
             <FetchViolations />
           </CookiesProvider>,
         )
