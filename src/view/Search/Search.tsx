@@ -399,9 +399,25 @@ const Search = ({
     const uniqueIdentifiersFromCurrentlyQueriedVehicles =
       getLookupIdentifiersForCurrentlyQueriedVehicles(queriedVehicles)
 
-    syncIdentifiersToIdentifierCookie(
-      uniqueIdentifiersFromCurrentlyQueriedVehicles,
-    )
+    const cookieWouldBeUpdated =
+      readLookupIdentifierCookie().toString() !==
+      uniqueIdentifiersFromCurrentlyQueriedVehicles.slice().reverse().toString()
+
+    if (
+      uniqueIdentifiersFromCurrentlyQueriedVehicles.length > 0 &&
+      cookieWouldBeUpdated
+    ) {
+      // Removing a lookup uses a different function
+      // so we don't need to handle the case where
+      // we remove the last lookup on the page.
+      //
+      // Don't blank out the cookie because React state
+      // changes temporarily.
+
+      syncIdentifiersToIdentifierCookie(
+        uniqueIdentifiersFromCurrentlyQueriedVehicles,
+      )
+    }
   }, [queriedVehicles])
 
   useEffect(() => {
