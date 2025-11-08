@@ -242,7 +242,7 @@ const VehicleResults = ({
         removeLookupFunction={removeLookupFunction}
         vehicleDisplayResults={vehicleDisplayResults}
       />
-      {(existingQueriesInFlight && !lookupInFlight) && (
+      {existingQueriesInFlight && !lookupInFlight && (
         // Display loader below results when a current lookup is not in flight,
         // but existing queries in flight are (show below any new lookup we have).
         <ShimmerLoader useNewStyleDisplay={useNewStyleDisplay} />
