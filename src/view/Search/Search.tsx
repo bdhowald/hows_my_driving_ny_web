@@ -144,18 +144,17 @@ const Search = ({
 
     if (
       !useNewStyleDisplayCookiePresent ||
+      !useNewStyleDisplay ||
       queryParamFeatureFlagEnabled ||
       queryParamFeatureFlagDisabled
     ) {
-      // 50% of sessions are in experimental group (plus some internal testers)
-      // 50% of sessions are in control group
+      // 100% of sessions are in experimental group
+      // 0% of sessions are in control group
       // 0% of sessions are available for progressive rollout
-      const randomVariable = Math.random()
-      const inExperimentalGroup =
-        randomVariable * 10 >= 5.0 || queryParamFeatureFlagEnabled
-      const inControlGroup =
-        (randomVariable * 10 < 5.0 && !queryParamFeatureFlagEnabled) ||
-        queryParamFeatureFlagDisabled
+      //
+      // Only show old-style display if query params force it
+      const inExperimentalGroup = !queryParamFeatureFlagDisabled
+      const inControlGroup = queryParamFeatureFlagDisabled
 
       const inReserveGroup = !inControlGroup && !inExperimentalGroup
 
