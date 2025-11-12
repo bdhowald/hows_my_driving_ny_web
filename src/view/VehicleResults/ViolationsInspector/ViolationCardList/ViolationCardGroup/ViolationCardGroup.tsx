@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { useCookies } from 'react-cookie'
 
-import { USE_NEW_STYLE_DISPLAY_COOKIE } from 'constants/cookies'
+import { USE_NEW_STYLE_DISPLAY_COOKIE, USE_SEARCH_FILTERS_COOKIE } from 'constants/cookies'
 import L10N from 'constants/display'
 import Sort from 'constants/sortOptions'
 import Violation from 'models/Violation/Violation'
@@ -66,7 +66,10 @@ const ViolationCardGroup = ({
   showOffCanvasFunction: (violation: Violation) => void
   sortAscending: boolean
 }) => {
-  const [cookies, _] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
+  const [cookies, _] = useCookies([
+    USE_NEW_STYLE_DISPLAY_COOKIE,
+    USE_SEARCH_FILTERS_COOKIE,
+  ])
   const [groupIsVisible, setGroupIsVisible] = useState(true)
   const tracker = useContext(TrackingContext)
 
@@ -95,7 +98,8 @@ const ViolationCardGroup = ({
           setGroupIsVisible(!groupIsVisible)
           tracker?.trackEvent('toggle_violation_group', {
             location: 'ViolationCardGroup',
-            useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE],
+            useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true,
+            useSearchFilters: cookies[USE_SEARCH_FILTERS_COOKIE] === true,
           })
         }}
         sortAscending={sortAscending}

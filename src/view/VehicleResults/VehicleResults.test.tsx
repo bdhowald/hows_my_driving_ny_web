@@ -142,14 +142,16 @@ describe('VehicleResults', () => {
       const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
 
       render(
-        <VehicleResults
-          existingQueriesInFlight={false}
-          lookupInFlight={true}
-          refreshLookupFunction={refreshLookupFunction}
-          removeLookupFunction={removeLookupFunction}
-          scrollRef={ref}
-          vehicleDisplayResults={[vehicleDisplayResult]}
-        />,
+        <CookiesProvider cookies={new Cookies('useSearchFilters=true;')}>
+          <VehicleResults
+            existingQueriesInFlight={false}
+            lookupInFlight={true}
+            refreshLookupFunction={refreshLookupFunction}
+            removeLookupFunction={removeLookupFunction}
+            scrollRef={ref}
+            vehicleDisplayResults={[vehicleDisplayResult]}
+          />
+        </CookiesProvider>,
       )
 
       const resultsheader = screen.getByText('Showing 1 result')
@@ -186,8 +188,6 @@ describe('VehicleResults', () => {
 
     it('should allow a user to set and apply filters and then filter those results for matches', () => {
       const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
-
-      const plate = 'ABC1234'
 
       const desiredPlateTextFilter = 'ABC'
       const desiredPlateTypeFilter = 'passenger'
@@ -275,14 +275,16 @@ describe('VehicleResults', () => {
       ]
 
       render(
-        <VehicleResults
-          existingQueriesInFlight={false}
-          lookupInFlight={true}
-          refreshLookupFunction={refreshLookupFunction}
-          removeLookupFunction={removeLookupFunction}
-          scrollRef={ref}
-          vehicleDisplayResults={vehicleDisplayResults}
-        />,
+        <CookiesProvider cookies={new Cookies('useSearchFilters=true;')}>
+          <VehicleResults
+            existingQueriesInFlight={false}
+            lookupInFlight={true}
+            refreshLookupFunction={refreshLookupFunction}
+            removeLookupFunction={removeLookupFunction}
+            scrollRef={ref}
+            vehicleDisplayResults={vehicleDisplayResults}
+          />
+        </CookiesProvider>,
       )
 
       // Expect one result to start
@@ -390,7 +392,7 @@ describe('VehicleResults', () => {
       expect(numberOfViolationsFilterBreadcrumb).toBeInTheDocument()
     })
 
-    it('should allow show no vehicle results if none match filters', () => {
+    it('should show no vehicle results if none match filters', () => {
       const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
 
       const plate = 'ABC1234'
@@ -444,14 +446,16 @@ describe('VehicleResults', () => {
       ]
 
       render(
-        <VehicleResults
-          existingQueriesInFlight={false}
-          lookupInFlight={true}
-          refreshLookupFunction={refreshLookupFunction}
-          removeLookupFunction={removeLookupFunction}
-          scrollRef={ref}
-          vehicleDisplayResults={vehicleDisplayResults}
-        />,
+        <CookiesProvider cookies={new Cookies('useSearchFilters=true;')}>
+          <VehicleResults
+            existingQueriesInFlight={false}
+            lookupInFlight={true}
+            refreshLookupFunction={refreshLookupFunction}
+            removeLookupFunction={removeLookupFunction}
+            scrollRef={ref}
+            vehicleDisplayResults={vehicleDisplayResults}
+          />
+        </CookiesProvider>,
       )
 
       // Expect one result to start

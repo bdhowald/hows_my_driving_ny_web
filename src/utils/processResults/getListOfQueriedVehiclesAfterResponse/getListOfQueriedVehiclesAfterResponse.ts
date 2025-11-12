@@ -16,6 +16,7 @@ const getListOfQueriedVehiclesAfterResponse = ({
   retainLookupForRequeriedVehicle = false,
   tracker,
   useNewStyleDisplay,
+  useSearchFilters,
 }: {
   expandResults?: boolean
   fromPreviousLookupUniqueIdentifier?: boolean
@@ -24,6 +25,7 @@ const getListOfQueriedVehiclesAfterResponse = ({
   retainLookupForRequeriedVehicle?: boolean
   tracker?: AnalyticsTracker | undefined
   useNewStyleDisplay: boolean
+  useSearchFilters: boolean,
 }): VehicleDisplayResult[] => {
   /**
    * This function does a lot...
@@ -111,6 +113,7 @@ const getListOfQueriedVehiclesAfterResponse = ({
         plate_type: queriedVehicle.plateTypes,
         state: queriedVehicle.state,
         useNewStyleDisplay,
+        useSearchFilters,
       })
     }
   }

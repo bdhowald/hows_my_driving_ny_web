@@ -14,6 +14,7 @@ describe('getListOfQueriedVehiclesAfterResponse', () => {
       previouslyQueriedVehicles: [],
       queriedVehicle: vehicle,
       useNewStyleDisplay: false,
+      useSearchFilters: false,
     })
 
     const expected = {
@@ -35,6 +36,7 @@ describe('getListOfQueriedVehiclesAfterResponse', () => {
       previouslyQueriedVehicles: [],
       queriedVehicle: vehiclePlaceholder,
       useNewStyleDisplay: false,
+      useSearchFilters: false,
     })
 
     const expected = {
@@ -57,6 +59,7 @@ describe('getListOfQueriedVehiclesAfterResponse', () => {
       previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
       queriedVehicle: vehicle,
       useNewStyleDisplay: false,
+      useSearchFilters: false,
     })
 
     const expected = {
@@ -86,6 +89,7 @@ describe('getListOfQueriedVehiclesAfterResponse', () => {
       previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
       queriedVehicle: newVehicle,
       useNewStyleDisplay: false,
+      useSearchFilters: false,
     })
 
     const expected = {
@@ -116,6 +120,7 @@ describe('getListOfQueriedVehiclesAfterResponse', () => {
       previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
       queriedVehicle: failedQueriedVehicleResult,
       useNewStyleDisplay: false,
+      useSearchFilters: false,
     })
 
     const expected = {
@@ -154,6 +159,7 @@ describe('getListOfQueriedVehiclesAfterResponse', () => {
       previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
       queriedVehicle: stalerVehicle,
       useNewStyleDisplay: false,
+      useSearchFilters: false,
     })
 
     const expected = {

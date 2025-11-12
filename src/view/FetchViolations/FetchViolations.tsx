@@ -8,7 +8,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import { useCookies } from 'react-cookie'
 
-import { USE_NEW_STYLE_DISPLAY_COOKIE } from 'constants/cookies'
+import { USE_NEW_STYLE_DISPLAY_COOKIE, USE_SEARCH_FILTERS_COOKIE } from 'constants/cookies'
 import L10N from 'constants/display'
 import {
   MIXPANEL_IDLE_TIMEOUT_MILLISECONDS,
@@ -38,8 +38,12 @@ const FetchViolations = () => {
   const { uniqueIdentifier } = useParams<Record<string, string | undefined>>()
   const listRef = useRef<HTMLDivElement>(null)
 
-  const [cookies, _] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
+  const [cookies, _] = useCookies([
+    USE_NEW_STYLE_DISPLAY_COOKIE,
+    USE_SEARCH_FILTERS_COOKIE,
+  ])
   const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
+  const useSearchFilters = cookies[USE_SEARCH_FILTERS_COOKIE] === true
 
   const { removeLookupFromIdentifierCookie } = useLookupIdentifierCookie()
 
@@ -134,6 +138,7 @@ const FetchViolations = () => {
           previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
           queriedVehicle,
           useNewStyleDisplay,
+          useSearchFilters,
         }),
       )
     } catch (error: unknown) {
@@ -154,6 +159,7 @@ const FetchViolations = () => {
           raw: String(error),
           online: navigator.onLine,
           useNewStyleDisplay,
+          useSearchFilters,
         })
       }
     }
@@ -174,6 +180,7 @@ const FetchViolations = () => {
     tracker?.trackEvent('remove_lookup', {
       uniqueIdentifier: removedVehicle.uniqueIdentifier,
       useNewStyleDisplay,
+      useSearchFilters,
     })
 
     setQueriedVehicles(newList)

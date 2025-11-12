@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useCookies } from 'react-cookie'
 
-import { USE_NEW_STYLE_DISPLAY_COOKIE } from 'constants/cookies'
+import { USE_NEW_STYLE_DISPLAY_COOKIE, USE_SEARCH_FILTERS_COOKIE } from 'constants/cookies'
 import { TrackingContext } from 'view/FetchViolations/FetchViolations'
 
 import {
@@ -45,14 +45,18 @@ const ViolationDateTimeAspect = ({
   violation: Violation
   inspectViolationFunction: (violation: Violation) => void
 }) => {
-  const [cookies, _] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
+  const [cookies, _] = useCookies([
+    USE_NEW_STYLE_DISPLAY_COOKIE,
+    USE_SEARCH_FILTERS_COOKIE,
+  ])
 
   const tracker = useContext(TrackingContext)
 
   const trackShowViolationDetails = () => {
     tracker?.trackEvent('show_violation_details', {
       location: 'ViolationCard',
-      useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE],
+      useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true,
+      useSearchFilters: cookies[USE_SEARCH_FILTERS_COOKIE] === true,
     })
   }
 

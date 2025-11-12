@@ -9,6 +9,7 @@ import {
   DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE,
   LOOKUP_IDENTIFIER_COOKIE,
   USE_NEW_STYLE_DISPLAY_COOKIE,
+  USE_SEARCH_FILTERS_COOKIE,
 } from 'constants/cookies'
 import L10N from 'constants/display'
 import HttpStatusCode from 'constants/httpStatusCode'
@@ -27,7 +28,6 @@ import {
   VehicleDisplayResult,
 } from 'types/vehicleDisplayResult'
 import { VehicleQueryResponse } from 'types/responses'
-
 import SearchControls from 'view/Search/SearchControls/SearchControls'
 import { TrackingContext } from 'view/FetchViolations/FetchViolations'
 
@@ -120,6 +120,7 @@ const Search = ({
     DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE,
     LOOKUP_IDENTIFIER_COOKIE,
     USE_NEW_STYLE_DISPLAY_COOKIE,
+    USE_SEARCH_FILTERS_COOKIE,
   ])
 
   const { readLookupIdentifierCookie, syncIdentifiersToIdentifierCookie } =
@@ -128,6 +129,7 @@ const Search = ({
   const tracker = useContext(TrackingContext)
 
   const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
+  const useSearchFilters = cookies[USE_SEARCH_FILTERS_COOKIE] === true
 
   useEffect(() => {
     const queryParameters = new URLSearchParams(document.location.search)
@@ -335,6 +337,7 @@ const Search = ({
                       previouslyQueriedVehicleDisplayResults,
                     queriedVehicle,
                     useNewStyleDisplay,
+                    useSearchFilters,
                   }),
               )
 
@@ -361,6 +364,7 @@ const Search = ({
                     previouslyQueriedVehicleDisplayResults,
                   queriedVehicle: failedQueryVehiclePlaceholder,
                   useNewStyleDisplay,
+                  useSearchFilters,
                 }),
             )
           })
@@ -372,6 +376,7 @@ const Search = ({
             timeToCompleteInSeconds:
               (finish.getTime() - start.getTime()) / MILLISECONDS_IN_SECOND,
             useNewStyleDisplay,
+            useSearchFilters,
           })
 
           if (numFailedResponses > 0) {
@@ -429,6 +434,7 @@ const Search = ({
         tracker?.trackEvent('display_previous_lookup', {
           uniqueIdentifier: previousLookupUniqueIdentifierFromQuery,
           useNewStyleDisplay,
+          useSearchFilters,
         })
 
         try {
@@ -453,6 +459,7 @@ const Search = ({
               previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
               queriedVehicle,
               useNewStyleDisplay,
+              useSearchFilters,
             }),
           )
         } catch (error: unknown) {
@@ -549,6 +556,7 @@ const Search = ({
         timeToCompleteInSeconds:
           (finish.getTime() - start.getTime()) / MILLISECONDS_IN_SECOND,
         useNewStyleDisplay,
+        useSearchFilters,
       })
 
       // If query successful, reset error state
@@ -566,6 +574,7 @@ const Search = ({
           previouslyQueriedVehicles: previouslyQueriedVehicleDisplayResults,
           tracker,
           useNewStyleDisplay,
+          useSearchFilters,
         }),
       )
     } catch (error: unknown) {

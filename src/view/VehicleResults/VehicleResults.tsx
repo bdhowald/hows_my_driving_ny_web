@@ -1,8 +1,9 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import Card from 'react-bootstrap/Card'
 import { useCookies } from 'react-cookie'
 
 import { USE_NEW_STYLE_DISPLAY_COOKIE } from 'constants/cookies'
+import useSearchFiltersActiveCookie from 'hooks/useSearchFiltersActiveCookie/useSearchFiltersActiveCookie'
 import Vehicle from 'models/Vehicle/Vehicle'
 import {
   VehicleDisplayResult,
@@ -11,6 +12,8 @@ import {
 import filterResultsWithUserFilters from 'utils/filterResults/filterResultsWithUserFilters/filterResultsWithUserFilters'
 import isCompleteVehicleResult from 'utils/types/isCompleteVehicleResult/isCompleteVehicleResult'
 import { FilterFormElement, ResultsFilterSet } from 'types/resultsFilters'
+import AnalyticsTracker from 'utils/analytics/tracking'
+import { TrackingContext } from 'view/FetchViolations/FetchViolations'
 
 import Body from './Body/Body'
 import Header from './Header/Header'
@@ -237,10 +240,16 @@ const VehicleResults = ({
     state: undefined,
   })
 
+  const { areSearchFiltersActive } = useSearchFiltersActiveCookie()
+  const useSearchFilters = areSearchFiltersActive()
+
+  const tracker = useContext(TrackingContext)
+
   const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
-  const showResultsHeaderAndFiltersControl = vehicleDisplayResults.length > 0
+  const showResultsHeaderAndFiltersControl = useSearchFilters
+    && vehicleDisplayResults.length > 0
 
   const maxViolationsCountForResults = Math.max(
     ...vehicleDisplayResults.map((result) => {
@@ -257,11 +266,22 @@ const VehicleResults = ({
   )
 
   const clearFilterWrapper = (fieldName: keyof ResultsFilterSet) =>
-    clearFilter(fieldName, setResultsFilters)
+    clearFilter(
+      fieldName,
+      setResultsFilters,
+      tracker,
+      useNewStyleDisplay,
+    )
 
   const handleFilterFormSubmitWrapper = (
     event: React.FormEvent<FilterFormElement>,
-  ) => handleFilterFormSubmit(event, setResultsFilters, filterControlsRef)
+  ) => handleFilterFormSubmit(
+    event,
+    setResultsFilters,
+    filterControlsRef,
+    tracker,
+    useNewStyleDisplay,
+  )
 
   return (
     <>
@@ -302,6 +322,8 @@ const VehicleResults = ({
 const clearFilter = (
   fieldName: keyof ResultsFilterSet,
   setResultsFilters: (value: React.SetStateAction<ResultsFilterSet>) => void,
+  tracker: AnalyticsTracker | undefined,
+  useNewStyleDisplay: boolean,
 ) => {
   setResultsFilters((previousFilterState) => {
     const resetState =
@@ -312,12 +334,21 @@ const clearFilter = (
           }
         : undefined
 
-    return {
+    const newFilterState = {
       ...previousFilterState,
       ...{
         [fieldName]: resetState,
       },
     }
+
+      tracker?.trackEvent('user_set_filter', {
+        filters: newFilterState,
+        useNewStyleDisplay,
+        useSearchFilters: true,
+      })
+
+
+    return newFilterState
   })
 }
 
@@ -325,6 +356,8 @@ const handleFilterFormSubmit = (
   event: React.FormEvent<FilterFormElement>,
   setResultsFilters: (value: React.SetStateAction<ResultsFilterSet>) => void,
   scrollRef: React.RefObject<HTMLDivElement>,
+  tracker: AnalyticsTracker | undefined,
+  useNewStyleDisplay: boolean,
 ) => {
   event.preventDefault()
 
@@ -364,7 +397,7 @@ const handleFilterFormSubmit = (
     return false
   }
 
-  setResultsFilters({
+  const newFilterState = {
     numberOfViolations: Number.isNaN(numberOfViolationsAsInteger)
       ? undefined
       : numberOfViolationsAsInteger,
@@ -375,6 +408,14 @@ const handleFilterFormSubmit = (
       startDate,
     },
     state: stateValue ? stateValue : undefined,
+  }
+
+  setResultsFilters(newFilterState)
+
+  tracker?.trackEvent('user_set_filter', {
+    filters: newFilterState,
+    useNewStyleDisplay,
+    useSearchFilters: true,
   })
 
   if (scrollRef && scrollRef.current) {

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import { useCookies } from 'react-cookie'
 
 import {
   IconDefinition,
@@ -21,6 +22,7 @@ import Card from 'react-bootstrap/Card'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
 
+import { USE_NEW_STYLE_DISPLAY_COOKIE, USE_SEARCH_FILTERS_COOKIE } from 'constants/cookies'
 import L10N from 'constants/display'
 import Vehicle from 'models/Vehicle/Vehicle'
 import SocialShareButton from 'view/components/SocialShareButton/SocialShareButton'
@@ -42,6 +44,11 @@ const CopyButton = ({
 }: {
   vehicleUniqueIdentifier: string
 }) => {
+  const [cookies, _] = useCookies([
+    USE_NEW_STYLE_DISPLAY_COOKIE,
+    USE_SEARCH_FILTERS_COOKIE,
+  ])
+
   const [buttonPressedClass, setButtonPressedClass] = useState('')
   const [iconClass, setIconClass] = useState('fa')
 
@@ -73,6 +80,8 @@ const CopyButton = ({
       onClick={() => {
         tracker?.trackEvent('user_copied_link_to_lookup', {
           uniqueIdentifier: vehicleUniqueIdentifier,
+          useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true,
+          useSearchFilters: cookies[USE_SEARCH_FILTERS_COOKIE] === true,
         })
 
         navigator.clipboard.writeText(
