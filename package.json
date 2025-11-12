@@ -32,7 +32,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "BUILD_PATH='./dist' react-scripts build && rsync -a --delete dist/ build/ && rm -r dist",
+    "build": "BUILD_PATH='./dist' react-scripts build && rsync -a --delete dist/ build/ && rm -r dist && npx gzipper compress ./build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
