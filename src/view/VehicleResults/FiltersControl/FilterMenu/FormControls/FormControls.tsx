@@ -47,7 +47,7 @@ const RangeWithCheckboxControl = ({
   minValue,
   maxValue,
 }: RangeWithCheckboxControlProps) => {
-  const halfway = (maxValue + (minValue ?? 0)) / 2
+  const halfway = Math.ceil((maxValue + (minValue ?? 0)) / 2)
 
   const [rangeIsEnabled, setRangeIsEnabled] = useState(enabled)
   const [rangeValue, setRangeValue] = useState<number | undefined>(
