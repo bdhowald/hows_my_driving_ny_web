@@ -14,7 +14,7 @@ import {
   MIXPANEL_IDLE_TIMEOUT_MILLISECONDS,
   MIXPANEL_RECORD_SESSIONS_PERCENT,
 } from 'constants/tracking'
-import useLookupIdentifierCookie from 'hooks/useLookupIdentifierCookie'
+import useLookupIdentifierCookie from 'hooks/useLookupIdentifierCookie/useLookupIdentifierCookie'
 import Vehicle from 'models/Vehicle/Vehicle'
 import getPlateTypeName from 'utils/search/getPlateType/getPlateTypeName/getPlateTypeName'
 import getListOfQueriedVehiclesAfterResponse from 'utils/processResults/getListOfQueriedVehiclesAfterResponse/getListOfQueriedVehiclesAfterResponse'
