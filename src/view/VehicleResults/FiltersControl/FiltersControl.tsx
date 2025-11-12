@@ -6,6 +6,7 @@ import {
   ResultFilter,
   ResultsFilterSet,
 } from 'types/resultsFilters'
+import convertCamelCaseToTitleCase from 'utils/displayResults/convertCamelCaseToTitleCase/convertCamelCaseToTitleCase'
 
 import FilterBreadcrumb from './FilterBreadcrumb/FilterBreadcrumb'
 import FilterMenu from './FilterMenu/FilterMenu'
@@ -122,7 +123,7 @@ const getActiveFilters = (resultFilters: ResultsFilterSet): ResultFilter[] => {
 
   if (resultFilters.plateType) {
     const filterToAdd = {
-      args: { key: 'Type', value: capitalize(resultFilters.plateType) },
+      args: { key: 'Type', value: convertCamelCaseToTitleCase(resultFilters.plateType) },
       field: 'plateType',
       type: FilterType.Text,
     } as const
@@ -155,13 +156,6 @@ const getActiveFilters = (resultFilters: ResultsFilterSet): ResultFilter[] => {
   }
 
   return activeFilters
-}
-
-const capitalize = (original: string) => {
-  if (typeof original !== 'string' || original.length === 0) {
-    return original
-  }
-  return original.charAt(0).toUpperCase() + original.slice(1)
 }
 
 export default FiltersControl
