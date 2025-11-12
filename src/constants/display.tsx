@@ -1,5 +1,7 @@
 import * as React from 'react'
 
+const EASTERN_TIME_ZONE = 'America/New_York'
+
 const EASTERN_TIME_ZONE_DATE_FORMAT = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
   month: '2-digit',
@@ -9,7 +11,7 @@ const EASTERN_TIME_ZONE_DATE_FORMAT = new Intl.DateTimeFormat('en-US', {
 const EASTERN_TIME_ZONE_TIME_FORMAT = new Intl.DateTimeFormat('en-US', {
   hour: 'numeric',
   minute: 'numeric',
-  timeZone: 'America/New_York',
+  timeZone: EASTERN_TIME_ZONE,
 })
 
 export default {
@@ -114,6 +116,7 @@ export default {
     },
     dateFormat: EASTERN_TIME_ZONE_DATE_FORMAT,
     timeFormat: EASTERN_TIME_ZONE_TIME_FORMAT,
+    timeZone: EASTERN_TIME_ZONE,
     title: "How's My Driving NY",
     url: 'https://howsmydrivingny.nyc',
   },

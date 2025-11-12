@@ -492,8 +492,6 @@ describe('FetchViolations', () => {
           ],
         })
 
-        console.log(window.location.search)
-
         render(
           <CookiesProvider cookies={new Cookies('lookupIdentifiers=;')}>
             <FetchViolations />

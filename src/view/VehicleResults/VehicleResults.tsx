@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Card from 'react-bootstrap/Card'
 import { useCookies } from 'react-cookie'
 
@@ -8,12 +8,15 @@ import {
   VehicleDisplayResult,
   VehicleDisplaySuccessResult,
 } from 'types/vehicleDisplayResult'
+import filterResultsWithUserFilters from 'utils/filterResults/filterResultsWithUserFilters/filterResultsWithUserFilters'
 import isCompleteVehicleResult from 'utils/types/isCompleteVehicleResult/isCompleteVehicleResult'
+import { FilterFormElement, ResultsFilterSet } from 'types/resultsFilters'
 
 import Body from './Body/Body'
 import Header from './Header/Header'
+import FiltersControl from './FiltersControl/FiltersControl'
 
-const getKey = (vehicle: Vehicle) =>
+const getKey = (vehicle: Vehicle): string =>
   `${vehicle.state}:${vehicle.plate}:${vehicle.plateTypes}`
 
 type RefreshLookupFunctionType = (vehicle: Vehicle) => Promise<void>
@@ -217,38 +220,168 @@ const VehicleResults = ({
   lookupInFlight: boolean
   refreshLookupFunction: RefreshLookupFunctionType
   removeLookupFunction: RemoveLookupFunctionType
-  scrollRef: React.Ref<HTMLDivElement>
+  scrollRef: React.RefObject<HTMLDivElement>
   vehicleDisplayResults: VehicleDisplayResult[]
 }) => {
   const [cookies, _, __] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
+  const filterControlsRef = useRef<HTMLDivElement>(null)
+
+  const [resultsFilters, setResultsFilters] = useState<ResultsFilterSet>({
+    numberOfViolations: undefined,
+    plateText: undefined,
+    plateType: undefined,
+    queryDateRange: {
+      endDate: undefined,
+      startDate: undefined,
+    },
+    state: undefined,
+  })
 
   const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
-  const showQueriesInFlight = existingQueriesInFlight || lookupInFlight
+  const showResultsHeaderAndFiltersControl = vehicleDisplayResults.length > 0
+
+  const maxViolationsCountForResults = Math.max(
+    ...vehicleDisplayResults.map((result) => {
+      if (!isCompleteVehicleResult(result.vehicle)) {
+        return 0
+      }
+      return result.vehicle?.violationsCount
+    }),
+  )
+
+  const filteredVehicleDisplayResults = filterResultsWithUserFilters(
+    vehicleDisplayResults,
+    resultsFilters,
+  )
+
+  const clearFilterWrapper = (fieldName: keyof ResultsFilterSet) =>
+    clearFilter(fieldName, setResultsFilters)
+
+  const handleFilterFormSubmitWrapper = (
+    event: React.FormEvent<FilterFormElement>,
+  ) => handleFilterFormSubmit(event, setResultsFilters, filterControlsRef)
 
   return (
-    <div
-      className={`vehicles ${newStyleDisplayClassName}`}
-      ref={lookupInFlight ? null : scrollRef}
-    >
-      {lookupInFlight && (
-        // Display loader above results when a current lookup is in flight,
-        // regardless of whether existing results are still being queried.
-        <ShimmerLoader useNewStyleDisplay={useNewStyleDisplay} />
+    <>
+      {showResultsHeaderAndFiltersControl && (
+        <FiltersControl
+          clearFilterFunction={clearFilterWrapper}
+          handleFilterFormSubmitFunction={handleFilterFormSubmitWrapper}
+          maxViolationsCountForResults={maxViolationsCountForResults}
+          resultsFilters={resultsFilters}
+          resultsLength={filteredVehicleDisplayResults.length}
+          scrollRef={filterControlsRef}
+        />
       )}
-      <MemoizedCombinedVehicleResults
-        refreshLookupFunction={refreshLookupFunction}
-        removeLookupFunction={removeLookupFunction}
-        vehicleDisplayResults={vehicleDisplayResults}
-      />
-      {existingQueriesInFlight && !lookupInFlight && (
-        // Display loader below results when a current lookup is not in flight,
-        // but existing queries in flight are (show below any new lookup we have).
-        <ShimmerLoader useNewStyleDisplay={useNewStyleDisplay} />
-      )}
-    </div>
+      <div
+        className={`vehicles ${newStyleDisplayClassName}`}
+        ref={lookupInFlight ? null : scrollRef}
+      >
+        {lookupInFlight && (
+          // Display loader above results when a current lookup is in flight,
+          // regardless of whether existing results are still being queried.
+          <ShimmerLoader useNewStyleDisplay={useNewStyleDisplay} />
+        )}
+        <MemoizedCombinedVehicleResults
+          refreshLookupFunction={refreshLookupFunction}
+          removeLookupFunction={removeLookupFunction}
+          vehicleDisplayResults={filteredVehicleDisplayResults}
+        />
+        {existingQueriesInFlight && !lookupInFlight && (
+          // Display loader below results when a current lookup is not in flight,
+          // but existing queries in flight are (show below any new lookup we have).
+          <ShimmerLoader useNewStyleDisplay={useNewStyleDisplay} />
+        )}
+      </div>
+    </>
   )
+}
+
+const clearFilter = (
+  fieldName: keyof ResultsFilterSet,
+  setResultsFilters: (value: React.SetStateAction<ResultsFilterSet>) => void,
+) => {
+  setResultsFilters((previousFilterState) => {
+    const resetState =
+      fieldName === 'queryDateRange'
+        ? {
+            endDate: undefined,
+            startDate: undefined,
+          }
+        : undefined
+
+    return {
+      ...previousFilterState,
+      ...{
+        [fieldName]: resetState,
+      },
+    }
+  })
+}
+
+const handleFilterFormSubmit = (
+  event: React.FormEvent<FilterFormElement>,
+  setResultsFilters: (value: React.SetStateAction<ResultsFilterSet>) => void,
+  scrollRef: React.RefObject<HTMLDivElement>,
+) => {
+  event.preventDefault()
+
+  const form = event.currentTarget
+
+  const formElements = form.elements
+
+  const endDateElement = formElements['filter-results-end-date']
+  const endDateValue = endDateElement.value
+
+  const numberOfViolationsFilterEnabled =
+    formElements['filter-results-number-violations-control'].checked
+  const numberOfViolationsValue = numberOfViolationsFilterEnabled
+    ? formElements['filter-results-number-violations'].value
+    : undefined
+
+  const plateText = formElements['filter-results-plate-text'].value
+  const plateType = formElements['filter-results-plate-type'].value
+  const startDateValue = formElements['filter-results-start-date'].value
+  const stateValue = formElements['filter-results-state'].value
+
+  const endDate = endDateValue
+    ? new Date(`${endDateValue} 23:59:59`)
+    : undefined
+  const startDate = startDateValue
+    ? new Date(`${startDateValue} 00:00:00`)
+    : undefined
+
+  const numberOfViolationsAsInteger = Number(numberOfViolationsValue)
+
+  // Reset form validity
+  endDateElement.setCustomValidity('')
+
+  if (endDate && startDate && startDate > endDate) {
+    endDateElement.setCustomValidity('End date must be on or after start date.')
+    endDateElement.reportValidity()
+    return false
+  }
+
+  setResultsFilters({
+    numberOfViolations: Number.isNaN(numberOfViolationsAsInteger)
+      ? undefined
+      : numberOfViolationsAsInteger,
+    plateType,
+    plateText: plateText ? plateText.toUpperCase() : undefined,
+    queryDateRange: {
+      endDate,
+      startDate,
+    },
+    state: stateValue ? stateValue : undefined,
+  })
+
+  if (scrollRef && scrollRef.current) {
+    scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  return true
 }
 
 VehicleResults.displayName = 'VehicleResults'

@@ -8,6 +8,8 @@ type Vehicle = {
   fines: VehicleFineData
   fromPreviousLookupUniqueIdentifier?: boolean
   lookupDate: string
+  lookupDateEastern: string
+  lookupDateUtc: string
   plate: string
   plateTypes: string[] | undefined
   previousLookupDate: string | undefined

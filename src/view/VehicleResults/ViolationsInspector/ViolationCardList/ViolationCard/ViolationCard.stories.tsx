@@ -9,6 +9,9 @@ const meta: Meta<typeof ViolationCard> = {
   title:
     'Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCard',
   component: ViolationCard,
+  args: {
+    inspectViolationFunction: () => null,
+  },
   decorators: [
     (Story) => (
       <div className="container-fluid">

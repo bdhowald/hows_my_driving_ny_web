@@ -80,13 +80,19 @@ export const ResultsWithMultipleVehicles: Story = {
         expandResults: true,
         fromPreviousLookupUniqueIdentifier: false,
         isSuccessfulLookup: true,
-        vehicle: VehicleFactory.build(),
+        vehicle: VehicleFactory.build({
+          plate: 'ABC1234',
+          state: 'NY',
+        }),
       },
       {
         expandResults: true,
         fromPreviousLookupUniqueIdentifier: false,
         isSuccessfulLookup: true,
-        vehicle: VehicleFactory.build(),
+        vehicle: VehicleFactory.build({
+          plate: 'DEF5678',
+          state: 'NY',
+        }),
       },
     ],
   },

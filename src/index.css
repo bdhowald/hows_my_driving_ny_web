@@ -69,7 +69,21 @@ div.container-fluid div.jumbotron p.lead a.open-data-link {
 div.container-fluid div.jumbotron.new-style {
   margin: auto;
   max-width: 36rem;
-  padding: 4rem 1rem;
+  padding: 2rem 1rem;
+}
+
+@media only screen and (min-width: 400px) {
+  div.container-fluid div.jumbotron.new-style,
+  div.container div.jumbotron.new-style {
+    padding: 4rem 1rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  div.container-fluid div.jumbotron.new-style,
+  div.container div.jumbotron.new-style {
+    padding: 4rem 0;
+  }
 }
 
 div.container-fluid div.jumbotron.new-style h1.display-4 {
@@ -78,13 +92,6 @@ div.container-fluid div.jumbotron.new-style h1.display-4 {
 
 div.container-fluid div.jumbotron.new-style p.lead {
   max-width: 16rem;
-}
-
-@media only screen and (min-width: 768px) {
-  div.container-fluid div.jumbotron.new-style,
-  div.container div.jumbotron.new-style {
-    padding: 4rem 0;
-  }
 }
 
 @media only screen and (min-width: 576px) {
@@ -2653,6 +2660,168 @@ div.container-fluid div.row div.vehicles.new-style {
 }
 
 /* End new-style display */
+
+/* Start VehicleResults Menu styles */
+
+div.offcanvas.show div.offcanvas-body div.violation-info {
+  padding: 0 0.125rem;
+}
+
+div.offcanvas.show div.offcanvas-body div.vehicle-results-menu {
+  background-color: white;
+  border-radius: 0.25rem;
+  max-width: 36rem;
+  margin: auto;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.filter-controls-menu
+  div.filter-controls-menu-controls
+  input[type='text'] {
+  text-transform: uppercase;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.filter-controls-menu
+  div.filter-controls-menu-controls
+  input::-webkit-input-placeholder {
+  text-transform: initial;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.filter-controls-menu
+  div.filter-controls-menu-controls
+  input::-moz-placeholder {
+  text-transform: initial;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.filter-controls-menu
+  div.filter-controls-menu-controls
+  input:-moz-placeholder {
+  text-transform: initial;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.filter-controls-menu
+  div.filter-controls-menu-controls
+  input::-ms-input-placeholder {
+  text-transform: initial;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.filter-controls-menu
+  div.filter-controls-menu-controls
+  div.input-group
+  span.input-group-text.date-label {
+  min-width: 8.25em;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.filter-controls-menu
+  div.filter-controls-menu-controls
+  div.input-group
+  label.input-group-text.plate-label,
+span.input-group-text.plate-label {
+  min-width: 5em;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.filter-controls-menu
+  div.filter-controls-menu-controls
+  div.input-group.sticky-apply-button {
+  display: block;
+  padding: 0.5rem 0;
+  position: sticky;
+  bottom: 0%;
+}
+
+div.container-fluid div.row div.filters-wrapper {
+  max-width: 36rem;
+  margin: auto;
+  padding: 0.5rem 0 0;
+}
+
+div.container-fluid div.row div.filters-wrapper > div {
+  padding: 0 1.25rem;
+}
+
+@media only screen and (min-width: 768px) {
+  div.container-fluid div.row div.filters-wrapper > div {
+    display: flex;
+    padding: 0 0.125rem;
+  }
+}
+
+div.container-fluid div.row div.filters-wrapper div.filter-controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+div.container-fluid
+  div.row
+  div.filters-wrapper
+  div.filter-controls
+  div.filter-controls-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0;
+}
+
+div.container-fluid div.row div.filters-wrapper div.active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 1rem 0;
+}
+
+div.container-fluid
+  div.row
+  div.filters-wrapper
+  div.active-filters
+  span.filter-breadcrumb {
+  background-color: #eee;
+  border-radius: 0.5rem;
+  display: inline;
+  margin: 0.25rem 0.25rem 0.25rem 0;
+  padding: 0.5rem;
+}
+
+div.container-fluid
+  div.row
+  div.filters-wrapper
+  div.active-filters
+  span.filter-breadcrumb-key {
+  font-weight: bold;
+}
+
+div.container-fluid
+  div.row
+  div.filters-wrapper
+  div.active-filters
+  span.filter-breadcrumb-text {
+  cursor: pointer;
+}
+
+div.container-fluid
+  div.row
+  div.filters-wrapper
+  div.active-filters
+  span.filter-breadcrumb-remove-filter {
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 1rem;
+}
+
+/* End VehicleResults Menu Styles */
 
 /* End VehicleResults styles */
 
