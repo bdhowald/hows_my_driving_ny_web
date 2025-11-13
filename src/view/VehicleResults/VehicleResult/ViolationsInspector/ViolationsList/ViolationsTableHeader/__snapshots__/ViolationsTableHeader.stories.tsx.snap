@@ -1,0 +1,601 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableHeader DateAscending smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violations-table-wrapper">
+                <div class="table-responsive violations-table-body-wrapper">
+                  <table class="table table-striped table-sm violations-table">
+                    <thead class="thead-light table-light">
+                      <tr>
+                        <th data-testid="table-header-date"
+                            aria-sort="ascending"
+                            class="sort-column"
+                        >
+                          <span>
+                            Date
+                          </span>
+                          <svg aria-labelledby="svg-inline--fa-title-angle-up"
+                               data-prefix="fas"
+                               data-icon="angle-up"
+                               class="svg-inline--fa fa-angle-up "
+                               role="img"
+                               xmlns="http://www.w3.org/2000/svg"
+                               viewbox="0 0 448 512"
+                          >
+                            <title id="svg-inline--fa-title-angle-up">
+                              angle-up icon
+                            </title>
+                            <path fill="currentColor"
+                                  d="M201.4 137.4c12.5-12.5 32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 205.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l160-160z"
+                            >
+                            </path>
+                          </svg>
+                        </th>
+                        <th data-testid="table-header-kind"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Violation
+                          </span>
+                        </th>
+                        <th data-testid="table-header-location"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Location
+                          </span>
+                        </th>
+                        <th data-testid="table-header-fined"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Fines
+                          </span>
+                        </th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableHeader DateDescending smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violations-table-wrapper">
+                <div class="table-responsive violations-table-body-wrapper">
+                  <table class="table table-striped table-sm violations-table">
+                    <thead class="thead-light table-light">
+                      <tr>
+                        <th data-testid="table-header-date"
+                            aria-sort="descending"
+                            class="sort-column"
+                        >
+                          <span>
+                            Date
+                          </span>
+                          <svg aria-labelledby="svg-inline--fa-title-angle-down"
+                               data-prefix="fas"
+                               data-icon="angle-down"
+                               class="svg-inline--fa fa-angle-down "
+                               role="img"
+                               xmlns="http://www.w3.org/2000/svg"
+                               viewbox="0 0 448 512"
+                          >
+                            <title id="svg-inline--fa-title-angle-down">
+                              angle-down icon
+                            </title>
+                            <path fill="currentColor"
+                                  d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+                            >
+                            </path>
+                          </svg>
+                        </th>
+                        <th data-testid="table-header-kind"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Violation
+                          </span>
+                        </th>
+                        <th data-testid="table-header-location"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Location
+                          </span>
+                        </th>
+                        <th data-testid="table-header-fined"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Fines
+                          </span>
+                        </th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableHeader FinedAscending smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violations-table-wrapper">
+                <div class="table-responsive violations-table-body-wrapper">
+                  <table class="table table-striped table-sm violations-table">
+                    <thead class="thead-light table-light">
+                      <tr>
+                        <th data-testid="table-header-date"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Date
+                          </span>
+                        </th>
+                        <th data-testid="table-header-kind"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Violation
+                          </span>
+                        </th>
+                        <th data-testid="table-header-location"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Location
+                          </span>
+                        </th>
+                        <th data-testid="table-header-fined"
+                            aria-sort="ascending"
+                            class="sort-column"
+                        >
+                          <span>
+                            Fines
+                          </span>
+                          <svg aria-labelledby="svg-inline--fa-title-angle-up"
+                               data-prefix="fas"
+                               data-icon="angle-up"
+                               class="svg-inline--fa fa-angle-up "
+                               role="img"
+                               xmlns="http://www.w3.org/2000/svg"
+                               viewbox="0 0 448 512"
+                          >
+                            <title id="svg-inline--fa-title-angle-up">
+                              angle-up icon
+                            </title>
+                            <path fill="currentColor"
+                                  d="M201.4 137.4c12.5-12.5 32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 205.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l160-160z"
+                            >
+                            </path>
+                          </svg>
+                        </th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableHeader FinedDescending smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violations-table-wrapper">
+                <div class="table-responsive violations-table-body-wrapper">
+                  <table class="table table-striped table-sm violations-table">
+                    <thead class="thead-light table-light">
+                      <tr>
+                        <th data-testid="table-header-date"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Date
+                          </span>
+                        </th>
+                        <th data-testid="table-header-kind"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Violation
+                          </span>
+                        </th>
+                        <th data-testid="table-header-location"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Location
+                          </span>
+                        </th>
+                        <th data-testid="table-header-fined"
+                            aria-sort="descending"
+                            class="sort-column"
+                        >
+                          <span>
+                            Fines
+                          </span>
+                          <svg aria-labelledby="svg-inline--fa-title-angle-down"
+                               data-prefix="fas"
+                               data-icon="angle-down"
+                               class="svg-inline--fa fa-angle-down "
+                               role="img"
+                               xmlns="http://www.w3.org/2000/svg"
+                               viewbox="0 0 448 512"
+                          >
+                            <title id="svg-inline--fa-title-angle-down">
+                              angle-down icon
+                            </title>
+                            <path fill="currentColor"
+                                  d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+                            >
+                            </path>
+                          </svg>
+                        </th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableHeader KindAscending smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violations-table-wrapper">
+                <div class="table-responsive violations-table-body-wrapper">
+                  <table class="table table-striped table-sm violations-table">
+                    <thead class="thead-light table-light">
+                      <tr>
+                        <th data-testid="table-header-date"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Date
+                          </span>
+                        </th>
+                        <th data-testid="table-header-kind"
+                            aria-sort="ascending"
+                            class="sort-column"
+                        >
+                          <span>
+                            Violation
+                          </span>
+                          <svg aria-labelledby="svg-inline--fa-title-angle-up"
+                               data-prefix="fas"
+                               data-icon="angle-up"
+                               class="svg-inline--fa fa-angle-up "
+                               role="img"
+                               xmlns="http://www.w3.org/2000/svg"
+                               viewbox="0 0 448 512"
+                          >
+                            <title id="svg-inline--fa-title-angle-up">
+                              angle-up icon
+                            </title>
+                            <path fill="currentColor"
+                                  d="M201.4 137.4c12.5-12.5 32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 205.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l160-160z"
+                            >
+                            </path>
+                          </svg>
+                        </th>
+                        <th data-testid="table-header-location"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Location
+                          </span>
+                        </th>
+                        <th data-testid="table-header-fined"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Fines
+                          </span>
+                        </th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableHeader KindDescending smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violations-table-wrapper">
+                <div class="table-responsive violations-table-body-wrapper">
+                  <table class="table table-striped table-sm violations-table">
+                    <thead class="thead-light table-light">
+                      <tr>
+                        <th data-testid="table-header-date"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Date
+                          </span>
+                        </th>
+                        <th data-testid="table-header-kind"
+                            aria-sort="descending"
+                            class="sort-column"
+                        >
+                          <span>
+                            Violation
+                          </span>
+                          <svg aria-labelledby="svg-inline--fa-title-angle-down"
+                               data-prefix="fas"
+                               data-icon="angle-down"
+                               class="svg-inline--fa fa-angle-down "
+                               role="img"
+                               xmlns="http://www.w3.org/2000/svg"
+                               viewbox="0 0 448 512"
+                          >
+                            <title id="svg-inline--fa-title-angle-down">
+                              angle-down icon
+                            </title>
+                            <path fill="currentColor"
+                                  d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+                            >
+                            </path>
+                          </svg>
+                        </th>
+                        <th data-testid="table-header-location"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Location
+                          </span>
+                        </th>
+                        <th data-testid="table-header-fined"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Fines
+                          </span>
+                        </th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableHeader LocationAscending smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violations-table-wrapper">
+                <div class="table-responsive violations-table-body-wrapper">
+                  <table class="table table-striped table-sm violations-table">
+                    <thead class="thead-light table-light">
+                      <tr>
+                        <th data-testid="table-header-date"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Date
+                          </span>
+                        </th>
+                        <th data-testid="table-header-kind"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Violation
+                          </span>
+                        </th>
+                        <th data-testid="table-header-location"
+                            aria-sort="ascending"
+                            class="sort-column"
+                        >
+                          <span>
+                            Location
+                          </span>
+                          <svg aria-labelledby="svg-inline--fa-title-angle-up"
+                               data-prefix="fas"
+                               data-icon="angle-up"
+                               class="svg-inline--fa fa-angle-up "
+                               role="img"
+                               xmlns="http://www.w3.org/2000/svg"
+                               viewbox="0 0 448 512"
+                          >
+                            <title id="svg-inline--fa-title-angle-up">
+                              angle-up icon
+                            </title>
+                            <path fill="currentColor"
+                                  d="M201.4 137.4c12.5-12.5 32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 205.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l160-160z"
+                            >
+                            </path>
+                          </svg>
+                        </th>
+                        <th data-testid="table-header-fined"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Fines
+                          </span>
+                        </th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableHeader LocationDescending smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violations-table-wrapper">
+                <div class="table-responsive violations-table-body-wrapper">
+                  <table class="table table-striped table-sm violations-table">
+                    <thead class="thead-light table-light">
+                      <tr>
+                        <th data-testid="table-header-date"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Date
+                          </span>
+                        </th>
+                        <th data-testid="table-header-kind"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Violation
+                          </span>
+                        </th>
+                        <th data-testid="table-header-location"
+                            aria-sort="descending"
+                            class="sort-column"
+                        >
+                          <span>
+                            Location
+                          </span>
+                          <svg aria-labelledby="svg-inline--fa-title-angle-down"
+                               data-prefix="fas"
+                               data-icon="angle-down"
+                               class="svg-inline--fa fa-angle-down "
+                               role="img"
+                               xmlns="http://www.w3.org/2000/svg"
+                               viewbox="0 0 448 512"
+                          >
+                            <title id="svg-inline--fa-title-angle-down">
+                              angle-down icon
+                            </title>
+                            <path fill="currentColor"
+                                  d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+                            >
+                            </path>
+                          </svg>
+                        </th>
+                        <th data-testid="table-header-fined"
+                            aria-sort="none"
+                            class
+                        >
+                          <span>
+                            Fines
+                          </span>
+                        </th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

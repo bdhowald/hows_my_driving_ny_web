@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/VehicleResults/VehicleResult/Header/RefreshLookupButton Default smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <div class="card-header">
+            <button aria-label="refresh lookup"
+                    class="refresh-lookup-button"
+                    data-testid="refresh-lookup-button"
+                    type="button"
+            >
+              <span class="fa-layers fa-fw">
+                <svg aria-hidden="true"
+                     focusable="false"
+                     data-prefix="fas"
+                     data-icon="circle"
+                     class="svg-inline--fa fa-circle circle"
+                     role="img"
+                     xmlns="http://www.w3.org/2000/svg"
+                     viewbox="0 0 512 512"
+                     color="dimgrey"
+                     style="transform-origin: 0.5em 0.5em;"
+                >
+                  <g transform="translate(256 256)">
+                    <g transform="translate(0, 0)  scale(1.375, 1.375)  rotate(0 0 0)">
+                      <path fill="currentColor"
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            transform="translate(-256 -256)"
+                      >
+                      </path>
+                    </g>
+                  </g>
+                </svg>
+                <svg aria-hidden="true"
+                     focusable="false"
+                     data-prefix="fas"
+                     data-icon="arrow-rotate-right"
+                     class="svg-inline--fa fa-arrow-rotate-right circle"
+                     role="img"
+                     xmlns="http://www.w3.org/2000/svg"
+                     viewbox="0 0 512 512"
+                     color="white"
+                >
+                  <path fill="currentColor"
+                        d="M386.3 160L336 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l128 0c17.7 0 32-14.3 32-32l0-128c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 51.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0s-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3s163.8-62.5 226.3 0L386.3 160z"
+                  >
+                  </path>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/VehicleResults/VehicleResult/LookupInfo/ViolationInfo NewViolationsSincePreviousLookup smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="no-padding list-group-item">
+              <div class="row">
+                <div class="summary-section col-xs-12 col-sm-6">
+                  <div class="summary-box ">
+                    <div class="vehicle-info-group vehicle-violations">
+                      <div class="keys lookup-info">
+                        <div>
+                          Violations:
+                        </div>
+                        <div class="violation-count-aspects">
+                          <div class="violation-count-aspect-header">
+                            Type:
+                          </div>
+                          <div class="violation-count-aspect">
+                            Parking:
+                          </div>
+                        </div>
+                        <div class="violation-count-aspects">
+                          <div class="violation-count-aspect-header">
+                            Borough:
+                          </div>
+                          <div class="violation-count-aspect">
+                            Brooklyn:
+                          </div>
+                        </div>
+                      </div>
+                      <div class="values lookup-info">
+                        <div class="violation-total">
+                          (1 new) 3
+                        </div>
+                        <div class="violation-type-counts">
+                          <div class="violation-count">
+                            &nbsp;
+                          </div>
+                          <div class="violation-count">
+                            3
+                          </div>
+                        </div>
+                        <div class="violation-borough-counts">
+                          <div class="violation-count">
+                            &nbsp;
+                          </div>
+                          <div class="violation-count">
+                            3
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/LookupInfo/ViolationInfo NoViolations smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="no-padding list-group-item">
+              <div class="row">
+                <div class="summary-section col-xs-12 col-sm-6">
+                  <div class="summary-box ">
+                    <div class="vehicle-info-group vehicle-violations">
+                      <div class="keys lookup-info">
+                        <div>
+                          Violations:
+                        </div>
+                      </div>
+                      <div class="values lookup-info">
+                        <div class="violation-total">
+                          0
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/LookupInfo/ViolationInfo Violations smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="no-padding list-group-item">
+              <div class="row">
+                <div class="summary-section col-xs-12 col-sm-6">
+                  <div class="summary-box ">
+                    <div class="vehicle-info-group vehicle-violations">
+                      <div class="keys lookup-info">
+                        <div>
+                          Violations:
+                        </div>
+                        <div class="violation-count-aspects">
+                          <div class="violation-count-aspect-header">
+                            Type:
+                          </div>
+                          <div class="violation-count-aspect">
+                            Parking:
+                          </div>
+                        </div>
+                        <div class="violation-count-aspects">
+                          <div class="violation-count-aspect-header">
+                            Borough:
+                          </div>
+                          <div class="violation-count-aspect">
+                            Brooklyn:
+                          </div>
+                        </div>
+                      </div>
+                      <div class="values lookup-info">
+                        <div class="violation-total">
+                          3
+                        </div>
+                        <div class="violation-type-counts">
+                          <div class="violation-count">
+                            &nbsp;
+                          </div>
+                          <div class="violation-count">
+                            3
+                          </div>
+                        </div>
+                        <div class="violation-borough-counts">
+                          <div class="violation-count">
+                            &nbsp;
+                          </div>
+                          <div class="violation-count">
+                            3
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

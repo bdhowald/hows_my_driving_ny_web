@@ -1,0 +1,188 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/VehicleResults/FiltersControl/FilterMenu/FormControls/RangeWithCheckboxControl Disabled smoke-test 1`] = `
+<div role="dialog"
+     aria-modal="true"
+     class="offcanvas offcanvas-start show"
+     tabindex="-1"
+     style="visibility: visible;"
+>
+  <div class="offcanvas-body">
+    <div class="filter-controls-menu">
+      <div class="filter-controls-menu-controls">
+        <form>
+          <div>
+            <div class="input-group mb-5">
+              <div class="form-check">
+                <input aria-labelledby="range-slider-label"
+                       class="form-check-input"
+                       id="range-slider-control"
+                       type="checkbox"
+                >
+                <label class="form-label"
+                       for="range-slider-control"
+                       id="range-slider-label"
+                >
+                  More balloons than
+                  <span class=" ps-1">
+                    ...
+                  </span>
+                </label>
+              </div>
+              <input aria-labelledby="range-slider-label"
+                     class="form-range d-none"
+                     id="range-slider"
+                     min="0"
+                     max="100"
+                     type="range"
+                     value="50"
+              >
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/FiltersControl/FilterMenu/FormControls/RangeWithCheckboxControl Enabled smoke-test 1`] = `
+<div role="dialog"
+     aria-modal="true"
+     class="offcanvas offcanvas-start show"
+     tabindex="-1"
+     style="visibility: visible;"
+>
+  <div class="offcanvas-body">
+    <div class="filter-controls-menu">
+      <div class="filter-controls-menu-controls">
+        <form>
+          <div>
+            <div class="input-group mb-5">
+              <div class="form-check">
+                <input aria-labelledby="range-slider-label"
+                       class="form-check-input"
+                       id="range-slider-control"
+                       type="checkbox"
+                       checked
+                >
+                <label class="form-label"
+                       for="range-slider-control"
+                       id="range-slider-label"
+                >
+                  More balloons than
+                  <span class="fw-bold ps-1">
+                    50
+                  </span>
+                </label>
+              </div>
+              <input aria-labelledby="range-slider-label"
+                     class="form-range "
+                     id="range-slider"
+                     min="0"
+                     max="100"
+                     type="range"
+                     value="50"
+              >
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/FiltersControl/FilterMenu/FormControls/RangeWithCheckboxControl WithInitialValue smoke-test 1`] = `
+<div role="dialog"
+     aria-modal="true"
+     class="offcanvas offcanvas-start show"
+     tabindex="-1"
+     style="visibility: visible;"
+>
+  <div class="offcanvas-body">
+    <div class="filter-controls-menu">
+      <div class="filter-controls-menu-controls">
+        <form>
+          <div>
+            <div class="input-group mb-5">
+              <div class="form-check">
+                <input aria-labelledby="range-slider-label"
+                       class="form-check-input"
+                       id="range-slider-control"
+                       type="checkbox"
+                       checked
+                >
+                <label class="form-label"
+                       for="range-slider-control"
+                       id="range-slider-label"
+                >
+                  More balloons than
+                  <span class="fw-bold ps-1">
+                    27
+                  </span>
+                </label>
+              </div>
+              <input aria-labelledby="range-slider-label"
+                     class="form-range "
+                     id="range-slider"
+                     min="0"
+                     max="100"
+                     type="range"
+                     value="27"
+              >
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/FiltersControl/FilterMenu/FormControls/RangeWithCheckboxControl WithMinValue smoke-test 1`] = `
+<div role="dialog"
+     aria-modal="true"
+     class="offcanvas offcanvas-start show"
+     tabindex="-1"
+     style="visibility: visible;"
+>
+  <div class="offcanvas-body">
+    <div class="filter-controls-menu">
+      <div class="filter-controls-menu-controls">
+        <form>
+          <div>
+            <div class="input-group mb-5">
+              <div class="form-check">
+                <input aria-labelledby="range-slider-label"
+                       class="form-check-input"
+                       id="range-slider-control"
+                       type="checkbox"
+                       checked
+                >
+                <label class="form-label"
+                       for="range-slider-control"
+                       id="range-slider-label"
+                >
+                  More balloons than
+                  <span class="fw-bold ps-1">
+                    38
+                  </span>
+                </label>
+              </div>
+              <input aria-labelledby="range-slider-label"
+                     class="form-range "
+                     id="range-slider"
+                     min="-25"
+                     max="100"
+                     type="range"
+                     value="38"
+              >
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;

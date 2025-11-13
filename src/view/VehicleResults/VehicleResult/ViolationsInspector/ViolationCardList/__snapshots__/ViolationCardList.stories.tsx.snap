@@ -1,0 +1,400 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector VehicleWithNoViolationsListVisible smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violation-card-list-wrapper"
+                   style="width: 100%;"
+              >
+                <div class="violation-card-list-controls"
+                     data-testid="vehicle-violation-card-list-controls"
+                >
+                  <div class="row">
+                    <div class="d-grid gap-2">
+                      <button aria-controls="violations-table-e5f6g7h8"
+                              aria-expanded="true"
+                              class="btn btn-block btn-outline-secondary"
+                              disabled
+                              type="button"
+                      >
+                        no violations
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector VehicleWithViolationsListNotVisible smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violation-card-list-wrapper"
+                   style="width: 100%;"
+              >
+                <div class="violation-card-list-controls"
+                     data-testid="vehicle-violation-card-list-controls"
+                >
+                  <div class="row">
+                    <div class="d-grid gap-2">
+                      <button aria-controls="violations-table-e5f6g7h8"
+                              aria-expanded="false"
+                              class="btn btn-block btn-outline-primary"
+                              type="button"
+                      >
+                        show 3 violations
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector VehicleWithViolationsListVisible smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violation-card-list-wrapper"
+                   style="width: 100%;"
+              >
+                <div class="violation-card-list-controls"
+                     data-testid="vehicle-violation-card-list-controls"
+                >
+                  <div class="row">
+                    <div class="d-grid gap-2">
+                      <button aria-controls="violations-table-e5f6g7h8"
+                              aria-expanded="true"
+                              class="btn btn-block btn-outline-primary"
+                              type="button"
+                      >
+                        hide violations
+                      </button>
+                      <button class="btn btn-block btn-outline-primary"
+                              type="button"
+                      >
+                        show fines details
+                      </button>
+                      <button class="btn btn-block btn-outline-primary"
+                              type="button"
+                      >
+                        show full location
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="violation-card-list-caption">
+                  3 parking and camera violations
+                </div>
+                <div class="violation-card-list-sort-controls">
+                  <div class="violation-card-list-sort-control date active"
+                       data-testid="violation-card-list-sort-control-date"
+                  >
+                    <span class="violation-card-list-sort-control-name">
+                      Date
+                    </span>
+                    <svg aria-labelledby="svg-inline--fa-title-angle-down"
+                         data-prefix="fas"
+                         data-icon="angle-down"
+                         class="svg-inline--fa fa-angle-down "
+                         role="img"
+                         xmlns="http://www.w3.org/2000/svg"
+                         viewbox="0 0 448 512"
+                    >
+                      <title id="svg-inline--fa-title-angle-down">
+                        angle-down icon
+                      </title>
+                      <path fill="currentColor"
+                            d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+                      >
+                      </path>
+                    </svg>
+                  </div>
+                  <div class="violation-card-list-sort-control kind "
+                       data-testid="violation-card-list-sort-control-kind"
+                  >
+                    <span class="violation-card-list-sort-control-name">
+                      Type
+                    </span>
+                    <span class="arrow-placeholder">
+                    </span>
+                  </div>
+                  <div class="violation-card-list-sort-control location "
+                       data-testid="violation-card-list-sort-control-location"
+                  >
+                    <span class="violation-card-list-sort-control-name">
+                      Borough
+                    </span>
+                    <span class="arrow-placeholder">
+                    </span>
+                  </div>
+                  <div class="violation-card-list-sort-control fined "
+                       data-testid="violation-card-list-sort-control-fined"
+                  >
+                    <span class="violation-card-list-sort-control-name">
+                      Fines
+                    </span>
+                    <span class="arrow-placeholder">
+                    </span>
+                  </div>
+                </div>
+                <div class="violation-card-list bg-body"
+                     data-testid="violation-card-list"
+                >
+                  <div class="violation-card-sort-divider bg-dark"
+                       data-testid="sort-divider-date-descending-2024"
+                  >
+                    <span class="divider-group-name">
+                      2024
+                    </span>
+                    <span class="collapsible-toggle">
+                      3 violations [–]
+                    </span>
+                  </div>
+                  <div class="violation-card bg-body-tertiary">
+                    <div class="violation-card-row">
+                      <div>
+                        <a data-bs-toggle="offcanvas"
+                           href="#showViolationDetails"
+                           role="button"
+                           aria-controls="showViolationDetails"
+                        >
+                          11/07/2024 10:47 PM
+                        </a>
+                      </div>
+                      <div>
+                        Brooklyn
+                      </div>
+                    </div>
+                    <div class="violation-card-row">
+                      <div>
+                        No Standing - Bus Stop
+                      </div>
+                      <div>
+                        N/A
+                      </div>
+                    </div>
+                  </div>
+                  <div class="violation-card bg-body-secondary">
+                    <div class="violation-card-row">
+                      <div>
+                        <a data-bs-toggle="offcanvas"
+                           href="#showViolationDetails"
+                           role="button"
+                           aria-controls="showViolationDetails"
+                        >
+                          11/07/2024 10:47 PM
+                        </a>
+                      </div>
+                      <div>
+                        Brooklyn
+                      </div>
+                    </div>
+                    <div class="violation-card-row">
+                      <div>
+                        No Standing - Bus Stop
+                      </div>
+                      <div>
+                        N/A
+                      </div>
+                    </div>
+                  </div>
+                  <div class="violation-card bg-body-tertiary">
+                    <div class="violation-card-row">
+                      <div>
+                        <a data-bs-toggle="offcanvas"
+                           href="#showViolationDetails"
+                           role="button"
+                           aria-controls="showViolationDetails"
+                        >
+                          11/07/2024 10:47 PM
+                        </a>
+                      </div>
+                      <div>
+                        Brooklyn
+                      </div>
+                    </div>
+                    <div class="violation-card-row">
+                      <div>
+                        No Standing - Bus Stop
+                      </div>
+                      <div>
+                        N/A
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector VehicleWithViolationsListVisibleAndOnlyOneViolation smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violation-card-list-wrapper"
+                   style="width: 100%;"
+              >
+                <div class="violation-card-list-controls"
+                     data-testid="vehicle-violation-card-list-controls"
+                >
+                  <div class="row">
+                    <div class="d-grid gap-2">
+                      <button aria-controls="violations-table-e5f6g7h8"
+                              aria-expanded="true"
+                              class="btn btn-block btn-outline-primary"
+                              type="button"
+                      >
+                        hide violations
+                      </button>
+                      <button class="btn btn-block btn-outline-primary"
+                              type="button"
+                      >
+                        show fines details
+                      </button>
+                      <button class="btn btn-block btn-outline-primary"
+                              type="button"
+                      >
+                        show full location
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="violation-card-list-caption">
+                  1 parking and camera violation
+                </div>
+                <div class="violation-card-list-sort-controls">
+                  <div class="violation-card-list-sort-control date active"
+                       data-testid="violation-card-list-sort-control-date"
+                  >
+                    <span class="violation-card-list-sort-control-name">
+                      Date
+                    </span>
+                    <svg aria-labelledby="svg-inline--fa-title-angle-down"
+                         data-prefix="fas"
+                         data-icon="angle-down"
+                         class="svg-inline--fa fa-angle-down "
+                         role="img"
+                         xmlns="http://www.w3.org/2000/svg"
+                         viewbox="0 0 448 512"
+                    >
+                      <title id="svg-inline--fa-title-angle-down">
+                        angle-down icon
+                      </title>
+                      <path fill="currentColor"
+                            d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+                      >
+                      </path>
+                    </svg>
+                  </div>
+                  <div class="violation-card-list-sort-control kind "
+                       data-testid="violation-card-list-sort-control-kind"
+                  >
+                    <span class="violation-card-list-sort-control-name">
+                      Type
+                    </span>
+                    <span class="arrow-placeholder">
+                    </span>
+                  </div>
+                  <div class="violation-card-list-sort-control location "
+                       data-testid="violation-card-list-sort-control-location"
+                  >
+                    <span class="violation-card-list-sort-control-name">
+                      Borough
+                    </span>
+                    <span class="arrow-placeholder">
+                    </span>
+                  </div>
+                  <div class="violation-card-list-sort-control fined "
+                       data-testid="violation-card-list-sort-control-fined"
+                  >
+                    <span class="violation-card-list-sort-control-name">
+                      Fines
+                    </span>
+                    <span class="arrow-placeholder">
+                    </span>
+                  </div>
+                </div>
+                <div class="violation-card-list bg-body"
+                     data-testid="violation-card-list"
+                >
+                  <div class="violation-card-sort-divider bg-dark"
+                       data-testid="sort-divider-date-descending-2024"
+                  >
+                    <span class="divider-group-name">
+                      2024
+                    </span>
+                    <span class="collapsible-toggle">
+                      1 violation [–]
+                    </span>
+                  </div>
+                  <div class="violation-card bg-body-tertiary">
+                    <div class="violation-card-row">
+                      <div>
+                        <a data-bs-toggle="offcanvas"
+                           href="#showViolationDetails"
+                           role="button"
+                           aria-controls="showViolationDetails"
+                        >
+                          11/07/2024 10:47 PM
+                        </a>
+                      </div>
+                      <div>
+                        Brooklyn
+                      </div>
+                    </div>
+                    <div class="violation-card-row">
+                      <div>
+                        No Standing - Bus Stop
+                      </div>
+                      <div>
+                        N/A
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

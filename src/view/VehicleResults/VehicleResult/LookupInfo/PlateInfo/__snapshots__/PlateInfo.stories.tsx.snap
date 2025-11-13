@@ -1,0 +1,327 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/VehicleResults/VehicleResult/LookupInfo/PlateInfo HasPlateTypes smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="no-padding list-group-item">
+              <div class="row">
+                <div class="summary-section col-xs-12 col-sm-6">
+                  <div class="summary-box">
+                    <div class="vehicle-info-group vehicle-identity">
+                      <div class="keys lookup-info">
+                        <div>
+                          Plate:
+                        </div>
+                        <div>
+                          State:
+                        </div>
+                        <div>
+                          Plate type:
+                        </div>
+                        <div>
+                          Lookups:
+                        </div>
+                        <div>
+                          Queried On:
+                        </div>
+                      </div>
+                      <div class="values lookup-info">
+                        <div>
+                          ABC1234
+                        </div>
+                        <div class="region">
+                          <div class="region-abbreviation">
+                            NY
+                          </div>
+                          <div class="region-full-name">
+                            New York
+                          </div>
+                        </div>
+                        <div>
+                          New York Senate
+                        </div>
+                        <div>
+                          2
+                        </div>
+                        <div>
+                          09/01/2025
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/LookupInfo/PlateInfo HasPreviousLookups smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="no-padding list-group-item">
+              <div class="row">
+                <div class="summary-section col-xs-12 col-sm-6">
+                  <div class="summary-box">
+                    <div class="vehicle-info-group vehicle-identity">
+                      <div class="keys lookup-info">
+                        <div>
+                          Plate:
+                        </div>
+                        <div>
+                          State:
+                        </div>
+                        <div>
+                          Plate type:
+                        </div>
+                        <div>
+                          Lookups:
+                        </div>
+                        <div>
+                          Queried On:
+                        </div>
+                        <div>
+                          Prev. Queried:
+                        </div>
+                      </div>
+                      <div class="values lookup-info">
+                        <div>
+                          ABC1234
+                        </div>
+                        <div class="region">
+                          <div class="region-abbreviation">
+                            NY
+                          </div>
+                          <div class="region-full-name">
+                            New York
+                          </div>
+                        </div>
+                        <div>
+                          All
+                        </div>
+                        <div>
+                          2
+                        </div>
+                        <div>
+                          09/01/2025
+                        </div>
+                        <div>
+                          07/12/2023
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/LookupInfo/PlateInfo NoPlateTypes smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="no-padding list-group-item">
+              <div class="row">
+                <div class="summary-section col-xs-12 col-sm-6">
+                  <div class="summary-box">
+                    <div class="vehicle-info-group vehicle-identity">
+                      <div class="keys lookup-info">
+                        <div>
+                          Plate:
+                        </div>
+                        <div>
+                          State:
+                        </div>
+                        <div>
+                          Plate type:
+                        </div>
+                        <div>
+                          Lookups:
+                        </div>
+                        <div>
+                          Queried On:
+                        </div>
+                      </div>
+                      <div class="values lookup-info">
+                        <div>
+                          ABC1234
+                        </div>
+                        <div class="region">
+                          <div class="region-abbreviation">
+                            NY
+                          </div>
+                          <div class="region-full-name">
+                            New York
+                          </div>
+                        </div>
+                        <div>
+                          All
+                        </div>
+                        <div>
+                          2
+                        </div>
+                        <div>
+                          09/01/2025
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/LookupInfo/PlateInfo NoPreviousLookups smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="no-padding list-group-item">
+              <div class="row">
+                <div class="summary-section col-xs-12 col-sm-6">
+                  <div class="summary-box">
+                    <div class="vehicle-info-group vehicle-identity">
+                      <div class="keys lookup-info">
+                        <div>
+                          Plate:
+                        </div>
+                        <div>
+                          State:
+                        </div>
+                        <div>
+                          Plate type:
+                        </div>
+                        <div>
+                          Lookups:
+                        </div>
+                        <div>
+                          Queried On:
+                        </div>
+                      </div>
+                      <div class="values lookup-info">
+                        <div>
+                          ABC1234
+                        </div>
+                        <div class="region">
+                          <div class="region-abbreviation">
+                            NY
+                          </div>
+                          <div class="region-full-name">
+                            New York
+                          </div>
+                        </div>
+                        <div>
+                          All
+                        </div>
+                        <div>
+                          1
+                        </div>
+                        <div>
+                          09/01/2025
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/LookupInfo/PlateInfo QueriedRecently smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="no-padding list-group-item">
+              <div class="row">
+                <div class="summary-section col-xs-12 col-sm-6">
+                  <div class="summary-box">
+                    <div class="vehicle-info-group vehicle-identity">
+                      <div class="keys lookup-info">
+                        <div>
+                          Plate:
+                        </div>
+                        <div>
+                          State:
+                        </div>
+                        <div>
+                          Plate type:
+                        </div>
+                        <div>
+                          Lookups:
+                        </div>
+                        <div>
+                          Queried On:
+                        </div>
+                      </div>
+                      <div class="values lookup-info">
+                        <div>
+                          ABC1234
+                        </div>
+                        <div class="region">
+                          <div class="region-abbreviation">
+                            NY
+                          </div>
+                          <div class="region-full-name">
+                            New York
+                          </div>
+                        </div>
+                        <div>
+                          All
+                        </div>
+                        <div>
+                          2
+                        </div>
+                        <div>
+                          Now
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

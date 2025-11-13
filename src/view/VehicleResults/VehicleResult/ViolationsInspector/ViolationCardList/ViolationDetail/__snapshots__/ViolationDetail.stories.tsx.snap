@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationDetail Default smoke-test 1`] = `""`;
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationDetail NoFines smoke-test 1`] = `""`;
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationDetail NoIssuingAgency smoke-test 1`] = `""`;
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationDetail NoSummonsForCameraViolation smoke-test 1`] = `""`;
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationDetail NoSummonsImage smoke-test 1`] = `""`;
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationDetail WithViolationStatus smoke-test 1`] = `""`;

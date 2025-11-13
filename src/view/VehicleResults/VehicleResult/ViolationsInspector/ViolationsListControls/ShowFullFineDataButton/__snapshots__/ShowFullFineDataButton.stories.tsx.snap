@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsListControls/ShowFullFineDataButton ListVisibleAndFullFineDataIsNotVisible smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violations-table-wrapper">
+                <div class="violations-table-header">
+                  <div class="row">
+                    <button class="btn btn-outline-primary btn-block w-100"
+                            type="button"
+                    >
+                      show fines details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsListControls/ShowFullFineDataButton ListVisibleAndFullFineDataIsVisible smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles">
+        <div class="vehicle card">
+          <ul class="list-group-flush list-group">
+            <li class="list-group-item">
+              <div class="violations-table-wrapper">
+                <div class="violations-table-header">
+                  <div class="row">
+                    <button class="btn btn-outline-primary btn-block w-100"
+                            type="button"
+                    >
+                      show fines summary
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

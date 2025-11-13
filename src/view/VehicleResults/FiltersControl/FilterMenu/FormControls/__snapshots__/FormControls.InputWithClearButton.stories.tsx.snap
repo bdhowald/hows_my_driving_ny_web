@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/VehicleResults/FiltersControl/FilterMenu/FormControls/InputWithClearButton Blank smoke-test 1`] = `
+<div role="dialog"
+     aria-modal="true"
+     class="offcanvas offcanvas-start show"
+     tabindex="-1"
+     style="visibility: visible;"
+>
+  <div class="offcanvas-body">
+    <div class="filter-controls-menu">
+      <div class="filter-controls-menu-controls">
+        <form>
+          <div>
+            <div class="input-group mb-2">
+              <span class="input-group-text"
+                    id="filter-results-field-label"
+              >
+                Field
+              </span>
+              <input class="form-control">
+              <button aria-label="clear undefined filter"
+                      class="btn btn-secondary"
+                      type="button"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/FiltersControl/FilterMenu/FormControls/InputWithClearButton WithPlaceholderText smoke-test 1`] = `
+<div role="dialog"
+     aria-modal="true"
+     class="offcanvas offcanvas-start show"
+     tabindex="-1"
+     style="visibility: visible;"
+>
+  <div class="offcanvas-body">
+    <div class="filter-controls-menu">
+      <div class="filter-controls-menu-controls">
+        <form>
+          <div>
+            <div class="input-group mb-2">
+              <span class="input-group-text"
+                    id="filter-results-field-label"
+              >
+                Field
+              </span>
+              <input class="form-control"
+                     placeholder="some placeholder text"
+              >
+              <button aria-label="clear undefined filter"
+                      class="btn btn-secondary"
+                      type="button"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/FiltersControl/FilterMenu/FormControls/InputWithClearButton WithText smoke-test 1`] = `
+<div role="dialog"
+     aria-modal="true"
+     class="offcanvas offcanvas-start show"
+     tabindex="-1"
+     style="visibility: visible;"
+>
+  <div class="offcanvas-body">
+    <div class="filter-controls-menu">
+      <div class="filter-controls-menu-controls">
+        <form>
+          <div>
+            <div class="input-group mb-2">
+              <span class="input-group-text"
+                    id="filter-results-field-label"
+              >
+                Field
+              </span>
+              <input class="form-control"
+                     value="some text"
+              >
+              <button aria-label="clear undefined filter"
+                      class="btn btn-secondary"
+                      type="button"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;

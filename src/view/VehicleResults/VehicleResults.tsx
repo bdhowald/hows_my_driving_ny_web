@@ -1,5 +1,4 @@
 import React, { useContext, useRef, useState } from 'react'
-import Card from 'react-bootstrap/Card'
 import { useCookies } from 'react-cookie'
 
 import { USE_NEW_STYLE_DISPLAY_COOKIE } from 'constants/cookies'
@@ -15,9 +14,8 @@ import { FilterFormElement, ResultsFilterSet } from 'types/resultsFilters'
 import AnalyticsTracker from 'utils/analytics/tracking'
 import { TrackingContext } from 'view/FetchViolations/FetchViolations'
 
-import Body from './Body/Body'
-import Header from './Header/Header'
 import FiltersControl from './FiltersControl/FiltersControl'
+import VehicleResult from './VehicleResult/VehicleResult'
 
 const getKey = (vehicle: Vehicle): string =>
   `${vehicle.state}:${vehicle.plate}:${vehicle.plateTypes}`
@@ -29,44 +27,6 @@ type CombinedVehicleResultsProps = {
   vehicleDisplayResults: VehicleDisplayResult[]
   refreshLookupFunction: RefreshLookupFunctionType
   removeLookupFunction: RemoveLookupFunctionType
-}
-
-const VehicleResult = ({
-  index,
-  refreshLookupFunction,
-  removeLookupFunction,
-  showViolationsList,
-  vehicle,
-}: {
-  index: number
-  refreshLookupFunction: RefreshLookupFunctionType
-  removeLookupFunction: RemoveLookupFunctionType
-  showViolationsList: boolean
-  vehicle: Vehicle
-}) => {
-  const [showVehicleResult, setShowVehicleResult] = useState(true)
-
-  if (!showVehicleResult) {
-    return null
-  }
-
-  return (
-    <Card
-      className="vehicle"
-      data-testid={`lookup-${vehicle.uniqueIdentifier}`}
-    >
-      <Header
-        refreshLookupFunction={async () => {
-          setShowVehicleResult(false)
-          await refreshLookupFunction(vehicle)
-          setShowVehicleResult(true)
-        }}
-        removeLookupFunction={() => removeLookupFunction(index)}
-        vehicle={vehicle}
-      />
-      <Body showViolationsList={showViolationsList} vehicle={vehicle} />
-    </Card>
-  )
 }
 
 const CombinedVehicleResults = ({
