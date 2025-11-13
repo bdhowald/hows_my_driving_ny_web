@@ -6,7 +6,8 @@ import { VehicleFactory } from '__fixtures__/models/Vehicle'
 import IntelligentSpeedAssistanceNotice from './IntelligentSpeedAssistanceNotice'
 
 const meta: Meta<typeof IntelligentSpeedAssistanceNotice> = {
-  title: 'Components/VehicleResults/VehicleResult/IntelligentSpeedAssistanceNotice',
+  title:
+    'Components/VehicleResults/VehicleResult/IntelligentSpeedAssistanceNotice',
   component: IntelligentSpeedAssistanceNotice,
   decorators: [
     (Story) => (

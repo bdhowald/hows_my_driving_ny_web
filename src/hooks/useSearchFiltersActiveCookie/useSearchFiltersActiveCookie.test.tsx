@@ -5,11 +5,7 @@ import { Cookies, CookiesProvider } from 'react-cookie'
 import useSearchFiltersActiveCookie from './useSearchFiltersActiveCookie'
 
 describe('useSearchFiltersActiveCookie', () => {
-  const HookWrapper = ({
-    hook,
-  }: {
-    hook: () => any
-  }) => {
+  const HookWrapper = ({ hook }: { hook: () => any }) => {
     const hookFunctions = hook()
 
     Object.values(hookFunctions).forEach((hookFunction: any) => hookFunction())
@@ -30,9 +26,7 @@ describe('useSearchFiltersActiveCookie', () => {
 
     render(
       <CookiesProvider cookies={cookies}>
-        <HookWrapper
-          hook={() => useSearchFiltersActiveCookie()}
-        />
+        <HookWrapper hook={() => useSearchFiltersActiveCookie()} />
       </CookiesProvider>,
     )
 

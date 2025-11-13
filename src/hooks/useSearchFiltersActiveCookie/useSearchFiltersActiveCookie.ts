@@ -7,9 +7,7 @@ import {
 } from 'constants/cookies'
 
 const useSearchFiltersActiveCookie = () => {
-  const [cookies, setCookie, _] = useCookies([
-    USE_SEARCH_FILTERS_COOKIE,
-  ])
+  const [cookies, setCookie, _] = useCookies([USE_SEARCH_FILTERS_COOKIE])
 
   const areSearchFiltersActive = () => {
     const useSearchFiltersActiveCookiePresent =
@@ -96,7 +94,7 @@ const useSearchFiltersActiveCookie = () => {
   }
 
   return {
-    areSearchFiltersActive
+    areSearchFiltersActive,
   }
 }
 

@@ -68,7 +68,11 @@ const RangeWithCheckboxControl = ({
           onChange={(e) => setRangeIsEnabled(e.target.checked)}
           type="checkbox"
         />
-        <label className="form-label" htmlFor={`${id}-control`} id={`${id}-label`}>
+        <label
+          className="form-label"
+          htmlFor={`${id}-control`}
+          id={`${id}-label`}
+        >
           {labelText}
           <span className={`${rangeValueDisplayClass} ps-1`}>
             {rangeIsEnabled ? rangeValue : '...'}

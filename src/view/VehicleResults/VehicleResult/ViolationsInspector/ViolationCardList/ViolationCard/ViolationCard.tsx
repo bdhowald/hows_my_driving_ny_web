@@ -1,7 +1,10 @@
 import React, { useContext } from 'react'
 import { useCookies } from 'react-cookie'
 
-import { USE_NEW_STYLE_DISPLAY_COOKIE, USE_SEARCH_FILTERS_COOKIE } from 'constants/cookies'
+import {
+  USE_NEW_STYLE_DISPLAY_COOKIE,
+  USE_SEARCH_FILTERS_COOKIE,
+} from 'constants/cookies'
 import { TrackingContext } from 'view/FetchViolations/FetchViolations'
 
 import {

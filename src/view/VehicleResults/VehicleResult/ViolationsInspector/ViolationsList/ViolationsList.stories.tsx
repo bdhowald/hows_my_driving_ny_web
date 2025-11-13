@@ -10,7 +10,8 @@ import {
 import ViolationsList from './ViolationsList'
 
 const meta: Meta<typeof ViolationsList> = {
-  title: 'Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList',
+  title:
+    'Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList',
   component: ViolationsList,
   decorators: [
     (Story) => (

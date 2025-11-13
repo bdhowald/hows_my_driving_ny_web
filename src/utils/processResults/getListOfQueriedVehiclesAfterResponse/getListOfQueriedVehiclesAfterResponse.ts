@@ -25,7 +25,7 @@ const getListOfQueriedVehiclesAfterResponse = ({
   retainLookupForRequeriedVehicle?: boolean
   tracker?: AnalyticsTracker | undefined
   useNewStyleDisplay: boolean
-  useSearchFilters: boolean,
+  useSearchFilters: boolean
 }): VehicleDisplayResult[] => {
   /**
    * This function does a lot...

@@ -7,7 +7,8 @@ import { ViolationFactory } from '__fixtures__/models/Violation'
 import ViolationsListControls from './ViolationsListControls'
 
 const meta: Meta<typeof ViolationsListControls> = {
-  title: 'Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsListControls',
+  title:
+    'Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsListControls',
   component: ViolationsListControls,
   decorators: [
     (Story) => (

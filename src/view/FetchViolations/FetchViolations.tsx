@@ -8,7 +8,10 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import { useCookies } from 'react-cookie'
 
-import { USE_NEW_STYLE_DISPLAY_COOKIE, USE_SEARCH_FILTERS_COOKIE } from 'constants/cookies'
+import {
+  USE_NEW_STYLE_DISPLAY_COOKIE,
+  USE_SEARCH_FILTERS_COOKIE,
+} from 'constants/cookies'
 import L10N from 'constants/display'
 import {
   MIXPANEL_IDLE_TIMEOUT_MILLISECONDS,
