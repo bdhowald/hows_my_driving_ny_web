@@ -94,6 +94,23 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
+      <div class="filters-wrapper"
+           data-testid="filters-wrapper-test-id"
+      >
+        <div class="filter-controls">
+          <div class="filter-controls-header">
+            Showing 2 results
+          </div>
+          <div class="results-control-toggle">
+            <button class="btn btn-primary"
+                    type="button"
+            >
+              Filter
+            </button>
+          </div>
+        </div>
+        <hr>
+      </div>
       <div class="vehicles ">
         <div data-testid="lookup-e5f6g7h8"
              class="vehicle card"
@@ -1009,6 +1026,23 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListHidde
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
+      <div class="filters-wrapper"
+           data-testid="filters-wrapper-test-id"
+      >
+        <div class="filter-controls">
+          <div class="filter-controls-header">
+            Showing 1 result
+          </div>
+          <div class="results-control-toggle">
+            <button class="btn btn-primary"
+                    type="button"
+            >
+              Filter
+            </button>
+          </div>
+        </div>
+        <hr>
+      </div>
       <div class="vehicles ">
         <div data-testid="lookup-e5f6g7h8"
              class="vehicle card"
@@ -1316,6 +1350,23 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListVisib
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
+      <div class="filters-wrapper"
+           data-testid="filters-wrapper-test-id"
+      >
+        <div class="filter-controls">
+          <div class="filter-controls-header">
+            Showing 1 result
+          </div>
+          <div class="results-control-toggle">
+            <button class="btn btn-primary"
+                    type="button"
+            >
+              Filter
+            </button>
+          </div>
+        </div>
+        <hr>
+      </div>
       <div class="vehicles ">
         <div data-testid="lookup-e5f6g7h8"
              class="vehicle card"
