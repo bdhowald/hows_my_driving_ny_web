@@ -3,7 +3,7 @@
 exports[`Components/Footer/Footer DefaultFooter smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <footer>
         <div class="footer-content">
           <p>

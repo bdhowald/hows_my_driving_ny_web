@@ -3,7 +3,7 @@
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody Default smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -242,7 +242,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByDateAscending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -481,7 +481,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByDateAscendingWithFullFines smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -960,7 +960,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByDateAscendingWithFullFinesAndFullText smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -1379,7 +1379,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByDateAscendingWithFullText smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -1558,7 +1558,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByDateDescending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -1797,7 +1797,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByDateDescendingWithFullFines smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -2276,7 +2276,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByDateDescendingWithFullFinesAndFullText smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -2695,7 +2695,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByDateDescendingWithFullText smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -2874,7 +2874,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByFinesAscending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -3074,7 +3074,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByFinesAscendingWithFullFines smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -3514,7 +3514,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByFinesAscendingWithFullFinesAndFullText smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -3894,7 +3894,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByFinesAscendingWithFullText smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -4034,7 +4034,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByFinesDescending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -4234,7 +4234,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByFinesDescendingWithFullFines smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -4674,7 +4674,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByFinesDescendingWithFullFinesAndFullText smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -5054,7 +5054,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByFinesDescendingWithFullText smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -5194,7 +5194,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByKindAscending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -5394,7 +5394,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByKindAscendingWithFullFines smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -5834,7 +5834,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByKindAscendingWithFullFinesAndFullText smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -6214,7 +6214,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByKindAscendingWithFullText smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -6354,7 +6354,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByKindDescending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -6554,7 +6554,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByKindDescendingWithFullFines smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -6994,7 +6994,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByKindDescendingWithFullFinesAndFullText smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -7374,7 +7374,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByKindDescendingWithFullText smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -7514,7 +7514,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByLocationAscending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -7779,7 +7779,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByLocationAscendingWithFullFines smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -8284,7 +8284,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByLocationAscendingWithFullFinesAndFullText smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -8729,7 +8729,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByLocationAscendingWithFullText smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -8934,7 +8934,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByLocationDescending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -9199,7 +9199,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByLocationDescendingWithFullFines smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -9704,7 +9704,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByLocationDescendingWithFullFinesAndFullText smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -10149,7 +10149,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody SortByLocationDescendingWithFullText smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">

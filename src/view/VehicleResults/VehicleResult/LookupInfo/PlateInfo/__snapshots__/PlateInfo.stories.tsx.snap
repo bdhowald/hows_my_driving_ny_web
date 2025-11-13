@@ -3,7 +3,7 @@
 exports[`Components/VehicleResults/VehicleResult/LookupInfo/PlateInfo HasPlateTypes smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -37,9 +37,6 @@ exports[`Components/VehicleResults/VehicleResult/LookupInfo/PlateInfo HasPlateTy
                           <div class="region-abbreviation">
                             NY
                           </div>
-                          <div class="region-full-name">
-                            New York
-                          </div>
                         </div>
                         <div>
                           New York Senate
@@ -67,7 +64,7 @@ exports[`Components/VehicleResults/VehicleResult/LookupInfo/PlateInfo HasPlateTy
 exports[`Components/VehicleResults/VehicleResult/LookupInfo/PlateInfo HasPreviousLookups smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -104,9 +101,6 @@ exports[`Components/VehicleResults/VehicleResult/LookupInfo/PlateInfo HasPreviou
                           <div class="region-abbreviation">
                             NY
                           </div>
-                          <div class="region-full-name">
-                            New York
-                          </div>
                         </div>
                         <div>
                           All
@@ -137,7 +131,7 @@ exports[`Components/VehicleResults/VehicleResult/LookupInfo/PlateInfo HasPreviou
 exports[`Components/VehicleResults/VehicleResult/LookupInfo/PlateInfo NoPlateTypes smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -170,9 +164,6 @@ exports[`Components/VehicleResults/VehicleResult/LookupInfo/PlateInfo NoPlateTyp
                         <div class="region">
                           <div class="region-abbreviation">
                             NY
-                          </div>
-                          <div class="region-full-name">
-                            New York
                           </div>
                         </div>
                         <div>
@@ -201,7 +192,7 @@ exports[`Components/VehicleResults/VehicleResult/LookupInfo/PlateInfo NoPlateTyp
 exports[`Components/VehicleResults/VehicleResult/LookupInfo/PlateInfo NoPreviousLookups smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -234,9 +225,6 @@ exports[`Components/VehicleResults/VehicleResult/LookupInfo/PlateInfo NoPrevious
                         <div class="region">
                           <div class="region-abbreviation">
                             NY
-                          </div>
-                          <div class="region-full-name">
-                            New York
                           </div>
                         </div>
                         <div>
@@ -265,7 +253,7 @@ exports[`Components/VehicleResults/VehicleResult/LookupInfo/PlateInfo NoPrevious
 exports[`Components/VehicleResults/VehicleResult/LookupInfo/PlateInfo QueriedRecently smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -298,9 +286,6 @@ exports[`Components/VehicleResults/VehicleResult/LookupInfo/PlateInfo QueriedRec
                         <div class="region">
                           <div class="region-abbreviation">
                             NY
-                          </div>
-                          <div class="region-full-name">
-                            New York
                           </div>
                         </div>
                         <div>

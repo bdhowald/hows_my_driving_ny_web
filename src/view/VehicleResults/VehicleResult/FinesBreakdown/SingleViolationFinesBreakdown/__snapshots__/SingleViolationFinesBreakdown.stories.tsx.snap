@@ -3,7 +3,7 @@
 exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/SingleViolationFinesBreakdown AllFields smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -108,7 +108,7 @@ exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/SingleViolationF
 exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/SingleViolationFinesBreakdown FineAndAdditions smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -204,7 +204,7 @@ exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/SingleViolationF
 exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/SingleViolationFinesBreakdown FineAndSubtractions smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -282,7 +282,7 @@ exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/SingleViolationF
 exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/SingleViolationFinesBreakdown FineOnly smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -351,7 +351,7 @@ exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/SingleViolationF
 exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/SingleViolationFinesBreakdown InJudgment smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -447,7 +447,7 @@ exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/SingleViolationF
 exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/SingleViolationFinesBreakdown NoFineData smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">

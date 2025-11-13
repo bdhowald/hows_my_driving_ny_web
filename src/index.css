@@ -24,8 +24,36 @@ div.loader-wrapper {
 div.container-fluid {
   display: flex;
   flex-direction: column;
-  min-width: 20em;
+  min-width: 20rem;
 }
+
+/* Start new-style display */
+
+div.container-fluid div.page-content-container.new-style {
+  margin: auto;
+  max-width: 20rem;
+}
+
+@media only screen and (min-width: 360px) {
+  div.container-fluid div.page-content-container.new-style {
+    max-width: 22.5rem;
+  }
+}
+
+@media only screen and (min-width: 400px) {
+  div.container-fluid div.page-content-container.new-style {
+    max-width: 25rem;
+    padding: 0;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  div.container-fluid div.page-content-container.new-style {
+    max-width: 36rem;
+  }
+}
+
+/* End new-style display */
 
 /* Start Jumbotron styles */
 
@@ -39,8 +67,7 @@ div.container-fluid div.jumbotron {
 }
 
 @media only screen and (min-width: 768px) {
-  div.container-fluid div.jumbotron,
-  div.container div.jumbotron {
+  div.container-fluid div.jumbotron {
     padding: 4rem 2rem;
   }
 }
@@ -68,21 +95,24 @@ div.container-fluid div.jumbotron p.lead a.open-data-link {
 
 div.container-fluid div.jumbotron.new-style {
   margin: auto;
-  max-width: 36rem;
-  padding: 2rem 1rem;
+  padding: 2rem 0.5rem;
+}
+
+@media only screen and (min-width: 360px) {
+  div.container-fluid div.jumbotron.new-style {
+    padding: 2rem 1rem;
+  }
 }
 
 @media only screen and (min-width: 400px) {
-  div.container-fluid div.jumbotron.new-style,
-  div.container div.jumbotron.new-style {
+  div.container-fluid div.jumbotron.new-style {
     padding: 4rem 1rem;
   }
 }
 
 @media only screen and (min-width: 768px) {
-  div.container-fluid div.jumbotron.new-style,
-  div.container div.jumbotron.new-style {
-    padding: 4rem 0;
+  div.container-fluid div.jumbotron.new-style {
+    padding: 4rem 0rem;
   }
 }
 
@@ -241,7 +271,7 @@ div.container-fluid div.row div.card div.card-header div.share-icons {
 }
 
 div.container-fluid div.row div.card div.card-header div.share-icons button {
-  padding: 0 0.25rem;
+  padding: 0.25rem;
 }
 
 div.container-fluid div.row div.card div.card-header div.share-icons button {
@@ -723,96 +753,6 @@ div.container-fluid
   position: relative;
 }
 
-@media only screen and (min-width: 320px) {
-  /* Start old-style display */
-
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 1.5rem;
-  }
-
-  /* End old-style display */
-
-  /* Start new-style display */
-
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 1.5rem;
-  }
-
-  /* End new-style display */
-}
-
-@media only screen and (min-width: 360px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 2rem;
-  }
-}
-
-@media only screen and (min-width: 400px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 3rem;
-  }
-}
-
-@media only screen and (min-width: 440px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 4rem;
-  }
-}
-
-@media only screen and (min-width: 480px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 5rem;
-  }
-}
-
-@media only screen and (min-width: 520px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 6rem;
-  }
-}
-
 @media only screen and (min-width: 576px) {
   /* Start old-style display */
 
@@ -842,222 +782,6 @@ div.container-fluid
   }
 
   /* End new-style display */
-}
-
-@media only screen and (min-width: 320px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 1.5rem;
-  }
-}
-
-@media only screen and (min-width: 360px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 2rem;
-  }
-}
-
-@media only screen and (min-width: 400px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 3rem;
-  }
-}
-
-@media only screen and (min-width: 440px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 4rem;
-  }
-}
-
-@media only screen and (min-width: 480px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 5rem;
-  }
-}
-
-@media only screen and (min-width: 520px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 6rem;
-  }
-}
-
-@media only screen and (min-width: 576px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 1rem;
-  }
-}
-
-@media only screen and (min-width: 640px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 2rem;
-  }
-}
-
-@media only screen and (min-width: 720px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 3rem;
-  }
-}
-
-@media only screen and (min-width: 800px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 4rem;
-  }
-}
-
-@media only screen and (min-width: 880px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 5rem;
-  }
-}
-
-@media only screen and (min-width: 960px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 6rem;
-  }
-}
-
-@media only screen and (min-width: 1040px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 7rem;
-  }
-}
-
-@media only screen and (min-width: 1120px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 8rem;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 9rem;
-  }
-}
-
-@media only screen and (min-width: 1280px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 10rem;
-  }
-}
-
-@media only screen and (min-width: 1360px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 11rem;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section {
-    padding: 0.75rem 12rem;
-  }
 }
 
 div.container-fluid
@@ -1348,50 +1072,9 @@ div.container-fluid
   div.row
   div.summary-section
   div.summary-box
-  div.region
-  div.region-abbreviation {
-  display: initial;
-}
-
-div.container-fluid
-  div.row
-  div.card
-  ul.list-group-flush
-  li.list-group-item.no-padding
-  div.row
-  div.summary-section
-  div.summary-box
-  div.region
-  div.region-full-name {
-  display: none;
-}
-
-@media only screen and (min-width: 960px) {
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section
-    div.summary-box
-    div.region
-    div.region-abbreviation {
-    display: none;
-  }
-
-  div.container-fluid
-    div.row
-    div.card
-    ul.list-group-flush
-    li.list-group-item.no-padding
-    div.row
-    div.summary-section
-    div.summary-box
-    div.region
-    div.region-full-name {
-    display: initial;
-  }
+  div.region {
+  display: flex;
+  justify-content: flex-end;
 }
 
 div.container-fluid
@@ -2780,10 +2463,17 @@ div.offcanvas.show
 }
 
 div.container-fluid div.row div.filters-wrapper {
-  max-width: 36rem;
   margin: auto;
   padding: 0.5rem 0 0;
 }
+
+/* Start new-style display */
+
+div.container-fluid div.row div.filters-wrapper.new-style {
+  max-width: 36rem;
+}
+
+/* End new-style display */
 
 div.container-fluid div.row div.filters-wrapper > div {
   padding: 0 1.25rem;

@@ -3,7 +3,7 @@
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCard Default smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -48,7 +48,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCard FullFineAndLocationData smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -177,7 +177,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCard FullFineData smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -297,7 +297,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCard FullLocationData smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -351,7 +351,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCard NoBoroughData smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -396,7 +396,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCard NoDateTime smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -435,7 +435,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCard NoFineData smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -480,7 +480,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCard NoViolationDescription smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">

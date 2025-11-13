@@ -3,7 +3,7 @@
 exports[`Components/VehicleResults/VehicleResult/Body NoViolations smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group list-group-flush">
@@ -36,9 +36,6 @@ exports[`Components/VehicleResults/VehicleResult/Body NoViolations smoke-test 1`
                         <div class="region">
                           <div class="region-abbreviation">
                             NY
-                          </div>
-                          <div class="region-full-name">
-                            New York
                           </div>
                         </div>
                         <div>
@@ -105,7 +102,7 @@ exports[`Components/VehicleResults/VehicleResult/Body NoViolations smoke-test 1`
 exports[`Components/VehicleResults/VehicleResult/Body ViolationsListHidden smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group list-group-flush">
@@ -138,9 +135,6 @@ exports[`Components/VehicleResults/VehicleResult/Body ViolationsListHidden smoke
                         <div class="region">
                           <div class="region-abbreviation">
                             NY
-                          </div>
-                          <div class="region-full-name">
-                            New York
                           </div>
                         </div>
                         <div>
@@ -291,7 +285,7 @@ exports[`Components/VehicleResults/VehicleResult/Body ViolationsListHidden smoke
 exports[`Components/VehicleResults/VehicleResult/Body ViolationsListHiddenWithDangerousVehicleAbatementAct smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group list-group-flush">
@@ -324,9 +318,6 @@ exports[`Components/VehicleResults/VehicleResult/Body ViolationsListHiddenWithDa
                         <div class="region">
                           <div class="region-abbreviation">
                             NY
-                          </div>
-                          <div class="region-full-name">
-                            New York
                           </div>
                         </div>
                         <div>
@@ -507,7 +498,7 @@ exports[`Components/VehicleResults/VehicleResult/Body ViolationsListHiddenWithDa
 exports[`Components/VehicleResults/VehicleResult/Body ViolationsListVisible smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group list-group-flush">
@@ -540,9 +531,6 @@ exports[`Components/VehicleResults/VehicleResult/Body ViolationsListVisible smok
                         <div class="region">
                           <div class="region-abbreviation">
                             NY
-                          </div>
-                          <div class="region-full-name">
-                            New York
                           </div>
                         </div>
                         <div>
@@ -849,7 +837,7 @@ exports[`Components/VehicleResults/VehicleResult/Body ViolationsListVisible smok
 exports[`Components/VehicleResults/VehicleResult/Body ViolationsListVisibleWithDangerousVehicleAbatementAct smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group list-group-flush">
@@ -882,9 +870,6 @@ exports[`Components/VehicleResults/VehicleResult/Body ViolationsListVisibleWithD
                         <div class="region">
                           <div class="region-abbreviation">
                             NY
-                          </div>
-                          <div class="region-full-name">
-                            New York
                           </div>
                         </div>
                         <div>

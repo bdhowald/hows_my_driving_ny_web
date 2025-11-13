@@ -3,7 +3,7 @@
 exports[`Components/VehicleResults/FiltersControl/FilterBreadcrumb DateFilterBreadcrumbWithEndDate smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="jumbotron">
         <div class="filters-wrapper">
           <div class="active-filters">
@@ -52,7 +52,7 @@ exports[`Components/VehicleResults/FiltersControl/FilterBreadcrumb DateFilterBre
 exports[`Components/VehicleResults/FiltersControl/FilterBreadcrumb DateFilterBreadcrumbWithRange smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="jumbotron">
         <div class="filters-wrapper">
           <div class="active-filters">
@@ -101,7 +101,7 @@ exports[`Components/VehicleResults/FiltersControl/FilterBreadcrumb DateFilterBre
 exports[`Components/VehicleResults/FiltersControl/FilterBreadcrumb DateFilterBreadcrumbWithRangeAsOneDate smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="jumbotron">
         <div class="filters-wrapper">
           <div class="active-filters">
@@ -150,7 +150,7 @@ exports[`Components/VehicleResults/FiltersControl/FilterBreadcrumb DateFilterBre
 exports[`Components/VehicleResults/FiltersControl/FilterBreadcrumb DateFilterBreadcrumbWithStartDate smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="jumbotron">
         <div class="filters-wrapper">
           <div class="active-filters">
@@ -199,7 +199,7 @@ exports[`Components/VehicleResults/FiltersControl/FilterBreadcrumb DateFilterBre
 exports[`Components/VehicleResults/FiltersControl/FilterBreadcrumb NumberOfViolationsFilterBreadcrumb smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="jumbotron">
         <div class="filters-wrapper">
           <div class="active-filters">
@@ -248,7 +248,7 @@ exports[`Components/VehicleResults/FiltersControl/FilterBreadcrumb NumberOfViola
 exports[`Components/VehicleResults/FiltersControl/FilterBreadcrumb PlateFilterTextBreadcrumb smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="jumbotron">
         <div class="filters-wrapper">
           <div class="active-filters">
@@ -297,7 +297,7 @@ exports[`Components/VehicleResults/FiltersControl/FilterBreadcrumb PlateFilterTe
 exports[`Components/VehicleResults/FiltersControl/FilterBreadcrumb PlateFilterTypeBreadcrumb smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="jumbotron">
         <div class="filters-wrapper">
           <div class="active-filters">
@@ -346,7 +346,7 @@ exports[`Components/VehicleResults/FiltersControl/FilterBreadcrumb PlateFilterTy
 exports[`Components/VehicleResults/FiltersControl/FilterBreadcrumb StateFilterBreadcrumb smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="jumbotron">
         <div class="filters-wrapper">
           <div class="active-filters">

@@ -13,7 +13,7 @@ const meta: Meta<typeof SocialShareButton.Bluesky> = {
     (Story) => (
       <div className="container-fluid">
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-12 page-content-container">
             {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
             <Story />
           </div>

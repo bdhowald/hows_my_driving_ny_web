@@ -3,11 +3,11 @@
 exports[`Components/FetchViolations/FetchViolations NoLookups smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div>
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 page-content-container new-style">
               <div class="jumbotron new-style">
                 <h1 class="display-4">
                   How's My Driving NY
@@ -410,7 +410,7 @@ exports[`Components/FetchViolations/FetchViolations NoLookups smoke-test 1`] = `
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 page-content-container">
               <footer>
                 <div class="footer-content">
                   <p>

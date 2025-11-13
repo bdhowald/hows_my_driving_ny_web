@@ -3,7 +3,7 @@
 exports[`Components/VehicleResults/VehicleResults LookupInFlight smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles ">
         <div class="vehicle card"
              aria-hidden="true"
@@ -93,7 +93,7 @@ exports[`Components/VehicleResults/VehicleResults LookupInFlight smoke-test 1`] 
 exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles ">
         <div data-testid="lookup-e5f6g7h8"
              class="vehicle card"
@@ -247,9 +247,6 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                         <div class="region">
                           <div class="region-abbreviation">
                             NY
-                          </div>
-                          <div class="region-full-name">
-                            New York
                           </div>
                         </div>
                         <div>
@@ -700,9 +697,6 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
                           <div class="region-abbreviation">
                             NY
                           </div>
-                          <div class="region-full-name">
-                            New York
-                          </div>
                         </div>
                         <div>
                           All
@@ -1008,7 +1002,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehicles sm
 exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListHidden smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles ">
         <div data-testid="lookup-e5f6g7h8"
              class="vehicle card"
@@ -1162,9 +1156,6 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListHidde
                         <div class="region">
                           <div class="region-abbreviation">
                             NY
-                          </div>
-                          <div class="region-full-name">
-                            New York
                           </div>
                         </div>
                         <div>
@@ -1315,7 +1306,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListHidde
 exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListVisible smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles ">
         <div data-testid="lookup-e5f6g7h8"
              class="vehicle card"
@@ -1469,9 +1460,6 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListVisib
                         <div class="region">
                           <div class="region-abbreviation">
                             NY
-                          </div>
-                          <div class="region-full-name">
-                            New York
                           </div>
                         </div>
                         <div>

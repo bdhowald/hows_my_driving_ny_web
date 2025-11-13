@@ -3,7 +3,7 @@
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableHeader DateAscending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -78,7 +78,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableHeader DateDescending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -153,7 +153,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableHeader FinedAscending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -228,7 +228,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableHeader FinedDescending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -303,7 +303,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableHeader KindAscending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -378,7 +378,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableHeader KindDescending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -453,7 +453,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableHeader LocationAscending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -528,7 +528,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableHeader LocationDescending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">

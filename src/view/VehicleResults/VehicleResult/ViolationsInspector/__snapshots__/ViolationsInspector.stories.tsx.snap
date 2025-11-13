@@ -3,7 +3,7 @@
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector AtLeastOneViolatioWithFullViolationTextAndSummaryFines smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -185,7 +185,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector AtLeastOneV
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector AtLeastOneViolationWithFullViolationTextAndFullFines play-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -442,7 +442,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector AtLeastOneV
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector AtLeastOneViolationWithViolationIconsAndFullFines play-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -699,7 +699,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector AtLeastOneV
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector AtLeastOneViolationWithViolationIconsAndSummaryFines smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -881,7 +881,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector AtLeastOneV
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector NoViolations smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">

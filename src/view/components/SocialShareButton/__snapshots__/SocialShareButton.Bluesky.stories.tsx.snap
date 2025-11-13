@@ -3,7 +3,7 @@
 exports[`Components/SocialShareButton/BlueskySocialShareButton ReadyToShare smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <button aria-label="share lookup to Bluesky"
               data-testid="bluesky-share-button"
               class="react-share__ShareButton bluesky-share-button"

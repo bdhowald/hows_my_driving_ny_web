@@ -1,4 +1,6 @@
-import * as React from 'react'
+import React, { useState } from 'react'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Tooltip from 'react-bootstrap/Tooltip'
 
 import L10N from 'constants/display'
 import { Region } from 'constants/regions'
@@ -9,44 +11,14 @@ import getRegionFromAbbreviation from 'utils/displayResults/getRegionFromAbbrevi
 const MAX_DATE_DIFF_TO_BE_CONSIDERED_RECENT = 1000 * 5 * 60
 
 const PlateInfo = ({ vehicle }: { vehicle: Vehicle }) => {
-  const getDateStringforDisplay = (
-    lookupDateAsString: string | undefined,
-    compareToCurrentTime: boolean,
-  ): string | undefined => {
-    if (!lookupDateAsString) {
-      return undefined
-    }
-    if (isNaN(Date.parse(lookupDateAsString))) {
-      return undefined
-    }
-    const now = new Date()
-    const lookupDateAsDate = new Date(lookupDateAsString)
+  const [showTooltip, setShowTooltip] = useState(false)
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null)
 
-    if (
-      compareToCurrentTime &&
-      now.getTime() - lookupDateAsDate.getTime() <=
-        MAX_DATE_DIFF_TO_BE_CONSIDERED_RECENT
-    ) {
-      return 'Now'
+  const hideTooltipAfterClick = () => {
+    if (timeoutId) {
+      clearTimeout(timeoutId)
     }
-
-    return L10N.sitewide.dateFormat.format(new Date(lookupDateAsString))
-  }
-
-  const getRegionKeyName = (regionObject: Region | undefined) => {
-    if (!regionObject) {
-      return 'Region'
-    }
-    if (regionObject.type === 'province') {
-      return 'Province'
-    }
-    if (regionObject.type === 'state') {
-      return 'State'
-    }
-    if (regionObject.type === 'territory') {
-      return 'Territory'
-    }
-    return 'Region'
+    setTimeoutId(setTimeout(() => setShowTooltip(false), 1500))
   }
 
   const thisQueryLookupDateString = getDateStringforDisplay(
@@ -74,8 +46,20 @@ const PlateInfo = ({ vehicle }: { vehicle: Vehicle }) => {
         <div className="values lookup-info">
           <div>{vehicle.plate}</div>
           <div className="region">
-            <div className="region-abbreviation">{region?.code ?? 'N/A'}</div>
-            <div className="region-full-name">{region?.name || 'N/A'}</div>
+            <OverlayTrigger
+              onToggle={hideTooltipAfterClick}
+              overlay={showTooltip ? <Tooltip title={region?.name || 'N/A'}>{region?.name || 'N/A'}</Tooltip> : <></>}
+              placement="left"
+              show={showTooltip}
+              trigger={'click'}
+            >
+              <div
+                className="region-abbreviation"
+                onClick={() => setShowTooltip(true)}
+              >
+                {region?.code ?? 'N/A'}
+              </div>
+            </OverlayTrigger>
           </div>
           <div>{getPlateTypesString(vehicle.plateTypes)}</div>
           <div>{vehicle.timesQueried}</div>
@@ -87,6 +71,46 @@ const PlateInfo = ({ vehicle }: { vehicle: Vehicle }) => {
       </div>
     </div>
   )
+}
+
+const getDateStringforDisplay = (
+  lookupDateAsString: string | undefined,
+  compareToCurrentTime: boolean,
+): string | undefined => {
+  if (!lookupDateAsString) {
+    return undefined
+  }
+  if (isNaN(Date.parse(lookupDateAsString))) {
+    return undefined
+  }
+  const now = new Date()
+  const lookupDateAsDate = new Date(lookupDateAsString)
+
+  if (
+    compareToCurrentTime &&
+    now.getTime() - lookupDateAsDate.getTime() <=
+      MAX_DATE_DIFF_TO_BE_CONSIDERED_RECENT
+  ) {
+    return 'Now'
+  }
+
+  return L10N.sitewide.dateFormat.format(new Date(lookupDateAsString))
+}
+
+const getRegionKeyName = (regionObject: Region | undefined) => {
+  if (!regionObject) {
+    return 'Region'
+  }
+  if (regionObject.type === 'province') {
+    return 'Province'
+  }
+  if (regionObject.type === 'state') {
+    return 'State'
+  }
+  if (regionObject.type === 'territory') {
+    return 'Territory'
+  }
+  return 'Region'
 }
 
 export default PlateInfo

@@ -1,5 +1,4 @@
 import React, { createContext, useEffect, useRef, useState } from 'react'
-
 import FingerprintJS, { Agent } from '@fingerprintjs/fingerprintjs'
 import mixpanel, { Mixpanel } from 'mixpanel-browser'
 import { useParams } from 'react-router-dom'
@@ -47,6 +46,8 @@ const FetchViolations = () => {
   ])
   const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
   const useSearchFilters = cookies[USE_SEARCH_FILTERS_COOKIE] === true
+
+  const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
   const { removeLookupFromIdentifierCookie } = useLookupIdentifierCookie()
 
@@ -194,7 +195,7 @@ const FetchViolations = () => {
       <div>
         <Container fluid>
           <Row>
-            <div className="col-md-12">
+            <div className={`col-md-12 page-content-container ${newStyleDisplayClassName}`}>
               <Search
                 lookupInFlight={lookupInFlight}
                 fingerprintId={fingerprintId}
@@ -217,7 +218,7 @@ const FetchViolations = () => {
             </div>
           </Row>
           <Row>
-            <div className="col-md-12">
+            <div className="col-md-12 page-content-container">
               <Footer />
             </div>
           </Row>

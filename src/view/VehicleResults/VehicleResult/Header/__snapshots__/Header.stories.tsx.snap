@@ -3,7 +3,7 @@
 exports[`Components/VehicleResults/VehicleResult/Header Default smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <div class="card-header">
@@ -135,7 +135,7 @@ exports[`Components/VehicleResults/VehicleResult/Header Default smoke-test 1`] =
 exports[`Components/VehicleResults/VehicleResult/Header WithPreviousLookupSubheader smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <div class="card-header">

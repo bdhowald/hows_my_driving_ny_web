@@ -3,7 +3,7 @@
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList Default smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -300,7 +300,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList WithFullFineData smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -837,7 +837,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList WithFullFineDataAndText smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -1314,7 +1314,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsL
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList WithFullText smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">

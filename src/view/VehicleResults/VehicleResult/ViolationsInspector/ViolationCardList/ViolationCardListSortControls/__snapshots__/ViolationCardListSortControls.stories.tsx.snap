@@ -3,7 +3,7 @@
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCardListSortControls BoroughAscending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -74,7 +74,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCardListSortControls BoroughDescending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -145,7 +145,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCardListSortControls DateAscending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -216,7 +216,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCardListSortControls DateDescending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -287,7 +287,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCardListSortControls FinesAscending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -358,7 +358,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCardListSortControls FinesDescending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -429,7 +429,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCardListSortControls TypeAscending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -500,7 +500,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCardListSortControls TypeDescending smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">

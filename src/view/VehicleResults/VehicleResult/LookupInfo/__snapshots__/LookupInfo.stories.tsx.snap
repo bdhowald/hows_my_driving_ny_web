@@ -3,7 +3,7 @@
 exports[`Components/VehicleResults/VehicleResult/LookupInfo NewViolationsSincePreviousLookup smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -39,9 +39,6 @@ exports[`Components/VehicleResults/VehicleResult/LookupInfo NewViolationsSincePr
                         <div class="region">
                           <div class="region-abbreviation">
                             NY
-                          </div>
-                          <div class="region-full-name">
-                            New York
                           </div>
                         </div>
                         <div>
@@ -174,7 +171,7 @@ exports[`Components/VehicleResults/VehicleResult/LookupInfo NewViolationsSincePr
 exports[`Components/VehicleResults/VehicleResult/LookupInfo NoPreviousLookups smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -207,9 +204,6 @@ exports[`Components/VehicleResults/VehicleResult/LookupInfo NoPreviousLookups sm
                         <div class="region">
                           <div class="region-abbreviation">
                             NY
-                          </div>
-                          <div class="region-full-name">
-                            New York
                           </div>
                         </div>
                         <div>
@@ -339,7 +333,7 @@ exports[`Components/VehicleResults/VehicleResult/LookupInfo NoPreviousLookups sm
 exports[`Components/VehicleResults/VehicleResult/LookupInfo NoViolations smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -375,9 +369,6 @@ exports[`Components/VehicleResults/VehicleResult/LookupInfo NoViolations smoke-t
                         <div class="region">
                           <div class="region-abbreviation">
                             NY
-                          </div>
-                          <div class="region-full-name">
-                            New York
                           </div>
                         </div>
                         <div>
@@ -425,7 +416,7 @@ exports[`Components/VehicleResults/VehicleResult/LookupInfo NoViolations smoke-t
 exports[`Components/VehicleResults/VehicleResult/LookupInfo ViolationsAndAPreviousLookup smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -461,9 +452,6 @@ exports[`Components/VehicleResults/VehicleResult/LookupInfo ViolationsAndAPrevio
                         <div class="region">
                           <div class="region-abbreviation">
                             NY
-                          </div>
-                          <div class="region-full-name">
-                            New York
                           </div>
                         </div>
                         <div>

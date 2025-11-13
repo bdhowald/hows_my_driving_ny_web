@@ -3,7 +3,7 @@
 exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/CombinedViolationsFinesBreakdown FineAndSubtractions smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -75,7 +75,7 @@ exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/CombinedViolatio
 exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/CombinedViolationsFinesBreakdown FineDataIsMissing smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -138,7 +138,7 @@ exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/CombinedViolatio
 exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/CombinedViolationsFinesBreakdown FineOnly smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -201,7 +201,7 @@ exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/CombinedViolatio
 exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/CombinedViolationsFinesBreakdown InJudgment smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">

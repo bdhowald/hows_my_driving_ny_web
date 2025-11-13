@@ -3,7 +3,7 @@
 exports[`Components/VehicleResults/VehicleResult/LookupInfo/ViolationInfo NewViolationsSincePreviousLookup smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -70,7 +70,7 @@ exports[`Components/VehicleResults/VehicleResult/LookupInfo/ViolationInfo NewVio
 exports[`Components/VehicleResults/VehicleResult/LookupInfo/ViolationInfo NoViolations smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -105,7 +105,7 @@ exports[`Components/VehicleResults/VehicleResult/LookupInfo/ViolationInfo NoViol
 exports[`Components/VehicleResults/VehicleResult/LookupInfo/ViolationInfo Violations smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">

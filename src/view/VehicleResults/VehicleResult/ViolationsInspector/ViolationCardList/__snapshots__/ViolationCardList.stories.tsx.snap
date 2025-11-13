@@ -3,7 +3,7 @@
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector VehicleWithNoViolationsListVisible smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -40,7 +40,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector VehicleWith
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector VehicleWithViolationsListNotVisible smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -76,7 +76,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector VehicleWith
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector VehicleWithViolationsListVisible smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">
@@ -263,7 +263,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector VehicleWith
 exports[`Components/VehicleResults/VehicleResult/ViolationsInspector VehicleWithViolationsListVisibleAndOnlyOneViolation smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="vehicles">
         <div class="vehicle card">
           <ul class="list-group-flush list-group">

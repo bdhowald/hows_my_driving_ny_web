@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
+import { useCookies } from 'react-cookie'
 
+import {
+  USE_NEW_STYLE_DISPLAY_COOKIE,
+  USE_SEARCH_FILTERS_COOKIE,
+} from 'constants/cookies'
 import {
   FilterFormElement,
   FilterType,
@@ -30,26 +35,24 @@ const FiltersControl = ({
   resultsLength: number
   scrollRef: React.RefObject<HTMLDivElement>
 }) => {
+  const [cookies, _] = useCookies([
+    USE_NEW_STYLE_DISPLAY_COOKIE,
+    USE_SEARCH_FILTERS_COOKIE,
+  ])
+  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
+
   const [filtersAreVisble, setFiltersAreVisible] = useState<boolean>(false)
 
   const activeFilters = getActiveFilters(resultsFilters)
 
-  const resultsString = resultsLength === 1 ? 'result' : 'results'
-
   const displayFilters = () => setFiltersAreVisible(true)
   const hideFilters = () => setFiltersAreVisible(false)
 
-  const resultsHeaderText = displayingPreviousLookup
-    ? // We need to subtract out the lookup shared via link
-      // which we'll mention a different way.
-      `Showing ${resultsLength - 1} ${resultsString}`
-    : `Showing ${resultsLength} ${resultsString}`
-
-  const fromPreviousLookupHeaderText = '+ 1 shared via link'
+  const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
   return (
     <div
-      className="filters-wrapper"
+      className={`filters-wrapper ${newStyleDisplayClassName}`}
       data-testid="filters-wrapper-test-id"
       ref={scrollRef}
     >

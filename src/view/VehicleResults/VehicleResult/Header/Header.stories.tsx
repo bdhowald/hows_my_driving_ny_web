@@ -14,7 +14,7 @@ const meta: Meta<typeof Header> = {
       <MemoryRouter>
         <div className="container-fluid">
           <div className="row">
-            <div className="col-md-12">
+            <div className="col-md-12 page-content-container">
               <div className="vehicles">
                 <div className="vehicle card">
                   {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}

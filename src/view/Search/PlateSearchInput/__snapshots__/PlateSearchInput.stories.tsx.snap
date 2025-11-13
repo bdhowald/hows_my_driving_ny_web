@@ -3,7 +3,7 @@
 exports[`Components/Search/PlateSearchInput NoPlate smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="jumbotron">
         <div class="row">
           <form class="form">
@@ -32,7 +32,7 @@ exports[`Components/Search/PlateSearchInput NoPlate smoke-test 1`] = `
 exports[`Components/Search/PlateSearchInput PlateEntered smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-content-container">
       <div class="jumbotron">
         <div class="row">
           <form class="form">
