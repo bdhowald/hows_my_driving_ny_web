@@ -10,7 +10,9 @@ exports[`Components/VehicleResults/FiltersControl WithBreadcrumb smoke-test 1`] 
         >
           <div class="filter-controls">
             <div class="filter-controls-header">
-              Showing 0 results
+              <div>
+                Showing 0 results
+              </div>
             </div>
             <div class="results-control-toggle">
               <button class="btn btn-primary"
@@ -64,7 +66,7 @@ exports[`Components/VehicleResults/FiltersControl WithBreadcrumb smoke-test 1`] 
 </div>
 `;
 
-exports[`Components/VehicleResults/FiltersControl WithResult smoke-test 1`] = `
+exports[`Components/VehicleResults/FiltersControl WithMultipleOwnResults smoke-test 1`] = `
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
@@ -74,7 +76,135 @@ exports[`Components/VehicleResults/FiltersControl WithResult smoke-test 1`] = `
         >
           <div class="filter-controls">
             <div class="filter-controls-header">
-              Showing 1 result
+              <div>
+                Showing 2 results
+              </div>
+            </div>
+            <div class="results-control-toggle">
+              <button class="btn btn-primary"
+                      type="button"
+              >
+                Filter
+              </button>
+            </div>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/FiltersControl WithOwnResult smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron">
+        <div class="filters-wrapper"
+             data-testid="filters-wrapper-test-id"
+        >
+          <div class="filter-controls">
+            <div class="filter-controls-header">
+              <div>
+                Showing 1 result
+              </div>
+            </div>
+            <div class="results-control-toggle">
+              <button class="btn btn-primary"
+                      type="button"
+              >
+                Filter
+              </button>
+            </div>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/FiltersControl WithSharedAndMultipleOwnResults smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron">
+        <div class="filters-wrapper"
+             data-testid="filters-wrapper-test-id"
+        >
+          <div class="filter-controls">
+            <div class="filter-controls-header">
+              <div>
+                Showing 2 results
+              </div>
+              <div>
+                + 1 shared via link
+              </div>
+            </div>
+            <div class="results-control-toggle">
+              <button class="btn btn-primary"
+                      type="button"
+              >
+                Filter
+              </button>
+            </div>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/FiltersControl WithSharedAndOwnResults smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron">
+        <div class="filters-wrapper"
+             data-testid="filters-wrapper-test-id"
+        >
+          <div class="filter-controls">
+            <div class="filter-controls-header">
+              <div>
+                Showing 1 result
+              </div>
+              <div>
+                + 1 shared via link
+              </div>
+            </div>
+            <div class="results-control-toggle">
+              <button class="btn btn-primary"
+                      type="button"
+              >
+                Filter
+              </button>
+            </div>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/FiltersControl WithSharedResultOnly smoke-test 1`] = `
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron">
+        <div class="filters-wrapper"
+             data-testid="filters-wrapper-test-id"
+        >
+          <div class="filter-controls">
+            <div class="filter-controls-header">
+              <div>
+                Showing 1 result shared via link
+              </div>
             </div>
             <div class="results-control-toggle">
               <button class="btn btn-primary"

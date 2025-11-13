@@ -1,4 +1,5 @@
 import React from 'react'
+import { MemoryRouter, useLocation } from 'react-router-dom'
 import { act, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -24,6 +25,7 @@ describe('Header', () => {
     it('should render successfully', () => {
       render(
         <Header
+          fromPreviousLookupUniqueIdentifier={false}
           refreshLookupFunction={refreshLookupFunction}
           removeLookupFunction={removeLookupFunction}
           vehicle={VehicleFactory.build()}
@@ -34,6 +36,59 @@ describe('Header', () => {
       // expect(screen.getByTestId('refresh-lookup-button')).toBeInTheDocument()
       expect(screen.getByTestId('remove-lookup-button')).toBeInTheDocument()
       expect(screen.getByTestId('twitter-share-button')).toBeInTheDocument()
+    })
+  })
+
+  describe('displaying previous lookups', () => {
+    it('should display a subheader if this is the header for a previous lookup', () => {
+      render(
+        <MemoryRouter>
+          <Header
+            fromPreviousLookupUniqueIdentifier={true}
+            refreshLookupFunction={refreshLookupFunction}
+            removeLookupFunction={removeLookupFunction}
+            vehicle={VehicleFactory.build()}
+          />
+        </MemoryRouter>,
+      )
+
+      const sharedViaLinkMessage = screen.getByText('Shared via link')
+      expect(sharedViaLinkMessage).toBeInTheDocument()
+    })
+
+    it('should change the route when the user removes the previous lookup', () => {
+      const LocationDisplay = () => {
+        const location = useLocation()
+        return <div data-testid="location-display">{location.pathname}</div>
+      }
+
+      const vehicle = VehicleFactory.build()
+      const initialRoute = `/${vehicle.uniqueIdentifier}`
+
+      render(
+        <MemoryRouter initialEntries={[initialRoute]}>
+          <Header
+            fromPreviousLookupUniqueIdentifier={true}
+            refreshLookupFunction={refreshLookupFunction}
+            removeLookupFunction={removeLookupFunction}
+            vehicle={vehicle}
+          />
+          <LocationDisplay />
+        </MemoryRouter>,
+      )
+
+      expect(screen.getByTestId('location-display').textContent).toBe(
+        initialRoute,
+      )
+
+      const removePreviousLookupButton = screen.getByRole('button', {
+        name: 'remove lookup',
+      })
+      expect(removePreviousLookupButton).toBeInTheDocument()
+
+      userEvent.click(removePreviousLookupButton)
+
+      expect(screen.getByTestId('location-display').textContent).toBe('/')
     })
   })
 
@@ -51,6 +106,7 @@ describe('Header', () => {
 
       render(
         <Header
+          fromPreviousLookupUniqueIdentifier={false}
           refreshLookupFunction={refreshLookupFunction}
           removeLookupFunction={removeLookupFunction}
           vehicle={vehicle}
@@ -80,6 +136,7 @@ describe('Header', () => {
 
       render(
         <Header
+          fromPreviousLookupUniqueIdentifier={false}
           refreshLookupFunction={refreshLookupFunction}
           removeLookupFunction={removeLookupFunction}
           vehicle={VehicleFactory.build()}
@@ -102,6 +159,7 @@ describe('Header', () => {
 
       render(
         <Header
+          fromPreviousLookupUniqueIdentifier={false}
           refreshLookupFunction={refreshLookupFunction}
           removeLookupFunction={removeLookupFunction}
           vehicle={vehicle}

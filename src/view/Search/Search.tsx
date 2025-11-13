@@ -472,6 +472,16 @@ const Search = ({
 
         // Re-enable button
         setExistingQueriesInFlightFunction(false)
+      } else {
+        // Remove the previous lookup from our list when it is removed from the page.
+        setQueriedVehiclesFunction((previouslyQueriedVehicleDisplayResults) =>
+          previouslyQueriedVehicleDisplayResults.filter(
+            (vehicleDisplayResults) => {
+              vehicleDisplayResults.vehicle.uniqueIdentifier !==
+                previousLookupUniqueIdentifierFromQuery
+            },
+          ),
+        )
       }
 
       if (cookies[LOOKUP_IDENTIFIER_COOKIE]) {
@@ -479,7 +489,7 @@ const Search = ({
       }
     }
     displayPreviousLookup()
-  }, [])
+  }, [previousLookupUniqueIdentifierFromQuery])
 
   const getLookupIdentifiersForCurrentlyQueriedVehicles = (
     vehicleDisplayResults: VehicleDisplayResult[],

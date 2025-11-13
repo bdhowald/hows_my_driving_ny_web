@@ -8,12 +8,18 @@ import { VehicleFactory } from '__fixtures__/models/Vehicle'
 
 import VehicleResult from './VehicleResult'
 
-
 describe('VehicleResult', () => {
   const refreshLookupFunction = jest.fn()
   const removeLookupFunction = jest.fn()
 
   const vehicle = VehicleFactory.build()
+
+  const vehicleDisplayResult = {
+    expandResults: false,
+    fromPreviousLookupUniqueIdentifier: false,
+    isSuccessfulLookup: true,
+    vehicle: VehicleFactory.build(),
+  } as const
 
   it('renders successfully', () => {
     render(
@@ -22,11 +28,13 @@ describe('VehicleResult', () => {
         refreshLookupFunction={refreshLookupFunction}
         removeLookupFunction={removeLookupFunction}
         showViolationsList={true}
-        vehicle={vehicle}
-      />
+        vehicleDisplayResult={vehicleDisplayResult}
+      />,
     )
 
-    const vehicleResult = screen.getByTestId(`lookup-${vehicle.uniqueIdentifier}`)
+    const vehicleResult = screen.getByTestId(
+      `lookup-${vehicle.uniqueIdentifier}`,
+    )
     expect(vehicleResult).toBeInTheDocument()
   })
 
@@ -39,9 +47,9 @@ describe('VehicleResult', () => {
             refreshLookupFunction={refreshLookupFunction}
             removeLookupFunction={removeLookupFunction}
             showViolationsList={true}
-            vehicle={vehicle}
+            vehicleDisplayResult={vehicleDisplayResult}
           />
-        </CookiesProvider>
+        </CookiesProvider>,
       )
 
       const violationCardList = screen.getByTestId('violation-card-list')
@@ -49,7 +57,6 @@ describe('VehicleResult', () => {
     })
 
     it('hides the violation list when `showViolationsList` is false', () => {
-    
       render(
         <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
           <VehicleResult
@@ -57,9 +64,9 @@ describe('VehicleResult', () => {
             refreshLookupFunction={refreshLookupFunction}
             removeLookupFunction={removeLookupFunction}
             showViolationsList={false}
-            vehicle={vehicle}
+            vehicleDisplayResult={vehicleDisplayResult}
           />
-        </CookiesProvider>
+        </CookiesProvider>,
       )
 
       const violationCardList = screen.queryByTestId('violation-card-list')
@@ -76,9 +83,9 @@ describe('VehicleResult', () => {
             refreshLookupFunction={refreshLookupFunction}
             removeLookupFunction={removeLookupFunction}
             showViolationsList={true}
-            vehicle={vehicle}
+            vehicleDisplayResult={vehicleDisplayResult}
           />
-        </CookiesProvider>
+        </CookiesProvider>,
       )
 
       const violationCardList = screen.getByTestId('vehicle-violations-list')
@@ -86,7 +93,6 @@ describe('VehicleResult', () => {
     })
 
     it('hides the violation list when `showViolationsList` is false', () => {
-    
       render(
         <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
           <VehicleResult
@@ -94,9 +100,9 @@ describe('VehicleResult', () => {
             refreshLookupFunction={refreshLookupFunction}
             removeLookupFunction={removeLookupFunction}
             showViolationsList={false}
-            vehicle={vehicle}
+            vehicleDisplayResult={vehicleDisplayResult}
           />
-        </CookiesProvider>
+        </CookiesProvider>,
       )
 
       const violationCardList = screen.queryByTestId('vehicle-violations-list')

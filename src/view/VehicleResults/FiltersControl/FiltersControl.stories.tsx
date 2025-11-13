@@ -50,6 +50,7 @@ const defaultFilters = {
 
 export const WithBreadcrumb: Story = {
   args: {
+    displayingPreviousLookup: false,
     resultsFilters: {
       ...defaultFilters,
       plateText: 'ABC',
@@ -58,10 +59,43 @@ export const WithBreadcrumb: Story = {
   },
 }
 
-export const WithResult: Story = {
+export const WithMultipleOwnResults: Story = {
   args: {
+    displayingPreviousLookup: false,
+    resultsFilters: defaultFilters,
+    resultsLength: 2,
+  },
+}
+
+export const WithOwnResult: Story = {
+  args: {
+    displayingPreviousLookup: false,
     resultsFilters: defaultFilters,
     resultsLength: 1,
+  },
+}
+
+export const WithSharedResultOnly: Story = {
+  args: {
+    displayingPreviousLookup: true,
+    resultsFilters: defaultFilters,
+    resultsLength: 1,
+  },
+}
+
+export const WithSharedAndOwnResults: Story = {
+  args: {
+    displayingPreviousLookup: true,
+    resultsFilters: defaultFilters,
+    resultsLength: 2,
+  },
+}
+
+export const WithSharedAndMultipleOwnResults: Story = {
+  args: {
+    displayingPreviousLookup: true,
+    resultsFilters: defaultFilters,
+    resultsLength: 3,
   },
 }
 

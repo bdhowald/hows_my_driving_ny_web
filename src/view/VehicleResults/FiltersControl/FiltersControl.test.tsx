@@ -27,6 +27,7 @@ describe('FiltersControl', () => {
       render(
         <FiltersControl
           clearFilterFunction={clearFilterFunction}
+          displayingPreviousLookup={false}
           handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
           maxViolationsCountForResults={maxViolationsCountForResults}
           resultsFilters={defaultResultsFilters}
@@ -48,11 +49,105 @@ describe('FiltersControl', () => {
     })
   })
 
+  describe('results header text', () => {
+    it('should display the correct header with one own result', () => {
+      render(
+        <FiltersControl
+          clearFilterFunction={clearFilterFunction}
+          displayingPreviousLookup={false}
+          handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
+          maxViolationsCountForResults={maxViolationsCountForResults}
+          resultsFilters={defaultResultsFilters}
+          resultsLength={1}
+          scrollRef={ref}
+        />,
+      )
+
+      const resultsHeader = screen.getByText('Showing 1 result')
+      expect(resultsHeader).toBeInTheDocument()
+    })
+
+    it('should display the correct header with one shared result', () => {
+      render(
+        <FiltersControl
+          clearFilterFunction={clearFilterFunction}
+          displayingPreviousLookup={true}
+          handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
+          maxViolationsCountForResults={maxViolationsCountForResults}
+          resultsFilters={defaultResultsFilters}
+          resultsLength={1}
+          scrollRef={ref}
+        />,
+      )
+
+      const resultsHeader = screen.getByText('Showing 1 result shared via link')
+      expect(resultsHeader).toBeInTheDocument()
+    })
+
+    it('should display the correct header with multiple own results', () => {
+      render(
+        <FiltersControl
+          clearFilterFunction={clearFilterFunction}
+          displayingPreviousLookup={false}
+          handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
+          maxViolationsCountForResults={maxViolationsCountForResults}
+          resultsFilters={defaultResultsFilters}
+          resultsLength={2}
+          scrollRef={ref}
+        />,
+      )
+
+      const resultsHeader = screen.getByText('Showing 2 results')
+      expect(resultsHeader).toBeInTheDocument()
+    })
+
+    it('should display the correct header with one own result and one shared result', () => {
+      render(
+        <FiltersControl
+          clearFilterFunction={clearFilterFunction}
+          displayingPreviousLookup={true}
+          handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
+          maxViolationsCountForResults={maxViolationsCountForResults}
+          resultsFilters={defaultResultsFilters}
+          resultsLength={2}
+          scrollRef={ref}
+        />,
+      )
+
+      const ownResultsHeader = screen.getByText('Showing 1 result')
+      expect(ownResultsHeader).toBeInTheDocument()
+
+      const sharedResultHeader = screen.getByText('+ 1 shared via link')
+      expect(sharedResultHeader).toBeInTheDocument()
+    })
+
+    it('should display the correct header with multiple own results and one shared result', () => {
+      render(
+        <FiltersControl
+          clearFilterFunction={clearFilterFunction}
+          displayingPreviousLookup={true}
+          handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
+          maxViolationsCountForResults={maxViolationsCountForResults}
+          resultsFilters={defaultResultsFilters}
+          resultsLength={3}
+          scrollRef={ref}
+        />,
+      )
+
+      const ownResultsHeader = screen.getByText('Showing 2 results')
+      expect(ownResultsHeader).toBeInTheDocument()
+
+      const sharedResultHeader = screen.getByText('+ 1 shared via link')
+      expect(sharedResultHeader).toBeInTheDocument()
+    })
+  })
+
   describe('opening the filter menu', () => {
     it('should open the filter menu when the filter button is clicked', () => {
       render(
         <FiltersControl
           clearFilterFunction={clearFilterFunction}
+          displayingPreviousLookup={false}
           handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
           maxViolationsCountForResults={maxViolationsCountForResults}
           resultsFilters={defaultResultsFilters}
@@ -109,6 +204,7 @@ describe('FiltersControl', () => {
       render(
         <FiltersControl
           clearFilterFunction={clearFilterFunction}
+          displayingPreviousLookup={false}
           handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
           maxViolationsCountForResults={maxViolationsCountForResults}
           resultsFilters={defaultResultsFilters}
@@ -147,6 +243,7 @@ describe('FiltersControl', () => {
       render(
         <FiltersControl
           clearFilterFunction={clearFilterFunction}
+          displayingPreviousLookup={false}
           handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
           maxViolationsCountForResults={maxViolationsCountForResults}
           resultsFilters={defaultResultsFilters}
@@ -200,6 +297,7 @@ describe('FiltersControl', () => {
       render(
         <FiltersControl
           clearFilterFunction={clearFilterFunction}
+          displayingPreviousLookup={false}
           handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
           maxViolationsCountForResults={maxViolationsCountForResults}
           resultsFilters={resultsFiltersWithOneFilterApplied}
@@ -234,6 +332,7 @@ describe('FiltersControl', () => {
       render(
         <FiltersControl
           clearFilterFunction={clearFilterFunction}
+          displayingPreviousLookup={false}
           handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
           maxViolationsCountForResults={maxViolationsCountForResults}
           resultsFilters={resultsFiltersWithOneFilterApplied}

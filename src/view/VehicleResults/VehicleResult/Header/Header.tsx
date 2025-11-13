@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { useCookies } from 'react-cookie'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
 import {
   IconDefinition,
@@ -22,7 +23,10 @@ import Card from 'react-bootstrap/Card'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
 
-import { USE_NEW_STYLE_DISPLAY_COOKIE, USE_SEARCH_FILTERS_COOKIE } from 'constants/cookies'
+import {
+  USE_NEW_STYLE_DISPLAY_COOKIE,
+  USE_SEARCH_FILTERS_COOKIE,
+} from 'constants/cookies'
 import L10N from 'constants/display'
 import Vehicle from 'models/Vehicle/Vehicle'
 import SocialShareButton from 'view/components/SocialShareButton/SocialShareButton'
@@ -185,24 +189,51 @@ const RemoveLookupButton = ({
 }
 
 const Header = ({
+  fromPreviousLookupUniqueIdentifier,
   // refreshLookupFunction,
   removeLookupFunction,
   vehicle,
 }: {
+  fromPreviousLookupUniqueIdentifier: boolean
   refreshLookupFunction: () => void
   removeLookupFunction: () => void
   vehicle: Vehicle
 }) => (
-  <Card.Header>
-    <div className="share-icons">
-      <CopyButton vehicleUniqueIdentifier={vehicle.uniqueIdentifier} />
-      <SocialShareButton.Twitter vehicle={vehicle} />
-      <SocialShareButton.Bluesky vehicle={vehicle} />
-    </div>
-    {/* <RefreshLookupButton refreshLookupFunction={refreshLookupFunction} /> */}
-    <RemoveLookupButton removeLookupFunction={removeLookupFunction} />
-  </Card.Header>
+  <>
+    <Card.Header>
+      <div className="share-icons">
+        <CopyButton vehicleUniqueIdentifier={vehicle.uniqueIdentifier} />
+        <SocialShareButton.Twitter vehicle={vehicle} />
+        <SocialShareButton.Bluesky vehicle={vehicle} />
+      </div>
+      {/* <RefreshLookupButton refreshLookupFunction={refreshLookupFunction} /> */}
+      {!fromPreviousLookupUniqueIdentifier && (
+        <RemoveLookupButton removeLookupFunction={removeLookupFunction} />
+      )}
+    </Card.Header>
+    {fromPreviousLookupUniqueIdentifier && <PreviousLookupSubheader />}
+  </>
 )
+
+const PreviousLookupSubheader = () => {
+  const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+
+  return (
+    <div className="card-subheader">
+      <ul className="list-group list-group-flush card-subheader from-previous-lookup">
+        <li className="list-group-item">
+          <div>Shared via link</div>
+          <RemoveLookupButton
+            removeLookupFunction={() =>
+              navigate(`/?${searchParams.toString()}`)
+            }
+          />
+        </li>
+      </ul>
+    </div>
+  )
+}
 
 Header.displayName = 'VehicleResults.Header'
 

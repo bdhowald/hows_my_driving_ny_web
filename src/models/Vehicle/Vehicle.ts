@@ -4,9 +4,7 @@ import Violation from 'models/Violation/Violation'
 
 type Vehicle = {
   cameraStreakData: CameraStreakData
-  expandResults?: boolean
   fines: VehicleFineData
-  fromPreviousLookupUniqueIdentifier?: boolean
   lookupDate: string
   lookupDateEastern: string
   lookupDateUtc: string

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Card from 'react-bootstrap/Card'
 
+import { VehicleDisplaySuccessResult } from 'types/vehicleDisplayResult'
+
 import Vehicle from 'models/Vehicle/Vehicle'
 import Body from './Body/Body'
 import Header from './Header/Header'
@@ -8,19 +10,18 @@ import Header from './Header/Header'
 type RefreshLookupFunctionType = (vehicle: Vehicle) => Promise<void>
 type RemoveLookupFunctionType = (arg0: number) => void
 
-
 const VehicleResult = ({
   index,
   refreshLookupFunction,
   removeLookupFunction,
   showViolationsList,
-  vehicle,
+  vehicleDisplayResult,
 }: {
   index: number
   refreshLookupFunction: RefreshLookupFunctionType
   removeLookupFunction: RemoveLookupFunctionType
   showViolationsList: boolean
-  vehicle: Vehicle
+  vehicleDisplayResult: VehicleDisplaySuccessResult
 }) => {
   const [showVehicleResult, setShowVehicleResult] = useState(true)
 
@@ -28,12 +29,17 @@ const VehicleResult = ({
     return null
   }
 
+  const { vehicle } = vehicleDisplayResult
+
   return (
     <Card
       className="vehicle"
       data-testid={`lookup-${vehicle.uniqueIdentifier}`}
     >
       <Header
+        fromPreviousLookupUniqueIdentifier={
+          vehicleDisplayResult.fromPreviousLookupUniqueIdentifier
+        }
         refreshLookupFunction={async () => {
           setShowVehicleResult(false)
           await refreshLookupFunction(vehicle)

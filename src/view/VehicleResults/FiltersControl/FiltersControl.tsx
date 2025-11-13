@@ -13,6 +13,7 @@ import FilterMenu from './FilterMenu/FilterMenu'
 
 const FiltersControl = ({
   clearFilterFunction,
+  displayingPreviousLookup,
   handleFilterFormSubmitFunction,
   maxViolationsCountForResults,
   resultsFilters,
@@ -20,6 +21,7 @@ const FiltersControl = ({
   scrollRef,
 }: {
   clearFilterFunction: (fieldName: keyof ResultsFilterSet) => void
+  displayingPreviousLookup: boolean
   handleFilterFormSubmitFunction: (
     event: React.FormEvent<FilterFormElement>,
   ) => boolean
@@ -37,6 +39,14 @@ const FiltersControl = ({
   const displayFilters = () => setFiltersAreVisible(true)
   const hideFilters = () => setFiltersAreVisible(false)
 
+  const resultsHeaderText = displayingPreviousLookup
+    ? // We need to subtract out the lookup shared via link
+      // which we'll mention a different way.
+      `Showing ${resultsLength - 1} ${resultsString}`
+    : `Showing ${resultsLength} ${resultsString}`
+
+  const fromPreviousLookupHeaderText = '+ 1 shared via link'
+
   return (
     <div
       className="filters-wrapper"
@@ -45,7 +55,10 @@ const FiltersControl = ({
     >
       <div className="filter-controls">
         <div className="filter-controls-header">
-          {`Showing ${resultsLength} ${resultsString}`}
+          <ResultsHeaderContent
+            displayingPreviousLookup={displayingPreviousLookup}
+            resultsLength={resultsLength}
+          />
         </div>
         <div className="results-control-toggle">
           <FilterMenuToggle
@@ -100,6 +113,38 @@ const FilterMenuToggle = ({
   )
 }
 
+const ResultsHeaderContent = ({
+  displayingPreviousLookup,
+  resultsLength,
+}: {
+  displayingPreviousLookup: boolean
+  resultsLength: number
+}) => {
+  if (!displayingPreviousLookup) {
+    const resultsString = resultsLength === 1 ? 'result' : 'results'
+
+    return <div>{`Showing ${resultsLength} ${resultsString}`}</div>
+  }
+
+  if (displayingPreviousLookup && resultsLength === 1) {
+    // With only one result from a previous link, show one line.
+    return <div>Showing 1 result shared via link</div>
+  }
+
+  if (displayingPreviousLookup && resultsLength > 1) {
+    const fromPreviousLookupHeaderText = '+ 1 shared via link'
+
+    // We need to subtract out the lookup shared via link.
+    const resultsString = resultsLength - 1 === 1 ? 'result' : 'results'
+    return (
+      <>
+        <div>{`Showing ${resultsLength - 1} ${resultsString}`}</div>
+        {displayingPreviousLookup && <div>{fromPreviousLookupHeaderText}</div>}
+      </>
+    )
+  }
+}
+
 const getActiveFilters = (resultFilters: ResultsFilterSet): ResultFilter[] => {
   const activeFilters: ResultFilter[] = []
 
@@ -123,7 +168,10 @@ const getActiveFilters = (resultFilters: ResultsFilterSet): ResultFilter[] => {
 
   if (resultFilters.plateType) {
     const filterToAdd = {
-      args: { key: 'Type', value: convertCamelCaseToTitleCase(resultFilters.plateType) },
+      args: {
+        key: 'Type',
+        value: convertCamelCaseToTitleCase(resultFilters.plateType),
+      },
       field: 'plateType',
       type: FilterType.Text,
     } as const

@@ -65,7 +65,7 @@ const CombinedVehicleResults = ({
               refreshLookupFunction={refreshLookupFunction}
               removeLookupFunction={removeLookupFunction}
               showViolationsList={showViolationsList}
-              vehicle={vehicleDisplayResult.vehicle}
+              vehicleDisplayResult={vehicleDisplayResult}
             />
           )
         },
@@ -208,8 +208,8 @@ const VehicleResults = ({
   const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
-  const showResultsHeaderAndFiltersControl = useSearchFilters
-    && vehicleDisplayResults.length > 0
+  const showResultsHeaderAndFiltersControl =
+    useSearchFilters && vehicleDisplayResults.length > 0
 
   const maxViolationsCountForResults = Math.max(
     ...vehicleDisplayResults.map((result) => {
@@ -225,29 +225,31 @@ const VehicleResults = ({
     resultsFilters,
   )
 
+  const displayingPreviousLookup = vehicleDisplayResults.some(
+    (vehicleDisplayResult) =>
+      vehicleDisplayResult.fromPreviousLookupUniqueIdentifier,
+  )
+
   const clearFilterWrapper = (fieldName: keyof ResultsFilterSet) =>
-    clearFilter(
-      fieldName,
-      setResultsFilters,
-      tracker,
-      useNewStyleDisplay,
-    )
+    clearFilter(fieldName, setResultsFilters, tracker, useNewStyleDisplay)
 
   const handleFilterFormSubmitWrapper = (
     event: React.FormEvent<FilterFormElement>,
-  ) => handleFilterFormSubmit(
-    event,
-    setResultsFilters,
-    filterControlsRef,
-    tracker,
-    useNewStyleDisplay,
-  )
+  ) =>
+    handleFilterFormSubmit(
+      event,
+      setResultsFilters,
+      filterControlsRef,
+      tracker,
+      useNewStyleDisplay,
+    )
 
   return (
     <>
       {showResultsHeaderAndFiltersControl && (
         <FiltersControl
           clearFilterFunction={clearFilterWrapper}
+          displayingPreviousLookup={displayingPreviousLookup}
           handleFilterFormSubmitFunction={handleFilterFormSubmitWrapper}
           maxViolationsCountForResults={maxViolationsCountForResults}
           resultsFilters={resultsFilters}
@@ -301,12 +303,11 @@ const clearFilter = (
       },
     }
 
-      tracker?.trackEvent('user_set_filter', {
-        filters: newFilterState,
-        useNewStyleDisplay,
-        useSearchFilters: true,
-      })
-
+    tracker?.trackEvent('user_set_filter', {
+      filters: newFilterState,
+      useNewStyleDisplay,
+      useSearchFilters: true,
+    })
 
     return newFilterState
   })

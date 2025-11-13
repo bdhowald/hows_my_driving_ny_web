@@ -38,25 +38,37 @@ type Story = StoryObj<typeof VehicleResult>
 
 const vehicle = VehicleFactory.build()
 
+const vehicleDisplayResult = {
+  expandResults: false,
+  fromPreviousLookupUniqueIdentifier: false,
+  isSuccessfulLookup: true,
+  vehicle: VehicleFactory.build(),
+} as const
+
 export const VehicleResultViolationsListHidden: Story = {
   args: {
     showViolationsList: false,
-    vehicle: vehicle,
+    vehicleDisplayResult,
   },
 }
 export const VehicleResultViolationsListIsVisible: Story = {
   args: {
     showViolationsList: true,
-    vehicle: vehicle,
+    vehicleDisplayResult,
   },
 }
 export const VehicleResultNoViolations: Story = {
   args: {
     showViolationsList: true,
-    vehicle: VehicleFactory.build({
-      violations: [],
-      violationsCount: 0,
-    }),
+    vehicleDisplayResult: {
+      ...vehicleDisplayResult,
+      ...{
+        vehicle: VehicleFactory.build({
+          violations: [],
+          violationsCount: 0,
+        }),
+      },
+    },
   },
 }
 
