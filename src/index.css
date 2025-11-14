@@ -31,25 +31,25 @@ div.container-fluid {
 
 div.container-fluid div.page-content-container.new-style {
   margin: auto;
-  max-width: 20rem;
+  max-width: 18rem;
 }
 
 @media only screen and (min-width: 360px) {
   div.container-fluid div.page-content-container.new-style {
-    max-width: 22.5rem;
+    max-width: 21rem;
   }
 }
 
 @media only screen and (min-width: 400px) {
   div.container-fluid div.page-content-container.new-style {
-    max-width: 25rem;
+    max-width: 23.5rem;
     padding: 0;
   }
 }
 
 @media only screen and (min-width: 576px) {
   div.container-fluid div.page-content-container.new-style {
-    max-width: 36rem;
+    max-width: 34.5rem;
   }
 }
 
