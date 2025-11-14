@@ -32,28 +32,36 @@ div.container-fluid {
 div.container-fluid div.page-content-container.new-style {
   margin: auto;
   max-width: 18rem;
+  padding: 0;
 }
 
 @media only screen and (min-width: 360px) {
   div.container-fluid div.page-content-container.new-style {
-    max-width: 21rem;
+    max-width: 20.5rem;
   }
 }
 
 @media only screen and (min-width: 400px) {
   div.container-fluid div.page-content-container.new-style {
-    max-width: 23.5rem;
-    padding: 0;
+    max-width: 23rem;
   }
 }
 
 @media only screen and (min-width: 576px) {
   div.container-fluid div.page-content-container.new-style {
-    max-width: 34.5rem;
+    max-width: 34rem;
   }
 }
 
 /* End new-style display */
+
+/* Start old-style display */
+
+div.container-fluid div.page-content-container:not(.new-style) {
+  padding: 0 1rem;
+}
+
+/* End old-style display */
 
 /* Start Jumbotron styles */
 
