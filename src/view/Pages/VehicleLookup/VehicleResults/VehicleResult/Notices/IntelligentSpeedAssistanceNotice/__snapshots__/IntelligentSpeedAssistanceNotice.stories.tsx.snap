@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/VehicleResults/VehicleResult/IntelligentSpeedAssistanceNotice Eligible smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container">
+          <div class="vehicles">
+            <div class="vehicle card">
+              <ul class="list-group-flush list-group">
+                <li class="dangerous-vehicle-notice list-group-item list-group-item-primary "
+                    data-testid="stop-super-speeders-notice"
+                >
+                  <p>
+                    Under bills proposed by
+                    <a target="_blank"
+                       rel="noopener noreferrer"
+                       href="https://nyassembly.gov/mem/Emily-Gallagher"
+                    >
+                      Assembly Member Gallagher
+                    </a>
+                    &nbsp;and
+                    <a target="_blank"
+                       rel="noopener noreferrer"
+                       href="https://www.nysenate.gov/senators/andrew-gounardes"
+                    >
+                      State Senator Gounardes
+                    </a>
+                    ,&nbsp;
+                    <span style="font-weight: bold;">
+                      Speed Limiters for the Most Reckless Drivers
+                    </span>
+                    , this vehicle could be required to have
+                    <a target="_blank"
+                       rel="noopener noreferrer"
+                       href="https://static1.squarespace.com/static/66e9f5934be5cb497f7cfd6c/t/67c6592adbaebd41d44ddcd0/1741052205833/2.25-isa_one-pager__3_.pdf"
+                    >
+                      intelligent speed assistance technology
+                    </a>
+                    &nbsp;installed for:
+                  </p>
+                  <ul>
+                    <li>
+                      <span class="streak-count-and-type text-bg-warning">
+                        <span class="streak-count">
+                          8
+                        </span>
+                        red light and speed camera violations
+                      </span>
+                      <span class="streak-threshold">
+                        &nbsp;(&gt;= 6/year)
+                      </span>
+                      <span>
+                        &nbsp;from 10/24/2023 to 10/12/2024
+                      </span>
+                    </li>
+                  </ul>
+                  <p>
+                    Click
+                    <a target="_blank"
+                       rel="noopener noreferrer"
+                       href="https://act.transalt.org/a/intelligent-speed-assistance"
+                    >
+                      <span style="font-weight: bold;">
+                        here
+                      </span>
+                    </a>
+                    &nbsp;to support this legislation
+                    <a target="_blank"
+                       rel="noopener noreferrer"
+                       href="https://www.nysenate.gov/legislation/bills/2025/A2299/amendment/B"
+                    >
+                      [Assembly]
+                    </a>
+                    <a target="_blank"
+                       rel="noopener noreferrer"
+                       href="https://www.nysenate.gov/legislation/bills/2025/S4045/amendment/A"
+                    >
+                      [Senate]
+                    </a>
+                    .
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;

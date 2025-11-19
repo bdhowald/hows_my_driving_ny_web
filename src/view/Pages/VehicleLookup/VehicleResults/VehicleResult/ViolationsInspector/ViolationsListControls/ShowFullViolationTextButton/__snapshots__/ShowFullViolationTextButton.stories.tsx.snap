@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsListControls/ShowFullViolationTextButton ListVisibleAndFullViolationTextIsNotVisible smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container">
+          <div class="vehicles">
+            <div class="vehicle card">
+              <ul class="list-group-flush list-group">
+                <li class="list-group-item">
+                  <div class="violations-table-wrapper">
+                    <div class="violations-table-header">
+                      <div class="row">
+                        <button class="btn btn-outline-primary btn-block w-100"
+                                type="button"
+                        >
+                          show full violation
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationsListControls/ShowFullViolationTextButton ListVisibleAndFullViolationTextIsVisible smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container">
+          <div class="vehicles">
+            <div class="vehicle card">
+              <ul class="list-group-flush list-group">
+                <li class="list-group-item">
+                  <div class="violations-table-wrapper">
+                    <div class="violations-table-header">
+                      <div class="row">
+                        <button class="btn btn-outline-primary btn-block w-100"
+                                type="button"
+                        >
+                          show violation summary
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;

@@ -1,0 +1,103 @@
+div.container-fluid.site-container
+  div.frequently-asked-questions-content-container {
+  margin: auto;
+  max-width: 18rem;
+  padding: 0;
+}
+
+@media only screen and (min-width: 360px) {
+  div.container-fluid.site-container
+    div.frequently-asked-questions-content-container {
+    max-width: 20.5rem;
+  }
+}
+
+@media only screen and (min-width: 400px) {
+  div.container-fluid.site-container
+    div.frequently-asked-questions-content-container {
+    max-width: 23rem;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  div.container-fluid.site-container
+    div.frequently-asked-questions-content-container {
+    max-width: 34rem;
+  }
+}
+
+div.container-fluid.site-container
+  div.frequently-asked-questions-content-container
+  div.frequently-asked-questions-header {
+  background-color: #f8f9fa;
+  border-radius: 0.25rem;
+  margin: 2rem 0;
+  padding: 2rem 1rem;
+}
+
+@media only screen and (min-width: 400px) {
+  div.container-fluid.site-container
+    div.frequently-asked-questions-content-container
+    div.frequently-asked-questions-header {
+    margin: 4rem 0;
+  }
+}
+
+div.container-fluid.site-container
+  div.frequently-asked-questions-content-container
+  div.frequently-asked-questions-header
+  h1 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  margin: 0 0 1rem;
+}
+
+div.container-fluid.site-container
+  div.frequently-asked-questions-content-container
+  div.frequently-asked-questions-header
+  div.frequently-asked-questions-header-description
+  div.frequently-asked-questions-header-description-sentence:not(:last-child) {
+  margin: 0 0 0.5rem;
+}
+
+div.container-fluid.site-container
+  div.frequently-asked-questions-content-container
+  div.frequently-asked-questions-content.accordion {
+  margin: 2rem 0;
+}
+
+div.container-fluid.site-container
+  div.frequently-asked-questions-content-container
+  div.frequently-asked-questions-content.accordion
+  div.accordion-item
+  a {
+  color: black;
+  text-decoration: underline;
+}
+
+div.container-fluid.site-container
+  div.frequently-asked-questions-content-container
+  div.frequently-asked-questions-content.accordion
+  div.accordion-item
+  div.answer-content {
+  padding: 1.5rem 2.5rem 1.5rem 1.25rem;
+}
+
+div.container-fluid.site-container
+  div.frequently-asked-questions-content-container
+  div.frequently-asked-questions-content.accordion
+  div.accordion-item
+  h2.question-content
+  button {
+  padding: 1.5rem 1.25rem;
+}
+
+div.container-fluid.site-container
+  div.frequently-asked-questions-content-container
+  div.frequently-asked-questions-content.accordion
+  div.accordion-item
+  h2.question-content
+  button
+  span.question {
+  font-style: italic;
+}

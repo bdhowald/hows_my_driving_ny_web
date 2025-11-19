@@ -1,0 +1,12 @@
+div.container-fluid footer {
+  padding: 2rem 1rem 1rem;
+}
+
+div.container-fluid footer div.footer-content {
+  text-align: center;
+}
+
+div.container-fluid footer div.footer-content p a.self-link {
+  color: #000;
+  text-decoration: underline;
+}

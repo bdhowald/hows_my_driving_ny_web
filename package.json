@@ -91,6 +91,7 @@
     "prop-types": "^15.8.1",
     "react-bootstrap": "^2.10.5",
     "storybook": "^8.4.4",
+    "storybook-addon-remix-react-router": "^3.0.0",
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.14.0",
     "webpack": "^5.96.1",

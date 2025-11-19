@@ -13,8 +13,8 @@ import {
 } from 'constants/cookies'
 import L10N from 'constants/display'
 import SocialMediaService from 'constants/socialMedia'
+import { ApplicationContext } from 'context/ApplicationContext'
 import Vehicle from 'models/Vehicle/Vehicle'
-import { TrackingContext } from 'view/FetchViolations/FetchViolations'
 
 const components = {
   [SocialMediaService.Bluesky]: {
@@ -56,7 +56,8 @@ const ShareButton = ({
 
   const accountHandle = components[socialMediaService].accountHandle
 
-  const tracker = useContext(TrackingContext)
+  const applicationContext = useContext(ApplicationContext)
+  const { tracker } = applicationContext
 
   return (
     <ShareButtonClass

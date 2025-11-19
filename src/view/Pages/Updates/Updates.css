@@ -1,0 +1,174 @@
+div.container-fluid.site-container div.updates-list-content-container {
+  margin: auto;
+  max-width: 18.5rem;
+  padding: 0;
+}
+
+@media only screen and (min-width: 360px) {
+  div.container-fluid.site-container div.updates-list-content-container {
+    max-width: 20.5rem;
+  }
+}
+
+@media only screen and (min-width: 400px) {
+  div.container-fluid.site-container div.updates-list-content-container {
+    max-width: 23rem;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  div.container-fluid.site-container div.updates-list-content-container {
+    max-width: 34rem;
+  }
+}
+
+div.container-fluid.site-container
+  div.updates-list-content-container
+  div.changelog-update-header {
+  background-color: #f8f9fa;
+  border-radius: 0.25rem;
+  margin: 2rem 0;
+  padding: 2rem 1rem;
+}
+
+@media only screen and (min-width: 400px) {
+  div.container-fluid.site-container
+    div.updates-list-content-container
+    div.changelog-update-header {
+    margin: 4rem 0;
+  }
+}
+
+div.container-fluid.site-container
+  div.updates-list-content-container
+  div.changelog-update-header
+  h1 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  margin: 0 0 1rem;
+}
+
+div.container-fluid.site-container
+  div.updates-list-content-container
+  div.changelog-update-header
+  div.changelog-update-header-description
+  div.changelog-update-header-description-sentence:not(:last-child) {
+  margin: 0 0 0.5rem;
+}
+
+div.container-fluid.site-container
+  div.updates-list-content-container
+  div.changelog-update-list {
+  border-radius: 0.25rem;
+  margin: 2rem 0;
+}
+
+div.container-fluid.site-container
+  div.updates-list-content-container
+  div.changelog-update-list
+  div.changelog-update-year-list {
+  border: 0;
+  padding: 0 1rem;
+}
+
+div.container-fluid.site-container
+  div.updates-list-content-container
+  div.changelog-update-list
+  div.changelog-update-year-list
+  details
+  summary {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 0.5rem 0;
+}
+
+div.container-fluid.site-container
+  div.updates-list-content-container
+  div.changelog-update-list
+  div.changelog-update-year-list
+  details[open]
+  summary {
+  border-bottom: 0.125rem solid rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 0%;
+  width: 100%;
+}
+
+div.container-fluid.site-container
+  div.updates-list-content-container
+  div.changelog-update-list
+  div.changelog-update-year-list
+  div.changelog-update-date {
+  margin: 1rem 0;
+  padding-top: 1rem;
+}
+
+div.container-fluid.site-container
+  div.updates-list-content-container
+  div.changelog-update-list
+  div.changelog-update-year-list
+  div.changelog-update-date:first-of-type {
+  border: 0;
+  margin: 0 0 1rem;
+}
+
+div.container-fluid.site-container
+  div.updates-list-content-container
+  div.changelog-update-list
+  div.changelog-update-year-list
+  div.changelog-update-date:last-of-type {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  margin: 0 0 1rem;
+}
+
+div.container-fluid.site-container
+  div.updates-list-content-container
+  div.changelog-update-list
+  div.changelog-update-year-list
+  div.changelog-update-date
+  h3 {
+  font-weight: bold;
+}
+
+div.container-fluid.site-container
+  div.updates-list-content-container
+  div.changelog-update-list
+  div.changelog-update-year-list
+  div.changelog-update-date
+  ul.changelog-update-date-changelist
+  li.changelog-update {
+  margin: 0.5rem 0;
+}
+
+div.container-fluid.site-container
+  div.updates-list-content-container
+  div.changelog-update-list
+  div.changelog-update-year-list
+  div.changelog-update-date
+  ul.changelog-update-date-changelist
+  li.changelog-update
+  a {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+div.container-fluid.site-container
+  div.updates-list-content-container
+  div.changelog-update-list
+  div.changelog-update-year-list
+  div.changelog-update-date
+  ul.changelog-update-date-changelist
+  li.changelog-update
+  span.badge.rounded-pill {
+  margin: 0 0 0 0.5rem;
+}
+
+div.container-fluid.site-container
+  div.updates-list-content-container
+  div.changelog-update-list
+  div.changelog-update-year-list
+  div.changelog-update-date
+  ul.changelog-update-date-changelist
+  li.changelog-update
+  span.changelog-update-description {
+  margin: 0 0.25rem 0 0;
+}

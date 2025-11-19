@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/Footer DefaultFooter smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container-wrapper container-fluid">
+    <footer>
+      <div class="col-md-12">
+        <div class="row">
+          <div class="footer-content">
+            <p>
+              made by&nbsp;
+              <a href="https://github.com/bdhowald"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="self-link"
+              >
+                @bdhowald
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+`;

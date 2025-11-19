@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/SiteContainer DefaultSiteContainer smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <div class="nav-bar-container  container-fluid">
+      <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <button aria-controls="basic-navbar-nav"
+                  type="button"
+                  aria-label="Toggle navigation"
+                  class="navbar-toggler collapsed"
+          >
+            <span class="navbar-toggler-icon">
+            </span>
+          </button>
+          <div class="navbar-collapse collapse"
+               id="basic-navbar-nav"
+               data-testid="navbar-collapse"
+          >
+            <div class="me-auto navbar-nav">
+              <a class="fw-bold nav-link active"
+                 href="/"
+              >
+                Search
+              </a>
+              <a class="nav-link"
+                 href="/updates"
+              >
+                Updates
+              </a>
+              <a class="nav-link"
+                 href="/faqs"
+              >
+                FAQs
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <main>
+      <div class="row">
+      </div>
+    </main>
+    <footer>
+      <div class="col-md-12">
+        <div class="row">
+          <div class="footer-content">
+            <p>
+              made by&nbsp;
+              <a href="https://github.com/bdhowald"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="self-link"
+              >
+                @bdhowald
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+`;

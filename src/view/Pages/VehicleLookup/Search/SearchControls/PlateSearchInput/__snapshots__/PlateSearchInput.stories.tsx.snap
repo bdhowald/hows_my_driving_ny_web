@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/Search/SearchControls/PlateSearchInput NoPlate smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container">
+          <div class="jumbotron">
+            <div class="row">
+              <form class="form">
+                <div class="form-row">
+                  <div class="col-md">
+                    <div class="form-group">
+                      <input autocomplete="off"
+                             class="form-control"
+                             id="plate-input"
+                             name="plateId"
+                             placeholder="Enter a plate..."
+                             type="text"
+                             value
+                      >
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/Search/SearchControls/PlateSearchInput PlateEntered smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container">
+          <div class="jumbotron">
+            <div class="row">
+              <form class="form">
+                <div class="form-row">
+                  <div class="col-md">
+                    <div class="form-group">
+                      <input autocomplete="off"
+                             class="form-control"
+                             id="plate-input"
+                             name="plateId"
+                             placeholder="Enter a plate..."
+                             type="text"
+                             value="ABC1234"
+                      >
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;

@@ -1,0 +1,247 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/VehicleResults/FiltersControl WithBreadcrumb smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container">
+          <div class="jumbotron">
+            <div class="filters-wrapper "
+                 data-testid="filters-wrapper-test-id"
+            >
+              <div class="filter-controls">
+                <div class="filter-controls-header">
+                  <div>
+                    Showing 0 results
+                  </div>
+                </div>
+                <div class="results-control-toggle">
+                  <button class="btn btn-primary"
+                          type="button"
+                  >
+                    Filter
+                  </button>
+                </div>
+              </div>
+              <div class="active-filters">
+                <span class="filter-breadcrumb">
+                  <span aria-label="display filters menu"
+                        class="filter-breadcrumb-text"
+                  >
+                    <span class="filter-breadcrumb-key">
+                      Plate
+                    </span>
+                    : ABC
+                  </span>
+                  <span aria-label="remove Plate label"
+                        class="filter-breadcrumb-remove-filter"
+                  >
+                    <svg aria-hidden="true"
+                         focusable="false"
+                         data-prefix="fas"
+                         data-icon="circle-xmark"
+                         class="svg-inline--fa fa-circle-xmark circle"
+                         role="img"
+                         xmlns="http://www.w3.org/2000/svg"
+                         viewbox="0 0 512 512"
+                         style="transform-origin: 0.5em 0.5em;"
+                    >
+                      <g transform="translate(256 256)">
+                        <g transform="translate(0, 0)  scale(1.375, 1.375)  rotate(0 0 0)">
+                          <path fill="currentColor"
+                                d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
+                                transform="translate(-256 -256)"
+                          >
+                          </path>
+                        </g>
+                      </g>
+                    </svg>
+                  </span>
+                </span>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/FiltersControl WithMultipleOwnResults smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container">
+          <div class="jumbotron">
+            <div class="filters-wrapper "
+                 data-testid="filters-wrapper-test-id"
+            >
+              <div class="filter-controls">
+                <div class="filter-controls-header">
+                  <div>
+                    Showing 2 results
+                  </div>
+                </div>
+                <div class="results-control-toggle">
+                  <button class="btn btn-primary"
+                          type="button"
+                  >
+                    Filter
+                  </button>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/FiltersControl WithOwnResult smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container">
+          <div class="jumbotron">
+            <div class="filters-wrapper "
+                 data-testid="filters-wrapper-test-id"
+            >
+              <div class="filter-controls">
+                <div class="filter-controls-header">
+                  <div>
+                    Showing 1 result
+                  </div>
+                </div>
+                <div class="results-control-toggle">
+                  <button class="btn btn-primary"
+                          type="button"
+                  >
+                    Filter
+                  </button>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/FiltersControl WithSharedAndMultipleOwnResults smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container">
+          <div class="jumbotron">
+            <div class="filters-wrapper "
+                 data-testid="filters-wrapper-test-id"
+            >
+              <div class="filter-controls">
+                <div class="filter-controls-header">
+                  <div>
+                    Showing 2 results
+                  </div>
+                  <div>
+                    + 1 shared via link
+                  </div>
+                </div>
+                <div class="results-control-toggle">
+                  <button class="btn btn-primary"
+                          type="button"
+                  >
+                    Filter
+                  </button>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/FiltersControl WithSharedAndOwnResults smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container">
+          <div class="jumbotron">
+            <div class="filters-wrapper "
+                 data-testid="filters-wrapper-test-id"
+            >
+              <div class="filter-controls">
+                <div class="filter-controls-header">
+                  <div>
+                    Showing 1 result
+                  </div>
+                  <div>
+                    + 1 shared via link
+                  </div>
+                </div>
+                <div class="results-control-toggle">
+                  <button class="btn btn-primary"
+                          type="button"
+                  >
+                    Filter
+                  </button>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/FiltersControl WithSharedResultOnly smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container">
+          <div class="jumbotron">
+            <div class="filters-wrapper "
+                 data-testid="filters-wrapper-test-id"
+            >
+              <div class="filter-controls">
+                <div class="filter-controls-header">
+                  <div>
+                    Showing 1 result shared via link
+                  </div>
+                </div>
+                <div class="results-control-toggle">
+                  <button class="btn btn-primary"
+                          type="button"
+                  >
+                    Filter
+                  </button>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;

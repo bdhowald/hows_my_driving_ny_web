@@ -1,0 +1,296 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/CombinedViolationsFinesBreakdown FineAndSubtractions smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container">
+          <div class="vehicles">
+            <div class="vehicle card">
+              <ul class="list-group-flush list-group">
+                <li class="no-padding list-group-item">
+                  <div class="row">
+                    <div class="summary-section col-xs-12 col-sm-6">
+                      <div class="summary-box">
+                        <div class="vehicle-info-group vehicle-fines">
+                          <div class="keys lookup-info">
+                            <div>
+                              Fined:
+                            </div>
+                            <div>
+                              Reduced:
+                            </div>
+                            <div class="fines-reduced">
+                              Paid:
+                            </div>
+                            <div>
+                              Owed:
+                            </div>
+                          </div>
+                          <div class="values lookup-info"
+                               role="math"
+                               aria-label="$200.00 fined - $50.00 paid - $125.00 reduced = $75.00 outstanding"
+                          >
+                            <div class="math-symbols">
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                              <div class="fines-reduced">
+                                –&nbsp;
+                              </div>
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                            </div>
+                            <div class="amounts">
+                              <div>
+                                $200.00
+                              </div>
+                              <div>
+                                $125.00
+                              </div>
+                              <div class="fines-reduced">
+                                $50.00
+                              </div>
+                              <div>
+                                $75.00
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/CombinedViolationsFinesBreakdown FineDataIsMissing smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container">
+          <div class="vehicles">
+            <div class="vehicle card">
+              <ul class="list-group-flush list-group">
+                <li class="no-padding list-group-item">
+                  <div class="row">
+                    <div class="summary-section col-xs-12 col-sm-6">
+                      <div class="summary-box">
+                        <div class="vehicle-info-group vehicle-fines">
+                          <div class="keys lookup-info">
+                            <div>
+                              Fined:
+                            </div>
+                            <div class="fines-reduced">
+                              Paid:
+                            </div>
+                            <div>
+                              Owed:
+                            </div>
+                          </div>
+                          <div class="values lookup-info"
+                               role="math"
+                               aria-label="$0.00 fined - $0.00 paid - $0.00 reduced = $0.00 outstanding"
+                          >
+                            <div class="math-symbols">
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                              <div class="fines-reduced">
+                                –&nbsp;
+                              </div>
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                            </div>
+                            <div class="amounts">
+                              <div>
+                                $0.00
+                              </div>
+                              <div class="fines-reduced">
+                                $0.00
+                              </div>
+                              <div>
+                                $0.00
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/CombinedViolationsFinesBreakdown FineOnly smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container">
+          <div class="vehicles">
+            <div class="vehicle card">
+              <ul class="list-group-flush list-group">
+                <li class="no-padding list-group-item">
+                  <div class="row">
+                    <div class="summary-section col-xs-12 col-sm-6">
+                      <div class="summary-box">
+                        <div class="vehicle-info-group vehicle-fines">
+                          <div class="keys lookup-info">
+                            <div>
+                              Fined:
+                            </div>
+                            <div class="fines-reduced">
+                              Paid:
+                            </div>
+                            <div>
+                              Owed:
+                            </div>
+                          </div>
+                          <div class="values lookup-info"
+                               role="math"
+                               aria-label="$200.00 fined - $0.00 paid - $0.00 reduced = $0.00 outstanding"
+                          >
+                            <div class="math-symbols">
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                              <div class="fines-reduced">
+                                –&nbsp;
+                              </div>
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                            </div>
+                            <div class="amounts">
+                              <div>
+                                $200.00
+                              </div>
+                              <div class="fines-reduced">
+                                $0.00
+                              </div>
+                              <div>
+                                $0.00
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/FinesBreakdown/CombinedViolationsFinesBreakdown InJudgment smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container">
+          <div class="vehicles">
+            <div class="vehicle card">
+              <ul class="list-group-flush list-group">
+                <li class="no-padding list-group-item">
+                  <div class="row">
+                    <div class="summary-section col-xs-12 col-sm-6">
+                      <div class="summary-box">
+                        <div class="vehicle-info-group vehicle-fines">
+                          <div class="keys lookup-info">
+                            <div>
+                              Fined:
+                            </div>
+                            <div>
+                              Reduced:
+                            </div>
+                            <div class="fines-reduced">
+                              Paid:
+                            </div>
+                            <div>
+                              Owed:
+                            </div>
+                            <div class="in-judgment">
+                              In judgment:
+                            </div>
+                          </div>
+                          <div class="values lookup-info"
+                               role="math"
+                               aria-label="$200.00 fined - $50.00 paid - $125.00 reduced = $75.00 outstanding"
+                          >
+                            <div class="math-symbols">
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                              <div class="fines-reduced">
+                                –&nbsp;
+                              </div>
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                            </div>
+                            <div class="amounts">
+                              <div>
+                                $200.00
+                              </div>
+                              <div>
+                                $125.00
+                              </div>
+                              <div class="fines-reduced">
+                                $50.00
+                              </div>
+                              <div>
+                                $75.00
+                              </div>
+                              <div class="in-judgment">
+                                $50.00
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;

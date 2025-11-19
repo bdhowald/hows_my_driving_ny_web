@@ -1,0 +1,106 @@
+/* Start old-style display */
+
+div.site-container div.container-fluid.nav-bar-container {
+  padding: 0 1rem;
+}
+
+/* End old-style display */
+
+/* Start new-style display */
+
+div.site-container div.container-fluid.nav-bar-container.new-style {
+  padding: 0;
+}
+
+/* End new-style display */
+
+/* Start old-style display */
+
+div.site-container div.container-fluid.nav-bar-container div.row {
+  margin: 0;
+}
+
+/* End old-style display */
+
+/* Start new-style display */
+
+div.site-container div.container-fluid.nav-bar-container.new-style div.row {
+  margin: inherit;
+}
+
+/* End new-style display */
+
+/* Start old-style display */
+
+div.site-container div.container-fluid.nav-bar-container nav.navbar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  margin: auto;
+}
+
+/* End old-style display */
+
+/* Start new-style display */
+
+div.site-container div.container-fluid.nav-bar-container.new-style nav.navbar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  margin: auto;
+  max-width: 18rem;
+}
+
+@media only screen and (min-width: 360px) {
+  div.site-container
+    div.container-fluid.nav-bar-container.new-style
+    nav.navbar {
+    margin: auto;
+    max-width: 20.5rem;
+  }
+}
+
+@media only screen and (min-width: 400px) {
+  div.site-container
+    div.container-fluid.nav-bar-container.new-style
+    nav.navbar {
+    margin: auto;
+    max-width: 23rem;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  div.site-container
+    div.container-fluid.nav-bar-container.new-style
+    nav.navbar {
+    margin: auto;
+    max-width: 34rem;
+  }
+}
+
+/* End new-style display */
+
+div.site-container
+  div.container-fluid.nav-bar-container
+  nav.navbar
+  div.navbar-collapse {
+  padding: 0.5rem 0 0;
+}
+
+@media only screen and (min-width: 992px) {
+  div.site-container
+    div.container-fluid.nav-bar-container
+    nav.navbar
+    div.navbar-collapse
+    div.navbar-nav
+    a.nav-link {
+    border-right: 1px solid rgba(0, 0, 0, 0.25);
+    margin: 0.5rem 0;
+    padding: 0 0.5rem;
+  }
+
+  div.site-container
+    div.container-fluid.nav-bar-container
+    nav.navbar
+    div.navbar-collapse
+    div.navbar-nav
+    a.nav-link:last-of-type {
+    border: none;
+  }
+}

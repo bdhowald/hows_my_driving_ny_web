@@ -14,6 +14,9 @@ const EASTERN_TIME_ZONE_TIME_FORMAT = new Intl.DateTimeFormat('en-US', {
   timeZone: EASTERN_TIME_ZONE,
 })
 
+const NYC_OPEN_DATA_VIOLATION_DATA_SEARCH_RESULTS =
+  'https://data.cityofnewyork.us/browse?q=parking%20violations&sortBy=relevance'
+
 export default {
   dates: {
     aprilFoolsDay: {
@@ -73,6 +76,31 @@ export default {
       noViolations: 'no violations',
     },
   },
+  pages: {
+    faqs: {
+      header: {
+        description: [
+          "Since 2018, you've asked us many questions about HowsMyDrivingNY.",
+          'Here are the things people ask us a lot, so we finally wrote them down.',
+        ],
+      },
+      pathname: '/faqs',
+    },
+    search: {
+      pathname: '/',
+    },
+    updates: {
+      header: {
+        description: [
+          'Below is a running list of site updates.',
+          `Most are changes you can see or use, e.g. features, visual adjustments, or new content,
+            but some are technical updates that help the site run more smoothly.`,
+          'The goal is to let you know how the site improves over time.',
+        ],
+      },
+      pathname: '/updates',
+    },
+  },
   query: {
     jumbotronHeaderText: (
       <>
@@ -80,7 +108,7 @@ export default {
           Search New York City{' '}
           <a
             className="open-data-link"
-            href="https://data.cityofnewyork.us/browse?q=parking%20violations&sortBy=relevance"
+            href={NYC_OPEN_DATA_VIOLATION_DATA_SEARCH_RESULTS}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -95,7 +123,7 @@ export default {
           Search New York City{' '}
           <a
             className="open-data-link"
-            href="https://data.cityofnewyork.us/browse?q=parking%20violations&sortBy=relevance"
+            href={NYC_OPEN_DATA_VIOLATION_DATA_SEARCH_RESULTS}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -115,6 +143,8 @@ export default {
       maximumFractionDigits: 2,
     },
     dateFormat: EASTERN_TIME_ZONE_DATE_FORMAT,
+    openDataViolationDataSearchResults:
+      NYC_OPEN_DATA_VIOLATION_DATA_SEARCH_RESULTS,
     timeFormat: EASTERN_TIME_ZONE_TIME_FORMAT,
     timeZone: EASTERN_TIME_ZONE,
     title: "How's My Driving NY",

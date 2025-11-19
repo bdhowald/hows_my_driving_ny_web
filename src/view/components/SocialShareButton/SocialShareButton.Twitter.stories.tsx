@@ -11,12 +11,16 @@ const meta: Meta<typeof SocialShareButton.Twitter> = {
   component: SocialShareButton.Twitter,
   decorators: [
     (Story) => (
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-md-12 page-content-container">
-            {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-            <Story />
-          </div>
+      <div className="site-container-wrapper">
+        <div className="site-container container-fluid">
+          <main>
+            <div className="row">
+              <div className="col-md-12 vehicle-lookup-content-container">
+                {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
+                <Story />
+              </div>
+            </div>
+          </main>
         </div>
       </div>
     ),

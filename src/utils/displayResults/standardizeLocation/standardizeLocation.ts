@@ -1,5 +1,4 @@
-const PLACENAME_REGEX =
-  /\s((?:st(?:\.|reet)?|dr(?:\.|ive)?|pl(?:\.|ace)?|(avenue (?![A-Za-z]))|(av (?![A-Za-z]))|(av. (?![A-Za-z]))|(ave (?![A-Za-z]))|(ave. (?![A-Za-z]))|av$|av\.$|ave$|ave\.$|avenue$|l(?:a)?n(?:e)?|rd|road|lane|drive|way|(court(?!\sSt(reet)?))|plaza|square|run|parkway|point|pike|square|driveway|trace|terrace|blvd|crescent))/i
+import regexps from 'constants/regexps'
 
 const standardizeDisplayedLocation = (location: string): string => {
   let standardizedLocation = location
@@ -20,61 +19,78 @@ const standardizeDisplayedLocation = (location: string): string => {
     .replace(/@/, ' @ ')
     .replace(/\s\s+/g, ' ')
 
-  const numberSuffixRegex = /(st|nd|rd|th)(st|rd|av(e)?)/gi
   standardizedLocation = standardizedLocation.replace(
-    numberSuffixRegex,
+    regexps.location.numbers.suffixes.all,
     (_, x, y) => {
       return `${x} ${y.charAt(0).toUpperCase() + y.slice(1)}`
     },
   )
 
   // '1' -> '1st' regex
-  const firstPrefixRegex = /(?<!1)(1)/g
   standardizedLocation = standardizedLocation.replace(
-    new RegExp(firstPrefixRegex.source + PLACENAME_REGEX.source, 'ig'),
+    new RegExp(
+      regexps.location.numbers.suffixes.first.source +
+        regexps.location.placename.source,
+      'ig',
+    ),
     '1st $2',
   )
 
   // '11' -> '11th' regex
-  const eleventhPrefixRegex = /(11)\b/g
   standardizedLocation = standardizedLocation.replace(
-    new RegExp(eleventhPrefixRegex.source + PLACENAME_REGEX.source, 'ig'),
+    new RegExp(
+      regexps.location.numbers.suffixes.eleventh.source +
+        regexps.location.placename.source,
+      'ig',
+    ),
     '11th $2',
   )
 
   // '2' -> '2nd' regex
-  const secondPrefixRegex = /(?<!1)(2)/g
   standardizedLocation = standardizedLocation.replace(
-    new RegExp(secondPrefixRegex.source + PLACENAME_REGEX.source, 'ig'),
+    new RegExp(
+      regexps.location.numbers.suffixes.second.source +
+        regexps.location.placename.source,
+      'ig',
+    ),
     '2nd $2',
   )
 
   // '12' -> '12th' regex
-  const twelfthPrefixRegex = /(12)\b/g
   standardizedLocation = standardizedLocation.replace(
-    new RegExp(twelfthPrefixRegex.source + PLACENAME_REGEX.source, 'ig'),
+    new RegExp(
+      regexps.location.numbers.suffixes.twelfth.source +
+        regexps.location.placename.source,
+      'ig',
+    ),
     '12th $2',
   )
 
   // '3' -> '3rd' regex
-  const thirdPrefixRegex = /(?<!1)(3)/g
   standardizedLocation = standardizedLocation.replace(
-    new RegExp(thirdPrefixRegex.source + PLACENAME_REGEX.source, 'ig'),
+    new RegExp(
+      regexps.location.numbers.suffixes.third.source +
+        regexps.location.placename.source,
+      'ig',
+    ),
     '3rd $2',
   )
 
   // '13' -> '13th' regex
-  const thirteenthPrefixRegex = /(13)\b/g
   standardizedLocation = standardizedLocation.replace(
-    new RegExp(thirteenthPrefixRegex.source + PLACENAME_REGEX.source, 'ig'),
+    new RegExp(
+      regexps.location.numbers.suffixes.thirteenth.source +
+        regexps.location.placename.source,
+      'ig',
+    ),
     '13th $2',
   )
 
   // '4-9' -> '4th-9th' regex
-  const remainderNumberPrefixRegex = /(\d)\b/g
   standardizedLocation = standardizedLocation.replace(
     new RegExp(
-      remainderNumberPrefixRegex.source + PLACENAME_REGEX.source,
+      regexps.location.numbers.suffixes.fourthThroughNinth.source +
+        regexps.location.placename.source,
       'ig',
     ),
     '$1th $2',
