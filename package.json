@@ -96,5 +96,12 @@
     "typescript-eslint": "^8.14.0",
     "webpack": "^5.96.1",
     "webpack-cli": "^6.0.1"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/src/**/*.stories.{js,jsx,ts,tsx}"
+    ],
+    "coveragePathIgnorePatterns": ["\\.stories\\.tsx$"]
   }
 }
