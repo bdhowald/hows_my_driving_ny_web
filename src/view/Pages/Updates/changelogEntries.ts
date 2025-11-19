@@ -3,6 +3,31 @@ const changelogEntries = [
     year: '2025',
     yearEntries: [
       {
+        date: '2025-11-18',
+        dateEntries: [
+          {
+            description:
+              'Restrict plates to alphanumeric characters.',
+            commits: [
+              {
+                project: 'hows_my_driving_ny_web',
+                sha: 'e0b1273e53bde1f3f5e70624c58344c735784baa',
+              },
+            ],
+          },
+          {
+            description:
+              'Break main component out into its own page, reorganize site to have consistent structure, add FAQ and Updates pages.',
+            commits: [
+              {
+                project: 'hows_my_driving_ny_web',
+                sha: '3bf79fe535d44868cf8f743861bc4fd7e804662c',
+              },
+            ],
+          },
+        ],
+      },
+      {
         date: '2025-11-14',
         dateEntries: [
           {
