@@ -119,7 +119,7 @@ const SearchControls = ({
                 const target = e.target as HTMLInputElement
                 target.setCustomValidity('Only letters and numbers allowed')
               }}
-              pattern={regexps.search.plate.text.source}
+              pattern={regexps.search.plate.text.source + '+'}
               placeholder={placeholderText}
               type="text"
               value={currentLookup.plateId ?? ''}
