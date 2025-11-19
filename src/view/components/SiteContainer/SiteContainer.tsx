@@ -7,18 +7,16 @@ import Navigation from 'view/components/Navigation/Navigation'
 
 import './SiteContainer.css'
 
-const SiteContainer = ({ children }: { children: ReactNode }) => {
-  return (
-    <div className="site-container-wrapper">
-      <Container fluid className="site-container">
-        <Navigation />
-        <main>
-          <Row>{children}</Row>
-        </main>
-        <Footer />
-      </Container>
-    </div>
-  )
-}
+const SiteContainer = ({ children }: { children: ReactNode }) => (
+  <div className="site-container-wrapper">
+    <Container fluid className="site-container">
+      <Navigation />
+      <main>
+        <Row>{children}</Row>
+      </main>
+      <Footer />
+    </Container>
+  </div>
+)
 
 export default SiteContainer

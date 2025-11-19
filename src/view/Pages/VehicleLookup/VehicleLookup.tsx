@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import FingerprintJS, { Agent } from '@fingerprintjs/fingerprintjs'
-import mixpanel, { Mixpanel } from 'mixpanel-browser'
 import { useParams } from 'react-router-dom'
 import smoothscroll from 'smoothscroll-polyfill'
 import { useCookies } from 'react-cookie'
@@ -10,10 +9,6 @@ import {
   USE_SEARCH_FILTERS_COOKIE,
 } from 'constants/cookies'
 import L10N from 'constants/display'
-import {
-  MIXPANEL_IDLE_TIMEOUT_MILLISECONDS,
-  MIXPANEL_RECORD_SESSIONS_PERCENT,
-} from 'constants/tracking'
 import { ApplicationContext } from 'context/ApplicationContext'
 
 import useLookupIdentifierCookie from 'hooks/useLookupIdentifierCookie/useLookupIdentifierCookie'
@@ -22,7 +17,6 @@ import getPlateTypeName from 'utils/search/getPlateType/getPlateTypeName/getPlat
 import getListOfQueriedVehiclesAfterResponse from 'utils/processResults/getListOfQueriedVehiclesAfterResponse/getListOfQueriedVehiclesAfterResponse'
 import getQueriedVehicleFromResponse from 'utils/processResults/getQueriedVehicleFromResponse/getQueriedVehicleFromResponse'
 import performLookup from 'utils/search/performLookup/performLookup'
-import MixpanelTracker from 'utils/analytics/trackers/mixpanel'
 import { VehicleQueryResponse } from 'types/responses'
 import { VehicleDisplayResult } from 'types/vehicleDisplayResult'
 
@@ -92,21 +86,6 @@ const VehicleLookup = () => {
       listRef.current?.scrollIntoView({ behavior: 'smooth' })
     }
   }, [lookupInFlight])
-
-  useEffect(() => {
-    mixpanel.init('f8491ce35ed8262c61e16e6b6abb83b3', {
-      loaded: (mixpanel: Mixpanel) => {
-        const mixpanelTracker = new MixpanelTracker({
-          mixpanelInstance: mixpanel,
-        })
-
-        tracker?.addTracker('mixpanel', mixpanelTracker)
-      },
-      record_idle_timeout_ms: MIXPANEL_IDLE_TIMEOUT_MILLISECONDS,
-      record_mask_text_selector: '', // nothing here is secret or PII
-      record_sessions_percent: MIXPANEL_RECORD_SESSIONS_PERCENT,
-    })
-  }, [])
 
   const refreshLookup = async (vehicle: Vehicle) => {
     // Prevent another button press/submission
