@@ -58,15 +58,8 @@ const Navigation = () => {
     blurHappenedRef.current = false
 
     const target = e.target as HTMLElement
-    const targetInsideNavBar = navRef.current?.contains(target)
     const isNavBarToggle = target.closest('.navbar-toggler')
     const isNavLink = target.closest('.nav-link')
-
-    if (!targetInsideNavBar) {
-      // outside of nav bar → blur should close
-      ignoreBlurRef.current = false
-      return
-    }
 
     if (isNavLink) {
       // nav link → ignore blur
@@ -86,6 +79,7 @@ const Navigation = () => {
   }
 
   const handleBlur = () => {
+    console.log('ignoreBlurRef.current:', ignoreBlurRef.current)
     if (!ignoreBlurRef.current) {
       blurHappenedRef.current = true
       setNavBarIsOpen(false)
@@ -94,21 +88,16 @@ const Navigation = () => {
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as HTMLElement
-    const targetInsideNavBar = navRef.current?.contains(target)
     const isNavBarToggle = target.closest('.navbar-toggler')
     const isNavLink = target.closest('.nav-link')
 
     // Always clear ignoreBlur after click
     ignoreBlurRef.current = false
 
-    // Outside click → collapse
-    if (!targetInsideNavBar) {
-      setNavBarIsOpen(false)
+    // Nav link → do nothing
+    if (isNavLink) {
       return
     }
-
-    // Nav link → do nothing
-    if (isNavLink) return
 
     // Toggle button → toggle open/close, unless blur just ran
     if (isNavBarToggle) {
@@ -118,7 +107,7 @@ const Navigation = () => {
       return
     }
 
-    // Any other div inside nav → collapse
+    // Any other div inside nav → toggle
     setNavBarIsOpen(false)
   }
 
