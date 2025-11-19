@@ -3,6 +3,7 @@ import * as React from 'react'
 import L10N from 'constants/display'
 import plateTypes from 'constants/plateTypes'
 import regions from 'constants/regions'
+import regexps from 'constants/regexps'
 import PlateLookup from 'types/plateLookup'
 
 import SearchSelect from './SearchSelect/SearchSelect'
@@ -114,6 +115,11 @@ const SearchControls = ({
               id="plate-input"
               name="plateId"
               onChange={handleInputChange}
+              onInvalid={(e) => {
+                const target = e.target as HTMLInputElement
+                target.setCustomValidity('Only letters and numbers allowed')
+              }}
+              pattern={regexps.search.plate.text.source}
               placeholder={placeholderText}
               type="text"
               value={currentLookup.plateId ?? ''}

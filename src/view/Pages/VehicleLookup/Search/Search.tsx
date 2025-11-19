@@ -14,6 +14,7 @@ import {
 import L10N from 'constants/display'
 import HttpStatusCode from 'constants/httpStatusCode'
 import { PlateType } from 'constants/plateTypes'
+import regexps from 'constants/regexps'
 import { MILLISECONDS_IN_SECOND } from 'constants/time'
 import { ApplicationContext } from 'context/ApplicationContext'
 import useLookupIdentifierCookie from 'hooks/useLookupIdentifierCookie/useLookupIdentifierCookie'
@@ -33,6 +34,11 @@ import { VehicleQueryResponse } from 'types/responses'
 import SearchControls from './SearchControls/SearchControls'
 
 import './Search.css'
+
+const NON_PLATE_CHARACTERS = new RegExp(
+  `[^${regexps.search.plate.text.source.slice(1, -1)}]`,
+  'ig',
+)
 
 type InputChangeType =
   | React.ChangeEvent<HTMLInputElement>
@@ -510,8 +516,10 @@ const Search = ({
     (changeEvent: InputChangeType) => {
       const modififedInputValue =
         changeEvent.currentTarget.name === 'plateId'
-          ? changeEvent.currentTarget.value.replace(/\s/g, '').toUpperCase()
-          : changeEvent.currentTarget.value.replace(/\s/g, '')
+          ? changeEvent.currentTarget.value
+              .replace(NON_PLATE_CHARACTERS, '')
+              .toUpperCase()
+          : changeEvent.currentTarget.value.replace(NON_PLATE_CHARACTERS, '')
 
       return setCurrentLookup({
         ...currentLookup,

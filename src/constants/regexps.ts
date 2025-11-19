@@ -20,4 +20,9 @@ export default {
   lookups: {
     uniqueIdentifier: /[a-z0-9]{8}/,
   },
+  search: {
+    plate: {
+      text: /[a-zA-Z0-9]/,
+    },
+  },
 }
