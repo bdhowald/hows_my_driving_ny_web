@@ -6,8 +6,7 @@ const changelogEntries = [
         date: '2025-11-18',
         dateEntries: [
           {
-            description:
-              'Restrict plates to alphanumeric characters.',
+            description: 'Restrict plates to alphanumeric characters.',
             commits: [
               {
                 project: 'hows_my_driving_ny_web',

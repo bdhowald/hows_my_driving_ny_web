@@ -3,7 +3,7 @@ import { useCookies } from 'react-cookie'
 
 import Borough from 'constants/boroughs'
 import { SMALL_BREAKPOINT } from 'constants/breakpoints'
-import { USE_NEW_STYLE_DISPLAY_COOKIE } from 'constants/cookies'
+import { USE_NEW_STYLE_DISPLAY_STORAGE_KEY } from 'constants/storage'
 import {
   BUS_LANE_CAMERA_VIOLATION_CODE,
   MOBILE_BUS_LANE_CAMERA_VIOLATION_CODE,
@@ -261,7 +261,7 @@ const ViolationSummary = ({ vehicle }: { vehicle: Vehicle }) => {
   const [showViolationsBreakdown, setShowViolationsBreakdown] = useState(
     isWideDisplay && hasAtLeastOneViolation,
   )
-  const [cookies, _, __] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
+  const [cookies, _, __] = useCookies([USE_NEW_STYLE_DISPLAY_STORAGE_KEY])
 
   const newViolationsSinceLastLookup =
     vehicle.violationsCount - (vehicle.previousViolationCount ?? 0)
@@ -279,7 +279,7 @@ const ViolationSummary = ({ vehicle }: { vehicle: Vehicle }) => {
 
   const showShowDetailsLink = !showViolationsBreakdown && hasAtLeastOneViolation
 
-  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
+  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
   return (

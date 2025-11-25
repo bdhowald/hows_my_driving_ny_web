@@ -5,13 +5,13 @@ import smoothscroll from 'smoothscroll-polyfill'
 import { useCookies } from 'react-cookie'
 
 import {
-  USE_NEW_STYLE_DISPLAY_COOKIE,
-  USE_SEARCH_FILTERS_COOKIE,
-} from 'constants/cookies'
+  USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
+  USE_SEARCH_FILTERS_STORAGE_KEY,
+} from 'constants/storage'
 import L10N from 'constants/display'
 import { ApplicationContext } from 'context/ApplicationContext'
 
-import useLookupIdentifierCookie from 'hooks/useLookupIdentifierCookie/useLookupIdentifierCookie'
+import useLookupIdentifierStorage from 'hooks/useLookupIdentifierStorage/useLookupIdentifierStorage'
 import Vehicle from 'models/Vehicle/Vehicle'
 import getPlateTypeName from 'utils/search/getPlateType/getPlateTypeName/getPlateTypeName'
 import getListOfQueriedVehiclesAfterResponse from 'utils/processResults/getListOfQueriedVehiclesAfterResponse/getListOfQueriedVehiclesAfterResponse'
@@ -32,15 +32,15 @@ const VehicleLookup = () => {
   const listRef = useRef<HTMLDivElement>(null)
 
   const [cookies, _] = useCookies([
-    USE_NEW_STYLE_DISPLAY_COOKIE,
-    USE_SEARCH_FILTERS_COOKIE,
+    USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
+    USE_SEARCH_FILTERS_STORAGE_KEY,
   ])
-  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
-  const useSearchFilters = cookies[USE_SEARCH_FILTERS_COOKIE] === true
+  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true
+  const useSearchFilters = cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true
 
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
-  const { removeLookupFromIdentifierCookie } = useLookupIdentifierCookie()
+  const { removeLookupIdentifierFromStorage } = useLookupIdentifierStorage()
 
   const [lookupInFlight, setLookupInFlight] = useState(false)
   const [existingQueriesInFlight, setExistingQueriesInFlight] = useState(false)
@@ -154,7 +154,7 @@ const VehicleLookup = () => {
     ]
     const removedVehicle = queriedVehicles[indexToRemove].vehicle
 
-    removeLookupFromIdentifierCookie(removedVehicle.uniqueIdentifier)
+    removeLookupIdentifierFromStorage(removedVehicle.uniqueIdentifier)
 
     tracker?.trackEvent('remove_lookup', {
       uniqueIdentifier: removedVehicle.uniqueIdentifier,

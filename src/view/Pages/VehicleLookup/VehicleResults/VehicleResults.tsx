@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from 'react'
 import { useCookies } from 'react-cookie'
 
-import { USE_NEW_STYLE_DISPLAY_COOKIE } from 'constants/cookies'
+import { USE_NEW_STYLE_DISPLAY_STORAGE_KEY } from 'constants/storage'
 import { ApplicationContext } from 'context/ApplicationContext'
 import useSearchFiltersActiveCookie from 'hooks/useSearchFiltersActiveCookie/useSearchFiltersActiveCookie'
 import Vehicle from 'models/Vehicle/Vehicle'
@@ -186,7 +186,7 @@ const VehicleResults = ({
   scrollRef: React.RefObject<HTMLDivElement>
   vehicleDisplayResults: VehicleDisplayResult[]
 }) => {
-  const [cookies, _, __] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
+  const [cookies, _, __] = useCookies([USE_NEW_STYLE_DISPLAY_STORAGE_KEY])
   const filterControlsRef = useRef<HTMLDivElement>(null)
 
   const [resultsFilters, setResultsFilters] = useState<ResultsFilterSet>({
@@ -206,7 +206,7 @@ const VehicleResults = ({
   const applicationContext = useContext(ApplicationContext)
   const { tracker } = applicationContext
 
-  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
+  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
   const showResultsHeaderAndFiltersControl =

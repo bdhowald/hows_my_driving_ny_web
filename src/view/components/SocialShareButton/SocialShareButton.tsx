@@ -8,9 +8,9 @@ import {
 } from 'react-share'
 
 import {
-  USE_NEW_STYLE_DISPLAY_COOKIE,
-  USE_SEARCH_FILTERS_COOKIE,
-} from 'constants/cookies'
+  USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
+  USE_SEARCH_FILTERS_STORAGE_KEY,
+} from 'constants/storage'
 import L10N from 'constants/display'
 import SocialMediaService from 'constants/socialMedia'
 import { ApplicationContext } from 'context/ApplicationContext'
@@ -41,8 +41,8 @@ const ShareButton = ({
   vehicle: Vehicle
 }) => {
   const [cookies, _] = useCookies([
-    USE_NEW_STYLE_DISPLAY_COOKIE,
-    USE_SEARCH_FILTERS_COOKIE,
+    USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
+    USE_SEARCH_FILTERS_STORAGE_KEY,
   ])
 
   const vehicleHashtag = `${vehicle.state}_${vehicle.plate}`
@@ -67,8 +67,9 @@ const ShareButton = ({
         tracker?.trackEvent('user_shared_lookup_to_social_media', {
           socialMediaService: serviceName,
           uniqueIdentifier: vehicle.uniqueIdentifier,
-          useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true,
-          useSearchFilters: cookies[USE_SEARCH_FILTERS_COOKIE] === true,
+          useNewStyleDisplay:
+            cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true,
+          useSearchFilters: cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true,
         })
       }}
       url={`${L10N.sitewide.url}/${vehicle.uniqueIdentifier}`}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useCookies } from 'react-cookie'
 
-import { USE_NEW_STYLE_DISPLAY_COOKIE } from 'constants/cookies'
+import { USE_NEW_STYLE_DISPLAY_STORAGE_KEY } from 'constants/storage'
 import L10N from 'constants/display'
 import Vehicle from 'models/Vehicle/Vehicle'
 
@@ -82,8 +82,8 @@ const IntelligentSpeedAssistanceNotice = ({
     return undefined
   }
 
-  const [cookies, _, __] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
-  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
+  const [cookies, _, __] = useCookies([USE_NEW_STYLE_DISPLAY_STORAGE_KEY])
+  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true
 
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 

@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { useCookies } from 'react-cookie'
 
 import {
-  USE_NEW_STYLE_DISPLAY_COOKIE,
-  USE_SEARCH_FILTERS_COOKIE,
-} from 'constants/cookies'
+  USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
+  USE_SEARCH_FILTERS_STORAGE_KEY,
+} from 'constants/storage'
 import {
   FilterFormElement,
   FilterType,
@@ -36,10 +36,10 @@ const FiltersControl = ({
   scrollRef: React.RefObject<HTMLDivElement>
 }) => {
   const [cookies, _] = useCookies([
-    USE_NEW_STYLE_DISPLAY_COOKIE,
-    USE_SEARCH_FILTERS_COOKIE,
+    USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
+    USE_SEARCH_FILTERS_STORAGE_KEY,
   ])
-  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
+  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true
 
   const [filtersAreVisble, setFiltersAreVisible] = useState<boolean>(false)
 

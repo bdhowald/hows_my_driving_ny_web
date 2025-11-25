@@ -98,7 +98,7 @@ describe('Navigation', () => {
       })
     })
 
-     it('should hide the nav bar when it is open and a user clicks any part of the nav bar not a nav link', async () => {
+    it('should hide the nav bar when it is open and a user clicks any part of the nav bar not a nav link', async () => {
       render(
         <MemoryRouter>
           <Navigation />
@@ -118,7 +118,6 @@ describe('Navigation', () => {
       await waitFor(() => {
         expect(collapsibleNavBar).toHaveClass('show')
       })
-
 
       // click on the nav bar, but not the toggle
       userEvent.click(navigationBar)

@@ -24,9 +24,9 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
 
 import {
-  USE_NEW_STYLE_DISPLAY_COOKIE,
-  USE_SEARCH_FILTERS_COOKIE,
-} from 'constants/cookies'
+  USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
+  USE_SEARCH_FILTERS_STORAGE_KEY,
+} from 'constants/storage'
 import L10N from 'constants/display'
 import { ApplicationContext } from 'context/ApplicationContext'
 import Vehicle from 'models/Vehicle/Vehicle'
@@ -49,8 +49,8 @@ const CopyButton = ({
   vehicleUniqueIdentifier: string
 }) => {
   const [cookies, _] = useCookies([
-    USE_NEW_STYLE_DISPLAY_COOKIE,
-    USE_SEARCH_FILTERS_COOKIE,
+    USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
+    USE_SEARCH_FILTERS_STORAGE_KEY,
   ])
 
   const [buttonPressedClass, setButtonPressedClass] = useState('')
@@ -85,8 +85,9 @@ const CopyButton = ({
       onClick={() => {
         tracker?.trackEvent('user_copied_link_to_lookup', {
           uniqueIdentifier: vehicleUniqueIdentifier,
-          useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true,
-          useSearchFilters: cookies[USE_SEARCH_FILTERS_COOKIE] === true,
+          useNewStyleDisplay:
+            cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true,
+          useSearchFilters: cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true,
         })
 
         navigator.clipboard.writeText(

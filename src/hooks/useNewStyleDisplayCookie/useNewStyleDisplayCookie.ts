@@ -1,31 +1,34 @@
 import { useCookies } from 'react-cookie'
 
 import {
-  DEFAULT_COOKIE_PATH,
-  MAX_AGE,
-  USE_NEW_STYLE_DISPLAY_COOKIE,
-} from 'constants/cookies'
+  COOKIE_DEFAULT_PATH,
+  COOKIE_MAX_AGE,
+  USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
+} from 'constants/storage'
 
 const useNewStyleDisplayCookie = () => {
-  const [cookies, setCookie, _] = useCookies([USE_NEW_STYLE_DISPLAY_COOKIE])
+  const [cookies, setCookie, _] = useCookies([
+    USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
+  ])
 
   const newStyleDisplayActive = () => {
     const useNewStyleDisplayCookiePresent =
-      cookies[USE_NEW_STYLE_DISPLAY_COOKIE] !== null &&
-      cookies[USE_NEW_STYLE_DISPLAY_COOKIE] !== undefined
+      cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] !== null &&
+      cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] !== undefined
 
     if (!useNewStyleDisplayCookiePresent) {
       setNewStyleDisplayCookie()
     }
 
     const queryParameters = new URLSearchParams(document.location.search)
-    const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
+    const useNewStyleDisplay =
+      cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true
 
     const queryParamFeatureFlagEnabled =
-      queryParameters.get(USE_NEW_STYLE_DISPLAY_COOKIE) === 'true'
+      queryParameters.get(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === 'true'
 
     const queryParamFeatureFlagDisabled =
-      queryParameters.get(USE_NEW_STYLE_DISPLAY_COOKIE) === 'false'
+      queryParameters.get(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === 'false'
 
     if (queryParamFeatureFlagDisabled) {
       return false
@@ -39,17 +42,18 @@ const useNewStyleDisplayCookie = () => {
   const setNewStyleDisplayCookie = () => {
     const queryParameters = new URLSearchParams(document.location.search)
 
-    const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
+    const useNewStyleDisplay =
+      cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true
 
     const useNewStyleDisplayCookiePresent =
-      cookies[USE_NEW_STYLE_DISPLAY_COOKIE] !== null &&
-      cookies[USE_NEW_STYLE_DISPLAY_COOKIE] !== undefined
+      cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] !== null &&
+      cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] !== undefined
 
     const queryParamFeatureFlagEnabled =
-      queryParameters.get(USE_NEW_STYLE_DISPLAY_COOKIE) === 'true'
+      queryParameters.get(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === 'true'
 
     const queryParamFeatureFlagDisabled =
-      queryParameters.get(USE_NEW_STYLE_DISPLAY_COOKIE) === 'false'
+      queryParameters.get(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === 'false'
 
     if (
       !useNewStyleDisplayCookiePresent ||
@@ -71,23 +75,23 @@ const useNewStyleDisplayCookie = () => {
       const inReserveGroup = !inControlGroup && !inExperimentalGroup
 
       if (inExperimentalGroup) {
-        setCookie(USE_NEW_STYLE_DISPLAY_COOKIE, 'true', {
-          maxAge: MAX_AGE,
-          path: DEFAULT_COOKIE_PATH,
+        setCookie(USE_NEW_STYLE_DISPLAY_STORAGE_KEY, 'true', {
+          maxAge: COOKIE_MAX_AGE,
+          path: COOKIE_DEFAULT_PATH,
         })
       }
 
       if (inControlGroup) {
-        setCookie(USE_NEW_STYLE_DISPLAY_COOKIE, 'false', {
-          maxAge: MAX_AGE,
-          path: DEFAULT_COOKIE_PATH,
+        setCookie(USE_NEW_STYLE_DISPLAY_STORAGE_KEY, 'false', {
+          maxAge: COOKIE_MAX_AGE,
+          path: COOKIE_DEFAULT_PATH,
         })
       }
 
       if (inReserveGroup) {
-        setCookie(USE_NEW_STYLE_DISPLAY_COOKIE, 'none', {
-          maxAge: MAX_AGE,
-          path: DEFAULT_COOKIE_PATH,
+        setCookie(USE_NEW_STYLE_DISPLAY_STORAGE_KEY, 'none', {
+          maxAge: COOKIE_MAX_AGE,
+          path: COOKIE_DEFAULT_PATH,
         })
       }
     }

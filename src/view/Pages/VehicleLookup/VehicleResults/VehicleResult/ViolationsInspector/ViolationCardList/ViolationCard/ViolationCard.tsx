@@ -2,9 +2,9 @@ import React, { useContext } from 'react'
 import { useCookies } from 'react-cookie'
 
 import {
-  USE_NEW_STYLE_DISPLAY_COOKIE,
-  USE_SEARCH_FILTERS_COOKIE,
-} from 'constants/cookies'
+  USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
+  USE_SEARCH_FILTERS_STORAGE_KEY,
+} from 'constants/storage'
 import {
   BUS_LANE_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION,
   MOBILE_BUS_LANE_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION,
@@ -47,8 +47,8 @@ const ViolationDateTimeAspect = ({
   inspectViolationFunction: (violation: Violation) => void
 }) => {
   const [cookies, _] = useCookies([
-    USE_NEW_STYLE_DISPLAY_COOKIE,
-    USE_SEARCH_FILTERS_COOKIE,
+    USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
+    USE_SEARCH_FILTERS_STORAGE_KEY,
   ])
 
   const applicationContext = useContext(ApplicationContext)
@@ -57,8 +57,8 @@ const ViolationDateTimeAspect = ({
   const trackShowViolationDetails = () => {
     tracker?.trackEvent('show_violation_details', {
       location: 'ViolationCard',
-      useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true,
-      useSearchFilters: cookies[USE_SEARCH_FILTERS_COOKIE] === true,
+      useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true,
+      useSearchFilters: cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true,
     })
   }
 

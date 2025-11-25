@@ -5,19 +5,20 @@ import { useCookies } from 'react-cookie'
 
 import { getPreviousLookup } from 'boundaries/http'
 import {
-  DEFAULT_COOKIE_PATH,
-  DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE,
-  LOOKUP_IDENTIFIER_COOKIE,
-  USE_NEW_STYLE_DISPLAY_COOKIE,
-  USE_SEARCH_FILTERS_COOKIE,
-} from 'constants/cookies'
+  COOKIE_DEFAULT_PATH,
+  COOKIE_MAX_AGE,
+  DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
+  LOOKUP_IDENTIFIER_STORAGE_KEY,
+  USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
+  USE_SEARCH_FILTERS_STORAGE_KEY,
+} from 'constants/storage'
 import L10N from 'constants/display'
 import HttpStatusCode from 'constants/httpStatusCode'
 import { PlateType } from 'constants/plateTypes'
 import regexps from 'constants/regexps'
 import { MILLISECONDS_IN_SECOND } from 'constants/time'
 import { ApplicationContext } from 'context/ApplicationContext'
-import useLookupIdentifierCookie from 'hooks/useLookupIdentifierCookie/useLookupIdentifierCookie'
+import useLookupIdentifierStorage from 'hooks/useLookupIdentifierStorage/useLookupIdentifierStorage'
 import getListOfQueriedVehiclesAfterResponse from 'utils/processResults/getListOfQueriedVehiclesAfterResponse/getListOfQueriedVehiclesAfterResponse'
 import getQueriedVehicleFromResponse from 'utils/processResults/getQueriedVehicleFromResponse/getQueriedVehicleFromResponse'
 import performLookup from 'utils/search/performLookup/performLookup'
@@ -126,33 +127,33 @@ const Search = ({
     state: 'NY',
   })
   const [cookies, setCookie] = useCookies([
-    DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE,
-    LOOKUP_IDENTIFIER_COOKIE,
-    USE_NEW_STYLE_DISPLAY_COOKIE,
-    USE_SEARCH_FILTERS_COOKIE,
+    DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
+    LOOKUP_IDENTIFIER_STORAGE_KEY,
+    USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
+    USE_SEARCH_FILTERS_STORAGE_KEY,
   ])
 
-  const { readLookupIdentifierCookie, syncIdentifiersToIdentifierCookie } =
-    useLookupIdentifierCookie()
+  const { readLookupIdentifiersFromStorage, syncLookupIdentifiersToStorage } =
+    useLookupIdentifierStorage()
 
   const applicationContext = useContext(ApplicationContext)
   const { tracker } = applicationContext
 
-  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true
-  const useSearchFilters = cookies[USE_SEARCH_FILTERS_COOKIE] === true
+  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true
+  const useSearchFilters = cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true
 
   useEffect(() => {
     const queryParameters = new URLSearchParams(document.location.search)
 
     const useNewStyleDisplayCookiePresent =
-      cookies[USE_NEW_STYLE_DISPLAY_COOKIE] !== null &&
-      cookies[USE_NEW_STYLE_DISPLAY_COOKIE] !== undefined
+      cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] !== null &&
+      cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] !== undefined
 
     const queryParamFeatureFlagEnabled =
-      queryParameters.get(USE_NEW_STYLE_DISPLAY_COOKIE) === 'true'
+      queryParameters.get(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === 'true'
 
     const queryParamFeatureFlagDisabled =
-      queryParameters.get(USE_NEW_STYLE_DISPLAY_COOKIE) === 'false'
+      queryParameters.get(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === 'false'
 
     if (
       !useNewStyleDisplayCookiePresent ||
@@ -171,23 +172,23 @@ const Search = ({
       const inReserveGroup = !inControlGroup && !inExperimentalGroup
 
       if (inExperimentalGroup) {
-        setCookie(USE_NEW_STYLE_DISPLAY_COOKIE, 'true', {
-          maxAge: 31536000,
-          path: DEFAULT_COOKIE_PATH,
+        setCookie(USE_NEW_STYLE_DISPLAY_STORAGE_KEY, 'true', {
+          maxAge: COOKIE_MAX_AGE,
+          path: COOKIE_DEFAULT_PATH,
         })
       }
 
       if (inControlGroup) {
-        setCookie(USE_NEW_STYLE_DISPLAY_COOKIE, 'false', {
-          maxAge: 31536000,
-          path: DEFAULT_COOKIE_PATH,
+        setCookie(USE_NEW_STYLE_DISPLAY_STORAGE_KEY, 'false', {
+          maxAge: COOKIE_MAX_AGE,
+          path: COOKIE_DEFAULT_PATH,
         })
       }
 
       if (inReserveGroup) {
-        setCookie(USE_NEW_STYLE_DISPLAY_COOKIE, 'none', {
-          maxAge: 31536000,
-          path: DEFAULT_COOKIE_PATH,
+        setCookie(USE_NEW_STYLE_DISPLAY_STORAGE_KEY, 'none', {
+          maxAge: COOKIE_MAX_AGE,
+          path: COOKIE_DEFAULT_PATH,
         })
       }
     }
@@ -197,16 +198,16 @@ const Search = ({
     const queryParameters = new URLSearchParams(document.location.search)
 
     const displayIntelligentSpeedAssistanceNoticeCookie =
-      !!cookies[DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE]
+      !!cookies[DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY]
 
     const queryParamFeatureFlagEnabled =
       queryParameters.get(
-        DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE,
+        DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
       ) === 'true'
 
     const queryParamFeatureFlagDisabled =
       queryParameters.get(
-        DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE,
+        DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
       ) === 'false'
 
     if (
@@ -227,24 +228,36 @@ const Search = ({
       const inReserveGroup = !inControlGroup && !inExperimentalGroup
 
       if (inExperimentalGroup) {
-        setCookie(DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE, 'true', {
-          maxAge: 31536000,
-          path: DEFAULT_COOKIE_PATH,
-        })
+        setCookie(
+          DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
+          'true',
+          {
+            maxAge: COOKIE_MAX_AGE,
+            path: COOKIE_DEFAULT_PATH,
+          },
+        )
       }
 
       if (inControlGroup) {
-        setCookie(DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE, 'false', {
-          maxAge: 31536000,
-          path: DEFAULT_COOKIE_PATH,
-        })
+        setCookie(
+          DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
+          'false',
+          {
+            maxAge: COOKIE_MAX_AGE,
+            path: COOKIE_DEFAULT_PATH,
+          },
+        )
       }
 
       if (inReserveGroup) {
-        setCookie(DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_COOKIE, 'none', {
-          maxAge: 31536000,
-          path: DEFAULT_COOKIE_PATH,
-        })
+        setCookie(
+          DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
+          'none',
+          {
+            maxAge: COOKIE_MAX_AGE,
+            path: COOKIE_DEFAULT_PATH,
+          },
+        )
       }
     }
   }, [])
@@ -289,21 +302,24 @@ const Search = ({
     })
   }
 
-  const retrieveLookupsFromCookieIdentifiers = () => {
+  const retrieveLookupsFromIdentifiersInStorage = () => {
+    // Get unique identifiers from storage
+    const uniqueIdentifiersFromStorage = readLookupIdentifiersFromStorage()
+    if (!uniqueIdentifiersFromStorage) {
+      return
+    }
+
     // Prevent another button press/submission
     setExistingQueriesInFlightFunction(true)
 
-    // Previous lookups available in cookie
+    // Previous lookups available in storage
     try {
-      // Get unique identifiers from cookie
-      const uniqueIdentifiersFromCookies = readLookupIdentifierCookie()
-
       // Filter out duplicate values.
       const uniqueIdentifiersWithoutDuplicates =
-        uniqueIdentifiersFromCookies.filter(
+        uniqueIdentifiersFromStorage.filter(
           (value, index, self) =>
             self.indexOf(value) === index &&
-            // Don't lookup unique identifier twice if cookie value matches route.
+            // Don't lookup unique identifier twice if stored value matches route.
             value !== previousLookupUniqueIdentifierFromQuery,
         )
 
@@ -410,26 +426,26 @@ const Search = ({
   }
 
   useEffect(() => {
-    // Update cookie from unique identifiers
+    // Update stored value from unique identifiers
     const uniqueIdentifiersFromCurrentlyQueriedVehicles =
       getLookupIdentifiersForCurrentlyQueriedVehicles(queriedVehicles)
 
-    const cookieWouldBeUpdated =
-      readLookupIdentifierCookie().toString() !==
+    const storageIdentifiersWouldBeUpdated =
+      readLookupIdentifiersFromStorage().toString() !==
       uniqueIdentifiersFromCurrentlyQueriedVehicles.slice().reverse().toString()
 
     if (
       uniqueIdentifiersFromCurrentlyQueriedVehicles.length > 0 &&
-      cookieWouldBeUpdated
+      storageIdentifiersWouldBeUpdated
     ) {
       // Removing a lookup uses a different function
       // so we don't need to handle the case where
       // we remove the last lookup on the page.
       //
-      // Don't blank out the cookie because React state
+      // Don't blank out the stored value because React state
       // changes temporarily.
 
-      syncIdentifiersToIdentifierCookie(
+      syncLookupIdentifiersToStorage(
         uniqueIdentifiersFromCurrentlyQueriedVehicles,
       )
     }
@@ -494,9 +510,7 @@ const Search = ({
         )
       }
 
-      if (cookies[LOOKUP_IDENTIFIER_COOKIE]) {
-        retrieveLookupsFromCookieIdentifiers()
-      }
+      retrieveLookupsFromIdentifiersInStorage()
     }
     displayPreviousLookup()
   }, [previousLookupUniqueIdentifierFromQuery])
@@ -553,11 +567,11 @@ const Search = ({
     // Prevent another button press/submission
     setLookupInFlightFunction(true)
 
-    if (searchError && cookies[LOOKUP_IDENTIFIER_COOKIE]) {
+    if (searchError && cookies[LOOKUP_IDENTIFIER_STORAGE_KEY]) {
       // If we are recovering from a previous query error,
       // try to retrieve the previous lookups first. Otherwise,
       // we'll lose all of our previous queries.
-      retrieveLookupsFromCookieIdentifiers()
+      retrieveLookupsFromIdentifiersInStorage()
     }
 
     const mixpanelId = tracker?.getDistinctId('mixpanel')

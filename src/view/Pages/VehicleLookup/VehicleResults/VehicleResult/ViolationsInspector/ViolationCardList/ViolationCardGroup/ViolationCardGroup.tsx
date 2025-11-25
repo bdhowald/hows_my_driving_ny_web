@@ -2,9 +2,9 @@ import React, { useContext, useState } from 'react'
 import { useCookies } from 'react-cookie'
 
 import {
-  USE_NEW_STYLE_DISPLAY_COOKIE,
-  USE_SEARCH_FILTERS_COOKIE,
-} from 'constants/cookies'
+  USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
+  USE_SEARCH_FILTERS_STORAGE_KEY,
+} from 'constants/storage'
 import L10N from 'constants/display'
 import Sort from 'constants/sortOptions'
 import { ApplicationContext } from 'context/ApplicationContext'
@@ -69,8 +69,8 @@ const ViolationCardGroup = ({
   sortAscending: boolean
 }) => {
   const [cookies, _] = useCookies([
-    USE_NEW_STYLE_DISPLAY_COOKIE,
-    USE_SEARCH_FILTERS_COOKIE,
+    USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
+    USE_SEARCH_FILTERS_STORAGE_KEY,
   ])
   const [groupIsVisible, setGroupIsVisible] = useState(true)
 
@@ -102,8 +102,9 @@ const ViolationCardGroup = ({
           setGroupIsVisible(!groupIsVisible)
           tracker?.trackEvent('toggle_violation_group', {
             location: 'ViolationCardGroup',
-            useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_COOKIE] === true,
-            useSearchFilters: cookies[USE_SEARCH_FILTERS_COOKIE] === true,
+            useNewStyleDisplay:
+              cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true,
+            useSearchFilters: cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true,
           })
         }}
         sortAscending={sortAscending}
