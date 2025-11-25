@@ -88,7 +88,6 @@ describe('Navigation', () => {
         expect(collapsibleNavBar).toHaveClass('show')
       })
 
-      console.log('before other click')
       // click on the other element, not part of the nav bar
       userEvent.click(someOtherElement)
 

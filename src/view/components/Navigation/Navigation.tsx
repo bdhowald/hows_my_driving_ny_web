@@ -79,7 +79,6 @@ const Navigation = () => {
   }
 
   const handleBlur = () => {
-    console.log('ignoreBlurRef.current:', ignoreBlurRef.current)
     if (!ignoreBlurRef.current) {
       blurHappenedRef.current = true
       setNavBarIsOpen(false)
