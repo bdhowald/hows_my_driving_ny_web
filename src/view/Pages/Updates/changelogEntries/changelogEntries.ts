@@ -3,6 +3,31 @@ const changelogEntries = [
     year: '2025',
     yearEntries: [
       {
+        date: '2025-11-24',
+        dateEntries: [
+          {
+            description:
+              'Use local storage for previous query storage, falling back to cookies, if necessary',
+            commits: [
+              {
+                project: 'hows_my_driving_ny_web',
+                sha: '7dabc3a7651df8a36044459f414fdd398ed32d71',
+              },
+            ],
+          },
+          {
+            description:
+              'Break main component out into its own page, reorganize site to have consistent structure, add FAQ and Updates pages.',
+            commits: [
+              {
+                project: 'hows_my_driving_ny_web',
+                sha: '3bf79fe535d44868cf8f743861bc4fd7e804662c',
+              },
+            ],
+          },
+        ],
+      },
+      {
         date: '2025-11-18',
         dateEntries: [
           {
@@ -11,6 +36,10 @@ const changelogEntries = [
               {
                 project: 'hows_my_driving_ny_web',
                 sha: 'e0b1273e53bde1f3f5e70624c58344c735784baa',
+              },
+              {
+                project: 'hows_my_driving_ny_web',
+                sha: '52a10ae299040c297613222ffbf1280b7867aab4',
               },
             ],
           },
@@ -3053,11 +3082,6 @@ const changelogEntries = [
               },
             ],
           },
-        ],
-      },
-      {
-        date: '2020-04-26',
-        dateEntries: [
           {
             description:
               'Adding auto_populate_reply_metadata to statuses to avoid having to add the username to every response status.',
@@ -3082,11 +3106,6 @@ const changelogEntries = [
               },
             ],
           },
-        ],
-      },
-      {
-        date: '2020-04-21',
-        dateEntries: [
           {
             description:
               'Update COVID-19 job with Open Parking and Camera Violation data though April 13, 2020.',
@@ -3435,21 +3454,6 @@ const changelogEntries = [
               {
                 project: 'hows_my_driving_ny_web',
                 sha: '5feb2cb5a17d866a932ef90d767535675a315872',
-              },
-            ],
-          },
-        ],
-      },
-      {
-        date: '2020-02-08',
-        dateEntries: [
-          {
-            description:
-              'Decamelize keys in request until API supports POST requests.',
-            commits: [
-              {
-                project: 'hows_my_driving_ny_web',
-                sha: 'b418586722e7e32ec01a2411b7498f950e8f2bca',
               },
             ],
           },
@@ -3819,11 +3823,6 @@ const changelogEntries = [
               },
             ],
           },
-        ],
-      },
-      {
-        date: '2019-08-25',
-        dateEntries: [
           {
             description:
               'Update fiscal year endpoints to include new endpoints for FYs 2017, 2018, and 2019. Adding 2020 endpoint as well.',
@@ -4805,21 +4804,6 @@ const changelogEntries = [
         ],
       },
       {
-        date: '2018-08-18',
-        dateEntries: [
-          {
-            description:
-              'Fix error where un-geocoded places would cause process to hang.',
-            commits: [
-              {
-                project: 'hows_my_driving_ny_api',
-                sha: 'c48a899cf7201fba9b4e54a6c46bb7947a574e00',
-              },
-            ],
-          },
-        ],
-      },
-      {
         date: '2018-09-02',
         dateEntries: [
           {
@@ -4858,6 +4842,21 @@ const changelogEntries = [
               {
                 project: 'hows_my_driving',
                 sha: '1eda23f2955434e7beedb48db2f0bd4f548eb587',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        date: '2018-08-18',
+        dateEntries: [
+          {
+            description:
+              'Fix error where un-geocoded places would cause process to hang.',
+            commits: [
+              {
+                project: 'hows_my_driving_ny_api',
+                sha: 'c48a899cf7201fba9b4e54a6c46bb7947a574e00',
               },
             ],
           },

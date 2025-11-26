@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card'
 
 import L10N from 'constants/display'
 
-import changelogEntries from './changelogEntries'
+import changelogEntries from './changelogEntries/changelogEntries'
 
 import './Updates.css'
 
