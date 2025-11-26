@@ -1,32 +1,14 @@
 import React from 'react'
-import { act, render, renderHook } from '@testing-library/react'
+import { act, renderHook } from '@testing-library/react'
 
 import useClientStorage from './useClientStorage'
 
 const TEST_STORAGE_KEY = 'testStorage'
-// let testNumber = 0
-
-// const getStorageKey = () => `${TEST_STORAGE_KEY_PREFIX}${++testNumber}`
 
 describe('useClientStorage', () => {
   afterEach(() => {
     localStorage.removeItem(TEST_STORAGE_KEY)
   })
-  const DummyComponent = (key: string) => {
-    const [value, updateValue] = useClientStorage<number>(key)
-    return (
-      <div>
-        <input aria-label="get value" value={value} />
-        <button
-          onClick={() => {
-            if (value) {
-              updateValue(value + 1)
-            }
-          }}
-        />
-      </div>
-    )
-  }
 
   it('should expose the functions from the hook/function', () => {
     const { result } = renderHook(() =>
