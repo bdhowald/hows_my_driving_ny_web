@@ -17,8 +17,9 @@ import HttpStatusCode from 'constants/httpStatusCode'
 import { PlateType } from 'constants/plateTypes'
 import regexps from 'constants/regexps'
 import { MILLISECONDS_IN_SECOND } from 'constants/time'
-import { ApplicationContext } from 'context/ApplicationContext'
+import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
 import useLookupIdentifierStorage from 'hooks/useLookupIdentifierStorage/useLookupIdentifierStorage'
+import useSettings from 'hooks/useSettings/useSettings'
 import getListOfQueriedVehiclesAfterResponse from 'utils/processResults/getListOfQueriedVehiclesAfterResponse/getListOfQueriedVehiclesAfterResponse'
 import getQueriedVehicleFromResponse from 'utils/processResults/getQueriedVehicleFromResponse/getQueriedVehicleFromResponse'
 import performLookup from 'utils/search/performLookup/performLookup'
@@ -129,9 +130,10 @@ const Search = ({
   const [cookies, setCookie] = useCookies([
     DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
     LOOKUP_IDENTIFIER_STORAGE_KEY,
-    USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
     USE_SEARCH_FILTERS_STORAGE_KEY,
   ])
+
+  const { getSetting, removeSetting, updateSetting } = useSettings()
 
   const { readLookupIdentifiersFromStorage, syncLookupIdentifiersToStorage } =
     useLookupIdentifierStorage()
@@ -139,15 +141,16 @@ const Search = ({
   const applicationContext = useContext(ApplicationContext)
   const { tracker } = applicationContext
 
-  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true
+  const useNewStyleDisplay =
+    getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true
   const useSearchFilters = cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true
 
   useEffect(() => {
     const queryParameters = new URLSearchParams(document.location.search)
 
-    const useNewStyleDisplayCookiePresent =
-      cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] !== null &&
-      cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] !== undefined
+    const useNewStyleDisplaySettingPresent =
+      getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) !== null &&
+      getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) !== undefined
 
     const queryParamFeatureFlagEnabled =
       queryParameters.get(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === 'true'
@@ -156,7 +159,7 @@ const Search = ({
       queryParameters.get(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === 'false'
 
     if (
-      !useNewStyleDisplayCookiePresent ||
+      !useNewStyleDisplaySettingPresent ||
       !useNewStyleDisplay ||
       queryParamFeatureFlagEnabled ||
       queryParamFeatureFlagDisabled
@@ -172,24 +175,15 @@ const Search = ({
       const inReserveGroup = !inControlGroup && !inExperimentalGroup
 
       if (inExperimentalGroup) {
-        setCookie(USE_NEW_STYLE_DISPLAY_STORAGE_KEY, 'true', {
-          maxAge: COOKIE_MAX_AGE,
-          path: COOKIE_DEFAULT_PATH,
-        })
+        updateSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY, true)
       }
 
       if (inControlGroup) {
-        setCookie(USE_NEW_STYLE_DISPLAY_STORAGE_KEY, 'false', {
-          maxAge: COOKIE_MAX_AGE,
-          path: COOKIE_DEFAULT_PATH,
-        })
+        updateSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY, false)
       }
 
       if (inReserveGroup) {
-        setCookie(USE_NEW_STYLE_DISPLAY_STORAGE_KEY, 'none', {
-          maxAge: COOKIE_MAX_AGE,
-          path: COOKIE_DEFAULT_PATH,
-        })
+        removeSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY)
       }
     }
   }, [])
@@ -305,7 +299,7 @@ const Search = ({
   const retrieveLookupsFromIdentifiersInStorage = () => {
     // Get unique identifiers from storage
     const uniqueIdentifiersFromStorage = readLookupIdentifiersFromStorage()
-    if (!uniqueIdentifiersFromStorage) {
+    if (uniqueIdentifiersFromStorage.length === 0) {
       return
     }
 

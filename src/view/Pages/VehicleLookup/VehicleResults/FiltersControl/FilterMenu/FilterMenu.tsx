@@ -8,6 +8,8 @@ import regions from 'constants/regions'
 import { FilterFormElement, ResultsFilterSet } from 'types/resultsFilters'
 import formatDateInEasternTime from 'utils/filterResults/formatDateInEasternTime/formatDateInEasternTime'
 
+import 'view/Pages/VehicleLookup/VehicleResults/FiltersControl/FilterMenu/FilterMenu.css'
+
 import FormControls from './FormControls/FormControls'
 
 const FilterMenu = ({

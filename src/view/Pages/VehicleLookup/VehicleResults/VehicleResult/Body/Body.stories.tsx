@@ -1,33 +1,17 @@
-import * as React from 'react'
+import React, { ReactNode } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
+import {
+  newStyleDisplayDecorator,
+  oldStyleDisplayDecorator,
+} from 'tests/utils/withStyleDisplayDecorator'
 
 import Body from './Body'
 
 const meta: Meta<typeof Body> = {
   title: 'Components/VehicleResults/VehicleResult/Body',
   component: Body,
-  decorators: [
-    (Story) => (
-      <div className="site-container-wrapper">
-        <div className="site-container container-fluid">
-          <main>
-            <div className="row">
-              <div className="col-md-12 vehicle-lookup-content-container">
-                <div className="vehicles">
-                  <div className="vehicle card">
-                    {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-                    <Story />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </main>
-        </div>
-      </div>
-    ),
-  ],
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   parameters: {
@@ -37,6 +21,34 @@ const meta: Meta<typeof Body> = {
 }
 
 type Story = StoryObj<typeof Body>
+
+const ParentHtml = ({
+  children,
+  useNewStyleDisplay,
+}: {
+  children: ReactNode
+  useNewStyleDisplay: boolean
+}) => {
+  const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
+
+  return (
+    <div className="site-container-wrapper">
+      <div className="site-container container-fluid">
+        <main>
+          <div className="row">
+            <div
+              className={`col-md-12 vehicle-lookup-content-container ${newStyleDisplayClassName}`}
+            >
+              <div className={`vehicles ${newStyleDisplayClassName}`}>
+                <div className="vehicle card">{children}</div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  )
+}
 
 const vehicleEligibleForDangerousVehicleAbatementActNotice =
   VehicleFactory.build({
@@ -83,31 +95,71 @@ const vehicleIneligibleForDangerousVehicleAbatementActNotice =
     },
   })
 
-export const ViolationsListHidden: Story = {
+export const ViolationsListHiddenNewStyleDisplay: Story = {
   args: {
     showViolationsList: false,
     vehicle: vehicleIneligibleForDangerousVehicleAbatementActNotice,
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
-export const ViolationsListVisible: Story = {
+export const ViolationsListHiddenOldStyleDisplay: Story = {
+  args: {
+    showViolationsList: false,
+    vehicle: vehicleIneligibleForDangerousVehicleAbatementActNotice,
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
+}
+
+export const ViolationsListVisibleNewStyleDisplay: Story = {
   args: {
     showViolationsList: true,
     vehicle: vehicleIneligibleForDangerousVehicleAbatementActNotice,
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
-export const ViolationsListHiddenWithDangerousVehicleAbatementAct: Story = {
-  args: {
-    showViolationsList: false,
-    vehicle: vehicleEligibleForDangerousVehicleAbatementActNotice,
-  },
-}
-export const ViolationsListVisibleWithDangerousVehicleAbatementAct: Story = {
+export const ViolationsListVisibleOldStyleDisplay: Story = {
   args: {
     showViolationsList: true,
-    vehicle: vehicleEligibleForDangerousVehicleAbatementActNotice,
+    vehicle: vehicleIneligibleForDangerousVehicleAbatementActNotice,
   },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
 }
-export const NoViolations: Story = {
+
+export const ViolationsListHiddenWithDangerousVehicleAbatementActNewStyleDisplay: Story =
+  {
+    args: {
+      showViolationsList: false,
+      vehicle: vehicleEligibleForDangerousVehicleAbatementActNotice,
+    },
+    decorators: [newStyleDisplayDecorator(ParentHtml)],
+  }
+export const ViolationsListHiddenWithDangerousVehicleAbatementActOldStyleDisplay: Story =
+  {
+    args: {
+      showViolationsList: false,
+      vehicle: vehicleEligibleForDangerousVehicleAbatementActNotice,
+    },
+    decorators: [oldStyleDisplayDecorator(ParentHtml)],
+  }
+
+export const ViolationsListVisibleWithDangerousVehicleAbatementActNewStyleDisplay: Story =
+  {
+    args: {
+      showViolationsList: true,
+      vehicle: vehicleEligibleForDangerousVehicleAbatementActNotice,
+    },
+    decorators: [newStyleDisplayDecorator(ParentHtml)],
+  }
+export const ViolationsListVisibleWithDangerousVehicleAbatementActOldStyleDisplay: Story =
+  {
+    args: {
+      showViolationsList: true,
+      vehicle: vehicleEligibleForDangerousVehicleAbatementActNotice,
+    },
+    decorators: [oldStyleDisplayDecorator(ParentHtml)],
+  }
+
+export const NoViolationsNewStyleDisplay: Story = {
   args: {
     showViolationsList: true,
     vehicle: VehicleFactory.build({
@@ -132,6 +184,34 @@ export const NoViolations: Story = {
       violationsCount: 0,
     }),
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
+}
+export const NoViolationsOldStyleDisplay: Story = {
+  args: {
+    showViolationsList: true,
+    vehicle: VehicleFactory.build({
+      cameraStreakData: {
+        cameraViolations: {
+          maxStreak: 0,
+          streakEnd: null,
+          streakStart: null,
+        },
+        redLightCameraViolations: {
+          maxStreak: 0,
+          streakEnd: null,
+          streakStart: null,
+        },
+        schoolZoneSpeedCameraViolations: {
+          maxStreak: 0,
+          streakEnd: null,
+          streakStart: null,
+        },
+      },
+      violations: [],
+      violationsCount: 0,
+    }),
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
 }
 
 export default meta

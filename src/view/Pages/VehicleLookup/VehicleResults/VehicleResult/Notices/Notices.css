@@ -1,0 +1,60 @@
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.dangerous-vehicle-notice {
+  flex-direction: column;
+  padding: 1em;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.dangerous-vehicle-notice
+  p {
+  margin: 0 0.5rem 0.5rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.dangerous-vehicle-notice
+  p:last-child {
+  margin-top: 0.5rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.dangerous-vehicle-notice
+  p
+  a {
+  color: #000;
+  margin: 0 0 0 0.25rem;
+  text-decoration: underline;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.dangerous-vehicle-notice
+  ul
+  li {
+  list-style-type: disc;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item.dangerous-vehicle-notice
+  ul
+  li
+  span.streak-count-and-type
+  span.streak-count {
+  font-weight: bold;
+}

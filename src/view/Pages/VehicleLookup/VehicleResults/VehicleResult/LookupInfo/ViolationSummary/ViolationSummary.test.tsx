@@ -1,5 +1,4 @@
 import React from 'react'
-import { Cookies, CookiesProvider } from 'react-cookie'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -11,11 +10,18 @@ import {
   SchoolZoneSpeedCameraViolationFactory,
   ViolationFactory,
 } from '__fixtures__/models/Violation'
+import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 
 import ViolationSummary from './ViolationSummary'
 
 describe('ViolationSummary', () => {
   describe('renders without error', () => {
+    const mockedSettings = {
+      getSetting: jest.fn().mockReturnValueOnce(true),
+      removeSetting: jest.fn(),
+      updateSetting: jest.fn(),
+    }
+
     it('renders without error with the new-style display', () => {
       const vehicle = VehicleFactory.build({
         violations: [
@@ -34,9 +40,9 @@ describe('ViolationSummary', () => {
       })
 
       render(
-        <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+        <SettingsContext.Provider value={mockedSettings}>
           <ViolationSummary vehicle={vehicle} />
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       expect(screen.getByText('Violations:')).toBeInTheDocument()
@@ -44,6 +50,12 @@ describe('ViolationSummary', () => {
     })
 
     it('renders without error with the old-style display', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValueOnce(false),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       const vehicle = VehicleFactory.build({
         violations: [
           ViolationFactory.build({
@@ -61,9 +73,9 @@ describe('ViolationSummary', () => {
       })
 
       render(
-        <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+        <SettingsContext.Provider value={mockedSettings}>
           <ViolationSummary vehicle={vehicle} />
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       expect(screen.getByText('Violations:')).toBeInTheDocument()
@@ -73,6 +85,12 @@ describe('ViolationSummary', () => {
 
   describe('render violation aspect counts', () => {
     describe('new-style display', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValue(true),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       test.each([
         {
           width: 420,
@@ -128,9 +146,9 @@ describe('ViolationSummary', () => {
           })
 
           render(
-            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+            <SettingsContext.Provider value={mockedSettings}>
               <ViolationSummary vehicle={vehicle} />
-            </CookiesProvider>,
+            </SettingsContext.Provider>,
           )
 
           if (width < 576) {
@@ -230,9 +248,9 @@ describe('ViolationSummary', () => {
           })
 
           render(
-            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+            <SettingsContext.Provider value={mockedSettings}>
               <ViolationSummary vehicle={vehicle} />
-            </CookiesProvider>,
+            </SettingsContext.Provider>,
           )
 
           if (width < 576) {
@@ -338,9 +356,9 @@ describe('ViolationSummary', () => {
           })
 
           render(
-            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+            <SettingsContext.Provider value={mockedSettings}>
               <ViolationSummary vehicle={vehicle} />
-            </CookiesProvider>,
+            </SettingsContext.Provider>,
           )
 
           if (width < 576) {
@@ -434,9 +452,9 @@ describe('ViolationSummary', () => {
           })
 
           render(
-            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+            <SettingsContext.Provider value={mockedSettings}>
               <ViolationSummary vehicle={vehicle} />
-            </CookiesProvider>,
+            </SettingsContext.Provider>,
           )
 
           const showMoreDetailsLink = screen.queryByRole('link', {
@@ -460,6 +478,12 @@ describe('ViolationSummary', () => {
     })
 
     describe('old-style display', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValue(false),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       let savedGlobalWidth: number
 
       beforeEach(() => {
@@ -525,9 +549,9 @@ describe('ViolationSummary', () => {
           })
 
           render(
-            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+            <SettingsContext.Provider value={mockedSettings}>
               <ViolationSummary vehicle={vehicle} />
-            </CookiesProvider>,
+            </SettingsContext.Provider>,
           )
 
           if (width < 576) {
@@ -627,9 +651,9 @@ describe('ViolationSummary', () => {
           })
 
           render(
-            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+            <SettingsContext.Provider value={mockedSettings}>
               <ViolationSummary vehicle={vehicle} />
-            </CookiesProvider>,
+            </SettingsContext.Provider>,
           )
 
           if (width < 576) {
@@ -732,9 +756,9 @@ describe('ViolationSummary', () => {
           })
 
           render(
-            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+            <SettingsContext.Provider value={mockedSettings}>
               <ViolationSummary vehicle={vehicle} />
-            </CookiesProvider>,
+            </SettingsContext.Provider>,
           )
 
           if (width < 576) {
@@ -828,9 +852,9 @@ describe('ViolationSummary', () => {
           })
 
           render(
-            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+            <SettingsContext.Provider value={mockedSettings}>
               <ViolationSummary vehicle={vehicle} />
-            </CookiesProvider>,
+            </SettingsContext.Provider>,
           )
 
           const showMoreDetailsLink = screen.queryByRole('link', {

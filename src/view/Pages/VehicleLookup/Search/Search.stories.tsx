@@ -1,5 +1,10 @@
-import * as React from 'react'
+import React, { ReactNode } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
+
+import {
+  newStyleDisplayDecorator,
+  oldStyleDisplayDecorator,
+} from 'tests/utils/withStyleDisplayDecorator'
 
 import Search from './Search'
 
@@ -36,11 +41,39 @@ const meta: Meta<typeof Search> = {
 
 type Story = StoryObj<typeof Search>
 
-export const SearchAtPageLoad: Story = {
+const ParentHtml = ({
+  children,
+  useNewStyleDisplay,
+}: {
+  children: ReactNode
+  useNewStyleDisplay: boolean
+}) => {
+  const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
+
+  return (
+    <div className="site-container-wrapper">
+      <div className="site-container container-fluid">
+        <main>
+          <div className="row">{children}</div>
+        </main>
+      </div>
+    </div>
+  )
+}
+
+export const SearchAtPageLoadNewStyleDisplay: Story = {
   args: {
     lookupInFlight: true,
     queriedVehicles: [],
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
+}
+export const SearchAtPageLoadOldStyleDisplay: Story = {
+  args: {
+    lookupInFlight: true,
+    queriedVehicles: [],
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
 }
 
 export default meta

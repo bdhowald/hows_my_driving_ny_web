@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
-import { useCookies } from 'react-cookie'
 
-import {
-  USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
-  USE_SEARCH_FILTERS_STORAGE_KEY,
-} from 'constants/storage'
+import { USE_NEW_STYLE_DISPLAY_STORAGE_KEY } from 'constants/storage'
+import useSettings from 'hooks/useSettings/useSettings'
 import {
   FilterFormElement,
   FilterType,
@@ -12,6 +9,8 @@ import {
   ResultsFilterSet,
 } from 'types/resultsFilters'
 import convertCamelCaseToTitleCase from 'utils/displayResults/convertCamelCaseToTitleCase/convertCamelCaseToTitleCase'
+
+import 'view/Pages/VehicleLookup/VehicleResults/FiltersControl/FiltersControl.css'
 
 import FilterBreadcrumb from './FilterBreadcrumb/FilterBreadcrumb'
 import FilterMenu from './FilterMenu/FilterMenu'
@@ -35,11 +34,9 @@ const FiltersControl = ({
   resultsLength: number
   scrollRef: React.RefObject<HTMLDivElement>
 }) => {
-  const [cookies, _] = useCookies([
-    USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
-    USE_SEARCH_FILTERS_STORAGE_KEY,
-  ])
-  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true
+  const { getSetting } = useSettings()
+  const useNewStyleDisplay =
+    getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true
 
   const [filtersAreVisble, setFiltersAreVisible] = useState<boolean>(false)
 

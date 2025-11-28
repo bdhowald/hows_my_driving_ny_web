@@ -2,15 +2,25 @@ import * as React from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import { render, screen } from '@testing-library/react'
 
+import { SettingsContext } from 'context/SettingsContext/SettingsContext'
+
 import SiteContainer from './SiteContainer'
 
 describe('SiteContainer', () => {
+  const mockedSettings = {
+    getSetting: jest.fn(),
+    removeSetting: jest.fn(),
+    updateSetting: jest.fn(),
+  }
+
   it('should render successfully', () => {
     render(
       <MemoryRouter>
-        <SiteContainer>
-          <></>
-        </SiteContainer>
+        <SettingsContext.Provider value={mockedSettings}>
+          <SiteContainer>
+            <></>
+          </SiteContainer>
+        </SettingsContext.Provider>
       </MemoryRouter>,
     )
 

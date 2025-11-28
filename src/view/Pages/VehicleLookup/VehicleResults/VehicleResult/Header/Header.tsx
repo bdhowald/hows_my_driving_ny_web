@@ -28,10 +28,13 @@ import {
   USE_SEARCH_FILTERS_STORAGE_KEY,
 } from 'constants/storage'
 import L10N from 'constants/display'
-import { ApplicationContext } from 'context/ApplicationContext'
+import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
+import useSettings from 'hooks/useSettings/useSettings'
 import Vehicle from 'models/Vehicle/Vehicle'
 import SocialShareButton from 'view/components/SocialShareButton/SocialShareButton'
 // import RefreshLookupButton from 'view/VehicleResults/Header/RefreshLookupButton/RefreshLookupButton'
+
+import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/Header/Header.css'
 
 // Add Font Awesome icons
 library.add(
@@ -48,10 +51,8 @@ const CopyButton = ({
 }: {
   vehicleUniqueIdentifier: string
 }) => {
-  const [cookies, _] = useCookies([
-    USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
-    USE_SEARCH_FILTERS_STORAGE_KEY,
-  ])
+  const { getSetting } = useSettings()
+  const [cookies, _] = useCookies([USE_SEARCH_FILTERS_STORAGE_KEY])
 
   const [buttonPressedClass, setButtonPressedClass] = useState('')
   const [iconClass, setIconClass] = useState('fa')
@@ -86,7 +87,7 @@ const CopyButton = ({
         tracker?.trackEvent('user_copied_link_to_lookup', {
           uniqueIdentifier: vehicleUniqueIdentifier,
           useNewStyleDisplay:
-            cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true,
+            getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true,
           useSearchFilters: cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true,
         })
 

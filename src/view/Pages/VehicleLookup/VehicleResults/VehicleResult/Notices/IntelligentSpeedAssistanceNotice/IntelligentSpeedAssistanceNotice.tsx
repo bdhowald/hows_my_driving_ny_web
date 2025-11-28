@@ -1,9 +1,11 @@
 import React from 'react'
-import { useCookies } from 'react-cookie'
 
 import { USE_NEW_STYLE_DISPLAY_STORAGE_KEY } from 'constants/storage'
 import L10N from 'constants/display'
+import useSettings from 'hooks/useSettings/useSettings'
 import Vehicle from 'models/Vehicle/Vehicle'
+
+import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/Notices/Notices.css'
 
 const ISA_CAMERA_COUNT_THRESHOLD = 6
 
@@ -82,8 +84,9 @@ const IntelligentSpeedAssistanceNotice = ({
     return undefined
   }
 
-  const [cookies, _, __] = useCookies([USE_NEW_STYLE_DISPLAY_STORAGE_KEY])
-  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true
+  const { getSetting } = useSettings()
+  const useNewStyleDisplay =
+    getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true
 
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 

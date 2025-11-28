@@ -5,6 +5,7 @@ import { fireEvent } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
+import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 
 import VehicleResults from './VehicleResults'
 
@@ -23,8 +24,14 @@ describe('VehicleResults', () => {
       }
       const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
 
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValueOnce(true),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
-        <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleResults
             existingQueriesInFlight={false}
             lookupInFlight={false}
@@ -34,7 +41,7 @@ describe('VehicleResults', () => {
             vehicleDisplayResults={[vehicleDisplayResult]}
           />
           ,
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       expect(
@@ -52,8 +59,14 @@ describe('VehicleResults', () => {
       }
       const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
 
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValueOnce(false),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
-        <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleResults
             existingQueriesInFlight={false}
             lookupInFlight={false}
@@ -62,8 +75,7 @@ describe('VehicleResults', () => {
             scrollRef={ref}
             vehicleDisplayResults={[vehicleDisplayResult]}
           />
-          ,
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       expect(
@@ -81,8 +93,14 @@ describe('VehicleResults', () => {
       }
       const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
 
+      const mockedSettings = {
+        getSetting: jest.fn(),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
-        <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleResults
             existingQueriesInFlight={true}
             lookupInFlight={false}
@@ -92,7 +110,7 @@ describe('VehicleResults', () => {
             vehicleDisplayResults={[vehicleDisplayResult]}
           />
           ,
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       expect(screen.getByTestId('shimmer-loader')).toBeInTheDocument()
@@ -108,8 +126,14 @@ describe('VehicleResults', () => {
       }
       const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
 
+      const mockedSettings = {
+        getSetting: jest.fn(),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
-        <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleResults
             existingQueriesInFlight={false}
             lookupInFlight={true}
@@ -118,8 +142,7 @@ describe('VehicleResults', () => {
             scrollRef={ref}
             vehicleDisplayResults={[vehicleDisplayResult]}
           />
-          ,
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       expect(screen.getByTestId('shimmer-loader')).toBeInTheDocument()
@@ -141,16 +164,24 @@ describe('VehicleResults', () => {
       }
       const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
 
+      const mockedSettings = {
+        getSetting: jest.fn(),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
         <CookiesProvider cookies={new Cookies('useSearchFilters=true;')}>
-          <VehicleResults
-            existingQueriesInFlight={false}
-            lookupInFlight={true}
-            refreshLookupFunction={refreshLookupFunction}
-            removeLookupFunction={removeLookupFunction}
-            scrollRef={ref}
-            vehicleDisplayResults={[vehicleDisplayResult]}
-          />
+          <SettingsContext.Provider value={mockedSettings}>
+            <VehicleResults
+              existingQueriesInFlight={false}
+              lookupInFlight={true}
+              refreshLookupFunction={refreshLookupFunction}
+              removeLookupFunction={removeLookupFunction}
+              scrollRef={ref}
+              vehicleDisplayResults={[vehicleDisplayResult]}
+            />
+          </SettingsContext.Provider>
         </CookiesProvider>,
       )
 
@@ -166,15 +197,23 @@ describe('VehicleResults', () => {
     it('should not display the filters control if there are no results to display', () => {
       const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
 
+      const mockedSettings = {
+        getSetting: jest.fn(),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
-        <VehicleResults
-          existingQueriesInFlight={false}
-          lookupInFlight={true}
-          refreshLookupFunction={refreshLookupFunction}
-          removeLookupFunction={removeLookupFunction}
-          scrollRef={ref}
-          vehicleDisplayResults={[]}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <VehicleResults
+            existingQueriesInFlight={false}
+            lookupInFlight={true}
+            refreshLookupFunction={refreshLookupFunction}
+            removeLookupFunction={removeLookupFunction}
+            scrollRef={ref}
+            vehicleDisplayResults={[]}
+          />
+        </SettingsContext.Provider>,
       )
 
       const resultsheader = screen.queryByText('Showing 1 result')
@@ -274,16 +313,24 @@ describe('VehicleResults', () => {
         },
       ]
 
+      const mockedSettings = {
+        getSetting: jest.fn(),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
         <CookiesProvider cookies={new Cookies('useSearchFilters=true;')}>
-          <VehicleResults
-            existingQueriesInFlight={false}
-            lookupInFlight={true}
-            refreshLookupFunction={refreshLookupFunction}
-            removeLookupFunction={removeLookupFunction}
-            scrollRef={ref}
-            vehicleDisplayResults={vehicleDisplayResults}
-          />
+          <SettingsContext.Provider value={mockedSettings}>
+            <VehicleResults
+              existingQueriesInFlight={false}
+              lookupInFlight={true}
+              refreshLookupFunction={refreshLookupFunction}
+              removeLookupFunction={removeLookupFunction}
+              scrollRef={ref}
+              vehicleDisplayResults={vehicleDisplayResults}
+            />
+          </SettingsContext.Provider>
         </CookiesProvider>,
       )
 
@@ -445,16 +492,24 @@ describe('VehicleResults', () => {
         },
       ]
 
+      const mockedSettings = {
+        getSetting: jest.fn(),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
         <CookiesProvider cookies={new Cookies('useSearchFilters=true;')}>
-          <VehicleResults
-            existingQueriesInFlight={false}
-            lookupInFlight={true}
-            refreshLookupFunction={refreshLookupFunction}
-            removeLookupFunction={removeLookupFunction}
-            scrollRef={ref}
-            vehicleDisplayResults={vehicleDisplayResults}
-          />
+          <SettingsContext.Provider value={mockedSettings}>
+            <VehicleResults
+              existingQueriesInFlight={false}
+              lookupInFlight={true}
+              refreshLookupFunction={refreshLookupFunction}
+              removeLookupFunction={removeLookupFunction}
+              scrollRef={ref}
+              vehicleDisplayResults={vehicleDisplayResults}
+            />
+          </SettingsContext.Provider>
         </CookiesProvider>,
       )
 

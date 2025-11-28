@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Sort from 'constants/sortOptions'
 
+import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCardListSortControls/ViolationCardListSortControls.css'
+
 const SORT_OPTIONS: SortOption[] = [
   {
     displayText: 'Date',

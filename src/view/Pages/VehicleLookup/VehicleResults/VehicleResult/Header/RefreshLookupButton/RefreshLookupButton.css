@@ -1,0 +1,9 @@
+div.container-fluid
+  div.row
+  div.card
+  div.card-header
+  button.refresh-lookup-button {
+  background: none;
+  margin-left: auto;
+  margin-right: 0.5em;
+}

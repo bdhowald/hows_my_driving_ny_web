@@ -1,0 +1,32 @@
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper {
+  padding: 0.5rem 0 0;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table {
+  text-align: center;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  caption {
+  caption-side: top;
+}

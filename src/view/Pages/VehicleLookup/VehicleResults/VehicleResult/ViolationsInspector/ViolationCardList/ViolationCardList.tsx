@@ -10,6 +10,8 @@ import ViolationCardListControls from './ViolationCardListControls/ViolationCard
 import ViolationCardListSortControls from './ViolationCardListSortControls/ViolationCardListSortControls'
 import ViolationDetail from './ViolationDetail/ViolationDetail'
 
+import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCardList.css'
+
 const FINE_DIVIDER_INCREMENT = 25
 
 const ViolationCardList = ({

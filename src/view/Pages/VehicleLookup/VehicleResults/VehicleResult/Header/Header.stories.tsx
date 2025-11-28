@@ -1,36 +1,18 @@
-import * as React from 'react'
+import React, { ReactNode } from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
+import {
+  newStyleDisplayDecorator,
+  oldStyleDisplayDecorator,
+} from 'tests/utils/withStyleDisplayDecorator'
 
 import Header from './Header'
 
 const meta: Meta<typeof Header> = {
   title: 'Components/VehicleResults/VehicleResult/Header',
   component: Header,
-  decorators: [
-    (Story) => (
-      <MemoryRouter>
-        <div className="site-container-wrapper">
-          <div className="site-container container-fluid">
-            <main>
-              <div className="row">
-                <div className="col-md-12 vehicle-lookup-content-container">
-                  <div className="vehicles">
-                    <div className="vehicle card">
-                      {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-                      <Story />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </main>
-          </div>
-        </div>
-      </MemoryRouter>
-    ),
-  ],
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   parameters: {
@@ -41,21 +23,70 @@ const meta: Meta<typeof Header> = {
 
 type Story = StoryObj<typeof Header>
 
-export const Default: Story = {
+const ParentHtml = ({
+  children,
+  useNewStyleDisplay,
+}: {
+  children: ReactNode
+  useNewStyleDisplay: boolean
+}) => {
+  const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
+
+  return (
+    <MemoryRouter>
+      <div className="site-container-wrapper">
+        <div className="site-container container-fluid">
+          <main>
+            <div className="row">
+              <div
+                className={`col-md-12 vehicle-lookup-content-container ${newStyleDisplayClassName}`}
+              >
+                <div className={`vehicles ${newStyleDisplayClassName}`}>
+                  <div className="vehicle card">{children}</div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </MemoryRouter>
+  )
+}
+
+export const DefaultNewStyleDisplay: Story = {
   args: {
     removeLookupFunction: () =>
       alert('this would have removed the lookup from the screen'),
     vehicle: VehicleFactory.build(),
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
+}
+export const DefaultOldStyleDisplay: Story = {
+  args: {
+    removeLookupFunction: () =>
+      alert('this would have removed the lookup from the screen'),
+    vehicle: VehicleFactory.build(),
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
 }
 
-export const WithPreviousLookupSubheader: Story = {
+export const WithPreviousLookupSubheaderNewStyleDisplay: Story = {
   args: {
     fromPreviousLookupUniqueIdentifier: true,
     removeLookupFunction: () =>
       alert('this would have removed the lookup from the screen'),
     vehicle: VehicleFactory.build(),
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
+}
+export const WithPreviousLookupSubheaderOldStyleDisplay: Story = {
+  args: {
+    fromPreviousLookupUniqueIdentifier: true,
+    removeLookupFunction: () =>
+      alert('this would have removed the lookup from the screen'),
+    vehicle: VehicleFactory.build(),
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
 }
 
 export default meta

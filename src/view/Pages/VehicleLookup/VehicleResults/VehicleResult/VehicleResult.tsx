@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import Card from 'react-bootstrap/Card'
 
+import Vehicle from 'models/Vehicle/Vehicle'
 import { VehicleDisplaySuccessResult } from 'types/vehicleDisplayResult'
 
-import Vehicle from 'models/Vehicle/Vehicle'
+import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/VehicleResult.css'
+
 import Body from './Body/Body'
 import Header from './Header/Header'
 

@@ -18,8 +18,18 @@ const useSettingsStorage = () => {
     {},
   )
 
-  const getSetting = (key: string) => {
+  const getSetting = (key: string): Setting | SettingValue | undefined => {
     return settings ? settings[key] : undefined
+  }
+
+  const removeSetting = (key: string) => {
+    if (!settings) {
+      return
+    }
+
+    const { [key]: _, ...remainingSettings } = settings
+
+    updateSettings(remainingSettings)
   }
 
   const updateSetting = (key: string, value: Setting | SettingValue) => {
@@ -32,6 +42,7 @@ const useSettingsStorage = () => {
 
   return {
     getSetting,
+    removeSetting,
     updateSetting,
   }
 }

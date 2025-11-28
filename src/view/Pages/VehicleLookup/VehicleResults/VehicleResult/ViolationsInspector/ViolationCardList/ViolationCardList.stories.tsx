@@ -7,7 +7,8 @@ import { ViolationFactory } from '__fixtures__/models/Violation'
 import ViolationCardList from './ViolationCardList'
 
 const meta: Meta<typeof ViolationCardList> = {
-  title: 'Components/VehicleResults/VehicleResult/ViolationsInspector',
+  title:
+    'Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList',
   component: ViolationCardList,
   decorators: [
     (Story) => (
@@ -15,8 +16,8 @@ const meta: Meta<typeof ViolationCardList> = {
         <div className="site-container container-fluid">
           <main>
             <div className="row">
-              <div className="col-md-12 vehicle-lookup-content-container">
-                <div className="vehicles">
+              <div className="col-md-12 vehicle-lookup-content-container new-style">
+                <div className="vehicles new-style">
                   <div className="vehicle card">
                     <ul className="list-group-flush list-group">
                       <li className="list-group-item">

@@ -8,7 +8,8 @@ import { Link, useLocation } from 'react-router-dom'
 
 import L10N from 'constants/display'
 import regexps from 'constants/regexps'
-import useNewStyleDisplayCookie from 'hooks/useNewStyleDisplayCookie/useNewStyleDisplayCookie'
+import { USE_NEW_STYLE_DISPLAY_STORAGE_KEY } from 'constants/storage'
+import useSettings from 'hooks/useSettings/useSettings'
 
 import './Navigation.css'
 
@@ -43,8 +44,9 @@ const NavLinkWithActive = ({
 }
 
 const Navigation = () => {
-  const { newStyleDisplayActive } = useNewStyleDisplayCookie()
-  const useNewStyleDisplay = newStyleDisplayActive()
+  const { getSetting } = useSettings()
+  const useNewStyleDisplay =
+    getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true
 
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 

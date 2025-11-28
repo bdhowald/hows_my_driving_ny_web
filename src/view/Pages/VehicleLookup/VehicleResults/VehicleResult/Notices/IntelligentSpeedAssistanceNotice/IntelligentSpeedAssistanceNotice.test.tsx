@@ -1,14 +1,20 @@
 import React from 'react'
-import { Cookies, CookiesProvider } from 'react-cookie'
 import { render, screen } from '@testing-library/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
+import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 
 import IntelligentSpeedAssistanceNotice from './IntelligentSpeedAssistanceNotice'
 
 describe('IntelligentSpeedAssistanceNotice', () => {
   describe('renders without error', () => {
     describe('new-style display', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValue(true),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       test.each([
         {
           cameraStreakData: {
@@ -28,9 +34,9 @@ describe('IntelligentSpeedAssistanceNotice', () => {
           })
 
           render(
-            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+            <SettingsContext.Provider value={mockedSettings}>
               <IntelligentSpeedAssistanceNotice vehicle={vehicle} />
-            </CookiesProvider>,
+            </SettingsContext.Provider>,
           )
 
           // Expect sponsors' names to be visible
@@ -67,6 +73,12 @@ describe('IntelligentSpeedAssistanceNotice', () => {
     })
 
     describe('old-style display', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValue(false),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       test.each([
         {
           cameraStreakData: {
@@ -86,9 +98,9 @@ describe('IntelligentSpeedAssistanceNotice', () => {
           })
 
           render(
-            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+            <SettingsContext.Provider value={mockedSettings}>
               <IntelligentSpeedAssistanceNotice vehicle={vehicle} />
-            </CookiesProvider>,
+            </SettingsContext.Provider>,
           )
 
           // Expect sponsors' names to be visible
@@ -127,6 +139,12 @@ describe('IntelligentSpeedAssistanceNotice', () => {
 
   describe('handling unexpected data states', () => {
     describe('new-style display', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValue(true),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       it('should throw an error when a vehicle is not eligible', () => {
         const consoleError = jest
           .spyOn(console, 'error')
@@ -145,9 +163,9 @@ describe('IntelligentSpeedAssistanceNotice', () => {
 
         expect(() =>
           render(
-            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+            <SettingsContext.Provider value={mockedSettings}>
               <IntelligentSpeedAssistanceNotice vehicle={vehicle} />
-            </CookiesProvider>,
+            </SettingsContext.Provider>,
           ),
         ).toThrow('Camera data does not conform to any known configuration.')
         expect(consoleError).toHaveBeenCalled()
@@ -155,6 +173,12 @@ describe('IntelligentSpeedAssistanceNotice', () => {
     })
 
     describe('old-style display', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValue(true),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       it('should throw an error when a vehicle is not eligible', () => {
         const consoleError = jest
           .spyOn(console, 'error')
@@ -173,9 +197,9 @@ describe('IntelligentSpeedAssistanceNotice', () => {
 
         expect(() =>
           render(
-            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+            <SettingsContext.Provider value={mockedSettings}>
               <IntelligentSpeedAssistanceNotice vehicle={vehicle} />
-            </CookiesProvider>,
+            </SettingsContext.Provider>,
           ),
         ).toThrow('Camera data does not conform to any known configuration.')
         expect(consoleError).toHaveBeenCalled()

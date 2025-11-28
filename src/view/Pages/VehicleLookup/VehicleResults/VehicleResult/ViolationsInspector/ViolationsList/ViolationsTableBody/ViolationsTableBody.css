@@ -1,0 +1,465 @@
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.no-fines-breakdown::after {
+  content: '';
+  display: inline-block;
+  min-height: 3.125em;
+  vertical-align: top;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr
+  td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+@media only screen and (max-width: 768px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item
+    div.violations-table-wrapper
+    div.violations-table-body-wrapper
+    table
+    tbody
+    tr
+    td {
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.sort-divider {
+  background-color: black;
+  color: white;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.sort-divider
+  th,
+td {
+  background-color: black;
+  color: white;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.violation-row.table-danger
+  td {
+  box-shadow: none;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.violation-row.table-primary
+  td {
+  box-shadow: none;
+}
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.violation-row.table-warning
+  td {
+  box-shadow: none;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.violation-row
+  td.fines
+  div.fines-breakdown {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+@media only screen and (min-width: 520px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item
+    div.violations-table-wrapper
+    div.violations-table-body-wrapper
+    table
+    tbody
+    tr.violation-row
+    td.fines
+    div.fines-breakdown {
+    padding: 0.5rem;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item
+    div.violations-table-wrapper
+    div.violations-table-body-wrapper
+    table
+    tbody
+    tr.violation-row
+    td.fines
+    div.fines-breakdown {
+    padding: 1rem;
+  }
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.violation-row
+  td.fines
+  div.fines-breakdown
+  > div {
+  margin: 0 0.5rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.violation-row
+  td.fines
+  div.fines-breakdown
+  div.summary-box {
+  display: block;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.violation-row
+  td.fines
+  div.fines-breakdown
+  div.summary-box.keys {
+  text-align: left;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.violation-row
+  td.fines
+  div.fines-breakdown
+  div.summary-box.keys.lookup-info {
+  min-width: 5em;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.violation-row
+  td.fines
+  div.fines-breakdown
+  div.summary-box.values {
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 576px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item
+    div.violations-table-wrapper
+    div.violations-table-body-wrapper
+    table
+    tbody
+    tr.violation-row
+    td.fines
+    div.fines-breakdown
+    div.summary-box.keys {
+    margin-right: 1rem;
+  }
+
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item
+    div.violations-table-wrapper
+    div.violations-table-body-wrapper
+    table
+    tbody
+    tr.violation-row
+    td.fines
+    div.fines-breakdown
+    div.summary-box.values {
+    margin-left: 1rem;
+  }
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.violation-row
+  td.fines
+  div.fines-breakdown
+  div.summary-box.values.fines {
+  display: flex;
+  text-align: right;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.violation-row
+  td.fines
+  div.fines-breakdown
+  div.summary-box.values.lookup-info {
+  text-align: right;
+}
+
+@media only screen and (min-width: 576px) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item
+    div.violations-table-wrapper
+    div.violations-table-body-wrapper
+    table
+    tbody
+    tr.violation-row
+    td.fines
+    div.fines-breakdown
+    div.summary-box.values.lookup-info {
+    text-align: center;
+  }
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.violation-row
+  td.fines
+  div.fines-breakdown
+  div.summary-box.values.fines
+  div.math-symbols {
+  font-weight: normal;
+  text-align: center;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.violation-row
+  td.fines
+  div.fines-breakdown
+  div.fine-added {
+  border-bottom: 0.125rem solid rgba(0, 0, 0, 0.5);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.violation-row
+  td.fines
+  div.fines-breakdown
+  div.fine-subtracted {
+  border-bottom: 0.125rem solid rgba(0, 0, 0, 0.5);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.violation-row
+  td.fines
+  div.fines-breakdown
+  div.in-judgment {
+  font-style: italic;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.violation-row
+  td.violation-description
+  div.humanized-description {
+  display: block;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.violation-row
+  td.violation-description
+  div.icons {
+  display: block;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.violation-row
+  td.violation-description
+  div.icons
+  svg.svg-inline--fa {
+  margin: 0 0.25rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  tbody
+  tr.violation-row
+  td.location
+  span.borough {
+  margin: 0 0.25em 0 0;
+}

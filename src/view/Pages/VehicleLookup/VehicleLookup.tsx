@@ -9,9 +9,10 @@ import {
   USE_SEARCH_FILTERS_STORAGE_KEY,
 } from 'constants/storage'
 import L10N from 'constants/display'
-import { ApplicationContext } from 'context/ApplicationContext'
+import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
 
 import useLookupIdentifierStorage from 'hooks/useLookupIdentifierStorage/useLookupIdentifierStorage'
+import useSettings from 'hooks/useSettings/useSettings'
 import Vehicle from 'models/Vehicle/Vehicle'
 import getPlateTypeName from 'utils/search/getPlateType/getPlateTypeName/getPlateTypeName'
 import getListOfQueriedVehiclesAfterResponse from 'utils/processResults/getListOfQueriedVehiclesAfterResponse/getListOfQueriedVehiclesAfterResponse'
@@ -31,11 +32,11 @@ const VehicleLookup = () => {
   const { uniqueIdentifier } = useParams<Record<string, string | undefined>>()
   const listRef = useRef<HTMLDivElement>(null)
 
-  const [cookies, _] = useCookies([
-    USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
-    USE_SEARCH_FILTERS_STORAGE_KEY,
-  ])
-  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true
+  const [cookies, _] = useCookies([USE_SEARCH_FILTERS_STORAGE_KEY])
+  const { getSetting } = useSettings()
+
+  const useNewStyleDisplay =
+    getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true
   const useSearchFilters = cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true
 
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''

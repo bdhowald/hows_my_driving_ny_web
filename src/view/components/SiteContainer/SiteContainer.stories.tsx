@@ -1,20 +1,17 @@
-import * as React from 'react'
+import React, { ReactNode } from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import type { Meta, StoryObj } from '@storybook/react'
+
+import {
+  newStyleDisplayDecorator,
+  oldStyleDisplayDecorator,
+} from 'tests/utils/withStyleDisplayDecorator'
 
 import SiteContainer from './SiteContainer'
 
 const meta: Meta<typeof SiteContainer> = {
   title: 'Components/SiteContainer',
   component: SiteContainer,
-  decorators: [
-    (Story) => (
-      <MemoryRouter>
-        {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-        <Story />
-      </MemoryRouter>
-    ),
-  ],
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   parameters: {
@@ -25,6 +22,16 @@ const meta: Meta<typeof SiteContainer> = {
 
 type Story = StoryObj<typeof SiteContainer>
 
-export const DefaultSiteContainer: Story = {}
+const ParentHtml = ({ children }: { children: ReactNode }) => (
+  <MemoryRouter>{children}</MemoryRouter>
+)
+
+export const DefaultSiteContainerNewStyleDisplay: Story = {
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
+}
+
+export const DefaultSiteContainerOldStyleDisplay: Story = {
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
+}
 
 export default meta

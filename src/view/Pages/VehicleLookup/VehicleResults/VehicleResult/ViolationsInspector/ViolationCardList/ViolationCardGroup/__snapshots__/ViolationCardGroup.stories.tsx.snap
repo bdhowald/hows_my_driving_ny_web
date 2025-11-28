@@ -5,14 +5,12 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
             <div class="vehicle card">
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
-                  <div class="violation-card-list-wrapper"
-                       style="width: 100%;"
-                  >
+                  <div class="violation-card-list-wrapper">
                     <div class="violation-card-list bg-body">
                       <div class="violation-card-sort-divider bg-dark"
                            data-testid="sort-divider-date-ascending-2024"
@@ -44,7 +42,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
                             No Standing - Bus Stop
                           </div>
                           <div>
-                            N/A
+                            $107.69
                           </div>
                         </div>
                       </div>
@@ -68,7 +66,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
                             No Standing - Bus Stop
                           </div>
                           <div>
-                            N/A
+                            $125.00
                           </div>
                         </div>
                       </div>
@@ -114,14 +112,12 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
             <div class="vehicle card">
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
-                  <div class="violation-card-list-wrapper"
-                       style="width: 100%;"
-                  >
+                  <div class="violation-card-list-wrapper">
                     <div class="violation-card-list bg-body">
                       <div class="violation-card-sort-divider bg-dark"
                            data-testid="sort-divider-date-ascending-2024"
@@ -162,7 +158,64 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
                             No Standing - Bus Stop
                           </div>
                           <div>
-                            N/A
+                            <div class="fines-breakdown">
+                              <div class="summary-box keys">
+                                <div>
+                                  Initial:
+                                </div>
+                                <div class="fine-added">
+                                  Penalties:
+                                </div>
+                                <div>
+                                  Total:
+                                </div>
+                                <div class="fine-subtracted">
+                                  Paid:
+                                </div>
+                                <div class="in-judgment">
+                                  In judgment:
+                                </div>
+                              </div>
+                              <div class="summary-box values fines"
+                                   role="math"
+                                   aria-label="$100.00 fined  + $7.69 in penalties  - $20.00 paid = $87.69 in judgment"
+                              >
+                                <div class="math-symbols">
+                                  <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                  </div>
+                                  <div class="fine-added">
+                                    +&nbsp;
+                                  </div>
+                                  <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                  </div>
+                                  <div class="fine-subtracted">
+                                    –&nbsp;
+                                  </div>
+                                  <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                  </div>
+                                </div>
+                                <div class="amounts">
+                                  <div>
+                                    $100.00
+                                  </div>
+                                  <div class="fine-added">
+                                    $7.69
+                                  </div>
+                                  <div>
+                                    $107.69
+                                  </div>
+                                  <div class="fine-subtracted">
+                                    $20.00
+                                  </div>
+                                  <div class="in-judgment">
+                                    $87.69
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -195,7 +248,82 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
                             No Standing - Bus Stop
                           </div>
                           <div>
-                            N/A
+                            <div class="fines-breakdown">
+                              <div class="summary-box keys">
+                                <div>
+                                  Initial:
+                                </div>
+                                <div>
+                                  Interest:
+                                </div>
+                                <div class="fine-added">
+                                  Penalties:
+                                </div>
+                                <div>
+                                  Total:
+                                </div>
+                                <div>
+                                  Reductions:
+                                </div>
+                                <div class="fine-subtracted">
+                                  Paid:
+                                </div>
+                                <div class>
+                                  Outstanding:
+                                </div>
+                              </div>
+                              <div class="summary-box values fines"
+                                   role="math"
+                                   aria-label="$100.00 fined + $10.00 in interest + $25.00 in penalties - $10.00 reduced - $20.00 paid = $105.00 oustanding"
+                              >
+                                <div class="math-symbols">
+                                  <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                  </div>
+                                  <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                  </div>
+                                  <div class="fine-added">
+                                    +&nbsp;
+                                  </div>
+                                  <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                  </div>
+                                  <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                  </div>
+                                  <div class="fine-subtracted">
+                                    –&nbsp;
+                                  </div>
+                                  <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                  </div>
+                                </div>
+                                <div class="amounts">
+                                  <div>
+                                    $100.00
+                                  </div>
+                                  <div>
+                                    $10.00
+                                  </div>
+                                  <div class="fine-added">
+                                    $25.00
+                                  </div>
+                                  <div>
+                                    $135.00
+                                  </div>
+                                  <div>
+                                    $10.00
+                                  </div>
+                                  <div class="fine-subtracted">
+                                    $20.00
+                                  </div>
+                                  <div class>
+                                    $105.00
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -250,14 +378,12 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
             <div class="vehicle card">
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
-                  <div class="violation-card-list-wrapper"
-                       style="width: 100%;"
-                  >
+                  <div class="violation-card-list-wrapper">
                     <div class="violation-card-list bg-body">
                       <div class="violation-card-sort-divider bg-dark"
                            data-testid="sort-divider-date-ascending-2024"
@@ -289,7 +415,64 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
                             No Standing - Bus Stop
                           </div>
                           <div>
-                            N/A
+                            <div class="fines-breakdown">
+                              <div class="summary-box keys">
+                                <div>
+                                  Initial:
+                                </div>
+                                <div class="fine-added">
+                                  Penalties:
+                                </div>
+                                <div>
+                                  Total:
+                                </div>
+                                <div class="fine-subtracted">
+                                  Paid:
+                                </div>
+                                <div class="in-judgment">
+                                  In judgment:
+                                </div>
+                              </div>
+                              <div class="summary-box values fines"
+                                   role="math"
+                                   aria-label="$100.00 fined  + $7.69 in penalties  - $20.00 paid = $87.69 in judgment"
+                              >
+                                <div class="math-symbols">
+                                  <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                  </div>
+                                  <div class="fine-added">
+                                    +&nbsp;
+                                  </div>
+                                  <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                  </div>
+                                  <div class="fine-subtracted">
+                                    –&nbsp;
+                                  </div>
+                                  <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                  </div>
+                                </div>
+                                <div class="amounts">
+                                  <div>
+                                    $100.00
+                                  </div>
+                                  <div class="fine-added">
+                                    $7.69
+                                  </div>
+                                  <div>
+                                    $107.69
+                                  </div>
+                                  <div class="fine-subtracted">
+                                    $20.00
+                                  </div>
+                                  <div class="in-judgment">
+                                    $87.69
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -313,7 +496,82 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
                             No Standing - Bus Stop
                           </div>
                           <div>
-                            N/A
+                            <div class="fines-breakdown">
+                              <div class="summary-box keys">
+                                <div>
+                                  Initial:
+                                </div>
+                                <div>
+                                  Interest:
+                                </div>
+                                <div class="fine-added">
+                                  Penalties:
+                                </div>
+                                <div>
+                                  Total:
+                                </div>
+                                <div>
+                                  Reductions:
+                                </div>
+                                <div class="fine-subtracted">
+                                  Paid:
+                                </div>
+                                <div class>
+                                  Outstanding:
+                                </div>
+                              </div>
+                              <div class="summary-box values fines"
+                                   role="math"
+                                   aria-label="$100.00 fined + $10.00 in interest + $25.00 in penalties - $10.00 reduced - $20.00 paid = $105.00 oustanding"
+                              >
+                                <div class="math-symbols">
+                                  <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                  </div>
+                                  <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                  </div>
+                                  <div class="fine-added">
+                                    +&nbsp;
+                                  </div>
+                                  <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                  </div>
+                                  <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                  </div>
+                                  <div class="fine-subtracted">
+                                    –&nbsp;
+                                  </div>
+                                  <div>
+                                    &nbsp;&nbsp;&nbsp;
+                                  </div>
+                                </div>
+                                <div class="amounts">
+                                  <div>
+                                    $100.00
+                                  </div>
+                                  <div>
+                                    $10.00
+                                  </div>
+                                  <div class="fine-added">
+                                    $25.00
+                                  </div>
+                                  <div>
+                                    $135.00
+                                  </div>
+                                  <div>
+                                    $10.00
+                                  </div>
+                                  <div class="fine-subtracted">
+                                    $20.00
+                                  </div>
+                                  <div class>
+                                    $105.00
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -359,14 +617,12 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
             <div class="vehicle card">
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
-                  <div class="violation-card-list-wrapper"
-                       style="width: 100%;"
-                  >
+                  <div class="violation-card-list-wrapper">
                     <div class="violation-card-list bg-body">
                       <div class="violation-card-sort-divider bg-dark"
                            data-testid="sort-divider-date-ascending-2024"
@@ -407,7 +663,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
                             No Standing - Bus Stop
                           </div>
                           <div>
-                            N/A
+                            $107.69
                           </div>
                         </div>
                       </div>
@@ -440,7 +696,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
                             No Standing - Bus Stop
                           </div>
                           <div>
-                            N/A
+                            $125.00
                           </div>
                         </div>
                       </div>

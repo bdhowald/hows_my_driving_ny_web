@@ -1,9 +1,9 @@
 import React, { useContext, useRef, useState } from 'react'
-import { useCookies } from 'react-cookie'
 
 import { USE_NEW_STYLE_DISPLAY_STORAGE_KEY } from 'constants/storage'
-import { ApplicationContext } from 'context/ApplicationContext'
+import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
 import useSearchFiltersActiveCookie from 'hooks/useSearchFiltersActiveCookie/useSearchFiltersActiveCookie'
+import useSettings from 'hooks/useSettings/useSettings'
 import Vehicle from 'models/Vehicle/Vehicle'
 import {
   VehicleDisplayResult,
@@ -13,6 +13,8 @@ import filterResultsWithUserFilters from 'utils/filterResults/filterResultsWithU
 import isCompleteVehicleResult from 'utils/types/isCompleteVehicleResult/isCompleteVehicleResult'
 import { FilterFormElement, ResultsFilterSet } from 'types/resultsFilters'
 import AnalyticsTracker from 'utils/analytics/tracking'
+
+import 'view/Pages/VehicleLookup/VehicleResults/VehicleResults.css'
 
 import FiltersControl from './FiltersControl/FiltersControl'
 import VehicleResult from './VehicleResult/VehicleResult'
@@ -186,7 +188,6 @@ const VehicleResults = ({
   scrollRef: React.RefObject<HTMLDivElement>
   vehicleDisplayResults: VehicleDisplayResult[]
 }) => {
-  const [cookies, _, __] = useCookies([USE_NEW_STYLE_DISPLAY_STORAGE_KEY])
   const filterControlsRef = useRef<HTMLDivElement>(null)
 
   const [resultsFilters, setResultsFilters] = useState<ResultsFilterSet>({
@@ -200,13 +201,15 @@ const VehicleResults = ({
     state: undefined,
   })
 
+  const { getSetting } = useSettings()
   const { areSearchFiltersActive } = useSearchFiltersActiveCookie()
   const useSearchFilters = areSearchFiltersActive()
 
   const applicationContext = useContext(ApplicationContext)
   const { tracker } = applicationContext
 
-  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true
+  const useNewStyleDisplay =
+    getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
   const showResultsHeaderAndFiltersControl =

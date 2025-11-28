@@ -5,8 +5,8 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
             <div class="vehicle card">
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
@@ -80,8 +80,8 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
             <div class="vehicle card">
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
@@ -155,8 +155,8 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
             <div class="vehicle card">
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
@@ -230,8 +230,8 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
             <div class="vehicle card">
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
@@ -305,8 +305,8 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
             <div class="vehicle card">
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
@@ -380,8 +380,8 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
             <div class="vehicle card">
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
@@ -455,8 +455,8 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
             <div class="vehicle card">
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
@@ -530,8 +530,8 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
             <div class="vehicle card">
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">

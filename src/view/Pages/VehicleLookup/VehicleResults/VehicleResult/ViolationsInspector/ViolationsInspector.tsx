@@ -6,6 +6,8 @@ import ViolationCardList from './ViolationCardList/ViolationCardList'
 import ViolationsList from './ViolationsList/ViolationsList'
 import ViolationsListControls from './ViolationsListControls/ViolationsListControls'
 
+import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/ViolationsInspector/ViolationsInspector.css'
+
 const MAX_WIDTH_TO_HIDE_FULL_VIOLATION_TEXT_BY_DEFAULT = 768
 
 type ViolationsInspectorProps = {
@@ -33,7 +35,7 @@ const ViolationsInspector = ({
   if (useNewStyleView) {
     return (
       <li className="list-group-item">
-        <div className="violation-card-list-wrapper" style={{ width: '100%' }}>
+        <div className="violation-card-list-wrapper">
           <ViolationCardList
             setViolationsListVisibilityFunction={setViolationsListVisibility}
             vehicle={vehicle}
@@ -46,7 +48,7 @@ const ViolationsInspector = ({
 
   return (
     <li className="list-group-item">
-      <div className="violations-table-wrapper" style={{ width: '100%' }}>
+      <div className="violations-table-wrapper">
         <ViolationsListControls
           setShowFullFineDataFunction={setShowFullFineData}
           setShowFullViolationTextFunction={setShowFullViolationText}

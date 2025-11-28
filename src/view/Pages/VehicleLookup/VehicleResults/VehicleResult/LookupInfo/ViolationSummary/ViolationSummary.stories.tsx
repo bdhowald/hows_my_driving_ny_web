@@ -1,41 +1,17 @@
-import * as React from 'react'
+import React, { ReactNode } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
+import {
+  newStyleDisplayDecorator,
+  oldStyleDisplayDecorator,
+} from 'tests/utils/withStyleDisplayDecorator'
 
-import ViolationInfo from './ViolationSummary'
+import ViolationSummary from './ViolationSummary'
 
-const meta: Meta<typeof ViolationInfo> = {
-  title: 'Components/VehicleResults/VehicleResult/LookupInfo/ViolationInfo',
-  component: ViolationInfo,
-  decorators: [
-    (Story) => (
-      <div className="site-container-wrapper">
-        <div className="site-container container-fluid">
-          <main>
-            <div className="row">
-              <div className="col-md-12 vehicle-lookup-content-container">
-                <div className="vehicles">
-                  <div className="vehicle card">
-                    <ul className="list-group-flush list-group">
-                      <li className="no-padding list-group-item">
-                        <div className="row">
-                          <div className="summary-section col-xs-12 col-sm-6">
-                            {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it */}
-                            <Story />
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </main>
-        </div>
-      </div>
-    ),
-  ],
+const meta: Meta<typeof ViolationSummary> = {
+  title: 'Components/VehicleResults/VehicleResult/LookupInfo/ViolationSummary',
+  component: ViolationSummary,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   parameters: {
@@ -44,9 +20,47 @@ const meta: Meta<typeof ViolationInfo> = {
   },
 }
 
-type Story = StoryObj<typeof ViolationInfo>
+type Story = StoryObj<typeof ViolationSummary>
 
-export const NoViolations: Story = {
+const ParentHtml = ({
+  children,
+  useNewStyleDisplay,
+}: {
+  children: ReactNode
+  useNewStyleDisplay: boolean
+}) => {
+  const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
+
+  return (
+    <div className="site-container-wrapper">
+      <div className="site-container container-fluid">
+        <main>
+          <div className="row">
+            <div
+              className={`col-md-12 vehicle-lookup-content-container ${newStyleDisplayClassName}`}
+            >
+              <div className={`vehicles ${newStyleDisplayClassName}`}>
+                <div className="vehicle card">
+                  <ul className="list-group-flush list-group">
+                    <li className="no-padding list-group-item">
+                      <div className="row">
+                        <div className="summary-section col-xs-12 col-sm-6">
+                          {children}
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  )
+}
+
+export const NoViolationsNewStyleDisplay: Story = {
   args: {
     vehicle: VehicleFactory.build({
       previousLookupDate: '2023-07-12T13:17:54.000Z',
@@ -54,13 +68,33 @@ export const NoViolations: Story = {
       violationsCount: 0,
     }),
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
-export const Violations: Story = {
+export const NoViolationsOldStyleDisplay: Story = {
+  args: {
+    vehicle: VehicleFactory.build({
+      previousLookupDate: '2023-07-12T13:17:54.000Z',
+      violations: [],
+      violationsCount: 0,
+    }),
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
+}
+
+export const ViolationsNewStyleDisplay: Story = {
   args: {
     vehicle: VehicleFactory.build(),
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
-export const NewViolationsSincePreviousLookup: Story = {
+export const ViolationsOldStyleDisplay: Story = {
+  args: {
+    vehicle: VehicleFactory.build(),
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
+}
+
+export const NewViolationsSincePreviousLookupNewStyleDisplay: Story = {
   args: {
     vehicle: VehicleFactory.build({
       previousLookupDate: '2023-07-12T13:17:54.000Z',
@@ -68,6 +102,17 @@ export const NewViolationsSincePreviousLookup: Story = {
       violationsCount: 3,
     }),
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
+}
+export const NewViolationsSincePreviousLookupOldStyleDisplay: Story = {
+  args: {
+    vehicle: VehicleFactory.build({
+      previousLookupDate: '2023-07-12T13:17:54.000Z',
+      previousViolationCount: 2,
+      violationsCount: 3,
+    }),
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
 }
 
 export default meta

@@ -11,9 +11,12 @@ import {
   RED_LIGHT_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION,
   SCHOOL_ZONE_SPEED_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION,
 } from 'constants/violations'
-import { ApplicationContext } from 'context/ApplicationContext'
+import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
+import useSettings from 'hooks/useSettings/useSettings'
 import Violation from 'models/Violation/Violation'
 import FinesBreakdown from 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/FinesBreakdown/FinesBreakdown'
+
+import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCard/ViolationCard.css'
 
 type NonParkingViolationDescription =
   | typeof BUS_LANE_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION
@@ -46,10 +49,9 @@ const ViolationDateTimeAspect = ({
   violation: Violation
   inspectViolationFunction: (violation: Violation) => void
 }) => {
-  const [cookies, _] = useCookies([
-    USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
-    USE_SEARCH_FILTERS_STORAGE_KEY,
-  ])
+  const { getSetting } = useSettings()
+
+  const [cookies, _] = useCookies([USE_SEARCH_FILTERS_STORAGE_KEY])
 
   const applicationContext = useContext(ApplicationContext)
   const { tracker } = applicationContext
@@ -57,7 +59,8 @@ const ViolationDateTimeAspect = ({
   const trackShowViolationDetails = () => {
     tracker?.trackEvent('show_violation_details', {
       location: 'ViolationCard',
-      useNewStyleDisplay: cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true,
+      useNewStyleDisplay:
+        getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true,
       useSearchFilters: cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true,
     })
   }

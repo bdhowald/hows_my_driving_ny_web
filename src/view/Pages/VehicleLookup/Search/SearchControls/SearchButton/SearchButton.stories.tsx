@@ -1,35 +1,16 @@
-import * as React from 'react'
+import React, { ReactNode } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
+
+import {
+  newStyleDisplayDecorator,
+  oldStyleDisplayDecorator,
+} from 'tests/utils/withStyleDisplayDecorator'
 
 import SearchButton from './SearchButton'
 
 const meta: Meta<typeof SearchButton> = {
   title: 'Components/Search/SearchControls/SearchButton',
   component: SearchButton,
-  decorators: [
-    (Story) => (
-      <div className="site-container-wrapper">
-        <div className="site-container container-fluid">
-          <main>
-            <div className="row">
-              <div className="col-md-12 vehicle-lookup-content-container">
-                <div className="jumbotron">
-                  <div className="row">
-                    <form className="form">
-                      <div className="form-row">
-                        {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-                        <Story />
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </main>
-        </div>
-      </div>
-    ),
-  ],
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   parameters: {
@@ -40,29 +21,96 @@ const meta: Meta<typeof SearchButton> = {
 
 type Story = StoryObj<typeof SearchButton>
 
-export const NoLookupInFlightAndNoPlateIdPresent: Story = {
+const ParentHtml = ({
+  children,
+  useNewStyleDisplay,
+}: {
+  children: ReactNode
+  useNewStyleDisplay: boolean
+}) => {
+  const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
+
+  return (
+    <div className="site-container-wrapper">
+      <div className="site-container container-fluid">
+        <main>
+          <div className="row">
+            <div
+              className={`col-md-12 vehicle-lookup-content-container ${newStyleDisplayClassName}`}
+            >
+              <div className={`jumbotron ${newStyleDisplayClassName}`}>
+                <div className="row">
+                  <form className="form">
+                    <div className="form-row">{children}</div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  )
+}
+
+export const NoLookupInFlightAndNoPlateIdPresentNewStyleDisplay: Story = {
   args: {
     lookupInFlight: false,
     plateIdPresent: false,
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
-export const LookupInFlightAndNoPlateIdPresent: Story = {
+export const NoLookupInFlightAndNoPlateIdPresentOldStyleDisplay: Story = {
+  args: {
+    lookupInFlight: false,
+    plateIdPresent: false,
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
+}
+
+export const LookupInFlightAndNoPlateIdPresentNewStyleDisplay: Story = {
   args: {
     lookupInFlight: true,
     plateIdPresent: false,
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
-export const PlateIdPresentAndNoLookupInFlight: Story = {
+export const LookupInFlightAndNoPlateIdPresentOldStyleDisplay: Story = {
+  args: {
+    lookupInFlight: true,
+    plateIdPresent: false,
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
+}
+
+export const PlateIdPresentAndNoLookupInFlightNewStyleDisplay: Story = {
   args: {
     lookupInFlight: false,
     plateIdPresent: true,
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
-export const PlateIdPresentAndLookupInFlight: Story = {
+export const PlateIdPresentAndNoLookupInFlightOldStyleDisplay: Story = {
+  args: {
+    lookupInFlight: false,
+    plateIdPresent: true,
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
+}
+
+export const PlateIdPresentAndLookupInFlightNewStyleDisplay: Story = {
   args: {
     lookupInFlight: true,
     plateIdPresent: true,
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
+}
+export const PlateIdPresentAndLookupInFlightOldStyleDisplay: Story = {
+  args: {
+    lookupInFlight: true,
+    plateIdPresent: true,
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
 }
 
 export default meta

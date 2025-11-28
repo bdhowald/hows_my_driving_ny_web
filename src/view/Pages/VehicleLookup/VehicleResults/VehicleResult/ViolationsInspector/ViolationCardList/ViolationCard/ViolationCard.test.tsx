@@ -2,11 +2,18 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 
 import { ViolationFactory } from '__fixtures__/models/Violation'
+import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 
 import ViolationCard from './ViolationCard'
 
 describe('ViolationCard', () => {
   const inspectViolationFunction = () => null
+
+  const mockedSettings = {
+    getSetting: jest.fn(),
+    removeSetting: jest.fn(),
+    updateSetting: jest.fn(),
+  }
 
   describe('renders without error', () => {
     test.each([
@@ -44,13 +51,15 @@ describe('ViolationCard', () => {
         })
 
         render(
-          <ViolationCard
-            index={0}
-            inspectViolationFunction={inspectViolationFunction}
-            showFullFineData={showFullFineData}
-            showFullLocationData={showFullLocationData}
-            violation={violation}
-          />,
+          <SettingsContext.Provider value={mockedSettings}>
+            <ViolationCard
+              index={0}
+              inspectViolationFunction={inspectViolationFunction}
+              showFullFineData={showFullFineData}
+              showFullLocationData={showFullLocationData}
+              violation={violation}
+            />
+          </SettingsContext.Provider>,
         )
 
         expect(
@@ -77,13 +86,15 @@ describe('ViolationCard', () => {
       })
 
       render(
-        <ViolationCard
-          index={0}
-          inspectViolationFunction={inspectViolationFunction}
-          showFullFineData={true}
-          showFullLocationData={false}
-          violation={violation}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <ViolationCard
+            index={0}
+            inspectViolationFunction={inspectViolationFunction}
+            showFullFineData={true}
+            showFullLocationData={false}
+            violation={violation}
+          />
+        </SettingsContext.Provider>,
       )
 
       const getAmountString = (amount: number) =>
@@ -121,13 +132,15 @@ describe('ViolationCard', () => {
       })
 
       render(
-        <ViolationCard
-          index={0}
-          inspectViolationFunction={inspectViolationFunction}
-          showFullFineData={false}
-          showFullLocationData={false}
-          violation={violation}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <ViolationCard
+            index={0}
+            inspectViolationFunction={inspectViolationFunction}
+            showFullFineData={false}
+            showFullLocationData={false}
+            violation={violation}
+          />
+        </SettingsContext.Provider>,
       )
 
       expect(
@@ -144,13 +157,15 @@ describe('ViolationCard', () => {
       })
 
       render(
-        <ViolationCard
-          index={0}
-          inspectViolationFunction={inspectViolationFunction}
-          showFullFineData={false}
-          showFullLocationData={true}
-          violation={violation}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <ViolationCard
+            index={0}
+            inspectViolationFunction={inspectViolationFunction}
+            showFullFineData={false}
+            showFullLocationData={true}
+            violation={violation}
+          />
+        </SettingsContext.Provider>,
       )
 
       expect(screen.getByText(violation.location as string)).toBeInTheDocument()
@@ -163,13 +178,15 @@ describe('ViolationCard', () => {
       })
 
       render(
-        <ViolationCard
-          index={0}
-          inspectViolationFunction={inspectViolationFunction}
-          showFullFineData={false}
-          showFullLocationData={false}
-          violation={violation}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <ViolationCard
+            index={0}
+            inspectViolationFunction={inspectViolationFunction}
+            showFullFineData={false}
+            showFullLocationData={false}
+            violation={violation}
+          />
+        </SettingsContext.Provider>,
       )
 
       expect(

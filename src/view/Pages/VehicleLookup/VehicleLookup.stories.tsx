@@ -1,10 +1,14 @@
-import * as React from 'react'
-import { Cookies, CookiesProvider } from 'react-cookie'
+import React, { ReactNode } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import {
   withRouter,
   reactRouterParameters,
 } from 'storybook-addon-remix-react-router'
+
+import {
+  newStyleDisplayDecorator,
+  oldStyleDisplayDecorator,
+} from 'tests/utils/withStyleDisplayDecorator'
 
 import VehicleLookup from './VehicleLookup'
 
@@ -35,54 +39,65 @@ const meta: Meta<typeof VehicleLookup> = {
 
 type Story = StoryObj<typeof VehicleLookup>
 
-export const NoLookups: Story = {
+const ParentHtml = ({ children }: { children: ReactNode }) => (
+  <div className="site-container-wrapper">
+    <div className="site-container container-fluid">
+      <main>
+        <div className="row">{children}</div>
+      </main>
+    </div>
+  </div>
+)
+
+export const NoLookupsNewStyleDisplay: Story = {
   decorators: [
     (Story) => {
-      const cookies = new Cookies('lookupIdentifiers=;')
-
-      return (
-        <CookiesProvider cookies={cookies}>
-          <div className="site-container-wrapper">
-            <div className="site-container container-fluid">
-              <main>
-                <div className="row">
-                  {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-                  <Story />
-                </div>
-              </main>
-            </div>
-          </div>
-        </CookiesProvider>
-      )
+      window.localStorage.clear()
+      return <Story />
     },
+    newStyleDisplayDecorator(ParentHtml),
+  ],
+}
+export const NoLookupsOldStyleDisplay: Story = {
+  decorators: [
+    (Story) => {
+      window.localStorage.clear()
+
+      return <Story />
+    },
+    oldStyleDisplayDecorator(ParentHtml),
   ],
 }
 
 const lookupIdentifierFromLocalLookup = 'bnzphli3'
 const lookupIdentifierFromSharedLookup = '6aur3wi3'
 
-export const OneLookupFromCookies: Story = {
+export const OneLookupFromCookiesNewStyleDisplay: Story = {
   decorators: [
     (Story) => {
-      const cookies = new Cookies(
-        `lookupIdentifiers=${lookupIdentifierFromLocalLookup};`,
+      window.localStorage.clear()
+      window.localStorage.setItem(
+        'lookupIdentifiers',
+        lookupIdentifierFromLocalLookup,
       )
 
-      return (
-        <CookiesProvider cookies={cookies}>
-          <div className="site-container-wrapper">
-            <div className="site-container container-fluid">
-              <main>
-                <div className="row">
-                  {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-                  <Story />
-                </div>
-              </main>
-            </div>
-          </div>
-        </CookiesProvider>
-      )
+      return <Story />
     },
+    newStyleDisplayDecorator(ParentHtml),
+  ],
+}
+export const OneLookupFromCookiesOldStyleDisplay: Story = {
+  decorators: [
+    (Story) => {
+      window.localStorage.clear()
+      window.localStorage.setItem(
+        'lookupIdentifiers',
+        lookupIdentifierFromLocalLookup,
+      )
+
+      return <Story />
+    },
+    oldStyleDisplayDecorator(ParentHtml),
   ],
 }
 
@@ -97,56 +112,64 @@ const reactRouterParametersForStory = {
   }),
 }
 
-export const OneLookupFromSharedLookup: Story = {
+export const OneLookupFromSharedLookupNewStyleDisplay: Story = {
   parameters: reactRouterParametersForStory,
   decorators: [
     withRouter,
     (Story) => {
-      const cookies = new Cookies('lookupIdentifiers=;')
+      window.localStorage.clear()
 
-      return (
-        <CookiesProvider cookies={cookies}>
-          <div className="site-container-wrapper">
-            <div className="site-container container-fluid">
-              <main>
-                <div className="row">
-                  {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-                  <Story />
-                </div>
-              </main>
-            </div>
-          </div>
-        </CookiesProvider>
-      )
+      return <Story />
     },
+    newStyleDisplayDecorator(ParentHtml),
   ],
 }
-
-export const OneLookupEachFromLocalLookupAndSharedLookup: Story = {
+export const OneLookupFromSharedLookupOldStyleDisplay: Story = {
   parameters: reactRouterParametersForStory,
   decorators: [
     withRouter,
     (Story) => {
-      const cookies = new Cookies(
-        `lookupIdentifiers=${lookupIdentifierFromLocalLookup};`,
-      )
+      window.localStorage.clear()
 
-      return (
-        <CookiesProvider cookies={cookies}>
-          <div className="site-container-wrapper">
-            <div className="site-container container-fluid">
-              <main>
-                <div className="row">
-                  {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-                  <Story />
-                </div>
-              </main>
-            </div>
-          </div>
-        </CookiesProvider>
-      )
+      return <Story />
     },
+    oldStyleDisplayDecorator(ParentHtml),
   ],
 }
+
+export const OneLookupEachFromLocalLookupAndSharedLookupNewStyleDisplay: Story =
+  {
+    parameters: reactRouterParametersForStory,
+    decorators: [
+      withRouter,
+      (Story) => {
+        window.localStorage.clear()
+        window.localStorage.setItem(
+          'lookupIdentifiers',
+          lookupIdentifierFromLocalLookup,
+        )
+
+        return <Story />
+      },
+      newStyleDisplayDecorator(ParentHtml),
+    ],
+  }
+export const OneLookupEachFromLocalLookupAndSharedLookupOldStyleDisplay: Story =
+  {
+    parameters: reactRouterParametersForStory,
+    decorators: [
+      withRouter,
+      (Story) => {
+        window.localStorage.clear()
+        window.localStorage.setItem(
+          'lookupIdentifiers',
+          lookupIdentifierFromLocalLookup,
+        )
+
+        return <Story />
+      },
+      oldStyleDisplayDecorator(ParentHtml),
+    ],
+  }
 
 export default meta

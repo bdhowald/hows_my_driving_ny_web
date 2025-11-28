@@ -1,0 +1,17 @@
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper {
+  width: 100%;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper {
+  width: 100%;
+}

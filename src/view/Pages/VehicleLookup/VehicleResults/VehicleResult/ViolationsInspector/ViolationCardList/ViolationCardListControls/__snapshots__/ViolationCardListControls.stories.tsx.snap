@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCardListControls VehicleWithNoViolationsListVisible smoke-test 1`] = `
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCardListControls VehicleWithNoViolationsListVisible smoke-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
             <div class="vehicle card">
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
@@ -39,13 +39,13 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/Violati
 </div>
 `;
 
-exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCardListControls VehicleWithViolationsListNotVisible smoke-test 1`] = `
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCardListControls VehicleWithViolationsListNotVisible smoke-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
             <div class="vehicle card">
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
@@ -77,13 +77,13 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/Violati
 </div>
 `;
 
-exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCardListControls VehicleWithViolationsListVisibleFinesDetailsAndLocationDetails smoke-test 1`] = `
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCardListControls VehicleWithViolationsListVisibleFinesDetailsAndLocationDetails smoke-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
             <div class="vehicle card">
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
@@ -125,13 +125,13 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/Violati
 </div>
 `;
 
-exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCardListControls VehicleWithViolationsListVisibleFinesDetailsAndLocationSummary smoke-test 1`] = `
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCardListControls VehicleWithViolationsListVisibleFinesDetailsAndLocationSummary smoke-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
             <div class="vehicle card">
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
@@ -173,13 +173,13 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/Violati
 </div>
 `;
 
-exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCardListControls VehicleWithViolationsListVisibleFinesSummaryAndLocationDetails smoke-test 1`] = `
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCardListControls VehicleWithViolationsListVisibleFinesSummaryAndLocationDetails smoke-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
             <div class="vehicle card">
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
@@ -221,13 +221,13 @@ exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/Violati
 </div>
 `;
 
-exports[`Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCardListControls VehicleWithViolationsListVisibleFinesSummaryAndLocationSummary smoke-test 1`] = `
+exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCardListControls VehicleWithViolationsListVisibleFinesSummaryAndLocationSummary smoke-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
             <div class="vehicle card">
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">

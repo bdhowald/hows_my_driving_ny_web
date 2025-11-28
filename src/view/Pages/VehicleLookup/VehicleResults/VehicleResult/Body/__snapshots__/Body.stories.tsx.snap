@@ -1,12 +1,113 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components/VehicleResults/VehicleResult/Body NoViolations smoke-test 1`] = `
+exports[`Components/VehicleResults/VehicleResult/Body NoViolationsNewStyleDisplay smoke-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
+            <div class="vehicle card">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item no-padding">
+                  <div class="row new-style">
+                    <div class="summary-section new-style">
+                      <div class="summary-box">
+                        <div class="vehicle-info-group vehicle-identity">
+                          <div class="keys lookup-info">
+                            <div>
+                              Plate:
+                            </div>
+                            <div>
+                              State:
+                            </div>
+                            <div>
+                              Plate type:
+                            </div>
+                            <div>
+                              Lookups:
+                            </div>
+                            <div>
+                              Queried On:
+                            </div>
+                          </div>
+                          <div class="values lookup-info">
+                            <div>
+                              ABC1234
+                            </div>
+                            <div class="region">
+                              <div class="region-abbreviation">
+                                NY
+                              </div>
+                            </div>
+                            <div>
+                              All
+                            </div>
+                            <div>
+                              2
+                            </div>
+                            <div>
+                              09/01/2025
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="summary-section new-style">
+                      <div class="summary-box new-style">
+                        <div class="vehicle-info-group vehicle-violations">
+                          <div class="keys lookup-info">
+                            <div>
+                              Violations:
+                            </div>
+                          </div>
+                          <div class="values lookup-info">
+                            <div class="violation-total">
+                              0
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="violation-card-list-wrapper">
+                    <div class="violation-card-list-controls"
+                         data-testid="vehicle-violation-card-list-controls"
+                    >
+                      <div class="row">
+                        <div class="d-grid gap-2">
+                          <button aria-controls="violations-table-e5f6g7h8"
+                                  aria-expanded="true"
+                                  class="btn btn-block btn-outline-secondary"
+                                  disabled
+                                  type="button"
+                          >
+                            no violations
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/Body NoViolationsOldStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container ">
+          <div class="vehicles ">
             <div class="vehicle card">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item no-padding">
@@ -72,9 +173,7 @@ exports[`Components/VehicleResults/VehicleResult/Body NoViolations smoke-test 1`
                   </div>
                 </li>
                 <li class="list-group-item">
-                  <div class="violations-table-wrapper"
-                       style="width: 100%;"
-                  >
+                  <div class="violations-table-wrapper">
                     <div class="violations-table-header"
                          data-testid="vehicle-violations-controls"
                     >
@@ -103,13 +202,198 @@ exports[`Components/VehicleResults/VehicleResult/Body NoViolations smoke-test 1`
 </div>
 `;
 
-exports[`Components/VehicleResults/VehicleResult/Body ViolationsListHidden smoke-test 1`] = `
+exports[`Components/VehicleResults/VehicleResult/Body ViolationsListHiddenNewStyleDisplay smoke-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
+            <div class="vehicle card">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item no-padding">
+                  <div class="row new-style">
+                    <div class="summary-section new-style">
+                      <div class="summary-box">
+                        <div class="vehicle-info-group vehicle-identity">
+                          <div class="keys lookup-info">
+                            <div>
+                              Plate:
+                            </div>
+                            <div>
+                              State:
+                            </div>
+                            <div>
+                              Plate type:
+                            </div>
+                            <div>
+                              Lookups:
+                            </div>
+                            <div>
+                              Queried On:
+                            </div>
+                          </div>
+                          <div class="values lookup-info">
+                            <div>
+                              ABC1234
+                            </div>
+                            <div class="region">
+                              <div class="region-abbreviation">
+                                NY
+                              </div>
+                            </div>
+                            <div>
+                              All
+                            </div>
+                            <div>
+                              2
+                            </div>
+                            <div>
+                              09/01/2025
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="summary-section new-style">
+                      <div class="summary-box new-style">
+                        <div class="vehicle-info-group vehicle-violations">
+                          <div class="keys lookup-info">
+                            <div>
+                              Violations:
+                            </div>
+                            <div class="violation-count-aspects">
+                              <div class="violation-count-aspect-header">
+                                Type:
+                              </div>
+                              <div class="violation-count-aspect">
+                                Parking:
+                              </div>
+                            </div>
+                            <div class="violation-count-aspects">
+                              <div class="violation-count-aspect-header">
+                                Borough:
+                              </div>
+                              <div class="violation-count-aspect">
+                                Brooklyn:
+                              </div>
+                            </div>
+                          </div>
+                          <div class="values lookup-info">
+                            <div class="violation-total">
+                              3
+                            </div>
+                            <div class="violation-type-counts">
+                              <div class="violation-count">
+                                &nbsp;
+                              </div>
+                              <div class="violation-count">
+                                3
+                              </div>
+                            </div>
+                            <div class="violation-borough-counts">
+                              <div class="violation-count">
+                                &nbsp;
+                              </div>
+                              <div class="violation-count">
+                                3
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="summary-section new-style">
+                      <div class="summary-box">
+                        <div class="vehicle-info-group vehicle-fines">
+                          <div class="keys lookup-info">
+                            <div>
+                              Fined:
+                            </div>
+                            <div>
+                              Reduced:
+                            </div>
+                            <div class="fines-reduced">
+                              Paid:
+                            </div>
+                            <div>
+                              Owed:
+                            </div>
+                          </div>
+                          <div class="values lookup-info"
+                               role="math"
+                               aria-label="$3,850.00 fined - $3,780.00 paid - $20.00 reduced = $50.00 outstanding"
+                          >
+                            <div class="math-symbols">
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                              <div class="fines-reduced">
+                                –&nbsp;
+                              </div>
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                            </div>
+                            <div class="amounts">
+                              <div>
+                                $3,850.00
+                              </div>
+                              <div>
+                                $20.00
+                              </div>
+                              <div class="fines-reduced">
+                                $3,780.00
+                              </div>
+                              <div>
+                                $50.00
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="violation-card-list-wrapper">
+                    <div class="violation-card-list-controls"
+                         data-testid="vehicle-violation-card-list-controls"
+                    >
+                      <div class="row">
+                        <div class="d-grid gap-2">
+                          <button aria-controls="violations-table-e5f6g7h8"
+                                  aria-expanded="false"
+                                  class="btn btn-block btn-outline-primary"
+                                  type="button"
+                          >
+                            show 3 violations
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/Body ViolationsListHiddenOldStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container ">
+          <div class="vehicles ">
             <div class="vehicle card">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item no-padding">
@@ -260,9 +544,7 @@ exports[`Components/VehicleResults/VehicleResult/Body ViolationsListHidden smoke
                   </div>
                 </li>
                 <li class="list-group-item">
-                  <div class="violations-table-wrapper"
-                       style="width: 100%;"
-                  >
+                  <div class="violations-table-wrapper">
                     <div class="violations-table-header"
                          data-testid="vehicle-violations-controls"
                     >
@@ -290,13 +572,228 @@ exports[`Components/VehicleResults/VehicleResult/Body ViolationsListHidden smoke
 </div>
 `;
 
-exports[`Components/VehicleResults/VehicleResult/Body ViolationsListHiddenWithDangerousVehicleAbatementAct smoke-test 1`] = `
+exports[`Components/VehicleResults/VehicleResult/Body ViolationsListHiddenWithDangerousVehicleAbatementActNewStyleDisplay smoke-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
+            <div class="vehicle card">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item no-padding">
+                  <div class="row new-style">
+                    <div class="summary-section new-style">
+                      <div class="summary-box">
+                        <div class="vehicle-info-group vehicle-identity">
+                          <div class="keys lookup-info">
+                            <div>
+                              Plate:
+                            </div>
+                            <div>
+                              State:
+                            </div>
+                            <div>
+                              Plate type:
+                            </div>
+                            <div>
+                              Lookups:
+                            </div>
+                            <div>
+                              Queried On:
+                            </div>
+                          </div>
+                          <div class="values lookup-info">
+                            <div>
+                              ABC1234
+                            </div>
+                            <div class="region">
+                              <div class="region-abbreviation">
+                                NY
+                              </div>
+                            </div>
+                            <div>
+                              All
+                            </div>
+                            <div>
+                              2
+                            </div>
+                            <div>
+                              09/01/2025
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="summary-section new-style">
+                      <div class="summary-box new-style">
+                        <div class="vehicle-info-group vehicle-violations">
+                          <div class="keys lookup-info">
+                            <div>
+                              Violations:
+                            </div>
+                            <div class="violation-count-aspects">
+                              <div class="violation-count-aspect-header">
+                                Type:
+                              </div>
+                              <div class="violation-count-aspect">
+                                Parking:
+                              </div>
+                            </div>
+                            <div class="violation-count-aspects">
+                              <div class="violation-count-aspect-header">
+                                Borough:
+                              </div>
+                              <div class="violation-count-aspect">
+                                Brooklyn:
+                              </div>
+                            </div>
+                          </div>
+                          <div class="values lookup-info">
+                            <div class="violation-total">
+                              3
+                            </div>
+                            <div class="violation-type-counts">
+                              <div class="violation-count">
+                                &nbsp;
+                              </div>
+                              <div class="violation-count">
+                                3
+                              </div>
+                            </div>
+                            <div class="violation-borough-counts">
+                              <div class="violation-count">
+                                &nbsp;
+                              </div>
+                              <div class="violation-count">
+                                3
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="summary-section new-style">
+                      <div class="summary-box">
+                        <div class="vehicle-info-group vehicle-fines">
+                          <div class="keys lookup-info">
+                            <div>
+                              Fined:
+                            </div>
+                            <div>
+                              Reduced:
+                            </div>
+                            <div class="fines-reduced">
+                              Paid:
+                            </div>
+                            <div>
+                              Owed:
+                            </div>
+                          </div>
+                          <div class="values lookup-info"
+                               role="math"
+                               aria-label="$3,850.00 fined - $3,780.00 paid - $20.00 reduced = $50.00 outstanding"
+                          >
+                            <div class="math-symbols">
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                              <div class="fines-reduced">
+                                –&nbsp;
+                              </div>
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                            </div>
+                            <div class="amounts">
+                              <div>
+                                $3,850.00
+                              </div>
+                              <div>
+                                $20.00
+                              </div>
+                              <div class="fines-reduced">
+                                $3,780.00
+                              </div>
+                              <div>
+                                $50.00
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="dangerous-vehicle-notice list-group-item list-group-item-warning new-style"
+                    data-testid="dangerous-vehicle-abatement-act-notice"
+                >
+                  <p>
+                    Under the
+                    <a target="_blank"
+                       rel="noopener noreferrer"
+                       href="https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=3521908&amp;GUID=A4FD4CFC-8AD8-4130-AA92-11BC56936F6D#:~:text=The%20bill%20will%20create%20a,Department%20of%20Transportation%20(DOT)."
+                    >
+                      Dangerous Vehicle Abatement Act
+                    </a>
+                    &nbsp;this vehicle could have been booted or impounded for:
+                  </p>
+                  <ul>
+                    <li>
+                      <span class="streak-count-and-type text-bg-warning">
+                        <span class="streak-count">
+                          7
+                        </span>
+                        red light camera violations
+                      </span>
+                      <span class="streak-threshold">
+                        &nbsp;(&gt;= 5/year)
+                      </span>
+                      <span>
+                        &nbsp;from 06/27/2023 to 05/06/2024
+                      </span>
+                    </li>
+                  </ul>
+                </li>
+                <li class="list-group-item">
+                  <div class="violation-card-list-wrapper">
+                    <div class="violation-card-list-controls"
+                         data-testid="vehicle-violation-card-list-controls"
+                    >
+                      <div class="row">
+                        <div class="d-grid gap-2">
+                          <button aria-controls="violations-table-e5f6g7h8"
+                                  aria-expanded="false"
+                                  class="btn btn-block btn-outline-primary"
+                                  type="button"
+                          >
+                            show 3 violations
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/Body ViolationsListHiddenWithDangerousVehicleAbatementActOldStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container ">
+          <div class="vehicles ">
             <div class="vehicle card">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item no-padding">
@@ -477,9 +974,7 @@ exports[`Components/VehicleResults/VehicleResult/Body ViolationsListHiddenWithDa
                   </ul>
                 </li>
                 <li class="list-group-item">
-                  <div class="violations-table-wrapper"
-                       style="width: 100%;"
-                  >
+                  <div class="violations-table-wrapper">
                     <div class="violations-table-header"
                          data-testid="vehicle-violations-controls"
                     >
@@ -507,13 +1002,349 @@ exports[`Components/VehicleResults/VehicleResult/Body ViolationsListHiddenWithDa
 </div>
 `;
 
-exports[`Components/VehicleResults/VehicleResult/Body ViolationsListVisible smoke-test 1`] = `
+exports[`Components/VehicleResults/VehicleResult/Body ViolationsListVisibleNewStyleDisplay smoke-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
+            <div class="vehicle card">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item no-padding">
+                  <div class="row new-style">
+                    <div class="summary-section new-style">
+                      <div class="summary-box">
+                        <div class="vehicle-info-group vehicle-identity">
+                          <div class="keys lookup-info">
+                            <div>
+                              Plate:
+                            </div>
+                            <div>
+                              State:
+                            </div>
+                            <div>
+                              Plate type:
+                            </div>
+                            <div>
+                              Lookups:
+                            </div>
+                            <div>
+                              Queried On:
+                            </div>
+                          </div>
+                          <div class="values lookup-info">
+                            <div>
+                              ABC1234
+                            </div>
+                            <div class="region">
+                              <div class="region-abbreviation">
+                                NY
+                              </div>
+                            </div>
+                            <div>
+                              All
+                            </div>
+                            <div>
+                              2
+                            </div>
+                            <div>
+                              09/01/2025
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="summary-section new-style">
+                      <div class="summary-box new-style">
+                        <div class="vehicle-info-group vehicle-violations">
+                          <div class="keys lookup-info">
+                            <div>
+                              Violations:
+                            </div>
+                            <div class="violation-count-aspects">
+                              <div class="violation-count-aspect-header">
+                                Type:
+                              </div>
+                              <div class="violation-count-aspect">
+                                Parking:
+                              </div>
+                            </div>
+                            <div class="violation-count-aspects">
+                              <div class="violation-count-aspect-header">
+                                Borough:
+                              </div>
+                              <div class="violation-count-aspect">
+                                Brooklyn:
+                              </div>
+                            </div>
+                          </div>
+                          <div class="values lookup-info">
+                            <div class="violation-total">
+                              3
+                            </div>
+                            <div class="violation-type-counts">
+                              <div class="violation-count">
+                                &nbsp;
+                              </div>
+                              <div class="violation-count">
+                                3
+                              </div>
+                            </div>
+                            <div class="violation-borough-counts">
+                              <div class="violation-count">
+                                &nbsp;
+                              </div>
+                              <div class="violation-count">
+                                3
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="summary-section new-style">
+                      <div class="summary-box">
+                        <div class="vehicle-info-group vehicle-fines">
+                          <div class="keys lookup-info">
+                            <div>
+                              Fined:
+                            </div>
+                            <div>
+                              Reduced:
+                            </div>
+                            <div class="fines-reduced">
+                              Paid:
+                            </div>
+                            <div>
+                              Owed:
+                            </div>
+                          </div>
+                          <div class="values lookup-info"
+                               role="math"
+                               aria-label="$3,850.00 fined - $3,780.00 paid - $20.00 reduced = $50.00 outstanding"
+                          >
+                            <div class="math-symbols">
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                              <div class="fines-reduced">
+                                –&nbsp;
+                              </div>
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                            </div>
+                            <div class="amounts">
+                              <div>
+                                $3,850.00
+                              </div>
+                              <div>
+                                $20.00
+                              </div>
+                              <div class="fines-reduced">
+                                $3,780.00
+                              </div>
+                              <div>
+                                $50.00
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="violation-card-list-wrapper">
+                    <div class="violation-card-list-controls"
+                         data-testid="vehicle-violation-card-list-controls"
+                    >
+                      <div class="row">
+                        <div class="d-grid gap-2">
+                          <button aria-controls="violations-table-e5f6g7h8"
+                                  aria-expanded="true"
+                                  class="btn btn-block btn-outline-primary"
+                                  type="button"
+                          >
+                            hide violations
+                          </button>
+                          <button class="btn btn-block btn-outline-primary"
+                                  type="button"
+                          >
+                            show fines details
+                          </button>
+                          <button class="btn btn-block btn-outline-primary"
+                                  type="button"
+                          >
+                            show full location
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="violation-card-list-caption">
+                      3 parking and camera violations
+                    </div>
+                    <div class="violation-card-list-sort-controls">
+                      <div class="violation-card-list-sort-control date active"
+                           data-testid="violation-card-list-sort-control-date"
+                      >
+                        <span class="violation-card-list-sort-control-name">
+                          Date
+                        </span>
+                        <svg aria-labelledby="svg-inline--fa-title-angle-down"
+                             data-prefix="fas"
+                             data-icon="angle-down"
+                             class="svg-inline--fa fa-angle-down "
+                             role="img"
+                             xmlns="http://www.w3.org/2000/svg"
+                             viewbox="0 0 448 512"
+                        >
+                          <title id="svg-inline--fa-title-angle-down">
+                            angle-down icon
+                          </title>
+                          <path fill="currentColor"
+                                d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+                          >
+                          </path>
+                        </svg>
+                      </div>
+                      <div class="violation-card-list-sort-control kind "
+                           data-testid="violation-card-list-sort-control-kind"
+                      >
+                        <span class="violation-card-list-sort-control-name">
+                          Type
+                        </span>
+                        <span class="arrow-placeholder">
+                        </span>
+                      </div>
+                      <div class="violation-card-list-sort-control location "
+                           data-testid="violation-card-list-sort-control-location"
+                      >
+                        <span class="violation-card-list-sort-control-name">
+                          Borough
+                        </span>
+                        <span class="arrow-placeholder">
+                        </span>
+                      </div>
+                      <div class="violation-card-list-sort-control fined "
+                           data-testid="violation-card-list-sort-control-fined"
+                      >
+                        <span class="violation-card-list-sort-control-name">
+                          Fines
+                        </span>
+                        <span class="arrow-placeholder">
+                        </span>
+                      </div>
+                    </div>
+                    <div class="violation-card-list bg-body"
+                         data-testid="violation-card-list"
+                    >
+                      <div class="violation-card-sort-divider bg-dark"
+                           data-testid="sort-divider-date-descending-2024"
+                      >
+                        <span class="divider-group-name">
+                          2024
+                        </span>
+                        <span class="collapsible-toggle">
+                          3 violations [–]
+                        </span>
+                      </div>
+                      <div class="violation-card bg-body-tertiary">
+                        <div class="violation-card-row">
+                          <div>
+                            <a data-bs-toggle="offcanvas"
+                               href="#showViolationDetails"
+                               role="button"
+                               aria-controls="showViolationDetails"
+                            >
+                              11/07/2024 10:47 PM
+                            </a>
+                          </div>
+                          <div>
+                            Brooklyn
+                          </div>
+                        </div>
+                        <div class="violation-card-row">
+                          <div>
+                            No Standing - Bus Stop
+                          </div>
+                          <div>
+                            N/A
+                          </div>
+                        </div>
+                      </div>
+                      <div class="violation-card bg-body-secondary">
+                        <div class="violation-card-row">
+                          <div>
+                            <a data-bs-toggle="offcanvas"
+                               href="#showViolationDetails"
+                               role="button"
+                               aria-controls="showViolationDetails"
+                            >
+                              11/07/2024 10:47 PM
+                            </a>
+                          </div>
+                          <div>
+                            Brooklyn
+                          </div>
+                        </div>
+                        <div class="violation-card-row">
+                          <div>
+                            No Standing - Bus Stop
+                          </div>
+                          <div>
+                            N/A
+                          </div>
+                        </div>
+                      </div>
+                      <div class="violation-card bg-body-tertiary">
+                        <div class="violation-card-row">
+                          <div>
+                            <a data-bs-toggle="offcanvas"
+                               href="#showViolationDetails"
+                               role="button"
+                               aria-controls="showViolationDetails"
+                            >
+                              11/07/2024 10:47 PM
+                            </a>
+                          </div>
+                          <div>
+                            Brooklyn
+                          </div>
+                        </div>
+                        <div class="violation-card-row">
+                          <div>
+                            No Standing - Bus Stop
+                          </div>
+                          <div>
+                            N/A
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/Body ViolationsListVisibleOldStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container ">
+          <div class="vehicles ">
             <div class="vehicle card">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item no-padding">
@@ -664,9 +1495,7 @@ exports[`Components/VehicleResults/VehicleResult/Body ViolationsListVisible smok
                   </div>
                 </li>
                 <li class="list-group-item">
-                  <div class="violations-table-wrapper"
-                       style="width: 100%;"
-                  >
+                  <div class="violations-table-wrapper">
                     <div class="violations-table-header"
                          data-testid="vehicle-violations-controls"
                     >
@@ -850,13 +1679,379 @@ exports[`Components/VehicleResults/VehicleResult/Body ViolationsListVisible smok
 </div>
 `;
 
-exports[`Components/VehicleResults/VehicleResult/Body ViolationsListVisibleWithDangerousVehicleAbatementAct smoke-test 1`] = `
+exports[`Components/VehicleResults/VehicleResult/Body ViolationsListVisibleWithDangerousVehicleAbatementActNewStyleDisplay smoke-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="vehicles">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
+            <div class="vehicle card">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item no-padding">
+                  <div class="row new-style">
+                    <div class="summary-section new-style">
+                      <div class="summary-box">
+                        <div class="vehicle-info-group vehicle-identity">
+                          <div class="keys lookup-info">
+                            <div>
+                              Plate:
+                            </div>
+                            <div>
+                              State:
+                            </div>
+                            <div>
+                              Plate type:
+                            </div>
+                            <div>
+                              Lookups:
+                            </div>
+                            <div>
+                              Queried On:
+                            </div>
+                          </div>
+                          <div class="values lookup-info">
+                            <div>
+                              ABC1234
+                            </div>
+                            <div class="region">
+                              <div class="region-abbreviation">
+                                NY
+                              </div>
+                            </div>
+                            <div>
+                              All
+                            </div>
+                            <div>
+                              2
+                            </div>
+                            <div>
+                              09/01/2025
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="summary-section new-style">
+                      <div class="summary-box new-style">
+                        <div class="vehicle-info-group vehicle-violations">
+                          <div class="keys lookup-info">
+                            <div>
+                              Violations:
+                            </div>
+                            <div class="violation-count-aspects">
+                              <div class="violation-count-aspect-header">
+                                Type:
+                              </div>
+                              <div class="violation-count-aspect">
+                                Parking:
+                              </div>
+                            </div>
+                            <div class="violation-count-aspects">
+                              <div class="violation-count-aspect-header">
+                                Borough:
+                              </div>
+                              <div class="violation-count-aspect">
+                                Brooklyn:
+                              </div>
+                            </div>
+                          </div>
+                          <div class="values lookup-info">
+                            <div class="violation-total">
+                              3
+                            </div>
+                            <div class="violation-type-counts">
+                              <div class="violation-count">
+                                &nbsp;
+                              </div>
+                              <div class="violation-count">
+                                3
+                              </div>
+                            </div>
+                            <div class="violation-borough-counts">
+                              <div class="violation-count">
+                                &nbsp;
+                              </div>
+                              <div class="violation-count">
+                                3
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="summary-section new-style">
+                      <div class="summary-box">
+                        <div class="vehicle-info-group vehicle-fines">
+                          <div class="keys lookup-info">
+                            <div>
+                              Fined:
+                            </div>
+                            <div>
+                              Reduced:
+                            </div>
+                            <div class="fines-reduced">
+                              Paid:
+                            </div>
+                            <div>
+                              Owed:
+                            </div>
+                          </div>
+                          <div class="values lookup-info"
+                               role="math"
+                               aria-label="$3,850.00 fined - $3,780.00 paid - $20.00 reduced = $50.00 outstanding"
+                          >
+                            <div class="math-symbols">
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                              <div class="fines-reduced">
+                                –&nbsp;
+                              </div>
+                              <div>
+                                &nbsp;&nbsp;&nbsp;
+                              </div>
+                            </div>
+                            <div class="amounts">
+                              <div>
+                                $3,850.00
+                              </div>
+                              <div>
+                                $20.00
+                              </div>
+                              <div class="fines-reduced">
+                                $3,780.00
+                              </div>
+                              <div>
+                                $50.00
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="dangerous-vehicle-notice list-group-item list-group-item-warning new-style"
+                    data-testid="dangerous-vehicle-abatement-act-notice"
+                >
+                  <p>
+                    Under the
+                    <a target="_blank"
+                       rel="noopener noreferrer"
+                       href="https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=3521908&amp;GUID=A4FD4CFC-8AD8-4130-AA92-11BC56936F6D#:~:text=The%20bill%20will%20create%20a,Department%20of%20Transportation%20(DOT)."
+                    >
+                      Dangerous Vehicle Abatement Act
+                    </a>
+                    &nbsp;this vehicle could have been booted or impounded for:
+                  </p>
+                  <ul>
+                    <li>
+                      <span class="streak-count-and-type text-bg-warning">
+                        <span class="streak-count">
+                          7
+                        </span>
+                        red light camera violations
+                      </span>
+                      <span class="streak-threshold">
+                        &nbsp;(&gt;= 5/year)
+                      </span>
+                      <span>
+                        &nbsp;from 06/27/2023 to 05/06/2024
+                      </span>
+                    </li>
+                  </ul>
+                </li>
+                <li class="list-group-item">
+                  <div class="violation-card-list-wrapper">
+                    <div class="violation-card-list-controls"
+                         data-testid="vehicle-violation-card-list-controls"
+                    >
+                      <div class="row">
+                        <div class="d-grid gap-2">
+                          <button aria-controls="violations-table-e5f6g7h8"
+                                  aria-expanded="true"
+                                  class="btn btn-block btn-outline-primary"
+                                  type="button"
+                          >
+                            hide violations
+                          </button>
+                          <button class="btn btn-block btn-outline-primary"
+                                  type="button"
+                          >
+                            show fines details
+                          </button>
+                          <button class="btn btn-block btn-outline-primary"
+                                  type="button"
+                          >
+                            show full location
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="violation-card-list-caption">
+                      3 parking and camera violations
+                    </div>
+                    <div class="violation-card-list-sort-controls">
+                      <div class="violation-card-list-sort-control date active"
+                           data-testid="violation-card-list-sort-control-date"
+                      >
+                        <span class="violation-card-list-sort-control-name">
+                          Date
+                        </span>
+                        <svg aria-labelledby="svg-inline--fa-title-angle-down"
+                             data-prefix="fas"
+                             data-icon="angle-down"
+                             class="svg-inline--fa fa-angle-down "
+                             role="img"
+                             xmlns="http://www.w3.org/2000/svg"
+                             viewbox="0 0 448 512"
+                        >
+                          <title id="svg-inline--fa-title-angle-down">
+                            angle-down icon
+                          </title>
+                          <path fill="currentColor"
+                                d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+                          >
+                          </path>
+                        </svg>
+                      </div>
+                      <div class="violation-card-list-sort-control kind "
+                           data-testid="violation-card-list-sort-control-kind"
+                      >
+                        <span class="violation-card-list-sort-control-name">
+                          Type
+                        </span>
+                        <span class="arrow-placeholder">
+                        </span>
+                      </div>
+                      <div class="violation-card-list-sort-control location "
+                           data-testid="violation-card-list-sort-control-location"
+                      >
+                        <span class="violation-card-list-sort-control-name">
+                          Borough
+                        </span>
+                        <span class="arrow-placeholder">
+                        </span>
+                      </div>
+                      <div class="violation-card-list-sort-control fined "
+                           data-testid="violation-card-list-sort-control-fined"
+                      >
+                        <span class="violation-card-list-sort-control-name">
+                          Fines
+                        </span>
+                        <span class="arrow-placeholder">
+                        </span>
+                      </div>
+                    </div>
+                    <div class="violation-card-list bg-body"
+                         data-testid="violation-card-list"
+                    >
+                      <div class="violation-card-sort-divider bg-dark"
+                           data-testid="sort-divider-date-descending-2024"
+                      >
+                        <span class="divider-group-name">
+                          2024
+                        </span>
+                        <span class="collapsible-toggle">
+                          3 violations [–]
+                        </span>
+                      </div>
+                      <div class="violation-card bg-body-tertiary">
+                        <div class="violation-card-row">
+                          <div>
+                            <a data-bs-toggle="offcanvas"
+                               href="#showViolationDetails"
+                               role="button"
+                               aria-controls="showViolationDetails"
+                            >
+                              11/07/2024 10:47 PM
+                            </a>
+                          </div>
+                          <div>
+                            Brooklyn
+                          </div>
+                        </div>
+                        <div class="violation-card-row">
+                          <div>
+                            No Standing - Bus Stop
+                          </div>
+                          <div>
+                            N/A
+                          </div>
+                        </div>
+                      </div>
+                      <div class="violation-card bg-body-secondary">
+                        <div class="violation-card-row">
+                          <div>
+                            <a data-bs-toggle="offcanvas"
+                               href="#showViolationDetails"
+                               role="button"
+                               aria-controls="showViolationDetails"
+                            >
+                              11/07/2024 10:47 PM
+                            </a>
+                          </div>
+                          <div>
+                            Brooklyn
+                          </div>
+                        </div>
+                        <div class="violation-card-row">
+                          <div>
+                            No Standing - Bus Stop
+                          </div>
+                          <div>
+                            N/A
+                          </div>
+                        </div>
+                      </div>
+                      <div class="violation-card bg-body-tertiary">
+                        <div class="violation-card-row">
+                          <div>
+                            <a data-bs-toggle="offcanvas"
+                               href="#showViolationDetails"
+                               role="button"
+                               aria-controls="showViolationDetails"
+                            >
+                              11/07/2024 10:47 PM
+                            </a>
+                          </div>
+                          <div>
+                            Brooklyn
+                          </div>
+                        </div>
+                        <div class="violation-card-row">
+                          <div>
+                            No Standing - Bus Stop
+                          </div>
+                          <div>
+                            N/A
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/Body ViolationsListVisibleWithDangerousVehicleAbatementActOldStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container ">
+          <div class="vehicles ">
             <div class="vehicle card">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item no-padding">
@@ -1037,9 +2232,7 @@ exports[`Components/VehicleResults/VehicleResult/Body ViolationsListVisibleWithD
                   </ul>
                 </li>
                 <li class="list-group-item">
-                  <div class="violations-table-wrapper"
-                       style="width: 100%;"
-                  >
+                  <div class="violations-table-wrapper">
                     <div class="violations-table-header"
                          data-testid="vehicle-violations-controls"
                     >

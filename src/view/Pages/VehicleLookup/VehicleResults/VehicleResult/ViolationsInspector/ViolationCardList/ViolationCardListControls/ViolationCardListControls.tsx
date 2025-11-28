@@ -6,6 +6,8 @@ import ShowFineDetailsButton from './ShowFineDetailsButton/ShowFineDetailsButton
 import ShowFullLocationDataButton from './ShowFullLocationDataButton/ShowFullLocationDataButton'
 import ShowViolationsButton from './ShowViolationsButton/ShowViolationsButton'
 
+import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCardListControls/ViolationCardListControls.css'
+
 type ViolationCardListControlProps = {
   setViolationsListVisibilityFunction: (arg1: boolean) => void
   showFullFineData: boolean

@@ -2,11 +2,19 @@ import React, { useRef } from 'react'
 import { render, renderHook, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
+import { SettingsContext } from 'context/SettingsContext/SettingsContext'
+
 import FiltersControl from './FiltersControl'
 
 describe('FiltersControl', () => {
   const clearFilterFunction = jest.fn()
   const handleFilterFormSubmitFunction = jest.fn()
+
+  const mockedSettings = {
+    getSetting: jest.fn().mockReturnValue(true),
+    removeSetting: jest.fn(),
+    updateSetting: jest.fn(),
+  }
 
   const defaultResultsFilters = {
     numberOfViolations: undefined,
@@ -25,15 +33,17 @@ describe('FiltersControl', () => {
   describe('rendering', () => {
     it('should render filter controls', () => {
       render(
-        <FiltersControl
-          clearFilterFunction={clearFilterFunction}
-          displayingPreviousLookup={false}
-          handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
-          maxViolationsCountForResults={maxViolationsCountForResults}
-          resultsFilters={defaultResultsFilters}
-          resultsLength={1}
-          scrollRef={ref}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <FiltersControl
+            clearFilterFunction={clearFilterFunction}
+            displayingPreviousLookup={false}
+            handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
+            maxViolationsCountForResults={maxViolationsCountForResults}
+            resultsFilters={defaultResultsFilters}
+            resultsLength={1}
+            scrollRef={ref}
+          />
+        </SettingsContext.Provider>,
       )
 
       const filtersControl = screen.getByTestId('filters-wrapper-test-id')
@@ -52,15 +62,17 @@ describe('FiltersControl', () => {
   describe('results header text', () => {
     it('should display the correct header with one own result', () => {
       render(
-        <FiltersControl
-          clearFilterFunction={clearFilterFunction}
-          displayingPreviousLookup={false}
-          handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
-          maxViolationsCountForResults={maxViolationsCountForResults}
-          resultsFilters={defaultResultsFilters}
-          resultsLength={1}
-          scrollRef={ref}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <FiltersControl
+            clearFilterFunction={clearFilterFunction}
+            displayingPreviousLookup={false}
+            handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
+            maxViolationsCountForResults={maxViolationsCountForResults}
+            resultsFilters={defaultResultsFilters}
+            resultsLength={1}
+            scrollRef={ref}
+          />
+        </SettingsContext.Provider>,
       )
 
       const resultsHeader = screen.getByText('Showing 1 result')
@@ -69,15 +81,17 @@ describe('FiltersControl', () => {
 
     it('should display the correct header with one shared result', () => {
       render(
-        <FiltersControl
-          clearFilterFunction={clearFilterFunction}
-          displayingPreviousLookup={true}
-          handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
-          maxViolationsCountForResults={maxViolationsCountForResults}
-          resultsFilters={defaultResultsFilters}
-          resultsLength={1}
-          scrollRef={ref}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <FiltersControl
+            clearFilterFunction={clearFilterFunction}
+            displayingPreviousLookup={true}
+            handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
+            maxViolationsCountForResults={maxViolationsCountForResults}
+            resultsFilters={defaultResultsFilters}
+            resultsLength={1}
+            scrollRef={ref}
+          />
+        </SettingsContext.Provider>,
       )
 
       const resultsHeader = screen.getByText('Showing 1 result shared via link')
@@ -86,15 +100,17 @@ describe('FiltersControl', () => {
 
     it('should display the correct header with multiple own results', () => {
       render(
-        <FiltersControl
-          clearFilterFunction={clearFilterFunction}
-          displayingPreviousLookup={false}
-          handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
-          maxViolationsCountForResults={maxViolationsCountForResults}
-          resultsFilters={defaultResultsFilters}
-          resultsLength={2}
-          scrollRef={ref}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <FiltersControl
+            clearFilterFunction={clearFilterFunction}
+            displayingPreviousLookup={false}
+            handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
+            maxViolationsCountForResults={maxViolationsCountForResults}
+            resultsFilters={defaultResultsFilters}
+            resultsLength={2}
+            scrollRef={ref}
+          />
+        </SettingsContext.Provider>,
       )
 
       const resultsHeader = screen.getByText('Showing 2 results')
@@ -103,15 +119,17 @@ describe('FiltersControl', () => {
 
     it('should display the correct header with one own result and one shared result', () => {
       render(
-        <FiltersControl
-          clearFilterFunction={clearFilterFunction}
-          displayingPreviousLookup={true}
-          handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
-          maxViolationsCountForResults={maxViolationsCountForResults}
-          resultsFilters={defaultResultsFilters}
-          resultsLength={2}
-          scrollRef={ref}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <FiltersControl
+            clearFilterFunction={clearFilterFunction}
+            displayingPreviousLookup={true}
+            handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
+            maxViolationsCountForResults={maxViolationsCountForResults}
+            resultsFilters={defaultResultsFilters}
+            resultsLength={2}
+            scrollRef={ref}
+          />
+        </SettingsContext.Provider>,
       )
 
       const ownResultsHeader = screen.getByText('Showing 1 result')
@@ -123,15 +141,17 @@ describe('FiltersControl', () => {
 
     it('should display the correct header with multiple own results and one shared result', () => {
       render(
-        <FiltersControl
-          clearFilterFunction={clearFilterFunction}
-          displayingPreviousLookup={true}
-          handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
-          maxViolationsCountForResults={maxViolationsCountForResults}
-          resultsFilters={defaultResultsFilters}
-          resultsLength={3}
-          scrollRef={ref}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <FiltersControl
+            clearFilterFunction={clearFilterFunction}
+            displayingPreviousLookup={true}
+            handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
+            maxViolationsCountForResults={maxViolationsCountForResults}
+            resultsFilters={defaultResultsFilters}
+            resultsLength={3}
+            scrollRef={ref}
+          />
+        </SettingsContext.Provider>,
       )
 
       const ownResultsHeader = screen.getByText('Showing 2 results')
@@ -145,15 +165,17 @@ describe('FiltersControl', () => {
   describe('opening the filter menu', () => {
     it('should open the filter menu when the filter button is clicked', () => {
       render(
-        <FiltersControl
-          clearFilterFunction={clearFilterFunction}
-          displayingPreviousLookup={false}
-          handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
-          maxViolationsCountForResults={maxViolationsCountForResults}
-          resultsFilters={defaultResultsFilters}
-          resultsLength={1}
-          scrollRef={ref}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <FiltersControl
+            clearFilterFunction={clearFilterFunction}
+            displayingPreviousLookup={false}
+            handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
+            maxViolationsCountForResults={maxViolationsCountForResults}
+            resultsFilters={defaultResultsFilters}
+            resultsLength={1}
+            scrollRef={ref}
+          />
+        </SettingsContext.Provider>,
       )
 
       const showFilterMenuButton = screen.getByRole('button', {
@@ -202,15 +224,17 @@ describe('FiltersControl', () => {
   describe('setting and submitting filters', () => {
     it('should submit the form and hide filter menu when the apply filters button is clicked', () => {
       render(
-        <FiltersControl
-          clearFilterFunction={clearFilterFunction}
-          displayingPreviousLookup={false}
-          handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
-          maxViolationsCountForResults={maxViolationsCountForResults}
-          resultsFilters={defaultResultsFilters}
-          resultsLength={1}
-          scrollRef={ref}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <FiltersControl
+            clearFilterFunction={clearFilterFunction}
+            displayingPreviousLookup={false}
+            handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
+            maxViolationsCountForResults={maxViolationsCountForResults}
+            resultsFilters={defaultResultsFilters}
+            resultsLength={1}
+            scrollRef={ref}
+          />
+        </SettingsContext.Provider>,
       )
 
       // Mock successful form validation and submission
@@ -241,15 +265,17 @@ describe('FiltersControl', () => {
 
     it('should not hide the filter menu when submission fails validation', () => {
       render(
-        <FiltersControl
-          clearFilterFunction={clearFilterFunction}
-          displayingPreviousLookup={false}
-          handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
-          maxViolationsCountForResults={maxViolationsCountForResults}
-          resultsFilters={defaultResultsFilters}
-          resultsLength={1}
-          scrollRef={ref}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <FiltersControl
+            clearFilterFunction={clearFilterFunction}
+            displayingPreviousLookup={false}
+            handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
+            maxViolationsCountForResults={maxViolationsCountForResults}
+            resultsFilters={defaultResultsFilters}
+            resultsLength={1}
+            scrollRef={ref}
+          />
+        </SettingsContext.Provider>,
       )
 
       // Mock failed form validation and submission
@@ -295,15 +321,17 @@ describe('FiltersControl', () => {
       }
 
       render(
-        <FiltersControl
-          clearFilterFunction={clearFilterFunction}
-          displayingPreviousLookup={false}
-          handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
-          maxViolationsCountForResults={maxViolationsCountForResults}
-          resultsFilters={resultsFiltersWithOneFilterApplied}
-          resultsLength={1}
-          scrollRef={ref}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <FiltersControl
+            clearFilterFunction={clearFilterFunction}
+            displayingPreviousLookup={false}
+            handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
+            maxViolationsCountForResults={maxViolationsCountForResults}
+            resultsFilters={resultsFiltersWithOneFilterApplied}
+            resultsLength={1}
+            scrollRef={ref}
+          />
+        </SettingsContext.Provider>,
       )
 
       const removeFilterSpan = screen.getByLabelText('remove Plate label')
@@ -330,15 +358,17 @@ describe('FiltersControl', () => {
       }
 
       render(
-        <FiltersControl
-          clearFilterFunction={clearFilterFunction}
-          displayingPreviousLookup={false}
-          handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
-          maxViolationsCountForResults={maxViolationsCountForResults}
-          resultsFilters={resultsFiltersWithOneFilterApplied}
-          resultsLength={1}
-          scrollRef={ref}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <FiltersControl
+            clearFilterFunction={clearFilterFunction}
+            displayingPreviousLookup={false}
+            handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
+            maxViolationsCountForResults={maxViolationsCountForResults}
+            resultsFilters={resultsFiltersWithOneFilterApplied}
+            resultsLength={1}
+            scrollRef={ref}
+          />
+        </SettingsContext.Provider>,
       )
 
       // Expect filter menu to be closed by default

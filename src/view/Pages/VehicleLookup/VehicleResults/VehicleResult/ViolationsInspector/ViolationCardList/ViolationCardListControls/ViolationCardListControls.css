@@ -1,0 +1,108 @@
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-controls {
+  background-color: white;
+  display: block;
+  padding: 0.5rem 0;
+  position: sticky;
+  top: 0%;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-controls
+  a.btn-primary.disabled.placeholder {
+  background-color: #4824ff;
+  border-color: #4824ff;
+  margin: 0 0.25rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-controls
+  div.row
+  div.d-grid.gap-2 {
+  padding: 0.5rem 1rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-controls
+  div.d-grid.gap-2
+  button.btn-outline-primary {
+  background-color: #fff;
+  border-color: #4824ff;
+  color: #4824ff;
+  width: 100%;
+}
+
+@media (hover: hover) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item
+    div.violation-card-list-wrapper
+    div.violation-card-list-controls
+    div.d-grid.gap-2
+    button.btn-outline-primary:not(:disabled):not(.disabled):active {
+    background-color: #4824ff;
+    color: #fff;
+  }
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item
+    div.violation-card-list-wrapper
+    div.violation-card-list-controls
+    div.d-grid.gap-2
+    button.btn-outline-primary:hover {
+    background-color: #4824ff;
+    color: #fff;
+  }
+}
+
+@media (hover: none) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item
+    div.violation-card-list-wrapper
+    div.violation-card-list-controls
+    div.d-grid.gap-2
+    button.btn-outline-primary:not(:disabled):not(.disabled):active {
+    background-color: #fff;
+    color: #4824ff;
+  }
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item
+    div.violation-card-list-wrapper
+    div.violation-card-list-controls
+    div.row
+    div.d-grid.gap-2
+    button.btn-outline-primary:hover {
+    background-color: #fff;
+    color: #4824ff;
+  }
+}

@@ -1,0 +1,91 @@
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-sort-controls {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  display: flex;
+  margin: 0.5rem 0.25rem 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-sort-controls
+  div.violation-card-list-sort-control {
+  padding: 0 0.25rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-sort-controls
+  div.violation-card-list-sort-control.active {
+  font-weight: bold;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-sort-controls
+  div.violation-card-list-sort-control.date {
+  width: 21.5%;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-sort-controls
+  div.violation-card-list-sort-control.fined {
+  width: 23.83%;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-sort-controls
+  div.violation-card-list-sort-control.kind {
+  width: 22%;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-sort-controls
+  div.violation-card-list-sort-control.location {
+  width: 32.67%;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-sort-controls
+  div.violation-card-list-sort-control
+  span.violation-card-list-sort-control-name {
+  margin-right: 0.125rem;
+}

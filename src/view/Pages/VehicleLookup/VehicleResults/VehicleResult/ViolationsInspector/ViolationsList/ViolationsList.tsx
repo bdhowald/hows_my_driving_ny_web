@@ -8,6 +8,8 @@ import sortViolations from 'utils/processResults/sortViolations/sortViolations'
 import ViolationsTableHeader from './ViolationsTableHeader/ViolationsTableHeader'
 import ViolationsTableBody from './ViolationsTableBody/ViolationsTableBody'
 
+import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsList.css'
+
 type OwnProps = {
   showFullFineData: boolean
   showFullText: boolean

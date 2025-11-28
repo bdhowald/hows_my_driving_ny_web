@@ -5,6 +5,8 @@ import Violation from 'models/Violation/Violation'
 
 import ViolationsTableRow from 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableRow/ViolationsTableRow'
 
+import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/ViolationsInspector/ViolationsList/ViolationsTableBody/ViolationsTableBody.css'
+
 const NUM_COLUMNS = 4
 
 type ViolationsTableBodyProps = {

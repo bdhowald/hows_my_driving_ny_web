@@ -1,0 +1,11 @@
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violation-card-list-wrapper
+  div.violation-card-list-caption {
+  color: #212529bf;
+  display: block;
+  margin: 0.25rem 0.5rem 0.75rem;
+}

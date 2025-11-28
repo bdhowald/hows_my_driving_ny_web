@@ -1,7 +1,8 @@
 import * as React from 'react'
-import { Cookies, CookiesProvider } from 'react-cookie'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+
+import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 
 import Search from './Search'
 
@@ -56,10 +57,14 @@ describe('Search', () => {
     ])(
       'renders successfully when lookupInFlight is $lookupInFlight and $uniqueIdentifier is uniqueIdentifier and the display is new style ($useNewStyleDisplay)',
       ({ lookupInFlight, uniqueIdentifier, useNewStyleDisplay }) => {
+        const mockedSettings = {
+          getSetting: jest.fn().mockReturnValue(useNewStyleDisplay),
+          removeSetting: jest.fn(),
+          updateSetting: jest.fn(),
+        }
+
         render(
-          <CookiesProvider
-            cookies={new Cookies(`useNewStyleDisplay=${useNewStyleDisplay};`)}
-          >
+          <SettingsContext.Provider value={mockedSettings}>
             <Search
               fingerprintId={undefined}
               lookupInFlight={lookupInFlight}
@@ -72,7 +77,7 @@ describe('Search', () => {
               setSearchErrorFunction={setSearchError}
             />
             ,
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         const now = new Date()
@@ -103,18 +108,26 @@ describe('Search', () => {
     )
 
     it('should ensure only uppercase letters for entered plate input', () => {
+      const mockedSettings = {
+        getSetting: jest.fn(),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
-        <Search
-          fingerprintId={undefined}
-          lookupInFlight={false}
-          previousLookupUniqueIdentifierFromQuery={undefined}
-          queriedVehicles={[]}
-          searchError={false}
-          setExistingQueriesInFlightFunction={setExistingQueriesInFlight}
-          setLookupInFlightFunction={setLookupInFlight}
-          setQueriedVehiclesFunction={setQueriedVehicles}
-          setSearchErrorFunction={setSearchError}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <Search
+            fingerprintId={undefined}
+            lookupInFlight={false}
+            previousLookupUniqueIdentifierFromQuery={undefined}
+            queriedVehicles={[]}
+            searchError={false}
+            setExistingQueriesInFlightFunction={setExistingQueriesInFlight}
+            setLookupInFlightFunction={setLookupInFlight}
+            setQueriedVehiclesFunction={setQueriedVehicles}
+            setSearchErrorFunction={setSearchError}
+          />
+        </SettingsContext.Provider>,
       )
 
       const lowercaseText = 'abc1234'

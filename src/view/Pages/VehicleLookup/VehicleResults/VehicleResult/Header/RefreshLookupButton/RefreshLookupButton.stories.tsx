@@ -1,33 +1,16 @@
-import * as React from 'react'
+import React, { ReactNode } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
+
+import {
+  newStyleDisplayDecorator,
+  oldStyleDisplayDecorator,
+} from 'tests/utils/withStyleDisplayDecorator'
 
 import RefreshLookupButton from './RefreshLookupButton'
 
 const meta: Meta<typeof RefreshLookupButton> = {
   title: 'Components/VehicleResults/VehicleResult/Header/RefreshLookupButton',
   component: RefreshLookupButton,
-  decorators: [
-    (Story) => (
-      <div className="site-container-wrapper">
-        <div className="site-container container-fluid">
-          <main>
-            <div className="row">
-              <div className="col-md-12 vehicle-lookup-content-container">
-                <div className="vehicles">
-                  <div className="vehicle card">
-                    <div className="card-header">
-                      {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-                      <Story />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </main>
-        </div>
-      </div>
-    ),
-  ],
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   parameters: {
@@ -38,10 +21,47 @@ const meta: Meta<typeof RefreshLookupButton> = {
 
 type Story = StoryObj<typeof RefreshLookupButton>
 
-export const Default: Story = {
+const ParentHtml = ({
+  children,
+  useNewStyleDisplay,
+}: {
+  children: ReactNode
+  useNewStyleDisplay: boolean
+}) => {
+  const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
+
+  return (
+    <div className="site-container-wrapper">
+      <div className="site-container container-fluid">
+        <main>
+          <div className="row">
+            <div
+              className={`col-md-12 vehicle-lookup-content-container ${newStyleDisplayClassName}`}
+            >
+              <div className={`vehicles ${newStyleDisplayClassName}`}>
+                <div className="vehicle card">
+                  <div className="card-header">{children}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  )
+}
+
+export const DefaultNewStyleDisplay: Story = {
   args: {
     refreshLookupFunction: () => alert('this would have refreshed the lookup'),
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
+}
+export const DefaultOldStyleDisplay: Story = {
+  args: {
+    refreshLookupFunction: () => alert('this would have refreshed the lookup'),
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
 }
 
 export default meta

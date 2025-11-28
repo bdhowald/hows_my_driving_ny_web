@@ -12,6 +12,8 @@ import getVehicleMake from 'utils/displayResults/getVehicleMake/getVehicleMake'
 import standardizeLocation from 'utils/displayResults/standardizeLocation/standardizeLocation'
 import FinesBreakdown from 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/FinesBreakdown/FinesBreakdown'
 
+import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationDetail/ViolationDetail.css'
+
 const IOS_USER_AGENT_STRING = /iPad|iPhone|iPod/
 
 type ToggleOffCanvasFunction = () => void

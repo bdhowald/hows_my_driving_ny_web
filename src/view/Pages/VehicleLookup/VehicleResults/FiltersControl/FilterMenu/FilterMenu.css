@@ -1,0 +1,69 @@
+div.offcanvas.show
+  div.offcanvas-body
+  div.filter-controls-menu
+  div.filter-controls-menu-controls
+  input[type='text'] {
+  text-transform: uppercase;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.filter-controls-menu
+  div.filter-controls-menu-controls
+  input::-webkit-input-placeholder {
+  text-transform: initial;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.filter-controls-menu
+  div.filter-controls-menu-controls
+  input::-moz-placeholder {
+  text-transform: initial;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.filter-controls-menu
+  div.filter-controls-menu-controls
+  input:-moz-placeholder {
+  text-transform: initial;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.filter-controls-menu
+  div.filter-controls-menu-controls
+  input::-ms-input-placeholder {
+  text-transform: initial;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.filter-controls-menu
+  div.filter-controls-menu-controls
+  div.input-group
+  span.input-group-text.date-label {
+  min-width: 8.25em;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.filter-controls-menu
+  div.filter-controls-menu-controls
+  div.input-group
+  label.input-group-text.plate-label,
+span.input-group-text.plate-label {
+  min-width: 5em;
+}
+
+div.offcanvas.show
+  div.offcanvas-body
+  div.filter-controls-menu
+  div.filter-controls-menu-controls
+  div.input-group.sticky-apply-button {
+  display: block;
+  padding: 0.5rem 0;
+  position: sticky;
+  bottom: 0%;
+}

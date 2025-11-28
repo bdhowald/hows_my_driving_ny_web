@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
+import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 
 import SocialShareButton from './SocialShareButton'
 
@@ -25,9 +26,19 @@ describe('SocialShareButton', () => {
   Object.entries(SocialShareButton).forEach(
     ([className, SocialShareButtonClass], _) => {
       describe(`${className}`, () => {
+        const mockedSettings = {
+          getSetting: jest.fn(),
+          removeSetting: jest.fn(),
+          updateSetting: jest.fn(),
+        }
+
         describe('renders without error', () => {
           it('should render successfully', () => {
-            render(<SocialShareButtonClass vehicle={VehicleFactory.build()} />)
+            render(
+              <SettingsContext.Provider value={mockedSettings}>
+                <SocialShareButtonClass vehicle={VehicleFactory.build()} />
+              </SettingsContext.Provider>,
+            )
 
             expect(
               screen.getByTestId(DATA_IDS[SocialShareButtonClass.name]),
@@ -39,7 +50,11 @@ describe('SocialShareButton', () => {
           const mockedOpen = jest.fn()
           global.open = mockedOpen
 
-          render(<SocialShareButtonClass vehicle={VehicleFactory.build()} />)
+          render(
+            <SettingsContext.Provider value={mockedSettings}>
+              <SocialShareButtonClass vehicle={VehicleFactory.build()} />
+            </SettingsContext.Provider>,
+          )
 
           const socialShareButtonElement = screen.getByTestId(
             DATA_IDS[SocialShareButtonClass.name],

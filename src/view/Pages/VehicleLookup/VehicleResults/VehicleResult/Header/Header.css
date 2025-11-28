@@ -1,0 +1,146 @@
+div.container-fluid div.row div.card div.card-header {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: bold;
+  justify-content: space-between;
+}
+
+div.container-fluid div.row div.card div.card-header.shimmer {
+  min-height: 2.25em;
+}
+
+div.container-fluid div.row div.card div.card-header button {
+  border: none;
+  outline: none;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  div.card-header
+  button.remove-lookup-button {
+  color: black;
+  background: none;
+  padding: 0 0.375rem;
+}
+
+div.container-fluid div.row div.card div.card-header div.share-icons {
+  display: flex;
+}
+
+div.container-fluid div.row div.card div.card-header div.share-icons button {
+  padding: 0.25rem;
+}
+
+div.container-fluid div.row div.card div.card-header div.share-icons button {
+  background-color: transparent;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  div.card-header
+  div.share-icons
+  button.copy-button {
+  background: none;
+  line-height: 21px;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  div.card-header
+  div.share-icons
+  button.copy-button
+  span.fa-layers
+  .circle {
+  color: black;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  div.card-header
+  div.share-icons
+  button.copy-button
+  span.fa-layers
+  .copy {
+  color: white;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  div.card-header
+  div.share-icons
+  button.copy-button
+  span.fa-layers
+  .copy.pressed {
+  color: black;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  div.card-header
+  div.share-icons
+  button.bluesky-share-button {
+  font-size: initial;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  div.card-header
+  div.share-icons
+  button.twitter-share-button {
+  font-size: initial;
+}
+
+/* div.container-fluid
+  div.row
+  div.card
+  div.card-header
+  button.refresh-lookup-button {
+  background: none;
+  margin-left: auto;
+  margin-right: 0.5em;
+} */
+
+div.container-fluid
+  div.row
+  div.card
+  div.card-subheader
+  ul.list-group.list-group-flush.card-subheader.from-previous-lookup {
+  border: 0;
+  line-height: 2rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  div.card-subheader
+  ul.list-group.list-group-flush.card-subheader.from-previous-lookup
+  li.list-group-item {
+  background-color: #eac4fb;
+  font-style: italic;
+  padding: 0.5rem 1rem 0.5rem 1.5rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  div.card-subheader
+  ul.list-group.list-group-flush.card-subheader.from-previous-lookup
+  li.list-group-item
+  button.remove-lookup-button {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 1.5rem;
+  outline: none;
+  padding: 0 0.375rem;
+}

@@ -18,13 +18,13 @@ const meta: Meta<typeof ViolationCard> = {
         <div className="site-container container-fluid">
           <main>
             <div className="row">
-              <div className="col-md-12 vehicle-lookup-content-container">
-                <div className="vehicles">
+              <div className="col-md-12 vehicle-lookup-content-container new-style">
+                <div className="vehicles new-style">
                   <div className="vehicle card">
                     <ul className="list-group-flush list-group">
                       <li className="list-group-item">
                         <div className="violation-card-list-wrapper">
-                          <div className="violation-card-list">
+                          <div className="violation-card-list bg-body">
                             {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
                             <Story />
                           </div>

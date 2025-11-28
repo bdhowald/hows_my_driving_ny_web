@@ -4,12 +4,19 @@ import { act, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
+import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 
 import Header from './Header'
 
 describe('Header', () => {
   const refreshLookupFunction = jest.fn()
   const removeLookupFunction = jest.fn()
+
+  const mockedSettings = {
+    getSetting: jest.fn().mockReturnValue(true),
+    removeSetting: jest.fn(),
+    updateSetting: jest.fn(),
+  }
 
   let savedWindowOpen = global.open
 
@@ -24,12 +31,14 @@ describe('Header', () => {
   describe('renders without error', () => {
     it('should render successfully', () => {
       render(
-        <Header
-          fromPreviousLookupUniqueIdentifier={false}
-          refreshLookupFunction={refreshLookupFunction}
-          removeLookupFunction={removeLookupFunction}
-          vehicle={VehicleFactory.build()}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <Header
+            fromPreviousLookupUniqueIdentifier={false}
+            refreshLookupFunction={refreshLookupFunction}
+            removeLookupFunction={removeLookupFunction}
+            vehicle={VehicleFactory.build()}
+          />
+        </SettingsContext.Provider>,
       )
 
       expect(screen.getByTestId('copy-button')).toBeInTheDocument()
@@ -43,12 +52,14 @@ describe('Header', () => {
     it('should display a subheader if this is the header for a previous lookup', () => {
       render(
         <MemoryRouter>
-          <Header
-            fromPreviousLookupUniqueIdentifier={true}
-            refreshLookupFunction={refreshLookupFunction}
-            removeLookupFunction={removeLookupFunction}
-            vehicle={VehicleFactory.build()}
-          />
+          <SettingsContext.Provider value={mockedSettings}>
+            <Header
+              fromPreviousLookupUniqueIdentifier={true}
+              refreshLookupFunction={refreshLookupFunction}
+              removeLookupFunction={removeLookupFunction}
+              vehicle={VehicleFactory.build()}
+            />
+          </SettingsContext.Provider>
         </MemoryRouter>,
       )
 
@@ -67,13 +78,15 @@ describe('Header', () => {
 
       render(
         <MemoryRouter initialEntries={[initialRoute]}>
-          <Header
-            fromPreviousLookupUniqueIdentifier={true}
-            refreshLookupFunction={refreshLookupFunction}
-            removeLookupFunction={removeLookupFunction}
-            vehicle={vehicle}
-          />
-          <LocationDisplay />
+          <SettingsContext.Provider value={mockedSettings}>
+            <Header
+              fromPreviousLookupUniqueIdentifier={true}
+              refreshLookupFunction={refreshLookupFunction}
+              removeLookupFunction={removeLookupFunction}
+              vehicle={vehicle}
+            />
+            <LocationDisplay />
+          </SettingsContext.Provider>
         </MemoryRouter>,
       )
 
@@ -105,12 +118,14 @@ describe('Header', () => {
       const vehicle = VehicleFactory.build()
 
       render(
-        <Header
-          fromPreviousLookupUniqueIdentifier={false}
-          refreshLookupFunction={refreshLookupFunction}
-          removeLookupFunction={removeLookupFunction}
-          vehicle={vehicle}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <Header
+            fromPreviousLookupUniqueIdentifier={false}
+            refreshLookupFunction={refreshLookupFunction}
+            removeLookupFunction={removeLookupFunction}
+            vehicle={vehicle}
+          />
+        </SettingsContext.Provider>,
       )
 
       const copyLookupLinkButton = screen.getByLabelText('copy link to lookup')
@@ -135,12 +150,14 @@ describe('Header', () => {
       global.open = mockedOpen
 
       render(
-        <Header
-          fromPreviousLookupUniqueIdentifier={false}
-          refreshLookupFunction={refreshLookupFunction}
-          removeLookupFunction={removeLookupFunction}
-          vehicle={VehicleFactory.build()}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <Header
+            fromPreviousLookupUniqueIdentifier={false}
+            refreshLookupFunction={refreshLookupFunction}
+            removeLookupFunction={removeLookupFunction}
+            vehicle={VehicleFactory.build()}
+          />
+        </SettingsContext.Provider>,
       )
 
       const twitterShareButtonElement = screen.getByTestId(
@@ -158,12 +175,14 @@ describe('Header', () => {
       const vehicle = VehicleFactory.build()
 
       render(
-        <Header
-          fromPreviousLookupUniqueIdentifier={false}
-          refreshLookupFunction={refreshLookupFunction}
-          removeLookupFunction={removeLookupFunction}
-          vehicle={vehicle}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <Header
+            fromPreviousLookupUniqueIdentifier={false}
+            refreshLookupFunction={refreshLookupFunction}
+            removeLookupFunction={removeLookupFunction}
+            vehicle={vehicle}
+          />
+        </SettingsContext.Provider>,
       )
 
       const removeLookupButton = screen.getByLabelText('remove lookup')

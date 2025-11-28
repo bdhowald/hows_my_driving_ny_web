@@ -1,8 +1,8 @@
 import React from 'react'
-import { Cookies, CookiesProvider } from 'react-cookie'
 import { render, screen } from '@testing-library/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
+import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 
 import Body from './Body'
 
@@ -12,10 +12,16 @@ describe('Body', () => {
       it('should render successfully when showViolationsList is true', () => {
         const vehicle = VehicleFactory.build()
 
+        const mockedSettings = {
+          getSetting: jest.fn().mockReturnValueOnce(true),
+          removeSetting: jest.fn(),
+          updateSetting: jest.fn(),
+        }
+
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <Body showViolationsList={true} vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         // LookupInfo element
@@ -35,10 +41,16 @@ describe('Body', () => {
       it('should render successfully when showViolationsList is false', () => {
         const vehicle = VehicleFactory.build()
 
+        const mockedSettings = {
+          getSetting: jest.fn().mockReturnValueOnce(true),
+          removeSetting: jest.fn(),
+          updateSetting: jest.fn(),
+        }
+
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <Body showViolationsList={false} vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         // LookupInfo element
@@ -64,10 +76,16 @@ describe('Body', () => {
       it('should render successfully when showViolationsList is true', () => {
         const vehicle = VehicleFactory.build()
 
+        const mockedSettings = {
+          getSetting: jest.fn().mockReturnValueOnce(false),
+          removeSetting: jest.fn(),
+          updateSetting: jest.fn(),
+        }
+
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <Body showViolationsList={true} vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         // LookupInfo element
@@ -87,10 +105,16 @@ describe('Body', () => {
       it('should render successfully when showViolationsList is false', () => {
         const vehicle = VehicleFactory.build()
 
+        const mockedSettings = {
+          getSetting: jest.fn().mockReturnValueOnce(false),
+          removeSetting: jest.fn(),
+          updateSetting: jest.fn(),
+        }
+
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <Body showViolationsList={false} vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         // LookupInfo element
@@ -130,13 +154,19 @@ describe('Body', () => {
         },
       })
 
+    const mockedSettings = {
+      getSetting: jest.fn().mockReturnValueOnce(true),
+      removeSetting: jest.fn(),
+      updateSetting: jest.fn(),
+    }
+
     render(
-      <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+      <SettingsContext.Provider value={mockedSettings}>
         <Body
           showViolationsList={false}
           vehicle={vehicleEligibleForDangerousVehicleAbatementActWarning}
         />
-      </CookiesProvider>,
+      </SettingsContext.Provider>,
     )
 
     expect(
@@ -163,13 +193,19 @@ describe('Body', () => {
         },
       })
 
+    const mockedSettings = {
+      getSetting: jest.fn().mockReturnValueOnce(false),
+      removeSetting: jest.fn(),
+      updateSetting: jest.fn(),
+    }
+
     render(
-      <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+      <SettingsContext.Provider value={mockedSettings}>
         <Body
           showViolationsList={false}
           vehicle={vehicleEligibleForDangerousVehicleAbatementActWarning}
         />
-      </CookiesProvider>,
+      </SettingsContext.Provider>,
     )
 
     expect(

@@ -1,10 +1,8 @@
 import React from 'react'
-import { Cookies, CookiesProvider } from 'react-cookie'
-import { render, renderHook, screen } from '@testing-library/react'
-import { fireEvent } from '@testing-library/dom'
-import userEvent from '@testing-library/user-event'
+import { render, screen } from '@testing-library/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
+import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 
 import VehicleResult from './VehicleResult'
 
@@ -22,14 +20,22 @@ describe('VehicleResult', () => {
   } as const
 
   it('renders successfully', () => {
+    const mockedSettings = {
+      getSetting: jest.fn(),
+      removeSetting: jest.fn(),
+      updateSetting: jest.fn(),
+    }
+
     render(
-      <VehicleResult
-        index={0}
-        refreshLookupFunction={refreshLookupFunction}
-        removeLookupFunction={removeLookupFunction}
-        showViolationsList={true}
-        vehicleDisplayResult={vehicleDisplayResult}
-      />,
+      <SettingsContext.Provider value={mockedSettings}>
+        <VehicleResult
+          index={0}
+          refreshLookupFunction={refreshLookupFunction}
+          removeLookupFunction={removeLookupFunction}
+          showViolationsList={true}
+          vehicleDisplayResult={vehicleDisplayResult}
+        />
+      </SettingsContext.Provider>,
     )
 
     const vehicleResult = screen.getByTestId(
@@ -40,8 +46,14 @@ describe('VehicleResult', () => {
 
   describe('new-style display', () => {
     it('shows the violation list when `showViolationsList` is true', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValueOnce(true),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
-        <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleResult
             index={0}
             refreshLookupFunction={refreshLookupFunction}
@@ -49,7 +61,7 @@ describe('VehicleResult', () => {
             showViolationsList={true}
             vehicleDisplayResult={vehicleDisplayResult}
           />
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       const violationCardList = screen.getByTestId('violation-card-list')
@@ -57,8 +69,14 @@ describe('VehicleResult', () => {
     })
 
     it('hides the violation list when `showViolationsList` is false', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValueOnce(true),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
-        <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleResult
             index={0}
             refreshLookupFunction={refreshLookupFunction}
@@ -66,7 +84,7 @@ describe('VehicleResult', () => {
             showViolationsList={false}
             vehicleDisplayResult={vehicleDisplayResult}
           />
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       const violationCardList = screen.queryByTestId('violation-card-list')
@@ -76,8 +94,14 @@ describe('VehicleResult', () => {
 
   describe('old-style display', () => {
     it('shows the violation list when `showViolationsList` is true', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValueOnce(false),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
-        <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleResult
             index={0}
             refreshLookupFunction={refreshLookupFunction}
@@ -85,7 +109,7 @@ describe('VehicleResult', () => {
             showViolationsList={true}
             vehicleDisplayResult={vehicleDisplayResult}
           />
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       const violationCardList = screen.getByTestId('vehicle-violations-list')
@@ -93,8 +117,14 @@ describe('VehicleResult', () => {
     })
 
     it('hides the violation list when `showViolationsList` is false', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValueOnce(false),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
-        <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleResult
             index={0}
             refreshLookupFunction={refreshLookupFunction}
@@ -102,7 +132,7 @@ describe('VehicleResult', () => {
             showViolationsList={false}
             vehicleDisplayResult={vehicleDisplayResult}
           />
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       const violationCardList = screen.queryByTestId('vehicle-violations-list')

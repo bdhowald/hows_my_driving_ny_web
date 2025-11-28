@@ -1,6 +1,307 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components/Navigation DefaultNavigation smoke-test 1`] = `
+exports[`Components/Navigation DefaultNavigationLargeSizeNewStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <div class="nav-bar-container new-style container-fluid">
+      <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <button aria-controls="basic-navbar-nav"
+                  type="button"
+                  aria-label="Toggle navigation"
+                  class="navbar-toggler collapsed"
+          >
+            <span class="navbar-toggler-icon">
+            </span>
+          </button>
+          <div class="navbar-collapse collapse"
+               id="basic-navbar-nav"
+               data-testid="navbar-collapse"
+          >
+            <div class="me-auto navbar-nav">
+              <a class="fw-bold nav-link active"
+                 href="/"
+              >
+                Search
+              </a>
+              <a class="nav-link"
+                 href="/updates"
+              >
+                Updates
+              </a>
+              <a class="nav-link"
+                 href="/faqs"
+              >
+                FAQs
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/Navigation DefaultNavigationLargeSizeOldStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <div class="nav-bar-container  container-fluid">
+      <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <button aria-controls="basic-navbar-nav"
+                  type="button"
+                  aria-label="Toggle navigation"
+                  class="navbar-toggler collapsed"
+          >
+            <span class="navbar-toggler-icon">
+            </span>
+          </button>
+          <div class="navbar-collapse collapse"
+               id="basic-navbar-nav"
+               data-testid="navbar-collapse"
+          >
+            <div class="me-auto navbar-nav">
+              <a class="fw-bold nav-link active"
+                 href="/"
+              >
+                Search
+              </a>
+              <a class="nav-link"
+                 href="/updates"
+              >
+                Updates
+              </a>
+              <a class="nav-link"
+                 href="/faqs"
+              >
+                FAQs
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/Navigation DefaultNavigationMediumSizeNewStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <div class="nav-bar-container new-style container-fluid">
+      <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <button aria-controls="basic-navbar-nav"
+                  type="button"
+                  aria-label="Toggle navigation"
+                  class="navbar-toggler collapsed"
+          >
+            <span class="navbar-toggler-icon">
+            </span>
+          </button>
+          <div class="navbar-collapse collapse"
+               id="basic-navbar-nav"
+               data-testid="navbar-collapse"
+          >
+            <div class="me-auto navbar-nav">
+              <a class="fw-bold nav-link active"
+                 href="/"
+              >
+                Search
+              </a>
+              <a class="nav-link"
+                 href="/updates"
+              >
+                Updates
+              </a>
+              <a class="nav-link"
+                 href="/faqs"
+              >
+                FAQs
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/Navigation DefaultNavigationMediumSizeOldStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <div class="nav-bar-container  container-fluid">
+      <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <button aria-controls="basic-navbar-nav"
+                  type="button"
+                  aria-label="Toggle navigation"
+                  class="navbar-toggler collapsed"
+          >
+            <span class="navbar-toggler-icon">
+            </span>
+          </button>
+          <div class="navbar-collapse collapse"
+               id="basic-navbar-nav"
+               data-testid="navbar-collapse"
+          >
+            <div class="me-auto navbar-nav">
+              <a class="fw-bold nav-link active"
+                 href="/"
+              >
+                Search
+              </a>
+              <a class="nav-link"
+                 href="/updates"
+              >
+                Updates
+              </a>
+              <a class="nav-link"
+                 href="/faqs"
+              >
+                FAQs
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/Navigation DefaultNavigationSmallSizeNewStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <div class="nav-bar-container new-style container-fluid">
+      <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <button aria-controls="basic-navbar-nav"
+                  type="button"
+                  aria-label="Toggle navigation"
+                  class="navbar-toggler collapsed"
+          >
+            <span class="navbar-toggler-icon">
+            </span>
+          </button>
+          <div class="navbar-collapse collapse"
+               id="basic-navbar-nav"
+               data-testid="navbar-collapse"
+          >
+            <div class="me-auto navbar-nav">
+              <a class="fw-bold nav-link active"
+                 href="/"
+              >
+                Search
+              </a>
+              <a class="nav-link"
+                 href="/updates"
+              >
+                Updates
+              </a>
+              <a class="nav-link"
+                 href="/faqs"
+              >
+                FAQs
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/Navigation DefaultNavigationSmallSizeOldStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <div class="nav-bar-container  container-fluid">
+      <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <button aria-controls="basic-navbar-nav"
+                  type="button"
+                  aria-label="Toggle navigation"
+                  class="navbar-toggler collapsed"
+          >
+            <span class="navbar-toggler-icon">
+            </span>
+          </button>
+          <div class="navbar-collapse collapse"
+               id="basic-navbar-nav"
+               data-testid="navbar-collapse"
+          >
+            <div class="me-auto navbar-nav">
+              <a class="fw-bold nav-link active"
+                 href="/"
+              >
+                Search
+              </a>
+              <a class="nav-link"
+                 href="/updates"
+              >
+                Updates
+              </a>
+              <a class="nav-link"
+                 href="/faqs"
+              >
+                FAQs
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/Navigation DefaultNavigationVerySmallSizeNewStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <div class="nav-bar-container new-style container-fluid">
+      <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <button aria-controls="basic-navbar-nav"
+                  type="button"
+                  aria-label="Toggle navigation"
+                  class="navbar-toggler collapsed"
+          >
+            <span class="navbar-toggler-icon">
+            </span>
+          </button>
+          <div class="navbar-collapse collapse"
+               id="basic-navbar-nav"
+               data-testid="navbar-collapse"
+          >
+            <div class="me-auto navbar-nav">
+              <a class="fw-bold nav-link active"
+                 href="/"
+              >
+                Search
+              </a>
+              <a class="nav-link"
+                 href="/updates"
+              >
+                Updates
+              </a>
+              <a class="nav-link"
+                 href="/faqs"
+              >
+                FAQs
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/Navigation DefaultNavigationVerySmallSizeOldStyleDisplay smoke-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <div class="nav-bar-container  container-fluid">

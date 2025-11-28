@@ -3,14 +3,20 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { ViolationFactory } from '__fixtures__/models/Violation'
-
 import Sort from 'constants/sortOptions'
 import Violation from 'models/Violation/Violation'
+import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 
 import ViolationCardGroup from './ViolationCardGroup'
 
 describe('ViolationCardGroup', () => {
   const showOffCanvasFunction = (_: Violation) => null
+
+  const mockedSettings = {
+    getSetting: jest.fn(),
+    removeSetting: jest.fn(),
+    updateSetting: jest.fn(),
+  }
 
   const violations = [
     ViolationFactory.build({
@@ -50,16 +56,18 @@ describe('ViolationCardGroup', () => {
       'should render without error',
       ({ showFullFineData, showFullLocationData }) => {
         render(
-          <ViolationCardGroup
-            bucket={violations}
-            bucketName="2024"
-            currentSortType={Sort.DATE}
-            index="NY:ABC1234:-2024-date-true"
-            showFullFineData={showFullFineData}
-            showFullLocationData={showFullLocationData}
-            showOffCanvasFunction={showOffCanvasFunction}
-            sortAscending={true}
-          />,
+          <SettingsContext.Provider value={mockedSettings}>
+            <ViolationCardGroup
+              bucket={violations}
+              bucketName="2024"
+              currentSortType={Sort.DATE}
+              index="NY:ABC1234:-2024-date-true"
+              showFullFineData={showFullFineData}
+              showFullLocationData={showFullLocationData}
+              showOffCanvasFunction={showOffCanvasFunction}
+              sortAscending={true}
+            />
+          </SettingsContext.Provider>,
         )
       },
     )
@@ -67,16 +75,18 @@ describe('ViolationCardGroup', () => {
 
   it('should display the group header and group violations when expanded', () => {
     render(
-      <ViolationCardGroup
-        bucket={violations}
-        bucketName="2024"
-        currentSortType={Sort.DATE}
-        index="NY:ABC1234:-2024-date-true"
-        showFullFineData={false}
-        showFullLocationData={false}
-        showOffCanvasFunction={showOffCanvasFunction}
-        sortAscending={true}
-      />,
+      <SettingsContext.Provider value={mockedSettings}>
+        <ViolationCardGroup
+          bucket={violations}
+          bucketName="2024"
+          currentSortType={Sort.DATE}
+          index="NY:ABC1234:-2024-date-true"
+          showFullFineData={false}
+          showFullLocationData={false}
+          showOffCanvasFunction={showOffCanvasFunction}
+          sortAscending={true}
+        />
+      </SettingsContext.Provider>,
     )
 
     // group header is visible
@@ -93,16 +103,18 @@ describe('ViolationCardGroup', () => {
 
   it('should display the group header but not the group violations when collapsed', () => {
     render(
-      <ViolationCardGroup
-        bucket={violations}
-        bucketName="2024"
-        currentSortType={Sort.DATE}
-        index="NY:ABC1234:-2024-date-true"
-        showFullFineData={false}
-        showFullLocationData={false}
-        showOffCanvasFunction={showOffCanvasFunction}
-        sortAscending={true}
-      />,
+      <SettingsContext.Provider value={mockedSettings}>
+        <ViolationCardGroup
+          bucket={violations}
+          bucketName="2024"
+          currentSortType={Sort.DATE}
+          index="NY:ABC1234:-2024-date-true"
+          showFullFineData={false}
+          showFullLocationData={false}
+          showOffCanvasFunction={showOffCanvasFunction}
+          sortAscending={true}
+        />
+      </SettingsContext.Provider>,
     )
 
     const violationCardGroupVisibilityToggle =

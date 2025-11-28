@@ -13,7 +13,8 @@ import {
 } from 'constants/storage'
 import L10N from 'constants/display'
 import SocialMediaService from 'constants/socialMedia'
-import { ApplicationContext } from 'context/ApplicationContext'
+import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
+import useSettings from 'hooks/useSettings/useSettings'
 import Vehicle from 'models/Vehicle/Vehicle'
 
 const components = {
@@ -40,10 +41,7 @@ const ShareButton = ({
   socialMediaService: SocialMediaService
   vehicle: Vehicle
 }) => {
-  const [cookies, _] = useCookies([
-    USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
-    USE_SEARCH_FILTERS_STORAGE_KEY,
-  ])
+  const [cookies, _] = useCookies([USE_SEARCH_FILTERS_STORAGE_KEY])
 
   const vehicleHashtag = `${vehicle.state}_${vehicle.plate}`
   const violationsString = `${vehicle.violationsCount} violation${vehicle.violationsCount === 1 ? '' : 's'}`
@@ -59,6 +57,8 @@ const ShareButton = ({
   const applicationContext = useContext(ApplicationContext)
   const { tracker } = applicationContext
 
+  const { getSetting } = useSettings()
+
   return (
     <ShareButtonClass
       aria-label={`share lookup to ${serviceName}`}
@@ -68,7 +68,7 @@ const ShareButton = ({
           socialMediaService: serviceName,
           uniqueIdentifier: vehicle.uniqueIdentifier,
           useNewStyleDisplay:
-            cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true,
+            getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true,
           useSearchFilters: cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true,
         })
       }}

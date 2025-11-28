@@ -1,17 +1,18 @@
-import * as React from 'react'
+import React from 'react'
 import { CookiesProvider } from 'react-cookie'
 import { Routes, Route } from 'react-router-dom'
 
-import ApplicationProvider from 'context/ApplicationContext'
+import ApplicationProvider from 'context/ApplicationContext/ApplicationContext'
+import SettingsProvider from 'context/SettingsContext/SettingsContext'
 import FAQs from 'view/Pages/FAQs/FAQs'
 import SiteContainer from 'view/components/SiteContainer/SiteContainer'
 import Updates from 'view/Pages/Updates/Updates'
 import VehicleLookup from 'view/Pages/VehicleLookup/VehicleLookup'
 
-const App = () => {
-  return (
-    <CookiesProvider>
-      <ApplicationProvider>
+const App = () => (
+  <CookiesProvider>
+    <ApplicationProvider>
+      <SettingsProvider>
         <SiteContainer>
           <Routes>
             <Route path="/faqs" element={<FAQs />} />
@@ -20,9 +21,9 @@ const App = () => {
             <Route path="/" element={<VehicleLookup />} />
           </Routes>
         </SiteContainer>
-      </ApplicationProvider>
-    </CookiesProvider>
-  )
-}
+      </SettingsProvider>
+    </ApplicationProvider>
+  </CookiesProvider>
+)
 
 export default App

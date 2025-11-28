@@ -4,6 +4,8 @@ import { faCircle as farCircle } from '@fortawesome/free-regular-svg-icons'
 import { faArrowRotateRight, faCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/Header/RefreshLookupButton/RefreshLookupButton.css'
+
 // Add Font Awesome icons
 library.add(faArrowRotateRight, faCircle, farCircle as IconDefinition)
 

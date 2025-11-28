@@ -3,13 +3,19 @@ import { render, screen } from '@testing-library/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
 import { ViolationFactory } from '__fixtures__/models/Violation'
-
 import Violation from 'models/Violation/Violation'
+import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 
 import ViolationCardList from './ViolationCardList'
 
 describe('ViolationCardList', () => {
   const setViolationsListVisibility = () => null
+
+  const mockedSettings = {
+    getSetting: jest.fn(),
+    removeSetting: jest.fn(),
+    updateSetting: jest.fn(),
+  }
 
   describe('renders without error', () => {
     test.each([
@@ -27,11 +33,13 @@ describe('ViolationCardList', () => {
         const vehicle = VehicleFactory.build()
 
         render(
-          <ViolationCardList
-            setViolationsListVisibilityFunction={setViolationsListVisibility}
-            vehicle={vehicle}
-            violationsListIsVisible={violationsListIsVisible}
-          />,
+          <SettingsContext.Provider value={mockedSettings}>
+            <ViolationCardList
+              setViolationsListVisibilityFunction={setViolationsListVisibility}
+              vehicle={vehicle}
+              violationsListIsVisible={violationsListIsVisible}
+            />
+          </SettingsContext.Provider>,
         )
       },
     )
@@ -41,11 +49,13 @@ describe('ViolationCardList', () => {
     const vehicle = VehicleFactory.build()
 
     render(
-      <ViolationCardList
-        setViolationsListVisibilityFunction={setViolationsListVisibility}
-        vehicle={vehicle}
-        violationsListIsVisible={true}
-      />,
+      <SettingsContext.Provider value={mockedSettings}>
+        <ViolationCardList
+          setViolationsListVisibilityFunction={setViolationsListVisibility}
+          vehicle={vehicle}
+          violationsListIsVisible={true}
+        />
+      </SettingsContext.Provider>,
     )
 
     // list controls
@@ -71,11 +81,13 @@ describe('ViolationCardList', () => {
     })
 
     render(
-      <ViolationCardList
-        setViolationsListVisibilityFunction={setViolationsListVisibility}
-        vehicle={vehicle}
-        violationsListIsVisible={true}
-      />,
+      <SettingsContext.Provider value={mockedSettings}>
+        <ViolationCardList
+          setViolationsListVisibilityFunction={setViolationsListVisibility}
+          vehicle={vehicle}
+          violationsListIsVisible={true}
+        />
+      </SettingsContext.Provider>,
     )
 
     const fineString = `$${violation.getTotalFined()}.00`
@@ -108,11 +120,13 @@ describe('ViolationCardList', () => {
     })
 
     render(
-      <ViolationCardList
-        setViolationsListVisibilityFunction={setViolationsListVisibility}
-        vehicle={vehicle}
-        violationsListIsVisible={true}
-      />,
+      <SettingsContext.Provider value={mockedSettings}>
+        <ViolationCardList
+          setViolationsListVisibilityFunction={setViolationsListVisibility}
+          vehicle={vehicle}
+          violationsListIsVisible={true}
+        />
+      </SettingsContext.Provider>,
     )
 
     const fineString = `$${violation.getTotalFined()}.00`
@@ -155,11 +169,13 @@ describe('ViolationCardList', () => {
       })
 
       render(
-        <ViolationCardList
-          setViolationsListVisibilityFunction={setViolationsListVisibility}
-          vehicle={vehicle}
-          violationsListIsVisible={true}
-        />,
+        <SettingsContext.Provider value={mockedSettings}>
+          <ViolationCardList
+            setViolationsListVisibilityFunction={setViolationsListVisibility}
+            vehicle={vehicle}
+            violationsListIsVisible={true}
+          />
+        </SettingsContext.Provider>,
       )
 
       if (!violationsCount) {
@@ -250,11 +266,13 @@ describe('ViolationCardList', () => {
     })
 
     render(
-      <ViolationCardList
-        setViolationsListVisibilityFunction={setViolationsListVisibility}
-        vehicle={vehicle}
-        violationsListIsVisible={true}
-      />,
+      <SettingsContext.Provider value={mockedSettings}>
+        <ViolationCardList
+          setViolationsListVisibilityFunction={setViolationsListVisibility}
+          vehicle={vehicle}
+          violationsListIsVisible={true}
+        />
+      </SettingsContext.Provider>,
     )
 
     const violationCardListElement: HTMLElement = screen.getByTestId(

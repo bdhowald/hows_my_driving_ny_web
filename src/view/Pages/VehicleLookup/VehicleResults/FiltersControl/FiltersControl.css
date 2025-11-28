@@ -1,0 +1,105 @@
+div.container-fluid div.row div.filters-wrapper {
+  margin: auto;
+  padding: 0.5rem 0 0;
+}
+
+/* Start new-style display */
+
+div.container-fluid div.row div.filters-wrapper.new-style {
+  max-width: 36rem;
+}
+
+/* End new-style display */
+
+/* div.container-fluid div.row div.filters-wrapper > div {
+  padding: 0 1.25rem;
+}
+
+@media only screen and (min-width: 768px) {
+  div.container-fluid div.row div.filters-wrapper > div {
+    display: flex;
+    padding: 0 0.125rem;
+  }
+} */
+
+div.container-fluid div.row div.filters-wrapper div.filter-controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+div.container-fluid
+  div.row
+  div.filters-wrapper
+  div.filter-controls
+  div.filter-controls-header {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0;
+}
+
+div.container-fluid
+  div.row
+  div.filters-wrapper
+  div.filter-controls
+  div.filter-controls-header
+  > div {
+  flex: none;
+}
+
+@media only screen and (min-width: 576px) {
+  div.container-fluid
+    div.row
+    div.filters-wrapper
+    div.filter-controls
+    div.filter-controls-header {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+}
+
+div.container-fluid div.row div.filters-wrapper div.active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 1rem 0;
+}
+
+div.container-fluid
+  div.row
+  div.filters-wrapper
+  div.active-filters
+  span.filter-breadcrumb {
+  background-color: #eee;
+  border-radius: 0.5rem;
+  display: inline;
+  margin: 0.25rem 0.25rem 0.25rem 0;
+  padding: 0.5rem;
+}
+
+div.container-fluid
+  div.row
+  div.filters-wrapper
+  div.active-filters
+  span.filter-breadcrumb-key {
+  font-weight: bold;
+}
+
+div.container-fluid
+  div.row
+  div.filters-wrapper
+  div.active-filters
+  span.filter-breadcrumb-text {
+  cursor: pointer;
+}
+
+div.container-fluid
+  div.row
+  div.filters-wrapper
+  div.active-filters
+  span.filter-breadcrumb-remove-filter {
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 1rem;
+}

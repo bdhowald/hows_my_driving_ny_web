@@ -13,8 +13,8 @@ const meta: Meta<typeof ShowFineDetailsButton> = {
         <div className="site-container container-fluid">
           <main>
             <div className="row">
-              <div className="col-md-12 vehicle-lookup-content-container">
-                <div className="vehicles">
+              <div className="col-md-12 vehicle-lookup-content-container new-style">
+                <div className="vehicles new-style">
                   <div className="vehicle card">
                     <ul className="list-group-flush list-group">
                       <li className="list-group-item">

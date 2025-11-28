@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components/Search/SearchControls/SearchButton LookupInFlightAndNoPlateIdPresent smoke-test 1`] = `
+exports[`Components/Search/SearchControls/SearchButton LookupInFlightAndNoPlateIdPresentNewStyleDisplay smoke-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="jumbotron">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="jumbotron new-style">
             <div class="row">
               <form class="form">
                 <div class="form-row">
@@ -38,13 +38,51 @@ exports[`Components/Search/SearchControls/SearchButton LookupInFlightAndNoPlateI
 </div>
 `;
 
-exports[`Components/Search/SearchControls/SearchButton NoLookupInFlightAndNoPlateIdPresent smoke-test 1`] = `
+exports[`Components/Search/SearchControls/SearchButton LookupInFlightAndNoPlateIdPresentOldStyleDisplay smoke-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="jumbotron">
+        <div class="col-md-12 vehicle-lookup-content-container ">
+          <div class="jumbotron ">
+            <div class="row">
+              <form class="form">
+                <div class="form-row">
+                  <div class="col-md">
+                    <div class="form-group">
+                      <button class="form-control btn btn-primary"
+                              disabled
+                              role="button"
+                              type="submit"
+                              value="Search"
+                      >
+                        <span class="spinner-border spinner-border-sm"
+                              role="status"
+                              aria-hidden="true"
+                        >
+                        </span>
+                        &nbsp;&nbsp;Searching...
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/Search/SearchControls/SearchButton NoLookupInFlightAndNoPlateIdPresentNewStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="jumbotron new-style">
             <div class="row">
               <form class="form">
                 <div class="form-row">
@@ -71,13 +109,46 @@ exports[`Components/Search/SearchControls/SearchButton NoLookupInFlightAndNoPlat
 </div>
 `;
 
-exports[`Components/Search/SearchControls/SearchButton PlateIdPresentAndLookupInFlight smoke-test 1`] = `
+exports[`Components/Search/SearchControls/SearchButton NoLookupInFlightAndNoPlateIdPresentOldStyleDisplay smoke-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="jumbotron">
+        <div class="col-md-12 vehicle-lookup-content-container ">
+          <div class="jumbotron ">
+            <div class="row">
+              <form class="form">
+                <div class="form-row">
+                  <div class="col-md">
+                    <div class="form-group">
+                      <button class="form-control btn btn-primary"
+                              disabled
+                              role="button"
+                              type="submit"
+                              value="Search"
+                      >
+                        Search
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/Search/SearchControls/SearchButton PlateIdPresentAndLookupInFlightNewStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="jumbotron new-style">
             <div class="row">
               <form class="form">
                 <div class="form-row">
@@ -109,13 +180,83 @@ exports[`Components/Search/SearchControls/SearchButton PlateIdPresentAndLookupIn
 </div>
 `;
 
-exports[`Components/Search/SearchControls/SearchButton PlateIdPresentAndNoLookupInFlight smoke-test 1`] = `
+exports[`Components/Search/SearchControls/SearchButton PlateIdPresentAndLookupInFlightOldStyleDisplay smoke-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 vehicle-lookup-content-container">
-          <div class="jumbotron">
+        <div class="col-md-12 vehicle-lookup-content-container ">
+          <div class="jumbotron ">
+            <div class="row">
+              <form class="form">
+                <div class="form-row">
+                  <div class="col-md">
+                    <div class="form-group">
+                      <button class="form-control btn btn-primary"
+                              disabled
+                              role="button"
+                              type="submit"
+                              value="Search"
+                      >
+                        <span class="spinner-border spinner-border-sm"
+                              role="status"
+                              aria-hidden="true"
+                        >
+                        </span>
+                        &nbsp;&nbsp;Searching...
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/Search/SearchControls/SearchButton PlateIdPresentAndNoLookupInFlightNewStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="jumbotron new-style">
+            <div class="row">
+              <form class="form">
+                <div class="form-row">
+                  <div class="col-md">
+                    <div class="form-group">
+                      <button class="form-control btn btn-primary"
+                              role="button"
+                              type="submit"
+                              value="Search"
+                      >
+                        Search
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/Search/SearchControls/SearchButton PlateIdPresentAndNoLookupInFlightOldStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container ">
+          <div class="jumbotron ">
             <div class="row">
               <form class="form">
                 <div class="form-row">

@@ -1,0 +1,57 @@
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  thead
+  tr
+  th {
+  cursor: pointer;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  thead
+  tr
+  th.sort-column {
+  color: #000;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  thead
+  tr
+  th
+  span {
+  white-space: nowrap;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-body-wrapper
+  table
+  thead
+  tr
+  th.sort-column
+  svg.svg-inline--fa {
+  margin: 0 0.25rem;
+}

@@ -1,5 +1,10 @@
-import * as React from 'react'
+import React, { ReactNode } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
+
+import {
+  newStyleDisplayDecorator,
+  oldStyleDisplayDecorator,
+} from 'tests/utils/withStyleDisplayDecorator'
 
 import FAQs from './FAQs'
 
@@ -30,6 +35,18 @@ const meta: Meta<typeof FAQs> = {
 
 type Story = StoryObj<typeof FAQs>
 
-export const FaqsPage: Story = {}
+const ParentHtml = ({ children }: { children: ReactNode }) => (
+  <div className="site-container-wrapper">
+    <div className="site-container container-fluid">{children}</div>
+  </div>
+)
+
+export const FaqsPageNewStyleDisplay: Story = {
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
+}
+
+export const FaqsPageOldStyleDisplay: Story = {
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
+}
 
 export default meta

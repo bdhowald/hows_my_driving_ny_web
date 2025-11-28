@@ -1,0 +1,97 @@
+div.offcanvas.violation-detail.show.offcanvas-bottom {
+  height: 75%;
+}
+
+div.offcanvas.violation-detail.show div.offcanvas-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+div.offcanvas.violation-detail.show
+  div.offcanvas-header
+  div.offcanvas-title
+  span.summons-number {
+  font-weight: bold;
+}
+
+div.offcanvas.violation-detail.show div.offcanvas-body div.violation-info {
+  padding: 0 0.125rem;
+}
+
+div.offcanvas.violation-detail.show
+  div.offcanvas-body
+  div.violation-info
+  div.violation-info-aspect {
+  padding: 0.25rem 0;
+}
+
+div.offcanvas.violation-detail.show
+  div.offcanvas-body
+  div.violation-info
+  div.violation-info-aspect
+  div.violation-info-aspect-header {
+  font-weight: bold;
+}
+
+div.offcanvas.violation-detail.show
+  div.offcanvas-body
+  div.violation-info
+  div.violation-info-aspect
+  div.violation-info-aspect-body
+  ul.database-last-updated-at {
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+div.offcanvas.violation-detail.show
+  div.offcanvas-body
+  div.violation-info
+  div.fines-breakdown {
+  display: flex;
+  justify-content: space-between;
+}
+
+div.offcanvas.violation-detail.show
+  div.offcanvas-body
+  div.violation-info
+  div.fines-breakdown
+  div.summary-box.values.fines {
+  display: flex;
+  text-align: right;
+}
+
+div.offcanvas.violation-detail.show
+  div.offcanvas-body
+  div.violation-info
+  div.fines-breakdown
+  div.math-symbols {
+  font-weight: normal;
+  text-align: center;
+}
+
+div.offcanvas.violation-detail.show
+  div.offcanvas-body
+  div.violation-info
+  div.fines-breakdown
+  div.fine-added {
+  border-bottom: 0.125rem solid rgba(0, 0, 0, 0.5);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+div.offcanvas.violation-detail.show
+  div.offcanvas-body
+  div.violation-info
+  div.fines-breakdown
+  div.fine-subtracted {
+  border-bottom: 0.125rem solid rgba(0, 0, 0, 0.5);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+div.offcanvas.violation-detail.show
+  div.offcanvas-body
+  div.violation-info
+  div.fines-breakdown
+  div.in-judgment {
+  font-style: italic;
+}

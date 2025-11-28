@@ -7,9 +7,12 @@ import {
 } from 'constants/storage'
 import L10N from 'constants/display'
 import Sort from 'constants/sortOptions'
-import { ApplicationContext } from 'context/ApplicationContext'
+import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
+import useSettings from 'hooks/useSettings/useSettings'
 import Violation from 'models/Violation/Violation'
 import ViolationCard from 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCard/ViolationCard'
+
+import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCardGroup/ViolationCardGroup.css'
 
 const FINE_DIVIDER_INCREMENT = 25
 
@@ -68,10 +71,8 @@ const ViolationCardGroup = ({
   showOffCanvasFunction: (violation: Violation) => void
   sortAscending: boolean
 }) => {
-  const [cookies, _] = useCookies([
-    USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
-    USE_SEARCH_FILTERS_STORAGE_KEY,
-  ])
+  const { getSetting } = useSettings()
+  const [cookies, _] = useCookies([USE_SEARCH_FILTERS_STORAGE_KEY])
   const [groupIsVisible, setGroupIsVisible] = useState(true)
 
   const applicationContext = useContext(ApplicationContext)
@@ -103,7 +104,7 @@ const ViolationCardGroup = ({
           tracker?.trackEvent('toggle_violation_group', {
             location: 'ViolationCardGroup',
             useNewStyleDisplay:
-              cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true,
+              getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true,
             useSearchFilters: cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true,
           })
         }}

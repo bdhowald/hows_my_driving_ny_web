@@ -1,410 +1,841 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components/Search/Search SearchAtPageLoad smoke-test 1`] = `
+exports[`Components/Search/Search SearchAtPageLoadNewStyleDisplay smoke-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="jumbotron new-style">
-          <h1 class="display-4">
-            How's My Driving NY
-          </h1>
-          <p class="lead">
-            Search New York City
-            <a class="open-data-link"
-               href="https://data.cityofnewyork.us/browse?q=parking%20violations&amp;sortBy=relevance"
-               target="_blank"
-               rel="noopener noreferrer"
-            >
-              parking &amp; camera violations
-            </a>
-          </p>
-          <hr class="opacity-25">
-          <div class="row">
-            <form class="form">
-              <div class="row form-row">
-                <div class="col-md">
-                  <div class="form-group">
-                    <input autocomplete="off"
-                           class="form-control"
-                           id="plate-input"
-                           name="plateId"
-                           placeholder="Enter a plate..."
-                           type="text"
-                           value
+        <div class="site-container-wrapper">
+          <div class="site-container container-fluid">
+            <main>
+              <div class="row">
+                <div class="jumbotron new-style">
+                  <h1 class="display-4">
+                    How's My Driving NY
+                  </h1>
+                  <p class="lead">
+                    Search New York City
+                    <a class="open-data-link"
+                       href="https://data.cityofnewyork.us/browse?q=parking%20violations&amp;sortBy=relevance"
+                       target="_blank"
+                       rel="noopener noreferrer"
                     >
-                  </div>
-                </div>
-                <div class="col-md">
-                  <div class="form-group">
-                    <select aria-label="Select Region"
-                            name="state"
-                            class="form-select"
-                    >
-                      <optgroup label="Region">
-                        <option value="99">
-                          99 (99)
-                        </option>
-                        <option value="AB">
-                          Alberta (AB)
-                        </option>
-                        <option value="AK">
-                          Alaska (AK)
-                        </option>
-                        <option value="AL">
-                          Alabama (AL)
-                        </option>
-                        <option value="AR">
-                          Arkansas (AR)
-                        </option>
-                        <option value="AZ">
-                          Arizona (AZ)
-                        </option>
-                        <option value="BC">
-                          British Columbia (BC)
-                        </option>
-                        <option value="CA">
-                          California (CA)
-                        </option>
-                        <option value="CO">
-                          Colorado (CO)
-                        </option>
-                        <option value="CT">
-                          Connecticut (CT)
-                        </option>
-                        <option value="DC">
-                          District of Columbia (DC)
-                        </option>
-                        <option value="DE">
-                          Delaware (DE)
-                        </option>
-                        <option value="DP">
-                          U.S. State Department (DP)
-                        </option>
-                        <option value="FL">
-                          Florida (FL)
-                        </option>
-                        <option value="FM">
-                          Federated States of Micronesia (FM)
-                        </option>
-                        <option value="FO">
-                          Foreign (FO)
-                        </option>
-                        <option value="GA">
-                          Georgia (GA)
-                        </option>
-                        <option value="GU">
-                          Guam (GU)
-                        </option>
-                        <option value="GV">
-                          Government (GV)
-                        </option>
-                        <option value="HI">
-                          Hawaii (HI)
-                        </option>
-                        <option value="IA">
-                          Iowa (IA)
-                        </option>
-                        <option value="ID">
-                          Idaho (ID)
-                        </option>
-                        <option value="IL">
-                          Illinois (IL)
-                        </option>
-                        <option value="IN">
-                          Indiana (IN)
-                        </option>
-                        <option value="KS">
-                          Kansas (KS)
-                        </option>
-                        <option value="KY">
-                          Kentucky (KY)
-                        </option>
-                        <option value="LA">
-                          Louisiana (LA)
-                        </option>
-                        <option value="MA">
-                          Massachusetts (MA)
-                        </option>
-                        <option value="MB">
-                          Manitoba (MB)
-                        </option>
-                        <option value="MD">
-                          Maryland (MD)
-                        </option>
-                        <option value="ME">
-                          Maine (ME)
-                        </option>
-                        <option value="MI">
-                          Michigan (MI)
-                        </option>
-                        <option value="MN">
-                          Minnesota (MN)
-                        </option>
-                        <option value="MO">
-                          Missouri (MO)
-                        </option>
-                        <option value="MP">
-                          Northern Mariana Islands (MP)
-                        </option>
-                        <option value="MS">
-                          Mississippi (MS)
-                        </option>
-                        <option value="MT">
-                          Montana (MT)
-                        </option>
-                        <option value="MX">
-                          Mexico (MX)
-                        </option>
-                        <option value="NB">
-                          New Brunswick (NB)
-                        </option>
-                        <option value="NC">
-                          North Carolina (NC)
-                        </option>
-                        <option value="ND">
-                          North Dakota (ND)
-                        </option>
-                        <option value="NE">
-                          Nebraska (NE)
-                        </option>
-                        <option value="NF">
-                          Newfoundland (NF)
-                        </option>
-                        <option value="NH">
-                          New Hampshire (NH)
-                        </option>
-                        <option value="NJ">
-                          New Jersey (NJ)
-                        </option>
-                        <option value="NM">
-                          New Mexico (NM)
-                        </option>
-                        <option value="NS">
-                          Nova Scotia (NS)
-                        </option>
-                        <option value="NT">
-                          Northwest Territories (NT)
-                        </option>
-                        <option value="NU">
-                          Nunavut (NU)
-                        </option>
-                        <option value="NV">
-                          Nevada (NV)
-                        </option>
-                        <option value="NY">
-                          New York (NY)
-                        </option>
-                        <option value="OH">
-                          Ohio (OH)
-                        </option>
-                        <option value="OK">
-                          Oklahoma (OK)
-                        </option>
-                        <option value="ON">
-                          Ontario (ON)
-                        </option>
-                        <option value="OR">
-                          Oregon (OR)
-                        </option>
-                        <option value="PA">
-                          Pennsylvania (PA)
-                        </option>
-                        <option value="PE">
-                          Prince Edward Island (PE)
-                        </option>
-                        <option value="PR">
-                          Puerto Rico (PR)
-                        </option>
-                        <option value="PW">
-                          Palau (PW)
-                        </option>
-                        <option value="QC">
-                          Quebec (QC)
-                        </option>
-                        <option value="RI">
-                          Rhode Island (RI)
-                        </option>
-                        <option value="SC">
-                          South Carolina (SC)
-                        </option>
-                        <option value="SD">
-                          South Dakota (SD)
-                        </option>
-                        <option value="SK">
-                          Saskatchewan (SK)
-                        </option>
-                        <option value="TN">
-                          Tennessee (TN)
-                        </option>
-                        <option value="TX">
-                          Texas (TX)
-                        </option>
-                        <option value="UT">
-                          Utah (UT)
-                        </option>
-                        <option value="VA">
-                          Virginia (VA)
-                        </option>
-                        <option value="VI">
-                          U.S. Virgin Islands (VI)
-                        </option>
-                        <option value="VT">
-                          Vermont (VT)
-                        </option>
-                        <option value="WA">
-                          Washington (WA)
-                        </option>
-                        <option value="WI">
-                          Wisconsin (WI)
-                        </option>
-                        <option value="WV">
-                          West Virginia (WV)
-                        </option>
-                        <option value="WY">
-                          Wyoming (WY)
-                        </option>
-                        <option value="YT">
-                          Yukon Territories (YT)
-                        </option>
-                      </optgroup>
-                    </select>
+                      parking &amp; camera violations
+                    </a>
+                  </p>
+                  <hr class="opacity-25">
+                  <div class="row">
+                    <form class="form">
+                      <div class="row form-row">
+                        <div class="col-md">
+                          <div class="form-group">
+                            <input autocomplete="off"
+                                   class="form-control"
+                                   id="plate-input"
+                                   name="plateId"
+                                   pattern="[a-zA-Z0-9]+"
+                                   placeholder="Enter a plate..."
+                                   type="text"
+                                   value
+                            >
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-group">
+                            <select aria-label="Select Region"
+                                    name="state"
+                                    class="form-select"
+                            >
+                              <optgroup label="Region">
+                                <option value="99">
+                                  99 (99)
+                                </option>
+                                <option value="AB">
+                                  Alberta (AB)
+                                </option>
+                                <option value="AK">
+                                  Alaska (AK)
+                                </option>
+                                <option value="AL">
+                                  Alabama (AL)
+                                </option>
+                                <option value="AR">
+                                  Arkansas (AR)
+                                </option>
+                                <option value="AZ">
+                                  Arizona (AZ)
+                                </option>
+                                <option value="BC">
+                                  British Columbia (BC)
+                                </option>
+                                <option value="CA">
+                                  California (CA)
+                                </option>
+                                <option value="CO">
+                                  Colorado (CO)
+                                </option>
+                                <option value="CT">
+                                  Connecticut (CT)
+                                </option>
+                                <option value="DC">
+                                  District of Columbia (DC)
+                                </option>
+                                <option value="DE">
+                                  Delaware (DE)
+                                </option>
+                                <option value="DP">
+                                  U.S. State Department (DP)
+                                </option>
+                                <option value="FL">
+                                  Florida (FL)
+                                </option>
+                                <option value="FM">
+                                  Federated States of Micronesia (FM)
+                                </option>
+                                <option value="FO">
+                                  Foreign (FO)
+                                </option>
+                                <option value="GA">
+                                  Georgia (GA)
+                                </option>
+                                <option value="GU">
+                                  Guam (GU)
+                                </option>
+                                <option value="GV">
+                                  Government (GV)
+                                </option>
+                                <option value="HI">
+                                  Hawaii (HI)
+                                </option>
+                                <option value="IA">
+                                  Iowa (IA)
+                                </option>
+                                <option value="ID">
+                                  Idaho (ID)
+                                </option>
+                                <option value="IL">
+                                  Illinois (IL)
+                                </option>
+                                <option value="IN">
+                                  Indiana (IN)
+                                </option>
+                                <option value="KS">
+                                  Kansas (KS)
+                                </option>
+                                <option value="KY">
+                                  Kentucky (KY)
+                                </option>
+                                <option value="LA">
+                                  Louisiana (LA)
+                                </option>
+                                <option value="MA">
+                                  Massachusetts (MA)
+                                </option>
+                                <option value="MB">
+                                  Manitoba (MB)
+                                </option>
+                                <option value="MD">
+                                  Maryland (MD)
+                                </option>
+                                <option value="ME">
+                                  Maine (ME)
+                                </option>
+                                <option value="MI">
+                                  Michigan (MI)
+                                </option>
+                                <option value="MN">
+                                  Minnesota (MN)
+                                </option>
+                                <option value="MO">
+                                  Missouri (MO)
+                                </option>
+                                <option value="MP">
+                                  Northern Mariana Islands (MP)
+                                </option>
+                                <option value="MS">
+                                  Mississippi (MS)
+                                </option>
+                                <option value="MT">
+                                  Montana (MT)
+                                </option>
+                                <option value="MX">
+                                  Mexico (MX)
+                                </option>
+                                <option value="NB">
+                                  New Brunswick (NB)
+                                </option>
+                                <option value="NC">
+                                  North Carolina (NC)
+                                </option>
+                                <option value="ND">
+                                  North Dakota (ND)
+                                </option>
+                                <option value="NE">
+                                  Nebraska (NE)
+                                </option>
+                                <option value="NF">
+                                  Newfoundland (NF)
+                                </option>
+                                <option value="NH">
+                                  New Hampshire (NH)
+                                </option>
+                                <option value="NJ">
+                                  New Jersey (NJ)
+                                </option>
+                                <option value="NM">
+                                  New Mexico (NM)
+                                </option>
+                                <option value="NS">
+                                  Nova Scotia (NS)
+                                </option>
+                                <option value="NT">
+                                  Northwest Territories (NT)
+                                </option>
+                                <option value="NU">
+                                  Nunavut (NU)
+                                </option>
+                                <option value="NV">
+                                  Nevada (NV)
+                                </option>
+                                <option value="NY">
+                                  New York (NY)
+                                </option>
+                                <option value="OH">
+                                  Ohio (OH)
+                                </option>
+                                <option value="OK">
+                                  Oklahoma (OK)
+                                </option>
+                                <option value="ON">
+                                  Ontario (ON)
+                                </option>
+                                <option value="OR">
+                                  Oregon (OR)
+                                </option>
+                                <option value="PA">
+                                  Pennsylvania (PA)
+                                </option>
+                                <option value="PE">
+                                  Prince Edward Island (PE)
+                                </option>
+                                <option value="PR">
+                                  Puerto Rico (PR)
+                                </option>
+                                <option value="PW">
+                                  Palau (PW)
+                                </option>
+                                <option value="QC">
+                                  Quebec (QC)
+                                </option>
+                                <option value="RI">
+                                  Rhode Island (RI)
+                                </option>
+                                <option value="SC">
+                                  South Carolina (SC)
+                                </option>
+                                <option value="SD">
+                                  South Dakota (SD)
+                                </option>
+                                <option value="SK">
+                                  Saskatchewan (SK)
+                                </option>
+                                <option value="TN">
+                                  Tennessee (TN)
+                                </option>
+                                <option value="TX">
+                                  Texas (TX)
+                                </option>
+                                <option value="UT">
+                                  Utah (UT)
+                                </option>
+                                <option value="VA">
+                                  Virginia (VA)
+                                </option>
+                                <option value="VI">
+                                  U.S. Virgin Islands (VI)
+                                </option>
+                                <option value="VT">
+                                  Vermont (VT)
+                                </option>
+                                <option value="WA">
+                                  Washington (WA)
+                                </option>
+                                <option value="WI">
+                                  Wisconsin (WI)
+                                </option>
+                                <option value="WV">
+                                  West Virginia (WV)
+                                </option>
+                                <option value="WY">
+                                  Wyoming (WY)
+                                </option>
+                                <option value="YT">
+                                  Yukon Territories (YT)
+                                </option>
+                              </optgroup>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row form-row">
+                        <div class="col-md">
+                          <div class="form-group">
+                            <select aria-label="Select License Plate Type"
+                                    name="plateType"
+                                    class="form-select"
+                            >
+                              <optgroup label="License Plate Type">
+                                <option value="allTerrainVehicle">
+                                  All-Terrain Vehicle
+                                </option>
+                                <option value="ambulance">
+                                  Ambulance
+                                </option>
+                                <option value="busVanpool">
+                                  Bus/Vanpool
+                                </option>
+                                <option value="commercial">
+                                  Commercial
+                                </option>
+                                <option value="coronerMedicalExaminer">
+                                  Coroner/Medical Examiner
+                                </option>
+                                <option value="countyBoardOfSupervisors">
+                                  County Board of Supervisors
+                                </option>
+                                <option value="countyClerk">
+                                  County Clerk
+                                </option>
+                                <option value="countyLegislator">
+                                  County Legislator
+                                </option>
+                                <option value="dealer">
+                                  Dealer
+                                </option>
+                                <option value="educator">
+                                  Educator
+                                </option>
+                                <option value="governorsSecondCar">
+                                  Governor's Second Car
+                                </option>
+                                <option value="hearse">
+                                  Hearse
+                                </option>
+                                <option value="inTransitPermit">
+                                  In-Transit Permit
+                                </option>
+                                <option value="limitedUseAuto">
+                                  Limited-Use Auto
+                                </option>
+                                <option value="medallionVehicle">
+                                  Medallion Vehicle
+                                </option>
+                                <option value="medicalDoctor">
+                                  Medical Doctor
+                                </option>
+                                <option value="motorboat">
+                                  Motorboat
+                                </option>
+                                <option value="motorcycle">
+                                  Motorcycle
+                                </option>
+                                <option value="newYorkAssembly">
+                                  New York Assembly
+                                </option>
+                                <option value="newYorkCityCouncil">
+                                  New York City Council
+                                </option>
+                                <option value="newYorkPress">
+                                  New York Press
+                                </option>
+                                <option value="newYorkSenate">
+                                  New York Senate
+                                </option>
+                                <option value="none">
+                                  No Plate Type
+                                </option>
+                                <option value="passenger">
+                                  Passenger
+                                </option>
+                                <option value="politicalSubdivision">
+                                  Political Subdivision
+                                </option>
+                                <option value="schoolCar">
+                                  School Car
+                                </option>
+                                <option value="snowmobile">
+                                  Snowmobile
+                                </option>
+                                <option value="stateOwnedVehicle">
+                                  State-owned Vehicle
+                                </option>
+                                <option value="stateCourtJustice">
+                                  State Court Justice
+                                </option>
+                                <option value="temporary">
+                                  Temporary
+                                </option>
+                                <option value="trailer">
+                                  Trailer
+                                </option>
+                                <option value="usCongress">
+                                  U.S. Congress
+                                </option>
+                                <option value="usSenate">
+                                  U.S. Senate
+                                </option>
+                                <option value="volunteerAmbulanceService">
+                                  Volunteer Ambulance Service
+                                </option>
+                              </optgroup>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-group">
+                            <button class="form-control btn btn-primary"
+                                    disabled
+                                    role="button"
+                                    type="submit"
+                                    value="Search"
+                            >
+                              <span class="spinner-border spinner-border-sm"
+                                    role="status"
+                                    aria-hidden="true"
+                              >
+                              </span>
+                              &nbsp;&nbsp;Searching...
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
-              <div class="row form-row">
-                <div class="col-md">
-                  <div class="form-group">
-                    <select aria-label="Select License Plate Type"
-                            name="plateType"
-                            class="form-select"
+            </main>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/Search/Search SearchAtPageLoadOldStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="site-container-wrapper">
+          <div class="site-container container-fluid">
+            <main>
+              <div class="row">
+                <div class="jumbotron ">
+                  <h1 class="display-4">
+                    How's My Driving NY
+                  </h1>
+                  <p class="lead">
+                    Search New York City
+                    <a class="open-data-link"
+                       href="https://data.cityofnewyork.us/browse?q=parking%20violations&amp;sortBy=relevance"
+                       target="_blank"
+                       rel="noopener noreferrer"
                     >
-                      <optgroup label="License Plate Type">
-                        <option value="allTerrainVehicle">
-                          All-Terrain Vehicle
-                        </option>
-                        <option value="ambulance">
-                          Ambulance
-                        </option>
-                        <option value="busVanpool">
-                          Bus/Vanpool
-                        </option>
-                        <option value="commercial">
-                          Commercial
-                        </option>
-                        <option value="coronerMedicalExaminer">
-                          Coroner/Medical Examiner
-                        </option>
-                        <option value="countyBoardOfSupervisors">
-                          County Board of Supervisors
-                        </option>
-                        <option value="countyClerk">
-                          County Clerk
-                        </option>
-                        <option value="countyLegislator">
-                          County Legislator
-                        </option>
-                        <option value="dealer">
-                          Dealer
-                        </option>
-                        <option value="educator">
-                          Educator
-                        </option>
-                        <option value="governorsSecondCar">
-                          Governor's Second Car
-                        </option>
-                        <option value="hearse">
-                          Hearse
-                        </option>
-                        <option value="inTransitPermit">
-                          In-Transit Permit
-                        </option>
-                        <option value="limitedUseAuto">
-                          Limited-Use Auto
-                        </option>
-                        <option value="medallionVehicle">
-                          Medallion Vehicle
-                        </option>
-                        <option value="medicalDoctor">
-                          Medical Doctor
-                        </option>
-                        <option value="motorboat">
-                          Motorboat
-                        </option>
-                        <option value="motorcycle">
-                          Motorcycle
-                        </option>
-                        <option value="newYorkAssembly">
-                          New York Assembly
-                        </option>
-                        <option value="newYorkCityCouncil">
-                          New York City Council
-                        </option>
-                        <option value="newYorkPress">
-                          New York Press
-                        </option>
-                        <option value="newYorkSenate">
-                          New York Senate
-                        </option>
-                        <option value="none">
-                          No Plate Type
-                        </option>
-                        <option value="passenger">
-                          Passenger
-                        </option>
-                        <option value="politicalSubdivision">
-                          Political Subdivision
-                        </option>
-                        <option value="schoolCar">
-                          School Car
-                        </option>
-                        <option value="snowmobile">
-                          Snowmobile
-                        </option>
-                        <option value="stateOwnedVehicle">
-                          State-owned Vehicle
-                        </option>
-                        <option value="stateCourtJustice">
-                          State Court Justice
-                        </option>
-                        <option value="temporary">
-                          Temporary
-                        </option>
-                        <option value="trailer">
-                          Trailer
-                        </option>
-                        <option value="usCongress">
-                          U.S. Congress
-                        </option>
-                        <option value="usSenate">
-                          U.S. Senate
-                        </option>
-                        <option value="volunteerAmbulanceService">
-                          Volunteer Ambulance Service
-                        </option>
-                      </optgroup>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md">
-                  <div class="form-group">
-                    <button class="form-control btn btn-primary"
-                            disabled
-                            role="button"
-                            type="submit"
-                            value="Search"
-                    >
-                      <span class="spinner-border spinner-border-sm"
-                            role="status"
-                            aria-hidden="true"
-                      >
-                      </span>
-                      &nbsp;&nbsp;Searching...
-                    </button>
+                      parking &amp; camera violations
+                    </a>
+                  </p>
+                  <hr class="opacity-25">
+                  <div class="row">
+                    <form class="form">
+                      <div class="row form-row">
+                        <div class="col-md">
+                          <div class="form-group">
+                            <input autocomplete="off"
+                                   class="form-control"
+                                   id="plate-input"
+                                   name="plateId"
+                                   pattern="[a-zA-Z0-9]+"
+                                   placeholder="Enter a plate..."
+                                   type="text"
+                                   value
+                            >
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-group">
+                            <select aria-label="Select Region"
+                                    name="state"
+                                    class="form-select"
+                            >
+                              <optgroup label="Region">
+                                <option value="99">
+                                  99 (99)
+                                </option>
+                                <option value="AB">
+                                  Alberta (AB)
+                                </option>
+                                <option value="AK">
+                                  Alaska (AK)
+                                </option>
+                                <option value="AL">
+                                  Alabama (AL)
+                                </option>
+                                <option value="AR">
+                                  Arkansas (AR)
+                                </option>
+                                <option value="AZ">
+                                  Arizona (AZ)
+                                </option>
+                                <option value="BC">
+                                  British Columbia (BC)
+                                </option>
+                                <option value="CA">
+                                  California (CA)
+                                </option>
+                                <option value="CO">
+                                  Colorado (CO)
+                                </option>
+                                <option value="CT">
+                                  Connecticut (CT)
+                                </option>
+                                <option value="DC">
+                                  District of Columbia (DC)
+                                </option>
+                                <option value="DE">
+                                  Delaware (DE)
+                                </option>
+                                <option value="DP">
+                                  U.S. State Department (DP)
+                                </option>
+                                <option value="FL">
+                                  Florida (FL)
+                                </option>
+                                <option value="FM">
+                                  Federated States of Micronesia (FM)
+                                </option>
+                                <option value="FO">
+                                  Foreign (FO)
+                                </option>
+                                <option value="GA">
+                                  Georgia (GA)
+                                </option>
+                                <option value="GU">
+                                  Guam (GU)
+                                </option>
+                                <option value="GV">
+                                  Government (GV)
+                                </option>
+                                <option value="HI">
+                                  Hawaii (HI)
+                                </option>
+                                <option value="IA">
+                                  Iowa (IA)
+                                </option>
+                                <option value="ID">
+                                  Idaho (ID)
+                                </option>
+                                <option value="IL">
+                                  Illinois (IL)
+                                </option>
+                                <option value="IN">
+                                  Indiana (IN)
+                                </option>
+                                <option value="KS">
+                                  Kansas (KS)
+                                </option>
+                                <option value="KY">
+                                  Kentucky (KY)
+                                </option>
+                                <option value="LA">
+                                  Louisiana (LA)
+                                </option>
+                                <option value="MA">
+                                  Massachusetts (MA)
+                                </option>
+                                <option value="MB">
+                                  Manitoba (MB)
+                                </option>
+                                <option value="MD">
+                                  Maryland (MD)
+                                </option>
+                                <option value="ME">
+                                  Maine (ME)
+                                </option>
+                                <option value="MI">
+                                  Michigan (MI)
+                                </option>
+                                <option value="MN">
+                                  Minnesota (MN)
+                                </option>
+                                <option value="MO">
+                                  Missouri (MO)
+                                </option>
+                                <option value="MP">
+                                  Northern Mariana Islands (MP)
+                                </option>
+                                <option value="MS">
+                                  Mississippi (MS)
+                                </option>
+                                <option value="MT">
+                                  Montana (MT)
+                                </option>
+                                <option value="MX">
+                                  Mexico (MX)
+                                </option>
+                                <option value="NB">
+                                  New Brunswick (NB)
+                                </option>
+                                <option value="NC">
+                                  North Carolina (NC)
+                                </option>
+                                <option value="ND">
+                                  North Dakota (ND)
+                                </option>
+                                <option value="NE">
+                                  Nebraska (NE)
+                                </option>
+                                <option value="NF">
+                                  Newfoundland (NF)
+                                </option>
+                                <option value="NH">
+                                  New Hampshire (NH)
+                                </option>
+                                <option value="NJ">
+                                  New Jersey (NJ)
+                                </option>
+                                <option value="NM">
+                                  New Mexico (NM)
+                                </option>
+                                <option value="NS">
+                                  Nova Scotia (NS)
+                                </option>
+                                <option value="NT">
+                                  Northwest Territories (NT)
+                                </option>
+                                <option value="NU">
+                                  Nunavut (NU)
+                                </option>
+                                <option value="NV">
+                                  Nevada (NV)
+                                </option>
+                                <option value="NY">
+                                  New York (NY)
+                                </option>
+                                <option value="OH">
+                                  Ohio (OH)
+                                </option>
+                                <option value="OK">
+                                  Oklahoma (OK)
+                                </option>
+                                <option value="ON">
+                                  Ontario (ON)
+                                </option>
+                                <option value="OR">
+                                  Oregon (OR)
+                                </option>
+                                <option value="PA">
+                                  Pennsylvania (PA)
+                                </option>
+                                <option value="PE">
+                                  Prince Edward Island (PE)
+                                </option>
+                                <option value="PR">
+                                  Puerto Rico (PR)
+                                </option>
+                                <option value="PW">
+                                  Palau (PW)
+                                </option>
+                                <option value="QC">
+                                  Quebec (QC)
+                                </option>
+                                <option value="RI">
+                                  Rhode Island (RI)
+                                </option>
+                                <option value="SC">
+                                  South Carolina (SC)
+                                </option>
+                                <option value="SD">
+                                  South Dakota (SD)
+                                </option>
+                                <option value="SK">
+                                  Saskatchewan (SK)
+                                </option>
+                                <option value="TN">
+                                  Tennessee (TN)
+                                </option>
+                                <option value="TX">
+                                  Texas (TX)
+                                </option>
+                                <option value="UT">
+                                  Utah (UT)
+                                </option>
+                                <option value="VA">
+                                  Virginia (VA)
+                                </option>
+                                <option value="VI">
+                                  U.S. Virgin Islands (VI)
+                                </option>
+                                <option value="VT">
+                                  Vermont (VT)
+                                </option>
+                                <option value="WA">
+                                  Washington (WA)
+                                </option>
+                                <option value="WI">
+                                  Wisconsin (WI)
+                                </option>
+                                <option value="WV">
+                                  West Virginia (WV)
+                                </option>
+                                <option value="WY">
+                                  Wyoming (WY)
+                                </option>
+                                <option value="YT">
+                                  Yukon Territories (YT)
+                                </option>
+                              </optgroup>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row form-row">
+                        <div class="col-md">
+                          <div class="form-group">
+                            <select aria-label="Select License Plate Type"
+                                    name="plateType"
+                                    class="form-select"
+                            >
+                              <optgroup label="License Plate Type">
+                                <option value="allTerrainVehicle">
+                                  All-Terrain Vehicle
+                                </option>
+                                <option value="ambulance">
+                                  Ambulance
+                                </option>
+                                <option value="busVanpool">
+                                  Bus/Vanpool
+                                </option>
+                                <option value="commercial">
+                                  Commercial
+                                </option>
+                                <option value="coronerMedicalExaminer">
+                                  Coroner/Medical Examiner
+                                </option>
+                                <option value="countyBoardOfSupervisors">
+                                  County Board of Supervisors
+                                </option>
+                                <option value="countyClerk">
+                                  County Clerk
+                                </option>
+                                <option value="countyLegislator">
+                                  County Legislator
+                                </option>
+                                <option value="dealer">
+                                  Dealer
+                                </option>
+                                <option value="educator">
+                                  Educator
+                                </option>
+                                <option value="governorsSecondCar">
+                                  Governor's Second Car
+                                </option>
+                                <option value="hearse">
+                                  Hearse
+                                </option>
+                                <option value="inTransitPermit">
+                                  In-Transit Permit
+                                </option>
+                                <option value="limitedUseAuto">
+                                  Limited-Use Auto
+                                </option>
+                                <option value="medallionVehicle">
+                                  Medallion Vehicle
+                                </option>
+                                <option value="medicalDoctor">
+                                  Medical Doctor
+                                </option>
+                                <option value="motorboat">
+                                  Motorboat
+                                </option>
+                                <option value="motorcycle">
+                                  Motorcycle
+                                </option>
+                                <option value="newYorkAssembly">
+                                  New York Assembly
+                                </option>
+                                <option value="newYorkCityCouncil">
+                                  New York City Council
+                                </option>
+                                <option value="newYorkPress">
+                                  New York Press
+                                </option>
+                                <option value="newYorkSenate">
+                                  New York Senate
+                                </option>
+                                <option value="none">
+                                  No Plate Type
+                                </option>
+                                <option value="passenger">
+                                  Passenger
+                                </option>
+                                <option value="politicalSubdivision">
+                                  Political Subdivision
+                                </option>
+                                <option value="schoolCar">
+                                  School Car
+                                </option>
+                                <option value="snowmobile">
+                                  Snowmobile
+                                </option>
+                                <option value="stateOwnedVehicle">
+                                  State-owned Vehicle
+                                </option>
+                                <option value="stateCourtJustice">
+                                  State Court Justice
+                                </option>
+                                <option value="temporary">
+                                  Temporary
+                                </option>
+                                <option value="trailer">
+                                  Trailer
+                                </option>
+                                <option value="usCongress">
+                                  U.S. Congress
+                                </option>
+                                <option value="usSenate">
+                                  U.S. Senate
+                                </option>
+                                <option value="volunteerAmbulanceService">
+                                  Volunteer Ambulance Service
+                                </option>
+                              </optgroup>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-group">
+                            <button class="form-control btn btn-primary"
+                                    disabled
+                                    role="button"
+                                    type="submit"
+                                    value="Search"
+                            >
+                              <span class="spinner-border spinner-border-sm"
+                                    role="status"
+                                    aria-hidden="true"
+                              >
+                              </span>
+                              &nbsp;&nbsp;Searching...
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
-            </form>
+            </main>
           </div>
         </div>
       </div>

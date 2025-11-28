@@ -1,132 +1,278 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pages/FAQs FaqsPage smoke-test 1`] = `
+exports[`Pages/FAQs FaqsPageNewStyleDisplay smoke-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <main>
       <div class="row">
-        <div class="col-md-12 frequently-asked-questions-content-container ">
-          <div class="frequently-asked-questions-header">
-            <h1>
-              FAQs
-            </h1>
-            <div class="frequently-asked-questions-header-description">
-              <div class="frequently-asked-questions-header-description-sentence">
-                Since 2018, you've asked us many questions about HowsMyDrivingNY.
+        <div class="site-container-wrapper">
+          <div class="site-container container-fluid">
+            <div class="col-md-12 frequently-asked-questions-content-container new-style">
+              <div class="frequently-asked-questions-header">
+                <h1>
+                  FAQs
+                </h1>
+                <div class="frequently-asked-questions-header-description">
+                  <div class="frequently-asked-questions-header-description-sentence">
+                    Since 2018, you've asked us many questions about HowsMyDrivingNY.
+                  </div>
+                  <div class="frequently-asked-questions-header-description-sentence">
+                    Here are the things people ask us a lot, so we finally wrote them down.
+                  </div>
+                </div>
               </div>
-              <div class="frequently-asked-questions-header-description-sentence">
-                Here are the things people ask us a lot, so we finally wrote them down.
+              <div class="frequently-asked-questions-content accordion">
+                <div class="accordion-item">
+                  <h2 class="question-content accordion-header">
+                    <button type="button"
+                            aria-expanded="false"
+                            class="accordion-button collapsed"
+                    >
+                      <span class="question">
+                        What is HowsMyDrivingNY?
+                      </span>
+                    </button>
+                  </h2>
+                  <div class="accordion-collapse collapse">
+                    <div class="answer-content accordion-body">
+                      <span class="answer">
+                        If you're like us,
+                        <strong>
+                          every
+                        </strong>
+                        time you see a car on the sidewalk or speeding down your block, you wonder just how often they do that. HowsMyDrivingNY helps you answer that question, querying NYC's Open Data for traffic violation data by license plate.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="question-content accordion-header">
+                    <button type="button"
+                            aria-expanded="false"
+                            class="accordion-button collapsed"
+                    >
+                      <span class="question">
+                        How does HowsMyDrivingNY work?
+                      </span>
+                    </button>
+                  </h2>
+                  <div class="accordion-collapse collapse">
+                    <div class="answer-content accordion-body">
+                      <span class="answer">
+                        New York City ticket/violation data is spread across
+                        <a href="https://data.cityofnewyork.us/browse?q=parking%20violations&amp;sortBy=relevance"
+                           rel="noopener noreferrer"
+                           target="_blank"
+                        >
+                          various tables in NYC Open Data
+                        </a>
+                        . When you search for a license plate, HowsMyDrivingNY requests data matching the plate from those tables. Some tables have fine data or medallion info, while others have more detailed location data. HowsMyDrivingNY aggregates the results, merges and deduplicates them, and combines some fields to make the results more readable.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="question-content accordion-header">
+                    <button type="button"
+                            aria-expanded="false"
+                            class="accordion-button collapsed"
+                    >
+                      <span class="question">
+                        What does "Prev. Queried" mean?
+                      </span>
+                    </button>
+                  </h2>
+                  <div class="accordion-collapse collapse">
+                    <div class="answer-content accordion-body">
+                      <span class="answer">
+                        This is the date on which any user (maybe you!) looked up the exact same plate.
+                        <em>
+                          Note
+                        </em>
+                        : looking up a plate with a plate type and without one produce slightly different plates and different results.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="question-content accordion-header">
+                    <button type="button"
+                            aria-expanded="false"
+                            class="accordion-button collapsed"
+                    >
+                      <span class="question">
+                        Some results show "new" violations. What does this mean?
+                      </span>
+                    </button>
+                  </h2>
+                  <div class="accordion-collapse collapse">
+                    <div class="answer-content accordion-body">
+                      <span class="answer">
+                        "New" violations are those found since the last time this exact plate was queried by any user, including you.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="question-content accordion-header">
+                    <button type="button"
+                            aria-expanded="false"
+                            class="accordion-button collapsed"
+                    >
+                      <span class="question">
+                        What happened to the Twitter bot?!?
+                      </span>
+                    </button>
+                  </h2>
+                  <div class="accordion-collapse collapse">
+                    <div class="answer-content accordion-body">
+                      <span class="answer">
+                        Twitter charges $200/month for the level of API access needed to for the bot to read and respond to tweets.
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="frequently-asked-questions-content accordion">
-            <div class="accordion-item">
-              <h2 class="question-content accordion-header">
-                <button type="button"
-                        aria-expanded="false"
-                        class="accordion-button collapsed"
-                >
-                  <span class="question">
-                    What is HowsMyDrivingNY?
-                  </span>
-                </button>
-              </h2>
-              <div class="accordion-collapse collapse">
-                <div class="answer-content accordion-body">
-                  <span class="answer">
-                    If you're like us,
-                    <strong>
-                      every
-                    </strong>
-                    time you see a car on the sidewalk or speeding down your block, you wonder just how often they do that. HowsMyDrivingNY helps you answer that question, querying NYC's Open Data for traffic violation data by license plate.
-                  </span>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Pages/FAQs FaqsPageOldStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="site-container-wrapper">
+          <div class="site-container container-fluid">
+            <div class="col-md-12 frequently-asked-questions-content-container ">
+              <div class="frequently-asked-questions-header">
+                <h1>
+                  FAQs
+                </h1>
+                <div class="frequently-asked-questions-header-description">
+                  <div class="frequently-asked-questions-header-description-sentence">
+                    Since 2018, you've asked us many questions about HowsMyDrivingNY.
+                  </div>
+                  <div class="frequently-asked-questions-header-description-sentence">
+                    Here are the things people ask us a lot, so we finally wrote them down.
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="question-content accordion-header">
-                <button type="button"
-                        aria-expanded="false"
-                        class="accordion-button collapsed"
-                >
-                  <span class="question">
-                    How does HowsMyDrivingNY work?
-                  </span>
-                </button>
-              </h2>
-              <div class="accordion-collapse collapse">
-                <div class="answer-content accordion-body">
-                  <span class="answer">
-                    New York City ticket/violation data is spread across
-                    <a href="https://data.cityofnewyork.us/browse?q=parking%20violations&amp;sortBy=relevance"
-                       rel="noopener noreferrer"
-                       target="_blank"
+              <div class="frequently-asked-questions-content accordion">
+                <div class="accordion-item">
+                  <h2 class="question-content accordion-header">
+                    <button type="button"
+                            aria-expanded="false"
+                            class="accordion-button collapsed"
                     >
-                      various tables in NYC Open Data
-                    </a>
-                    . When you search for a license plate, HowsMyDrivingNY requests data matching the plate from those tables. Some tables have fine data or medallion info, while others have more detailed location data. HowsMyDrivingNY aggregates the results, merges and deduplicates them, and combines some fields to make the results more readable.
-                  </span>
+                      <span class="question">
+                        What is HowsMyDrivingNY?
+                      </span>
+                    </button>
+                  </h2>
+                  <div class="accordion-collapse collapse">
+                    <div class="answer-content accordion-body">
+                      <span class="answer">
+                        If you're like us,
+                        <strong>
+                          every
+                        </strong>
+                        time you see a car on the sidewalk or speeding down your block, you wonder just how often they do that. HowsMyDrivingNY helps you answer that question, querying NYC's Open Data for traffic violation data by license plate.
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="question-content accordion-header">
-                <button type="button"
-                        aria-expanded="false"
-                        class="accordion-button collapsed"
-                >
-                  <span class="question">
-                    What does "Prev. Queried" mean?
-                  </span>
-                </button>
-              </h2>
-              <div class="accordion-collapse collapse">
-                <div class="answer-content accordion-body">
-                  <span class="answer">
-                    This is the date on which any user (maybe you!) looked up the exact same plate.
-                    <em>
-                      Note
-                    </em>
-                    : looking up a plate with a plate type and without one produce slightly different plates and different results.
-                  </span>
+                <div class="accordion-item">
+                  <h2 class="question-content accordion-header">
+                    <button type="button"
+                            aria-expanded="false"
+                            class="accordion-button collapsed"
+                    >
+                      <span class="question">
+                        How does HowsMyDrivingNY work?
+                      </span>
+                    </button>
+                  </h2>
+                  <div class="accordion-collapse collapse">
+                    <div class="answer-content accordion-body">
+                      <span class="answer">
+                        New York City ticket/violation data is spread across
+                        <a href="https://data.cityofnewyork.us/browse?q=parking%20violations&amp;sortBy=relevance"
+                           rel="noopener noreferrer"
+                           target="_blank"
+                        >
+                          various tables in NYC Open Data
+                        </a>
+                        . When you search for a license plate, HowsMyDrivingNY requests data matching the plate from those tables. Some tables have fine data or medallion info, while others have more detailed location data. HowsMyDrivingNY aggregates the results, merges and deduplicates them, and combines some fields to make the results more readable.
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="question-content accordion-header">
-                <button type="button"
-                        aria-expanded="false"
-                        class="accordion-button collapsed"
-                >
-                  <span class="question">
-                    Some results show "new" violations. What does this mean?
-                  </span>
-                </button>
-              </h2>
-              <div class="accordion-collapse collapse">
-                <div class="answer-content accordion-body">
-                  <span class="answer">
-                    "New" violations are those found since the last time this exact plate was queried by any user, including you.
-                  </span>
+                <div class="accordion-item">
+                  <h2 class="question-content accordion-header">
+                    <button type="button"
+                            aria-expanded="false"
+                            class="accordion-button collapsed"
+                    >
+                      <span class="question">
+                        What does "Prev. Queried" mean?
+                      </span>
+                    </button>
+                  </h2>
+                  <div class="accordion-collapse collapse">
+                    <div class="answer-content accordion-body">
+                      <span class="answer">
+                        This is the date on which any user (maybe you!) looked up the exact same plate.
+                        <em>
+                          Note
+                        </em>
+                        : looking up a plate with a plate type and without one produce slightly different plates and different results.
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="question-content accordion-header">
-                <button type="button"
-                        aria-expanded="false"
-                        class="accordion-button collapsed"
-                >
-                  <span class="question">
-                    What happened to the Twitter bot?!?
-                  </span>
-                </button>
-              </h2>
-              <div class="accordion-collapse collapse">
-                <div class="answer-content accordion-body">
-                  <span class="answer">
-                    Twitter charges $200/month for the level of API access needed to for the bot to read and respond to tweets.
-                  </span>
+                <div class="accordion-item">
+                  <h2 class="question-content accordion-header">
+                    <button type="button"
+                            aria-expanded="false"
+                            class="accordion-button collapsed"
+                    >
+                      <span class="question">
+                        Some results show "new" violations. What does this mean?
+                      </span>
+                    </button>
+                  </h2>
+                  <div class="accordion-collapse collapse">
+                    <div class="answer-content accordion-body">
+                      <span class="answer">
+                        "New" violations are those found since the last time this exact plate was queried by any user, including you.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="question-content accordion-header">
+                    <button type="button"
+                            aria-expanded="false"
+                            class="accordion-button collapsed"
+                    >
+                      <span class="question">
+                        What happened to the Twitter bot?!?
+                      </span>
+                    </button>
+                  </h2>
+                  <div class="accordion-collapse collapse">
+                    <div class="answer-content accordion-body">
+                      <span class="answer">
+                        Twitter charges $200/month for the level of API access needed to for the bot to read and respond to tweets.
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

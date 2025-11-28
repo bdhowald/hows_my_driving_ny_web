@@ -1,35 +1,16 @@
-import * as React from 'react'
+import React, { ReactNode } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
+
+import {
+  newStyleDisplayDecorator,
+  oldStyleDisplayDecorator,
+} from 'tests/utils/withStyleDisplayDecorator'
 
 import SearchControls from './SearchControls'
 
 const meta: Meta<typeof SearchControls> = {
   title: 'Components/Search/SearchControls',
   component: SearchControls,
-  decorators: [
-    (Story) => (
-      <div className="site-container-wrapper">
-        <div className="site-container container-fluid">
-          <main>
-            <div className="row">
-              <div className="col-md-12 vehicle-lookup-content-container">
-                <div className="jumbotron">
-                  <div className="row">
-                    <form className="form">
-                      <div className="form-row">
-                        {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-                        <Story />
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </main>
-        </div>
-      </div>
-    ),
-  ],
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   parameters: {
@@ -40,11 +21,52 @@ const meta: Meta<typeof SearchControls> = {
 
 type Story = StoryObj<typeof SearchControls>
 
+const ParentHtml = ({
+  children,
+  useNewStyleDisplay,
+}: {
+  children: ReactNode
+  useNewStyleDisplay: boolean
+}) => {
+  const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
+
+  return (
+    <div className="site-container-wrapper">
+      <div className="site-container container-fluid">
+        <main>
+          <div className="row">
+            <div
+              className={`col-md-12 vehicle-lookup-content-container ${newStyleDisplayClassName}`}
+            >
+              <div className={`jumbotron ${newStyleDisplayClassName}`}>
+                <div className="row">{children}</div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  )
+}
+
 const handleInputChange = () =>
   alert('this function would handle a change to the form element')
 const handleSubmit = () => alert('this function would submit the form')
 
-export const NoPlateEntered: Story = {
+export const NoPlateEnteredNewStyleDisplay: Story = {
+  args: {
+    currentLookup: {
+      plateId: undefined,
+      plateType: undefined,
+      state: 'NY',
+    },
+    handleInputChange,
+    handleSubmit,
+    lookupInFlight: false,
+  },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
+}
+export const NoPlateEnteredOldStyleDisplay: Story = {
   args: {
     currentLookup: {
       plateId: undefined,
@@ -56,7 +78,8 @@ export const NoPlateEntered: Story = {
     lookupInFlight: false,
   },
 }
-export const NoLookupInFlightWithPlateEntered: Story = {
+
+export const NoLookupInFlightWithPlateEnteredNewStyleDisplay: Story = {
   args: {
     currentLookup: {
       plateId: 'ABC1234',
@@ -67,8 +90,23 @@ export const NoLookupInFlightWithPlateEntered: Story = {
     handleSubmit,
     lookupInFlight: false,
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
-export const PlateTypeSelected: Story = {
+export const NoLookupInFlightWithPlateEnteredOldStyleDisplay: Story = {
+  args: {
+    currentLookup: {
+      plateId: 'ABC1234',
+      plateType: undefined,
+      state: 'NY',
+    },
+    handleInputChange,
+    handleSubmit,
+    lookupInFlight: false,
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
+}
+
+export const PlateTypeSelectedNewStyleDisplay: Story = {
   args: {
     currentLookup: {
       plateId: 'ABC1234',
@@ -79,8 +117,23 @@ export const PlateTypeSelected: Story = {
     handleSubmit,
     lookupInFlight: false,
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
-export const LookupInFlight: Story = {
+export const PlateTypeSelectedOldStyleDisplay: Story = {
+  args: {
+    currentLookup: {
+      plateId: 'ABC1234',
+      plateType: 'commercial',
+      state: 'NY',
+    },
+    handleInputChange,
+    handleSubmit,
+    lookupInFlight: false,
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
+}
+
+export const LookupInFlightNewStyleDisplay: Story = {
   args: {
     currentLookup: {
       plateId: 'ABC1234',
@@ -91,6 +144,20 @@ export const LookupInFlight: Story = {
     handleSubmit,
     lookupInFlight: true,
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
+}
+export const LookupInFlightOldStyleDisplay: Story = {
+  args: {
+    currentLookup: {
+      plateId: 'ABC1234',
+      plateType: undefined,
+      state: 'NY',
+    },
+    handleInputChange,
+    handleSubmit,
+    lookupInFlight: true,
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
 }
 
 export default meta

@@ -1,5 +1,7 @@
-import * as React from 'react'
+import React, { ReactNode } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
+
+import { newStyleDisplayDecorator } from 'tests/utils/withStyleDisplayDecorator'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
 
@@ -7,34 +9,8 @@ import ViolationCardListControls from './ViolationCardListControls'
 
 const meta: Meta<typeof ViolationCardListControls> = {
   title:
-    'Components/VehicleResults/ViolationsInspector/ViolationCardList/ViolationCardListControls',
+    'Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCardListControls',
   component: ViolationCardListControls,
-  decorators: [
-    (Story) => (
-      <div className="site-container-wrapper">
-        <div className="site-container container-fluid">
-          <main>
-            <div className="row">
-              <div className="col-md-12 vehicle-lookup-content-container">
-                <div className="vehicles">
-                  <div className="vehicle card">
-                    <ul className="list-group-flush list-group">
-                      <li className="list-group-item">
-                        <div className="violation-card-list-wrapper">
-                          {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-                          <Story />
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </main>
-        </div>
-      </div>
-    ),
-  ],
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   parameters: {
@@ -44,6 +20,30 @@ const meta: Meta<typeof ViolationCardListControls> = {
 }
 
 type Story = StoryObj<typeof ViolationCardListControls>
+
+const ParentHtml = ({ children }: { children: ReactNode }) => (
+  <div className="site-container-wrapper">
+    <div className="site-container container-fluid">
+      <main>
+        <div className="row">
+          <div className="col-md-12 vehicle-lookup-content-container new-style">
+            <div className="vehicles new-style">
+              <div className="vehicle card">
+                <ul className="list-group-flush list-group">
+                  <li className="list-group-item">
+                    <div className="violation-card-list-wrapper">
+                      {children}
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+)
 
 const vehicleWithViolations = VehicleFactory.build()
 const vehicleWithNoViolations = VehicleFactory.build({
@@ -61,6 +61,7 @@ export const VehicleWithNoViolationsListVisible: Story = {
     vehicle: vehicleWithNoViolations,
     violationsListIsVisible: true,
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
 
 export const VehicleWithViolationsListNotVisible: Story = {
@@ -69,6 +70,7 @@ export const VehicleWithViolationsListNotVisible: Story = {
     vehicle: vehicleWithViolations,
     violationsListIsVisible: false,
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
 
 export const VehicleWithViolationsListVisibleFinesSummaryAndLocationSummary: Story =
@@ -82,6 +84,7 @@ export const VehicleWithViolationsListVisibleFinesSummaryAndLocationSummary: Sto
       vehicle: vehicleWithViolations,
       violationsListIsVisible: true,
     },
+    decorators: [newStyleDisplayDecorator(ParentHtml)],
   }
 
 export const VehicleWithViolationsListVisibleFinesDetailsAndLocationSummary: Story =
@@ -95,6 +98,7 @@ export const VehicleWithViolationsListVisibleFinesDetailsAndLocationSummary: Sto
       vehicle: vehicleWithViolations,
       violationsListIsVisible: true,
     },
+    decorators: [newStyleDisplayDecorator(ParentHtml)],
   }
 
 export const VehicleWithViolationsListVisibleFinesSummaryAndLocationDetails: Story =
@@ -108,6 +112,7 @@ export const VehicleWithViolationsListVisibleFinesSummaryAndLocationDetails: Sto
       vehicle: vehicleWithViolations,
       violationsListIsVisible: true,
     },
+    decorators: [newStyleDisplayDecorator(ParentHtml)],
   }
 
 export const VehicleWithViolationsListVisibleFinesDetailsAndLocationDetails: Story =
@@ -121,6 +126,7 @@ export const VehicleWithViolationsListVisibleFinesDetailsAndLocationDetails: Sto
       vehicle: vehicleWithViolations,
       violationsListIsVisible: true,
     },
+    decorators: [newStyleDisplayDecorator(ParentHtml)],
   }
 
 export default meta

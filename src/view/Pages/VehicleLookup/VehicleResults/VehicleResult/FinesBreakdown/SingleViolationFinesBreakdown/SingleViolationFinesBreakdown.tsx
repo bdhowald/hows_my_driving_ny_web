@@ -2,6 +2,8 @@ import * as React from 'react'
 
 import L10N from 'constants/display'
 
+import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/FinesBreakdown/SingleViolationFinesBreakdown/SingleViolationFinesBreakdown.css'
+
 const NON_BREAKING_SPACES = '\u00A0\u00A0\u00A0'
 
 type SingleViolationFinesProps = {

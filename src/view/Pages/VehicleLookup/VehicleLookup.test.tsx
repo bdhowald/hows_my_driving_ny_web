@@ -1,11 +1,12 @@
 import * as React from 'react'
-import { Cookies, CookiesProvider } from 'react-cookie'
 import { act, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
 import { ViolationFactory } from '__fixtures__/models/Violation'
 import * as boundaryFunctions from 'boundaries/http'
+import { SettingsContext } from 'context/SettingsContext/SettingsContext'
+
 import VehicleLookup from './VehicleLookup'
 
 describe('VehicleLookup', () => {
@@ -13,8 +14,22 @@ describe('VehicleLookup', () => {
     window.HTMLElement.prototype.scrollIntoView = function () {}
   })
 
-  it('should render successfully', () => {
-    render(<VehicleLookup />)
+  afterEach(async () => {
+    localStorage.removeItem('lookupIdentifiers')
+  })
+
+  it('should render successfully', async () => {
+    const mockedSettings = {
+      getSetting: jest.fn(),
+      removeSetting: jest.fn(),
+      updateSetting: jest.fn(),
+    }
+
+    render(
+      <SettingsContext.Provider value={mockedSettings}>
+        <VehicleLookup />
+      </SettingsContext.Provider>,
+    )
 
     const now = new Date()
     const day = now.getDate()
@@ -60,10 +75,16 @@ describe('VehicleLookup', () => {
         ],
       })
 
+      const mockedSettings = {
+        getSetting: jest.fn(),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
-        <CookiesProvider cookies={new Cookies('lookupIdentifiers=;')}>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleLookup />
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       const plate = 'ABC1234'
@@ -124,10 +145,16 @@ describe('VehicleLookup', () => {
           ],
         })
 
+      const mockedSettings = {
+        getSetting: jest.fn(),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
-        <CookiesProvider cookies={new Cookies('lookupIdentifiers=;')}>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleLookup />
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       const plateSearchInputHtmlElement = screen.getByRole('textbox')
@@ -244,10 +271,16 @@ describe('VehicleLookup', () => {
         ],
       })
 
+      const mockedSettings = {
+        getSetting: jest.fn(),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
-        <CookiesProvider cookies={new Cookies('lookupIdentifiers=;')}>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleLookup />
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       const plate = 'ABC1234'
@@ -338,16 +371,16 @@ describe('VehicleLookup', () => {
           ],
         })
 
-        // I'm not sure why this is necessary. Somehow cookies below in CookiesProvider are reset unexpectedly.
-        document.cookie =
-          'useNewStyleDisplay=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=None;'
+        const mockedSettings = {
+          getSetting: jest.fn().mockReturnValue(true),
+          removeSetting: jest.fn(),
+          updateSetting: jest.fn(),
+        }
 
         render(
-          <CookiesProvider
-            cookies={new Cookies('lookupIdentifiers=;useNewStyleDisplay=true;')}
-          >
+          <SettingsContext.Provider value={mockedSettings}>
             <VehicleLookup />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         const plate = 'ABC1234'
@@ -390,10 +423,10 @@ describe('VehicleLookup', () => {
           // ViolationCardListControl component
           screen.getByText('hide violations', { selector: 'button' })
 
-          // ViolationsList component
+          // ViolationCardList component
           screen.getByText('4 parking and camera violations')
 
-          // ViolationsTableHeader
+          // ViolationCardListSortControls component
           screen.getByText('Date')
           screen.getByText('Type')
           screen.getByText('Borough')
@@ -485,10 +518,16 @@ describe('VehicleLookup', () => {
           ],
         })
 
+        const mockedSettings = {
+          getSetting: jest.fn().mockReturnValueOnce(false),
+          removeSetting: jest.fn(),
+          updateSetting: jest.fn(),
+        }
+
         render(
-          <CookiesProvider cookies={new Cookies('lookupIdentifiers=;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <VehicleLookup />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         const plate = 'ABC1234'
@@ -564,10 +603,16 @@ describe('VehicleLookup', () => {
         .mockRejectedValueOnce(new Error('something broke'))
         .mockRejectedValueOnce(new Error('something broke'))
 
+      const mockedSettings = {
+        getSetting: jest.fn(),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
-        <CookiesProvider cookies={new Cookies('lookupIdentifiers=;')}>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleLookup />
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       const plate = 'ABC1234'
@@ -618,10 +663,16 @@ describe('VehicleLookup', () => {
         url: 'https://api.howsmydrivingny.nyc',
       })
 
+      const mockedSettings = {
+        getSetting: jest.fn(),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
-        <CookiesProvider cookies={new Cookies('lookupIdentifiers=;')}>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleLookup />
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       const plate = 'NYC'
@@ -670,10 +721,16 @@ describe('VehicleLookup', () => {
         .mockRejectedValueOnce(new Error('something broke'))
         .mockRejectedValueOnce(new Error('something broke'))
 
+      const mockedSettings = {
+        getSetting: jest.fn(),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
-        <CookiesProvider cookies={new Cookies('lookupIdentifiers=;')}>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleLookup />
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       // reset scroll function to ensure no scrolls *after* search begins
@@ -722,10 +779,16 @@ describe('VehicleLookup', () => {
         ],
       })
 
+      const mockedSettings = {
+        getSetting: jest.fn(),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
-        <CookiesProvider cookies={new Cookies('lookupIdentifiers=;')}>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleLookup />
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       const plate = 'ABC1234'
@@ -777,10 +840,16 @@ describe('VehicleLookup', () => {
         ],
       })
 
+      const mockedSettings = {
+        getSetting: jest.fn(),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
-        <CookiesProvider cookies={new Cookies('lookupIdentifiers=;')}>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleLookup />
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       const plate = 'ABC1234'
@@ -839,10 +908,16 @@ describe('VehicleLookup', () => {
         ],
       })
 
+      const mockedSettings = {
+        getSetting: jest.fn(),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       render(
-        <CookiesProvider cookies={new Cookies('lookupIdentifiers=;')}>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleLookup />
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       const plate = 'ABC1234'
@@ -890,8 +965,17 @@ describe('VehicleLookup', () => {
       const uniqueIdentifier = 'prev10us'
       const vehicle = VehicleFactory.build({ plate, uniqueIdentifier })
 
-      // Set lookupIdentifiers cookie to have a previous lookup unique identifier
-      document.cookie = `lookupIdentifiers=${uniqueIdentifier}; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=None;`
+      const mockedSettings = {
+        getSetting: jest.fn(),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
+      // set item in local storage to mock already queried vehicle, a la setting initial cookies
+      localStorage.setItem(
+        'lookupIdentifiers',
+        encodeURIComponent(JSON.stringify(uniqueIdentifier)),
+      )
 
       const getPreviousLookupSpy = jest.spyOn(
         boundaryFunctions,
@@ -909,9 +993,9 @@ describe('VehicleLookup', () => {
       })
 
       render(
-        <CookiesProvider>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleLookup />
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       await waitFor(() => {
@@ -935,15 +1019,25 @@ describe('VehicleLookup', () => {
         uniqueIdentifier: newLookupUniqueIdentifier,
       })
 
-      const originalCookiesString = `lookupIdentifiers=${previousLookupUniqueIdentifier};useNewStyleDisplay=true;`
-      const persistentCookiesThroughRefresh = new Cookies(originalCookiesString)
+      const mockedSettings = {
+        getSetting: jest.fn(),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
 
-      // Set lookupIdentifiers cookie to have a previous lookup unique identifier
-      document.cookie = `${originalCookiesString}; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=None;`
+      // set item in local storage to mock already queried vehicle, a la setting initial cookies
+      localStorage.setItem(
+        'lookupIdentifiers',
+        encodeURIComponent(JSON.stringify(previousLookupUniqueIdentifier)),
+      )
 
       const getPreviousLookupSpy = jest.spyOn(
         boundaryFunctions,
         'getPreviousLookup',
+      )
+      const performNewLookupSpy = jest.spyOn(
+        boundaryFunctions,
+        'performNewLookup',
       )
 
       // Simulate failure with three failed retries
@@ -954,9 +1048,9 @@ describe('VehicleLookup', () => {
         .mockRejectedValueOnce(new Error('something broke'))
 
       const { unmount } = render(
-        <CookiesProvider cookies={persistentCookiesThroughRefresh}>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleLookup />
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       await waitFor(
@@ -967,7 +1061,7 @@ describe('VehicleLookup', () => {
       )
 
       // Simulate successful new lookup
-      getPreviousLookupSpy.mockResolvedValueOnce({
+      performNewLookupSpy.mockResolvedValueOnce({
         data: [
           {
             statusCode: 200,
@@ -1017,9 +1111,9 @@ describe('VehicleLookup', () => {
       unmount()
 
       render(
-        <CookiesProvider cookies={persistentCookiesThroughRefresh}>
+        <SettingsContext.Provider value={mockedSettings}>
           <VehicleLookup />
-        </CookiesProvider>,
+        </SettingsContext.Provider>,
       )
 
       await waitFor(() => {
@@ -1045,11 +1139,17 @@ describe('VehicleLookup', () => {
       uniqueIdentifier: newLookupUniqueIdentifier,
     })
 
-    const originalCookiesString = `lookupIdentifiers=${previousLookupUniqueIdentifier};useNewStyleDisplay=true;`
-    const persistentCookiesThroughRefresh = new Cookies(originalCookiesString)
+    const mockedSettings = {
+      getSetting: jest.fn(),
+      removeSetting: jest.fn(),
+      updateSetting: jest.fn(),
+    }
 
-    // Set lookupIdentifiers cookie to have a previous lookup unique identifier
-    document.cookie = `${originalCookiesString}; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=None;`
+    // set item in local storage to mock already queried vehicle, a la setting initial cookies
+    localStorage.setItem(
+      'lookupIdentifiers',
+      encodeURIComponent(JSON.stringify(previousLookupUniqueIdentifier)),
+    )
 
     const getPreviousLookupSpy = jest.spyOn(
       boundaryFunctions,
@@ -1083,9 +1183,9 @@ describe('VehicleLookup', () => {
     })
 
     render(
-      <CookiesProvider cookies={persistentCookiesThroughRefresh}>
+      <SettingsContext.Provider value={mockedSettings}>
         <VehicleLookup />
-      </CookiesProvider>,
+      </SettingsContext.Provider>,
     )
 
     const plateSearchInputHtmlElement = screen.getByRole('textbox')

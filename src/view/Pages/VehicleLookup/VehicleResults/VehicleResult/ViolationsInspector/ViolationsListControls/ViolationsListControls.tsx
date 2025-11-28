@@ -6,6 +6,8 @@ import ShowFullFineDataButton from './ShowFullFineDataButton/ShowFullFineDataBut
 import ShowFullViolationTextButton from './ShowFullViolationTextButton/ShowFullViolationTextButton'
 import ShowViolationsButton from './ShowViolationsButton/ShowViolationsButton'
 
+import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/ViolationsInspector/ViolationsListControls/ViolationsListControls.css'
+
 type ViolationsListControlProps = {
   setShowFullFineDataFunction: (arg1: boolean) => void
   setShowFullViolationTextFunction: (arg1: boolean) => void

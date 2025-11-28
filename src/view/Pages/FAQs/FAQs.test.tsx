@@ -2,16 +2,32 @@ import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
+import { SettingsContext } from 'context/SettingsContext/SettingsContext'
+
 import FAQs from './FAQs'
 
 describe('FAQs', () => {
+  const mockedSettings = {
+    getSetting: jest.fn(),
+    removeSetting: jest.fn(),
+    updateSetting: jest.fn(),
+  }
+
   it('should render successfully', () => {
-    render(<FAQs />)
+    render(
+      <SettingsContext.Provider value={mockedSettings}>
+        <FAQs />
+      </SettingsContext.Provider>,
+    )
   })
 
   describe('content', () => {
     it('should render the header', () => {
-      render(<FAQs />)
+      render(
+        <SettingsContext.Provider value={mockedSettings}>
+          <FAQs />
+        </SettingsContext.Provider>,
+      )
 
       // title
       expect(screen.getByText('FAQs')).toBeInTheDocument()
@@ -30,7 +46,11 @@ describe('FAQs', () => {
     })
 
     it('should display the FAQs question content upon page load', () => {
-      render(<FAQs />)
+      render(
+        <SettingsContext.Provider value={mockedSettings}>
+          <FAQs />
+        </SettingsContext.Provider>,
+      )
 
       expect(screen.getByText('What is HowsMyDrivingNY?')).toBeVisible()
       expect(screen.getByText('How does HowsMyDrivingNY work?')).toBeVisible()
@@ -46,7 +66,11 @@ describe('FAQs', () => {
     })
 
     it("should not display FAQ answers unless that answer's question has been toggled open", async () => {
-      render(<FAQs />)
+      render(
+        <SettingsContext.Provider value={mockedSettings}>
+          <FAQs />
+        </SettingsContext.Provider>,
+      )
 
       const questionText =
         'Some results show "new" violations. What does this mean?'

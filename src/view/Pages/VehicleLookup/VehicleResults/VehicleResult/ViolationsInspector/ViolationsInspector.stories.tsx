@@ -1,37 +1,19 @@
-import * as React from 'react'
+import React, { ReactNode } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { userEvent, within, expect } from '@storybook/test'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
 import { ViolationFactory } from '__fixtures__/models/Violation'
+import {
+  newStyleDisplayDecorator,
+  oldStyleDisplayDecorator,
+} from 'tests/utils/withStyleDisplayDecorator'
 
 import ViolationsInspector from './ViolationsInspector'
 
 const meta: Meta<typeof ViolationsInspector> = {
   title: 'Components/VehicleResults/VehicleResult/ViolationsInspector',
   component: ViolationsInspector,
-  decorators: [
-    (Story) => (
-      <div className="site-container-wrapper">
-        <div className="site-container container-fluid">
-          <main>
-            <div className="row">
-              <div className="col-md-12 vehicle-lookup-content-container">
-                <div className="vehicles">
-                  <div className="vehicle card">
-                    <ul className="list-group-flush list-group">
-                      {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-                      <Story />
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </main>
-        </div>
-      </div>
-    ),
-  ],
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   parameters: {
@@ -41,6 +23,36 @@ const meta: Meta<typeof ViolationsInspector> = {
 }
 
 type Story = StoryObj<typeof ViolationsInspector>
+
+const ParentHtml = ({
+  children,
+  useNewStyleDisplay,
+}: {
+  children: ReactNode
+  useNewStyleDisplay: boolean
+}) => {
+  const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
+
+  return (
+    <div className="site-container-wrapper">
+      <div className="site-container container-fluid">
+        <main>
+          <div className="row">
+            <div
+              className={`col-md-12 vehicle-lookup-content-container ${newStyleDisplayClassName}`}
+            >
+              <div className={`vehicles ${newStyleDisplayClassName}`}>
+                <div className="vehicle card">
+                  <ul className="list-group-flush list-group">{children}</ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  )
+}
 
 const violationsWithFines = [
   ViolationFactory.build({
@@ -61,79 +73,122 @@ const violationsWithFines = [
   }),
 ]
 
-export const NoViolations: Story = {
+export const NoViolationsNewStyleDisplay: Story = {
   args: {
     showViolationsList: true,
+    useNewStyleView: true,
     vehicle: VehicleFactory.build({
       violations: [],
       violationsCount: 0,
     }),
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
   parameters: {
     viewport: { defaultViewport: 'mobile2' },
   },
 }
-export const AtLeastOneViolationWithViolationIconsAndSummaryFines: Story = {
+export const NoViolationsOldStyleDisplay: Story = {
   args: {
     showViolationsList: true,
+    useNewStyleView: false,
     vehicle: VehicleFactory.build({
-      violations: violationsWithFines,
-      violationsCount: violationsWithFines.length,
+      violations: [],
+      violationsCount: 0,
     }),
   },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
   parameters: {
     viewport: { defaultViewport: 'mobile2' },
   },
 }
-export const AtLeastOneViolatioWithFullViolationTextAndSummaryFines: Story = {
+
+export const AtLeastOneViolationNewStyleDisplay: Story = {
   args: {
     showViolationsList: true,
+    useNewStyleView: true,
     vehicle: VehicleFactory.build({
       violations: violationsWithFines,
       violationsCount: violationsWithFines.length,
     }),
   },
-  parameters: {
-    viewport: { defaultViewport: 'tablet' },
-  },
-}
-export const AtLeastOneViolationWithViolationIconsAndFullFines: Story = {
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement)
-
-    await userEvent.click(canvas.getByText('show fines details'))
-
-    await expect(canvas.getByText('show fines summary')).toBeInTheDocument()
-  },
-  args: {
-    showViolationsList: true,
-    vehicle: VehicleFactory.build({
-      violations: violationsWithFines,
-      violationsCount: violationsWithFines.length,
-    }),
-  },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
   parameters: {
     viewport: { defaultViewport: 'mobile2' },
   },
 }
-export const AtLeastOneViolationWithFullViolationTextAndFullFines: Story = {
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement)
+export const AtLeastOneViolationWithViolationIconsAndSummaryFinesOldStyleDisplay: Story =
+  {
+    args: {
+      showViolationsList: true,
+      useNewStyleView: false,
+      vehicle: VehicleFactory.build({
+        violations: violationsWithFines,
+        violationsCount: violationsWithFines.length,
+      }),
+    },
+    decorators: [oldStyleDisplayDecorator(ParentHtml)],
+    parameters: {
+      viewport: { defaultViewport: 'mobile2' },
+    },
+  }
+export const AtLeastOneViolationWithFullViolationTextAndSummaryFinesOldStyleDisplay: Story =
+  {
+    args: {
+      showViolationsList: true,
+      useNewStyleView: false,
+      vehicle: VehicleFactory.build({
+        violations: violationsWithFines,
+        violationsCount: violationsWithFines.length,
+      }),
+    },
+    decorators: [oldStyleDisplayDecorator(ParentHtml)],
+    parameters: {
+      viewport: { defaultViewport: 'tablet' },
+    },
+  }
+export const AtLeastOneViolationWithViolationIconsAndFullFinesOldStyleDisplay: Story =
+  {
+    play: async ({ canvasElement }) => {
+      const canvas = within(canvasElement)
 
-    await userEvent.click(canvas.getByText('show fines details'))
+      await userEvent.click(canvas.getByText('show fines details'))
 
-    await expect(canvas.getByText('show fines summary')).toBeInTheDocument()
-  },
-  args: {
-    showViolationsList: true,
-    vehicle: VehicleFactory.build({
-      violations: violationsWithFines,
-      violationsCount: violationsWithFines.length,
-    }),
-  },
-  parameters: {
-    viewport: { defaultViewport: 'tablet' },
-  },
-}
+      await expect(canvas.getByText('show fines summary')).toBeInTheDocument()
+    },
+    args: {
+      showViolationsList: true,
+      useNewStyleView: false,
+      vehicle: VehicleFactory.build({
+        violations: violationsWithFines,
+        violationsCount: violationsWithFines.length,
+      }),
+    },
+    decorators: [oldStyleDisplayDecorator(ParentHtml)],
+    parameters: {
+      viewport: { defaultViewport: 'mobile2' },
+    },
+  }
+export const AtLeastOneViolationWithFullViolationTextAndFullFinesOldStyleDisplay: Story =
+  {
+    play: async ({ canvasElement }) => {
+      const canvas = within(canvasElement)
+
+      await userEvent.click(canvas.getByText('show fines details'))
+
+      await expect(canvas.getByText('show fines summary')).toBeInTheDocument()
+    },
+    args: {
+      showViolationsList: true,
+      useNewStyleView: false,
+      vehicle: VehicleFactory.build({
+        violations: violationsWithFines,
+        violationsCount: violationsWithFines.length,
+      }),
+    },
+    decorators: [oldStyleDisplayDecorator(ParentHtml)],
+    parameters: {
+      viewport: { defaultViewport: 'tablet' },
+    },
+  }
 
 export default meta

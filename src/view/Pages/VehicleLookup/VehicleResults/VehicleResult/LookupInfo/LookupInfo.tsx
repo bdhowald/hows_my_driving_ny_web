@@ -1,18 +1,20 @@
 import * as React from 'react'
-import { useCookies } from 'react-cookie'
 
 import { USE_NEW_STYLE_DISPLAY_STORAGE_KEY } from 'constants/storage'
-
+import useSettings from 'hooks/useSettings/useSettings'
 import Vehicle from 'models/Vehicle/Vehicle'
 import FinesBreakdown from 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/FinesBreakdown/FinesBreakdown'
+
+import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/LookupInfo/LookupInfo.css'
 
 import PlateInfo from './PlateInfo/PlateInfo'
 import ViolationSummary from './ViolationSummary/ViolationSummary'
 
 const LookupInfo = ({ vehicle }: { vehicle: Vehicle }) => {
-  const [cookies, _, __] = useCookies([USE_NEW_STYLE_DISPLAY_STORAGE_KEY])
+  const { getSetting } = useSettings()
 
-  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true
+  const useNewStyleDisplay =
+    getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true
   const showFines = !!vehicle.violationsCount
 
   if (useNewStyleDisplay) {

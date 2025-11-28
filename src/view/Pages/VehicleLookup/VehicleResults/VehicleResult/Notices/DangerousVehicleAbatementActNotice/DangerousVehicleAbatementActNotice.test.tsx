@@ -1,14 +1,20 @@
 import React from 'react'
-import { Cookies, CookiesProvider } from 'react-cookie'
 import { render, screen } from '@testing-library/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
+import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 
 import DangerousVehicleAbatementActNotice from './DangerousVehicleAbatementActNotice'
 
 describe('DangerousVehicleAbatementAct', () => {
   describe('renders without error', () => {
     describe('new-style display', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValue(true),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       test.each([
         {
           cameraStreakData: {
@@ -57,9 +63,9 @@ describe('DangerousVehicleAbatementAct', () => {
           })
 
           render(
-            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+            <SettingsContext.Provider value={mockedSettings}>
               <DangerousVehicleAbatementActNotice vehicle={vehicle} />
-            </CookiesProvider>,
+            </SettingsContext.Provider>,
           )
 
           // Expect law name to be visible
@@ -71,6 +77,12 @@ describe('DangerousVehicleAbatementAct', () => {
     })
 
     describe('old-style display', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValue(false),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       test.each([
         {
           cameraStreakData: {
@@ -119,9 +131,9 @@ describe('DangerousVehicleAbatementAct', () => {
           })
 
           render(
-            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+            <SettingsContext.Provider value={mockedSettings}>
               <DangerousVehicleAbatementActNotice vehicle={vehicle} />
-            </CookiesProvider>,
+            </SettingsContext.Provider>,
           )
 
           // Expect law name to be visible
@@ -135,6 +147,12 @@ describe('DangerousVehicleAbatementAct', () => {
 
   describe('render the correct language', () => {
     describe('new-style display', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValue(true),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       it('should render the correct language when a vehicle is eligible by its red light camera and speed camera violations', () => {
         const vehicle = VehicleFactory.build({
           cameraStreakData: {
@@ -154,9 +172,9 @@ describe('DangerousVehicleAbatementAct', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <DangerousVehicleAbatementActNotice vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         // red light eligibility string
@@ -217,9 +235,9 @@ describe('DangerousVehicleAbatementAct', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <DangerousVehicleAbatementActNotice vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         // red light eligibility string
@@ -266,9 +284,9 @@ describe('DangerousVehicleAbatementAct', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <DangerousVehicleAbatementActNotice vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         // speed camera eligibility string
@@ -304,6 +322,12 @@ describe('DangerousVehicleAbatementAct', () => {
     })
 
     describe('old-style display', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValue(false),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       it('should render the correct language when a vehicle is eligible by its red light camera and speed camera violations', () => {
         const vehicle = VehicleFactory.build({
           cameraStreakData: {
@@ -323,9 +347,9 @@ describe('DangerousVehicleAbatementAct', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <DangerousVehicleAbatementActNotice vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         // red light eligibility string
@@ -386,9 +410,9 @@ describe('DangerousVehicleAbatementAct', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <DangerousVehicleAbatementActNotice vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         // red light eligibility string
@@ -435,9 +459,9 @@ describe('DangerousVehicleAbatementAct', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <DangerousVehicleAbatementActNotice vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         // speed camera eligibility string
@@ -475,6 +499,12 @@ describe('DangerousVehicleAbatementAct', () => {
 
   describe('handling unexpected data states', () => {
     describe('new-style display', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValue(true),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       it('should throw an error when a vehicle is eligible by neither red light camera or speed camera data', () => {
         const consoleError = jest
           .spyOn(console, 'error')
@@ -499,9 +529,9 @@ describe('DangerousVehicleAbatementAct', () => {
 
         expect(() =>
           render(
-            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+            <SettingsContext.Provider value={mockedSettings}>
               <DangerousVehicleAbatementActNotice vehicle={vehicle} />
-            </CookiesProvider>,
+            </SettingsContext.Provider>,
           ),
         ).toThrow('Camera data does not conform to any known configuration.')
         expect(consoleError).toHaveBeenCalled()
@@ -509,6 +539,12 @@ describe('DangerousVehicleAbatementAct', () => {
     })
 
     describe('old-style display', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValue(false),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       it('should throw an error when a vehicle is eligible by neither red light camera or speed camera data', () => {
         const consoleError = jest
           .spyOn(console, 'error')
@@ -533,9 +569,9 @@ describe('DangerousVehicleAbatementAct', () => {
 
         expect(() =>
           render(
-            <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+            <SettingsContext.Provider value={mockedSettings}>
               <DangerousVehicleAbatementActNotice vehicle={vehicle} />
-            </CookiesProvider>,
+            </SettingsContext.Provider>,
           ),
         ).toThrow('Camera data does not conform to any known configuration.')
         expect(consoleError).toHaveBeenCalled()

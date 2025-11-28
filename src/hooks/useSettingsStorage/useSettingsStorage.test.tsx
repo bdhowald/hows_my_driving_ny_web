@@ -11,9 +11,10 @@ describe('useSettingsStorage', () => {
   it('should expose the functions from the hook/function', () => {
     const { result } = renderHook(() => useSettingsStorage())
 
-    const { getSetting, updateSetting } = result.current
+    const { getSetting, removeSetting, updateSetting } = result.current
 
     expect(getSetting).not.toBeUndefined()
+    expect(removeSetting).not.toBeUndefined()
     expect(updateSetting).not.toBeUndefined()
   })
 
@@ -114,5 +115,36 @@ describe('useSettingsStorage', () => {
       secondSettingValue,
     )
     expect(result.current.getSetting(thirdSettingName)).toBe(thirdSettingValue)
+  })
+
+  it('should remove a set setting', async () => {
+    const { result } = renderHook(() => useSettingsStorage())
+
+    const settingName = 'setting'
+    const valueToSet = 1
+
+    await act(async () => {
+      result.current.updateSetting(settingName, valueToSet)
+    })
+
+    expect(result.current.getSetting(settingName)).toBe(valueToSet)
+
+    await act(async () => {
+      result.current.removeSetting(settingName)
+    })
+
+    expect(result.current.getSetting(settingName)).toBe(undefined)
+  })
+
+  it('should silently do nothing when asked to remove a setting not already set', async () => {
+    const { result } = renderHook(() => useSettingsStorage())
+
+    const settingName = 'setting'
+
+    await act(async () => {
+      result.current.removeSetting(settingName)
+    })
+
+    expect(result.current.getSetting(settingName)).toBe(undefined)
   })
 })

@@ -1,17 +1,26 @@
 import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
-import { fireEvent } from '@testing-library/dom'
 import { render, screen, waitFor } from '@testing-library/react'
-
-import Navigation from './Navigation'
 import userEvent from '@testing-library/user-event'
 
+import { SettingsContext } from 'context/SettingsContext/SettingsContext'
+
+import Navigation from './Navigation'
+
 describe('Navigation', () => {
+  const mockedSettings = {
+    getSetting: jest.fn(),
+    removeSetting: jest.fn(),
+    updateSetting: jest.fn(),
+  }
+
   describe('rendering', () => {
     it('renders successfully', async () => {
       render(
         <MemoryRouter>
-          <Navigation />
+          <SettingsContext.Provider value={mockedSettings}>
+            <Navigation />
+          </SettingsContext.Provider>
         </MemoryRouter>,
       )
 
@@ -43,7 +52,9 @@ describe('Navigation', () => {
     it('displays the active link with bold text', () => {
       render(
         <MemoryRouter initialEntries={['a1b2c3d4']}>
-          <Navigation />
+          <SettingsContext.Provider value={mockedSettings}>
+            <Navigation />
+          </SettingsContext.Provider>
         </MemoryRouter>,
       )
 
@@ -69,8 +80,10 @@ describe('Navigation', () => {
 
       render(
         <MemoryRouter>
-          <Navigation />
-          <button data-testid={someOtherElementTestId}>I am a button</button>
+          <SettingsContext.Provider value={mockedSettings}>
+            <Navigation />
+            <button data-testid={someOtherElementTestId}>I am a button</button>
+          </SettingsContext.Provider>
         </MemoryRouter>,
       )
 
@@ -100,7 +113,9 @@ describe('Navigation', () => {
     it('should hide the nav bar when it is open and a user clicks any part of the nav bar not a nav link', async () => {
       render(
         <MemoryRouter>
-          <Navigation />
+          <SettingsContext.Provider value={mockedSettings}>
+            <Navigation />
+          </SettingsContext.Provider>
         </MemoryRouter>,
       )
 
@@ -132,8 +147,10 @@ describe('Navigation', () => {
 
       render(
         <MemoryRouter>
-          <Navigation />
-          <div data-testid={someOtherElementTestId}></div>
+          <SettingsContext.Provider value={mockedSettings}>
+            <Navigation />
+            <div data-testid={someOtherElementTestId}></div>
+          </SettingsContext.Provider>
         </MemoryRouter>,
       )
 

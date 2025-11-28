@@ -1,14 +1,20 @@
 import React from 'react'
-import { Cookies, CookiesProvider } from 'react-cookie'
 import { render, screen } from '@testing-library/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
+import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 
 import LookupInfo from './LookupInfo'
 
 describe('LookupInfo', () => {
   describe('renders without error', () => {
     describe('new-style display', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValue(true),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       test.each([
         {
           vehicleParams: {
@@ -58,9 +64,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Plate:')).toBeInTheDocument()
@@ -103,6 +109,12 @@ describe('LookupInfo', () => {
     })
 
     describe('old-style display', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValue(false),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       test.each([
         {
           vehicleParams: {
@@ -152,9 +164,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Plate:')).toBeInTheDocument()
@@ -199,15 +211,21 @@ describe('LookupInfo', () => {
 
   describe('render the correct language', () => {
     describe('new-style display', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValue(false),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       it("should describe the region as 'State' when it is a U.S. state", () => {
         const vehicle = VehicleFactory.build({
           state: 'NY',
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('State:')).toBeInTheDocument()
@@ -223,9 +241,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Province:')).toBeInTheDocument()
@@ -241,9 +259,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Territory:')).toBeInTheDocument()
@@ -259,9 +277,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Territory:')).toBeInTheDocument()
@@ -277,9 +295,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Region:')).toBeInTheDocument()
@@ -295,9 +313,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Region:')).toBeInTheDocument()
@@ -313,9 +331,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Region:')).toBeInTheDocument()
@@ -331,9 +349,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Region:')).toBeInTheDocument()
@@ -349,9 +367,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Region:')).toBeInTheDocument()
@@ -367,9 +385,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Region:')).toBeInTheDocument()
@@ -386,9 +404,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.queryByText('Fined:')).not.toBeInTheDocument()
@@ -407,9 +425,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Plate type:')).toBeInTheDocument()
@@ -422,9 +440,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.queryByText('Prev. Queried:')).not.toBeInTheDocument()
@@ -436,9 +454,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.queryByText('Prev. Queried:')).toBeInTheDocument()
@@ -452,9 +470,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=true;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.queryByText('(1 new) 3')).toBeInTheDocument()
@@ -462,15 +480,21 @@ describe('LookupInfo', () => {
     })
 
     describe('old-style display', () => {
+      const mockedSettings = {
+        getSetting: jest.fn().mockReturnValue(false),
+        removeSetting: jest.fn(),
+        updateSetting: jest.fn(),
+      }
+
       it("should describe the region as 'State' when it is a U.S. state", () => {
         const vehicle = VehicleFactory.build({
           state: 'NY',
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('State:')).toBeInTheDocument()
@@ -486,9 +510,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Province:')).toBeInTheDocument()
@@ -504,9 +528,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Territory:')).toBeInTheDocument()
@@ -522,9 +546,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Territory:')).toBeInTheDocument()
@@ -540,9 +564,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Region:')).toBeInTheDocument()
@@ -558,9 +582,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Region:')).toBeInTheDocument()
@@ -576,9 +600,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Region:')).toBeInTheDocument()
@@ -594,9 +618,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Region:')).toBeInTheDocument()
@@ -612,9 +636,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Region:')).toBeInTheDocument()
@@ -630,9 +654,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Region:')).toBeInTheDocument()
@@ -649,9 +673,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.queryByText('Fined:')).not.toBeInTheDocument()
@@ -670,9 +694,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.getByText('Plate type:')).toBeInTheDocument()
@@ -685,9 +709,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.queryByText('Prev. Queried:')).not.toBeInTheDocument()
@@ -699,9 +723,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.queryByText('Prev. Queried:')).toBeInTheDocument()
@@ -715,9 +739,9 @@ describe('LookupInfo', () => {
         })
 
         render(
-          <CookiesProvider cookies={new Cookies('useNewStyleDisplay=false;')}>
+          <SettingsContext.Provider value={mockedSettings}>
             <LookupInfo vehicle={vehicle} />
-          </CookiesProvider>,
+          </SettingsContext.Provider>,
         )
 
         expect(screen.queryByText('(1 new) 3')).toBeInTheDocument()

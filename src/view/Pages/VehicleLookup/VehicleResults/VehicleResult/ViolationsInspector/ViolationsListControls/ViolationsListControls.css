@@ -1,0 +1,93 @@
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-header {
+  display: block;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-header
+  div.row
+  div.d-grid.gap-2 {
+  flex-direction: column;
+  margin-top: 0.5rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  ul.list-group-flush
+  li.list-group-item
+  div.violations-table-wrapper
+  div.violations-table-header
+  div.d-grid.gap-2
+  button.btn-outline-primary {
+  background-color: #fff;
+  border-color: #4824ff;
+  color: #4824ff;
+  margin: 0 0.25rem;
+  width: calc(100% - 0.5rem);
+}
+
+@media (hover: hover) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item
+    div.violations-table-wrapper
+    div.violations-table-header
+    div.d-grid.gap-2
+    button.btn-outline-primary:not(:disabled):not(.disabled):active {
+    background-color: #4824ff;
+    color: #fff;
+  }
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item
+    div.violations-table-wrapper
+    div.violations-table-header
+    div.d-grid.gap-2
+    button.btn-outline-primary:hover {
+    background-color: #4824ff;
+    color: #fff;
+  }
+}
+
+@media (hover: none) {
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item
+    div.violations-table-wrapper
+    div.violations-table-header
+    div.d-grid.gap-2
+    button.btn-outline-primary:not(:disabled):not(.disabled):active {
+    background-color: #fff;
+    color: #4824ff;
+  }
+  div.container-fluid
+    div.row
+    div.card
+    ul.list-group-flush
+    li.list-group-item
+    div.violations-table-wrapper
+    div.violations-table-header
+    div.row
+    div.d-grid.gap-2
+    button.btn-outline-primary:hover {
+    background-color: #fff;
+    color: #4824ff;
+  }
+}

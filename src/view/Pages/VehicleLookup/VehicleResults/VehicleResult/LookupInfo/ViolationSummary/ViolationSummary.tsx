@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useCookies } from 'react-cookie'
 
 import Borough from 'constants/boroughs'
 import { SMALL_BREAKPOINT } from 'constants/breakpoints'
@@ -10,10 +9,13 @@ import {
   RED_LIGHT_CAMERA_VIOLATION_CODE,
   SCHOOL_ZONE_SPEED_CAMERA_VIOLATION_CODE,
 } from 'constants/violations'
+import useSettings from 'hooks/useSettings/useSettings'
 import Vehicle from 'models/Vehicle/Vehicle'
 import Violation from 'models/Violation/Violation'
 import convertCamelCaseToTitleCase from 'utils/displayResults/convertCamelCaseToTitleCase/convertCamelCaseToTitleCase'
 import { NonParkingViolationCode } from 'types/violationCodes'
+
+import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/LookupInfo/ViolationSummary/ViolationSummary.css'
 
 const NO_BOROUGH_AVAILABLE = 'No Borough Available'
 
@@ -261,7 +263,7 @@ const ViolationSummary = ({ vehicle }: { vehicle: Vehicle }) => {
   const [showViolationsBreakdown, setShowViolationsBreakdown] = useState(
     isWideDisplay && hasAtLeastOneViolation,
   )
-  const [cookies, _, __] = useCookies([USE_NEW_STYLE_DISPLAY_STORAGE_KEY])
+  const { getSetting } = useSettings()
 
   const newViolationsSinceLastLookup =
     vehicle.violationsCount - (vehicle.previousViolationCount ?? 0)
@@ -279,7 +281,8 @@ const ViolationSummary = ({ vehicle }: { vehicle: Vehicle }) => {
 
   const showShowDetailsLink = !showViolationsBreakdown && hasAtLeastOneViolation
 
-  const useNewStyleDisplay = cookies[USE_NEW_STYLE_DISPLAY_STORAGE_KEY] === true
+  const useNewStyleDisplay =
+    getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
   return (

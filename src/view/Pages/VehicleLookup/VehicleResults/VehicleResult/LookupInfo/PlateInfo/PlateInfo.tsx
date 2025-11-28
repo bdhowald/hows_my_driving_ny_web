@@ -8,6 +8,8 @@ import Vehicle from 'models/Vehicle/Vehicle'
 import getPlateTypesString from 'utils/search/getPlateType/getPlateTypeDisplayString/getPlateTypeDisplayString'
 import getRegionFromAbbreviation from 'utils/displayResults/getRegionFromAbbreviation/getRegionFromAbbreviation'
 
+import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/LookupInfo/PlateInfo/PlateInfo.css'
+
 const MAX_DATE_DIFF_TO_BE_CONSIDERED_RECENT = 1000 * 5 * 60
 
 const PlateInfo = ({ vehicle }: { vehicle: Vehicle }) => {
