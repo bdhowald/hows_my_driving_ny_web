@@ -6,7 +6,7 @@ import regions from 'constants/regions'
 import {
   newStyleDisplayDecorator,
   oldStyleDisplayDecorator,
-} from 'tests/utils/withStyleDisplayDecorator'
+} from 'tests/utils/withStyleDisplayDecorator/withStyleDisplayDecorator'
 
 import SearchSelect from './SearchSelect'
 

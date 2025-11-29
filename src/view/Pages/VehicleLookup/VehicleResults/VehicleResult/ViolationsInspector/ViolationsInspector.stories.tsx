@@ -7,7 +7,7 @@ import { ViolationFactory } from '__fixtures__/models/Violation'
 import {
   newStyleDisplayDecorator,
   oldStyleDisplayDecorator,
-} from 'tests/utils/withStyleDisplayDecorator'
+} from 'tests/utils/withStyleDisplayDecorator/withStyleDisplayDecorator'
 
 import ViolationsInspector from './ViolationsInspector'
 

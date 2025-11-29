@@ -5,7 +5,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import {
   newStyleDisplayDecorator,
   oldStyleDisplayDecorator,
-} from 'tests/utils/withStyleDisplayDecorator'
+} from 'tests/utils/withStyleDisplayDecorator/withStyleDisplayDecorator'
 
 import SiteContainer from './SiteContainer'
 

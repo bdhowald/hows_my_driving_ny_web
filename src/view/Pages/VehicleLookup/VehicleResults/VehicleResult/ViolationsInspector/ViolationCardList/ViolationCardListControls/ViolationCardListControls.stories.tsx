@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { newStyleDisplayDecorator } from 'tests/utils/withStyleDisplayDecorator'
+import { newStyleDisplayDecorator } from 'tests/utils/withStyleDisplayDecorator/withStyleDisplayDecorator'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
 

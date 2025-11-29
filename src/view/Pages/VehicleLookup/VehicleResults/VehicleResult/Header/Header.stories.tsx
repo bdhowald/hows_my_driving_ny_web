@@ -6,7 +6,7 @@ import { VehicleFactory } from '__fixtures__/models/Vehicle'
 import {
   newStyleDisplayDecorator,
   oldStyleDisplayDecorator,
-} from 'tests/utils/withStyleDisplayDecorator'
+} from 'tests/utils/withStyleDisplayDecorator/withStyleDisplayDecorator'
 
 import Header from './Header'
 

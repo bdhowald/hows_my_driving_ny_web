@@ -2,14 +2,14 @@ import React, { ReactNode } from 'react'
 import { Cookies, CookiesProvider } from 'react-cookie'
 import type { Meta, StoryObj } from '@storybook/react'
 import {
-  withRouter,
+  // withRouter,
   reactRouterParameters,
 } from 'storybook-addon-remix-react-router'
 
 import {
   newStyleDisplayDecorator,
   oldStyleDisplayDecorator,
-} from 'tests/utils/withStyleDisplayDecorator'
+} from 'tests/utils/withStyleDisplayDecorator/withStyleDisplayDecorator'
 
 import VehicleLookup from './VehicleLookup'
 
@@ -27,7 +27,6 @@ const meta: Meta<typeof VehicleLookup> = {
 type Story = StoryObj<typeof VehicleLookup>
 
 const ParentHtml = ({ children }: { children: ReactNode }) => {
-  console.log('YAYs')
   return (
     <CookiesProvider cookies={new Cookies('useSearchFilters=false;')}>
       <div className="site-container-wrapper">
@@ -46,18 +45,14 @@ export const NoLookupsNewStyleDisplay: Story = {
     window.localStorage.clear()
     await mount()
   },
-  decorators: [
-    newStyleDisplayDecorator(ParentHtml),
-  ],
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
 export const NoLookupsOldStyleDisplay: Story = {
   async play({ mount }) {
     window.localStorage.clear()
     await mount()
   },
-  decorators: [
-    oldStyleDisplayDecorator(ParentHtml),
-  ],
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
 }
 
 const lookupIdentifierFromLocalLookup = 'bnzphli3'
@@ -71,11 +66,9 @@ export const OneLookupFromStorageNewStyleDisplay: Story = {
         'lookupIdentifiers',
         lookupIdentifierFromLocalLookup,
       )
-    }
+    },
   ],
-  decorators: [
-    newStyleDisplayDecorator(ParentHtml),
-  ],
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
 
 export const OneLookupFromStorageOldStyleDisplay: Story = {
@@ -86,11 +79,9 @@ export const OneLookupFromStorageOldStyleDisplay: Story = {
         'lookupIdentifiers',
         lookupIdentifierFromLocalLookup,
       )
-    }
+    },
   ],
-  decorators: [
-    oldStyleDisplayDecorator(ParentHtml),
-  ],
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
 }
 
 const reactRouterParametersForStory = {
@@ -105,24 +96,20 @@ const reactRouterParametersForStory = {
 }
 
 export const OneLookupFromSharedLookupNewStyleDisplay: Story = {
-  decorators: [
-    newStyleDisplayDecorator(ParentHtml),
-  ],
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
   loaders: [
     () => {
       window.localStorage.clear()
-    }
+    },
   ],
   parameters: reactRouterParametersForStory,
 }
 export const OneLookupFromSharedLookupOldStyleDisplay: Story = {
-  decorators: [
-    oldStyleDisplayDecorator(ParentHtml),
-  ],
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
   loaders: [
     () => {
       window.localStorage.clear()
-    }
+    },
   ],
   parameters: reactRouterParametersForStory,
 }
