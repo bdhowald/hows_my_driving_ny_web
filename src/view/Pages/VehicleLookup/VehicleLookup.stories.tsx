@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react'
+import { Cookies, CookiesProvider } from 'react-cookie'
 import type { Meta, StoryObj } from '@storybook/react'
 import {
   withRouter,
@@ -15,20 +16,6 @@ import VehicleLookup from './VehicleLookup'
 const meta: Meta<typeof VehicleLookup> = {
   title: 'Pages/VehicleLookup',
   component: VehicleLookup,
-  decorators: [
-    (Story) => (
-      <div className="site-container-wrapper">
-        <div className="site-container container-fluid">
-          <main>
-            <div className="row">
-              {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-              <Story />
-            </div>
-          </main>
-        </div>
-      </div>
-    ),
-  ],
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   parameters: {
@@ -39,32 +26,36 @@ const meta: Meta<typeof VehicleLookup> = {
 
 type Story = StoryObj<typeof VehicleLookup>
 
-const ParentHtml = ({ children }: { children: ReactNode }) => (
-  <div className="site-container-wrapper">
-    <div className="site-container container-fluid">
-      <main>
-        <div className="row">{children}</div>
-      </main>
-    </div>
-  </div>
-)
+const ParentHtml = ({ children }: { children: ReactNode }) => {
+  console.log('YAYs')
+  return (
+    <CookiesProvider cookies={new Cookies('useSearchFilters=false;')}>
+      <div className="site-container-wrapper">
+        <div className="site-container container-fluid">
+          <main>
+            <div className="row">{children}</div>
+          </main>
+        </div>
+      </div>
+    </CookiesProvider>
+  )
+}
 
 export const NoLookupsNewStyleDisplay: Story = {
+  async play({ mount }) {
+    window.localStorage.clear()
+    await mount()
+  },
   decorators: [
-    (Story) => {
-      window.localStorage.clear()
-      return <Story />
-    },
     newStyleDisplayDecorator(ParentHtml),
   ],
 }
 export const NoLookupsOldStyleDisplay: Story = {
+  async play({ mount }) {
+    window.localStorage.clear()
+    await mount()
+  },
   decorators: [
-    (Story) => {
-      window.localStorage.clear()
-
-      return <Story />
-    },
     oldStyleDisplayDecorator(ParentHtml),
   ],
 }
@@ -72,31 +63,32 @@ export const NoLookupsOldStyleDisplay: Story = {
 const lookupIdentifierFromLocalLookup = 'bnzphli3'
 const lookupIdentifierFromSharedLookup = '6aur3wi3'
 
-export const OneLookupFromCookiesNewStyleDisplay: Story = {
-  decorators: [
-    (Story) => {
+export const OneLookupFromStorageNewStyleDisplay: Story = {
+  loaders: [
+    () => {
       window.localStorage.clear()
       window.localStorage.setItem(
         'lookupIdentifiers',
         lookupIdentifierFromLocalLookup,
       )
-
-      return <Story />
-    },
+    }
+  ],
+  decorators: [
     newStyleDisplayDecorator(ParentHtml),
   ],
 }
-export const OneLookupFromCookiesOldStyleDisplay: Story = {
-  decorators: [
-    (Story) => {
+
+export const OneLookupFromStorageOldStyleDisplay: Story = {
+  loaders: [
+    () => {
       window.localStorage.clear()
       window.localStorage.setItem(
         'lookupIdentifiers',
         lookupIdentifierFromLocalLookup,
       )
-
-      return <Story />
-    },
+    }
+  ],
+  decorators: [
     oldStyleDisplayDecorator(ParentHtml),
   ],
 }
@@ -113,63 +105,61 @@ const reactRouterParametersForStory = {
 }
 
 export const OneLookupFromSharedLookupNewStyleDisplay: Story = {
-  parameters: reactRouterParametersForStory,
   decorators: [
-    withRouter,
-    (Story) => {
-      window.localStorage.clear()
-
-      return <Story />
-    },
     newStyleDisplayDecorator(ParentHtml),
   ],
+  loaders: [
+    () => {
+      window.localStorage.clear()
+    }
+  ],
+  parameters: reactRouterParametersForStory,
 }
 export const OneLookupFromSharedLookupOldStyleDisplay: Story = {
-  parameters: reactRouterParametersForStory,
   decorators: [
-    withRouter,
-    (Story) => {
-      window.localStorage.clear()
-
-      return <Story />
-    },
     oldStyleDisplayDecorator(ParentHtml),
   ],
+  loaders: [
+    () => {
+      window.localStorage.clear()
+    }
+  ],
+  parameters: reactRouterParametersForStory,
 }
 
-export const OneLookupEachFromLocalLookupAndSharedLookupNewStyleDisplay: Story =
-  {
-    parameters: reactRouterParametersForStory,
-    decorators: [
-      withRouter,
-      (Story) => {
-        window.localStorage.clear()
-        window.localStorage.setItem(
-          'lookupIdentifiers',
-          lookupIdentifierFromLocalLookup,
-        )
-
-        return <Story />
-      },
-      newStyleDisplayDecorator(ParentHtml),
-    ],
-  }
-export const OneLookupEachFromLocalLookupAndSharedLookupOldStyleDisplay: Story =
-  {
-    parameters: reactRouterParametersForStory,
-    decorators: [
-      withRouter,
-      (Story) => {
-        window.localStorage.clear()
-        window.localStorage.setItem(
-          'lookupIdentifiers',
-          lookupIdentifierFromLocalLookup,
-        )
-
-        return <Story />
-      },
-      oldStyleDisplayDecorator(ParentHtml),
-    ],
-  }
+// export const OneLookupEachFromLocalLookupAndSharedLookupNewStyleDisplay: Story =
+//   {
+//     decorators: [
+//       withRouter,
+//       oldStyleDisplayDecorator(ParentHtml),
+//     ],
+//     loaders: [
+//       () => {
+//         window.localStorage.clear()
+//         window.localStorage.setItem(
+//           'lookupIdentifiers',
+//           lookupIdentifierFromLocalLookup,
+//         )
+//       }
+//     ],
+//     parameters: reactRouterParametersForStory,
+//   }
+// export const OneLookupEachFromLocalLookupAndSharedLookupOldStyleDisplay: Story =
+//   {
+//     decorators: [
+//       withRouter,
+//       oldStyleDisplayDecorator(ParentHtml),
+//     ],
+//     loaders: [
+//       () => {
+//         window.localStorage.clear()
+//         window.localStorage.setItem(
+//           'lookupIdentifiers',
+//           lookupIdentifierFromLocalLookup,
+//         )
+//       }
+//     ],
+//     parameters: reactRouterParametersForStory,
+//   }
 
 export default meta
