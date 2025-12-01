@@ -6,8 +6,7 @@ const CHANGELOG_ENTRIES = [
         date: '2025-12-01',
         dateEntries: [
           {
-            description:
-              'Add user settings page.',
+            description: 'Add user settings page.',
             commits: [
               {
                 project: 'hows_my_driving_ny_web',
