@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card'
 
 import L10N from 'constants/display'
 
-import changelogEntries from './changelogEntries/changelogEntries'
+import CHANGELOG_ENTRIES from './changelogEntries/changelogEntries'
 
 import './Updates.css'
 
@@ -117,7 +117,7 @@ const Updates = () => (
       </div>
     </div>
     <div className="changelog-update-list">
-      {changelogEntries.map(({ year, yearEntries }: UpdateListYear) => (
+      {CHANGELOG_ENTRIES.map(({ year, yearEntries }: UpdateListYear) => (
         <Card className="bg-light changelog-update-year-list" key={year}>
           <details>
             <summary className="bg-light">{year}</summary>

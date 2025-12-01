@@ -1,4 +1,4 @@
-const changelogEntries = [
+const CHANGELOG_ENTRIES = [
   {
     year: '2025',
     yearEntries: [
@@ -5453,4 +5453,4 @@ const changelogEntries = [
   },
 ]
 
-export default changelogEntries
+export default CHANGELOG_ENTRIES

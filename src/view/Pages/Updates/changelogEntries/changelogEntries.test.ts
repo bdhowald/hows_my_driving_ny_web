@@ -1,10 +1,10 @@
-import changelogEntries from './changelogEntries'
+import CHANGELOG_ENTRIES from './changelogEntries'
 
 describe('changelogEntries', () => {
   describe('changelog entry integrity', () => {
     it('should be the case that every entry for a year took place during that year and is earlier than the entry before it', () => {
       let dateOfLastEntry: Date | undefined
-      changelogEntries.forEach(({ year, yearEntries }) => {
+      CHANGELOG_ENTRIES.forEach(({ year, yearEntries }) => {
         yearEntries.forEach(({ date }) => {
           const dateOfEntry = new Date(date)
 
@@ -27,7 +27,7 @@ describe('changelogEntries', () => {
         'hows_my_driving_ny_web',
       ]
 
-      changelogEntries.forEach(({ yearEntries }) => {
+      CHANGELOG_ENTRIES.forEach(({ yearEntries }) => {
         yearEntries.forEach((date) => {
           date.dateEntries.forEach(({ commits }) => {
             commits.forEach(({ project }) => {
