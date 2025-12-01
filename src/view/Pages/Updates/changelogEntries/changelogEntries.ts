@@ -3,6 +3,29 @@ const CHANGELOG_ENTRIES = [
     year: '2025',
     yearEntries: [
       {
+        date: '2025-12-01',
+        dateEntries: [
+          {
+            description:
+              'Add user settings page.',
+            commits: [
+              {
+                project: 'hows_my_driving_ny_web',
+                sha: '6c61eb2910b07d8d35183262c77be491026ecfcb',
+              },
+              {
+                project: 'hows_my_driving_ny_web',
+                sha: 'e307eddbf46a00b991ec5c93781e7ac5c0193223',
+              },
+              {
+                project: 'hows_my_driving_ny_web',
+                sha: '9c2d7472070c719e53603de124301646cc2604a4',
+              },
+            ],
+          },
+        ],
+      },
+      {
         date: '2025-11-24',
         dateEntries: [
           {
