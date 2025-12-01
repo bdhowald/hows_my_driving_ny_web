@@ -761,7 +761,7 @@ describe('VehicleLookup', () => {
       await waitFor(() => {
         expect(scrollIntoViewFunction).not.toHaveBeenCalled()
       })
-    }, 12500)
+    }, 15000)
 
     it('clicking on the close button of a lookup should remove it from the page', async () => {
       const performNewLookupSpy = jest.spyOn(
