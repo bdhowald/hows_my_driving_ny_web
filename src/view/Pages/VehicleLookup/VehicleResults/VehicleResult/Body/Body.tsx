@@ -1,10 +1,8 @@
 import React from 'react'
 import { useCookies } from 'react-cookie'
 
-import {
-  DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
-  USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
-} from 'constants/storage'
+import { DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY } from 'constants/storage'
+import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import Vehicle from 'models/Vehicle/Vehicle'
 import useSettings from 'hooks/useSettings/useSettings'
 import LookupInfo from 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/LookupInfo/LookupInfo'
@@ -30,7 +28,7 @@ const Body = ({ showViolationsList, vehicle }: BodyProps) => {
     cookies[DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY] === true
 
   const useNewStyleDisplay =
-    getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true
+    getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
 
   const cameraStreakData = vehicle.cameraStreakData
 

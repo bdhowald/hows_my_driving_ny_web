@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pages/UserSettings UserSettingsPageNewStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 user-settings-content-container new-style">
+          <div class="user-settings-header">
+            <h1>
+              Settings
+            </h1>
+          </div>
+          <div class="user-settings-content">
+            <div class="user-settings-type">
+              <div class="user-settings-type-title">
+                Display
+              </div>
+              <div class="user-settings-type-setting">
+                <div class="form-check form-switch">
+                  <label class="form-check-label"
+                         for="useNewStyleDisplay"
+                  >
+                    Use compact display
+                  </label>
+                  <input class="form-check-input"
+                         type="checkbox"
+                         role="switch"
+                         id="useNewStyleDisplay"
+                         checked
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Pages/UserSettings UserSettingsPageOldStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 user-settings-content-container ">
+          <div class="user-settings-header">
+            <h1>
+              Settings
+            </h1>
+          </div>
+          <div class="user-settings-content">
+            <div class="user-settings-type">
+              <div class="user-settings-type-title">
+                Display
+              </div>
+              <div class="user-settings-type-setting">
+                <div class="form-check form-switch">
+                  <label class="form-check-label"
+                         for="useNewStyleDisplay"
+                  >
+                    Use compact display
+                  </label>
+                  <input class="form-check-input"
+                         type="checkbox"
+                         role="switch"
+                         id="useNewStyleDisplay"
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;

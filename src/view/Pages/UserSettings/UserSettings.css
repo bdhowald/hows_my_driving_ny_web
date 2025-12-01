@@ -1,0 +1,99 @@
+div.container-fluid.site-container div.user-settings-content-container {
+  margin: auto;
+  max-width: 18rem;
+  padding: 0;
+}
+
+@media only screen and (min-width: 360px) {
+  div.container-fluid.site-container div.user-settings-content-container {
+    max-width: 20.5rem;
+  }
+}
+
+@media only screen and (min-width: 400px) {
+  div.container-fluid.site-container div.user-settings-content-container {
+    max-width: 23rem;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  div.container-fluid.site-container div.user-settings-content-container {
+    max-width: 34rem;
+  }
+}
+
+div.container-fluid.site-container
+  div.user-settings-content-container
+  div.user-settings-header {
+  background-color: #f8f9fa;
+  border-radius: 0.25rem;
+  margin: 2rem 0;
+  padding: 1.25rem;
+}
+
+@media only screen and (min-width: 400px) {
+  div.container-fluid.site-container
+    div.user-settings-content-container
+    div.user-settings-header {
+    margin: 4rem 0;
+  }
+}
+
+div.container-fluid.site-container
+  div.user-settings-content-container
+  div.user-settings-header
+  h1 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  margin: 0 0 1rem;
+}
+
+div.container-fluid.site-container
+  div.user-settings-content-container
+  div.user-settings-content {
+  background-color: #f8f9fa;
+  border-radius: 0.25rem;
+  margin: 2rem 0;
+  padding: 1.25rem;
+}
+
+div.container-fluid.site-container
+  div.user-settings-content-container
+  div.user-settings-content
+  div.user-settings-type
+  div.user-settings-type-title {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  font-weight: bold;
+  padding: 0.5rem 0;
+}
+
+div.container-fluid.site-container
+  div.user-settings-content-container
+  div.user-settings-content
+  div.user-settings-type
+  div.user-settings-type-setting {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  padding: 0.5rem 0;
+}
+
+div.container-fluid.site-container
+  div.user-settings-content-container
+  div.user-settings-content
+  div.user-settings-type
+  div.user-settings-type-setting
+  div.form-check.form-switch {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+
+div.container-fluid.site-container
+  div.user-settings-content-container
+  div.user-settings-content
+  div.user-settings-type
+  div.user-settings-type-setting
+  div.form-check.form-switch
+  input.form-check-input {
+  float: none;
+  margin: 0.25rem 0.5rem 0 0rem;
+}

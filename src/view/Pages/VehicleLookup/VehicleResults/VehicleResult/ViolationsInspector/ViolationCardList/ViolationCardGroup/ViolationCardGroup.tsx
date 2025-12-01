@@ -1,12 +1,10 @@
 import React, { useContext, useState } from 'react'
 import { useCookies } from 'react-cookie'
 
-import {
-  USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
-  USE_SEARCH_FILTERS_STORAGE_KEY,
-} from 'constants/storage'
 import L10N from 'constants/display'
 import Sort from 'constants/sortOptions'
+import { USE_SEARCH_FILTERS_STORAGE_KEY } from 'constants/storage'
+import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
 import useSettings from 'hooks/useSettings/useSettings'
 import Violation from 'models/Violation/Violation'
@@ -104,7 +102,8 @@ const ViolationCardGroup = ({
           tracker?.trackEvent('toggle_violation_group', {
             location: 'ViolationCardGroup',
             useNewStyleDisplay:
-              getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true,
+              getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) ===
+              true,
             useSearchFilters: cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true,
           })
         }}

@@ -8,7 +8,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 import L10N from 'constants/display'
 import regexps from 'constants/regexps'
-import { USE_NEW_STYLE_DISPLAY_STORAGE_KEY } from 'constants/storage'
+import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import useSettings from 'hooks/useSettings/useSettings'
 
 import './Navigation.css'
@@ -46,7 +46,7 @@ const NavLinkWithActive = ({
 const Navigation = () => {
   const { getSetting } = useSettings()
   const useNewStyleDisplay =
-    getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true
+    getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
 
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
@@ -137,6 +137,9 @@ const Navigation = () => {
               </NavLinkWithActive>
               <NavLinkWithActive as={Link} to="/faqs">
                 FAQs
+              </NavLinkWithActive>
+              <NavLinkWithActive as={Link} to="/settings">
+                Settings
               </NavLinkWithActive>
             </Nav>
           </Navbar.Collapse>

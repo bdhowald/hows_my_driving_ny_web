@@ -34,6 +34,11 @@ exports[`Components/Navigation DefaultNavigationLargeSizeNewStyleDisplay smoke-t
               >
                 FAQs
               </a>
+              <a class="nav-link"
+                 href="/settings"
+              >
+                Settings
+              </a>
             </div>
           </div>
         </nav>
@@ -76,6 +81,11 @@ exports[`Components/Navigation DefaultNavigationLargeSizeOldStyleDisplay smoke-t
                  href="/faqs"
               >
                 FAQs
+              </a>
+              <a class="nav-link"
+                 href="/settings"
+              >
+                Settings
               </a>
             </div>
           </div>
@@ -120,6 +130,11 @@ exports[`Components/Navigation DefaultNavigationMediumSizeNewStyleDisplay smoke-
               >
                 FAQs
               </a>
+              <a class="nav-link"
+                 href="/settings"
+              >
+                Settings
+              </a>
             </div>
           </div>
         </nav>
@@ -162,6 +177,11 @@ exports[`Components/Navigation DefaultNavigationMediumSizeOldStyleDisplay smoke-
                  href="/faqs"
               >
                 FAQs
+              </a>
+              <a class="nav-link"
+                 href="/settings"
+              >
+                Settings
               </a>
             </div>
           </div>
@@ -206,6 +226,11 @@ exports[`Components/Navigation DefaultNavigationSmallSizeNewStyleDisplay smoke-t
               >
                 FAQs
               </a>
+              <a class="nav-link"
+                 href="/settings"
+              >
+                Settings
+              </a>
             </div>
           </div>
         </nav>
@@ -248,6 +273,11 @@ exports[`Components/Navigation DefaultNavigationSmallSizeOldStyleDisplay smoke-t
                  href="/faqs"
               >
                 FAQs
+              </a>
+              <a class="nav-link"
+                 href="/settings"
+              >
+                Settings
               </a>
             </div>
           </div>
@@ -292,6 +322,11 @@ exports[`Components/Navigation DefaultNavigationVerySmallSizeNewStyleDisplay smo
               >
                 FAQs
               </a>
+              <a class="nav-link"
+                 href="/settings"
+              >
+                Settings
+              </a>
             </div>
           </div>
         </nav>
@@ -334,6 +369,11 @@ exports[`Components/Navigation DefaultNavigationVerySmallSizeOldStyleDisplay smo
                  href="/faqs"
               >
                 FAQs
+              </a>
+              <a class="nav-link"
+                 href="/settings"
+              >
+                Settings
               </a>
             </div>
           </div>

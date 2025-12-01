@@ -1,10 +1,8 @@
 import React, { useContext } from 'react'
 import { useCookies } from 'react-cookie'
 
-import {
-  USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
-  USE_SEARCH_FILTERS_STORAGE_KEY,
-} from 'constants/storage'
+import { USE_SEARCH_FILTERS_STORAGE_KEY } from 'constants/storage'
+import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import {
   BUS_LANE_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION,
   MOBILE_BUS_LANE_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION,
@@ -60,7 +58,7 @@ const ViolationDateTimeAspect = ({
     tracker?.trackEvent('show_violation_details', {
       location: 'ViolationCard',
       useNewStyleDisplay:
-        getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true,
+        getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true,
       useSearchFilters: cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true,
     })
   }

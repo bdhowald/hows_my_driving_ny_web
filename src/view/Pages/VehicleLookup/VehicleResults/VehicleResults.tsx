@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState } from 'react'
 
-import { USE_NEW_STYLE_DISPLAY_STORAGE_KEY } from 'constants/storage'
+import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
 import useSearchFiltersActiveCookie from 'hooks/useSearchFiltersActiveCookie/useSearchFiltersActiveCookie'
 import useSettings from 'hooks/useSettings/useSettings'
@@ -209,7 +209,7 @@ const VehicleResults = ({
   const { tracker } = applicationContext
 
   const useNewStyleDisplay =
-    getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true
+    getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
   const showResultsHeaderAndFiltersControl =

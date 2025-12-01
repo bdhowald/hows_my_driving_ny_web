@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, ReactNode } from 'react'
 
-import { USE_NEW_STYLE_DISPLAY_STORAGE_KEY } from 'constants/storage'
+import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import useSettingsStorage from 'hooks/useSettingsStorage/useSettingsStorage'
 
 export type SettingsContextType = ReturnType<typeof useSettingsStorage>
@@ -15,10 +15,14 @@ const SettingsProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const initializeDefaultSettings = () => {
       const useNewStyleDisplay =
-        settings.getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true
+        settings.getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) ===
+        true
 
       if (useNewStyleDisplay === undefined) {
-        settings.updateSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY, true)
+        settings.updateSetting(
+          USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay,
+          true,
+        )
       }
     }
 

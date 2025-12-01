@@ -34,6 +34,11 @@ exports[`Components/SiteContainer DefaultSiteContainerNewStyleDisplay smoke-test
               >
                 FAQs
               </a>
+              <a class="nav-link"
+                 href="/settings"
+              >
+                Settings
+              </a>
             </div>
           </div>
         </nav>
@@ -98,6 +103,11 @@ exports[`Components/SiteContainer DefaultSiteContainerOldStyleDisplay smoke-test
                  href="/faqs"
               >
                 FAQs
+              </a>
+              <a class="nav-link"
+                 href="/settings"
+              >
+                Settings
               </a>
             </div>
           </div>

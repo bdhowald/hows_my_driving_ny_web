@@ -4,13 +4,10 @@ import { useParams } from 'react-router-dom'
 import smoothscroll from 'smoothscroll-polyfill'
 import { useCookies } from 'react-cookie'
 
-import {
-  USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
-  USE_SEARCH_FILTERS_STORAGE_KEY,
-} from 'constants/storage'
 import L10N from 'constants/display'
+import { USE_SEARCH_FILTERS_STORAGE_KEY } from 'constants/storage'
+import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
-
 import useLookupIdentifierStorage from 'hooks/useLookupIdentifierStorage/useLookupIdentifierStorage'
 import useSettings from 'hooks/useSettings/useSettings'
 import Vehicle from 'models/Vehicle/Vehicle'
@@ -36,7 +33,7 @@ const VehicleLookup = () => {
   const { getSetting } = useSettings()
 
   const useNewStyleDisplay =
-    getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true
+    getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
   const useSearchFilters = cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true
 
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''

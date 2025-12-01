@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { USE_NEW_STYLE_DISPLAY_STORAGE_KEY } from 'constants/storage'
+import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import L10N from 'constants/display'
 import useSettings from 'hooks/useSettings/useSettings'
 import Vehicle from 'models/Vehicle/Vehicle'
@@ -121,7 +121,7 @@ const DangerousVehicleAbatementActNotice = ({
 
   const { getSetting } = useSettings()
   const useNewStyleDisplay =
-    getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true
+    getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
 
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 

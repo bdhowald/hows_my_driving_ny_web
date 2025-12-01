@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { USE_NEW_STYLE_DISPLAY_STORAGE_KEY } from 'constants/storage'
+import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import useSettings from 'hooks/useSettings/useSettings'
 import Vehicle from 'models/Vehicle/Vehicle'
 import FinesBreakdown from 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/FinesBreakdown/FinesBreakdown'
@@ -14,7 +14,7 @@ const LookupInfo = ({ vehicle }: { vehicle: Vehicle }) => {
   const { getSetting } = useSettings()
 
   const useNewStyleDisplay =
-    getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true
+    getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
   const showFines = !!vehicle.violationsCount
 
   if (useNewStyleDisplay) {

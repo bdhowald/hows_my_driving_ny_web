@@ -23,10 +23,8 @@ import Card from 'react-bootstrap/Card'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
 
-import {
-  USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
-  USE_SEARCH_FILTERS_STORAGE_KEY,
-} from 'constants/storage'
+import { USE_SEARCH_FILTERS_STORAGE_KEY } from 'constants/storage'
+import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import L10N from 'constants/display'
 import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
 import useSettings from 'hooks/useSettings/useSettings'
@@ -87,7 +85,7 @@ const CopyButton = ({
         tracker?.trackEvent('user_copied_link_to_lookup', {
           uniqueIdentifier: vehicleUniqueIdentifier,
           useNewStyleDisplay:
-            getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true,
+            getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true,
           useSearchFilters: cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true,
         })
 

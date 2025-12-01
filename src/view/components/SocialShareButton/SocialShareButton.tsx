@@ -7,12 +7,10 @@ import {
   TwitterIcon,
 } from 'react-share'
 
-import {
-  USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
-  USE_SEARCH_FILTERS_STORAGE_KEY,
-} from 'constants/storage'
+import { USE_SEARCH_FILTERS_STORAGE_KEY } from 'constants/storage'
 import L10N from 'constants/display'
 import SocialMediaService from 'constants/socialMedia'
+import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
 import useSettings from 'hooks/useSettings/useSettings'
 import Vehicle from 'models/Vehicle/Vehicle'
@@ -68,7 +66,7 @@ const ShareButton = ({
           socialMediaService: serviceName,
           uniqueIdentifier: vehicle.uniqueIdentifier,
           useNewStyleDisplay:
-            getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true,
+            getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true,
           useSearchFilters: cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true,
         })
       }}

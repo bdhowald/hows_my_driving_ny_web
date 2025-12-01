@@ -18,7 +18,7 @@ export default {
     placename: PLACENAME_REGEX,
   },
   lookups: {
-    uniqueIdentifier: /[a-z0-9]{8}/,
+    uniqueIdentifier: /(?!settings)[a-z0-9]{8}/,
   },
   search: {
     plate: {

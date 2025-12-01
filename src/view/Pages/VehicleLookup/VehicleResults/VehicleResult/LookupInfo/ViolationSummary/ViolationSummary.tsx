@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import Borough from 'constants/boroughs'
 import { SMALL_BREAKPOINT } from 'constants/breakpoints'
-import { USE_NEW_STYLE_DISPLAY_STORAGE_KEY } from 'constants/storage'
+import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import {
   BUS_LANE_CAMERA_VIOLATION_CODE,
   MOBILE_BUS_LANE_CAMERA_VIOLATION_CODE,
@@ -282,7 +282,7 @@ const ViolationSummary = ({ vehicle }: { vehicle: Vehicle }) => {
   const showShowDetailsLink = !showViolationsBreakdown && hasAtLeastOneViolation
 
   const useNewStyleDisplay =
-    getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true
+    getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
   return (

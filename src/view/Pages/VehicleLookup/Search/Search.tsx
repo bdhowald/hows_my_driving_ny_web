@@ -1,22 +1,21 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react'
-
 import Row from 'react-bootstrap/Row'
 import { useCookies } from 'react-cookie'
 
 import { getPreviousLookup } from 'boundaries/http'
+import L10N from 'constants/display'
+import HttpStatusCode from 'constants/httpStatusCode'
+import { PlateType } from 'constants/plateTypes'
+import regexps from 'constants/regexps'
 import {
   COOKIE_DEFAULT_PATH,
   COOKIE_MAX_AGE,
   DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
   LOOKUP_IDENTIFIER_STORAGE_KEY,
-  USE_NEW_STYLE_DISPLAY_STORAGE_KEY,
   USE_SEARCH_FILTERS_STORAGE_KEY,
 } from 'constants/storage'
-import L10N from 'constants/display'
-import HttpStatusCode from 'constants/httpStatusCode'
-import { PlateType } from 'constants/plateTypes'
-import regexps from 'constants/regexps'
 import { MILLISECONDS_IN_SECOND } from 'constants/time'
+import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
 import useLookupIdentifierStorage from 'hooks/useLookupIdentifierStorage/useLookupIdentifierStorage'
 import useSettings from 'hooks/useSettings/useSettings'
@@ -142,51 +141,8 @@ const Search = ({
   const { tracker } = applicationContext
 
   const useNewStyleDisplay =
-    getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true
+    getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
   const useSearchFilters = cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true
-
-  useEffect(() => {
-    const queryParameters = new URLSearchParams(document.location.search)
-
-    const useNewStyleDisplaySettingPresent =
-      getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) !== null &&
-      getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) !== undefined
-
-    const queryParamFeatureFlagEnabled =
-      queryParameters.get(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === 'true'
-
-    const queryParamFeatureFlagDisabled =
-      queryParameters.get(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === 'false'
-
-    if (
-      !useNewStyleDisplaySettingPresent ||
-      !useNewStyleDisplay ||
-      queryParamFeatureFlagEnabled ||
-      queryParamFeatureFlagDisabled
-    ) {
-      // 100% of sessions are in experimental group
-      // 0% of sessions are in control group
-      // 0% of sessions are available for progressive rollout
-      //
-      // Only show old-style display if query params force it
-      const inExperimentalGroup = !queryParamFeatureFlagDisabled
-      const inControlGroup = queryParamFeatureFlagDisabled
-
-      const inReserveGroup = !inControlGroup && !inExperimentalGroup
-
-      if (inExperimentalGroup) {
-        updateSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY, true)
-      }
-
-      if (inControlGroup) {
-        updateSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY, false)
-      }
-
-      if (inReserveGroup) {
-        removeSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY)
-      }
-    }
-  }, [])
 
   useEffect(() => {
     const queryParameters = new URLSearchParams(document.location.search)

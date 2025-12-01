@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { USE_NEW_STYLE_DISPLAY_STORAGE_KEY } from 'constants/storage'
+import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import useSettings from 'hooks/useSettings/useSettings'
 import {
   FilterFormElement,
@@ -36,7 +36,7 @@ const FiltersControl = ({
 }) => {
   const { getSetting } = useSettings()
   const useNewStyleDisplay =
-    getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true
+    getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
 
   const [filtersAreVisble, setFiltersAreVisible] = useState<boolean>(false)
 

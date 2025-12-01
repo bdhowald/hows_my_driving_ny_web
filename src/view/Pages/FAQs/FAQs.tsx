@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import Accordion from 'react-bootstrap/Accordion'
 
 import L10N from 'constants/display'
-import { USE_NEW_STYLE_DISPLAY_STORAGE_KEY } from 'constants/storage'
+import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import useSettings from 'hooks/useSettings/useSettings'
 
 import faqsContent from './faqsContent'
@@ -11,7 +11,7 @@ import './FAQs.css'
 const FAQs = () => {
   const { getSetting } = useSettings()
   const useNewStyleDisplay =
-    getSetting(USE_NEW_STYLE_DISPLAY_STORAGE_KEY) === true
+    getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
 
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
