@@ -38,7 +38,7 @@ export default {
           'https://www.nysenate.gov/legislation/bills/2025/S4045/amendment/A',
       },
       learnMore: {
-        link: 'https://static1.squarespace.com/static/66e9f5934be5cb497f7cfd6c/t/67c6592adbaebd41d44ddcd0/1741052205833/2.25-isa_one-pager__3_.pdf',
+        link: 'https://static1.squarespace.com/static/66e9f5934be5cb497f7cfd6c/t/68bf36bee4ed1a6d76a6f552/1757361854806/Super+Speeders+One+Pager+9.25+updated.pdf',
         text: 'intelligent speed assistance technology',
       },
       legislationName: 'Speed Limiters for the Most Reckless Drivers',
