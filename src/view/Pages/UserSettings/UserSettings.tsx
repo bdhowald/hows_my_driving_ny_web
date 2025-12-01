@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
-import L10N from 'constants/display'
+import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
 import USER_SETTINGS, {
   USER_SETTINGS_STORAGE_KEYS,
 } from 'constants/userSettings'
@@ -11,6 +11,10 @@ import 'view/Pages/UserSettings/UserSettings.css'
 
 const UserSettings = () => {
   const { getSetting, updateSetting } = useSettings()
+
+  const applicationContext = useContext(ApplicationContext)
+  const { tracker } = applicationContext
+
   const useNewStyleDisplay =
     getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
 
@@ -32,6 +36,11 @@ const UserSettings = () => {
               </div>
               <div className="user-settings-type-setting">
                 {Object.values(settings).map((setting) => {
+                  const currentSettingValue =
+                    getSetting(setting.storageKey) ?? setting.default
+                  const currentSettingValueAsBoolean =
+                    Boolean(currentSettingValue)
+
                   return (
                     <React.Fragment key={setting.storageKey}>
                       <div className="form-check form-switch">
@@ -46,12 +55,13 @@ const UserSettings = () => {
                           type="checkbox"
                           role="switch"
                           id={setting.storageKey}
-                          defaultChecked={useNewStyleDisplay}
+                          defaultChecked={currentSettingValueAsBoolean}
                           onChange={(e) => {
-                            updateSetting(
-                              USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay,
-                              e.target.checked,
-                            )
+                            updateSetting(setting.storageKey, e.target.checked)
+                            tracker?.trackEvent('user_updated_setting', {
+                              settingName: setting.storageKey,
+                              settingValue: e.target.checked,
+                            })
                           }}
                         />
                       </div>
