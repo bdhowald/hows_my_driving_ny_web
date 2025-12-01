@@ -26,6 +26,7 @@ const VehicleResult = ({
   vehicleDisplayResult: VehicleDisplaySuccessResult
 }) => {
   const [showVehicleResult, setShowVehicleResult] = useState(true)
+  const [lookupMarkedForRemoval, setLookupMarkedForRemoval] = useState(false)
 
   if (!showVehicleResult) {
     return null
@@ -33,9 +34,13 @@ const VehicleResult = ({
 
   const { vehicle } = vehicleDisplayResult
 
+  const lookupMarkedForRemovalClass = lookupMarkedForRemoval
+    ? 'removing-lookup'
+    : ''
+
   return (
     <Card
-      className="vehicle"
+      className={`vehicle ${lookupMarkedForRemovalClass}`}
       data-testid={`lookup-${vehicle.uniqueIdentifier}`}
     >
       <Header
@@ -47,7 +52,11 @@ const VehicleResult = ({
           await refreshLookupFunction(vehicle)
           setShowVehicleResult(true)
         }}
-        removeLookupFunction={() => removeLookupFunction(index)}
+        removeLookupFunction={async () => {
+          setLookupMarkedForRemoval(true)
+          await new Promise((resolve) => setTimeout(resolve, 250))
+          removeLookupFunction(index)
+        }}
         vehicle={vehicle}
       />
       <Body showViolationsList={showViolationsList} vehicle={vehicle} />

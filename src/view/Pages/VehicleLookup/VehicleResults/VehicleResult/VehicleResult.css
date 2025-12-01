@@ -1,4 +1,10 @@
 div.container-fluid div.row div.card {
   margin: 1rem 0;
+  opacity: 1;
   scroll-margin-top: 0.75rem;
+  transition: opacity 0.3s ease-in-out;
+}
+
+div.container-fluid div.row div.card.removing-lookup {
+  opacity: 0.5;
 }
