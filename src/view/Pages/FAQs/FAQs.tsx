@@ -5,7 +5,7 @@ import L10N from 'constants/display'
 import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import useSettings from 'hooks/useSettings/useSettings'
 
-import faqsContent from './faqsContent'
+import FAQS_CONTENT from './faqsContent'
 import './FAQs.css'
 
 const FAQs = () => {
@@ -33,7 +33,7 @@ const FAQs = () => {
         </div>
       </div>
       <Accordion className="frequently-asked-questions-content">
-        {faqsContent.map(
+        {FAQS_CONTENT.map(
           (
             { answer, question }: { answer: ReactNode; question: ReactNode },
             index,

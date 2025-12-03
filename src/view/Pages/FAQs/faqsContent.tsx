@@ -1,6 +1,6 @@
 import L10N from 'constants/display'
 
-export default [
+const FAQS_CONTENT = [
   {
     answer: (
       <>
@@ -61,3 +61,5 @@ export default [
     question: 'What happened to the Twitter bot?!?',
   },
 ]
+
+export default FAQS_CONTENT
