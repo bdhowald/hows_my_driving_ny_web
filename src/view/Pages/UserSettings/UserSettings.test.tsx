@@ -56,15 +56,16 @@ describe('UserSettings', () => {
         </SettingsContext.Provider>,
       )
 
-      // Display settings
-      const useCompactDisplaySetting = screen.getByRole('switch')
+      const useCompactDisplaySetting = screen.getByRole('switch') as HTMLInputElement
+      const currentSetting = useCompactDisplaySetting.checked
+
       expect(useCompactDisplaySetting).toBeInTheDocument()
 
       userEvent.click(useCompactDisplaySetting)
 
       expect(mockedUpdateSettingFunction).toHaveBeenCalledWith(
         'useNewStyleDisplay',
-        true,
+        !currentSetting,
       )
     })
   })
