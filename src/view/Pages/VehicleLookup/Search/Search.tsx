@@ -132,7 +132,7 @@ const Search = ({
     USE_SEARCH_FILTERS_STORAGE_KEY,
   ])
 
-  const { getSetting, removeSetting, updateSetting } = useSettings()
+  const { getSetting } = useSettings()
 
   const { readLookupIdentifiersFromStorage, syncLookupIdentifiersToStorage } =
     useLookupIdentifierStorage()
