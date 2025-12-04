@@ -26,15 +26,23 @@ exports[`Pages/VehicleLookup NoLookupsNewStyleDisplay smoke-test 1`] = `
                 <div class="row form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <input autocomplete="off"
-                             class="form-control"
-                             id="plate-input"
-                             name="plateId"
-                             pattern="[a-zA-Z0-9]+"
-                             placeholder="Enter a plate..."
-                             type="text"
-                             value
-                      >
+                      <div class="input-group">
+                        <input autocomplete="off"
+                               class="form-control"
+                               id="plate-input"
+                               name="plateId"
+                               pattern="[a-zA-Z0-9]+"
+                               placeholder="Enter a plate..."
+                               type="text"
+                               value
+                        >
+                        <button aria-label="clear Plate"
+                                class="btn btn-secondary"
+                                type="button"
+                        >
+                          ✕
+                        </button>
+                      </div>
                     </div>
                   </div>
                   <div class="col-md">
@@ -390,7 +398,8 @@ exports[`Pages/VehicleLookup NoLookupsNewStyleDisplay smoke-test 1`] = `
                   </div>
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               disabled
                               role="button"
                               type="submit"
@@ -439,15 +448,23 @@ exports[`Pages/VehicleLookup NoLookupsOldStyleDisplay smoke-test 1`] = `
                 <div class="row form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <input autocomplete="off"
-                             class="form-control"
-                             id="plate-input"
-                             name="plateId"
-                             pattern="[a-zA-Z0-9]+"
-                             placeholder="Enter a plate..."
-                             type="text"
-                             value
-                      >
+                      <div class="input-group">
+                        <input autocomplete="off"
+                               class="form-control"
+                               id="plate-input"
+                               name="plateId"
+                               pattern="[a-zA-Z0-9]+"
+                               placeholder="Enter a plate..."
+                               type="text"
+                               value
+                        >
+                        <button aria-label="clear Plate"
+                                class="btn btn-secondary"
+                                type="button"
+                        >
+                          ✕
+                        </button>
+                      </div>
                     </div>
                   </div>
                   <div class="col-md">
@@ -803,7 +820,8 @@ exports[`Pages/VehicleLookup NoLookupsOldStyleDisplay smoke-test 1`] = `
                   </div>
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               disabled
                               role="button"
                               type="submit"
@@ -852,15 +870,23 @@ exports[`Pages/VehicleLookup OneLookupFromSharedLookupNewStyleDisplay smoke-test
                 <div class="row form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <input autocomplete="off"
-                             class="form-control"
-                             id="plate-input"
-                             name="plateId"
-                             pattern="[a-zA-Z0-9]+"
-                             placeholder="Enter a plate..."
-                             type="text"
-                             value
-                      >
+                      <div class="input-group">
+                        <input autocomplete="off"
+                               class="form-control"
+                               id="plate-input"
+                               name="plateId"
+                               pattern="[a-zA-Z0-9]+"
+                               placeholder="Enter a plate..."
+                               type="text"
+                               value
+                        >
+                        <button aria-label="clear Plate"
+                                class="btn btn-secondary"
+                                type="button"
+                        >
+                          ✕
+                        </button>
+                      </div>
                     </div>
                   </div>
                   <div class="col-md">
@@ -1216,7 +1242,8 @@ exports[`Pages/VehicleLookup OneLookupFromSharedLookupNewStyleDisplay smoke-test
                   </div>
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               disabled
                               role="button"
                               type="submit"
@@ -1265,15 +1292,23 @@ exports[`Pages/VehicleLookup OneLookupFromSharedLookupOldStyleDisplay smoke-test
                 <div class="row form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <input autocomplete="off"
-                             class="form-control"
-                             id="plate-input"
-                             name="plateId"
-                             pattern="[a-zA-Z0-9]+"
-                             placeholder="Enter a plate..."
-                             type="text"
-                             value
-                      >
+                      <div class="input-group">
+                        <input autocomplete="off"
+                               class="form-control"
+                               id="plate-input"
+                               name="plateId"
+                               pattern="[a-zA-Z0-9]+"
+                               placeholder="Enter a plate..."
+                               type="text"
+                               value
+                        >
+                        <button aria-label="clear Plate"
+                                class="btn btn-secondary"
+                                type="button"
+                        >
+                          ✕
+                        </button>
+                      </div>
                     </div>
                   </div>
                   <div class="col-md">
@@ -1629,7 +1664,8 @@ exports[`Pages/VehicleLookup OneLookupFromSharedLookupOldStyleDisplay smoke-test
                   </div>
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               disabled
                               role="button"
                               type="submit"
@@ -1678,15 +1714,23 @@ exports[`Pages/VehicleLookup OneLookupFromStorageNewStyleDisplay smoke-test 1`] 
                 <div class="row form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <input autocomplete="off"
-                             class="form-control"
-                             id="plate-input"
-                             name="plateId"
-                             pattern="[a-zA-Z0-9]+"
-                             placeholder="Enter a plate..."
-                             type="text"
-                             value
-                      >
+                      <div class="input-group">
+                        <input autocomplete="off"
+                               class="form-control"
+                               id="plate-input"
+                               name="plateId"
+                               pattern="[a-zA-Z0-9]+"
+                               placeholder="Enter a plate..."
+                               type="text"
+                               value
+                        >
+                        <button aria-label="clear Plate"
+                                class="btn btn-secondary"
+                                type="button"
+                        >
+                          ✕
+                        </button>
+                      </div>
                     </div>
                   </div>
                   <div class="col-md">
@@ -2042,7 +2086,8 @@ exports[`Pages/VehicleLookup OneLookupFromStorageNewStyleDisplay smoke-test 1`] 
                   </div>
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               disabled
                               role="button"
                               type="submit"
@@ -2170,15 +2215,23 @@ exports[`Pages/VehicleLookup OneLookupFromStorageOldStyleDisplay smoke-test 1`] 
                 <div class="row form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <input autocomplete="off"
-                             class="form-control"
-                             id="plate-input"
-                             name="plateId"
-                             pattern="[a-zA-Z0-9]+"
-                             placeholder="Enter a plate..."
-                             type="text"
-                             value
-                      >
+                      <div class="input-group">
+                        <input autocomplete="off"
+                               class="form-control"
+                               id="plate-input"
+                               name="plateId"
+                               pattern="[a-zA-Z0-9]+"
+                               placeholder="Enter a plate..."
+                               type="text"
+                               value
+                        >
+                        <button aria-label="clear Plate"
+                                class="btn btn-secondary"
+                                type="button"
+                        >
+                          ✕
+                        </button>
+                      </div>
                     </div>
                   </div>
                   <div class="col-md">
@@ -2534,7 +2587,8 @@ exports[`Pages/VehicleLookup OneLookupFromStorageOldStyleDisplay smoke-test 1`] 
                   </div>
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               disabled
                               role="button"
                               type="submit"

@@ -12,7 +12,8 @@ exports[`Components/Search/SearchControls/SearchButton LookupInFlightAndNoPlateI
                 <div class="form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               disabled
                               role="button"
                               type="submit"
@@ -50,7 +51,8 @@ exports[`Components/Search/SearchControls/SearchButton LookupInFlightAndNoPlateI
                 <div class="form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               disabled
                               role="button"
                               type="submit"
@@ -88,7 +90,8 @@ exports[`Components/Search/SearchControls/SearchButton NoLookupInFlightAndNoPlat
                 <div class="form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               disabled
                               role="button"
                               type="submit"
@@ -121,7 +124,8 @@ exports[`Components/Search/SearchControls/SearchButton NoLookupInFlightAndNoPlat
                 <div class="form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               disabled
                               role="button"
                               type="submit"
@@ -154,7 +158,8 @@ exports[`Components/Search/SearchControls/SearchButton PlateIdPresentAndLookupIn
                 <div class="form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               disabled
                               role="button"
                               type="submit"
@@ -192,7 +197,8 @@ exports[`Components/Search/SearchControls/SearchButton PlateIdPresentAndLookupIn
                 <div class="form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               disabled
                               role="button"
                               type="submit"
@@ -230,7 +236,8 @@ exports[`Components/Search/SearchControls/SearchButton PlateIdPresentAndNoLookup
                 <div class="form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               role="button"
                               type="submit"
                               value="Search"
@@ -262,7 +269,8 @@ exports[`Components/Search/SearchControls/SearchButton PlateIdPresentAndNoLookup
                 <div class="form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               role="button"
                               type="submit"
                               value="Search"

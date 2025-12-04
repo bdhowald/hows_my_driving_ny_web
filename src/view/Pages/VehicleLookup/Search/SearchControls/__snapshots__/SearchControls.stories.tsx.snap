@@ -12,15 +12,23 @@ exports[`Components/Search/SearchControls LookupInFlightNewStyleDisplay smoke-te
                 <div class="row form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <input autocomplete="off"
-                             class="form-control"
-                             id="plate-input"
-                             name="plateId"
-                             pattern="[a-zA-Z0-9]+"
-                             placeholder="Enter a plate..."
-                             type="text"
-                             value="ABC1234"
-                      >
+                      <div class="input-group">
+                        <input autocomplete="off"
+                               class="form-control"
+                               id="plate-input"
+                               name="plateId"
+                               pattern="[a-zA-Z0-9]+"
+                               placeholder="Enter a plate..."
+                               type="text"
+                               value="ABC1234"
+                        >
+                        <button aria-label="clear Plate"
+                                class="btn btn-secondary"
+                                type="button"
+                        >
+                          ✕
+                        </button>
+                      </div>
                     </div>
                   </div>
                   <div class="col-md">
@@ -376,7 +384,8 @@ exports[`Components/Search/SearchControls LookupInFlightNewStyleDisplay smoke-te
                   </div>
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               disabled
                               role="button"
                               type="submit"
@@ -414,15 +423,23 @@ exports[`Components/Search/SearchControls LookupInFlightOldStyleDisplay smoke-te
                 <div class="row form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <input autocomplete="off"
-                             class="form-control"
-                             id="plate-input"
-                             name="plateId"
-                             pattern="[a-zA-Z0-9]+"
-                             placeholder="Enter a plate..."
-                             type="text"
-                             value="ABC1234"
-                      >
+                      <div class="input-group">
+                        <input autocomplete="off"
+                               class="form-control"
+                               id="plate-input"
+                               name="plateId"
+                               pattern="[a-zA-Z0-9]+"
+                               placeholder="Enter a plate..."
+                               type="text"
+                               value="ABC1234"
+                        >
+                        <button aria-label="clear Plate"
+                                class="btn btn-secondary"
+                                type="button"
+                        >
+                          ✕
+                        </button>
+                      </div>
                     </div>
                   </div>
                   <div class="col-md">
@@ -778,7 +795,8 @@ exports[`Components/Search/SearchControls LookupInFlightOldStyleDisplay smoke-te
                   </div>
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               disabled
                               role="button"
                               type="submit"
@@ -816,15 +834,23 @@ exports[`Components/Search/SearchControls NoLookupInFlightWithPlateEnteredNewSty
                 <div class="row form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <input autocomplete="off"
-                             class="form-control"
-                             id="plate-input"
-                             name="plateId"
-                             pattern="[a-zA-Z0-9]+"
-                             placeholder="Enter a plate..."
-                             type="text"
-                             value="ABC1234"
-                      >
+                      <div class="input-group">
+                        <input autocomplete="off"
+                               class="form-control"
+                               id="plate-input"
+                               name="plateId"
+                               pattern="[a-zA-Z0-9]+"
+                               placeholder="Enter a plate..."
+                               type="text"
+                               value="ABC1234"
+                        >
+                        <button aria-label="clear Plate"
+                                class="btn btn-secondary"
+                                type="button"
+                        >
+                          ✕
+                        </button>
+                      </div>
                     </div>
                   </div>
                   <div class="col-md">
@@ -1180,7 +1206,8 @@ exports[`Components/Search/SearchControls NoLookupInFlightWithPlateEnteredNewSty
                   </div>
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               role="button"
                               type="submit"
                               value="Search"
@@ -1212,15 +1239,23 @@ exports[`Components/Search/SearchControls NoLookupInFlightWithPlateEnteredOldSty
                 <div class="row form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <input autocomplete="off"
-                             class="form-control"
-                             id="plate-input"
-                             name="plateId"
-                             pattern="[a-zA-Z0-9]+"
-                             placeholder="Enter a plate..."
-                             type="text"
-                             value="ABC1234"
-                      >
+                      <div class="input-group">
+                        <input autocomplete="off"
+                               class="form-control"
+                               id="plate-input"
+                               name="plateId"
+                               pattern="[a-zA-Z0-9]+"
+                               placeholder="Enter a plate..."
+                               type="text"
+                               value="ABC1234"
+                        >
+                        <button aria-label="clear Plate"
+                                class="btn btn-secondary"
+                                type="button"
+                        >
+                          ✕
+                        </button>
+                      </div>
                     </div>
                   </div>
                   <div class="col-md">
@@ -1576,7 +1611,8 @@ exports[`Components/Search/SearchControls NoLookupInFlightWithPlateEnteredOldSty
                   </div>
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               role="button"
                               type="submit"
                               value="Search"
@@ -1608,15 +1644,23 @@ exports[`Components/Search/SearchControls NoPlateEnteredNewStyleDisplay smoke-te
                 <div class="row form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <input autocomplete="off"
-                             class="form-control"
-                             id="plate-input"
-                             name="plateId"
-                             pattern="[a-zA-Z0-9]+"
-                             placeholder="Enter a plate..."
-                             type="text"
-                             value
-                      >
+                      <div class="input-group">
+                        <input autocomplete="off"
+                               class="form-control"
+                               id="plate-input"
+                               name="plateId"
+                               pattern="[a-zA-Z0-9]+"
+                               placeholder="Enter a plate..."
+                               type="text"
+                               value
+                        >
+                        <button aria-label="clear Plate"
+                                class="btn btn-secondary"
+                                type="button"
+                        >
+                          ✕
+                        </button>
+                      </div>
                     </div>
                   </div>
                   <div class="col-md">
@@ -1972,7 +2016,8 @@ exports[`Components/Search/SearchControls NoPlateEnteredNewStyleDisplay smoke-te
                   </div>
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               disabled
                               role="button"
                               type="submit"
@@ -1998,15 +2043,23 @@ exports[`Components/Search/SearchControls NoPlateEnteredOldStyleDisplay smoke-te
   <div class="row form-row">
     <div class="col-md">
       <div class="form-group">
-        <input autocomplete="off"
-               class="form-control"
-               id="plate-input"
-               name="plateId"
-               pattern="[a-zA-Z0-9]+"
-               placeholder="Enter a plate..."
-               type="text"
-               value
-        >
+        <div class="input-group">
+          <input autocomplete="off"
+                 class="form-control"
+                 id="plate-input"
+                 name="plateId"
+                 pattern="[a-zA-Z0-9]+"
+                 placeholder="Enter a plate..."
+                 type="text"
+                 value
+          >
+          <button aria-label="clear Plate"
+                  class="btn btn-secondary"
+                  type="button"
+          >
+            ✕
+          </button>
+        </div>
       </div>
     </div>
     <div class="col-md">
@@ -2362,7 +2415,8 @@ exports[`Components/Search/SearchControls NoPlateEnteredOldStyleDisplay smoke-te
     </div>
     <div class="col-md">
       <div class="form-group">
-        <button class="form-control btn btn-primary"
+        <button aria-label="Search"
+                class="form-control btn btn-primary"
                 disabled
                 role="button"
                 type="submit"
@@ -2388,15 +2442,23 @@ exports[`Components/Search/SearchControls PlateTypeSelectedNewStyleDisplay smoke
                 <div class="row form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <input autocomplete="off"
-                             class="form-control"
-                             id="plate-input"
-                             name="plateId"
-                             pattern="[a-zA-Z0-9]+"
-                             placeholder="Enter a plate..."
-                             type="text"
-                             value="ABC1234"
-                      >
+                      <div class="input-group">
+                        <input autocomplete="off"
+                               class="form-control"
+                               id="plate-input"
+                               name="plateId"
+                               pattern="[a-zA-Z0-9]+"
+                               placeholder="Enter a plate..."
+                               type="text"
+                               value="ABC1234"
+                        >
+                        <button aria-label="clear Plate"
+                                class="btn btn-secondary"
+                                type="button"
+                        >
+                          ✕
+                        </button>
+                      </div>
                     </div>
                   </div>
                   <div class="col-md">
@@ -2752,7 +2814,8 @@ exports[`Components/Search/SearchControls PlateTypeSelectedNewStyleDisplay smoke
                   </div>
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               role="button"
                               type="submit"
                               value="Search"
@@ -2784,15 +2847,23 @@ exports[`Components/Search/SearchControls PlateTypeSelectedOldStyleDisplay smoke
                 <div class="row form-row">
                   <div class="col-md">
                     <div class="form-group">
-                      <input autocomplete="off"
-                             class="form-control"
-                             id="plate-input"
-                             name="plateId"
-                             pattern="[a-zA-Z0-9]+"
-                             placeholder="Enter a plate..."
-                             type="text"
-                             value="ABC1234"
-                      >
+                      <div class="input-group">
+                        <input autocomplete="off"
+                               class="form-control"
+                               id="plate-input"
+                               name="plateId"
+                               pattern="[a-zA-Z0-9]+"
+                               placeholder="Enter a plate..."
+                               type="text"
+                               value="ABC1234"
+                        >
+                        <button aria-label="clear Plate"
+                                class="btn btn-secondary"
+                                type="button"
+                        >
+                          ✕
+                        </button>
+                      </div>
                     </div>
                   </div>
                   <div class="col-md">
@@ -3148,7 +3219,8 @@ exports[`Components/Search/SearchControls PlateTypeSelectedOldStyleDisplay smoke
                   </div>
                   <div class="col-md">
                     <div class="form-group">
-                      <button class="form-control btn btn-primary"
+                      <button aria-label="Search"
+                              class="form-control btn btn-primary"
                               role="button"
                               type="submit"
                               value="Search"

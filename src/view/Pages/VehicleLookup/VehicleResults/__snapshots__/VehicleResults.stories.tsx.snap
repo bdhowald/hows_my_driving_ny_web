@@ -221,7 +221,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehiclesNew
                   <div class="col-md-12 vehicle-lookup-content-container new-style">
                     <div class="vehicles new-style">
                       <div data-testid="lookup-e5f6g7h8"
-                           class="vehicle card"
+                           class="vehicle  card"
                       >
                         <div class="card-header">
                           <div class="share-icons">
@@ -663,7 +663,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehiclesNew
                         </ul>
                       </div>
                       <div data-testid="lookup-e5f6g7h8"
-                           class="vehicle card"
+                           class="vehicle  card"
                       >
                         <div class="card-header">
                           <div class="share-icons">
@@ -1130,7 +1130,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehiclesOld
                   <div class="col-md-12 vehicle-lookup-content-container ">
                     <div class="vehicles ">
                       <div data-testid="lookup-e5f6g7h8"
-                           class="vehicle card"
+                           class="vehicle  card"
                       >
                         <div class="card-header">
                           <div class="share-icons">
@@ -1577,7 +1577,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithMultipleVehiclesOld
                         </ul>
                       </div>
                       <div data-testid="lookup-e5f6g7h8"
-                           class="vehicle card"
+                           class="vehicle  card"
                       >
                         <div class="card-header">
                           <div class="share-icons">
@@ -2049,7 +2049,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListHidde
                   <div class="col-md-12 vehicle-lookup-content-container new-style">
                     <div class="vehicles new-style">
                       <div data-testid="lookup-e5f6g7h8"
-                           class="vehicle card"
+                           class="vehicle  card"
                       >
                         <div class="card-header">
                           <div class="share-icons">
@@ -2365,7 +2365,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListHidde
                   <div class="col-md-12 vehicle-lookup-content-container ">
                     <div class="vehicles ">
                       <div data-testid="lookup-e5f6g7h8"
-                           class="vehicle card"
+                           class="vehicle  card"
                       >
                         <div class="card-header">
                           <div class="share-icons">
@@ -2681,7 +2681,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListVisib
                   <div class="col-md-12 vehicle-lookup-content-container new-style">
                     <div class="vehicles new-style">
                       <div data-testid="lookup-e5f6g7h8"
-                           class="vehicle card"
+                           class="vehicle  card"
                       >
                         <div class="card-header">
                           <div class="share-icons">
@@ -3148,7 +3148,7 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListVisib
                   <div class="col-md-12 vehicle-lookup-content-container ">
                     <div class="vehicles ">
                       <div data-testid="lookup-e5f6g7h8"
-                           class="vehicle card"
+                           class="vehicle  card"
                       >
                         <div class="card-header">
                           <div class="share-icons">

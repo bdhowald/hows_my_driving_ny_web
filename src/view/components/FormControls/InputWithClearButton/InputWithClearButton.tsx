@@ -19,7 +19,7 @@ const InputWithClearButton = ({
     <>
       <input ref={inputRef} {...props} />
       <button
-        aria-label={`clear ${innerLabel} filter`}
+        aria-label={`clear ${innerLabel}`}
         className="btn btn-secondary"
         onClick={() => inputRef.current && (inputRef.current.value = '')}
         type="button"

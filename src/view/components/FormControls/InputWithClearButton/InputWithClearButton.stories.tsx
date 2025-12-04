@@ -5,8 +5,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import InputWithClearButton from './InputWithClearButton'
 
 const meta: Meta<typeof InputWithClearButton> = {
-  title:
-    'Components/FormControls/InputWithClearButton',
+  title: 'Components/FormControls/InputWithClearButton',
   component: InputWithClearButton,
   args: {
     className: 'form-control',

@@ -92,7 +92,9 @@ describe('VehicleLookup', () => {
       const plateSearchInputHtmlElement = screen.getByRole('textbox')
       userEvent.type(plateSearchInputHtmlElement, plate)
 
-      const searchButtonHtmlElement = screen.getByRole('button')
+      const searchButtonHtmlElement = screen.getByRole('button', {
+        name: 'Search',
+      })
       userEvent.click(searchButtonHtmlElement)
 
       await waitFor(() => {
@@ -164,7 +166,9 @@ describe('VehicleLookup', () => {
       const plateTypeSelectHtmlElement = screen.getByRole('combobox', {
         name: 'Select License Plate Type',
       })
-      const searchButtonHtmlElement = screen.getByRole('button')
+      const searchButtonHtmlElement = screen.getByRole('button', {
+        name: 'Search',
+      })
 
       // set plate
       userEvent.type(plateSearchInputHtmlElement, queries[0].plate)
@@ -288,7 +292,9 @@ describe('VehicleLookup', () => {
       const plateSearchInputHtmlElement = screen.getByRole('textbox')
       userEvent.type(plateSearchInputHtmlElement, plate)
 
-      const searchButtonHtmlElement = screen.getByRole('button')
+      const searchButtonHtmlElement = screen.getByRole('button', {
+        name: 'Search',
+      })
       userEvent.click(searchButtonHtmlElement)
 
       await waitFor(() => {
@@ -388,7 +394,9 @@ describe('VehicleLookup', () => {
         const plateSearchInputHtmlElement = screen.getByRole('textbox')
         userEvent.type(plateSearchInputHtmlElement, plate)
 
-        const searchButtonHtmlElement = screen.getByRole('button')
+        const searchButtonHtmlElement = screen.getByRole('button', {
+          name: 'Search',
+        })
         userEvent.click(searchButtonHtmlElement)
 
         await waitFor(() => {
@@ -535,7 +543,9 @@ describe('VehicleLookup', () => {
         const plateSearchInputHtmlElement = screen.getByRole('textbox')
         userEvent.type(plateSearchInputHtmlElement, plate)
 
-        const searchButtonHtmlElement = screen.getByRole('button')
+        const searchButtonHtmlElement = screen.getByRole('button', {
+          name: 'Search',
+        })
         userEvent.click(searchButtonHtmlElement)
 
         await waitFor(() => {
@@ -620,7 +630,9 @@ describe('VehicleLookup', () => {
       const plateSearchInputHtmlElement = screen.getByRole('textbox')
       userEvent.type(plateSearchInputHtmlElement, plate)
 
-      const searchButtonHtmlElement = screen.getByRole('button')
+      const searchButtonHtmlElement = screen.getByRole('button', {
+        name: 'Search',
+      })
       userEvent.click(searchButtonHtmlElement)
 
       await waitFor(
@@ -680,7 +692,9 @@ describe('VehicleLookup', () => {
       const plateSearchInputHtmlElement = screen.getByRole('textbox')
       userEvent.type(plateSearchInputHtmlElement, plate)
 
-      const searchButtonHtmlElement = screen.getByRole('button')
+      const searchButtonHtmlElement = screen.getByRole('button', {
+        name: 'Search',
+      })
       userEvent.click(searchButtonHtmlElement)
 
       await waitFor(
@@ -741,7 +755,9 @@ describe('VehicleLookup', () => {
       const plateSearchInputHtmlElement = screen.getByRole('textbox')
       userEvent.type(plateSearchInputHtmlElement, plate)
 
-      const searchButtonHtmlElement = screen.getByRole('button')
+      const searchButtonHtmlElement = screen.getByRole('button', {
+        name: 'Search',
+      })
       userEvent.click(searchButtonHtmlElement)
 
       await waitFor(
@@ -796,7 +812,9 @@ describe('VehicleLookup', () => {
       const plateSearchInputHtmlElement = screen.getByRole('textbox')
       userEvent.type(plateSearchInputHtmlElement, plate)
 
-      const searchButtonHtmlElement = screen.getByRole('button')
+      const searchButtonHtmlElement = screen.getByRole('button', {
+        name: 'Search',
+      })
       userEvent.click(searchButtonHtmlElement)
 
       await waitFor(() => {
@@ -857,7 +875,9 @@ describe('VehicleLookup', () => {
       const plateSearchInputHtmlElement = screen.getByRole('textbox')
       userEvent.type(plateSearchInputHtmlElement, plate)
 
-      const searchButtonHtmlElement = screen.getByRole('button')
+      const searchButtonHtmlElement = screen.getByRole('button', {
+        name: 'Search',
+      })
       userEvent.click(searchButtonHtmlElement)
 
       await waitFor(() => {
@@ -925,7 +945,9 @@ describe('VehicleLookup', () => {
       const plateSearchInputHtmlElement = screen.getByRole('textbox')
       userEvent.type(plateSearchInputHtmlElement, plate)
 
-      const searchButtonHtmlElement = screen.getByRole('button')
+      const searchButtonHtmlElement = screen.getByRole('button', {
+        name: 'Search',
+      })
       userEvent.click(searchButtonHtmlElement)
 
       await waitFor(() => {

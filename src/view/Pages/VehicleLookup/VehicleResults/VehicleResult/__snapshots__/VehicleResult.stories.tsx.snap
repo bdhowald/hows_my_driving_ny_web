@@ -8,7 +8,7 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultNoViolationsNewSty
         <div class="col-md-12 vehicle-lookup-content-container new-style">
           <div class="vehicles new-style">
             <div data-testid="lookup-e5f6g7h8"
-                 class="vehicle card"
+                 class="vehicle  card"
             >
               <div class="card-header">
                 <div class="share-icons">
@@ -230,7 +230,7 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultNoViolationsOldSty
         <div class="col-md-12 vehicle-lookup-content-container ">
           <div class="vehicles ">
             <div data-testid="lookup-e5f6g7h8"
-                 class="vehicle card"
+                 class="vehicle  card"
             >
               <div class="card-header">
                 <div class="share-icons">
@@ -452,7 +452,7 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListHidd
         <div class="col-md-12 vehicle-lookup-content-container new-style">
           <div class="vehicles new-style">
             <div data-testid="lookup-e5f6g7h8"
-                 class="vehicle card"
+                 class="vehicle  card"
             >
               <div class="card-header">
                 <div class="share-icons">
@@ -758,7 +758,7 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListHidd
         <div class="col-md-12 vehicle-lookup-content-container ">
           <div class="vehicles ">
             <div data-testid="lookup-e5f6g7h8"
-                 class="vehicle card"
+                 class="vehicle  card"
             >
               <div class="card-header">
                 <div class="share-icons">
@@ -1064,7 +1064,7 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListIsVi
         <div class="col-md-12 vehicle-lookup-content-container new-style">
           <div class="vehicles new-style">
             <div data-testid="lookup-e5f6g7h8"
-                 class="vehicle card"
+                 class="vehicle  card"
             >
               <div class="card-header">
                 <div class="share-icons">
@@ -1521,7 +1521,7 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListIsVi
         <div class="col-md-12 vehicle-lookup-content-container ">
           <div class="vehicles ">
             <div data-testid="lookup-e5f6g7h8"
-                 class="vehicle card"
+                 class="vehicle  card"
             >
               <div class="card-header">
                 <div class="share-icons">

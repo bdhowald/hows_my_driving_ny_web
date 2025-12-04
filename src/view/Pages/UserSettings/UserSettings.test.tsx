@@ -56,7 +56,9 @@ describe('UserSettings', () => {
         </SettingsContext.Provider>,
       )
 
-      const useCompactDisplaySetting = screen.getByRole('switch') as HTMLInputElement
+      const useCompactDisplaySetting = screen.getByRole(
+        'switch',
+      ) as HTMLInputElement
       const currentSetting = useCompactDisplaySetting.checked
 
       expect(useCompactDisplaySetting).toBeInTheDocument()

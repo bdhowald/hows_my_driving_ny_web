@@ -6,6 +6,7 @@ import regions from 'constants/regions'
 import regexps from 'constants/regexps'
 import PlateLookup from 'types/plateLookup'
 
+import PlateSearchInput from './PlateSearchInput/PlateSearchInput'
 import SearchSelect from './SearchSelect/SearchSelect'
 import SearchButton from './SearchButton/SearchButton'
 
@@ -109,20 +110,9 @@ const SearchControls = ({
       <div className="row form-row">
         <div className="col-md">
           <div className="form-group">
-            <input
-              autoComplete="off"
-              className="form-control"
-              id="plate-input"
-              name="plateId"
-              onChange={handleInputChange}
-              onInvalid={(e) => {
-                const target = e.target as HTMLInputElement
-                target.setCustomValidity('Only letters and numbers allowed')
-              }}
-              pattern={regexps.search.plate.text.source + '+'}
-              placeholder={placeholderText}
-              type="text"
-              value={currentLookup.plateId ?? ''}
+            <PlateSearchInput
+              currentLookup={currentLookup}
+              onChangeFunction={handleInputChange}
             />
           </div>
         </div>

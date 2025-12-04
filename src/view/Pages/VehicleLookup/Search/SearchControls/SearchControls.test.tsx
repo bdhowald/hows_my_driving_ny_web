@@ -42,7 +42,7 @@ describe('SearchControls', () => {
     ).toBeInTheDocument()
 
     // search button
-    expect(screen.getByRole('button')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Search' })).toBeInTheDocument()
   })
 
   it('should have the search button disabled if currentLookup.plateId is undefined', () => {
@@ -61,7 +61,7 @@ describe('SearchControls', () => {
       />,
     )
 
-    expect(screen.getByRole('button')).toBeDisabled()
+    expect(screen.getByRole('button', { name: 'Search' })).toBeDisabled()
   })
 
   it('should have the search button disabled if a lookup is in flight', () => {
@@ -80,7 +80,7 @@ describe('SearchControls', () => {
       />,
     )
 
-    expect(screen.getByRole('button')).toBeDisabled()
+    expect(screen.getByRole('button', { name: 'Search' })).toBeDisabled()
   })
 
   it('should have the search button enabled if currentLookup.plateId defined and no lookup in flight', () => {
@@ -99,7 +99,7 @@ describe('SearchControls', () => {
       />,
     )
 
-    expect(screen.getByRole('button')).not.toBeDisabled()
+    expect(screen.getByRole('button', { name: 'Search' })).not.toBeDisabled()
   })
 
   it('should enable a search button that is disabled due to currentLookup.plateId being disabled', () => {
@@ -126,7 +126,7 @@ describe('SearchControls', () => {
       />,
     )
 
-    expect(screen.getByRole('button')).toBeDisabled()
+    expect(screen.getByRole('button', { name: 'Search' })).toBeDisabled()
 
     const plateSearchInputHtmlElement = screen.getByRole('textbox')
 
@@ -141,7 +141,7 @@ describe('SearchControls', () => {
       />,
     )
 
-    expect(screen.getByRole('button')).not.toBeDisabled()
+    expect(screen.getByRole('button', { name: 'Search' })).not.toBeDisabled()
   })
 
   it('should submit the form when the search button is clicked while enabled', () => {
@@ -162,7 +162,9 @@ describe('SearchControls', () => {
       />,
     )
 
-    const searchButtonHtmlElement = screen.getByRole('button')
+    const searchButtonHtmlElement = screen.getByRole('button', {
+      name: 'Search',
+    })
 
     userEvent.click(searchButtonHtmlElement)
 
@@ -187,7 +189,9 @@ describe('SearchControls', () => {
       />,
     )
 
-    const searchButtonHtmlElement = screen.getByRole('button')
+    const searchButtonHtmlElement = screen.getByRole('button', {
+      name: 'Search',
+    })
     expect(searchButtonHtmlElement).toBeDisabled()
 
     userEvent.click(searchButtonHtmlElement)

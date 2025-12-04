@@ -10,6 +10,7 @@ const SearchButton = React.memo(
     <div className="col-md">
       <div className="form-group">
         <button
+          aria-label="Search"
           className="form-control btn btn-primary"
           disabled={!plateIdPresent || lookupInFlight}
           role="button"

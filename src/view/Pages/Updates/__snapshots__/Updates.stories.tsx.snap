@@ -31,6 +31,42 @@ exports[`Pages/Updates UpdatesPageNewStyleDisplay smoke-test 1`] = `
                 </summary>
                 <div class="changelog-update-date">
                   <h3>
+                    2025-12-01
+                  </h3>
+                  <ul class="changelog-update-date-changelist">
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Add user settings page.
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/6c61eb2910b07d8d35183262c77be491026ecfcb"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [1,
+                      </a>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/e307eddbf46a00b991ec5c93781e7ac5c0193223"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        2,
+                      </a>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/9c2d7472070c719e53603de124301646cc2604a4"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        3]
+                      </a>
+                      <span class="badge rounded-pill text-bg-secondary">
+                        web
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="changelog-update-date">
+                  <h3>
                     2025-11-24
                   </h3>
                   <ul class="changelog-update-date-changelist">
@@ -8513,6 +8549,42 @@ exports[`Pages/Updates UpdatesPageOldStyleDisplay smoke-test 1`] = `
                 <summary class="bg-light">
                   2025
                 </summary>
+                <div class="changelog-update-date">
+                  <h3>
+                    2025-12-01
+                  </h3>
+                  <ul class="changelog-update-date-changelist">
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Add user settings page.
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/6c61eb2910b07d8d35183262c77be491026ecfcb"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [1,
+                      </a>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/e307eddbf46a00b991ec5c93781e7ac5c0193223"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        2,
+                      </a>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/9c2d7472070c719e53603de124301646cc2604a4"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        3]
+                      </a>
+                      <span class="badge rounded-pill text-bg-secondary">
+                        web
+                      </span>
+                    </li>
+                  </ul>
+                </div>
                 <div class="changelog-update-date">
                   <h3>
                     2025-11-24

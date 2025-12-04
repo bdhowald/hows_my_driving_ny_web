@@ -29,15 +29,23 @@ exports[`Components/Search/Search SearchAtPageLoadNewStyleDisplay smoke-test 1`]
                       <div class="row form-row">
                         <div class="col-md">
                           <div class="form-group">
-                            <input autocomplete="off"
-                                   class="form-control"
-                                   id="plate-input"
-                                   name="plateId"
-                                   pattern="[a-zA-Z0-9]+"
-                                   placeholder="Enter a plate..."
-                                   type="text"
-                                   value
-                            >
+                            <div class="input-group">
+                              <input autocomplete="off"
+                                     class="form-control"
+                                     id="plate-input"
+                                     name="plateId"
+                                     pattern="[a-zA-Z0-9]+"
+                                     placeholder="Enter a plate..."
+                                     type="text"
+                                     value
+                              >
+                              <button aria-label="clear Plate"
+                                      class="btn btn-secondary"
+                                      type="button"
+                              >
+                                ✕
+                              </button>
+                            </div>
                           </div>
                         </div>
                         <div class="col-md">
@@ -393,7 +401,8 @@ exports[`Components/Search/Search SearchAtPageLoadNewStyleDisplay smoke-test 1`]
                         </div>
                         <div class="col-md">
                           <div class="form-group">
-                            <button class="form-control btn btn-primary"
+                            <button aria-label="Search"
+                                    class="form-control btn btn-primary"
                                     disabled
                                     role="button"
                                     type="submit"
@@ -451,15 +460,23 @@ exports[`Components/Search/Search SearchAtPageLoadOldStyleDisplay smoke-test 1`]
                       <div class="row form-row">
                         <div class="col-md">
                           <div class="form-group">
-                            <input autocomplete="off"
-                                   class="form-control"
-                                   id="plate-input"
-                                   name="plateId"
-                                   pattern="[a-zA-Z0-9]+"
-                                   placeholder="Enter a plate..."
-                                   type="text"
-                                   value
-                            >
+                            <div class="input-group">
+                              <input autocomplete="off"
+                                     class="form-control"
+                                     id="plate-input"
+                                     name="plateId"
+                                     pattern="[a-zA-Z0-9]+"
+                                     placeholder="Enter a plate..."
+                                     type="text"
+                                     value
+                              >
+                              <button aria-label="clear Plate"
+                                      class="btn btn-secondary"
+                                      type="button"
+                              >
+                                ✕
+                              </button>
+                            </div>
                           </div>
                         </div>
                         <div class="col-md">
@@ -815,7 +832,8 @@ exports[`Components/Search/Search SearchAtPageLoadOldStyleDisplay smoke-test 1`]
                         </div>
                         <div class="col-md">
                           <div class="form-group">
-                            <button class="form-control btn btn-primary"
+                            <button aria-label="Search"
+                                    class="form-control btn btn-primary"
                                     disabled
                                     role="button"
                                     type="submit"

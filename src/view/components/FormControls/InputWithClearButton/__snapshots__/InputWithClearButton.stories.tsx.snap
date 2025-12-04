@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Components/VehicleResults/FiltersControl/FilterMenu/FormControls/InputWithClearButton Blank smoke-test 1`] = `
+exports[`Components/FormControls/InputWithClearButton Blank smoke-test 1`] = `
 <div role="dialog"
      aria-modal="true"
      class="offcanvas offcanvas-start show"
@@ -19,7 +19,7 @@ exports[`Components/VehicleResults/FiltersControl/FilterMenu/FormControls/InputW
                 Field
               </span>
               <input class="form-control">
-              <button aria-label="clear undefined filter"
+              <button aria-label="clear undefined"
                       class="btn btn-secondary"
                       type="button"
               >
@@ -34,7 +34,7 @@ exports[`Components/VehicleResults/FiltersControl/FilterMenu/FormControls/InputW
 </div>
 `;
 
-exports[`Components/VehicleResults/FiltersControl/FilterMenu/FormControls/InputWithClearButton WithPlaceholderText smoke-test 1`] = `
+exports[`Components/FormControls/InputWithClearButton WithPlaceholderText smoke-test 1`] = `
 <div role="dialog"
      aria-modal="true"
      class="offcanvas offcanvas-start show"
@@ -55,7 +55,7 @@ exports[`Components/VehicleResults/FiltersControl/FilterMenu/FormControls/InputW
               <input class="form-control"
                      placeholder="some placeholder text"
               >
-              <button aria-label="clear undefined filter"
+              <button aria-label="clear undefined"
                       class="btn btn-secondary"
                       type="button"
               >
@@ -70,7 +70,7 @@ exports[`Components/VehicleResults/FiltersControl/FilterMenu/FormControls/InputW
 </div>
 `;
 
-exports[`Components/VehicleResults/FiltersControl/FilterMenu/FormControls/InputWithClearButton WithText smoke-test 1`] = `
+exports[`Components/FormControls/InputWithClearButton WithText smoke-test 1`] = `
 <div role="dialog"
      aria-modal="true"
      class="offcanvas offcanvas-start show"
@@ -91,7 +91,7 @@ exports[`Components/VehicleResults/FiltersControl/FilterMenu/FormControls/InputW
               <input class="form-control"
                      value="some text"
               >
-              <button aria-label="clear undefined filter"
+              <button aria-label="clear undefined"
                       class="btn btn-secondary"
                       type="button"
               >
