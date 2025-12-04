@@ -3,6 +3,62 @@ const CHANGELOG_ENTRIES = [
     year: '2025',
     yearEntries: [
       {
+        date: '2025-12-03',
+        dateEntries: [
+          {
+            description: 'Add FAQ entries for result quirks',
+            commits: [
+              {
+                project: 'hows_my_driving_ny_web',
+                sha: '3fa463c0660878be30aa5c2840899e7d08edfef2',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        date: '2025-12-03',
+        dateEntries: [
+          {
+            description: 'Add clear button to plate input in search.',
+            commits: [
+              {
+                project: 'hows_my_driving_ny_web',
+                sha: '6095ecebbfdec6092549f8b0c749b16acdddb678',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        date: '2025-12-01',
+        dateEntries: [
+          {
+            description: 'Add visual feedback for lookups when removed.',
+            commits: [
+              {
+                project: 'hows_my_driving_ny_web',
+                sha: 'f09d9bc34cdc69168c1a69b9e711d0e7fbcfba74',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        date: '2025-12-01',
+        dateEntries: [
+          {
+            description: 'Update speed limiters one-pager link',
+            commits: [
+              {
+                project: 'hows_my_driving_ny_web',
+                sha: 'f09d9bc34cdc69168c1a69b9e711d0e7fbcfba74',
+              },
+            ],
+          },
+        ],
+      },
+      {
         date: '2025-12-01',
         dateEntries: [
           {

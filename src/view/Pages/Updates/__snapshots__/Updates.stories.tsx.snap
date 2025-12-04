@@ -31,6 +31,94 @@ exports[`Pages/Updates UpdatesPageNewStyleDisplay smoke-test 1`] = `
                 </summary>
                 <div class="changelog-update-date">
                   <h3>
+                    2025-12-03
+                  </h3>
+                  <ul class="changelog-update-date-changelist">
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Add FAQ entries for result quirks
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/3fa463c0660878be30aa5c2840899e7d08edfef2"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [Github]
+                      </a>
+                      <span class="badge rounded-pill text-bg-secondary">
+                        web
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="changelog-update-date">
+                  <h3>
+                    2025-12-03
+                  </h3>
+                  <ul class="changelog-update-date-changelist">
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Add clear button to plate input in search.
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/6095ecebbfdec6092549f8b0c749b16acdddb678"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [Github]
+                      </a>
+                      <span class="badge rounded-pill text-bg-secondary">
+                        web
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="changelog-update-date">
+                  <h3>
+                    2025-12-01
+                  </h3>
+                  <ul class="changelog-update-date-changelist">
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Add visual feedback for lookups when removed.
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/f09d9bc34cdc69168c1a69b9e711d0e7fbcfba74"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [Github]
+                      </a>
+                      <span class="badge rounded-pill text-bg-secondary">
+                        web
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="changelog-update-date">
+                  <h3>
+                    2025-12-01
+                  </h3>
+                  <ul class="changelog-update-date-changelist">
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Update speed limiters one-pager link
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/f09d9bc34cdc69168c1a69b9e711d0e7fbcfba74"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [Github]
+                      </a>
+                      <span class="badge rounded-pill text-bg-secondary">
+                        web
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="changelog-update-date">
+                  <h3>
                     2025-12-01
                   </h3>
                   <ul class="changelog-update-date-changelist">
@@ -8549,6 +8637,94 @@ exports[`Pages/Updates UpdatesPageOldStyleDisplay smoke-test 1`] = `
                 <summary class="bg-light">
                   2025
                 </summary>
+                <div class="changelog-update-date">
+                  <h3>
+                    2025-12-03
+                  </h3>
+                  <ul class="changelog-update-date-changelist">
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Add FAQ entries for result quirks
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/3fa463c0660878be30aa5c2840899e7d08edfef2"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [Github]
+                      </a>
+                      <span class="badge rounded-pill text-bg-secondary">
+                        web
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="changelog-update-date">
+                  <h3>
+                    2025-12-03
+                  </h3>
+                  <ul class="changelog-update-date-changelist">
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Add clear button to plate input in search.
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/6095ecebbfdec6092549f8b0c749b16acdddb678"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [Github]
+                      </a>
+                      <span class="badge rounded-pill text-bg-secondary">
+                        web
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="changelog-update-date">
+                  <h3>
+                    2025-12-01
+                  </h3>
+                  <ul class="changelog-update-date-changelist">
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Add visual feedback for lookups when removed.
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/f09d9bc34cdc69168c1a69b9e711d0e7fbcfba74"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [Github]
+                      </a>
+                      <span class="badge rounded-pill text-bg-secondary">
+                        web
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="changelog-update-date">
+                  <h3>
+                    2025-12-01
+                  </h3>
+                  <ul class="changelog-update-date-changelist">
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Update speed limiters one-pager link
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/f09d9bc34cdc69168c1a69b9e711d0e7fbcfba74"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [Github]
+                      </a>
+                      <span class="badge rounded-pill text-bg-secondary">
+                        web
+                      </span>
+                    </li>
+                  </ul>
+                </div>
                 <div class="changelog-update-date">
                   <h3>
                     2025-12-01
