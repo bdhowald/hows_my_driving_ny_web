@@ -14,11 +14,6 @@ const CHANGELOG_ENTRIES = [
               },
             ],
           },
-        ],
-      },
-      {
-        date: '2025-12-03',
-        dateEntries: [
           {
             description: 'Add clear button to plate input in search.',
             commits: [
@@ -42,11 +37,6 @@ const CHANGELOG_ENTRIES = [
               },
             ],
           },
-        ],
-      },
-      {
-        date: '2025-12-01',
-        dateEntries: [
           {
             description: 'Update speed limiters one-pager link',
             commits: [
@@ -56,11 +46,6 @@ const CHANGELOG_ENTRIES = [
               },
             ],
           },
-        ],
-      },
-      {
-        date: '2025-12-01',
-        dateEntries: [
           {
             description: 'Add user settings page.',
             commits: [
