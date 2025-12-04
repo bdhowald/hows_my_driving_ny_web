@@ -2,12 +2,12 @@ import * as React from 'react'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
-import FormControls from './FormControls'
+import InputWithClearButton from './InputWithClearButton'
 
-const meta: Meta<typeof FormControls.InputWithClearButton> = {
+const meta: Meta<typeof InputWithClearButton> = {
   title:
-    'Components/VehicleResults/FiltersControl/FilterMenu/FormControls/InputWithClearButton',
-  component: FormControls.InputWithClearButton,
+    'Components/FormControls/InputWithClearButton',
+  component: InputWithClearButton,
   args: {
     className: 'form-control',
   },
@@ -51,7 +51,7 @@ const meta: Meta<typeof FormControls.InputWithClearButton> = {
   },
 }
 
-type Story = StoryObj<typeof FormControls.InputWithClearButton>
+type Story = StoryObj<typeof InputWithClearButton>
 
 export const Blank: Story = {}
 
