@@ -64,9 +64,9 @@ exports[`Pages/FAQs FaqsPageNewStyleDisplay smoke-test 1`] = `
                            rel="noopener noreferrer"
                            target="_blank"
                         >
-                          various tables in NYC Open Data
+                          various databases in NYC Open Data
                         </a>
-                        . When you search for a license plate, HowsMyDrivingNY requests data matching the plate from those tables. Some tables have fine data or medallion info, while others have more detailed location data. HowsMyDrivingNY aggregates the results, merges and deduplicates them, and combines some fields to make the results more readable.
+                        . When you search for a license plate, HowsMyDrivingNY requests data matching the plate from those databases. Some databases have fine data or medallion info, while others have more detailed location data. HowsMyDrivingNY aggregates the results, merges and deduplicates them, and combines some fields to make the results more readable.
                       </span>
                     </div>
                   </div>
@@ -109,6 +109,44 @@ exports[`Pages/FAQs FaqsPageNewStyleDisplay smoke-test 1`] = `
                     <div class="answer-content accordion-body">
                       <span class="answer">
                         "New" violations are those found since the last time this exact plate was queried by any user, including you.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="question-content accordion-header">
+                    <button type="button"
+                            aria-expanded="false"
+                            class="accordion-button collapsed"
+                    >
+                      <span class="question">
+                        Why are some results missing an address or intersection?
+                      </span>
+                    </button>
+                  </h2>
+                  <div class="accordion-collapse collapse">
+                    <div class="answer-content accordion-body">
+                      <span class="answer">
+                        Most NYC Open Data traffic violation databases are updated once per month, but others are updated more frequently. Address data is found in databases that are updated less frequently, while fine data is on a database that is updated about once per week.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="question-content accordion-header">
+                    <button type="button"
+                            aria-expanded="false"
+                            class="accordion-button collapsed"
+                    >
+                      <span class="question">
+                        Why are some results missing an image of the violation?
+                      </span>
+                    </button>
+                  </h2>
+                  <div class="accordion-collapse collapse">
+                    <div class="answer-content accordion-body">
+                      <span class="answer">
+                        NYC Open Data for red light, speed, and bus cameras violations do not contain image URLs.
                       </span>
                     </div>
                   </div>
@@ -206,9 +244,9 @@ exports[`Pages/FAQs FaqsPageOldStyleDisplay smoke-test 1`] = `
                            rel="noopener noreferrer"
                            target="_blank"
                         >
-                          various tables in NYC Open Data
+                          various databases in NYC Open Data
                         </a>
-                        . When you search for a license plate, HowsMyDrivingNY requests data matching the plate from those tables. Some tables have fine data or medallion info, while others have more detailed location data. HowsMyDrivingNY aggregates the results, merges and deduplicates them, and combines some fields to make the results more readable.
+                        . When you search for a license plate, HowsMyDrivingNY requests data matching the plate from those databases. Some databases have fine data or medallion info, while others have more detailed location data. HowsMyDrivingNY aggregates the results, merges and deduplicates them, and combines some fields to make the results more readable.
                       </span>
                     </div>
                   </div>
@@ -251,6 +289,44 @@ exports[`Pages/FAQs FaqsPageOldStyleDisplay smoke-test 1`] = `
                     <div class="answer-content accordion-body">
                       <span class="answer">
                         "New" violations are those found since the last time this exact plate was queried by any user, including you.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="question-content accordion-header">
+                    <button type="button"
+                            aria-expanded="false"
+                            class="accordion-button collapsed"
+                    >
+                      <span class="question">
+                        Why are some results missing an address or intersection?
+                      </span>
+                    </button>
+                  </h2>
+                  <div class="accordion-collapse collapse">
+                    <div class="answer-content accordion-body">
+                      <span class="answer">
+                        Most NYC Open Data traffic violation databases are updated once per month, but others are updated more frequently. Address data is found in databases that are updated less frequently, while fine data is on a database that is updated about once per week.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="question-content accordion-header">
+                    <button type="button"
+                            aria-expanded="false"
+                            class="accordion-button collapsed"
+                    >
+                      <span class="question">
+                        Why are some results missing an image of the violation?
+                      </span>
+                    </button>
+                  </h2>
+                  <div class="accordion-collapse collapse">
+                    <div class="answer-content accordion-body">
+                      <span class="answer">
+                        NYC Open Data for red light, speed, and bus cameras violations do not contain image URLs.
                       </span>
                     </div>
                   </div>

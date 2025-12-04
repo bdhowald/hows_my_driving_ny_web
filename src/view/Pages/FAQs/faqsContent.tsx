@@ -21,11 +21,11 @@ const FAQS_CONTENT = [
           rel="noopener noreferrer"
           target="_blank"
         >
-          various tables in NYC Open Data
+          various databases in NYC Open Data
         </a>
         . When you search for a license plate, HowsMyDrivingNY requests data
-        matching the plate from those tables. Some tables have fine data or
-        medallion info, while others have more detailed location data.
+        matching the plate from those databases. Some databases have fine data
+        or medallion info, while others have more detailed location data.
         HowsMyDrivingNY aggregates the results, merges and deduplicates them,
         and combines some fields to make the results more readable.
       </>
@@ -50,6 +50,26 @@ const FAQS_CONTENT = [
       </>
     ),
     question: 'Some results show "new" violations. What does this mean?',
+  },
+  {
+    answer: (
+      <>
+        Most NYC Open Data traffic violation databases are updated once per
+        month, but others are updated more frequently. Address data is found in
+        databases that are updated less frequently, while fine data is on a
+        database that is updated about once per week.
+      </>
+    ),
+    question: 'Why are some results missing an address or intersection?',
+  },
+  {
+    answer: (
+      <>
+        NYC Open Data for red light, speed, and bus cameras violations do not
+        contain image URLs.
+      </>
+    ),
+    question: 'Why are some results missing an image of the violation?',
   },
   {
     answer: (
