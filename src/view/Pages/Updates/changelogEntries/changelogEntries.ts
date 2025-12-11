@@ -3,6 +3,34 @@ const CHANGELOG_ENTRIES = [
     year: '2025',
     yearEntries: [
       {
+        date: '2025-12-11',
+        dateEntries: [
+          {
+            description: 'Add button to copy image of lookup to clipboard.',
+            commits: [
+              {
+                project: 'hows_my_driving_ny_web',
+                sha: '6c315d61c21f4455ca3f16dcc27898f36ad5747b',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        date: '2025-12-06',
+        dateEntries: [
+          {
+            description: 'Fix error with display of Staten Island geocodes.',
+            commits: [
+              {
+                project: 'hows_my_driving_ny_api',
+                sha: '58519482c11cf824507e5317abd6f7c2a056b0f6',
+              },
+            ],
+          },
+        ],
+      },
+      {
         date: '2025-12-03',
         dateEntries: [
           {

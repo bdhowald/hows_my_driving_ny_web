@@ -31,6 +31,50 @@ exports[`Pages/Updates UpdatesPageNewStyleDisplay smoke-test 1`] = `
                 </summary>
                 <div class="changelog-update-date">
                   <h3>
+                    2025-12-11
+                  </h3>
+                  <ul class="changelog-update-date-changelist">
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Add button to copy image of lookup to clipboard.
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/6c315d61c21f4455ca3f16dcc27898f36ad5747b"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [Github]
+                      </a>
+                      <span class="badge rounded-pill text-bg-secondary">
+                        web
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="changelog-update-date">
+                  <h3>
+                    2025-12-06
+                  </h3>
+                  <ul class="changelog-update-date-changelist">
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Fix error with display of Staten Island geocodes.
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_api/commit/58519482c11cf824507e5317abd6f7c2a056b0f6"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [Github]
+                      </a>
+                      <span class="badge rounded-pill text-bg-info">
+                        api
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="changelog-update-date">
+                  <h3>
                     2025-12-03
                   </h3>
                   <ul class="changelog-update-date-changelist">
@@ -49,13 +93,6 @@ exports[`Pages/Updates UpdatesPageNewStyleDisplay smoke-test 1`] = `
                         web
                       </span>
                     </li>
-                  </ul>
-                </div>
-                <div class="changelog-update-date">
-                  <h3>
-                    2025-12-03
-                  </h3>
-                  <ul class="changelog-update-date-changelist">
                     <li class="changelog-update">
                       <span class="changelog-update-description">
                         Add clear button to plate input in search.
@@ -93,13 +130,6 @@ exports[`Pages/Updates UpdatesPageNewStyleDisplay smoke-test 1`] = `
                         web
                       </span>
                     </li>
-                  </ul>
-                </div>
-                <div class="changelog-update-date">
-                  <h3>
-                    2025-12-01
-                  </h3>
-                  <ul class="changelog-update-date-changelist">
                     <li class="changelog-update">
                       <span class="changelog-update-description">
                         Update speed limiters one-pager link
@@ -115,13 +145,6 @@ exports[`Pages/Updates UpdatesPageNewStyleDisplay smoke-test 1`] = `
                         web
                       </span>
                     </li>
-                  </ul>
-                </div>
-                <div class="changelog-update-date">
-                  <h3>
-                    2025-12-01
-                  </h3>
-                  <ul class="changelog-update-date-changelist">
                     <li class="changelog-update">
                       <span class="changelog-update-description">
                         Add user settings page.
@@ -8639,6 +8662,50 @@ exports[`Pages/Updates UpdatesPageOldStyleDisplay smoke-test 1`] = `
                 </summary>
                 <div class="changelog-update-date">
                   <h3>
+                    2025-12-11
+                  </h3>
+                  <ul class="changelog-update-date-changelist">
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Add button to copy image of lookup to clipboard.
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/6c315d61c21f4455ca3f16dcc27898f36ad5747b"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [Github]
+                      </a>
+                      <span class="badge rounded-pill text-bg-secondary">
+                        web
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="changelog-update-date">
+                  <h3>
+                    2025-12-06
+                  </h3>
+                  <ul class="changelog-update-date-changelist">
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Fix error with display of Staten Island geocodes.
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_api/commit/58519482c11cf824507e5317abd6f7c2a056b0f6"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [Github]
+                      </a>
+                      <span class="badge rounded-pill text-bg-info">
+                        api
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="changelog-update-date">
+                  <h3>
                     2025-12-03
                   </h3>
                   <ul class="changelog-update-date-changelist">
@@ -8657,13 +8724,6 @@ exports[`Pages/Updates UpdatesPageOldStyleDisplay smoke-test 1`] = `
                         web
                       </span>
                     </li>
-                  </ul>
-                </div>
-                <div class="changelog-update-date">
-                  <h3>
-                    2025-12-03
-                  </h3>
-                  <ul class="changelog-update-date-changelist">
                     <li class="changelog-update">
                       <span class="changelog-update-description">
                         Add clear button to plate input in search.
@@ -8701,13 +8761,6 @@ exports[`Pages/Updates UpdatesPageOldStyleDisplay smoke-test 1`] = `
                         web
                       </span>
                     </li>
-                  </ul>
-                </div>
-                <div class="changelog-update-date">
-                  <h3>
-                    2025-12-01
-                  </h3>
-                  <ul class="changelog-update-date-changelist">
                     <li class="changelog-update">
                       <span class="changelog-update-description">
                         Update speed limiters one-pager link
@@ -8723,13 +8776,6 @@ exports[`Pages/Updates UpdatesPageOldStyleDisplay smoke-test 1`] = `
                         web
                       </span>
                     </li>
-                  </ul>
-                </div>
-                <div class="changelog-update-date">
-                  <h3>
-                    2025-12-01
-                  </h3>
-                  <ul class="changelog-update-date-changelist">
                     <li class="changelog-update">
                       <span class="changelog-update-description">
                         Add user settings page.
