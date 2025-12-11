@@ -1,5 +1,6 @@
 import React from 'react'
 
+import L10N from 'constants/display'
 import Vehicle from 'models/Vehicle/Vehicle'
 
 import ShowFullFineDataButton from './ShowFullFineDataButton/ShowFullFineDataButton'
@@ -37,7 +38,7 @@ const ViolationsListControls = ({
 
   return (
     <div
-      className="violations-table-header"
+      className={`violations-table-header ${L10N.lookups.share.copyPhotoExcludeClass}`}
       data-testid="vehicle-violations-controls"
     >
       <div className="row">

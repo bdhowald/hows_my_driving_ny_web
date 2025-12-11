@@ -12,6 +12,8 @@ describe('Header', () => {
   const refreshLookupFunction = jest.fn()
   const removeLookupFunction = jest.fn()
 
+  const bodyRef = React.createRef<HTMLUListElement>()
+
   const mockedSettings = {
     getSetting: jest.fn().mockReturnValue(true),
     removeSetting: jest.fn(),
@@ -33,6 +35,7 @@ describe('Header', () => {
       render(
         <SettingsContext.Provider value={mockedSettings}>
           <Header
+            bodyRef={bodyRef}
             fromPreviousLookupUniqueIdentifier={false}
             refreshLookupFunction={refreshLookupFunction}
             removeLookupFunction={removeLookupFunction}
@@ -41,7 +44,8 @@ describe('Header', () => {
         </SettingsContext.Provider>,
       )
 
-      expect(screen.getByTestId('copy-button')).toBeInTheDocument()
+      expect(screen.getByTestId('copy-link-button')).toBeInTheDocument()
+      expect(screen.getByTestId('copy-image-button')).toBeInTheDocument()
       // expect(screen.getByTestId('refresh-lookup-button')).toBeInTheDocument()
       expect(screen.getByTestId('remove-lookup-button')).toBeInTheDocument()
       expect(screen.getByTestId('twitter-share-button')).toBeInTheDocument()
@@ -54,6 +58,7 @@ describe('Header', () => {
         <MemoryRouter>
           <SettingsContext.Provider value={mockedSettings}>
             <Header
+              bodyRef={bodyRef}
               fromPreviousLookupUniqueIdentifier={true}
               refreshLookupFunction={refreshLookupFunction}
               removeLookupFunction={removeLookupFunction}
@@ -80,6 +85,7 @@ describe('Header', () => {
         <MemoryRouter initialEntries={[initialRoute]}>
           <SettingsContext.Provider value={mockedSettings}>
             <Header
+              bodyRef={bodyRef}
               fromPreviousLookupUniqueIdentifier={true}
               refreshLookupFunction={refreshLookupFunction}
               removeLookupFunction={removeLookupFunction}
@@ -120,6 +126,7 @@ describe('Header', () => {
       render(
         <SettingsContext.Provider value={mockedSettings}>
           <Header
+            bodyRef={bodyRef}
             fromPreviousLookupUniqueIdentifier={false}
             refreshLookupFunction={refreshLookupFunction}
             removeLookupFunction={removeLookupFunction}
@@ -152,6 +159,7 @@ describe('Header', () => {
       render(
         <SettingsContext.Provider value={mockedSettings}>
           <Header
+            bodyRef={bodyRef}
             fromPreviousLookupUniqueIdentifier={false}
             refreshLookupFunction={refreshLookupFunction}
             removeLookupFunction={removeLookupFunction}
@@ -177,6 +185,7 @@ describe('Header', () => {
       render(
         <SettingsContext.Provider value={mockedSettings}>
           <Header
+            bodyRef={bodyRef}
             fromPreviousLookupUniqueIdentifier={false}
             refreshLookupFunction={refreshLookupFunction}
             removeLookupFunction={removeLookupFunction}

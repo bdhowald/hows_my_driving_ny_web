@@ -11,7 +11,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector AtLeastOneV
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
                   <div class="violation-card-list-wrapper">
-                    <div class="violation-card-list-controls"
+                    <div class="violation-card-list-controls exclude-from-photo"
                          data-testid="vehicle-violation-card-list-controls"
                     >
                       <div class="row">
@@ -186,7 +186,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector AtLeastOneV
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
                   <div class="violations-table-wrapper">
-                    <div class="violations-table-header"
+                    <div class="violations-table-header exclude-from-photo"
                          data-testid="vehicle-violations-controls"
                     >
                       <div class="row">
@@ -445,7 +445,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector AtLeastOneV
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
                   <div class="violations-table-wrapper">
-                    <div class="violations-table-header"
+                    <div class="violations-table-header exclude-from-photo"
                          data-testid="vehicle-violations-controls"
                     >
                       <div class="row">
@@ -629,7 +629,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector AtLeastOneV
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
                   <div class="violations-table-wrapper">
-                    <div class="violations-table-header"
+                    <div class="violations-table-header exclude-from-photo"
                          data-testid="vehicle-violations-controls"
                     >
                       <div class="row">
@@ -888,7 +888,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector AtLeastOneV
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
                   <div class="violations-table-wrapper">
-                    <div class="violations-table-header"
+                    <div class="violations-table-header exclude-from-photo"
                          data-testid="vehicle-violations-controls"
                     >
                       <div class="row">
@@ -1072,7 +1072,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector NoViolation
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
                   <div class="violation-card-list-wrapper">
-                    <div class="violation-card-list-controls"
+                    <div class="violation-card-list-controls exclude-from-photo"
                          data-testid="vehicle-violation-card-list-controls"
                     >
                       <div class="row">
@@ -1111,7 +1111,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector NoViolation
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
                   <div class="violations-table-wrapper">
-                    <div class="violations-table-header"
+                    <div class="violations-table-header exclude-from-photo"
                          data-testid="vehicle-violations-controls"
                     >
                       <div class="row">

@@ -44,7 +44,7 @@ div.container-fluid
   div.card
   div.card-header
   div.share-icons
-  button.copy-button {
+  button.header-logo-button {
   background: none;
   line-height: 21px;
 }
@@ -54,7 +54,7 @@ div.container-fluid
   div.card
   div.card-header
   div.share-icons
-  button.copy-button
+  button.header-logo-button
   span.fa-layers
   .circle {
   color: black;
@@ -65,9 +65,9 @@ div.container-fluid
   div.card
   div.card-header
   div.share-icons
-  button.copy-button
+  button.header-logo-button
   span.fa-layers
-  .copy {
+  .logo {
   color: white;
 }
 
@@ -76,9 +76,9 @@ div.container-fluid
   div.card
   div.card-header
   div.share-icons
-  button.copy-button
+  button.header-logo-button
   span.fa-layers
-  .copy.pressed {
+  .logo.pressed {
   color: black;
 }
 

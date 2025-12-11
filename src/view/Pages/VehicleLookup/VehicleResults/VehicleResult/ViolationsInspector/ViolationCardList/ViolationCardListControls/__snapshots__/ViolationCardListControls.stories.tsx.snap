@@ -11,7 +11,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
                   <div class="violation-card-list-wrapper">
-                    <div class="violation-card-list-controls"
+                    <div class="violation-card-list-controls exclude-from-photo"
                          data-testid="vehicle-violation-card-list-controls"
                     >
                       <div class="row">
@@ -50,7 +50,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
                   <div class="violation-card-list-wrapper">
-                    <div class="violation-card-list-controls"
+                    <div class="violation-card-list-controls exclude-from-photo"
                          data-testid="vehicle-violation-card-list-controls"
                     >
                       <div class="row">
@@ -88,7 +88,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
                   <div class="violation-card-list-wrapper">
-                    <div class="violation-card-list-controls"
+                    <div class="violation-card-list-controls exclude-from-photo"
                          data-testid="vehicle-violation-card-list-controls"
                     >
                       <div class="row">
@@ -136,7 +136,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
                   <div class="violation-card-list-wrapper">
-                    <div class="violation-card-list-controls"
+                    <div class="violation-card-list-controls exclude-from-photo"
                          data-testid="vehicle-violation-card-list-controls"
                     >
                       <div class="row">
@@ -184,7 +184,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
                   <div class="violation-card-list-wrapper">
-                    <div class="violation-card-list-controls"
+                    <div class="violation-card-list-controls exclude-from-photo"
                          data-testid="vehicle-violation-card-list-controls"
                     >
                       <div class="row">
@@ -232,7 +232,7 @@ exports[`Components/VehicleResults/VehicleResult/ViolationsInspector/ViolationCa
               <ul class="list-group-flush list-group">
                 <li class="list-group-item">
                   <div class="violation-card-list-wrapper">
-                    <div class="violation-card-list-controls"
+                    <div class="violation-card-list-controls exclude-from-photo"
                          data-testid="vehicle-violation-card-list-controls"
                     >
                       <div class="row">

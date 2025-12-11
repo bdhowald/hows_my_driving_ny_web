@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Card from 'react-bootstrap/Card'
 
 import Vehicle from 'models/Vehicle/Vehicle'
@@ -28,6 +28,8 @@ const VehicleResult = ({
   const [showVehicleResult, setShowVehicleResult] = useState(true)
   const [lookupMarkedForRemoval, setLookupMarkedForRemoval] = useState(false)
 
+  const bodyRef = useRef<HTMLUListElement>(null)
+
   if (!showVehicleResult) {
     return null
   }
@@ -42,8 +44,10 @@ const VehicleResult = ({
     <Card
       className={`vehicle ${lookupMarkedForRemovalClass}`}
       data-testid={`lookup-${vehicle.uniqueIdentifier}`}
+      id={`lookup-${vehicle.uniqueIdentifier}`}
     >
       <Header
+        bodyRef={bodyRef}
         fromPreviousLookupUniqueIdentifier={
           vehicleDisplayResult.fromPreviousLookupUniqueIdentifier
         }
@@ -59,7 +63,11 @@ const VehicleResult = ({
         }}
         vehicle={vehicle}
       />
-      <Body showViolationsList={showViolationsList} vehicle={vehicle} />
+      <Body
+        ref={bodyRef}
+        showViolationsList={showViolationsList}
+        vehicle={vehicle}
+      />
     </Card>
   )
 }

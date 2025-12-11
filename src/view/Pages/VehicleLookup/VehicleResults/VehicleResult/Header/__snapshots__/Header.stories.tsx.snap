@@ -11,8 +11,8 @@ exports[`Components/VehicleResults/VehicleResult/Header DefaultNewStyleDisplay s
               <div class="card-header">
                 <div class="share-icons">
                   <button aria-label="copy link to lookup"
-                          class="copy-button"
-                          data-testid="copy-button"
+                          class="header-logo-button"
+                          data-testid="copy-link-button"
                   >
                     <span class="fa-layers fa-fw">
                       <svg aria-hidden="true"
@@ -39,7 +39,7 @@ exports[`Components/VehicleResults/VehicleResult/Header DefaultNewStyleDisplay s
                            focusable="false"
                            data-prefix="fas"
                            data-icon="copy"
-                           class="svg-inline--fa fa-copy copy "
+                           class="svg-inline--fa fa-copy logo "
                            role="img"
                            xmlns="http://www.w3.org/2000/svg"
                            viewbox="0 0 448 512"
@@ -50,6 +50,53 @@ exports[`Components/VehicleResults/VehicleResult/Header DefaultNewStyleDisplay s
                             <path fill="currentColor"
                                   d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z"
                                   transform="translate(-224 -256)"
+                            >
+                            </path>
+                          </g>
+                        </g>
+                      </svg>
+                    </span>
+                  </button>
+                  <button aria-label="copy image of lookup"
+                          class="header-logo-button"
+                          data-testid="copy-image-button"
+                  >
+                    <span class="fa-layers fa-fw">
+                      <svg aria-hidden="true"
+                           focusable="false"
+                           data-prefix="fas"
+                           data-icon="circle"
+                           class="svg-inline--fa fa-circle circle "
+                           role="img"
+                           xmlns="http://www.w3.org/2000/svg"
+                           viewbox="0 0 512 512"
+                           style="transform-origin: 0.5em 0.5em;"
+                      >
+                        <g transform="translate(256 256)">
+                          <g transform="translate(0, 0)  scale(1.3125, 1.3125)  rotate(0 0 0)">
+                            <path fill="currentColor"
+                                  d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                                  transform="translate(-256 -256)"
+                            >
+                            </path>
+                          </g>
+                        </g>
+                      </svg>
+                      <svg aria-hidden="true"
+                           focusable="false"
+                           data-prefix="fas"
+                           data-icon="camera"
+                           class="svg-inline--fa fa-camera logo "
+                           role="img"
+                           xmlns="http://www.w3.org/2000/svg"
+                           viewbox="0 0 512 512"
+                           style="transform-origin: 0.5em 0.5em;"
+                      >
+                        <g transform="translate(256 256)">
+                          <g transform="translate(0, 0)  scale(0.75, 0.75)  rotate(0 0 0)">
+                            <path fill="currentColor"
+                                  d="M149.1 64.8L138.7 96 64 96C28.7 96 0 124.7 0 160L0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-256c0-35.3-28.7-64-64-64l-74.7 0L362.9 64.8C356.4 45.2 338.1 32 317.4 32L194.6 32c-20.7 0-39 13.2-45.5 32.8zM256 192a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"
+                                  transform="translate(-256 -256)"
                             >
                             </path>
                           </g>
@@ -147,8 +194,8 @@ exports[`Components/VehicleResults/VehicleResult/Header DefaultOldStyleDisplay s
               <div class="card-header">
                 <div class="share-icons">
                   <button aria-label="copy link to lookup"
-                          class="copy-button"
-                          data-testid="copy-button"
+                          class="header-logo-button"
+                          data-testid="copy-link-button"
                   >
                     <span class="fa-layers fa-fw">
                       <svg aria-hidden="true"
@@ -175,7 +222,7 @@ exports[`Components/VehicleResults/VehicleResult/Header DefaultOldStyleDisplay s
                            focusable="false"
                            data-prefix="fas"
                            data-icon="copy"
-                           class="svg-inline--fa fa-copy copy "
+                           class="svg-inline--fa fa-copy logo "
                            role="img"
                            xmlns="http://www.w3.org/2000/svg"
                            viewbox="0 0 448 512"
@@ -186,6 +233,53 @@ exports[`Components/VehicleResults/VehicleResult/Header DefaultOldStyleDisplay s
                             <path fill="currentColor"
                                   d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z"
                                   transform="translate(-224 -256)"
+                            >
+                            </path>
+                          </g>
+                        </g>
+                      </svg>
+                    </span>
+                  </button>
+                  <button aria-label="copy image of lookup"
+                          class="header-logo-button"
+                          data-testid="copy-image-button"
+                  >
+                    <span class="fa-layers fa-fw">
+                      <svg aria-hidden="true"
+                           focusable="false"
+                           data-prefix="fas"
+                           data-icon="circle"
+                           class="svg-inline--fa fa-circle circle "
+                           role="img"
+                           xmlns="http://www.w3.org/2000/svg"
+                           viewbox="0 0 512 512"
+                           style="transform-origin: 0.5em 0.5em;"
+                      >
+                        <g transform="translate(256 256)">
+                          <g transform="translate(0, 0)  scale(1.3125, 1.3125)  rotate(0 0 0)">
+                            <path fill="currentColor"
+                                  d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                                  transform="translate(-256 -256)"
+                            >
+                            </path>
+                          </g>
+                        </g>
+                      </svg>
+                      <svg aria-hidden="true"
+                           focusable="false"
+                           data-prefix="fas"
+                           data-icon="camera"
+                           class="svg-inline--fa fa-camera logo "
+                           role="img"
+                           xmlns="http://www.w3.org/2000/svg"
+                           viewbox="0 0 512 512"
+                           style="transform-origin: 0.5em 0.5em;"
+                      >
+                        <g transform="translate(256 256)">
+                          <g transform="translate(0, 0)  scale(0.75, 0.75)  rotate(0 0 0)">
+                            <path fill="currentColor"
+                                  d="M149.1 64.8L138.7 96 64 96C28.7 96 0 124.7 0 160L0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-256c0-35.3-28.7-64-64-64l-74.7 0L362.9 64.8C356.4 45.2 338.1 32 317.4 32L194.6 32c-20.7 0-39 13.2-45.5 32.8zM256 192a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"
+                                  transform="translate(-256 -256)"
                             >
                             </path>
                           </g>
@@ -283,8 +377,8 @@ exports[`Components/VehicleResults/VehicleResult/Header WithPreviousLookupSubhea
               <div class="card-header">
                 <div class="share-icons">
                   <button aria-label="copy link to lookup"
-                          class="copy-button"
-                          data-testid="copy-button"
+                          class="header-logo-button"
+                          data-testid="copy-link-button"
                   >
                     <span class="fa-layers fa-fw">
                       <svg aria-hidden="true"
@@ -311,7 +405,7 @@ exports[`Components/VehicleResults/VehicleResult/Header WithPreviousLookupSubhea
                            focusable="false"
                            data-prefix="fas"
                            data-icon="copy"
-                           class="svg-inline--fa fa-copy copy "
+                           class="svg-inline--fa fa-copy logo "
                            role="img"
                            xmlns="http://www.w3.org/2000/svg"
                            viewbox="0 0 448 512"
@@ -322,6 +416,53 @@ exports[`Components/VehicleResults/VehicleResult/Header WithPreviousLookupSubhea
                             <path fill="currentColor"
                                   d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z"
                                   transform="translate(-224 -256)"
+                            >
+                            </path>
+                          </g>
+                        </g>
+                      </svg>
+                    </span>
+                  </button>
+                  <button aria-label="copy image of lookup"
+                          class="header-logo-button"
+                          data-testid="copy-image-button"
+                  >
+                    <span class="fa-layers fa-fw">
+                      <svg aria-hidden="true"
+                           focusable="false"
+                           data-prefix="fas"
+                           data-icon="circle"
+                           class="svg-inline--fa fa-circle circle "
+                           role="img"
+                           xmlns="http://www.w3.org/2000/svg"
+                           viewbox="0 0 512 512"
+                           style="transform-origin: 0.5em 0.5em;"
+                      >
+                        <g transform="translate(256 256)">
+                          <g transform="translate(0, 0)  scale(1.3125, 1.3125)  rotate(0 0 0)">
+                            <path fill="currentColor"
+                                  d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                                  transform="translate(-256 -256)"
+                            >
+                            </path>
+                          </g>
+                        </g>
+                      </svg>
+                      <svg aria-hidden="true"
+                           focusable="false"
+                           data-prefix="fas"
+                           data-icon="camera"
+                           class="svg-inline--fa fa-camera logo "
+                           role="img"
+                           xmlns="http://www.w3.org/2000/svg"
+                           viewbox="0 0 512 512"
+                           style="transform-origin: 0.5em 0.5em;"
+                      >
+                        <g transform="translate(256 256)">
+                          <g transform="translate(0, 0)  scale(0.75, 0.75)  rotate(0 0 0)">
+                            <path fill="currentColor"
+                                  d="M149.1 64.8L138.7 96 64 96C28.7 96 0 124.7 0 160L0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-256c0-35.3-28.7-64-64-64l-74.7 0L362.9 64.8C356.4 45.2 338.1 32 317.4 32L194.6 32c-20.7 0-39 13.2-45.5 32.8zM256 192a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"
+                                  transform="translate(-256 -256)"
                             >
                             </path>
                           </g>
@@ -428,8 +569,8 @@ exports[`Components/VehicleResults/VehicleResult/Header WithPreviousLookupSubhea
               <div class="card-header">
                 <div class="share-icons">
                   <button aria-label="copy link to lookup"
-                          class="copy-button"
-                          data-testid="copy-button"
+                          class="header-logo-button"
+                          data-testid="copy-link-button"
                   >
                     <span class="fa-layers fa-fw">
                       <svg aria-hidden="true"
@@ -456,7 +597,7 @@ exports[`Components/VehicleResults/VehicleResult/Header WithPreviousLookupSubhea
                            focusable="false"
                            data-prefix="fas"
                            data-icon="copy"
-                           class="svg-inline--fa fa-copy copy "
+                           class="svg-inline--fa fa-copy logo "
                            role="img"
                            xmlns="http://www.w3.org/2000/svg"
                            viewbox="0 0 448 512"
@@ -467,6 +608,53 @@ exports[`Components/VehicleResults/VehicleResult/Header WithPreviousLookupSubhea
                             <path fill="currentColor"
                                   d="M208 0L332.1 0c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9L448 336c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-288c0-26.5 21.5-48 48-48zM48 128l80 0 0 64-64 0 0 256 192 0 0-32 64 0 0 48c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 176c0-26.5 21.5-48 48-48z"
                                   transform="translate(-224 -256)"
+                            >
+                            </path>
+                          </g>
+                        </g>
+                      </svg>
+                    </span>
+                  </button>
+                  <button aria-label="copy image of lookup"
+                          class="header-logo-button"
+                          data-testid="copy-image-button"
+                  >
+                    <span class="fa-layers fa-fw">
+                      <svg aria-hidden="true"
+                           focusable="false"
+                           data-prefix="fas"
+                           data-icon="circle"
+                           class="svg-inline--fa fa-circle circle "
+                           role="img"
+                           xmlns="http://www.w3.org/2000/svg"
+                           viewbox="0 0 512 512"
+                           style="transform-origin: 0.5em 0.5em;"
+                      >
+                        <g transform="translate(256 256)">
+                          <g transform="translate(0, 0)  scale(1.3125, 1.3125)  rotate(0 0 0)">
+                            <path fill="currentColor"
+                                  d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                                  transform="translate(-256 -256)"
+                            >
+                            </path>
+                          </g>
+                        </g>
+                      </svg>
+                      <svg aria-hidden="true"
+                           focusable="false"
+                           data-prefix="fas"
+                           data-icon="camera"
+                           class="svg-inline--fa fa-camera logo "
+                           role="img"
+                           xmlns="http://www.w3.org/2000/svg"
+                           viewbox="0 0 512 512"
+                           style="transform-origin: 0.5em 0.5em;"
+                      >
+                        <g transform="translate(256 256)">
+                          <g transform="translate(0, 0)  scale(0.75, 0.75)  rotate(0 0 0)">
+                            <path fill="currentColor"
+                                  d="M149.1 64.8L138.7 96 64 96C28.7 96 0 124.7 0 160L0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-256c0-35.3-28.7-64-64-64l-74.7 0L362.9 64.8C356.4 45.2 338.1 32 317.4 32L194.6 32c-20.7 0-39 13.2-45.5 32.8zM256 192a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"
+                                  transform="translate(-256 -256)"
                             >
                             </path>
                           </g>

@@ -17,48 +17,53 @@ type BodyProps = {
   vehicle: Vehicle
 }
 
-const Body = ({ showViolationsList, vehicle }: BodyProps) => {
-  const { getSetting } = useSettings()
+const Body = React.forwardRef(
+  (
+    { showViolationsList, vehicle }: BodyProps,
+    ref: React.ForwardedRef<HTMLUListElement>,
+  ) => {
+    const { getSetting } = useSettings()
 
-  const [cookies, _, __] = useCookies([
-    DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
-  ])
+    const [cookies, _, __] = useCookies([
+      DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
+    ])
 
-  const displayOfIntelligentSpeedAssistanceNoticeEnabled =
-    cookies[DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY] === true
+    const displayOfIntelligentSpeedAssistanceNoticeEnabled =
+      cookies[DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY] === true
 
-  const useNewStyleDisplay =
-    getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
+    const useNewStyleDisplay =
+      getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
 
-  const cameraStreakData = vehicle.cameraStreakData
+    const cameraStreakData = vehicle.cameraStreakData
 
-  // Only show one notice or the other
-  const showIntelligentSpeedAssistanceNotice =
-    displayOfIntelligentSpeedAssistanceNoticeEnabled &&
-    cameraStreakData?.cameraViolations?.maxStreak >= 6
+    // Only show one notice or the other
+    const showIntelligentSpeedAssistanceNotice =
+      displayOfIntelligentSpeedAssistanceNoticeEnabled &&
+      cameraStreakData?.cameraViolations?.maxStreak >= 6
 
-  const showDangerousVehicleAbatementActNotice =
-    !displayOfIntelligentSpeedAssistanceNoticeEnabled &&
-    (cameraStreakData?.redLightCameraViolations?.maxStreak >= 5 ||
-      cameraStreakData?.schoolZoneSpeedCameraViolations?.maxStreak >= 15)
+    const showDangerousVehicleAbatementActNotice =
+      !displayOfIntelligentSpeedAssistanceNoticeEnabled &&
+      (cameraStreakData?.redLightCameraViolations?.maxStreak >= 5 ||
+        cameraStreakData?.schoolZoneSpeedCameraViolations?.maxStreak >= 15)
 
-  return (
-    <ul className="list-group list-group-flush">
-      <LookupInfo vehicle={vehicle} />
-      {showIntelligentSpeedAssistanceNotice && (
-        <IntelligentSpeedAssistanceNotice vehicle={vehicle} />
-      )}
-      {showDangerousVehicleAbatementActNotice && (
-        <DangerousVehicleAbatementActNotice vehicle={vehicle} />
-      )}
-      <ViolationsInspector
-        showViolationsList={showViolationsList}
-        useNewStyleView={useNewStyleDisplay}
-        vehicle={vehicle}
-      />
-    </ul>
-  )
-}
+    return (
+      <ul className="list-group list-group-flush" ref={ref}>
+        <LookupInfo vehicle={vehicle} />
+        {showIntelligentSpeedAssistanceNotice && (
+          <IntelligentSpeedAssistanceNotice vehicle={vehicle} />
+        )}
+        {showDangerousVehicleAbatementActNotice && (
+          <DangerousVehicleAbatementActNotice vehicle={vehicle} />
+        )}
+        <ViolationsInspector
+          showViolationsList={showViolationsList}
+          useNewStyleView={useNewStyleDisplay}
+          vehicle={vehicle}
+        />
+      </ul>
+    )
+  },
+)
 
 Body.displayName = 'VehicleResults.Body'
 

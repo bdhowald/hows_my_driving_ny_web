@@ -59,6 +59,9 @@ export default {
     },
   },
   lookups: {
+    share: {
+      copyPhotoExcludeClass: 'exclude-from-photo',
+    },
     toggleFullLocationView: {
       hide: 'show location summary',
       show: 'show full location',

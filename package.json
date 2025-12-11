@@ -5,7 +5,7 @@
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "3.4.2",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
-    "@fortawesome/free-regular-svg-icons": "^6.6.0",
+    "@fortawesome/free-regular-svg-icons": "^7.1.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@testing-library/jest-dom": "^5.17.0",
@@ -17,6 +17,7 @@
     "@types/smoothscroll-polyfill": "^0.3.4",
     "abortcontroller-polyfill": "^1.7.8",
     "bootstrap": "^5.3.3",
+    "html-to-image": "^1.11.13",
     "humps": "^2.0.1",
     "mixpanel-browser": "^2.56.0",
     "react": "^18.3.1",
@@ -102,6 +103,8 @@
       "<rootDir>/src/**/*.{js,jsx,ts,tsx}",
       "!<rootDir>/src/**/*.stories.{js,jsx,ts,tsx}"
     ],
-    "coveragePathIgnorePatterns": ["\\.stories\\.tsx$"]
+    "coveragePathIgnorePatterns": [
+      "\\.stories\\.tsx$"
+    ]
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 
+import L10N from 'constants/display'
 import Vehicle from 'models/Vehicle/Vehicle'
 
 import ShowFineDetailsButton from './ShowFineDetailsButton/ShowFineDetailsButton'
@@ -29,7 +30,7 @@ const ViolationCardListControls = ({
 }: ViolationCardListControlProps) => {
   return (
     <div
-      className="violation-card-list-controls"
+      className={`violation-card-list-controls ${L10N.lookups.share.copyPhotoExcludeClass}`}
       data-testid="vehicle-violation-card-list-controls"
     >
       <div className="row">
