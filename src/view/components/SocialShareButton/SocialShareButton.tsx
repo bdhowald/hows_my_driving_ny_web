@@ -6,6 +6,7 @@ import {
   TwitterShareButton,
   TwitterIcon,
 } from 'react-share'
+import { RedditIcon, RedditShareButton } from 'react-share-v5.1.0'
 
 import { USE_SEARCH_FILTERS_STORAGE_KEY } from 'constants/storage'
 import L10N from 'constants/display'
@@ -22,6 +23,13 @@ const components = {
     icon: BlueskyIcon,
     serviceName: 'Bluesky',
     shareButton: BlueskyShareButton,
+  },
+  [SocialMediaService.Reddit]: {
+    accountHandle: 'u/HowsMyDrivingNY',
+    htmlElementName: 'reddit-share-button',
+    icon: RedditIcon,
+    serviceName: 'Reddit',
+    shareButton: RedditShareButton,
   },
   [SocialMediaService.Twitter]: {
     accountHandle: '@HowsMyDrivingNY',
@@ -90,6 +98,16 @@ const BlueskySocialShareButton = ({ vehicle }: { vehicle: Vehicle }) => {
 }
 BlueskySocialShareButton.displayName = 'BlueskyShareButton'
 
+const RedditSocialShareButton = ({ vehicle }: { vehicle: Vehicle }) => {
+  return (
+    <ShareButton
+      socialMediaService={SocialMediaService.Reddit}
+      vehicle={vehicle}
+    />
+  )
+}
+RedditSocialShareButton.displayName = 'RedditShareButton'
+
 const TwitterSocialShareButton = ({ vehicle }: { vehicle: Vehicle }) => {
   return (
     <ShareButton
@@ -102,5 +120,6 @@ TwitterSocialShareButton.displayName = 'TwitterShareButton'
 
 export default {
   Bluesky: BlueskySocialShareButton,
+  Reddit: RedditSocialShareButton,
   Twitter: TwitterSocialShareButton,
 }

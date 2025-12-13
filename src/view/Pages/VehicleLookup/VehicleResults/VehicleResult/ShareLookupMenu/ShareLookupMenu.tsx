@@ -241,7 +241,7 @@ const ShareLookupMenu = ({
       <div className="social-media-share-buttons">
         <SocialShareButton.Twitter vehicle={vehicle} />
         <SocialShareButton.Bluesky vehicle={vehicle} />
-        {/* <SocialShareButton.Reddit vehicle={vehicle} /> */}
+        <SocialShareButton.Reddit vehicle={vehicle} />
       </div>
     </Card.Header>
   )

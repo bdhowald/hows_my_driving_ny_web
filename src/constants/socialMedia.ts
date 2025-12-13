@@ -1,5 +1,6 @@
 enum SocialMediaService {
   Bluesky = 'BLUESKY',
+  Reddit = 'REDDIT',
   Twitter = 'TWITTER',
 }
 

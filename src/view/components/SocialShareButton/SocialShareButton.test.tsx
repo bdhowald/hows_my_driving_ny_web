@@ -9,6 +9,7 @@ import SocialShareButton from './SocialShareButton'
 
 const DATA_IDS = {
   [SocialShareButton.Bluesky.name]: 'bluesky-share-button',
+  [SocialShareButton.Reddit.name]: 'reddit-share-button',
   [SocialShareButton.Twitter.name]: 'twitter-share-button',
 }
 

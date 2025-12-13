@@ -26,6 +26,7 @@
     "react-router-dom": "^6.28.0",
     "react-scripts": "5.0.1",
     "react-share": "5.2.2",
+    "react-share-v5.1.0": "npm:react-share@5.1.0",
     "react-spinners": "^0.14.1",
     "smoothscroll-polyfill": "^0.4.4",
     "web-vitals": "^2.1.4",
