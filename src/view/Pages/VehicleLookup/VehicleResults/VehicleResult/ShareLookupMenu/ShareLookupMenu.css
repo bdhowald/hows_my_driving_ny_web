@@ -1,5 +1,6 @@
 div.container-fluid div.row div.card div.card-header.share-buttons {
   background-color: #f4f5f6;
+  line-height: 1.875rem;
 }
 
 div.container-fluid div.row div.card div.card-header.share-buttons button {
