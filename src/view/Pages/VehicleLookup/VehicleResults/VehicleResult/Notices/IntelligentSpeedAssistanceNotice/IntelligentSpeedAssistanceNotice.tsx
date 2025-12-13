@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import L10N from 'constants/display'
+import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
 import useSettings from 'hooks/useSettings/useSettings'
 import Vehicle from 'models/Vehicle/Vehicle'
 
@@ -22,15 +23,33 @@ const IntelligentSpeedAssistanceNotice = ({
     bold?: boolean
     linkTarget: string
     linkText: string
-  }) => (
-    <a target="_blank" rel="noopener noreferrer" href={linkTarget}>
-      {bold ? (
-        <span style={{ fontWeight: 'bold' }}>{linkText}</span>
-      ) : (
-        <>{linkText}</>
-      )}
-    </a>
-  )
+  }) => {
+    // Get tracker
+    const applicationContext = useContext(ApplicationContext)
+    const { tracker } = applicationContext
+
+    return (
+      <a
+        href={linkTarget}
+        rel="noopener noreferrer"
+        onClick={() => {
+          tracker?.trackEvent('user_clicked_on_external_link', {
+            destination: linkTarget,
+            displayOfIntelligentSpeedAssistanceNoticeEnabled: true,
+            text: linkText,
+            useNewStyleDisplay,
+          })
+        }}
+        target="_blank"
+      >
+        {bold ? (
+          <span style={{ fontWeight: 'bold' }}>{linkText}</span>
+        ) : (
+          <>{linkText}</>
+        )}
+      </a>
+    )
+  }
 
   const getStreakStringElement = ({
     minDate,

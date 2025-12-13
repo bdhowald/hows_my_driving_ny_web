@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
-import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
+import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
 import L10N from 'constants/display'
+import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import useSettings from 'hooks/useSettings/useSettings'
 import Vehicle from 'models/Vehicle/Vehicle'
 
@@ -21,11 +22,29 @@ const DangerousVehicleAbatementActNotice = ({
   }: {
     linkTarget: string
     linkText: string
-  }) => (
-    <a target="_blank" rel="noopener noreferrer" href={linkTarget}>
-      {linkText}
-    </a>
-  )
+  }) => {
+    // Get tracker
+    const applicationContext = useContext(ApplicationContext)
+    const { tracker } = applicationContext
+
+    return (
+      <a
+        href={linkTarget}
+        onClick={() => {
+          tracker?.trackEvent('user_clicked_on_external_link', {
+            destination: linkTarget,
+            displayOfIntelligentSpeedAssistanceNoticeEnabled: false,
+            text: linkText,
+            useNewStyleDisplay,
+          })
+        }}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        {linkText}
+      </a>
+    )
+  }
 
   const getStreakStringElement = ({
     minDate,
