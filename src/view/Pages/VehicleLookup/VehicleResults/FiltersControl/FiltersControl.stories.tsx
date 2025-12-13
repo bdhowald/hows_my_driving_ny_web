@@ -1,5 +1,11 @@
-import * as React from 'react'
+import React, { ReactNode } from 'react'
+import { MemoryRouter } from 'react-router-dom'
 import type { Meta, StoryObj } from '@storybook/react'
+
+import {
+  newStyleDisplayDecorator,
+  oldStyleDisplayDecorator,
+} from 'tests/utils/withStyleDisplayDecorator/withStyleDisplayDecorator'
 
 import FiltersControl from './FiltersControl'
 
@@ -13,24 +19,6 @@ const meta: Meta<typeof FiltersControl> = {
     },
     maxViolationsCountForResults: 100,
   },
-  decorators: [
-    (Story) => (
-      <div className="site-container-wrapper">
-        <div className="site-container container-fluid">
-          <main>
-            <div className="row">
-              <div className="col-md-12 vehicle-lookup-content-container">
-                <div className="jumbotron">
-                  {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-                  <Story />
-                </div>
-              </div>
-            </div>
-          </main>
-        </div>
-      </div>
-    ),
-  ],
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   parameters: {
@@ -40,6 +28,37 @@ const meta: Meta<typeof FiltersControl> = {
 }
 
 type Story = StoryObj<typeof FiltersControl>
+
+const ParentHtml = ({
+  children,
+  useNewStyleDisplay,
+}: {
+  children: ReactNode
+  useNewStyleDisplay: boolean
+}) => {
+  const bodyRef = React.createRef<HTMLUListElement>()
+
+  const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
+
+  return (
+    <MemoryRouter>
+      <div className="site-container-wrapper">
+        <div className="site-container container-fluid">
+          <main>
+            <div className="row">
+              <div
+                className={`col-md-12 vehicle-lookup-content-container ${newStyleDisplayClassName}`}
+              >
+                <div className="jumbotron"></div>
+                {children}
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </MemoryRouter>
+  )
+}
 
 const defaultFilters = {
   numberOfViolations: undefined,
@@ -52,7 +71,7 @@ const defaultFilters = {
   state: undefined,
 }
 
-export const WithBreadcrumb: Story = {
+export const WithBreadcrumbNewStyleDisplay: Story = {
   args: {
     displayingPreviousLookup: false,
     resultsFilters: {
@@ -61,46 +80,109 @@ export const WithBreadcrumb: Story = {
     },
     resultsLength: 0,
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
 
-export const WithMultipleOwnResults: Story = {
+export const WithMultipleOwnResultsNewStyleDisplay: Story = {
   args: {
     displayingPreviousLookup: false,
     resultsFilters: defaultFilters,
     resultsLength: 2,
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
 
-export const WithOwnResult: Story = {
+export const WithOwnResultNewStyleDisplay: Story = {
   args: {
     displayingPreviousLookup: false,
     resultsFilters: defaultFilters,
     resultsLength: 1,
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
 
-export const WithSharedResultOnly: Story = {
+export const WithSharedResultOnlyNewStyleDisplay: Story = {
   args: {
     displayingPreviousLookup: true,
     resultsFilters: defaultFilters,
     resultsLength: 1,
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
 
-export const WithSharedAndOwnResults: Story = {
+export const WithSharedAndOwnResultsNewStyleDisplay: Story = {
   args: {
     displayingPreviousLookup: true,
     resultsFilters: defaultFilters,
     resultsLength: 2,
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
 
-export const WithSharedAndMultipleOwnResults: Story = {
+export const WithSharedAndMultipleOwnResultsNewStyleDisplay: Story = {
   args: {
     displayingPreviousLookup: true,
     resultsFilters: defaultFilters,
     resultsLength: 3,
   },
+  decorators: [newStyleDisplayDecorator(ParentHtml)],
+}
+
+export const WithBreadcrumbOldStyleDisplay: Story = {
+  args: {
+    displayingPreviousLookup: false,
+    resultsFilters: {
+      ...defaultFilters,
+      plateText: 'ABC',
+    },
+    resultsLength: 0,
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
+}
+
+export const WithMultipleOwnResultsOldStyleDisplay: Story = {
+  args: {
+    displayingPreviousLookup: false,
+    resultsFilters: defaultFilters,
+    resultsLength: 2,
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
+}
+
+export const WithOwnResultOldStyleDisplay: Story = {
+  args: {
+    displayingPreviousLookup: false,
+    resultsFilters: defaultFilters,
+    resultsLength: 1,
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
+}
+
+export const WithSharedResultOnlyOldStyleDisplay: Story = {
+  args: {
+    displayingPreviousLookup: true,
+    resultsFilters: defaultFilters,
+    resultsLength: 1,
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
+}
+
+export const WithSharedAndOwnResultsOldStyleDisplay: Story = {
+  args: {
+    displayingPreviousLookup: true,
+    resultsFilters: defaultFilters,
+    resultsLength: 2,
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
+}
+
+export const WithSharedAndMultipleOwnResultsOldStyleDisplay: Story = {
+  args: {
+    displayingPreviousLookup: true,
+    resultsFilters: defaultFilters,
+    resultsLength: 3,
+  },
+  decorators: [oldStyleDisplayDecorator(ParentHtml)],
 }
 
 export default meta
