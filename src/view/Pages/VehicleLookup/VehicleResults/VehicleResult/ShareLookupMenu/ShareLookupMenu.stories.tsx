@@ -2,16 +2,17 @@ import React, { ReactNode } from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { VehicleFactory } from '__fixtures__/models/Vehicle'
 import {
   newStyleDisplayDecorator,
   oldStyleDisplayDecorator,
 } from 'tests/utils/withStyleDisplayDecorator/withStyleDisplayDecorator'
 
-import Header from './Header'
+import ShareLookupMenu from './ShareLookupMenu'
 
-const meta: Meta<typeof Header> = {
-  title: 'Components/VehicleResults/VehicleResult/Header',
-  component: Header,
+const meta: Meta<typeof ShareLookupMenu> = {
+  title: 'Components/VehicleResults/VehicleResult/ShareLookupMenu',
+  component: ShareLookupMenu,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   parameters: {
@@ -20,7 +21,7 @@ const meta: Meta<typeof Header> = {
   },
 }
 
-type Story = StoryObj<typeof Header>
+type Story = StoryObj<typeof ShareLookupMenu>
 
 const ParentHtml = ({
   children,
@@ -29,6 +30,8 @@ const ParentHtml = ({
   children: ReactNode
   useNewStyleDisplay: boolean
 }) => {
+  const bodyRef = React.createRef<HTMLUListElement>()
+
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
   return (
@@ -42,6 +45,7 @@ const ParentHtml = ({
               >
                 <div className={`vehicles ${newStyleDisplayClassName}`}>
                   <div className="vehicle card">{children}</div>
+                  <ul ref={bodyRef}></ul>
                 </div>
               </div>
             </div>
@@ -52,34 +56,22 @@ const ParentHtml = ({
   )
 }
 
+const fakeRef = React.createRef<HTMLUListElement>()
+
+const vehicle = VehicleFactory.build()
+
 export const DefaultNewStyleDisplay: Story = {
   args: {
-    removeLookupFunction: () =>
-      alert('this would have removed the lookup from the screen'),
+    bodyRef: fakeRef,
+    vehicle,
   },
   decorators: [newStyleDisplayDecorator(ParentHtml)],
-}
-export const DefaultOldStyleDisplay: Story = {
-  args: {
-    removeLookupFunction: () =>
-      alert('this would have removed the lookup from the screen'),
-  },
-  decorators: [oldStyleDisplayDecorator(ParentHtml)],
 }
 
-export const WithPreviousLookupSubheaderNewStyleDisplay: Story = {
+export const DefaultOldStyleDisplay: Story = {
   args: {
-    fromPreviousLookupUniqueIdentifier: true,
-    removeLookupFunction: () =>
-      alert('this would have removed the lookup from the screen'),
-  },
-  decorators: [newStyleDisplayDecorator(ParentHtml)],
-}
-export const WithPreviousLookupSubheaderOldStyleDisplay: Story = {
-  args: {
-    fromPreviousLookupUniqueIdentifier: true,
-    removeLookupFunction: () =>
-      alert('this would have removed the lookup from the screen'),
+    bodyRef: fakeRef,
+    vehicle,
   },
   decorators: [oldStyleDisplayDecorator(ParentHtml)],
 }

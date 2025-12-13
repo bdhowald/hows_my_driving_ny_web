@@ -8,6 +8,7 @@ import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/VehicleResult.css'
 
 import Body from './Body/Body'
 import Header from './Header/Header'
+import ShareLookupMenu from './ShareLookupMenu/ShareLookupMenu'
 
 type RefreshLookupFunctionType = (vehicle: Vehicle) => Promise<void>
 type RemoveLookupFunctionType = (arg0: number) => void
@@ -47,7 +48,6 @@ const VehicleResult = ({
       id={`lookup-${vehicle.uniqueIdentifier}`}
     >
       <Header
-        bodyRef={bodyRef}
         fromPreviousLookupUniqueIdentifier={
           vehicleDisplayResult.fromPreviousLookupUniqueIdentifier
         }
@@ -61,8 +61,8 @@ const VehicleResult = ({
           await new Promise((resolve) => setTimeout(resolve, 250))
           removeLookupFunction(index)
         }}
-        vehicle={vehicle}
       />
+      <ShareLookupMenu bodyRef={bodyRef} vehicle={vehicle} />
       <Body
         ref={bodyRef}
         showViolationsList={showViolationsList}

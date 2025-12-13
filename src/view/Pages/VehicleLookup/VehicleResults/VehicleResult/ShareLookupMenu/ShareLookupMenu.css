@@ -1,0 +1,70 @@
+div.container-fluid div.row div.card div.card-header.share-buttons {
+  background-color: #f4f5f6;
+}
+
+div.container-fluid div.row div.card div.card-header.share-buttons button {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  line-height: 1.375rem;
+  outline: none;
+  padding: 0.25rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  div.card-header.share-buttons
+  button.header-logo-button {
+  background: none;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  div.card-header.share-buttons
+  button.header-logo-button
+  span.fa-layers {
+  height: 2rem;
+  width: 2rem;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  div.card-header.share-buttons
+  button.header-logo-button
+  span.fa-layers
+  .circle {
+  color: black;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  div.card-header.share-buttons
+  button.header-logo-button
+  span.fa-layers
+  .logo {
+  color: white;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  div.card-header.share-buttons
+  button.header-logo-button
+  span.fa-layers
+  .logo.pressed {
+  color: black;
+}
+
+div.container-fluid
+  div.row
+  div.card
+  div.card-header.share-buttons
+  button.share-button {
+  font-size: initial;
+}

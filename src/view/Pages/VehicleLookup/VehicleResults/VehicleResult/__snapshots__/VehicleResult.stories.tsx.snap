@@ -11,8 +11,36 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultNoViolationsNewSty
                  id="lookup-e5f6g7h8"
                  class="vehicle  card"
             >
-              <div class="card-header">
-                <div class="share-icons">
+              <div class="lookup-controls card-header">
+                <button aria-label="remove lookup"
+                        class="remove-lookup-button"
+                        data-testid="remove-lookup-button"
+                        type="button"
+                >
+                  <svg aria-hidden="true"
+                       focusable="false"
+                       data-prefix="fas"
+                       data-icon="circle-xmark"
+                       class="svg-inline--fa fa-circle-xmark circle"
+                       role="img"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 512 512"
+                       style="transform-origin: 0.5em 0.5em;"
+                  >
+                    <g transform="translate(256 256)">
+                      <g transform="translate(0, 0)  scale(1.375, 1.375)  rotate(0 0 0)">
+                        <path fill="currentColor"
+                              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
+                              transform="translate(-256 -256)"
+                        >
+                        </path>
+                      </g>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+              <div class="share-buttons card-header">
+                <div class="copy-buttons">
                   <button aria-label="copy link to lookup"
                           class="header-logo-button"
                           data-testid="copy-link-button"
@@ -107,9 +135,11 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultNoViolationsNewSty
                       </svg>
                     </span>
                   </button>
+                </div>
+                <div class="social-media-share-buttons">
                   <button aria-label="share lookup to Twitter"
                           data-testid="twitter-share-button"
-                          class="react-share__ShareButton twitter-share-button"
+                          class="react-share__ShareButton twitter-share-button share-button"
                   >
                     <svg viewbox="0 0 64 64"
                          width="32"
@@ -130,7 +160,7 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultNoViolationsNewSty
                   </button>
                   <button aria-label="share lookup to Bluesky"
                           data-testid="bluesky-share-button"
-                          class="react-share__ShareButton bluesky-share-button"
+                          class="react-share__ShareButton bluesky-share-button share-button"
                   >
                     <svg viewbox="0 0 64 64"
                          width="32"
@@ -150,32 +180,6 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultNoViolationsNewSty
                     </svg>
                   </button>
                 </div>
-                <button aria-label="remove lookup"
-                        class="remove-lookup-button"
-                        data-testid="remove-lookup-button"
-                        type="button"
-                >
-                  <svg aria-hidden="true"
-                       focusable="false"
-                       data-prefix="fas"
-                       data-icon="circle-xmark"
-                       class="svg-inline--fa fa-circle-xmark circle"
-                       role="img"
-                       xmlns="http://www.w3.org/2000/svg"
-                       viewbox="0 0 512 512"
-                       style="transform-origin: 0.5em 0.5em;"
-                  >
-                    <g transform="translate(256 256)">
-                      <g transform="translate(0, 0)  scale(1.375, 1.375)  rotate(0 0 0)">
-                        <path fill="currentColor"
-                              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
-                              transform="translate(-256 -256)"
-                        >
-                        </path>
-                      </g>
-                    </g>
-                  </svg>
-                </button>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item no-padding">
@@ -281,8 +285,36 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultNoViolationsOldSty
                  id="lookup-e5f6g7h8"
                  class="vehicle  card"
             >
-              <div class="card-header">
-                <div class="share-icons">
+              <div class="lookup-controls card-header">
+                <button aria-label="remove lookup"
+                        class="remove-lookup-button"
+                        data-testid="remove-lookup-button"
+                        type="button"
+                >
+                  <svg aria-hidden="true"
+                       focusable="false"
+                       data-prefix="fas"
+                       data-icon="circle-xmark"
+                       class="svg-inline--fa fa-circle-xmark circle"
+                       role="img"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 512 512"
+                       style="transform-origin: 0.5em 0.5em;"
+                  >
+                    <g transform="translate(256 256)">
+                      <g transform="translate(0, 0)  scale(1.375, 1.375)  rotate(0 0 0)">
+                        <path fill="currentColor"
+                              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
+                              transform="translate(-256 -256)"
+                        >
+                        </path>
+                      </g>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+              <div class="share-buttons card-header">
+                <div class="copy-buttons">
                   <button aria-label="copy link to lookup"
                           class="header-logo-button"
                           data-testid="copy-link-button"
@@ -377,9 +409,11 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultNoViolationsOldSty
                       </svg>
                     </span>
                   </button>
+                </div>
+                <div class="social-media-share-buttons">
                   <button aria-label="share lookup to Twitter"
                           data-testid="twitter-share-button"
-                          class="react-share__ShareButton twitter-share-button"
+                          class="react-share__ShareButton twitter-share-button share-button"
                   >
                     <svg viewbox="0 0 64 64"
                          width="32"
@@ -400,7 +434,7 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultNoViolationsOldSty
                   </button>
                   <button aria-label="share lookup to Bluesky"
                           data-testid="bluesky-share-button"
-                          class="react-share__ShareButton bluesky-share-button"
+                          class="react-share__ShareButton bluesky-share-button share-button"
                   >
                     <svg viewbox="0 0 64 64"
                          width="32"
@@ -420,32 +454,6 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultNoViolationsOldSty
                     </svg>
                   </button>
                 </div>
-                <button aria-label="remove lookup"
-                        class="remove-lookup-button"
-                        data-testid="remove-lookup-button"
-                        type="button"
-                >
-                  <svg aria-hidden="true"
-                       focusable="false"
-                       data-prefix="fas"
-                       data-icon="circle-xmark"
-                       class="svg-inline--fa fa-circle-xmark circle"
-                       role="img"
-                       xmlns="http://www.w3.org/2000/svg"
-                       viewbox="0 0 512 512"
-                       style="transform-origin: 0.5em 0.5em;"
-                  >
-                    <g transform="translate(256 256)">
-                      <g transform="translate(0, 0)  scale(1.375, 1.375)  rotate(0 0 0)">
-                        <path fill="currentColor"
-                              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
-                              transform="translate(-256 -256)"
-                        >
-                        </path>
-                      </g>
-                    </g>
-                  </svg>
-                </button>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item no-padding">
@@ -551,8 +559,36 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListHidd
                  id="lookup-e5f6g7h8"
                  class="vehicle  card"
             >
-              <div class="card-header">
-                <div class="share-icons">
+              <div class="lookup-controls card-header">
+                <button aria-label="remove lookup"
+                        class="remove-lookup-button"
+                        data-testid="remove-lookup-button"
+                        type="button"
+                >
+                  <svg aria-hidden="true"
+                       focusable="false"
+                       data-prefix="fas"
+                       data-icon="circle-xmark"
+                       class="svg-inline--fa fa-circle-xmark circle"
+                       role="img"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 512 512"
+                       style="transform-origin: 0.5em 0.5em;"
+                  >
+                    <g transform="translate(256 256)">
+                      <g transform="translate(0, 0)  scale(1.375, 1.375)  rotate(0 0 0)">
+                        <path fill="currentColor"
+                              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
+                              transform="translate(-256 -256)"
+                        >
+                        </path>
+                      </g>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+              <div class="share-buttons card-header">
+                <div class="copy-buttons">
                   <button aria-label="copy link to lookup"
                           class="header-logo-button"
                           data-testid="copy-link-button"
@@ -647,9 +683,11 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListHidd
                       </svg>
                     </span>
                   </button>
+                </div>
+                <div class="social-media-share-buttons">
                   <button aria-label="share lookup to Twitter"
                           data-testid="twitter-share-button"
-                          class="react-share__ShareButton twitter-share-button"
+                          class="react-share__ShareButton twitter-share-button share-button"
                   >
                     <svg viewbox="0 0 64 64"
                          width="32"
@@ -670,7 +708,7 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListHidd
                   </button>
                   <button aria-label="share lookup to Bluesky"
                           data-testid="bluesky-share-button"
-                          class="react-share__ShareButton bluesky-share-button"
+                          class="react-share__ShareButton bluesky-share-button share-button"
                   >
                     <svg viewbox="0 0 64 64"
                          width="32"
@@ -690,32 +728,6 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListHidd
                     </svg>
                   </button>
                 </div>
-                <button aria-label="remove lookup"
-                        class="remove-lookup-button"
-                        data-testid="remove-lookup-button"
-                        type="button"
-                >
-                  <svg aria-hidden="true"
-                       focusable="false"
-                       data-prefix="fas"
-                       data-icon="circle-xmark"
-                       class="svg-inline--fa fa-circle-xmark circle"
-                       role="img"
-                       xmlns="http://www.w3.org/2000/svg"
-                       viewbox="0 0 512 512"
-                       style="transform-origin: 0.5em 0.5em;"
-                  >
-                    <g transform="translate(256 256)">
-                      <g transform="translate(0, 0)  scale(1.375, 1.375)  rotate(0 0 0)">
-                        <path fill="currentColor"
-                              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
-                              transform="translate(-256 -256)"
-                        >
-                        </path>
-                      </g>
-                    </g>
-                  </svg>
-                </button>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item no-padding">
@@ -905,8 +917,36 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListHidd
                  id="lookup-e5f6g7h8"
                  class="vehicle  card"
             >
-              <div class="card-header">
-                <div class="share-icons">
+              <div class="lookup-controls card-header">
+                <button aria-label="remove lookup"
+                        class="remove-lookup-button"
+                        data-testid="remove-lookup-button"
+                        type="button"
+                >
+                  <svg aria-hidden="true"
+                       focusable="false"
+                       data-prefix="fas"
+                       data-icon="circle-xmark"
+                       class="svg-inline--fa fa-circle-xmark circle"
+                       role="img"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 512 512"
+                       style="transform-origin: 0.5em 0.5em;"
+                  >
+                    <g transform="translate(256 256)">
+                      <g transform="translate(0, 0)  scale(1.375, 1.375)  rotate(0 0 0)">
+                        <path fill="currentColor"
+                              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
+                              transform="translate(-256 -256)"
+                        >
+                        </path>
+                      </g>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+              <div class="share-buttons card-header">
+                <div class="copy-buttons">
                   <button aria-label="copy link to lookup"
                           class="header-logo-button"
                           data-testid="copy-link-button"
@@ -1001,9 +1041,11 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListHidd
                       </svg>
                     </span>
                   </button>
+                </div>
+                <div class="social-media-share-buttons">
                   <button aria-label="share lookup to Twitter"
                           data-testid="twitter-share-button"
-                          class="react-share__ShareButton twitter-share-button"
+                          class="react-share__ShareButton twitter-share-button share-button"
                   >
                     <svg viewbox="0 0 64 64"
                          width="32"
@@ -1024,7 +1066,7 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListHidd
                   </button>
                   <button aria-label="share lookup to Bluesky"
                           data-testid="bluesky-share-button"
-                          class="react-share__ShareButton bluesky-share-button"
+                          class="react-share__ShareButton bluesky-share-button share-button"
                   >
                     <svg viewbox="0 0 64 64"
                          width="32"
@@ -1044,32 +1086,6 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListHidd
                     </svg>
                   </button>
                 </div>
-                <button aria-label="remove lookup"
-                        class="remove-lookup-button"
-                        data-testid="remove-lookup-button"
-                        type="button"
-                >
-                  <svg aria-hidden="true"
-                       focusable="false"
-                       data-prefix="fas"
-                       data-icon="circle-xmark"
-                       class="svg-inline--fa fa-circle-xmark circle"
-                       role="img"
-                       xmlns="http://www.w3.org/2000/svg"
-                       viewbox="0 0 512 512"
-                       style="transform-origin: 0.5em 0.5em;"
-                  >
-                    <g transform="translate(256 256)">
-                      <g transform="translate(0, 0)  scale(1.375, 1.375)  rotate(0 0 0)">
-                        <path fill="currentColor"
-                              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
-                              transform="translate(-256 -256)"
-                        >
-                        </path>
-                      </g>
-                    </g>
-                  </svg>
-                </button>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item no-padding">
@@ -1259,8 +1275,36 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListIsVi
                  id="lookup-e5f6g7h8"
                  class="vehicle  card"
             >
-              <div class="card-header">
-                <div class="share-icons">
+              <div class="lookup-controls card-header">
+                <button aria-label="remove lookup"
+                        class="remove-lookup-button"
+                        data-testid="remove-lookup-button"
+                        type="button"
+                >
+                  <svg aria-hidden="true"
+                       focusable="false"
+                       data-prefix="fas"
+                       data-icon="circle-xmark"
+                       class="svg-inline--fa fa-circle-xmark circle"
+                       role="img"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 512 512"
+                       style="transform-origin: 0.5em 0.5em;"
+                  >
+                    <g transform="translate(256 256)">
+                      <g transform="translate(0, 0)  scale(1.375, 1.375)  rotate(0 0 0)">
+                        <path fill="currentColor"
+                              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
+                              transform="translate(-256 -256)"
+                        >
+                        </path>
+                      </g>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+              <div class="share-buttons card-header">
+                <div class="copy-buttons">
                   <button aria-label="copy link to lookup"
                           class="header-logo-button"
                           data-testid="copy-link-button"
@@ -1355,9 +1399,11 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListIsVi
                       </svg>
                     </span>
                   </button>
+                </div>
+                <div class="social-media-share-buttons">
                   <button aria-label="share lookup to Twitter"
                           data-testid="twitter-share-button"
-                          class="react-share__ShareButton twitter-share-button"
+                          class="react-share__ShareButton twitter-share-button share-button"
                   >
                     <svg viewbox="0 0 64 64"
                          width="32"
@@ -1378,7 +1424,7 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListIsVi
                   </button>
                   <button aria-label="share lookup to Bluesky"
                           data-testid="bluesky-share-button"
-                          class="react-share__ShareButton bluesky-share-button"
+                          class="react-share__ShareButton bluesky-share-button share-button"
                   >
                     <svg viewbox="0 0 64 64"
                          width="32"
@@ -1398,32 +1444,6 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListIsVi
                     </svg>
                   </button>
                 </div>
-                <button aria-label="remove lookup"
-                        class="remove-lookup-button"
-                        data-testid="remove-lookup-button"
-                        type="button"
-                >
-                  <svg aria-hidden="true"
-                       focusable="false"
-                       data-prefix="fas"
-                       data-icon="circle-xmark"
-                       class="svg-inline--fa fa-circle-xmark circle"
-                       role="img"
-                       xmlns="http://www.w3.org/2000/svg"
-                       viewbox="0 0 512 512"
-                       style="transform-origin: 0.5em 0.5em;"
-                  >
-                    <g transform="translate(256 256)">
-                      <g transform="translate(0, 0)  scale(1.375, 1.375)  rotate(0 0 0)">
-                        <path fill="currentColor"
-                              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
-                              transform="translate(-256 -256)"
-                        >
-                        </path>
-                      </g>
-                    </g>
-                  </svg>
-                </button>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item no-padding">
@@ -1764,8 +1784,36 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListIsVi
                  id="lookup-e5f6g7h8"
                  class="vehicle  card"
             >
-              <div class="card-header">
-                <div class="share-icons">
+              <div class="lookup-controls card-header">
+                <button aria-label="remove lookup"
+                        class="remove-lookup-button"
+                        data-testid="remove-lookup-button"
+                        type="button"
+                >
+                  <svg aria-hidden="true"
+                       focusable="false"
+                       data-prefix="fas"
+                       data-icon="circle-xmark"
+                       class="svg-inline--fa fa-circle-xmark circle"
+                       role="img"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 512 512"
+                       style="transform-origin: 0.5em 0.5em;"
+                  >
+                    <g transform="translate(256 256)">
+                      <g transform="translate(0, 0)  scale(1.375, 1.375)  rotate(0 0 0)">
+                        <path fill="currentColor"
+                              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
+                              transform="translate(-256 -256)"
+                        >
+                        </path>
+                      </g>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+              <div class="share-buttons card-header">
+                <div class="copy-buttons">
                   <button aria-label="copy link to lookup"
                           class="header-logo-button"
                           data-testid="copy-link-button"
@@ -1860,9 +1908,11 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListIsVi
                       </svg>
                     </span>
                   </button>
+                </div>
+                <div class="social-media-share-buttons">
                   <button aria-label="share lookup to Twitter"
                           data-testid="twitter-share-button"
-                          class="react-share__ShareButton twitter-share-button"
+                          class="react-share__ShareButton twitter-share-button share-button"
                   >
                     <svg viewbox="0 0 64 64"
                          width="32"
@@ -1883,7 +1933,7 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListIsVi
                   </button>
                   <button aria-label="share lookup to Bluesky"
                           data-testid="bluesky-share-button"
-                          class="react-share__ShareButton bluesky-share-button"
+                          class="react-share__ShareButton bluesky-share-button share-button"
                   >
                     <svg viewbox="0 0 64 64"
                          width="32"
@@ -1903,32 +1953,6 @@ exports[`Components/VehicleResults/VehicleResult VehicleResultViolationsListIsVi
                     </svg>
                   </button>
                 </div>
-                <button aria-label="remove lookup"
-                        class="remove-lookup-button"
-                        data-testid="remove-lookup-button"
-                        type="button"
-                >
-                  <svg aria-hidden="true"
-                       focusable="false"
-                       data-prefix="fas"
-                       data-icon="circle-xmark"
-                       class="svg-inline--fa fa-circle-xmark circle"
-                       role="img"
-                       xmlns="http://www.w3.org/2000/svg"
-                       viewbox="0 0 512 512"
-                       style="transform-origin: 0.5em 0.5em;"
-                  >
-                    <g transform="translate(256 256)">
-                      <g transform="translate(0, 0)  scale(1.375, 1.375)  rotate(0 0 0)">
-                        <path fill="currentColor"
-                              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
-                              transform="translate(-256 -256)"
-                        >
-                        </path>
-                      </g>
-                    </g>
-                  </svg>
-                </button>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item no-padding">

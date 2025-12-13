@@ -35,20 +35,15 @@ describe('Header', () => {
       render(
         <SettingsContext.Provider value={mockedSettings}>
           <Header
-            bodyRef={bodyRef}
             fromPreviousLookupUniqueIdentifier={false}
             refreshLookupFunction={refreshLookupFunction}
             removeLookupFunction={removeLookupFunction}
-            vehicle={VehicleFactory.build()}
           />
         </SettingsContext.Provider>,
       )
 
-      expect(screen.getByTestId('copy-link-button')).toBeInTheDocument()
-      expect(screen.getByTestId('copy-image-button')).toBeInTheDocument()
       // expect(screen.getByTestId('refresh-lookup-button')).toBeInTheDocument()
       expect(screen.getByTestId('remove-lookup-button')).toBeInTheDocument()
-      expect(screen.getByTestId('twitter-share-button')).toBeInTheDocument()
     })
   })
 
@@ -58,11 +53,9 @@ describe('Header', () => {
         <MemoryRouter>
           <SettingsContext.Provider value={mockedSettings}>
             <Header
-              bodyRef={bodyRef}
               fromPreviousLookupUniqueIdentifier={true}
               refreshLookupFunction={refreshLookupFunction}
               removeLookupFunction={removeLookupFunction}
-              vehicle={VehicleFactory.build()}
             />
           </SettingsContext.Provider>
         </MemoryRouter>,
@@ -85,11 +78,9 @@ describe('Header', () => {
         <MemoryRouter initialEntries={[initialRoute]}>
           <SettingsContext.Provider value={mockedSettings}>
             <Header
-              bodyRef={bodyRef}
               fromPreviousLookupUniqueIdentifier={true}
               refreshLookupFunction={refreshLookupFunction}
               removeLookupFunction={removeLookupFunction}
-              vehicle={vehicle}
             />
             <LocationDisplay />
           </SettingsContext.Provider>
@@ -112,84 +103,15 @@ describe('Header', () => {
   })
 
   describe('button clicks', () => {
-    it('should copy the link to the lookup when the user presses the copy button of a lookup', async () => {
-      const writeText = jest.fn()
-
-      Object.assign(navigator, {
-        clipboard: {
-          writeText,
-        },
-      })
-
-      const vehicle = VehicleFactory.build()
-
-      render(
-        <SettingsContext.Provider value={mockedSettings}>
-          <Header
-            bodyRef={bodyRef}
-            fromPreviousLookupUniqueIdentifier={false}
-            refreshLookupFunction={refreshLookupFunction}
-            removeLookupFunction={removeLookupFunction}
-            vehicle={vehicle}
-          />
-        </SettingsContext.Provider>,
-      )
-
-      const copyLookupLinkButton = screen.getByLabelText('copy link to lookup')
-
-      await act(async () => {
-        // copy lookup link
-        userEvent.click(copyLookupLinkButton)
-      })
-
-      expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
-        `https://howsmydrivingny.nyc/${vehicle.uniqueIdentifier}`,
-      )
-
-      // clean up after ourselves
-      Object.assign(navigator, {
-        clipboard: undefined,
-      })
-    })
-
-    it('should open a new window to share to Twitter when the Twitter share button is clicked.', () => {
-      const mockedOpen = jest.fn()
-      global.open = mockedOpen
-
-      render(
-        <SettingsContext.Provider value={mockedSettings}>
-          <Header
-            bodyRef={bodyRef}
-            fromPreviousLookupUniqueIdentifier={false}
-            refreshLookupFunction={refreshLookupFunction}
-            removeLookupFunction={removeLookupFunction}
-            vehicle={VehicleFactory.build()}
-          />
-        </SettingsContext.Provider>,
-      )
-
-      const twitterShareButtonElement = screen.getByTestId(
-        'twitter-share-button',
-      )
-
-      expect(twitterShareButtonElement).toBeInTheDocument()
-
-      userEvent.click(twitterShareButtonElement)
-
-      expect(mockedOpen).toHaveBeenCalled()
-    })
-
     it('clicking on the close button of a lookup should remove it from the page', async () => {
       const vehicle = VehicleFactory.build()
 
       render(
         <SettingsContext.Provider value={mockedSettings}>
           <Header
-            bodyRef={bodyRef}
             fromPreviousLookupUniqueIdentifier={false}
             refreshLookupFunction={refreshLookupFunction}
             removeLookupFunction={removeLookupFunction}
-            vehicle={vehicle}
           />
         </SettingsContext.Provider>,
       )

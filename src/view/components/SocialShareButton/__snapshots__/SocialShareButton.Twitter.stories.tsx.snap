@@ -8,7 +8,7 @@ exports[`Components/SocialShareButton/TwitterSocialShareButton ReadyToShare smok
         <div class="col-md-12 vehicle-lookup-content-container">
           <button aria-label="share lookup to Twitter"
                   data-testid="twitter-share-button"
-                  class="react-share__ShareButton twitter-share-button"
+                  class="react-share__ShareButton twitter-share-button share-button"
           >
             <svg viewbox="0 0 64 64"
                  width="32"

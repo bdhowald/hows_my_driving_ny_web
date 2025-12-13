@@ -60,6 +60,7 @@ const ShareButton = ({
   return (
     <ShareButtonClass
       aria-label={`share lookup to ${serviceName}`}
+      className={`${elementName} share-button`}
       data-testid={elementName}
       onClick={() => {
         tracker?.trackEvent('user_shared_lookup_to_social_media', {
@@ -70,10 +71,9 @@ const ShareButton = ({
           useSearchFilters: cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true,
         })
       }}
-      url={`${L10N.sitewide.url}/${vehicle.uniqueIdentifier}`}
-      title={`I just looked up #${vehicleHashtag}'s ${violationsString} using ${accountHandle}: `}
-      className={elementName}
       resetButtonStyle={false}
+      title={`I just looked up #${vehicleHashtag}'s ${violationsString} using ${accountHandle}: `}
+      url={`${L10N.sitewide.url}/${vehicle.uniqueIdentifier}`}
     >
       <IconClass crossOrigin="" round size={32} />
     </ShareButtonClass>
