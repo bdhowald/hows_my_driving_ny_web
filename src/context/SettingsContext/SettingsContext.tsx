@@ -14,7 +14,9 @@ const SettingsProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const initializeDefaultSettings = () => {
-      const useNewStyleDisplaySetting =  settings.getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay)
+      const useNewStyleDisplaySetting = settings.getSetting(
+        USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay,
+      )
 
       if (useNewStyleDisplaySetting === undefined) {
         settings.updateSetting(
