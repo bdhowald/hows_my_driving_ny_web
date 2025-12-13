@@ -149,6 +149,9 @@ describe('ShareLookupMenu', () => {
         service: 'bluesky',
       },
       {
+        service: 'reddit',
+      },
+      {
         service: 'twitter',
       },
     ])(
