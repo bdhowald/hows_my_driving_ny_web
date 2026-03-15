@@ -50,7 +50,7 @@ class AnalyticsTracker {
     return tracker.getDistinctId()
   }
 
-  identify(userId: string, traits: Record<string, any> = {}) {
+  identify(userId: string, traits: Record<string, unknown> = {}) {
     if (!this.isTrackerReady) {
       this.analyticsCallQueue.push({
         args: [userId, traits],
@@ -65,7 +65,7 @@ class AnalyticsTracker {
     })
   }
 
-  trackEvent(eventName: string, eventProperties: Record<string, any> = {}) {
+  trackEvent(eventName: string, eventProperties: Record<string, unknown> = {}) {
     if (!this.isTrackerReady) {
       this.analyticsCallQueue.push({
         args: [eventName, eventProperties],

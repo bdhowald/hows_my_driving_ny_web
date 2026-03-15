@@ -1,12 +1,12 @@
 import { BASE_DELAY } from 'constants/requests'
 
-type RetryOptions = {
-  asyncRequestFunction: () => Promise<any>
+type RetryOptions<T> = {
+  asyncRequestFunction: () => Promise<T>
   baseDelay?: number
   jitter?: boolean
   maxRetries?: number
-  onRetry?: (attempt: number, error: any, delay: number) => void
-  shouldRetry?: (error?: any) => boolean
+  onRetry?: (attempt: number, error: unknown, delay: number) => void
+  shouldRetry?: (error?: unknown) => boolean
 }
 
 /**
@@ -15,14 +15,14 @@ type RetryOptions = {
  * a base delay amount, a jitter amount, and functions to determine if a retry
  * should happen and what to do when a retry is needed.
  */
-const retryRequest = async ({
+const retryRequest = async <T,> ({
   asyncRequestFunction,
   baseDelay = BASE_DELAY,
   jitter = true,
   maxRetries = 3,
   onRetry = () => null,
   shouldRetry = () => true,
-}: RetryOptions): Promise<any> => {
+}: RetryOptions<T>): Promise<T> => {
   let attempt = 0
 
   while (attempt <= maxRetries) {
@@ -37,7 +37,7 @@ const retryRequest = async ({
       }
 
       if (!shouldRetry()) {
-        console.log(`Retry condition failed, throwing error`)
+        console.log('Retry condition failed, throwing error')
         throw error
       }
 

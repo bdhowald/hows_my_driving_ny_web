@@ -256,7 +256,7 @@ describe('findVehicleInList', () => {
       const placeholderVehicleDisplayResult = {
         expandResults: false,
         fromPreviousLookupUniqueIdentifier: false,
-        isSuccessfulLookup: false as false,
+        isSuccessfulLookup: false as const,
         vehicle: {
           uniqueIdentifier: 'abcd1234',
         },

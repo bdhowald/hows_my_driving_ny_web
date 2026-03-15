@@ -1,5 +1,5 @@
 import React, { ComponentType, ReactNode } from 'react'
-import { Decorator } from '@storybook/react'
+import { Decorator, StoryFn } from '@storybook/react'
 
 import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 
@@ -18,7 +18,7 @@ const withStyleDisplayDecorator = <P extends { useNewStyleDisplay: boolean }>(
     updateSetting: () => null,
   }
 
-  return (Story) => (
+  const DecoratorFn = (Story: StoryFn) => (
     <SettingsContext.Provider value={mockedSettings}>
       <ParentHtmlComponent
         useNewStyleDisplay={useNewStyleDisplay as P['useNewStyleDisplay']}
@@ -28,6 +28,8 @@ const withStyleDisplayDecorator = <P extends { useNewStyleDisplay: boolean }>(
       </ParentHtmlComponent>
     </SettingsContext.Provider>
   )
+
+  return DecoratorFn
 }
 
 export const newStyleDisplayDecorator = (

@@ -1,4 +1,3 @@
-import { useCallback } from 'react'
 import deepmerge from 'deepmerge'
 
 import { SITE_SETTINGS_STORAGE_KEY } from 'constants/storage'

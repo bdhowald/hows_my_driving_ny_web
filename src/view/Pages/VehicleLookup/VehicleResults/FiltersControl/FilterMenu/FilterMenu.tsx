@@ -205,6 +205,7 @@ const PlateTypeFilterOptions = React.memo(() => (
     ))}
   </>
 ))
+PlateTypeFilterOptions.displayName = 'PlateTypeFilterOptions'
 
 const RegionFilterOptions = React.memo(() => (
   <>
@@ -216,5 +217,6 @@ const RegionFilterOptions = React.memo(() => (
     ))}
   </>
 ))
+RegionFilterOptions.displayName = 'RegionFilterOptions'
 
 export default FilterMenu

@@ -43,13 +43,9 @@ type Story = StoryObj<typeof Search>
 
 const ParentHtml = ({
   children,
-  useNewStyleDisplay,
 }: {
   children: ReactNode
-  useNewStyleDisplay: boolean
 }) => {
-  const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
-
   return (
     <div className="site-container-wrapper">
       <div className="site-container container-fluid">

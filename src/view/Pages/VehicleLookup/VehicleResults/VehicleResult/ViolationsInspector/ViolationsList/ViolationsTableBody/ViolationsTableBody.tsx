@@ -70,14 +70,14 @@ const ViolationsTableBody = ({
     let columnIndex = null
 
     switch (currentSortType) {
-      case Sort.DATE:
-        columnIndex = 0
-        dividerValue = new Date(violation.formattedTime).getFullYear()
-        break
-      case Sort.LOCATION:
-        columnIndex = 2
-        dividerValue = violation.getBorough()
-        break
+    case Sort.DATE:
+      columnIndex = 0
+      dividerValue = new Date(violation.formattedTime).getFullYear()
+      break
+    case Sort.LOCATION:
+      columnIndex = 2
+      dividerValue = violation.getBorough()
+      break
     }
 
     // If this sort doesn't have dividers, ignore.

@@ -453,7 +453,7 @@ const Search = ({
         setQueriedVehiclesFunction((previouslyQueriedVehicleDisplayResults) =>
           previouslyQueriedVehicleDisplayResults.filter(
             (vehicleDisplayResults) => {
-              vehicleDisplayResults.vehicle.uniqueIdentifier !==
+              return vehicleDisplayResults.vehicle.uniqueIdentifier !==
                 previousLookupUniqueIdentifierFromQuery
             },
           ),
@@ -481,8 +481,8 @@ const Search = ({
       const modififedInputValue =
         changeEvent.currentTarget.name === 'plateId'
           ? changeEvent.currentTarget.value
-              .replace(NON_PLATE_CHARACTERS, '')
-              .toUpperCase()
+            .replace(NON_PLATE_CHARACTERS, '')
+            .toUpperCase()
           : changeEvent.currentTarget.value.replace(NON_PLATE_CHARACTERS, '')
 
       return setCurrentLookup({

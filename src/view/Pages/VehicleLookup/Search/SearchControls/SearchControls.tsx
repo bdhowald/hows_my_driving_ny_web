@@ -1,9 +1,7 @@
 import * as React from 'react'
 
-import L10N from 'constants/display'
 import plateTypes from 'constants/plateTypes'
 import regions from 'constants/regions'
-import regexps from 'constants/regexps'
 import PlateLookup from 'types/plateLookup'
 
 import PlateSearchInput from './PlateSearchInput/PlateSearchInput'
@@ -92,47 +90,33 @@ const SearchControls = ({
   handleInputChange,
   handleSubmit,
   lookupInFlight,
-}: SearchControlsProps) => {
-  const now = new Date()
-  const day = now.getDate()
-  const month = now.getMonth() + 1
-
-  const isAprilFoolsDay =
-    month === L10N.dates.aprilFoolsDay.month &&
-    day === L10N.dates.aprilFoolsDay.day
-
-  const placeholderText = isAprilFoolsDay
-    ? L10N.query.plateSearchInput.placeholderTextAprilFools
-    : L10N.query.plateSearchInput.placeholderText
-
-  return (
-    <form className="form" onSubmit={handleSubmit}>
-      <div className="row form-row">
-        <div className="col-md">
-          <div className="form-group">
-            <PlateSearchInput
-              currentLookup={currentLookup}
-              onChangeFunction={handleInputChange}
-            />
-          </div>
+}: SearchControlsProps) => (
+  <form className="form" onSubmit={handleSubmit}>
+    <div className="row form-row">
+      <div className="col-md">
+        <div className="form-group">
+          <PlateSearchInput
+            currentLookup={currentLookup}
+            onChangeFunction={handleInputChange}
+          />
         </div>
-        <RegionSelect
-          currentLookup={currentLookup}
-          handleInputChange={handleInputChange}
-        />
       </div>
-      <div className="row form-row">
-        <PlateTypeSelect
-          currentLookup={currentLookup}
-          handleInputChange={handleInputChange}
-        />
-        <SearchButton
-          lookupInFlight={lookupInFlight}
-          plateIdPresent={!!currentLookup.plateId}
-        />
-      </div>
-    </form>
-  )
-}
+      <RegionSelect
+        currentLookup={currentLookup}
+        handleInputChange={handleInputChange}
+      />
+    </div>
+    <div className="row form-row">
+      <PlateTypeSelect
+        currentLookup={currentLookup}
+        handleInputChange={handleInputChange}
+      />
+      <SearchButton
+        lookupInFlight={lookupInFlight}
+        plateIdPresent={!!currentLookup.plateId}
+      />
+    </div>
+  </form>
+)
 
 export default SearchControls

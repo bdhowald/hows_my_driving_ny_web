@@ -1,6 +1,6 @@
 import React from 'react'
 import { MemoryRouter, useLocation } from 'react-router-dom'
-import { act, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
@@ -11,8 +11,6 @@ import Header from './Header'
 describe('Header', () => {
   const refreshLookupFunction = jest.fn()
   const removeLookupFunction = jest.fn()
-
-  const bodyRef = React.createRef<HTMLUListElement>()
 
   const mockedSettings = {
     getSetting: jest.fn().mockReturnValue(true),
@@ -104,8 +102,6 @@ describe('Header', () => {
 
   describe('button clicks', () => {
     it('clicking on the close button of a lookup should remove it from the page', async () => {
-      const vehicle = VehicleFactory.build()
-
       render(
         <SettingsContext.Provider value={mockedSettings}>
           <Header

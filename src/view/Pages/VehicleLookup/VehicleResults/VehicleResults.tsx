@@ -295,9 +295,9 @@ const clearFilter = (
     const resetState =
       fieldName === 'queryDateRange'
         ? {
-            endDate: undefined,
-            startDate: undefined,
-          }
+          endDate: undefined,
+          startDate: undefined,
+        }
         : undefined
 
     const newFilterState = {

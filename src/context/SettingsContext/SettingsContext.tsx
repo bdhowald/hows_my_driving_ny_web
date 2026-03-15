@@ -8,6 +8,7 @@ export type SettingsContextType = ReturnType<typeof useSettingsStorage>
 export const SettingsContext = createContext<SettingsContextType | undefined>(
   undefined,
 )
+SettingsContext.displayName = 'SettingsContext'
 
 const SettingsProvider = ({ children }: { children: ReactNode }) => {
   const settings = useSettingsStorage()

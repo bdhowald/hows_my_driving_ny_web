@@ -70,26 +70,26 @@ const ViolationCardList = ({
     currentSortType: Sort,
   ) => {
     switch (currentSortType) {
-      case Sort.DATE:
-        return new Date(violation.formattedTime).getFullYear().toString()
-      case Sort.KIND:
-        return violation.humanizedDescription ?? 'No Description Available'
-      case Sort.LOCATION: {
-        const borough = violation.getBorough()
+    case Sort.DATE:
+      return new Date(violation.formattedTime).getFullYear().toString()
+    case Sort.KIND:
+      return violation.humanizedDescription ?? 'No Description Available'
+    case Sort.LOCATION: {
+      const borough = violation.getBorough()
 
-        if (borough === 'The Bronx') {
-          // Temporary fix for discrepancy between Bronx/The Bronx
-          return 'Bronx'
-        } else {
-          return borough
-        }
+      if (borough === 'The Bronx') {
+        // Temporary fix for discrepancy between Bronx/The Bronx
+        return 'Bronx'
+      } else {
+        return borough
       }
-      case Sort.FINED: {
-        return getFinesSortDivider(violation.getTotalFined())
-      }
-      default: {
-        throw Error('Unknown sort type')
-      }
+    }
+    case Sort.FINED: {
+      return getFinesSortDivider(violation.getTotalFined())
+    }
+    default: {
+      throw Error('Unknown sort type')
+    }
     }
   }
 

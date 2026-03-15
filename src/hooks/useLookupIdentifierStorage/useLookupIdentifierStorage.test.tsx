@@ -3,15 +3,23 @@ import { act, render, renderHook } from '@testing-library/react'
 
 import useLookupIdentifierStorage from './useLookupIdentifierStorage'
 
+type HookFunction = typeof useLookupIdentifierStorage
+
+type CapturedHook = {
+  removeLookupIdentifierFromStorage: (lookupUniqueIdentifiersToRemove: string) => unknown
+  readLookupIdentifiersFromStorage: () => string[]
+  syncLookupIdentifiersToStorage: (lookupUniqueIdentifiers: string[]) => void
+}
+
 describe('useLookupIdentifierStorage', () => {
   const HookWrapper = ({
     hook,
     onRender,
   }: {
-    hook: () => any
-    onRender: (value: any) => void
+    hook: HookFunction
+    onRender: (value: CapturedHook) => void
   }) => {
-    const hookValue = hook()
+    const hookValue: CapturedHook = hook()
     useEffect(() => {
       onRender(hookValue)
     })
@@ -33,18 +41,22 @@ describe('useLookupIdentifierStorage', () => {
   })
 
   it('should set the value', async () => {
-    let captured: any
+    let captured: CapturedHook | undefined
 
     render(
       <HookWrapper
         hook={() => useLookupIdentifierStorage()}
-        onRender={(v) => {
+        onRender={(v: CapturedHook) => {
           captured = v
         }}
       />,
     )
 
-    let { syncLookupIdentifiersToStorage } = captured
+    if (!captured) {
+      return
+    }
+
+    const { syncLookupIdentifiersToStorage } = captured
 
     const lookupIdentifiers = ['abcd1234', 'efgh5678']
 
@@ -52,7 +64,7 @@ describe('useLookupIdentifierStorage', () => {
       syncLookupIdentifiersToStorage(lookupIdentifiers)
     })
 
-    let { readLookupIdentifiersFromStorage } = captured
+    const { readLookupIdentifiersFromStorage } = captured
 
     expect(readLookupIdentifiersFromStorage()).toEqual(
       lookupIdentifiers.reverse(),
@@ -60,7 +72,7 @@ describe('useLookupIdentifierStorage', () => {
   })
 
   it('should read the value from local storage', async () => {
-    let captured: any
+    let captured: CapturedHook | undefined
 
     const lookupIdentifiers = ['abcd1234', 'efgh5678']
 
@@ -73,13 +85,17 @@ describe('useLookupIdentifierStorage', () => {
       />,
     )
 
-    let { syncLookupIdentifiersToStorage } = captured
+    if (!captured) {
+      return
+    }
+
+    const { syncLookupIdentifiersToStorage } = captured
 
     await act(async () => {
       syncLookupIdentifiersToStorage(lookupIdentifiers)
     })
 
-    let { readLookupIdentifiersFromStorage } = captured
+    const { readLookupIdentifiersFromStorage } = captured
 
     expect(readLookupIdentifiersFromStorage()).toEqual(
       lookupIdentifiers.reverse(),
@@ -87,7 +103,7 @@ describe('useLookupIdentifierStorage', () => {
   })
 
   it('should remove a value from storage', async () => {
-    let captured: any
+    let captured: CapturedHook | undefined
 
     const lookupIdentifierToKeep = 'abcd1234'
     const lookupIdentifierToRemove = 'efgh5678'
@@ -102,19 +118,23 @@ describe('useLookupIdentifierStorage', () => {
       />,
     )
 
-    let { syncLookupIdentifiersToStorage } = captured
+    if (!captured) {
+      return
+    }
+
+    const { syncLookupIdentifiersToStorage } = captured
 
     await act(async () => {
       syncLookupIdentifiersToStorage(lookupIdentifiers)
     })
 
-    let { removeLookupIdentifierFromStorage } = captured
+    const { removeLookupIdentifierFromStorage } = captured
 
     await act(async () => {
       removeLookupIdentifierFromStorage(lookupIdentifierToRemove)
     })
 
-    let { readLookupIdentifiersFromStorage } = captured
+    const { readLookupIdentifiersFromStorage } = captured
 
     expect(readLookupIdentifiersFromStorage()).toEqual([lookupIdentifierToKeep])
   })

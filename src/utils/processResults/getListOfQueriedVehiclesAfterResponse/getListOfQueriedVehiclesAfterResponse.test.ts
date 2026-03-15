@@ -79,7 +79,7 @@ describe('getListOfQueriedVehiclesAfterResponse', () => {
     const existingVehicleDisplayResultFromList = {
       expandResults: true,
       fromPreviousLookupUniqueIdentifier: false,
-      isSuccessfulLookup: true as true,
+      isSuccessfulLookup: true as const,
       vehicle: oldVehicle,
     }
     const previouslyQueriedVehicleDisplayResults: VehicleDisplaySuccessResult[] =
@@ -95,7 +95,7 @@ describe('getListOfQueriedVehiclesAfterResponse', () => {
     const expected = {
       expandResults: true,
       fromPreviousLookupUniqueIdentifier: false,
-      isSuccessfulLookup: true as true,
+      isSuccessfulLookup: true as const,
       vehicle: newVehicle,
     }
 
@@ -109,7 +109,7 @@ describe('getListOfQueriedVehiclesAfterResponse', () => {
     const existingVehicleDisplayResultFromList = {
       expandResults: true,
       fromPreviousLookupUniqueIdentifier: false,
-      isSuccessfulLookup: true as true,
+      isSuccessfulLookup: true as const,
       vehicle: existingVehicle,
     }
     const previouslyQueriedVehicleDisplayResults: VehicleDisplaySuccessResult[] =
@@ -126,7 +126,7 @@ describe('getListOfQueriedVehiclesAfterResponse', () => {
     const expected = {
       expandResults: true,
       fromPreviousLookupUniqueIdentifier: false,
-      isSuccessfulLookup: true as true,
+      isSuccessfulLookup: true as const,
       vehicle: existingVehicle,
     }
 
@@ -149,7 +149,7 @@ describe('getListOfQueriedVehiclesAfterResponse', () => {
     const existingVehicleDisplayResultFromList = {
       expandResults: true,
       fromPreviousLookupUniqueIdentifier: false,
-      isSuccessfulLookup: true as true,
+      isSuccessfulLookup: true as const,
       vehicle: recentVehicle,
     }
     const previouslyQueriedVehicleDisplayResults: VehicleDisplaySuccessResult[] =
@@ -165,7 +165,7 @@ describe('getListOfQueriedVehiclesAfterResponse', () => {
     const expected = {
       expandResults: true,
       fromPreviousLookupUniqueIdentifier: false,
-      isSuccessfulLookup: true as true,
+      isSuccessfulLookup: true as const,
       vehicle: recentVehicle,
     }
 

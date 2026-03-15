@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { act, renderHook } from '@testing-library/react'
+import { renderHook } from '@testing-library/react'
 
 import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 

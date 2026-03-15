@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react'
+import { Decorator, StoryContext, StrictArgs } from '@storybook/react'
 import { render, screen } from '@testing-library/react'
 
 import {
@@ -27,14 +28,14 @@ describe('withStyleDisplayDecorator', () => {
         </div>
       )
 
-      const decorator = decoratorFunction(ParentHtml)
+      const decorator: Decorator = decoratorFunction(ParentHtml)
       expect(typeof decorator).toBe('function')
 
       const StoryFunction = () => <div>{storyText}</div>
 
       const StoryComponent = () => StoryFunction()
 
-      const jsx = decorator(StoryComponent, { args: {} } as any)
+      const jsx = decorator(StoryComponent, { args: {} } as StoryContext<StrictArgs>)
 
       render(jsx)
 

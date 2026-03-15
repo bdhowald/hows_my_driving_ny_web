@@ -34,17 +34,17 @@ describe('ViolationCardListControls', () => {
 
         const violationsDetails = hasViolations
           ? {
-              violations: [
-                ViolationFactory.build(),
-                ViolationFactory.build(),
-                ViolationFactory.build(),
-              ],
-              violationsCount: 3,
-            }
+            violations: [
+              ViolationFactory.build(),
+              ViolationFactory.build(),
+              ViolationFactory.build(),
+            ],
+            violationsCount: 3,
+          }
           : {
-              violations: [],
-              violationsCount: 0,
-            }
+            violations: [],
+            violationsCount: 0,
+          }
 
         const vehicle = VehicleFactory.build(violationsDetails)
 

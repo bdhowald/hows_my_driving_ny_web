@@ -98,7 +98,7 @@ describe('ShareLookupMenu', () => {
       class MockClipboardItem {
         private data
 
-        constructor(data: any) {
+        constructor(data: unknown) {
           this.data = data
           // You might need to add types or methods as required by your application
         }

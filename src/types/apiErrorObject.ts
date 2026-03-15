@@ -1,5 +1,5 @@
 type ApiErrorObject = {
-  body: Record<string, any>
+  body: Record<string, unknown>
   ok: boolean
   status: number
   statusText: string

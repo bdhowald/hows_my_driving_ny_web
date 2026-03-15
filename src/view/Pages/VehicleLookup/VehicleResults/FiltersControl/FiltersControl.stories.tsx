@@ -36,8 +36,6 @@ const ParentHtml = ({
   children: ReactNode
   useNewStyleDisplay: boolean
 }) => {
-  const bodyRef = React.createRef<HTMLUListElement>()
-
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
   return (

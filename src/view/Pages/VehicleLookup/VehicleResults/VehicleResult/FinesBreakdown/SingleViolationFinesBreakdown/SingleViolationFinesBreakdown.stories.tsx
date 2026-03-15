@@ -64,7 +64,7 @@ const ViolationCardListParentHtml = ({
   <ParentHtml useNewStyleDisplay={useNewStyleDisplay}>
     <div className="violation-card-list-wrapper">
       <div className="violation-card-list bg-body">
-        <div className={`violation-card expanded-details`}>
+        <div className={'violation-card expanded-details'}>
           <div className="violation-card-row"></div>
           <div className="violation-card-row">{children}</div>
         </div>

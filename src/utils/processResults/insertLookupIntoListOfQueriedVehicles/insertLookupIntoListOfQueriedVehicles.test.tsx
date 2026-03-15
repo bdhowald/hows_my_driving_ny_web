@@ -77,7 +77,7 @@ describe('insertLookupIntoListOfQueriedVehicles', () => {
     const failedVehicleDisplayResult = {
       expandResults: false,
       fromPreviousLookupUniqueIdentifier: false,
-      isSuccessfulLookup: false as false,
+      isSuccessfulLookup: false as const,
       vehicle: {
         uniqueIdentifier: 'n1dqu3ry',
       },

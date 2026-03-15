@@ -126,8 +126,8 @@ const VehicleLookup = () => {
           error instanceof Error
             ? error
             : new Error(
-                typeof error === 'string' ? error : JSON.stringify(error),
-              )
+              typeof error === 'string' ? error : JSON.stringify(error),
+            )
 
         tracker?.trackEvent('user_saw_search_error', {
           action: 'refresh_lookup',

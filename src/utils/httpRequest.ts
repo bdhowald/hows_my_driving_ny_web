@@ -51,7 +51,7 @@ const getRequestUrl = (
 async function httpRequest(
   requestData: RequestPayloadType,
   signal?: EventTarget | void,
-): Promise<any> {
+): Promise<unknown> {
   const { method, payload, apiResource, paramsObject, url, headers } =
     requestData
 
@@ -127,7 +127,7 @@ async function httpRequest(
 // different applications that import this httpRequest interface can override its behavior without
 // changing the underlying library
 
-let requestMiddleware = (v: any) => v
+let requestMiddleware = (v: unknown) => v
 
 const requestFactory = (
   requestData: RequestPayloadType,
@@ -137,7 +137,7 @@ const requestFactory = (
   const controller = (() => {
     try {
       return new AbortController()
-    } catch (e) {
+    } catch (_e: unknown) {
       return new AbortController()
     }
   })()
@@ -147,7 +147,7 @@ const requestFactory = (
   return requestMiddleware(promise)
 }
 
-requestFactory.applyMiddleware = (middleware: any) => {
+requestFactory.applyMiddleware = (middleware: (v: unknown) => unknown) => {
   requestMiddleware = middleware
 }
 

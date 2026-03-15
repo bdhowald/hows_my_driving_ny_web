@@ -1,4 +1,3 @@
-import React from 'react'
 import { act, renderHook } from '@testing-library/react'
 
 import useClientStorage from './useClientStorage'

@@ -22,7 +22,7 @@ class MixpanelTracker implements Tracker {
     mixpanel.identify(userId)
   }
 
-  track(eventName: string, eventProperties?: Record<string, any>) {
+  track(eventName: string, eventProperties?: Record<string, unknown>) {
     mixpanel.track(eventName, eventProperties)
   }
 }

@@ -90,7 +90,7 @@ const reactRouterParametersForStory = {
       pathParams: { uniqueIdentifier: lookupIdentifierFromSharedLookup },
     },
     routing: {
-      path: `/:uniqueIdentifier`,
+      path: '/:uniqueIdentifier',
     },
   }),
 }

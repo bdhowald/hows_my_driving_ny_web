@@ -442,8 +442,6 @@ describe('VehicleResults', () => {
     it('should show no vehicle results if none match filters', () => {
       const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
 
-      const plate = 'ABC1234'
-
       const desiredPlateTextFilter = 'ABC'
       const desiredPlateTypeFilter = 'passenger'
       const desiredRegionFilter = 'NY'

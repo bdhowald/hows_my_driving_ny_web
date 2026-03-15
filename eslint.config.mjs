@@ -29,7 +29,7 @@ export default tseslint.config(
         },
       ],
       '@stylistic/js/indent': ['error', 2],
-      '@stylistic/js/quotes': ['error', 'single'],
+      '@stylistic/js/quotes': ['error', 'single', { 'avoidEscape': true }],
       '@stylistic/js/semi': ['error', 'never'],
     },
     settings: {

@@ -145,12 +145,12 @@ const Updates = () => (
 
 const getPillBadgeForProject = (project: string, index: number): ReactNode => {
   switch (project) {
-    case 'hows_my_driving':
-      return <SocialMediaPillBadge key={index} />
-    case 'hows_my_driving_ny_api':
-      return <ApiPillBadge key={index} />
-    case 'hows_my_driving_ny_web':
-      return <WebPillBadge key={index} />
+  case 'hows_my_driving':
+    return <SocialMediaPillBadge key={index} />
+  case 'hows_my_driving_ny_api':
+    return <ApiPillBadge key={index} />
+  case 'hows_my_driving_ny_web':
+    return <WebPillBadge key={index} />
   }
 
   throw Error('unknown project')

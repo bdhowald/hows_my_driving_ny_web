@@ -1,5 +1,3 @@
-import { VehicleFactory } from '__fixtures__/models/Vehicle'
-
 import isApiErrorObject from './isApiErrorObject'
 
 describe('isApiErrorObject', () => {

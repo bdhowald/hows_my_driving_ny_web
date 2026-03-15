@@ -4,11 +4,13 @@ import { Cookies, CookiesProvider } from 'react-cookie'
 
 import useSearchFiltersActiveCookie from './useSearchFiltersActiveCookie'
 
+type HookFunction = () => unknown
+
 describe('useSearchFiltersActiveCookie', () => {
-  const HookWrapper = ({ hook }: { hook: () => any }) => {
+  const HookWrapper = ({ hook }: { hook: () => Record<string, HookFunction> }) => {
     const hookFunctions = hook()
 
-    Object.values(hookFunctions).forEach((hookFunction: any) => hookFunction())
+    Object.values(hookFunctions).forEach((hookFunction) => hookFunction())
 
     return null
   }

@@ -1,6 +1,5 @@
 import React from 'react'
-import { render, screen, waitFor } from '@testing-library/react'
-import { fireEvent } from '@testing-library/dom'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { FilterType } from 'types/resultsFilters'
@@ -89,35 +88,35 @@ describe('FilterBreadcrumb', () => {
       )
 
       if (args.key) {
-        expect(screen.getByText(args.key)).toBeInTheDocument
+        expect(screen.getByText(args.key)).toBeInTheDocument()
       }
       if (args.value) {
-        expect(screen.getByText(`: ${args.value}`)).toBeInTheDocument
+        expect(screen.getByText(`: ${args.value}`)).toBeInTheDocument()
       }
 
       if (args.end && args.start && args.end === args.start) {
-        expect(screen.getByText('Date')).toBeInTheDocument
+        expect(screen.getByText('Date')).toBeInTheDocument()
         expect(screen.getByText(`: ${dateFormat.format(args.start)}`))
-          .toBeInTheDocument
+          .toBeInTheDocument()
       } else if (
         args.end &&
         args.start &&
         args.end.toDateString() !== args.start.toDateString()
       ) {
-        expect(screen.getByText('Date')).toBeInTheDocument
+        expect(screen.getByText('Date')).toBeInTheDocument()
         expect(
           screen.getByText(
             `: ${dateFormat.format(args.start)} - ${dateFormat.format(args.end)}`,
           ),
-        ).toBeInTheDocument
+        ).toBeInTheDocument()
       } else if (args.end && !args.start) {
-        expect(screen.getByText('Date')).toBeInTheDocument
+        expect(screen.getByText('Date')).toBeInTheDocument()
         expect(screen.getByText(`: through ${dateFormat.format(args.end)}`))
-          .toBeInTheDocument
+          .toBeInTheDocument()
       } else if (args.start && !args.end) {
-        expect(screen.getByText('Date')).toBeInTheDocument
+        expect(screen.getByText('Date')).toBeInTheDocument()
         expect(screen.getByText(`: after ${dateFormat.format(args.start)}`))
-          .toBeInTheDocument
+          .toBeInTheDocument()
       }
     })
   })

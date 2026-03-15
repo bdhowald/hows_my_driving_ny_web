@@ -34,8 +34,8 @@ const ViolationDataSourceLink = ({
             databaseLastUpdatedAtDate.valueOf(),
           )
             ? L10N.sitewide.dateFormat.format(
-                new Date(databaseLastUpdatedAtDate),
-              )
+              new Date(databaseLastUpdatedAtDate),
+            )
             : null
 
           return (

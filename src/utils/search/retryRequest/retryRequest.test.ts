@@ -1,5 +1,3 @@
-import * as boundaryFunctions from 'boundaries/http'
-
 import retryRequest from './retryRequest'
 
 describe('retryRequest', () => {
