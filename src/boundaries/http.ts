@@ -15,7 +15,7 @@ export const getPreviousLookup = (
   return request({
     method: HttpMethod.Get,
     url: `${HOWS_MY_DRIVING_NY_PREVIOUS_LOOKUP_ENDPOINT}${previousLookupIdentifier}`,
-  })
+  }) as Promise<VehicleQueryResponse>
 }
 
 export const performNewLookup = (
@@ -27,5 +27,5 @@ export const performNewLookup = (
   return request({
     method: HttpMethod.Get,
     url: `${HOWS_MY_DRIVING_NY_NEW_LOOKUP_ENDPOINT}?${queryString}`,
-  })
+  }) as Promise<VehicleQueryResponse>
 }
