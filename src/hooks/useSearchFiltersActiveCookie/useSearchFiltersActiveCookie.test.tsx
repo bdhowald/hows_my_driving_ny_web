@@ -7,7 +7,11 @@ import useSearchFiltersActiveCookie from './useSearchFiltersActiveCookie'
 type HookFunction = () => unknown
 
 describe('useSearchFiltersActiveCookie', () => {
-  const HookWrapper = ({ hook }: { hook: () => Record<string, HookFunction> }) => {
+  const HookWrapper = ({
+    hook,
+  }: {
+    hook: () => Record<string, HookFunction>
+  }) => {
     const hookFunctions = hook()
 
     Object.values(hookFunctions).forEach((hookFunction) => hookFunction())

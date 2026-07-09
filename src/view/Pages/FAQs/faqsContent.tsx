@@ -7,8 +7,8 @@ const FAQS_CONTENT = [
       <>
         If you&apos;re like us, <strong>every</strong> time you see a car on the
         sidewalk or speeding down your block, you wonder just how often they do
-        that. HowsMyDrivingNY helps you answer that question, querying NYC&apos;s
-        Open Data for traffic violation data by license plate.
+        that. HowsMyDrivingNY helps you answer that question, querying
+        NYC&apos;s Open Data for traffic violation data by license plate.
       </>
     ),
     question: 'What is HowsMyDrivingNY?',
@@ -46,8 +46,8 @@ const FAQS_CONTENT = [
   {
     answer: (
       <>
-        &quot;New&quot; violations are those found since the last time this exact plate
-        was queried by any user, including you.
+        &quot;New&quot; violations are those found since the last time this
+        exact plate was queried by any user, including you.
       </>
     ),
     question: 'Some results show "new" violations. What does this mean?',

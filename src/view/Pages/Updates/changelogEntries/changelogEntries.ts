@@ -6,7 +6,8 @@ const CHANGELOG_ENTRIES = [
         date: '2026-03-12',
         dateEntries: [
           {
-            description: 'Add new endpoints for fiscal years 2024, 2025, and 2026.',
+            description:
+              'Add new endpoints for fiscal years 2024, 2025, and 2026.',
             commits: [
               {
                 project: 'hows_my_driving_ny_api',
@@ -15,7 +16,7 @@ const CHANGELOG_ENTRIES = [
             ],
           },
         ],
-      }
+      },
     ],
   },
   {

@@ -6,7 +6,9 @@ import useLookupIdentifierStorage from './useLookupIdentifierStorage'
 type HookFunction = typeof useLookupIdentifierStorage
 
 type CapturedHook = {
-  removeLookupIdentifierFromStorage: (lookupUniqueIdentifiersToRemove: string) => unknown
+  removeLookupIdentifierFromStorage: (
+    lookupUniqueIdentifiersToRemove: string,
+  ) => unknown
   readLookupIdentifiersFromStorage: () => string[]
   syncLookupIdentifiersToStorage: (lookupUniqueIdentifiers: string[]) => void
 }

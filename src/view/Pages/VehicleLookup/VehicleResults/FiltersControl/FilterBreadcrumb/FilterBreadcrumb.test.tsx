@@ -96,8 +96,9 @@ describe('FilterBreadcrumb', () => {
 
       if (args.end && args.start && args.end === args.start) {
         expect(screen.getByText('Date')).toBeInTheDocument()
-        expect(screen.getByText(`: ${dateFormat.format(args.start)}`))
-          .toBeInTheDocument()
+        expect(
+          screen.getByText(`: ${dateFormat.format(args.start)}`),
+        ).toBeInTheDocument()
       } else if (
         args.end &&
         args.start &&
@@ -111,12 +112,14 @@ describe('FilterBreadcrumb', () => {
         ).toBeInTheDocument()
       } else if (args.end && !args.start) {
         expect(screen.getByText('Date')).toBeInTheDocument()
-        expect(screen.getByText(`: through ${dateFormat.format(args.end)}`))
-          .toBeInTheDocument()
+        expect(
+          screen.getByText(`: through ${dateFormat.format(args.end)}`),
+        ).toBeInTheDocument()
       } else if (args.start && !args.end) {
         expect(screen.getByText('Date')).toBeInTheDocument()
-        expect(screen.getByText(`: after ${dateFormat.format(args.start)}`))
-          .toBeInTheDocument()
+        expect(
+          screen.getByText(`: after ${dateFormat.format(args.start)}`),
+        ).toBeInTheDocument()
       }
     })
   })

@@ -15,7 +15,7 @@ type RetryOptions<T> = {
  * a base delay amount, a jitter amount, and functions to determine if a retry
  * should happen and what to do when a retry is needed.
  */
-const retryRequest = async <T,> ({
+const retryRequest = async <T>({
   asyncRequestFunction,
   baseDelay = BASE_DELAY,
   jitter = true,

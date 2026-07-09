@@ -41,11 +41,7 @@ const meta: Meta<typeof Search> = {
 
 type Story = StoryObj<typeof Search>
 
-const ParentHtml = ({
-  children,
-}: {
-  children: ReactNode
-}) => {
+const ParentHtml = ({ children }: { children: ReactNode }) => {
   return (
     <div className="site-container-wrapper">
       <div className="site-container container-fluid">

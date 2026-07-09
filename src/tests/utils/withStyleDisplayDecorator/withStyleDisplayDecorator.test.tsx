@@ -35,7 +35,9 @@ describe('withStyleDisplayDecorator', () => {
 
       const StoryComponent = () => StoryFunction()
 
-      const jsx = decorator(StoryComponent, { args: {} } as StoryContext<StrictArgs>)
+      const jsx = decorator(StoryComponent, {
+        args: {},
+      } as StoryContext<StrictArgs>)
 
       render(jsx)
 

@@ -453,8 +453,10 @@ const Search = ({
         setQueriedVehiclesFunction((previouslyQueriedVehicleDisplayResults) =>
           previouslyQueriedVehicleDisplayResults.filter(
             (vehicleDisplayResults) => {
-              return vehicleDisplayResults.vehicle.uniqueIdentifier !==
+              return (
+                vehicleDisplayResults.vehicle.uniqueIdentifier !==
                 previousLookupUniqueIdentifierFromQuery
+              )
             },
           ),
         )
