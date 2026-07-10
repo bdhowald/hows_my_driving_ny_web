@@ -3,6 +3,25 @@ const CHANGELOG_ENTRIES = [
     year: '2026',
     yearEntries: [
       {
+        date: '2026-07-09',
+        dateEntries: [
+          {
+            description:
+              'Fix missing metadata endpoints for fiscal years 2025 and 2026.',
+            commits: [
+              {
+                project: 'hows_my_driving_ny_web',
+                sha: '4cba4b4da3ca9698027ce30a415a7358fd4be746',
+              },
+              {
+                project: 'hows_my_driving_ny_api',
+                sha: '5d8901bf0c76b27bf9a18a112c958cc28fc40536',
+              },
+            ],
+          },
+        ],
+      },
+      {
         date: '2026-03-12',
         dateEntries: [
           {
