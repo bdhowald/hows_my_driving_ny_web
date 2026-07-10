@@ -7,6 +7,20 @@ const CHANGELOG_ENTRIES = [
         dateEntries: [
           {
             description:
+              'Replace Dangerous Vehicle Abatement Act and Proposed Stop Super Speeders Act notices with adopted Stop Super Speeders Act.',
+            commits: [
+              {
+                project: 'hows_my_driving_ny_web',
+                sha: '4cba4b4da3ca9698027ce30a415a7358fd4be746',
+              },
+              {
+                project: 'hows_my_driving_ny_api',
+                sha: '5d8901bf0c76b27bf9a18a112c958cc28fc40536',
+              },
+            ],
+          },
+          {
+            description:
               'Fix missing metadata endpoints for fiscal years 2025 and 2026.',
             commits: [
               {
