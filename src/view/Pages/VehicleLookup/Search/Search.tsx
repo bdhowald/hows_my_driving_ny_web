@@ -8,9 +8,6 @@ import HttpStatusCode from 'constants/httpStatusCode'
 import { PlateType } from 'constants/plateTypes'
 import regexps from 'constants/regexps'
 import {
-  COOKIE_DEFAULT_PATH,
-  COOKIE_MAX_AGE,
-  DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
   LOOKUP_IDENTIFIER_STORAGE_KEY,
   USE_SEARCH_FILTERS_STORAGE_KEY,
 } from 'constants/storage'
@@ -126,8 +123,7 @@ const Search = ({
     plateType: 'none',
     state: 'NY',
   })
-  const [cookies, setCookie] = useCookies([
-    DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
+  const [cookies, _, __] = useCookies([
     LOOKUP_IDENTIFIER_STORAGE_KEY,
     USE_SEARCH_FILTERS_STORAGE_KEY,
   ])
@@ -143,74 +139,6 @@ const Search = ({
   const useNewStyleDisplay =
     getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
   const useSearchFilters = cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true
-
-  useEffect(() => {
-    const queryParameters = new URLSearchParams(document.location.search)
-
-    const displayIntelligentSpeedAssistanceNoticeCookie =
-      !!cookies[DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY]
-
-    const queryParamFeatureFlagEnabled =
-      queryParameters.get(
-        DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
-      ) === 'true'
-
-    const queryParamFeatureFlagDisabled =
-      queryParameters.get(
-        DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
-      ) === 'false'
-
-    if (
-      !displayIntelligentSpeedAssistanceNoticeCookie ||
-      queryParamFeatureFlagEnabled ||
-      queryParamFeatureFlagDisabled
-    ) {
-      // 25% of sessions are in experimental group (plus some internal testers)
-      // 50% of sessions are in control group
-      // 25% of sessions are available for progressive rollout
-      const randomVariable = Math.random()
-      const inExperimentalGroup =
-        randomVariable * 10 > 7.5 || queryParamFeatureFlagEnabled
-      const inControlGroup =
-        (randomVariable * 10 < 5.0 && !queryParamFeatureFlagEnabled) ||
-        queryParamFeatureFlagDisabled
-
-      const inReserveGroup = !inControlGroup && !inExperimentalGroup
-
-      if (inExperimentalGroup) {
-        setCookie(
-          DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
-          'true',
-          {
-            maxAge: COOKIE_MAX_AGE,
-            path: COOKIE_DEFAULT_PATH,
-          },
-        )
-      }
-
-      if (inControlGroup) {
-        setCookie(
-          DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
-          'false',
-          {
-            maxAge: COOKIE_MAX_AGE,
-            path: COOKIE_DEFAULT_PATH,
-          },
-        )
-      }
-
-      if (inReserveGroup) {
-        setCookie(
-          DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
-          'none',
-          {
-            maxAge: COOKIE_MAX_AGE,
-            path: COOKIE_DEFAULT_PATH,
-          },
-        )
-      }
-    }
-  }, [])
 
   const getErrorType = (statusCode: number | undefined) => {
     if (statusCode === undefined) {

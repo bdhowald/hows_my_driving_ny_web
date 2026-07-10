@@ -4,9 +4,9 @@ import { render, screen } from '@testing-library/react'
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
 import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 
-import IntelligentSpeedAssistanceNotice from './IntelligentSpeedAssistanceNotice'
+import StopSuperSpeedersActNotice from './StopSuperSpeedersActNotice'
 
-describe('IntelligentSpeedAssistanceNotice', () => {
+describe('StopSuperSpeedersActNotice', () => {
   describe('renders without error', () => {
     describe('new-style display', () => {
       const mockedSettings = {
@@ -18,7 +18,7 @@ describe('IntelligentSpeedAssistanceNotice', () => {
       test.each([
         {
           cameraStreakData: {
-            cameraViolations: {
+            schoolZoneSpeedCameraViolations: {
               maxStreak: 20,
               streakEnd: '2024-10-07T10:02:00.000-04:00',
               streakStart: '2023-12-31T15:34:00.000-05:00',
@@ -35,20 +35,13 @@ describe('IntelligentSpeedAssistanceNotice', () => {
 
           render(
             <SettingsContext.Provider value={mockedSettings}>
-              <IntelligentSpeedAssistanceNotice vehicle={vehicle} />
+              <StopSuperSpeedersActNotice vehicle={vehicle} />
             </SettingsContext.Provider>,
           )
 
-          // Expect sponsors' names to be visible
-          expect(
-            screen.getByText('Assembly Member Gallagher'),
-          ).toBeInTheDocument()
-          expect(
-            screen.getByText('State Senator Gounardes'),
-          ).toBeInTheDocument()
           // Expect bill name to be visible
           expect(
-            screen.getByText('Speed Limiters for the Most Reckless Drivers'),
+            screen.getByText('Stop Super Speeders Act'),
           ).toBeInTheDocument()
           // expect description language to be visible
           expect(
@@ -56,13 +49,13 @@ describe('IntelligentSpeedAssistanceNotice', () => {
           ).toBeInTheDocument()
           // Expect number of violations to be visible
           expect(screen.getByText('20')).toBeInTheDocument()
-          // Expect camera violations language to be visible
+          // Expect speed camera violations language to be visible
           expect(
-            screen.getByText('red light and speed camera violations'),
+            screen.getByText('speed camera violations'),
           ).toBeInTheDocument()
           // Expect threshold to be visible
           expect(
-            screen.getByText('(>= 6/year)', { exact: false }),
+            screen.getByText('(>= 16/year)', { exact: false }),
           ).toBeInTheDocument()
           // Expect streak dates to be visible
           expect(
@@ -82,7 +75,7 @@ describe('IntelligentSpeedAssistanceNotice', () => {
       test.each([
         {
           cameraStreakData: {
-            cameraViolations: {
+            schoolZoneSpeedCameraViolations: {
               maxStreak: 20,
               streakEnd: '2024-10-07T10:02:00.000-04:00',
               streakStart: '2023-12-31T15:34:00.000-05:00',
@@ -99,20 +92,13 @@ describe('IntelligentSpeedAssistanceNotice', () => {
 
           render(
             <SettingsContext.Provider value={mockedSettings}>
-              <IntelligentSpeedAssistanceNotice vehicle={vehicle} />
+              <StopSuperSpeedersActNotice vehicle={vehicle} />
             </SettingsContext.Provider>,
           )
 
-          // Expect sponsors' names to be visible
-          expect(
-            screen.getByText('Assembly Member Gallagher'),
-          ).toBeInTheDocument()
-          expect(
-            screen.getByText('State Senator Gounardes'),
-          ).toBeInTheDocument()
           // Expect bill name to be visible
           expect(
-            screen.getByText('Speed Limiters for the Most Reckless Drivers'),
+            screen.getByText('Stop Super Speeders Act'),
           ).toBeInTheDocument()
           // expect description language to be visible
           expect(
@@ -120,13 +106,13 @@ describe('IntelligentSpeedAssistanceNotice', () => {
           ).toBeInTheDocument()
           // Expect number of violations to be visible
           expect(screen.getByText('20')).toBeInTheDocument()
-          // Expect camera violations language to be visible
+          // Expect speed camera violations language to be visible
           expect(
-            screen.getByText('red light and speed camera violations'),
+            screen.getByText('speed camera violations'),
           ).toBeInTheDocument()
           // Expect threshold to be visible
           expect(
-            screen.getByText('(>= 6/year)', { exact: false }),
+            screen.getByText('(>= 16/year)', { exact: false }),
           ).toBeInTheDocument()
           // Expect streak dates to be visible
           expect(
@@ -164,7 +150,7 @@ describe('IntelligentSpeedAssistanceNotice', () => {
         expect(() =>
           render(
             <SettingsContext.Provider value={mockedSettings}>
-              <IntelligentSpeedAssistanceNotice vehicle={vehicle} />
+              <StopSuperSpeedersActNotice vehicle={vehicle} />
             </SettingsContext.Provider>,
           ),
         ).toThrow('Camera data does not conform to any known configuration.')
@@ -198,7 +184,7 @@ describe('IntelligentSpeedAssistanceNotice', () => {
         expect(() =>
           render(
             <SettingsContext.Provider value={mockedSettings}>
-              <IntelligentSpeedAssistanceNotice vehicle={vehicle} />
+              <StopSuperSpeedersActNotice vehicle={vehicle} />
             </SettingsContext.Provider>,
           ),
         ).toThrow('Camera data does not conform to any known configuration.')

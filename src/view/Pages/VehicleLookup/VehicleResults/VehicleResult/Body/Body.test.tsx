@@ -135,24 +135,17 @@ describe('Body', () => {
     })
   })
 
-  it('should show the Dangerous Vehicle Abatement Act warning with the new-style display when the vehicle warrants it', () => {
-    const vehicleEligibleForDangerousVehicleAbatementActWarning =
-      VehicleFactory.build({
-        cameraStreakData: {
-          redLightCameraViolations: {
-            maxStreak: 7,
-            streakEnd: '2024-05-06T14:59:00.000-04:00',
-            streakStart: '2023-06-27T12:43:00.000-04:00',
-            total: 9,
-          },
-          schoolZoneSpeedCameraViolations: {
-            maxStreak: 20,
-            streakEnd: '2024-10-07T10:02:00.000-04:00',
-            streakStart: '2023-12-31T15:34:00.000-05:00',
-            total: 27,
-          },
+  it('should show the Stop Super Speeders Act warning with the new-style display when the vehicle warrants it', () => {
+    const vehicleEligibleForStopSuperSpeedersActWarning = VehicleFactory.build({
+      cameraStreakData: {
+        schoolZoneSpeedCameraViolations: {
+          maxStreak: 20,
+          streakEnd: '2024-10-07T10:02:00.000-04:00',
+          streakStart: '2023-12-31T15:34:00.000-05:00',
+          total: 27,
         },
-      })
+      },
+    })
 
     const mockedSettings = {
       getSetting: jest.fn().mockReturnValueOnce(true),
@@ -164,34 +157,25 @@ describe('Body', () => {
       <SettingsContext.Provider value={mockedSettings}>
         <Body
           showViolationsList={false}
-          vehicle={vehicleEligibleForDangerousVehicleAbatementActWarning}
+          vehicle={vehicleEligibleForStopSuperSpeedersActWarning}
         />
       </SettingsContext.Provider>,
     )
 
-    expect(
-      screen.getByText('Dangerous Vehicle Abatement Act'),
-    ).toBeInTheDocument()
+    expect(screen.getByText('Stop Super Speeders Act')).toBeInTheDocument()
   })
 
-  it('should show the Dangerous Vehicle Abatement Act warning with the old-style display when the vehicle warrants it', () => {
-    const vehicleEligibleForDangerousVehicleAbatementActWarning =
-      VehicleFactory.build({
-        cameraStreakData: {
-          redLightCameraViolations: {
-            maxStreak: 7,
-            streakEnd: '2024-05-06T14:59:00.000-04:00',
-            streakStart: '2023-06-27T12:43:00.000-04:00',
-            total: 9,
-          },
-          schoolZoneSpeedCameraViolations: {
-            maxStreak: 20,
-            streakEnd: '2024-10-07T10:02:00.000-04:00',
-            streakStart: '2023-12-31T15:34:00.000-05:00',
-            total: 27,
-          },
+  it('should show the Stop Super Speeders Act warning with the old-style display when the vehicle warrants it', () => {
+    const vehicleEligibleForStopSuperSpeedersActWarning = VehicleFactory.build({
+      cameraStreakData: {
+        schoolZoneSpeedCameraViolations: {
+          maxStreak: 20,
+          streakEnd: '2024-10-07T10:02:00.000-04:00',
+          streakStart: '2023-12-31T15:34:00.000-05:00',
+          total: 27,
         },
-      })
+      },
+    })
 
     const mockedSettings = {
       getSetting: jest.fn().mockReturnValueOnce(false),
@@ -203,13 +187,11 @@ describe('Body', () => {
       <SettingsContext.Provider value={mockedSettings}>
         <Body
           showViolationsList={false}
-          vehicle={vehicleEligibleForDangerousVehicleAbatementActWarning}
+          vehicle={vehicleEligibleForStopSuperSpeedersActWarning}
         />
       </SettingsContext.Provider>,
     )
 
-    expect(
-      screen.getByText('Dangerous Vehicle Abatement Act'),
-    ).toBeInTheDocument()
+    expect(screen.getByText('Stop Super Speeders Act')).toBeInTheDocument()
   })
 })

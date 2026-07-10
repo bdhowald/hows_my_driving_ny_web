@@ -25,37 +25,13 @@ export default {
     },
   },
   legislation: {
-    dangerousVehicleAbatementAct: {
-      legislationName: 'Dangerous Vehicle Abatement Act',
-      legislationUrl:
-        'https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=3521908&GUID=A4FD4CFC-8AD8-4130-AA92-11BC56936F6D#:~:text=The%20bill%20will%20create%20a,Department%20of%20Transportation%20(DOT).',
-    },
-    speedLimitersForTheMostRecklessDrivers: {
-      legislationLinks: {
-        assembly:
-          'https://www.nysenate.gov/legislation/bills/2025/A2299/amendment/B',
-        senate:
-          'https://www.nysenate.gov/legislation/bills/2025/S4045/amendment/A',
-      },
+    stopSuperSpeedersAct: {
+      legislationName: 'Stop Super Speeders Act',
       learnMore: {
         link: 'https://static1.squarespace.com/static/66e9f5934be5cb497f7cfd6c/t/68bf36bee4ed1a6d76a6f552/1757361854806/Super+Speeders+One+Pager+9.25+updated.pdf',
         text: 'intelligent speed assistance technology',
       },
-      legislationName: 'Speed Limiters for the Most Reckless Drivers',
-      sponsors: [
-        {
-          link: 'https://nyassembly.gov/mem/Emily-Gallagher',
-          name: 'Assembly Member Gallagher',
-        },
-        {
-          link: 'https://www.nysenate.gov/senators/andrew-gounardes',
-          name: 'State Senator Gounardes',
-        },
-      ],
-      support: {
-        link: 'https://act.transalt.org/a/intelligent-speed-assistance',
-        text: 'here',
-      },
+      legislationLink: 'https://www.nysenate.gov/legislation/laws/VAT/1642-B',
     },
   },
   lookups: {

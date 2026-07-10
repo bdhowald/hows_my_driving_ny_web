@@ -1,13 +1,10 @@
 import React from 'react'
-import { useCookies } from 'react-cookie'
 
-import { DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY } from 'constants/storage'
 import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import Vehicle from 'models/Vehicle/Vehicle'
 import useSettings from 'hooks/useSettings/useSettings'
 import LookupInfo from 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/LookupInfo/LookupInfo'
-import DangerousVehicleAbatementActNotice from 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/Notices/DangerousVehicleAbatementActNotice/DangerousVehicleAbatementActNotice'
-import IntelligentSpeedAssistanceNotice from 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/Notices/IntelligentSpeedAssistanceNotice/IntelligentSpeedAssistanceNotice'
+import StopSuperSpeedersActNotice from 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/Notices/StopSuperSpeedersActNotice/StopSuperSpeedersActNotice'
 import ViolationsInspector from 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/ViolationsInspector/ViolationsInspector'
 
 import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/Body/Body.css'
@@ -24,36 +21,20 @@ const Body = React.forwardRef(
   ) => {
     const { getSetting } = useSettings()
 
-    const [cookies, _, __] = useCookies([
-      DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY,
-    ])
-
-    const displayOfIntelligentSpeedAssistanceNoticeEnabled =
-      cookies[DISPLAY_INTELLIGENT_SPEED_ASSISTANCE_NOTICE_STORAGE_KEY] === true
-
     const useNewStyleDisplay =
       getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
 
     const cameraStreakData = vehicle.cameraStreakData
 
     // Only show one notice or the other
-    const showIntelligentSpeedAssistanceNotice =
-      displayOfIntelligentSpeedAssistanceNoticeEnabled &&
-      cameraStreakData?.cameraViolations?.maxStreak >= 6
-
-    const showDangerousVehicleAbatementActNotice =
-      !displayOfIntelligentSpeedAssistanceNoticeEnabled &&
-      (cameraStreakData?.redLightCameraViolations?.maxStreak >= 5 ||
-        cameraStreakData?.schoolZoneSpeedCameraViolations?.maxStreak >= 15)
+    const showStopSuperSpeedersActNotice =
+      cameraStreakData?.schoolZoneSpeedCameraViolations?.maxStreak >= 16
 
     return (
       <ul className="list-group list-group-flush" ref={ref}>
         <LookupInfo vehicle={vehicle} />
-        {showIntelligentSpeedAssistanceNotice && (
-          <IntelligentSpeedAssistanceNotice vehicle={vehicle} />
-        )}
-        {showDangerousVehicleAbatementActNotice && (
-          <DangerousVehicleAbatementActNotice vehicle={vehicle} />
+        {showStopSuperSpeedersActNotice && (
+          <StopSuperSpeedersActNotice vehicle={vehicle} />
         )}
         <ViolationsInspector
           showViolationsList={showViolationsList}

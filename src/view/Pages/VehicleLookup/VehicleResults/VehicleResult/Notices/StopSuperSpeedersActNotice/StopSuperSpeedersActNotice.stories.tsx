@@ -4,12 +4,11 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
 import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 
-import IntelligentSpeedAssistanceNotice from './IntelligentSpeedAssistanceNotice'
+import StopSuperSpeedersActNotice from './StopSuperSpeedersActNotice'
 
-const meta: Meta<typeof IntelligentSpeedAssistanceNotice> = {
-  title:
-    'Components/VehicleResults/VehicleResult/IntelligentSpeedAssistanceNotice',
-  component: IntelligentSpeedAssistanceNotice,
+const meta: Meta<typeof StopSuperSpeedersActNotice> = {
+  title: 'Components/VehicleResults/VehicleResult/StopSuperSpeedersActNotice',
+  component: StopSuperSpeedersActNotice,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   parameters: {
@@ -18,7 +17,7 @@ const meta: Meta<typeof IntelligentSpeedAssistanceNotice> = {
   },
 }
 
-type Story = StoryObj<typeof IntelligentSpeedAssistanceNotice>
+type Story = StoryObj<typeof StopSuperSpeedersActNotice>
 
 const mockedSettings = {
   removeSetting: () => null,
@@ -40,22 +39,22 @@ export const EligibleNewStyleDisplay: Story = {
     vehicle: VehicleFactory.build({
       cameraStreakData: {
         cameraViolations: {
-          maxStreak: 8,
+          maxStreak: 29,
           streakEnd: '2024-10-12T16:51:00.000-04:00',
           streakStart: '2023-10-24T14:39:00.000-04:00',
-          total: 13,
+          total: 29,
         },
         redLightCameraViolations: {
           maxStreak: 7,
-          streakEnd: '2024-05-06T14:59:00.000-04:00',
-          streakStart: '2023-06-27T12:43:00.000-04:00',
-          total: 9,
+          streakEnd: '2024-10-12T16:51:00.000-04:00',
+          streakStart: '2023-11-27T12:43:00.000-05:00',
+          total: 12,
         },
         schoolZoneSpeedCameraViolations: {
-          maxStreak: 2,
+          maxStreak: 17,
           streakEnd: '2024-10-07T10:02:00.000-04:00',
-          streakStart: '2023-12-31T15:34:00.000-05:00',
-          total: 4,
+          streakStart: '2023-10-24T14:39:00.000-04:00',
+          total: 17,
         },
       },
     }),
@@ -91,22 +90,22 @@ export const EligibleOldStyleDisplay: Story = {
     vehicle: VehicleFactory.build({
       cameraStreakData: {
         cameraViolations: {
-          maxStreak: 8,
+          maxStreak: 29,
           streakEnd: '2024-10-12T16:51:00.000-04:00',
           streakStart: '2023-10-24T14:39:00.000-04:00',
-          total: 13,
+          total: 29,
         },
         redLightCameraViolations: {
           maxStreak: 7,
-          streakEnd: '2024-05-06T14:59:00.000-04:00',
-          streakStart: '2023-06-27T12:43:00.000-04:00',
-          total: 9,
+          streakEnd: '2024-10-12T16:51:00.000-04:00',
+          streakStart: '2023-11-27T12:43:00.000-05:00',
+          total: 12,
         },
         schoolZoneSpeedCameraViolations: {
-          maxStreak: 2,
+          maxStreak: 17,
           streakEnd: '2024-10-07T10:02:00.000-04:00',
-          streakStart: '2023-12-31T15:34:00.000-05:00',
-          total: 4,
+          streakStart: '2023-10-24T14:39:00.000-04:00',
+          total: 17,
         },
       },
     }),
