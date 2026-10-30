@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useCookies } from 'react-cookie'
 
 import {
@@ -9,54 +10,27 @@ import {
 const useSearchFiltersActiveCookie = () => {
   const [cookies, setCookie, _] = useCookies([USE_SEARCH_FILTERS_STORAGE_KEY])
 
-  const areSearchFiltersActive = () => {
-    const useSearchFiltersActiveCookiePresent =
-      cookies[USE_SEARCH_FILTERS_STORAGE_KEY] !== null &&
-      cookies[USE_SEARCH_FILTERS_STORAGE_KEY] !== undefined
+  const currentCookieValue = cookies[USE_SEARCH_FILTERS_STORAGE_KEY]
+  const useSearchFiltersCookiePresent = currentCookieValue !== null &&
+    currentCookieValue !== undefined
+  const useSearchFilters =currentCookieValue === true
 
-    if (!useSearchFiltersActiveCookiePresent) {
-      setSearchFiltersAreActiveCookie()
-    }
+  const queryParameters = new URLSearchParams(document.location.search)
 
-    const queryParameters = new URLSearchParams(document.location.search)
-    const useSearchFilters = cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true
+  const queryParamFeatureFlagEnabled =
+    queryParameters.get(USE_SEARCH_FILTERS_STORAGE_KEY) === 'true'
 
-    const queryParamFeatureFlagEnabled =
-      queryParameters.get(USE_SEARCH_FILTERS_STORAGE_KEY) === 'true'
+  const queryParamFeatureFlagDisabled =
+    queryParameters.get(USE_SEARCH_FILTERS_STORAGE_KEY) === 'false'
 
-    const queryParamFeatureFlagDisabled =
-      queryParameters.get(USE_SEARCH_FILTERS_STORAGE_KEY) === 'false'
+  const shouldSetCookie =
+    !useSearchFiltersCookiePresent ||
+    !useSearchFilters ||
+    queryParamFeatureFlagEnabled ||
+    queryParamFeatureFlagDisabled
 
-    if (queryParamFeatureFlagDisabled) {
-      return false
-    }
-    if (queryParamFeatureFlagEnabled || useSearchFilters) {
-      return true
-    }
-    return false
-  }
-
-  const setSearchFiltersAreActiveCookie = () => {
-    const queryParameters = new URLSearchParams(document.location.search)
-
-    const useSearchFilters = cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true
-
-    const useSearchFiltersActiveCookiePresent =
-      cookies[USE_SEARCH_FILTERS_STORAGE_KEY] !== null &&
-      cookies[USE_SEARCH_FILTERS_STORAGE_KEY] !== undefined
-
-    const queryParamFeatureFlagEnabled =
-      queryParameters.get(USE_SEARCH_FILTERS_STORAGE_KEY) === 'true'
-
-    const queryParamFeatureFlagDisabled =
-      queryParameters.get(USE_SEARCH_FILTERS_STORAGE_KEY) === 'false'
-
-    if (
-      !useSearchFiltersActiveCookiePresent ||
-      !useSearchFilters ||
-      queryParamFeatureFlagEnabled ||
-      queryParamFeatureFlagDisabled
-    ) {
+  useEffect(() => {
+    if (shouldSetCookie) {
       // 25% of sessions are in experimental group
       // 25% of sessions are in control group
       // 50% of sessions are available for progressive rollout
@@ -91,6 +65,21 @@ const useSearchFiltersActiveCookie = () => {
         })
       }
     }
+  }, [
+    queryParamFeatureFlagDisabled,
+    queryParamFeatureFlagEnabled,
+    setCookie,
+    shouldSetCookie,
+  ])
+
+  const areSearchFiltersActive = () => {
+    if (queryParamFeatureFlagDisabled) {
+      return false
+    }
+    if (queryParamFeatureFlagEnabled) {
+      return true
+    }
+    return currentCookieValue
   }
 
   return {

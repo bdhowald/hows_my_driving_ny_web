@@ -21,3 +21,30 @@ Object.defineProperty(window, 'matchMedia', {
     }))
   },
 })
+
+HTMLCanvasElement.prototype.getContext = function (
+  this: HTMLCanvasElement,
+  contextId: string
+): unknown {
+  // A base object that satisfies the minimum properties libraries check for (like .canvas)
+  const baseContext = {
+    canvas: this,
+  }
+
+  if (contextId === '2d') {
+    const mockContext: Partial<CanvasRenderingContext2D> = {
+      ...baseContext,
+    }
+
+    return mockContext as CanvasRenderingContext2D
+  }
+
+  if (contextId === 'webgl' || contextId === 'experimental-webgl') {
+    const mockWebGL: Partial<WebGLRenderingContext> = {
+      ...baseContext,
+    }
+    return mockWebGL as WebGLRenderingContext
+  }
+
+  return null
+} as typeof HTMLCanvasElement.prototype.getContext

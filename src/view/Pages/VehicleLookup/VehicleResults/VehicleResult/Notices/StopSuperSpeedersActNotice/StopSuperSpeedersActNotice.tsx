@@ -116,7 +116,7 @@ const StopSuperSpeedersActNotice = ({ vehicle }: { vehicle: Vehicle }) => {
   const cameraEligibilityString = getEligibilityText()
 
   if (!cameraEligibilityString) {
-    throw 'Camera data does not conform to any known configuration.'
+    throw new Error('Camera data does not conform to any known configuration.')
   }
 
   return (

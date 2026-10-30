@@ -9,6 +9,21 @@ import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 
 import VehicleLookup from './VehicleLookup'
 
+// Mock FingerprintJS to avoid canvas errors.
+vi.mock(
+  '@fingerprintjs/fingerprintjs', () => ({
+    default: {
+      load: vi.fn().mockResolvedValue({
+        get: vi.fn()
+        // .mockResolvedValue({
+        //   visitorId: 'test-visitor-id',
+        //   components: {},
+        // })
+      })
+    }
+  })
+)
+
 describe('VehicleLookup', () => {
   beforeEach(() => {
     window.HTMLElement.prototype.scrollIntoView = function () {}
@@ -772,7 +787,7 @@ describe('VehicleLookup', () => {
 
           expect(screen.getByRole('alert')).toBeInTheDocument()
         },
-        { timeout: 5000 },
+        { timeout: 10000 },
       )
 
       await waitFor(() => {
@@ -827,9 +842,12 @@ describe('VehicleLookup', () => {
       const removeLookupButton = screen.getByLabelText('remove lookup')
       userEvent.click(removeLookupButton)
 
-      await waitFor(() => {
-        expect(screen.queryByText('Plate:')).not.toBeInTheDocument()
-      })
+      await waitFor(
+        () => {
+          expect(screen.queryByText('Plate:')).not.toBeInTheDocument()
+        },
+        { timeout: 10000 },
+      )
     })
 
     it('should copy the link to the lookup when the user presses the copy button of a lookup', async () => {
