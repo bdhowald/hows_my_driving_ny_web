@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Components/VehicleResults/VehicleResults LookupInFlightNewStyleDisplay smoke-test 1`] = `
 <div class="site-container-wrapper">
@@ -3193,25 +3193,6 @@ exports[`Components/VehicleResults/VehicleResults ResultsWithViolationsListVisib
               <main>
                 <div class="row">
                   <div class="col-md-12 vehicle-lookup-content-container new-style">
-                    <div class="filters-wrapper new-style"
-                         data-testid="filters-wrapper-test-id"
-                    >
-                      <div class="filter-controls">
-                        <div class="filter-controls-header">
-                          <div>
-                            Showing 1 result
-                          </div>
-                        </div>
-                        <div class="results-control-toggle">
-                          <button class="btn btn-primary"
-                                  type="button"
-                          >
-                            Filter
-                          </button>
-                        </div>
-                      </div>
-                      <hr>
-                    </div>
                     <div class="vehicles new-style">
                       <div data-testid="lookup-e5f6g7h8"
                            id="lookup-e5f6g7h8"

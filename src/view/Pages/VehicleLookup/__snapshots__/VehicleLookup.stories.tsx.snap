@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Pages/VehicleLookup NoLookupsNewStyleDisplay smoke-test 1`] = `
+exports[`Pages/VehicleLookup NoLookupsNewStyleDisplay play-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <main>
@@ -422,7 +422,7 @@ exports[`Pages/VehicleLookup NoLookupsNewStyleDisplay smoke-test 1`] = `
 </div>
 `;
 
-exports[`Pages/VehicleLookup NoLookupsOldStyleDisplay smoke-test 1`] = `
+exports[`Pages/VehicleLookup NoLookupsOldStyleDisplay play-test 1`] = `
 <div class="site-container-wrapper">
   <div class="site-container container-fluid">
     <main>
@@ -1258,6 +1258,85 @@ exports[`Pages/VehicleLookup OneLookupFromSharedLookupNewStyleDisplay smoke-test
             </div>
           </div>
           <div class="vehicles new-style">
+            <div class="vehicle card"
+                 aria-hidden="true"
+                 data-testid="shimmer-loader"
+            >
+              <div class="card-header shimmer">
+              </div>
+              <ul class="list-group-flush list-group">
+                <li class="no-padding list-group-item card-title placeholder-glow">
+                  <div class="row new-style">
+                    <div class="summary-section col-xs-12 col-sm-6 new-style">
+                      <div class="summary-box shimmer align-left position-left lookup-info new-style">
+                        <span class="placeholder col-10">
+                        </span>
+                        <span class="placeholder col-8">
+                        </span>
+                        <span class="placeholder col-9">
+                        </span>
+                        <span class="placeholder col-10">
+                        </span>
+                        <span class="placeholder col-9">
+                        </span>
+                      </div>
+                      <div class="summary-box shimmer align-right position-left lookup-info new-style">
+                        <span class="placeholder col-10">
+                        </span>
+                        <span class="placeholder col-8">
+                        </span>
+                        <span class="placeholder col-9">
+                        </span>
+                        <span class="placeholder col-10">
+                        </span>
+                        <span class="placeholder col-9">
+                        </span>
+                      </div>
+                    </div>
+                    <div class="summary-section col-xs-12 col-sm-6 new-style">
+                      <div class="summary-box shimmer align-left position-right lookup-info new-style">
+                        <span class="placeholder col-9">
+                        </span>
+                        <span class="placeholder col-8">
+                        </span>
+                        <span class="placeholder col-6">
+                        </span>
+                        <span class="placeholder col-10">
+                        </span>
+                        <span class="placeholder col-8">
+                        </span>
+                      </div>
+                      <div class="summary-box shimmer align-right position-right lookup-info new-style">
+                        <span class="placeholder col-9">
+                        </span>
+                        <span class="placeholder col-8">
+                        </span>
+                        <span class="placeholder col-6">
+                        </span>
+                        <span class="placeholder col-10">
+                        </span>
+                        <span class="placeholder col-8">
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="violations-table-wrapper">
+                    <div class="violations-table-header">
+                      <div class="row">
+                        <div class="col-12">
+                          <a class="btn btn-primary disabled placeholder col-12"
+                             aria-disabled="true"
+                          >
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -1680,6 +1759,85 @@ exports[`Pages/VehicleLookup OneLookupFromSharedLookupOldStyleDisplay smoke-test
             </div>
           </div>
           <div class="vehicles ">
+            <div class="vehicle card"
+                 aria-hidden="true"
+                 data-testid="shimmer-loader"
+            >
+              <div class="card-header shimmer">
+              </div>
+              <ul class="list-group-flush list-group">
+                <li class="no-padding list-group-item card-title placeholder-glow">
+                  <div class="row ">
+                    <div class="summary-section col-xs-12 col-sm-6 ">
+                      <div class="summary-box shimmer align-left position-left lookup-info ">
+                        <span class="placeholder col-10">
+                        </span>
+                        <span class="placeholder col-8">
+                        </span>
+                        <span class="placeholder col-9">
+                        </span>
+                        <span class="placeholder col-10">
+                        </span>
+                        <span class="placeholder col-9">
+                        </span>
+                      </div>
+                      <div class="summary-box shimmer align-right position-left lookup-info ">
+                        <span class="placeholder col-10">
+                        </span>
+                        <span class="placeholder col-8">
+                        </span>
+                        <span class="placeholder col-9">
+                        </span>
+                        <span class="placeholder col-10">
+                        </span>
+                        <span class="placeholder col-9">
+                        </span>
+                      </div>
+                    </div>
+                    <div class="summary-section col-xs-12 col-sm-6 ">
+                      <div class="summary-box shimmer align-left position-right lookup-info ">
+                        <span class="placeholder col-9">
+                        </span>
+                        <span class="placeholder col-8">
+                        </span>
+                        <span class="placeholder col-6">
+                        </span>
+                        <span class="placeholder col-10">
+                        </span>
+                        <span class="placeholder col-8">
+                        </span>
+                      </div>
+                      <div class="summary-box shimmer align-right position-right lookup-info ">
+                        <span class="placeholder col-9">
+                        </span>
+                        <span class="placeholder col-8">
+                        </span>
+                        <span class="placeholder col-6">
+                        </span>
+                        <span class="placeholder col-10">
+                        </span>
+                        <span class="placeholder col-8">
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="violations-table-wrapper">
+                    <div class="violations-table-header">
+                      <div class="row">
+                        <div class="col-12">
+                          <a class="btn btn-primary disabled placeholder col-12"
+                             aria-disabled="true"
+                          >
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

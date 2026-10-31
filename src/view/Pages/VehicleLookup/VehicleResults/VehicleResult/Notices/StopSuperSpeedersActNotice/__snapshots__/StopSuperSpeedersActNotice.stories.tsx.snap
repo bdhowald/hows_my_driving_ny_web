@@ -1,0 +1,117 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components/VehicleResults/VehicleResult/StopSuperSpeedersActNotice EligibleNewStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container new-style">
+          <div class="vehicles new-style">
+            <div class="vehicle card">
+              <ul class="list-group-flush list-group">
+                <li class="dangerous-vehicle-notice list-group-item list-group-item-primary new-style"
+                    data-testid="stop-super-speeders-act-notice"
+                >
+                  <p>
+                    Under the
+                    <a href="https://www.nysenate.gov/legislation/laws/VAT/1642-B"
+                       rel="noopener noreferrer"
+                       target="_blank"
+                    >
+                      <span style="font-weight: bold;">
+                        Stop Super Speeders Act
+                      </span>
+                    </a>
+                    , this vehicle could be required to have
+                    <a href="https://static1.squarespace.com/static/66e9f5934be5cb497f7cfd6c/t/68bf36bee4ed1a6d76a6f552/1757361854806/Super+Speeders+One+Pager+9.25+updated.pdf"
+                       rel="noopener noreferrer"
+                       target="_blank"
+                    >
+                      intelligent speed assistance technology
+                    </a>
+                    &nbsp;installed for:
+                  </p>
+                  <ul>
+                    <li>
+                      <span class="streak-count-and-type text-bg-warning">
+                        <span class="streak-count">
+                          17
+                        </span>
+                        speed camera violations
+                      </span>
+                      <span class="streak-threshold">
+                        &nbsp;(&gt;= 16/year)
+                      </span>
+                      <span>
+                        &nbsp;from 10/24/2023 to 10/07/2024
+                      </span>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`Components/VehicleResults/VehicleResult/StopSuperSpeedersActNotice EligibleOldStyleDisplay smoke-test 1`] = `
+<div class="site-container-wrapper">
+  <div class="site-container container-fluid">
+    <main>
+      <div class="row">
+        <div class="col-md-12 vehicle-lookup-content-container">
+          <div class="vehicles">
+            <div class="vehicle card">
+              <ul class="list-group-flush list-group">
+                <li class="dangerous-vehicle-notice list-group-item list-group-item-primary "
+                    data-testid="stop-super-speeders-act-notice"
+                >
+                  <p>
+                    Under the
+                    <a href="https://www.nysenate.gov/legislation/laws/VAT/1642-B"
+                       rel="noopener noreferrer"
+                       target="_blank"
+                    >
+                      <span style="font-weight: bold;">
+                        Stop Super Speeders Act
+                      </span>
+                    </a>
+                    , this vehicle could be required to have
+                    <a href="https://static1.squarespace.com/static/66e9f5934be5cb497f7cfd6c/t/68bf36bee4ed1a6d76a6f552/1757361854806/Super+Speeders+One+Pager+9.25+updated.pdf"
+                       rel="noopener noreferrer"
+                       target="_blank"
+                    >
+                      intelligent speed assistance technology
+                    </a>
+                    &nbsp;installed for:
+                  </p>
+                  <ul>
+                    <li>
+                      <span class="streak-count-and-type text-bg-warning">
+                        <span class="streak-count">
+                          17
+                        </span>
+                        speed camera violations
+                      </span>
+                      <span class="streak-threshold">
+                        &nbsp;(&gt;= 16/year)
+                      </span>
+                      <span>
+                        &nbsp;from 10/24/2023 to 10/07/2024
+                      </span>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;

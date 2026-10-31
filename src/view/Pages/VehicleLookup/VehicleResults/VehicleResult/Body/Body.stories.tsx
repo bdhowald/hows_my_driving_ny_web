@@ -50,14 +50,14 @@ const ParentHtml = ({
   )
 }
 
-const vehicleEligibleForDangerousVehicleAbatementActNotice =
+const vehicleEligibleForStopSuperSpeedersActNotice =
   VehicleFactory.build({
     cameraStreakData: {
       cameraViolations: {
-        maxStreak: 8,
+        maxStreak: 20,
         streakEnd: '2024-10-12T16:51:00.000-04:00',
         streakStart: '2023-10-24T14:39:00.000-04:00',
-        total: 13,
+        total: 26,
       },
       redLightCameraViolations: {
         maxStreak: 7,
@@ -66,15 +66,15 @@ const vehicleEligibleForDangerousVehicleAbatementActNotice =
         total: 9,
       },
       schoolZoneSpeedCameraViolations: {
-        maxStreak: 2,
+        maxStreak: 17,
         streakEnd: '2024-10-07T10:02:00.000-04:00',
         streakStart: '2023-12-31T15:34:00.000-05:00',
-        total: 4,
+        total: 22,
       },
     },
   })
 
-const vehicleIneligibleForDangerousVehicleAbatementActNotice =
+const vehicleIneligibleForStopSuperSpeedersActNotice =
   VehicleFactory.build({
     cameraStreakData: {
       cameraViolations: {
@@ -98,14 +98,14 @@ const vehicleIneligibleForDangerousVehicleAbatementActNotice =
 export const ViolationsListHiddenNewStyleDisplay: Story = {
   args: {
     showViolationsList: false,
-    vehicle: vehicleIneligibleForDangerousVehicleAbatementActNotice,
+    vehicle: vehicleIneligibleForStopSuperSpeedersActNotice,
   },
   decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
 export const ViolationsListHiddenOldStyleDisplay: Story = {
   args: {
     showViolationsList: false,
-    vehicle: vehicleIneligibleForDangerousVehicleAbatementActNotice,
+    vehicle: vehicleIneligibleForStopSuperSpeedersActNotice,
   },
   decorators: [oldStyleDisplayDecorator(ParentHtml)],
 }
@@ -113,14 +113,14 @@ export const ViolationsListHiddenOldStyleDisplay: Story = {
 export const ViolationsListVisibleNewStyleDisplay: Story = {
   args: {
     showViolationsList: true,
-    vehicle: vehicleIneligibleForDangerousVehicleAbatementActNotice,
+    vehicle: vehicleIneligibleForStopSuperSpeedersActNotice,
   },
   decorators: [newStyleDisplayDecorator(ParentHtml)],
 }
 export const ViolationsListVisibleOldStyleDisplay: Story = {
   args: {
     showViolationsList: true,
-    vehicle: vehicleIneligibleForDangerousVehicleAbatementActNotice,
+    vehicle: vehicleIneligibleForStopSuperSpeedersActNotice,
   },
   decorators: [oldStyleDisplayDecorator(ParentHtml)],
 }
@@ -129,7 +129,7 @@ export const ViolationsListHiddenWithDangerousVehicleAbatementActNewStyleDisplay
   {
     args: {
       showViolationsList: false,
-      vehicle: vehicleEligibleForDangerousVehicleAbatementActNotice,
+      vehicle: vehicleEligibleForStopSuperSpeedersActNotice,
     },
     decorators: [newStyleDisplayDecorator(ParentHtml)],
   }
@@ -137,7 +137,7 @@ export const ViolationsListHiddenWithDangerousVehicleAbatementActOldStyleDisplay
   {
     args: {
       showViolationsList: false,
-      vehicle: vehicleEligibleForDangerousVehicleAbatementActNotice,
+      vehicle: vehicleEligibleForStopSuperSpeedersActNotice,
     },
     decorators: [oldStyleDisplayDecorator(ParentHtml)],
   }
@@ -146,7 +146,7 @@ export const ViolationsListVisibleWithDangerousVehicleAbatementActNewStyleDispla
   {
     args: {
       showViolationsList: true,
-      vehicle: vehicleEligibleForDangerousVehicleAbatementActNotice,
+      vehicle: vehicleEligibleForStopSuperSpeedersActNotice,
     },
     decorators: [newStyleDisplayDecorator(ParentHtml)],
   }
@@ -154,7 +154,7 @@ export const ViolationsListVisibleWithDangerousVehicleAbatementActOldStyleDispla
   {
     args: {
       showViolationsList: true,
-      vehicle: vehicleEligibleForDangerousVehicleAbatementActNotice,
+      vehicle: vehicleEligibleForStopSuperSpeedersActNotice,
     },
     decorators: [oldStyleDisplayDecorator(ParentHtml)],
   }

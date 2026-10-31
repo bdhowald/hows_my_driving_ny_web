@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Components/VehicleResults/VehicleResult/Body NoViolationsNewStyleDisplay smoke-test 1`] = `
 <div class="site-container-wrapper">
@@ -728,32 +728,41 @@ exports[`Components/VehicleResults/VehicleResult/Body ViolationsListHiddenWithDa
                     </div>
                   </div>
                 </li>
-                <li class="dangerous-vehicle-notice list-group-item list-group-item-warning new-style"
-                    data-testid="dangerous-vehicle-abatement-act-notice"
+                <li class="dangerous-vehicle-notice list-group-item list-group-item-primary new-style"
+                    data-testid="stop-super-speeders-act-notice"
                 >
                   <p>
                     Under the
-                    <a href="https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=3521908&amp;GUID=A4FD4CFC-8AD8-4130-AA92-11BC56936F6D#:~:text=The%20bill%20will%20create%20a,Department%20of%20Transportation%20(DOT)."
+                    <a href="https://www.nysenate.gov/legislation/laws/VAT/1642-B"
                        rel="noopener noreferrer"
                        target="_blank"
                     >
-                      Dangerous Vehicle Abatement Act
+                      <span style="font-weight: bold;">
+                        Stop Super Speeders Act
+                      </span>
                     </a>
-                    &nbsp;this vehicle could have been booted or impounded for:
+                    , this vehicle could be required to have
+                    <a href="https://static1.squarespace.com/static/66e9f5934be5cb497f7cfd6c/t/68bf36bee4ed1a6d76a6f552/1757361854806/Super+Speeders+One+Pager+9.25+updated.pdf"
+                       rel="noopener noreferrer"
+                       target="_blank"
+                    >
+                      intelligent speed assistance technology
+                    </a>
+                    &nbsp;installed for:
                   </p>
                   <ul>
                     <li>
                       <span class="streak-count-and-type text-bg-warning">
                         <span class="streak-count">
-                          7
+                          17
                         </span>
-                        red light camera violations
+                        speed camera violations
                       </span>
                       <span class="streak-threshold">
-                        &nbsp;(&gt;= 5/year)
+                        &nbsp;(&gt;= 16/year)
                       </span>
                       <span>
-                        &nbsp;from 06/27/2023 to 05/06/2024
+                        &nbsp;from 12/31/2023 to 10/07/2024
                       </span>
                     </li>
                   </ul>
@@ -943,32 +952,41 @@ exports[`Components/VehicleResults/VehicleResult/Body ViolationsListHiddenWithDa
                     </div>
                   </div>
                 </li>
-                <li class="dangerous-vehicle-notice list-group-item list-group-item-warning "
-                    data-testid="dangerous-vehicle-abatement-act-notice"
+                <li class="dangerous-vehicle-notice list-group-item list-group-item-primary "
+                    data-testid="stop-super-speeders-act-notice"
                 >
                   <p>
                     Under the
-                    <a href="https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=3521908&amp;GUID=A4FD4CFC-8AD8-4130-AA92-11BC56936F6D#:~:text=The%20bill%20will%20create%20a,Department%20of%20Transportation%20(DOT)."
+                    <a href="https://www.nysenate.gov/legislation/laws/VAT/1642-B"
                        rel="noopener noreferrer"
                        target="_blank"
                     >
-                      Dangerous Vehicle Abatement Act
+                      <span style="font-weight: bold;">
+                        Stop Super Speeders Act
+                      </span>
                     </a>
-                    &nbsp;this vehicle could have been booted or impounded for:
+                    , this vehicle could be required to have
+                    <a href="https://static1.squarespace.com/static/66e9f5934be5cb497f7cfd6c/t/68bf36bee4ed1a6d76a6f552/1757361854806/Super+Speeders+One+Pager+9.25+updated.pdf"
+                       rel="noopener noreferrer"
+                       target="_blank"
+                    >
+                      intelligent speed assistance technology
+                    </a>
+                    &nbsp;installed for:
                   </p>
                   <ul>
                     <li>
                       <span class="streak-count-and-type text-bg-warning">
                         <span class="streak-count">
-                          7
+                          17
                         </span>
-                        red light camera violations
+                        speed camera violations
                       </span>
                       <span class="streak-threshold">
-                        &nbsp;(&gt;= 5/year)
+                        &nbsp;(&gt;= 16/year)
                       </span>
                       <span>
-                        &nbsp;from 06/27/2023 to 05/06/2024
+                        &nbsp;from 12/31/2023 to 10/07/2024
                       </span>
                     </li>
                   </ul>
@@ -1835,32 +1853,41 @@ exports[`Components/VehicleResults/VehicleResult/Body ViolationsListVisibleWithD
                     </div>
                   </div>
                 </li>
-                <li class="dangerous-vehicle-notice list-group-item list-group-item-warning new-style"
-                    data-testid="dangerous-vehicle-abatement-act-notice"
+                <li class="dangerous-vehicle-notice list-group-item list-group-item-primary new-style"
+                    data-testid="stop-super-speeders-act-notice"
                 >
                   <p>
                     Under the
-                    <a href="https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=3521908&amp;GUID=A4FD4CFC-8AD8-4130-AA92-11BC56936F6D#:~:text=The%20bill%20will%20create%20a,Department%20of%20Transportation%20(DOT)."
+                    <a href="https://www.nysenate.gov/legislation/laws/VAT/1642-B"
                        rel="noopener noreferrer"
                        target="_blank"
                     >
-                      Dangerous Vehicle Abatement Act
+                      <span style="font-weight: bold;">
+                        Stop Super Speeders Act
+                      </span>
                     </a>
-                    &nbsp;this vehicle could have been booted or impounded for:
+                    , this vehicle could be required to have
+                    <a href="https://static1.squarespace.com/static/66e9f5934be5cb497f7cfd6c/t/68bf36bee4ed1a6d76a6f552/1757361854806/Super+Speeders+One+Pager+9.25+updated.pdf"
+                       rel="noopener noreferrer"
+                       target="_blank"
+                    >
+                      intelligent speed assistance technology
+                    </a>
+                    &nbsp;installed for:
                   </p>
                   <ul>
                     <li>
                       <span class="streak-count-and-type text-bg-warning">
                         <span class="streak-count">
-                          7
+                          17
                         </span>
-                        red light camera violations
+                        speed camera violations
                       </span>
                       <span class="streak-threshold">
-                        &nbsp;(&gt;= 5/year)
+                        &nbsp;(&gt;= 16/year)
                       </span>
                       <span>
-                        &nbsp;from 06/27/2023 to 05/06/2024
+                        &nbsp;from 12/31/2023 to 10/07/2024
                       </span>
                     </li>
                   </ul>
@@ -2201,32 +2228,41 @@ exports[`Components/VehicleResults/VehicleResult/Body ViolationsListVisibleWithD
                     </div>
                   </div>
                 </li>
-                <li class="dangerous-vehicle-notice list-group-item list-group-item-warning "
-                    data-testid="dangerous-vehicle-abatement-act-notice"
+                <li class="dangerous-vehicle-notice list-group-item list-group-item-primary "
+                    data-testid="stop-super-speeders-act-notice"
                 >
                   <p>
                     Under the
-                    <a href="https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=3521908&amp;GUID=A4FD4CFC-8AD8-4130-AA92-11BC56936F6D#:~:text=The%20bill%20will%20create%20a,Department%20of%20Transportation%20(DOT)."
+                    <a href="https://www.nysenate.gov/legislation/laws/VAT/1642-B"
                        rel="noopener noreferrer"
                        target="_blank"
                     >
-                      Dangerous Vehicle Abatement Act
+                      <span style="font-weight: bold;">
+                        Stop Super Speeders Act
+                      </span>
                     </a>
-                    &nbsp;this vehicle could have been booted or impounded for:
+                    , this vehicle could be required to have
+                    <a href="https://static1.squarespace.com/static/66e9f5934be5cb497f7cfd6c/t/68bf36bee4ed1a6d76a6f552/1757361854806/Super+Speeders+One+Pager+9.25+updated.pdf"
+                       rel="noopener noreferrer"
+                       target="_blank"
+                    >
+                      intelligent speed assistance technology
+                    </a>
+                    &nbsp;installed for:
                   </p>
                   <ul>
                     <li>
                       <span class="streak-count-and-type text-bg-warning">
                         <span class="streak-count">
-                          7
+                          17
                         </span>
-                        red light camera violations
+                        speed camera violations
                       </span>
                       <span class="streak-threshold">
-                        &nbsp;(&gt;= 5/year)
+                        &nbsp;(&gt;= 16/year)
                       </span>
                       <span>
-                        &nbsp;from 06/27/2023 to 05/06/2024
+                        &nbsp;from 12/31/2023 to 10/07/2024
                       </span>
                     </li>
                   </ul>

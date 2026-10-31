@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Pages/Updates UpdatesPageNewStyleDisplay smoke-test 1`] = `
 <div class="site-container-wrapper">
@@ -24,6 +24,92 @@ exports[`Pages/Updates UpdatesPageNewStyleDisplay smoke-test 1`] = `
             </div>
           </div>
           <div class="changelog-update-list">
+            <div class="bg-light changelog-update-year-list card">
+              <details>
+                <summary class="bg-light">
+                  2026
+                </summary>
+                <div class="changelog-update-date">
+                  <h3>
+                    2026-07-09
+                  </h3>
+                  <ul class="changelog-update-date-changelist">
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Replace Dangerous Vehicle Abatement Act and Proposed Stop Super Speeders Act notices with adopted Stop Super Speeders Act.
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/4cba4b4da3ca9698027ce30a415a7358fd4be746"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [1,
+                      </a>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_api/commit/5d8901bf0c76b27bf9a18a112c958cc28fc40536"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        2]
+                      </a>
+                      <span class="badge rounded-pill text-bg-secondary">
+                        web
+                      </span>
+                      <span class="badge rounded-pill text-bg-info">
+                        api
+                      </span>
+                    </li>
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Fix missing metadata endpoints for fiscal years 2025 and 2026.
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/4cba4b4da3ca9698027ce30a415a7358fd4be746"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [1,
+                      </a>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_api/commit/5d8901bf0c76b27bf9a18a112c958cc28fc40536"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        2]
+                      </a>
+                      <span class="badge rounded-pill text-bg-secondary">
+                        web
+                      </span>
+                      <span class="badge rounded-pill text-bg-info">
+                        api
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="changelog-update-date">
+                  <h3>
+                    2026-03-12
+                  </h3>
+                  <ul class="changelog-update-date-changelist">
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Add new endpoints for fiscal years 2024, 2025, and 2026.
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_api/commit/569f554ba63d8ae51f3d5812b5ea9c55c3d37d56"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [Github]
+                      </a>
+                      <span class="badge rounded-pill text-bg-info">
+                        api
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </details>
+            </div>
             <div class="bg-light changelog-update-year-list card">
               <details>
                 <summary class="bg-light">
@@ -8655,6 +8741,92 @@ exports[`Pages/Updates UpdatesPageOldStyleDisplay smoke-test 1`] = `
             </div>
           </div>
           <div class="changelog-update-list">
+            <div class="bg-light changelog-update-year-list card">
+              <details>
+                <summary class="bg-light">
+                  2026
+                </summary>
+                <div class="changelog-update-date">
+                  <h3>
+                    2026-07-09
+                  </h3>
+                  <ul class="changelog-update-date-changelist">
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Replace Dangerous Vehicle Abatement Act and Proposed Stop Super Speeders Act notices with adopted Stop Super Speeders Act.
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/4cba4b4da3ca9698027ce30a415a7358fd4be746"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [1,
+                      </a>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_api/commit/5d8901bf0c76b27bf9a18a112c958cc28fc40536"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        2]
+                      </a>
+                      <span class="badge rounded-pill text-bg-secondary">
+                        web
+                      </span>
+                      <span class="badge rounded-pill text-bg-info">
+                        api
+                      </span>
+                    </li>
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Fix missing metadata endpoints for fiscal years 2025 and 2026.
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_web/commit/4cba4b4da3ca9698027ce30a415a7358fd4be746"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [1,
+                      </a>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_api/commit/5d8901bf0c76b27bf9a18a112c958cc28fc40536"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        2]
+                      </a>
+                      <span class="badge rounded-pill text-bg-secondary">
+                        web
+                      </span>
+                      <span class="badge rounded-pill text-bg-info">
+                        api
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="changelog-update-date">
+                  <h3>
+                    2026-03-12
+                  </h3>
+                  <ul class="changelog-update-date-changelist">
+                    <li class="changelog-update">
+                      <span class="changelog-update-description">
+                        Add new endpoints for fiscal years 2024, 2025, and 2026.
+                      </span>
+                      <a class="changelog-update-link"
+                         href="https://github.com/bdhowald//hows_my_driving_ny_api/commit/569f554ba63d8ae51f3d5812b5ea9c55c3d37d56"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                      >
+                        [Github]
+                      </a>
+                      <span class="badge rounded-pill text-bg-info">
+                        api
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </details>
+            </div>
             <div class="bg-light changelog-update-year-list card">
               <details>
                 <summary class="bg-light">
