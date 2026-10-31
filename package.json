@@ -71,7 +71,7 @@
     "@types/humps": "^2.0.6",
     "@types/jest": "^30.0.0",
     "@types/jsdom": "^30",
-    "@types/node": "^22.10.0",
+    "@types/node": "^26.6.6",
     "@types/react": "^18.3.12",
     "@vitejs/plugin-react": "^6.1.2",
     "@vitest/browser-playwright": "5.0.5",
