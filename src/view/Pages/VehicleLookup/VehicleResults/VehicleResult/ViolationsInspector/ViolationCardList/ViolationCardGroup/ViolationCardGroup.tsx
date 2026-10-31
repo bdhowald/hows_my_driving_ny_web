@@ -59,8 +59,8 @@ const ViolationCardGroup = ({
   showOffCanvasFunction,
   sortAscending,
 }: {
-  bucketName: string | number
   bucket: Violation[]
+  bucketName: string | number
   currentSortType: Sort
   index: string | number
   showFullFineData: boolean
@@ -74,8 +74,8 @@ const ViolationCardGroup = ({
   const applicationContext = useContext(ApplicationContext)
   const { tracker } = applicationContext
 
-  const { useSearchFiltersState } = useSearchFiltersHook()
-  const useSearchFiltersCookieRawValue = useSearchFiltersState()
+  const { searchFiltersState } = useSearchFiltersHook()
+  const useSearchFiltersCookieRawValue = searchFiltersState()
   const useSearchFilters = useSearchFiltersCookieRawValue === true
 
   const getFinesSortDividerText = (dividerValue: number) => {
@@ -114,7 +114,7 @@ const ViolationCardGroup = ({
       {groupIsVisible &&
         bucket.map((violation: Violation, index: number) => (
           <ViolationCard
-            key={`${index}-card`}
+            key={`${violation.summonsNumber}-card`}
             index={index}
             inspectViolationFunction={showOffCanvasFunction}
             showFullFineData={showFullFineData}

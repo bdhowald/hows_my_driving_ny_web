@@ -84,13 +84,13 @@ const ViolationCardListSortControls = ({
 }: ViolationCardListSortControlProps) => {
   return (
     <div className="violation-card-list-sort-controls">
-      {SORT_OPTIONS.map((sortOption, index) => {
+      {SORT_OPTIONS.map((sortOption) => {
         const isSortTypeCurrentlySelected = currentSortType === sortOption.name
 
         return (
           <ViolationCardListSortControl
             isCurrentSort={isSortTypeCurrentlySelected}
-            key={index}
+            key={sortOption.name}
             sortAscending={sortAscending}
             sortOption={sortOption}
             updateSortFunction={updateSortFunction}

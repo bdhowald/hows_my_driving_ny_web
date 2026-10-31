@@ -29,12 +29,12 @@ const VehicleLookup = () => {
   const listRef = useRef<HTMLDivElement>(null)
 
   const { getSetting } = useSettings()
-  const { useSearchFiltersState } = useSearchFiltersHook()
+  const { searchFiltersState } = useSearchFiltersHook()
 
   const useNewStyleDisplay =
     getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
 
-  const useSearchFiltersCookieRawValue = useSearchFiltersState()
+  const useSearchFiltersCookieRawValue = searchFiltersState()
   const useSearchFilters = useSearchFiltersCookieRawValue === true
 
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
@@ -48,8 +48,7 @@ const VehicleLookup = () => {
   >([])
   const [searchError, setSearchError] = useState<boolean | string>(false)
 
-  const [fingerprintAgent, setFingerprintAgent] =
-    useState<Promise<Agent> | null>(null)
+  const [fingerprintAgent, setFingerprintAgent] = useState<Agent | null>(null)
   const [fingerprintId, setFingerprintId] = useState<string | undefined>()
 
   // Get tracker
@@ -71,8 +70,25 @@ const VehicleLookup = () => {
   }, [fingerprintAgent, fingerprintId])
 
   useEffect(() => {
-    // Initialize an agent at application startup.
-    setFingerprintAgent(FingerprintJS.load())
+    let isMounted = true
+
+    const initializeFingerprintJs = async () => {
+      try {
+        const agent = await FingerprintJS.load()
+
+        if (isMounted) {
+          setFingerprintAgent(agent)
+        }
+      } catch (error) {
+        console.error('Failed to load FingerprintJS', error)
+      }
+    }
+
+    initializeFingerprintJs()
+
+    return () => {
+      isMounted = false
+    }
   }, [])
 
   useEffect(() => {
@@ -127,8 +143,8 @@ const VehicleLookup = () => {
           error instanceof Error
             ? error
             : new Error(
-              typeof error === 'string' ? error : JSON.stringify(error),
-            )
+                typeof error === 'string' ? error : JSON.stringify(error),
+              )
 
         tracker?.trackEvent('user_saw_search_error', {
           action: 'refresh_lookup',
@@ -167,10 +183,11 @@ const VehicleLookup = () => {
   const useNewStyleDisplaySettingPresent =
     getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) !== undefined
 
-  const useSearchFiltersSettingPresent = useSearchFiltersCookieRawValue !== undefined
+  const useSearchFiltersSettingPresent =
+    useSearchFiltersCookieRawValue !== undefined
 
   if (!useNewStyleDisplaySettingPresent || !useSearchFiltersSettingPresent) {
-    return(
+    return (
       <div
         className={`col-md-12 vehicle-lookup-content-container ${newStyleDisplayClassName}`}
       />

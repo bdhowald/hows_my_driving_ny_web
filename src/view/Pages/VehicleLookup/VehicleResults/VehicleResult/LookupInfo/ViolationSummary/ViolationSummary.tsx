@@ -105,25 +105,26 @@ const ViolationSummary = ({ vehicle }: { vehicle: Vehicle }) => {
   ) => {
     const violationBoroughList: JSX.Element[] = []
 
-    VIOLATION_BOROUGHS.forEach(
-      (violationBorough: ViolationBorough, index: number) => {
-        if (violationBoroughCounts[violationBorough] > 0) {
-          // No need to display 'No Borough Available' in a list of boroughs.
-          // Shorten it to help with formatting the list.
-          const rectifiedViolationBorough =
-            violationBorough === 'No Borough Available'
-              ? 'Unknown'
-              : violationBorough
-          violationBoroughList.push(
-            React.createElement(
-              'div',
-              { className: 'violation-count-aspect', key: index },
-              `${convertCamelCaseToTitleCase(rectifiedViolationBorough)}:`,
-            ),
-          )
-        }
-      },
-    )
+    VIOLATION_BOROUGHS.forEach((violationBorough: ViolationBorough) => {
+      if (violationBoroughCounts[violationBorough] > 0) {
+        // No need to display 'No Borough Available' in a list of boroughs.
+        // Shorten it to help with formatting the list.
+        const rectifiedViolationBorough =
+          violationBorough === 'No Borough Available'
+            ? 'Unknown'
+            : violationBorough
+        violationBoroughList.push(
+          React.createElement(
+            'div',
+            {
+              className: 'violation-count-aspect',
+              key: rectifiedViolationBorough,
+            },
+            `${convertCamelCaseToTitleCase(rectifiedViolationBorough)}:`,
+          ),
+        )
+      }
+    })
 
     return (
       <div className="violation-count-aspects">
@@ -148,33 +149,31 @@ const ViolationSummary = ({ vehicle }: { vehicle: Vehicle }) => {
       </div>,
     ]
 
-    aspects.forEach(
-      (aspect: ViolationBorough | ViolationType, index: number) => {
-        if (isViolationBorough(aspect)) {
-          if ((counts as ViolationBoroughCounts)[aspect] > 0) {
-            countsList.push(
-              React.createElement(
-                'div',
-                { className: 'violation-count', key: index + 1 },
-                (counts as ViolationBoroughCounts)[aspect],
-              ),
-            )
-          }
-        } else if (isViolationType(aspect)) {
-          if ((counts as ViolationTypeCounts)[aspect] > 0) {
-            countsList.push(
-              React.createElement(
-                'div',
-                { className: 'violation-count', key: index + 1 },
-                (counts as ViolationTypeCounts)[aspect],
-              ),
-            )
-          }
-        } else {
-          throw Error('unrecognized violation aspect')
+    aspects.forEach((aspect: ViolationBorough | ViolationType) => {
+      if (isViolationBorough(aspect)) {
+        if ((counts as ViolationBoroughCounts)[aspect] > 0) {
+          countsList.push(
+            React.createElement(
+              'div',
+              { className: 'violation-count', key: aspect },
+              (counts as ViolationBoroughCounts)[aspect],
+            ),
+          )
         }
-      },
-    )
+      } else if (isViolationType(aspect)) {
+        if ((counts as ViolationTypeCounts)[aspect] > 0) {
+          countsList.push(
+            React.createElement(
+              'div',
+              { className: 'violation-count', key: aspect },
+              (counts as ViolationTypeCounts)[aspect],
+            ),
+          )
+        }
+      } else {
+        throw Error('unrecognized violation aspect')
+      }
+    })
 
     const classNameString = isViolationBorough(aspects[0])
       ? 'violation-borough-counts'
@@ -220,12 +219,12 @@ const ViolationSummary = ({ vehicle }: { vehicle: Vehicle }) => {
   const getViolationTypeKeys = (violationTypeCounts: ViolationTypeCounts) => {
     const violationTypesList: JSX.Element[] = []
 
-    VIOLATION_TYPES.forEach((violationType: ViolationType, index: number) => {
+    VIOLATION_TYPES.forEach((violationType: ViolationType) => {
       if (violationTypeCounts[violationType] > 0) {
         violationTypesList.push(
           React.createElement(
             'div',
-            { className: 'violation-count-aspect', key: index },
+            { className: 'violation-count-aspect', key: violationType },
             `${convertCamelCaseToTitleCase(violationType)}:`,
           ),
         )

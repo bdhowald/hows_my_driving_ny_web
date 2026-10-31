@@ -11,9 +11,9 @@ const useSearchFilters = () => {
   const [cookies, setCookie, _] = useCookies([USE_SEARCH_FILTERS_STORAGE_KEY])
 
   const currentCookieValue = cookies[USE_SEARCH_FILTERS_STORAGE_KEY]
-  const useSearchFiltersCookiePresent = currentCookieValue !== null &&
-    currentCookieValue !== undefined
-  const useSearchFilters =currentCookieValue === true
+  const useSearchFiltersCookiePresent =
+    currentCookieValue !== null && currentCookieValue !== undefined
+  const useSearchFilters = currentCookieValue === true
 
   const queryParameters = new URLSearchParams(document.location.search)
 
@@ -72,7 +72,7 @@ const useSearchFilters = () => {
     shouldSetCookie,
   ])
 
-  const useSearchFiltersState = (): boolean | string => {
+  const searchFiltersState = (): boolean | string => {
     if (queryParamFeatureFlagDisabled) {
       return false
     }
@@ -83,7 +83,7 @@ const useSearchFilters = () => {
   }
 
   return {
-    useSearchFiltersState,
+    searchFiltersState,
   }
 }
 

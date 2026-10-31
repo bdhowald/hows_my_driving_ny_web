@@ -17,6 +17,45 @@ type ViolationsTableBodyProps = {
   violations: Array<Violation>
 }
 
+const SortDivider = ({
+  columnIndex,
+  currentSortType,
+  dividerText,
+  sortAscending,
+}: {
+  columnIndex: number
+  currentSortType: Sort
+  dividerText: number | string
+  sortAscending: boolean
+}) => {
+  const dividerTextTestIdPart = dividerText
+    .toString()
+    .toLowerCase()
+    .replace(' ', '-')
+
+  return (
+    <tr
+      className="sort-divider"
+      data-testid={`sort-divider-${currentSortType}-${sortAscending ? 'ascending' : 'descending'}-${dividerTextTestIdPart}`}
+    >
+      {/* Filler columns before divider cell */}
+      {[...Array(columnIndex)].map((_, i) => (
+        /* eslint-disable-next-line @eslint-react/no-array-index-key */
+        <th key={i} colSpan={1} />
+      ))}
+
+      {/* // Divider cell */}
+      <th colSpan={1}>{dividerText}</th>
+
+      {/* // Filler columns after divider cell */}
+      {[...Array(NUM_COLUMNS - columnIndex - 1)].map((_, i) => (
+        /* eslint-disable-next-line @eslint-react/no-array-index-key */
+        <th key={i} colSpan={1} />
+      ))}
+    </tr>
+  )
+}
+
 const ViolationsTableBody = ({
   currentSortType,
   showFullFineData,
@@ -24,39 +63,6 @@ const ViolationsTableBody = ({
   sortAscending,
   violations,
 }: ViolationsTableBodyProps): JSX.Element => {
-  const SortDivider = ({
-    columnIndex,
-    dividerText,
-  }: {
-    columnIndex: number
-    dividerText: number | string
-  }) => {
-    const dividerTextTestIdPart = dividerText
-      .toString()
-      .toLowerCase()
-      .replace(' ', '-')
-
-    return (
-      <tr
-        className="sort-divider"
-        data-testid={`sort-divider-${currentSortType}-${sortAscending ? 'ascending' : 'descending'}-${dividerTextTestIdPart}`}
-      >
-        {/* Filler columns before divider cell */}
-        {[...Array(columnIndex)].map((_, i) => (
-          <th key={i} colSpan={1} />
-        ))}
-
-        {/* // Divider cell */}
-        <th colSpan={1}>{dividerText}</th>
-
-        {/* // Filler columns after divider cell */}
-        {[...Array(NUM_COLUMNS - columnIndex - 1)].map((_, i) => (
-          <th key={i} colSpan={1} />
-        ))}
-      </tr>
-    )
-  }
-
   const getDividerIfNeeded = (
     currentLexicographicOrder: { value: string | number | null },
     violation: Violation,
@@ -70,14 +76,14 @@ const ViolationsTableBody = ({
     let columnIndex = null
 
     switch (currentSortType) {
-    case Sort.DATE:
-      columnIndex = 0
-      dividerValue = new Date(violation.formattedTime).getFullYear()
-      break
-    case Sort.LOCATION:
-      columnIndex = 2
-      dividerValue = violation.getBorough()
-      break
+      case Sort.DATE:
+        columnIndex = 0
+        dividerValue = new Date(violation.formattedTime).getFullYear()
+        break
+      case Sort.LOCATION:
+        columnIndex = 2
+        dividerValue = violation.getBorough()
+        break
     }
 
     // If this sort doesn't have dividers, ignore.
@@ -93,7 +99,12 @@ const ViolationsTableBody = ({
     if (needsDivider) {
       currentLexicographicOrder.value = dividerValue
       return (
-        <SortDivider columnIndex={columnIndex} dividerText={dividerValue} />
+        <SortDivider
+          columnIndex={columnIndex}
+          currentSortType={currentSortType}
+          dividerText={dividerValue}
+          sortAscending={sortAscending}
+        />
       )
     }
     return null

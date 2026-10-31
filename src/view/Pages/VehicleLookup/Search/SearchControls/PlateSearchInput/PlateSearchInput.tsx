@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useState } from 'react'
 
 import InputWithClearButton from 'view/components/FormControls/InputWithClearButton/InputWithClearButton'
 import L10N from 'constants/display'
@@ -14,7 +14,7 @@ const PlateSearchInput = ({
   onChangeFunction,
   currentLookup,
 }: PlateSearchInputProps) => {
-  const now = new Date()
+  const [now] = useState(() => new Date())
   const day = now.getDate()
   const month = now.getMonth() + 1
 

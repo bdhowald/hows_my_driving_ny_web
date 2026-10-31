@@ -100,35 +100,40 @@ const MemoizedCombinedVehicleResults = React.memo(
   vehicleResultsAreEqual,
 )
 
+const ShimmerColumn = ({
+  position,
+  textAlignDirection,
+  useNewStyleDisplay,
+}: {
+  position: 'left' | 'right'
+  textAlignDirection: 'left' | 'right'
+  useNewStyleDisplay: boolean
+}) => {
+  const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
+
+  const positionLeftColumnWidths = [10, 8, 9, 10, 9]
+  const positionRightColumnWidths = [9, 8, 6, 10, 8]
+  const listToUse =
+    position === 'left' ? positionLeftColumnWidths : positionRightColumnWidths
+
+  const classNameString = `summary-box shimmer align-${textAlignDirection} position-${position} lookup-info ${newStyleDisplayClassName}`
+
+  return (
+    <div className={classNameString}>
+      {listToUse.map((columnWidth: number, i: number) => {
+        /* eslint-disable-next-line @eslint-react/no-array-index-key */
+        return <span key={i} className={`placeholder col-${columnWidth}`} />
+      })}
+    </div>
+  )
+}
+
 const ShimmerLoader = ({
   useNewStyleDisplay,
 }: {
   useNewStyleDisplay: boolean
 }) => {
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
-
-  const ShimmerColumn = ({
-    textAlignDirection,
-    position,
-  }: {
-    textAlignDirection: 'left' | 'right'
-    position: 'left' | 'right'
-  }) => {
-    const positionLeftColumnWidths = [10, 8, 9, 10, 9]
-    const positionRightColumnWidths = [9, 8, 6, 10, 8]
-    const listToUse =
-      position === 'left' ? positionLeftColumnWidths : positionRightColumnWidths
-
-    const classNameString = `summary-box shimmer align-${textAlignDirection} position-${position} lookup-info ${newStyleDisplayClassName}`
-
-    return (
-      <div className={classNameString}>
-        {listToUse.map((columnWidth: number, i: number) => {
-          return <span key={i} className={`placeholder col-${columnWidth}`} />
-        })}
-      </div>
-    )
-  }
 
   return (
     <div
@@ -143,14 +148,30 @@ const ShimmerLoader = ({
             <div
               className={`summary-section col-xs-12 col-sm-6 ${newStyleDisplayClassName}`}
             >
-              <ShimmerColumn textAlignDirection="left" position="left" />
-              <ShimmerColumn textAlignDirection="right" position="left" />
+              <ShimmerColumn
+                position="left"
+                textAlignDirection="left"
+                useNewStyleDisplay
+              />
+              <ShimmerColumn
+                position="left"
+                textAlignDirection="right"
+                useNewStyleDisplay
+              />
             </div>
             <div
               className={`summary-section col-xs-12 col-sm-6 ${newStyleDisplayClassName}`}
             >
-              <ShimmerColumn textAlignDirection="left" position="right" />
-              <ShimmerColumn textAlignDirection="right" position="right" />
+              <ShimmerColumn
+                position="right"
+                textAlignDirection="left"
+                useNewStyleDisplay
+              />
+              <ShimmerColumn
+                position="right"
+                textAlignDirection="right"
+                useNewStyleDisplay
+              />
             </div>
           </div>
         </li>
@@ -202,8 +223,8 @@ const VehicleResults = ({
   })
 
   const { getSetting } = useSettings()
-  const { useSearchFiltersState } = useSearchFiltersHook()
-  const useSearchFilters = useSearchFiltersState()
+  const { searchFiltersState } = useSearchFiltersHook()
+  const useSearchFilters = searchFiltersState()
 
   const applicationContext = useContext(ApplicationContext)
   const { tracker } = applicationContext
@@ -295,9 +316,9 @@ const clearFilter = (
     const resetState =
       fieldName === 'queryDateRange'
         ? {
-          endDate: undefined,
-          startDate: undefined,
-        }
+            endDate: undefined,
+            startDate: undefined,
+          }
         : undefined
 
     const newFilterState = {

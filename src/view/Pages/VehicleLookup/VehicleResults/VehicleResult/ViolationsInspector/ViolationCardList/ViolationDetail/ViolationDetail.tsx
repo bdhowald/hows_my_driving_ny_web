@@ -27,17 +27,19 @@ const ViolationDataSourceLink = ({
   return (
     <ViolationDetailAspect header={'Data Sources'}>
       <ul>
-        {fromDatabases.map((fromDatabase, index) => {
-          const dataUpdatedAtDate = fromDatabase.dataUpdatedAt === null
-            ? null
-            : new Date(fromDatabase.dataUpdatedAt)
+        {fromDatabases.map((fromDatabase) => {
+          const dataUpdatedAtDate =
+            fromDatabase.dataUpdatedAt === null
+              ? null
+              : new Date(fromDatabase.dataUpdatedAt)
 
-          const formattedDatabaseLastUpdatedAt = dataUpdatedAtDate && isFinite(dataUpdatedAtDate.valueOf())
-            ? L10N.sitewide.dateFormat.format(dataUpdatedAtDate.valueOf())
-            : null
+          const formattedDatabaseLastUpdatedAt =
+            dataUpdatedAtDate && isFinite(dataUpdatedAtDate.valueOf())
+              ? L10N.sitewide.dateFormat.format(dataUpdatedAtDate.valueOf())
+              : null
 
           return (
-            <li key={index}>
+            <li key={fromDatabase.name}>
               <a
                 href={getOpenDataUrlForSummons(
                   fromDatabase.endpoint,

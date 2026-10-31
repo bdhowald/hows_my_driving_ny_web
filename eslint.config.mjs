@@ -1,7 +1,7 @@
 import eslintJs from '@eslint/js'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
-import pluginReact from 'eslint-plugin-react'
+import eslintReact from '@eslint-react/eslint-plugin'
 import pluginReactHooks from 'eslint-plugin-react-hooks'
 import pluginStorybook from 'eslint-plugin-storybook'
 import eslintConfigPrettier from 'eslint-config-prettier'
@@ -27,14 +27,8 @@ export default [
     files: tsFiles,
   })),
 
-  {
-    ...pluginReact.configs.flat.recommended,
-    files: reactFiles,
-  },
-  {
-    ...pluginReact.configs.flat['jsx-runtime'],
-    files: tsFiles,
-  },
+  eslintReact.configs['recommended-typescript'],
+
   {
     files: reactFiles,
     plugins: {
@@ -91,9 +85,6 @@ export default [
       },
     },
   },
-
-  eslintConfigPrettier,
-
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     plugins: {
@@ -123,4 +114,6 @@ export default [
       ],
     },
   },
+
+  eslintConfigPrettier,
 ]

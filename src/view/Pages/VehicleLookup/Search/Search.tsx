@@ -121,9 +121,7 @@ const Search = ({
     plateType: 'none',
     state: 'NY',
   })
-  const [cookies, _, __] = useCookies([
-    LOOKUP_IDENTIFIER_STORAGE_KEY,
-  ])
+  const [cookies, _, __] = useCookies([LOOKUP_IDENTIFIER_STORAGE_KEY])
 
   const { getSetting } = useSettings()
 
@@ -136,8 +134,8 @@ const Search = ({
   const useNewStyleDisplay =
     getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
 
-  const { useSearchFiltersState } = useSearchFiltersHook()
-  const useSearchFiltersCookieRawValue = useSearchFiltersState()
+  const { searchFiltersState } = useSearchFiltersHook()
+  const useSearchFiltersCookieRawValue = searchFiltersState()
   const useSearchFilters = useSearchFiltersCookieRawValue === true
 
   const getErrorType = (statusCode: number | undefined) => {
@@ -159,26 +157,29 @@ const Search = ({
     return 'unknown error (status code unexpected)'
   }
 
-  const trackUserReceivedError = useCallback((error: unknown, action: string) => {
-    const wrappedError =
-      error instanceof Error
-        ? error
-        : new Error(typeof error === 'string' ? error : JSON.stringify(error))
+  const trackUserReceivedError = useCallback(
+    (error: unknown, action: string) => {
+      const wrappedError =
+        error instanceof Error
+          ? error
+          : new Error(typeof error === 'string' ? error : JSON.stringify(error))
 
-    const statusCode =
-      isApiErrorObject(error) && isErrorQueryResponse(error.body)
-        ? error.body.data[0].statusCode
-        : undefined
+      const statusCode =
+        isApiErrorObject(error) && isErrorQueryResponse(error.body)
+          ? error.body.data[0].statusCode
+          : undefined
 
-    tracker?.trackEvent('user_saw_search_error', {
-      action,
-      errorType: getErrorType(statusCode),
-      message: wrappedError.message,
-      online: navigator.onLine,
-      raw: String(error),
-      stack: wrappedError.stack,
-    })
-  }, [tracker])
+      tracker?.trackEvent('user_saw_search_error', {
+        action,
+        errorType: getErrorType(statusCode),
+        message: wrappedError.message,
+        online: navigator.onLine,
+        raw: String(error),
+        stack: wrappedError.stack,
+      })
+    },
+    [tracker],
+  )
 
   const retrieveLookupsFromIdentifiersInStorage = useCallback(() => {
     // Get unique identifiers from storage
@@ -319,10 +320,12 @@ const Search = ({
     ): string[] =>
       vehicleDisplayResults
         .map(
-          (vehicleDisplayResult) => vehicleDisplayResult.vehicle.uniqueIdentifier,
+          (vehicleDisplayResult) =>
+            vehicleDisplayResult.vehicle.uniqueIdentifier,
         )
         .filter(
-          (identifier) => identifier !== previousLookupUniqueIdentifierFromQuery,
+          (identifier) =>
+            identifier !== previousLookupUniqueIdentifierFromQuery,
         )
 
     // Update stored value from unique identifiers
@@ -436,8 +439,8 @@ const Search = ({
       const modififedInputValue =
         changeEvent.currentTarget.name === 'plateId'
           ? changeEvent.currentTarget.value
-            .replace(NON_PLATE_CHARACTERS, '')
-            .toUpperCase()
+              .replace(NON_PLATE_CHARACTERS, '')
+              .toUpperCase()
           : changeEvent.currentTarget.value.replace(NON_PLATE_CHARACTERS, '')
 
       return setCurrentLookup({
@@ -543,7 +546,7 @@ const Search = ({
 
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
-  const now = new Date()
+  const [now] = useState(() => new Date())
   const day = now.getDate()
   const month = now.getMonth() + 1
 

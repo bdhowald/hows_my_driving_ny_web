@@ -38,7 +38,10 @@ const FAQs = () => {
             { answer, question }: { answer: ReactNode; question: ReactNode },
             index,
           ) => (
-            <Accordion.Item eventKey={index.toString()} key={index}>
+            <Accordion.Item
+              eventKey={index.toString()}
+              key={question?.toString()}
+            >
               <Accordion.Header className="question-content">
                 <span className="question">{question}</span>
               </Accordion.Header>

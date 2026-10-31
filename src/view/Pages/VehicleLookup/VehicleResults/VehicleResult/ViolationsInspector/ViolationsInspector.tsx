@@ -21,7 +21,7 @@ const ViolationsInspector = ({
   useNewStyleView,
   vehicle,
 }: ViolationsInspectorProps) => {
-  const [violationsListIsVisible, setViolationsListVisibility] =
+  const [violationsListIsVisible, setViolationsListIsVisible] =
     useState(showViolationsList)
 
   const [showFullViolationText, setShowFullViolationText] = useState(
@@ -37,7 +37,7 @@ const ViolationsInspector = ({
       <li className="list-group-item">
         <div className="violation-card-list-wrapper">
           <ViolationCardList
-            setViolationsListVisibilityFunction={setViolationsListVisibility}
+            setViolationsListIsVisibleFunction={setViolationsListIsVisible}
             vehicle={vehicle}
             violationsListIsVisible={violationsListIsVisible}
           />
@@ -52,7 +52,7 @@ const ViolationsInspector = ({
         <ViolationsListControls
           setShowFullFineDataFunction={setShowFullFineData}
           setShowFullViolationTextFunction={setShowFullViolationText}
-          setViolationsListVisibilityFunction={setViolationsListVisibility}
+          setViolationsListIsVisibleFunction={setViolationsListIsVisible}
           showFullFineData={showFullFineData}
           showFullViolationText={showFullViolationText}
           vehicle={vehicle}

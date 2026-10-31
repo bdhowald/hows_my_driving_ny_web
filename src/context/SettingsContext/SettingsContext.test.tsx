@@ -29,9 +29,9 @@ describe('SettingsContext', () => {
       updateSetting: vi.fn(),
     }
 
-    vi
-      .spyOn(useSettingsStorage, 'default')
-      .mockReturnValue(mockedUseSettingsFunctions)
+    vi.spyOn(useSettingsStorage, 'default').mockReturnValue(
+      mockedUseSettingsFunctions,
+    )
 
     render(
       <SettingsProvider>

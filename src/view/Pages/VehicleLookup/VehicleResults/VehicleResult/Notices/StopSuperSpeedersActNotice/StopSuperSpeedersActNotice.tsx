@@ -10,43 +10,45 @@ import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/Notices/Notices.cs
 
 const STOP_SUPER_SPEEDERS_ACT_SCHOOL_ZONE_SPEED_CAMERA_COUNT_THRESHOLD = 16
 
+const Link = ({
+  bold,
+  linkTarget,
+  linkText,
+  useNewStyleDisplay,
+}: {
+  bold?: boolean
+  linkTarget: string
+  linkText: string
+  useNewStyleDisplay: boolean
+}) => {
+  // Get tracker
+  const applicationContext = useContext(ApplicationContext)
+  const { tracker } = applicationContext
+
+  return (
+    <a
+      href={linkTarget}
+      rel="noopener noreferrer"
+      onClick={() => {
+        tracker?.trackEvent('user_clicked_on_external_link', {
+          destination: linkTarget,
+          displayOfStopSuperSpeedersActNoticeEnabled: true,
+          text: linkText,
+          useNewStyleDisplay,
+        })
+      }}
+      target="_blank"
+    >
+      {bold ? (
+        <span style={{ fontWeight: 'bold' }}>{linkText}</span>
+      ) : (
+        <>{linkText}</>
+      )}
+    </a>
+  )
+}
+
 const StopSuperSpeedersActNotice = ({ vehicle }: { vehicle: Vehicle }) => {
-  const Link = ({
-    bold,
-    linkTarget,
-    linkText,
-  }: {
-    bold?: boolean
-    linkTarget: string
-    linkText: string
-  }) => {
-    // Get tracker
-    const applicationContext = useContext(ApplicationContext)
-    const { tracker } = applicationContext
-
-    return (
-      <a
-        href={linkTarget}
-        rel="noopener noreferrer"
-        onClick={() => {
-          tracker?.trackEvent('user_clicked_on_external_link', {
-            destination: linkTarget,
-            displayOfStopSuperSpeedersActNoticeEnabled: true,
-            text: linkText,
-            useNewStyleDisplay,
-          })
-        }}
-        target="_blank"
-      >
-        {bold ? (
-          <span style={{ fontWeight: 'bold' }}>{linkText}</span>
-        ) : (
-          <>{linkText}</>
-        )}
-      </a>
-    )
-  }
-
   const getStreakStringElement = ({
     minDate,
     maxDate,
@@ -130,11 +132,13 @@ const StopSuperSpeedersActNotice = ({ vehicle }: { vehicle: Vehicle }) => {
           bold
           linkTarget={L10N.legislation.stopSuperSpeedersAct.legislationLink}
           linkText={L10N.legislation.stopSuperSpeedersAct.legislationName}
+          useNewStyleDisplay
         />
         , this vehicle could be required to have
         <Link
           linkTarget={L10N.legislation.stopSuperSpeedersAct.learnMore.link}
           linkText={L10N.legislation.stopSuperSpeedersAct.learnMore.text}
+          useNewStyleDisplay
         />
         &nbsp;installed for:
       </p>

@@ -16,8 +16,11 @@ const DummyComponent = () => {
 
 describe('ApplicationContext', () => {
   it('should expose a tracker instance', () => {
-    const mockTrackFunction = vi.spyOn(AnalyticsTracker.default.prototype, 'trackEvent')
-    
+    const mockTrackFunction = vi.spyOn(
+      AnalyticsTracker.default.prototype,
+      'trackEvent',
+    )
+
     render(
       <ApplicationProvider>
         <DummyComponent />

@@ -38,7 +38,7 @@ const FiltersControl = ({
   const useNewStyleDisplay =
     getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
 
-  const [filtersAreVisble, setFiltersAreVisible] = useState<boolean>(false)
+  const [filtersAreVisible, setFiltersAreVisible] = useState<boolean>(false)
 
   const activeFilters = getActiveFilters(resultsFilters)
 
@@ -63,7 +63,7 @@ const FiltersControl = ({
         <div className="results-control-toggle">
           <FilterMenuToggle
             setFiltersAreVisibleFunction={setFiltersAreVisible}
-            filtersAreVisble={filtersAreVisble}
+            filtersAreVisible={filtersAreVisible}
           />
         </div>
       </div>
@@ -80,9 +80,9 @@ const FiltersControl = ({
         </div>
       )}
       <hr />
-      {filtersAreVisble && (
+      {filtersAreVisible && (
         <FilterMenu
-          filtersAreVisible={filtersAreVisble}
+          filtersAreVisible={filtersAreVisible}
           handleFilterFormSubmitFunction={handleFilterFormSubmitFunction}
           hideFiltersFunction={hideFilters}
           maxViolationsCountForResults={maxViolationsCountForResults}
@@ -95,9 +95,9 @@ const FiltersControl = ({
 
 const FilterMenuToggle = ({
   setFiltersAreVisibleFunction,
-  filtersAreVisble,
+  filtersAreVisible,
 }: {
-  filtersAreVisble: boolean
+  filtersAreVisible: boolean
   setFiltersAreVisibleFunction: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
   const filterToggleText = 'Filter'
@@ -105,7 +105,7 @@ const FilterMenuToggle = ({
   return (
     <button
       className="btn btn-primary"
-      onClick={() => setFiltersAreVisibleFunction(!filtersAreVisble)}
+      onClick={() => setFiltersAreVisibleFunction(!filtersAreVisible)}
       type="button"
     >
       {filterToggleText}

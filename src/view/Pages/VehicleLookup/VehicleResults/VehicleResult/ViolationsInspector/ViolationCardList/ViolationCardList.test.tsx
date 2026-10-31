@@ -35,7 +35,7 @@ describe('ViolationCardList', () => {
         render(
           <SettingsContext.Provider value={mockedSettings}>
             <ViolationCardList
-              setViolationsListVisibilityFunction={setViolationsListVisibility}
+              setViolationsListIsVisibleFunction={setViolationsListVisibility}
               vehicle={vehicle}
               violationsListIsVisible={violationsListIsVisible}
             />
@@ -51,7 +51,7 @@ describe('ViolationCardList', () => {
     render(
       <SettingsContext.Provider value={mockedSettings}>
         <ViolationCardList
-          setViolationsListVisibilityFunction={setViolationsListVisibility}
+          setViolationsListIsVisibleFunction={setViolationsListVisibility}
           vehicle={vehicle}
           violationsListIsVisible={true}
         />
@@ -83,7 +83,7 @@ describe('ViolationCardList', () => {
     render(
       <SettingsContext.Provider value={mockedSettings}>
         <ViolationCardList
-          setViolationsListVisibilityFunction={setViolationsListVisibility}
+          setViolationsListIsVisibleFunction={setViolationsListVisibility}
           vehicle={vehicle}
           violationsListIsVisible={true}
         />
@@ -122,7 +122,7 @@ describe('ViolationCardList', () => {
     render(
       <SettingsContext.Provider value={mockedSettings}>
         <ViolationCardList
-          setViolationsListVisibilityFunction={setViolationsListVisibility}
+          setViolationsListIsVisibleFunction={setViolationsListVisibility}
           vehicle={vehicle}
           violationsListIsVisible={true}
         />
@@ -171,7 +171,7 @@ describe('ViolationCardList', () => {
       render(
         <SettingsContext.Provider value={mockedSettings}>
           <ViolationCardList
-            setViolationsListVisibilityFunction={setViolationsListVisibility}
+            setViolationsListIsVisibleFunction={setViolationsListVisibility}
             vehicle={vehicle}
             violationsListIsVisible={true}
           />
@@ -268,7 +268,7 @@ describe('ViolationCardList', () => {
     render(
       <SettingsContext.Provider value={mockedSettings}>
         <ViolationCardList
-          setViolationsListVisibilityFunction={setViolationsListVisibility}
+          setViolationsListIsVisibleFunction={setViolationsListVisibility}
           vehicle={vehicle}
           violationsListIsVisible={true}
         />

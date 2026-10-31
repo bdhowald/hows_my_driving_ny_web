@@ -10,19 +10,17 @@ import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 import VehicleLookup from './VehicleLookup'
 
 // Mock FingerprintJS to avoid canvas errors.
-vi.mock(
-  '@fingerprintjs/fingerprintjs', () => ({
-    default: {
-      load: vi.fn().mockResolvedValue({
-        get: vi.fn()
-        // .mockResolvedValue({
-        //   visitorId: 'test-visitor-id',
-        //   components: {},
-        // })
-      })
-    }
-  })
-)
+vi.mock('@fingerprintjs/fingerprintjs', () => ({
+  default: {
+    load: vi.fn().mockResolvedValue({
+      get: vi.fn(),
+      // .mockResolvedValue({
+      //   visitorId: 'test-visitor-id',
+      //   components: {},
+      // })
+    }),
+  },
+}))
 
 describe('VehicleLookup', () => {
   beforeEach(() => {
@@ -1196,10 +1194,7 @@ describe('VehicleLookup', () => {
       boundaryFunctions,
       'getPreviousLookup',
     )
-    const performNewLookupSpy = vi.spyOn(
-      boundaryFunctions,
-      'performNewLookup',
-    )
+    const performNewLookupSpy = vi.spyOn(boundaryFunctions, 'performNewLookup')
 
     // Simulate successful old lookup
     getPreviousLookupSpy.mockResolvedValueOnce({

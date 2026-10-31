@@ -24,7 +24,7 @@ Object.defineProperty(window, 'matchMedia', {
 
 HTMLCanvasElement.prototype.getContext = function (
   this: HTMLCanvasElement,
-  contextId: string
+  contextId: string,
 ): unknown {
   // A base object that satisfies the minimum properties libraries check for (like .canvas)
   const baseContext = {

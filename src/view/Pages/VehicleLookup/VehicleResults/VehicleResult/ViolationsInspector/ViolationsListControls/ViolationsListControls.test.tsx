@@ -194,7 +194,7 @@ describe('ViolationsListControls', () => {
           <ViolationsListControls
             setShowFullFineDataFunction={setShowFullFineDataFunction}
             setShowFullViolationTextFunction={setShowFullViolationTextFunction}
-            setViolationsListVisibilityFunction={
+            setViolationsListIsVisibleFunction={
               setViolationsListVisibilityFunction
             }
             showFullFineData={showFullFineData}
@@ -245,7 +245,7 @@ describe('ViolationsListControls', () => {
               setShowFullViolationTextFunction={
                 setShowFullViolationTextFunction
               }
-              setViolationsListVisibilityFunction={
+              setViolationsListIsVisibleFunction={
                 setViolationsListVisibilityFunction
               }
               showFullFineData={showFullFineData}
@@ -292,7 +292,7 @@ describe('ViolationsListControls', () => {
               setShowFullViolationTextFunction={
                 setShowFullViolationTextFunction
               }
-              setViolationsListVisibilityFunction={
+              setViolationsListIsVisibleFunction={
                 setViolationsListVisibilityFunction
               }
               showFullFineData={showFullFineData}
@@ -346,7 +346,7 @@ describe('ViolationsListControls', () => {
               setShowFullViolationTextFunction={
                 setShowFullViolationTextFunction
               }
-              setViolationsListVisibilityFunction={
+              setViolationsListIsVisibleFunction={
                 setViolationsListVisibilityFunction
               }
               showFullFineData={showFullFineData}
@@ -398,7 +398,7 @@ describe('ViolationsListControls', () => {
               setShowFullViolationTextFunction={
                 setShowFullViolationTextFunction
               }
-              setViolationsListVisibilityFunction={
+              setViolationsListIsVisibleFunction={
                 setViolationsListVisibilityFunction
               }
               showFullFineData={showFullFineData}

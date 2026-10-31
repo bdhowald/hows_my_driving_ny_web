@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useRef } from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -30,7 +30,7 @@ const ParentHtml = ({
   children: ReactNode
   useNewStyleDisplay: boolean
 }) => {
-  const bodyRef = React.createRef<HTMLUListElement>()
+  const bodyRef = useRef<HTMLUListElement>(null)
 
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 

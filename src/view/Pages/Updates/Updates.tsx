@@ -121,16 +121,16 @@ const Updates = () => (
         <Card className="bg-light changelog-update-year-list" key={year}>
           <details>
             <summary className="bg-light">{year}</summary>
-            {yearEntries.map((yearEntry, dateIndex) => (
-              <div className="changelog-update-date" key={dateIndex}>
+            {yearEntries.map((yearEntry) => (
+              <div className="changelog-update-date" key={yearEntry.date}>
                 <h3>{yearEntry.date}</h3>
                 <ul className="changelog-update-date-changelist">
-                  {yearEntry.dateEntries.map((dateEntry, dateUpdateIndex) => (
+                  {yearEntry.dateEntries.map((dateEntry) => (
                     <Update
                       className="changelog-update"
                       commits={dateEntry.commits}
                       description={dateEntry.description}
-                      key={dateUpdateIndex}
+                      key={dateEntry.description}
                     />
                   ))}
                 </ul>
@@ -145,12 +145,12 @@ const Updates = () => (
 
 const getPillBadgeForProject = (project: string, index: number): ReactNode => {
   switch (project) {
-  case 'hows_my_driving':
-    return <SocialMediaPillBadge key={index} />
-  case 'hows_my_driving_ny_api':
-    return <ApiPillBadge key={index} />
-  case 'hows_my_driving_ny_web':
-    return <WebPillBadge key={index} />
+    case 'hows_my_driving':
+      return <SocialMediaPillBadge key={index} />
+    case 'hows_my_driving_ny_api':
+      return <ApiPillBadge key={index} />
+    case 'hows_my_driving_ny_web':
+      return <WebPillBadge key={index} />
   }
 
   throw Error('unknown project')

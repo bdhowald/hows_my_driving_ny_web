@@ -50,50 +50,48 @@ const ParentHtml = ({
   )
 }
 
-const vehicleEligibleForStopSuperSpeedersActNotice =
-  VehicleFactory.build({
-    cameraStreakData: {
-      cameraViolations: {
-        maxStreak: 20,
-        streakEnd: '2024-10-12T16:51:00.000-04:00',
-        streakStart: '2023-10-24T14:39:00.000-04:00',
-        total: 26,
-      },
-      redLightCameraViolations: {
-        maxStreak: 7,
-        streakEnd: '2024-05-06T14:59:00.000-04:00',
-        streakStart: '2023-06-27T12:43:00.000-04:00',
-        total: 9,
-      },
-      schoolZoneSpeedCameraViolations: {
-        maxStreak: 17,
-        streakEnd: '2024-10-07T10:02:00.000-04:00',
-        streakStart: '2023-12-31T15:34:00.000-05:00',
-        total: 22,
-      },
+const vehicleEligibleForStopSuperSpeedersActNotice = VehicleFactory.build({
+  cameraStreakData: {
+    cameraViolations: {
+      maxStreak: 20,
+      streakEnd: '2024-10-12T16:51:00.000-04:00',
+      streakStart: '2023-10-24T14:39:00.000-04:00',
+      total: 26,
     },
-  })
+    redLightCameraViolations: {
+      maxStreak: 7,
+      streakEnd: '2024-05-06T14:59:00.000-04:00',
+      streakStart: '2023-06-27T12:43:00.000-04:00',
+      total: 9,
+    },
+    schoolZoneSpeedCameraViolations: {
+      maxStreak: 17,
+      streakEnd: '2024-10-07T10:02:00.000-04:00',
+      streakStart: '2023-12-31T15:34:00.000-05:00',
+      total: 22,
+    },
+  },
+})
 
-const vehicleIneligibleForStopSuperSpeedersActNotice =
-  VehicleFactory.build({
-    cameraStreakData: {
-      cameraViolations: {
-        maxStreak: 0,
-        streakEnd: null,
-        streakStart: null,
-      },
-      redLightCameraViolations: {
-        maxStreak: 0,
-        streakEnd: null,
-        streakStart: null,
-      },
-      schoolZoneSpeedCameraViolations: {
-        maxStreak: 0,
-        streakEnd: null,
-        streakStart: null,
-      },
+const vehicleIneligibleForStopSuperSpeedersActNotice = VehicleFactory.build({
+  cameraStreakData: {
+    cameraViolations: {
+      maxStreak: 0,
+      streakEnd: null,
+      streakStart: null,
     },
-  })
+    redLightCameraViolations: {
+      maxStreak: 0,
+      streakEnd: null,
+      streakStart: null,
+    },
+    schoolZoneSpeedCameraViolations: {
+      maxStreak: 0,
+      streakEnd: null,
+      streakStart: null,
+    },
+  },
+})
 
 export const ViolationsListHiddenNewStyleDisplay: Story = {
   args: {

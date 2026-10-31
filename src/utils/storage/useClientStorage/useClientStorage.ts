@@ -90,7 +90,7 @@ const useClientStorage = <T>(key: string, initialValue?: T) => {
     [cookiesAvailable, localStorageAvailable],
   )
 
-  const [value, setValue] = useState<T | undefined>(
+  const [value, setValue] = useState<T | undefined>(() =>
     readInitialValue(key, initialValue),
   )
 

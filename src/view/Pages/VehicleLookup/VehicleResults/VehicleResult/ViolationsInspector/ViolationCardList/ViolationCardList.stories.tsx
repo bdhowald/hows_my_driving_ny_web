@@ -58,11 +58,11 @@ const vehicleWithNoViolations = VehicleFactory.build({
   violationsCount: 0,
 })
 
-const setViolationsListVisibilityFunction = () => null
+const setViolationsListIsVisibleFunction = () => null
 
 export const VehicleWithViolationsListVisible: Story = {
   args: {
-    setViolationsListVisibilityFunction,
+    setViolationsListIsVisibleFunction,
     vehicle: vehicleWithViolations,
     violationsListIsVisible: true,
   },
@@ -70,7 +70,7 @@ export const VehicleWithViolationsListVisible: Story = {
 
 export const VehicleWithViolationsListVisibleAndOnlyOneViolation: Story = {
   args: {
-    setViolationsListVisibilityFunction,
+    setViolationsListIsVisibleFunction,
     vehicle: vehicleWithOneViolation,
     violationsListIsVisible: true,
   },
@@ -78,7 +78,7 @@ export const VehicleWithViolationsListVisibleAndOnlyOneViolation: Story = {
 
 export const VehicleWithViolationsListNotVisible: Story = {
   args: {
-    setViolationsListVisibilityFunction,
+    setViolationsListIsVisibleFunction,
     vehicle: vehicleWithViolations,
     violationsListIsVisible: false,
   },
@@ -86,7 +86,7 @@ export const VehicleWithViolationsListNotVisible: Story = {
 
 export const VehicleWithNoViolationsListVisible: Story = {
   args: {
-    setViolationsListVisibilityFunction,
+    setViolationsListIsVisibleFunction,
     vehicle: vehicleWithNoViolations,
     violationsListIsVisible: true,
   },

@@ -77,13 +77,11 @@ describe('ShareLookupMenu', () => {
 
       const mockPngData = 'data:image/png;base64...'
 
-      vi
-        .spyOn(global, 'fetch')
-        .mockImplementation(
-          vi.fn(() =>
-            Promise.resolve({ blob: () => Promise.resolve(mockPngData) }),
-          ) as Mock,
-        )
+      vi.spyOn(global, 'fetch').mockImplementation(
+        vi.fn(() =>
+          Promise.resolve({ blob: () => Promise.resolve(mockPngData) }),
+        ) as Mock,
+      )
 
       // vi.spyOn(window, 'ClipboardItem').mockReturnValueOnce({})
 

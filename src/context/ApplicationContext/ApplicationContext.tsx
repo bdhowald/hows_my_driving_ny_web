@@ -21,7 +21,7 @@ export const ApplicationContext =
 
 const ApplicationProvider = ({ children }: { children: ReactNode }) => {
   const [tracker] = useState<AnalyticsTracker | undefined>(
-    new AnalyticsTracker(['mixpanel']),
+    () => new AnalyticsTracker(['mixpanel']),
   )
 
   const applicationContext = {

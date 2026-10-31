@@ -1,7 +1,5 @@
 /** @type { import('@storybook/react-vite').Preview } */
 
-import React from 'react'
-
 import SettingsProvider from '../src/context/SettingsContext/SettingsContext'
 
 import 'bootstrap/dist/css/bootstrap.min.css'

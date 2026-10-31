@@ -51,8 +51,8 @@ const ViolationDateTimeAspect = ({
   const applicationContext = useContext(ApplicationContext)
   const { tracker } = applicationContext
 
-  const { useSearchFiltersState } = useSearchFiltersHook()
-  const useSearchFiltersCookieRawValue = useSearchFiltersState()
+  const { searchFiltersState } = useSearchFiltersHook()
+  const useSearchFiltersCookieRawValue = searchFiltersState()
   const useSearchFilters = useSearchFiltersCookieRawValue === true
 
   const trackShowViolationDetails = () => {

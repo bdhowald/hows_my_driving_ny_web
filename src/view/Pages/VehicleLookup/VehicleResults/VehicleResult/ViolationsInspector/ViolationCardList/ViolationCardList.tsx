@@ -15,11 +15,11 @@ import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/ViolationsInspecto
 const FINE_DIVIDER_INCREMENT = 25
 
 const ViolationCardList = ({
-  setViolationsListVisibilityFunction,
+  setViolationsListIsVisibleFunction,
   vehicle,
   violationsListIsVisible,
 }: {
-  setViolationsListVisibilityFunction: (arg1: boolean) => void
+  setViolationsListIsVisibleFunction: (arg1: boolean) => void
   vehicle: Vehicle
   violationsListIsVisible: boolean
 }) => {
@@ -49,14 +49,14 @@ const ViolationCardList = ({
   const toggleShowFullLocationData = () =>
     setShowFullLocationData(!showFullLocationData)
 
-  const [showViolationDetail, setshowViolationDetail] = useState(false)
+  const [showViolationDetail, setShowViolationDetail] = useState(false)
   const [violationToInspect, setViolationToInspect] =
     useState<Violation | null>(null)
 
-  const hideOffCanvas = () => setshowViolationDetail(false)
+  const hideOffCanvas = () => setShowViolationDetail(false)
   const showOffCanvas = (violation: Violation) => {
     setViolationToInspect(violation)
-    setshowViolationDetail(true)
+    setShowViolationDetail(true)
   }
 
   const sortedViolations: Array<Violation> = sortViolations(
@@ -70,26 +70,26 @@ const ViolationCardList = ({
     currentSortType: Sort,
   ) => {
     switch (currentSortType) {
-    case Sort.DATE:
-      return new Date(violation.formattedTime).getFullYear().toString()
-    case Sort.KIND:
-      return violation.humanizedDescription ?? 'No Description Available'
-    case Sort.LOCATION: {
-      const borough = violation.getBorough()
+      case Sort.DATE:
+        return new Date(violation.formattedTime).getFullYear().toString()
+      case Sort.KIND:
+        return violation.humanizedDescription ?? 'No Description Available'
+      case Sort.LOCATION: {
+        const borough = violation.getBorough()
 
-      if (borough === 'The Bronx') {
-        // Temporary fix for discrepancy between Bronx/The Bronx
-        return 'Bronx'
-      } else {
-        return borough
+        if (borough === 'The Bronx') {
+          // Temporary fix for discrepancy between Bronx/The Bronx
+          return 'Bronx'
+        } else {
+          return borough
+        }
       }
-    }
-    case Sort.FINED: {
-      return getFinesSortDivider(violation.getTotalFined())
-    }
-    default: {
-      throw Error('Unknown sort type')
-    }
+      case Sort.FINED: {
+        return getFinesSortDivider(violation.getTotalFined())
+      }
+      default: {
+        throw Error('Unknown sort type')
+      }
     }
   }
 
@@ -165,9 +165,7 @@ const ViolationCardList = ({
   return (
     <>
       <ViolationCardListControls
-        setViolationsListVisibilityFunction={
-          setViolationsListVisibilityFunction
-        }
+        setViolationsListVisibilityFunction={setViolationsListIsVisibleFunction}
         showFullFineData={showFullFineData}
         showFullLocationData={showFullLocationData}
         toggleShowFullFineDataFunction={toggleShowFullFineData}

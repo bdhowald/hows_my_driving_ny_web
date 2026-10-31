@@ -10,7 +10,7 @@ import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/ViolationsInspecto
 type ViolationsListControlProps = {
   setShowFullFineDataFunction: (arg1: boolean) => void
   setShowFullViolationTextFunction: (arg1: boolean) => void
-  setViolationsListVisibilityFunction: (arg1: boolean) => void
+  setViolationsListIsVisibleFunction: (arg1: boolean) => void
   showFullFineData: boolean
   showFullViolationText: boolean
   vehicle: Vehicle
@@ -20,7 +20,7 @@ type ViolationsListControlProps = {
 const ViolationsListControls = ({
   setShowFullFineDataFunction,
   setShowFullViolationTextFunction,
-  setViolationsListVisibilityFunction,
+  setViolationsListIsVisibleFunction,
   showFullFineData,
   showFullViolationText,
   vehicle,
@@ -43,7 +43,7 @@ const ViolationsListControls = ({
         <div className={`d-grid gap-2 ${additionalButtonGroupStyling}`}>
           <ShowViolationsButton
             setViolationsListVisibilityFunction={
-              setViolationsListVisibilityFunction
+              setViolationsListIsVisibleFunction
             }
             vehicle={vehicle}
             violationsListIsVisible={violationsListIsVisible}

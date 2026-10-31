@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 
 import { SMALL_BREAKPOINT } from 'constants/breakpoints'
@@ -30,7 +30,7 @@ const FilterMenu = ({
   const pageWidth = window.innerWidth
   const offCanvasPlacement = pageWidth >= SMALL_BREAKPOINT ? 'start' : 'bottom'
 
-  const todayAsIsoString = new Date().toISOString().split('T')[0]
+  const [isoDate] = useState(() => new Date())
 
   const endDate = resultsFilters.queryDateRange.endDate
   const startDate = resultsFilters.queryDateRange.startDate
@@ -137,7 +137,7 @@ const FilterMenu = ({
                     id="filter-results-start-date"
                     innerLabel="Searched from filter"
                     innerRef={startDateRef}
-                    max={todayAsIsoString}
+                    max={isoDate.toISOString().split('T')[0]}
                     min={MIN_LOOKUP_DATE_FOR_HOWS_MY_DRIVING_NY_LOOKUPS}
                     onChange={() => {
                       if (startDateRef.current && endDateRef.current) {
@@ -161,7 +161,7 @@ const FilterMenu = ({
                     id="filter-results-end-date"
                     innerLabel="Searched to filter"
                     innerRef={endDateRef}
-                    max={todayAsIsoString}
+                    max={isoDate.toISOString().split('T')[0]}
                     min={MIN_LOOKUP_DATE_FOR_HOWS_MY_DRIVING_NY_LOOKUPS}
                     type="date"
                   />

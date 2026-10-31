@@ -47,13 +47,13 @@ type Story = StoryObj<typeof ViolationsListControls>
 
 const setShowFullFineDataFunction = () => null
 const setShowFullViolationTextFunction = () => null
-const setViolationsListVisibilityFunction = () => null
+const setViolationsListIsVisibleFunction = () => null
 
 export const NoViolations: Story = {
   args: {
     setShowFullFineDataFunction,
     setShowFullViolationTextFunction,
-    setViolationsListVisibilityFunction,
+    setViolationsListIsVisibleFunction,
     vehicle: VehicleFactory.build({
       violations: [],
       violationsCount: 0,
@@ -64,7 +64,7 @@ export const ListHiddenWithAtLeastOneViolation: Story = {
   args: {
     setShowFullFineDataFunction,
     setShowFullViolationTextFunction,
-    setViolationsListVisibilityFunction,
+    setViolationsListIsVisibleFunction,
     vehicle: VehicleFactory.build({
       violations: [ViolationFactory.build()],
       violationsCount: 1,
@@ -75,7 +75,7 @@ export const ListVisibleWithViolationIconsAndSummaryFines: Story = {
   args: {
     setShowFullFineDataFunction,
     setShowFullViolationTextFunction,
-    setViolationsListVisibilityFunction,
+    setViolationsListIsVisibleFunction,
     vehicle: VehicleFactory.build({
       violations: [ViolationFactory.build()],
       violationsCount: 1,
@@ -87,7 +87,7 @@ export const ListVisibleWithViolationIconsAndFullFines: Story = {
   args: {
     setShowFullFineDataFunction,
     setShowFullViolationTextFunction,
-    setViolationsListVisibilityFunction,
+    setViolationsListIsVisibleFunction,
     showFullFineData: true,
     vehicle: VehicleFactory.build({
       violations: [ViolationFactory.build()],
@@ -100,7 +100,7 @@ export const ListVisibleWithFullViolationTextAndSummaryFines: Story = {
   args: {
     setShowFullFineDataFunction,
     setShowFullViolationTextFunction,
-    setViolationsListVisibilityFunction,
+    setViolationsListIsVisibleFunction,
     showFullViolationText: true,
     vehicle: VehicleFactory.build({
       violations: [ViolationFactory.build()],
@@ -113,7 +113,7 @@ export const ListVisibleWithFullViolationTextAndFullFines: Story = {
   args: {
     setShowFullFineDataFunction,
     setShowFullViolationTextFunction,
-    setViolationsListVisibilityFunction,
+    setViolationsListIsVisibleFunction,
     showFullFineData: true,
     showFullViolationText: true,
     vehicle: VehicleFactory.build({

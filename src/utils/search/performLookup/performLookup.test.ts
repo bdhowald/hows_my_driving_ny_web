@@ -6,10 +6,7 @@ import performLookup from './performLookup'
 
 describe('performLookup', () => {
   it('should call performNewLookup with plate and state', () => {
-    const performNewLookupSpy = vi.spyOn(
-      boundaryFunctions,
-      'performNewLookup',
-    )
+    const performNewLookupSpy = vi.spyOn(boundaryFunctions, 'performNewLookup')
 
     const plate = 'ABC1234'
     const state = 'NY'
@@ -23,10 +20,7 @@ describe('performLookup', () => {
   })
 
   it('should call performNewLookup with plate, plateType, and state when they are provided', () => {
-    const performNewLookupSpy = vi.spyOn(
-      boundaryFunctions,
-      'performNewLookup',
-    )
+    const performNewLookupSpy = vi.spyOn(boundaryFunctions, 'performNewLookup')
 
     const plate = 'ABC1234'
     const state = 'NY'
@@ -42,10 +36,7 @@ describe('performLookup', () => {
   })
 
   it('should call performNewLookup with plate and state, and fingerprintId and mixpanelId, if they are present', () => {
-    const performNewLookupSpy = vi.spyOn(
-      boundaryFunctions,
-      'performNewLookup',
-    )
+    const performNewLookupSpy = vi.spyOn(boundaryFunctions, 'performNewLookup')
 
     const plate = 'ABC1234'
     const state = 'NY'

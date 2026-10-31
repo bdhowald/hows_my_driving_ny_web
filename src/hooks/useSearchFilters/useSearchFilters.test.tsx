@@ -21,9 +21,9 @@ describe('useSearchFilters', () => {
   it('should expose the functions from the hook', () => {
     const { result } = renderHook(() => useSearchFiltersHook())
 
-    const { useSearchFiltersState } = result.current
+    const { searchFiltersState } = result.current
 
-    expect(useSearchFiltersState).not.toBeUndefined()
+    expect(searchFiltersState).not.toBeUndefined()
   })
 
   it('should set the useSearchFilters cookie if it is not already set', async () => {

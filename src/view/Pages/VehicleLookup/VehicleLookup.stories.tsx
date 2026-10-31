@@ -84,7 +84,7 @@ export const OneLookupFromStorageOldStyleDisplay: Story = {
 const withUniqueIdentifierRoute: Decorator = (Story) => (
   <MemoryRouter initialEntries={[`/${lookupIdentifierFromSharedLookup}`]}>
     <Routes>
-      <Route path='/:uniqueIdentifier' element={<Story />}/>
+      <Route path="/:uniqueIdentifier" element={<Story />} />
     </Routes>
   </MemoryRouter>
 )
