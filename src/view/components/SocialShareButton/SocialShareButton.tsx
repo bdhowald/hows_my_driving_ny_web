@@ -1,5 +1,4 @@
 import { useContext } from 'react'
-import { useCookies } from 'react-cookie'
 import {
   BlueskyIcon,
   BlueskyShareButton,
@@ -8,11 +7,11 @@ import {
 } from 'react-share'
 import { RedditIcon, RedditShareButton } from 'react-share-v5.1.0'
 
-import { USE_SEARCH_FILTERS_STORAGE_KEY } from 'constants/storage'
 import L10N from 'constants/display'
 import SocialMediaService from 'constants/socialMedia'
 import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
+import useSearchFiltersHook from 'hooks/useSearchFilters/useSearchFilters'
 import useSettings from 'hooks/useSettings/useSettings'
 import Vehicle from 'models/Vehicle/Vehicle'
 
@@ -47,8 +46,6 @@ const ShareButton = ({
   socialMediaService: SocialMediaService
   vehicle: Vehicle
 }) => {
-  const [cookies, _] = useCookies([USE_SEARCH_FILTERS_STORAGE_KEY])
-
   const vehicleHashtag = `${vehicle.state}_${vehicle.plate}`
   const violationsString = `${vehicle.violationsCount} violation${vehicle.violationsCount === 1 ? '' : 's'}`
 
@@ -63,6 +60,10 @@ const ShareButton = ({
   const applicationContext = useContext(ApplicationContext)
   const { tracker } = applicationContext
 
+  const { useSearchFiltersState } = useSearchFiltersHook()
+  const useSearchFiltersCookieRawValue = useSearchFiltersState()
+  const useSearchFilters = useSearchFiltersCookieRawValue === true
+
   const { getSetting } = useSettings()
 
   return (
@@ -76,7 +77,7 @@ const ShareButton = ({
           uniqueIdentifier: vehicle.uniqueIdentifier,
           useNewStyleDisplay:
             getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true,
-          useSearchFilters: cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true,
+          useSearchFilters,
         })
       }}
       resetButtonStyle={false}

@@ -7,14 +7,12 @@ import L10N from 'constants/display'
 import HttpStatusCode from 'constants/httpStatusCode'
 import { PlateType } from 'constants/plateTypes'
 import regexps from 'constants/regexps'
-import {
-  LOOKUP_IDENTIFIER_STORAGE_KEY,
-  USE_SEARCH_FILTERS_STORAGE_KEY,
-} from 'constants/storage'
+import { LOOKUP_IDENTIFIER_STORAGE_KEY } from 'constants/storage'
 import { MILLISECONDS_IN_SECOND } from 'constants/time'
 import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
 import useLookupIdentifierStorage from 'hooks/useLookupIdentifierStorage/useLookupIdentifierStorage'
+import useSearchFiltersHook from 'hooks/useSearchFilters/useSearchFilters'
 import useSettings from 'hooks/useSettings/useSettings'
 import getListOfQueriedVehiclesAfterResponse from 'utils/processResults/getListOfQueriedVehiclesAfterResponse/getListOfQueriedVehiclesAfterResponse'
 import getQueriedVehicleFromResponse from 'utils/processResults/getQueriedVehicleFromResponse/getQueriedVehicleFromResponse'
@@ -125,7 +123,6 @@ const Search = ({
   })
   const [cookies, _, __] = useCookies([
     LOOKUP_IDENTIFIER_STORAGE_KEY,
-    USE_SEARCH_FILTERS_STORAGE_KEY,
   ])
 
   const { getSetting } = useSettings()
@@ -138,7 +135,10 @@ const Search = ({
 
   const useNewStyleDisplay =
     getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
-  const useSearchFilters = cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true
+
+  const { useSearchFiltersState } = useSearchFiltersHook()
+  const useSearchFiltersCookieRawValue = useSearchFiltersState()
+  const useSearchFilters = useSearchFiltersCookieRawValue === true
 
   const getErrorType = (statusCode: number | undefined) => {
     if (statusCode === undefined) {

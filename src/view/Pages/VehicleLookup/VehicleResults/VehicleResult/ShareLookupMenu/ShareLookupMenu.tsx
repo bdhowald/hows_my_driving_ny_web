@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 
 import * as htmlToImage from 'html-to-image'
-import { useCookies } from 'react-cookie'
 import Card from 'react-bootstrap/Card'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
@@ -26,9 +25,9 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import L10N from 'constants/display'
-import { USE_SEARCH_FILTERS_STORAGE_KEY } from 'constants/storage'
 import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
+import useSearchFiltersHook from 'hooks/useSearchFilters/useSearchFilters'
 import useSettings from 'hooks/useSettings/useSettings'
 import Vehicle from 'models/Vehicle/Vehicle'
 import SocialShareButton from 'view/components/SocialShareButton/SocialShareButton'
@@ -143,10 +142,13 @@ const CopyLinkButton = ({
   vehicleUniqueIdentifier: string
 }) => {
   const { getSetting } = useSettings()
-  const [cookies, _] = useCookies([USE_SEARCH_FILTERS_STORAGE_KEY])
 
   const applicationContext = useContext(ApplicationContext)
   const { tracker } = applicationContext
+
+  const { useSearchFiltersState } = useSearchFiltersHook()
+  const useSearchFiltersCookieRawValue = useSearchFiltersState()
+  const useSearchFilters = useSearchFiltersCookieRawValue === true
 
   return (
     <HeaderButtonWithLogo
@@ -159,7 +161,7 @@ const CopyLinkButton = ({
           uniqueIdentifier: vehicleUniqueIdentifier,
           useNewStyleDisplay:
             getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true,
-          useSearchFilters: cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true,
+          useSearchFilters,
         })
 
         navigator.clipboard.writeText(
@@ -179,10 +181,13 @@ const CopyPhotoButton = ({
   vehicle: Vehicle
 }) => {
   const { getSetting } = useSettings()
-  const [cookies, _] = useCookies([USE_SEARCH_FILTERS_STORAGE_KEY])
 
   const applicationContext = useContext(ApplicationContext)
   const { tracker } = applicationContext
+
+  const { useSearchFiltersState } = useSearchFiltersHook()
+  const useSearchFiltersCookieRawValue = useSearchFiltersState()
+  const useSearchFilters = useSearchFiltersCookieRawValue === true
 
   const onClickFunction = async () => {
     if (!bodyRef.current) {
@@ -193,7 +198,7 @@ const CopyPhotoButton = ({
       uniqueIdentifier: vehicle.uniqueIdentifier,
       useNewStyleDisplay:
         getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true,
-      useSearchFilters: cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true,
+      useSearchFilters,
     })
 
     const svgDataUrl = await htmlToImage.toPng(bodyRef.current, {

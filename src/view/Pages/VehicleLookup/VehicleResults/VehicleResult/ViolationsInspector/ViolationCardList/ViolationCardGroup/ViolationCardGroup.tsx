@@ -1,11 +1,10 @@
 import React, { useContext, useState } from 'react'
-import { useCookies } from 'react-cookie'
 
 import L10N from 'constants/display'
 import Sort from 'constants/sortOptions'
-import { USE_SEARCH_FILTERS_STORAGE_KEY } from 'constants/storage'
 import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
+import useSearchFiltersHook from 'hooks/useSearchFilters/useSearchFilters'
 import useSettings from 'hooks/useSettings/useSettings'
 import Violation from 'models/Violation/Violation'
 import ViolationCard from 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/ViolationsInspector/ViolationCardList/ViolationCard/ViolationCard'
@@ -70,11 +69,14 @@ const ViolationCardGroup = ({
   sortAscending: boolean
 }) => {
   const { getSetting } = useSettings()
-  const [cookies, _] = useCookies([USE_SEARCH_FILTERS_STORAGE_KEY])
   const [groupIsVisible, setGroupIsVisible] = useState(true)
 
   const applicationContext = useContext(ApplicationContext)
   const { tracker } = applicationContext
+
+  const { useSearchFiltersState } = useSearchFiltersHook()
+  const useSearchFiltersCookieRawValue = useSearchFiltersState()
+  const useSearchFilters = useSearchFiltersCookieRawValue === true
 
   const getFinesSortDividerText = (dividerValue: number) => {
     if (dividerValue === -1) {
@@ -104,7 +106,7 @@ const ViolationCardGroup = ({
             useNewStyleDisplay:
               getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) ===
               true,
-            useSearchFilters: cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true,
+            useSearchFilters,
           })
         }}
         sortAscending={sortAscending}

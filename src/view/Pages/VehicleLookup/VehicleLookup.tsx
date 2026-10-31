@@ -2,13 +2,12 @@ import { useContext, useEffect, useRef, useState } from 'react'
 import FingerprintJS, { Agent } from '@fingerprintjs/fingerprintjs'
 import { useParams } from 'react-router-dom'
 import smoothscroll from 'smoothscroll-polyfill'
-import { useCookies } from 'react-cookie'
 
 import L10N from 'constants/display'
-import { USE_SEARCH_FILTERS_STORAGE_KEY } from 'constants/storage'
 import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
 import useLookupIdentifierStorage from 'hooks/useLookupIdentifierStorage/useLookupIdentifierStorage'
+import useSearchFiltersHook from 'hooks/useSearchFilters/useSearchFilters'
 import useSettings from 'hooks/useSettings/useSettings'
 import Vehicle from 'models/Vehicle/Vehicle'
 import getPlateTypeName from 'utils/search/getPlateType/getPlateTypeName/getPlateTypeName'
@@ -29,12 +28,14 @@ const VehicleLookup = () => {
   const { uniqueIdentifier } = useParams<Record<string, string | undefined>>()
   const listRef = useRef<HTMLDivElement>(null)
 
-  const [cookies, _] = useCookies([USE_SEARCH_FILTERS_STORAGE_KEY])
   const { getSetting } = useSettings()
+  const { useSearchFiltersState } = useSearchFiltersHook()
 
   const useNewStyleDisplay =
     getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true
-  const useSearchFilters = cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true
+
+  const useSearchFiltersCookieRawValue = useSearchFiltersState()
+  const useSearchFilters = useSearchFiltersCookieRawValue === true
 
   const newStyleDisplayClassName = useNewStyleDisplay ? 'new-style' : ''
 
@@ -166,7 +167,9 @@ const VehicleLookup = () => {
   const useNewStyleDisplaySettingPresent =
     getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) !== undefined
 
-  if (!useNewStyleDisplaySettingPresent) {
+  const useSearchFiltersSettingPresent = useSearchFiltersCookieRawValue !== undefined
+
+  if (!useNewStyleDisplaySettingPresent || !useSearchFiltersSettingPresent) {
     return(
       <div
         className={`col-md-12 vehicle-lookup-content-container ${newStyleDisplayClassName}`}

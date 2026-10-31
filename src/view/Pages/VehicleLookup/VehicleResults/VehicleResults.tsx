@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from 'react'
 
 import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
-import useSearchFiltersActiveCookie from 'hooks/useSearchFiltersActiveCookie/useSearchFiltersActiveCookie'
+import useSearchFiltersHook from 'hooks/useSearchFilters/useSearchFilters'
 import useSettings from 'hooks/useSettings/useSettings'
 import Vehicle from 'models/Vehicle/Vehicle'
 import {
@@ -202,8 +202,8 @@ const VehicleResults = ({
   })
 
   const { getSetting } = useSettings()
-  const { areSearchFiltersActive } = useSearchFiltersActiveCookie()
-  const useSearchFilters = areSearchFiltersActive()
+  const { useSearchFiltersState } = useSearchFiltersHook()
+  const useSearchFilters = useSearchFiltersState()
 
   const applicationContext = useContext(ApplicationContext)
   const { tracker } = applicationContext

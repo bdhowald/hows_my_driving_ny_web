@@ -1,7 +1,5 @@
 import { useContext } from 'react'
-import { useCookies } from 'react-cookie'
 
-import { USE_SEARCH_FILTERS_STORAGE_KEY } from 'constants/storage'
 import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import {
   BUS_LANE_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION,
@@ -10,6 +8,7 @@ import {
   SCHOOL_ZONE_SPEED_CAMERA_VIOLATION_HUMANIZED_DESCRIPTION,
 } from 'constants/violations'
 import { ApplicationContext } from 'context/ApplicationContext/ApplicationContext'
+import useSearchFiltersHook from 'hooks/useSearchFilters/useSearchFilters'
 import useSettings from 'hooks/useSettings/useSettings'
 import Violation from 'models/Violation/Violation'
 import FinesBreakdown from 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/FinesBreakdown/FinesBreakdown'
@@ -49,17 +48,19 @@ const ViolationDateTimeAspect = ({
 }) => {
   const { getSetting } = useSettings()
 
-  const [cookies, _] = useCookies([USE_SEARCH_FILTERS_STORAGE_KEY])
-
   const applicationContext = useContext(ApplicationContext)
   const { tracker } = applicationContext
+
+  const { useSearchFiltersState } = useSearchFiltersHook()
+  const useSearchFiltersCookieRawValue = useSearchFiltersState()
+  const useSearchFilters = useSearchFiltersCookieRawValue === true
 
   const trackShowViolationDetails = () => {
     tracker?.trackEvent('show_violation_details', {
       location: 'ViolationCard',
       useNewStyleDisplay:
         getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) === true,
-      useSearchFilters: cookies[USE_SEARCH_FILTERS_STORAGE_KEY] === true,
+      useSearchFilters,
     })
   }
 

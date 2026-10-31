@@ -1,11 +1,11 @@
 import { render, renderHook } from '@testing-library/react'
 import { Cookies, CookiesProvider } from 'react-cookie'
 
-import useSearchFiltersActiveCookie from './useSearchFiltersActiveCookie'
+import useSearchFiltersHook from './useSearchFilters'
 
 type HookFunction = () => unknown
 
-describe('useSearchFiltersActiveCookie', () => {
+describe('useSearchFilters', () => {
   const HookWrapper = ({
     hook,
   }: {
@@ -19,11 +19,11 @@ describe('useSearchFiltersActiveCookie', () => {
   }
 
   it('should expose the functions from the hook', () => {
-    const { result } = renderHook(() => useSearchFiltersActiveCookie())
+    const { result } = renderHook(() => useSearchFiltersHook())
 
-    const { areSearchFiltersActive } = result.current
+    const { useSearchFiltersState } = result.current
 
-    expect(areSearchFiltersActive).not.toBeUndefined()
+    expect(useSearchFiltersState).not.toBeUndefined()
   })
 
   it('should set the useSearchFilters cookie if it is not already set', async () => {
@@ -31,7 +31,7 @@ describe('useSearchFiltersActiveCookie', () => {
 
     render(
       <CookiesProvider cookies={cookies}>
-        <HookWrapper hook={() => useSearchFiltersActiveCookie()} />
+        <HookWrapper hook={() => useSearchFiltersHook()} />
       </CookiesProvider>,
     )
 

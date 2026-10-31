@@ -7,7 +7,7 @@ import {
   USE_SEARCH_FILTERS_STORAGE_KEY,
 } from 'constants/storage'
 
-const useSearchFiltersActiveCookie = () => {
+const useSearchFilters = () => {
   const [cookies, setCookie, _] = useCookies([USE_SEARCH_FILTERS_STORAGE_KEY])
 
   const currentCookieValue = cookies[USE_SEARCH_FILTERS_STORAGE_KEY]
@@ -72,7 +72,7 @@ const useSearchFiltersActiveCookie = () => {
     shouldSetCookie,
   ])
 
-  const areSearchFiltersActive = () => {
+  const useSearchFiltersState = (): boolean | string => {
     if (queryParamFeatureFlagDisabled) {
       return false
     }
@@ -83,8 +83,8 @@ const useSearchFiltersActiveCookie = () => {
   }
 
   return {
-    areSearchFiltersActive,
+    useSearchFiltersState,
   }
 }
 
-export default useSearchFiltersActiveCookie
+export default useSearchFilters
