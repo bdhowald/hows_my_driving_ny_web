@@ -1,21 +1,11 @@
-import {
-  AbortController,
-  abortableFetch,
-  // @ts-expect-error - no types available
-} from 'abortcontroller-polyfill/dist/cjs-ponyfill'
 import { decamelizeKeys, camelizeKeys } from 'humps'
-// import { CANCEL } from 'redux-saga'
-// @ts-expect-error - types should be available through lib.d.ts
-import { fetch } from 'whatwg-fetch'
 
 import { RequestPayloadType } from 'types/requests'
-
-const { fetchWithAbort } = abortableFetch(fetch)
 
 // 30 seconds
 const DEFAULT_TIMEOUT_MS = 30000
 
-const getTimeout = (method: string, apiResource: string) => {
+const getTimeout = (method: string, apiResource: string): Promise<never> => {
   return new Promise((_, reject) =>
     setTimeout(
       () =>
@@ -50,18 +40,19 @@ const getRequestUrl = (
 
 async function httpRequest(
   requestData: RequestPayloadType,
-  signal?: EventTarget | void,
+  signal?: AbortSignal,
 ): Promise<unknown> {
   const { method, payload, apiResource, paramsObject, url, headers } =
     requestData
 
-  // use native browser implementation if it supports aborting
-  const abortableFetch =
-    'signal' in new Request('http://localhost/') ? window.fetch : fetchWithAbort
+  if (!apiResource) {
+    throw new Error('Cannot execute external fetch: apiResource is undefined.');
+  }
 
   const requestBody = payload
-    ? { body: JSON.stringify(decamelizeKeys(payload)) }
-    : {}
+    ? JSON.stringify(decamelizeKeys(payload))
+    : undefined
+
   const isExternalRequest = Boolean(
     apiResource && apiResource.startsWith('http'),
   )
@@ -70,7 +61,7 @@ async function httpRequest(
 
   if (isExternalRequest) {
     return Promise.race([
-      abortableFetch(apiResource),
+      fetch(apiResource),
       getTimeout(method, apiResourceForRequest),
     ]).then((response) => response.json())
   }
@@ -89,21 +80,23 @@ async function httpRequest(
     apiResourceForRequest,
     paramString,
   )
-  const requestObject = Object.assign(
-    {},
-    {
-      cache: 'default',
-      headers: requestHeaders,
-      method,
-      mode: 'cors',
-      signal,
-    },
-    requestBody || {},
-  )
+
+  if (!requestUrl) {
+    throw new Error('Cannot fetch: requestUrl is undefined.')
+  }
+
+  const requestObject: RequestInit = {
+    cache: 'default',
+    headers: requestHeaders,
+    method,
+    mode: 'cors' as RequestMode,
+    signal: signal ?? undefined,
+    body: requestBody ? requestBody : undefined,
+  }
   return Promise.race([
     fetch(requestUrl, requestObject),
     getTimeout(method, apiResourceForRequest),
-  ]).then(async (response) => {
+  ]).then(async (response: Response) => {
     const body = await response.json()
     const formattedBody = camelizeKeys(body)
     const { statusText, status, ok, url } = response
@@ -127,28 +120,12 @@ async function httpRequest(
 // different applications that import this httpRequest interface can override its behavior without
 // changing the underlying library
 
-let requestMiddleware = (v: unknown) => v
-
 const requestFactory = (
   requestData: RequestPayloadType,
-  signal?: EventTarget | void,
+  signal?: AbortSignal,
 ) => {
-  // HACK Jest won't cooperate with AbortController polyfill unless it's applied like this
-  const controller = (() => {
-    try {
-      return new AbortController()
-    } catch (_e: unknown) {
-      return new AbortController()
-    }
-  })()
-  const promise = httpRequest(requestData, signal || controller.signal)
-  // // @ts-expect-error
-  // promise[CANCEL] = () => controller.abort()
-  return requestMiddleware(promise)
-}
-
-requestFactory.applyMiddleware = (middleware: (v: unknown) => unknown) => {
-  requestMiddleware = middleware
+  const controller = new AbortController()
+  return httpRequest(requestData, signal || controller.signal)
 }
 
 export default requestFactory

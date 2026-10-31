@@ -15,7 +15,6 @@
     "@types/react-dom": "^19.0.2",
     "@types/react-router-dom": "^5.3.3",
     "@types/smoothscroll-polyfill": "^0.3.4",
-    "abortcontroller-polyfill": "^1.7.8",
     "bootstrap": "^5.3.3",
     "html-to-image": "^1.11.13",
     "humps": "^2.0.1",
@@ -28,8 +27,7 @@
     "react-share-v5.1.0": "npm:react-share@5.1.0",
     "react-spinners": "^0.14.1",
     "smoothscroll-polyfill": "^0.4.4",
-    "web-vitals": "^2.1.4",
-    "whatwg-fetch": "^3.6.20"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "build": "tsc --noEmit && vite build",
