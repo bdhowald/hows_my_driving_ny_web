@@ -57,9 +57,6 @@ const useClientStorage = <T>(key: string, initialValue?: T) => {
 
   const readInitialValue = useCallback(
     <T>(key: string, initialValue?: T): T | undefined => {
-      const localStorageAvailable = useMemo(() => isLocalStorageAvailable(), [])
-      const cookiesAvailable = useMemo(() => areCookiesAvailable(), [])
-
       if (localStorageAvailable) {
         const value = localStorage.getItem(key)
         if (value !== null) {
@@ -90,7 +87,7 @@ const useClientStorage = <T>(key: string, initialValue?: T) => {
 
       return initialValue
     },
-    [],
+    [cookiesAvailable, localStorageAvailable],
   )
 
   const [value, setValue] = useState<T | undefined>(
@@ -126,7 +123,7 @@ const useClientStorage = <T>(key: string, initialValue?: T) => {
 
       // fall back to using `setValue` alone
     },
-    [key, isLocalStorageAvailable, areCookiesAvailable],
+    [cookiesAvailable, key, localStorageAvailable],
   )
 
   // Sync local storage changes from other tabs.
@@ -147,7 +144,7 @@ const useClientStorage = <T>(key: string, initialValue?: T) => {
 
     window.addEventListener('storage', handleStorageEvent)
     return () => window.removeEventListener('storage', handleStorageEvent)
-  }, [key, isLocalStorageAvailable])
+  }, [key, localStorageAvailable])
 
   return [value, updateValue] as const
 }

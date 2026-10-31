@@ -1,4 +1,4 @@
-import React from 'react'
+import { vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
@@ -10,9 +10,9 @@ describe('StopSuperSpeedersActNotice', () => {
   describe('renders without error', () => {
     describe('new-style display', () => {
       const mockedSettings = {
-        getSetting: jest.fn().mockReturnValue(true),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(true),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       test.each([
@@ -67,9 +67,9 @@ describe('StopSuperSpeedersActNotice', () => {
 
     describe('old-style display', () => {
       const mockedSettings = {
-        getSetting: jest.fn().mockReturnValue(false),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(false),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       test.each([
@@ -126,15 +126,15 @@ describe('StopSuperSpeedersActNotice', () => {
   describe('handling unexpected data states', () => {
     describe('new-style display', () => {
       const mockedSettings = {
-        getSetting: jest.fn().mockReturnValue(true),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(true),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       it('should throw an error when a vehicle is not eligible', () => {
-        const consoleError = jest
+        const consoleError = vi
           .spyOn(console, 'error')
-          .mockImplementation(jest.fn())
+          .mockImplementation(vi.fn())
 
         const vehicle = VehicleFactory.build({
           cameraStreakData: {
@@ -160,15 +160,15 @@ describe('StopSuperSpeedersActNotice', () => {
 
     describe('old-style display', () => {
       const mockedSettings = {
-        getSetting: jest.fn().mockReturnValue(true),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(true),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       it('should throw an error when a vehicle is not eligible', () => {
-        const consoleError = jest
+        const consoleError = vi
           .spyOn(console, 'error')
-          .mockImplementation(jest.fn())
+          .mockImplementation(vi.fn())
 
         const vehicle = VehicleFactory.build({
           cameraStreakData: {

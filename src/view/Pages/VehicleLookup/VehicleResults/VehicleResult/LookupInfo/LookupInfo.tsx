@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import useSettings from 'hooks/useSettings/useSettings'
 import Vehicle from 'models/Vehicle/Vehicle'

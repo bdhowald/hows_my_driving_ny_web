@@ -9,15 +9,15 @@
     "jsx": "react-jsx",
     "lib": ["dom", "es2017"],
     "module": "esnext",
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "noEmit": true,
     "noUnusedLocals": false,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es6"
+    "target": "es6",
+    "types": ["vite/client", "vitest/globals"]
   },
-  "target": "ES6",
-  "include": ["src"]
+  "include": ["src", ".storybook"]
 }

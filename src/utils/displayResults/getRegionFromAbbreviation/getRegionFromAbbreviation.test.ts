@@ -313,7 +313,7 @@ describe('getRegionFromAbbreviation', () => {
         const region = getRegionFromAbbreviation(code)
 
         if (!region) {
-          fail('region is not defined')
+          throw new Error('region is not defined')
         }
 
         expect(region.name).toBe(name)

@@ -77,7 +77,8 @@ const SelectWithClearButton = ({
   React.InputHTMLAttributes<HTMLSelectElement>,
   HTMLSelectElement
 >) => {
-  const selectRef = innerRef ?? useRef<HTMLSelectElement>(null)
+  const newRef = useRef<HTMLSelectElement>(null)
+  const selectRef = innerRef ?? newRef
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React from 'react'
+import { vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -7,11 +7,11 @@ import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 import UserSettings from './UserSettings'
 
 describe('UserSettings', () => {
-  const mockedUpdateSettingFunction = jest.fn()
+  const mockedUpdateSettingFunction = vi.fn()
 
   const mockedSettings = {
-    getSetting: jest.fn(),
-    removeSetting: jest.fn(),
+    getSetting: vi.fn(),
+    removeSetting: vi.fn(),
     updateSetting: mockedUpdateSettingFunction,
   }
 

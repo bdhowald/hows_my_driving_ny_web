@@ -1,4 +1,4 @@
-import React from 'react'
+import { vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -7,8 +7,8 @@ import { FilterType } from 'types/resultsFilters'
 import FilterBreadcrumb from './FilterBreadcrumb'
 
 describe('FilterBreadcrumb', () => {
-  const clearFilterFunction = jest.fn()
-  const displayFiltersMenuFunction = jest.fn()
+  const clearFilterFunction = vi.fn()
+  const displayFiltersMenuFunction = vi.fn()
 
   const dateFormat = new Intl.DateTimeFormat('en-US', {
     year: 'numeric',

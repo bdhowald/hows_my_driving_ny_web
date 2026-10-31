@@ -1,4 +1,4 @@
-import React from 'react'
+import { vi } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -8,9 +8,9 @@ import FAQs from './FAQs'
 
 describe('FAQs', () => {
   const mockedSettings = {
-    getSetting: jest.fn(),
-    removeSetting: jest.fn(),
-    updateSetting: jest.fn(),
+    getSetting: vi.fn(),
+    removeSetting: vi.fn(),
+    updateSetting: vi.fn(),
   }
 
   it('should render successfully', () => {

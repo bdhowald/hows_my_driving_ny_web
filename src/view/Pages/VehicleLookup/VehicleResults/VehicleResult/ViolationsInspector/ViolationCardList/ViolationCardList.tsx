@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import Sort from 'constants/sortOptions'
 import Vehicle from 'models/Vehicle/Vehicle'
@@ -150,7 +150,16 @@ const ViolationCardList = ({
           />
         )
       }),
-    [currentSortType, showFullFineData, showFullLocationData, sortAscending],
+    [
+      currentSortType,
+      partitionedViolations,
+      showFullFineData,
+      showFullLocationData,
+      sortAscending,
+      vehicle.plate,
+      vehicle.plateTypes,
+      vehicle.state,
+    ],
   )
 
   return (

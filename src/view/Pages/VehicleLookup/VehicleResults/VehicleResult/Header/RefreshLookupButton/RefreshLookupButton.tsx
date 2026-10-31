@@ -1,4 +1,3 @@
-import React from 'react'
 import { IconDefinition, library } from '@fortawesome/fontawesome-svg-core'
 import { faCircle as farCircle } from '@fortawesome/free-regular-svg-icons'
 import { faArrowRotateRight, faCircle } from '@fortawesome/free-solid-svg-icons'

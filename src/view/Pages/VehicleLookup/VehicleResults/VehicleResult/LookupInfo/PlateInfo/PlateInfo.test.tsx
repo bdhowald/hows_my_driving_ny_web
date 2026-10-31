@@ -1,4 +1,4 @@
-import React from 'react'
+import { vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
@@ -50,7 +50,7 @@ describe('PlateInfo', () => {
       })
 
       it("should show 'Now' as the lookup date of the current lookup if it was created in the past five minutes", () => {
-        jest.useFakeTimers().setSystemTime(new Date('2025-08-31T12:43:27.000Z'))
+        vi.useFakeTimers().setSystemTime(new Date('2025-08-31T12:43:27.000Z'))
 
         const vehicle = VehicleFactory.build({
           lookupDate: '2025-08-31T12:41:18.000Z',

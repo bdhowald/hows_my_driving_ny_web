@@ -159,7 +159,7 @@ const Search = ({
     return 'unknown error (status code unexpected)'
   }
 
-  const trackUserReceivedError = (error: unknown, action: string) => {
+  const trackUserReceivedError = useCallback((error: unknown, action: string) => {
     const wrappedError =
       error instanceof Error
         ? error
@@ -178,9 +178,9 @@ const Search = ({
       raw: String(error),
       stack: wrappedError.stack,
     })
-  }
+  }, [tracker])
 
-  const retrieveLookupsFromIdentifiersInStorage = () => {
+  const retrieveLookupsFromIdentifiersInStorage = useCallback(() => {
     // Get unique identifiers from storage
     const uniqueIdentifiersFromStorage = readLookupIdentifiersFromStorage()
     if (uniqueIdentifiersFromStorage.length === 0) {
@@ -301,9 +301,30 @@ const Search = ({
 
       trackUserReceivedError(error, 'retrieve_lookups_from_cookie')
     }
-  }
+  }, [
+    previousLookupUniqueIdentifierFromQuery,
+    readLookupIdentifiersFromStorage,
+    setExistingQueriesInFlightFunction,
+    setQueriedVehiclesFunction,
+    setSearchErrorFunction,
+    trackUserReceivedError,
+    tracker,
+    useNewStyleDisplay,
+    useSearchFilters,
+  ])
 
   useEffect(() => {
+    const getLookupIdentifiersForCurrentlyQueriedVehicles = (
+      vehicleDisplayResults: VehicleDisplayResult[],
+    ): string[] =>
+      vehicleDisplayResults
+        .map(
+          (vehicleDisplayResult) => vehicleDisplayResult.vehicle.uniqueIdentifier,
+        )
+        .filter(
+          (identifier) => identifier !== previousLookupUniqueIdentifierFromQuery,
+        )
+
     // Update stored value from unique identifiers
     const uniqueIdentifiersFromCurrentlyQueriedVehicles =
       getLookupIdentifiersForCurrentlyQueriedVehicles(queriedVehicles)
@@ -327,7 +348,12 @@ const Search = ({
         uniqueIdentifiersFromCurrentlyQueriedVehicles,
       )
     }
-  }, [queriedVehicles])
+  }, [
+    previousLookupUniqueIdentifierFromQuery,
+    queriedVehicles,
+    readLookupIdentifiersFromStorage,
+    syncLookupIdentifiersToStorage,
+  ])
 
   useEffect(() => {
     const displayPreviousLookup = async () => {
@@ -393,18 +419,17 @@ const Search = ({
       retrieveLookupsFromIdentifiersInStorage()
     }
     displayPreviousLookup()
-  }, [previousLookupUniqueIdentifierFromQuery])
-
-  const getLookupIdentifiersForCurrentlyQueriedVehicles = (
-    vehicleDisplayResults: VehicleDisplayResult[],
-  ): string[] =>
-    vehicleDisplayResults
-      .map(
-        (vehicleDisplayResult) => vehicleDisplayResult.vehicle.uniqueIdentifier,
-      )
-      .filter(
-        (identifier) => identifier !== previousLookupUniqueIdentifierFromQuery,
-      )
+  }, [
+    previousLookupUniqueIdentifierFromQuery,
+    retrieveLookupsFromIdentifiersInStorage,
+    setExistingQueriesInFlightFunction,
+    setQueriedVehiclesFunction,
+    setSearchErrorFunction,
+    trackUserReceivedError,
+    tracker,
+    useNewStyleDisplay,
+    useSearchFilters,
+  ])
 
   const handleInputChange = useCallback(
     (changeEvent: InputChangeType) => {

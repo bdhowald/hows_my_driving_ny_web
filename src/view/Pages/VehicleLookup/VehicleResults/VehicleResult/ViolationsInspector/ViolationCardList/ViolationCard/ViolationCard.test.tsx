@@ -1,4 +1,4 @@
-import React from 'react'
+import { vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 
 import { ViolationFactory } from '__fixtures__/models/Violation'
@@ -10,9 +10,9 @@ describe('ViolationCard', () => {
   const inspectViolationFunction = () => null
 
   const mockedSettings = {
-    getSetting: jest.fn(),
-    removeSetting: jest.fn(),
-    updateSetting: jest.fn(),
+    getSetting: vi.fn(),
+    removeSetting: vi.fn(),
+    updateSetting: vi.fn(),
   }
 
   describe('renders without error', () => {

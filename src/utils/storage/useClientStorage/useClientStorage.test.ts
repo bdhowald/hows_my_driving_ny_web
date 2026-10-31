@@ -1,3 +1,4 @@
+import { vi } from 'vitest'
 import { act, renderHook } from '@testing-library/react'
 
 import useClientStorage from './useClientStorage'
@@ -89,7 +90,7 @@ describe('useClientStorage', () => {
     it('should set the information in cookies if local storage is not available', async () => {
       const storageKey = TEST_STORAGE_KEY
 
-      const setItemSpy = jest.spyOn(Storage.prototype, 'setItem')
+      const setItemSpy = vi.spyOn(Storage.prototype, 'setItem')
       setItemSpy.mockImplementationOnce(() => {
         throw Error('localStorage.setItem does not work')
       })

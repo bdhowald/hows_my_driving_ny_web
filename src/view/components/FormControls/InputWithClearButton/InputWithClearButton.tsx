@@ -13,7 +13,8 @@ const InputWithClearButton = ({
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 >) => {
-  const inputRef = innerRef ?? useRef<HTMLInputElement>(null)
+  const newRef = useRef<HTMLInputElement>(null)
+  const inputRef = innerRef ?? newRef
 
   return (
     <>

@@ -309,7 +309,7 @@ describe('getVehicleColor', () => {
       const color = getVehicleColor(colorish)
 
       if (!color) {
-        fail('color is not defined')
+        throw new Error('color is not defined')
       }
 
       expect(color).toBe(outputColor)

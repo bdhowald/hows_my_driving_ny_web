@@ -1,5 +1,6 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import { Cookies, CookiesProvider } from 'react-cookie'
+import { vi } from 'vitest'
 import { render, renderHook, screen } from '@testing-library/react'
 import { fireEvent } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
@@ -25,9 +26,9 @@ describe('VehicleResults', () => {
       const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
 
       const mockedSettings = {
-        getSetting: jest.fn().mockReturnValueOnce(true),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValueOnce(true),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -60,9 +61,9 @@ describe('VehicleResults', () => {
       const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
 
       const mockedSettings = {
-        getSetting: jest.fn().mockReturnValueOnce(false),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValueOnce(false),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -94,9 +95,9 @@ describe('VehicleResults', () => {
       const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
 
       const mockedSettings = {
-        getSetting: jest.fn(),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn(),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -127,9 +128,9 @@ describe('VehicleResults', () => {
       const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
 
       const mockedSettings = {
-        getSetting: jest.fn(),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn(),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -165,9 +166,9 @@ describe('VehicleResults', () => {
       const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
 
       const mockedSettings = {
-        getSetting: jest.fn(),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn(),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -198,9 +199,9 @@ describe('VehicleResults', () => {
       const ref = renderHook(() => useRef<HTMLDivElement>(null)).result.current
 
       const mockedSettings = {
-        getSetting: jest.fn(),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn(),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -314,9 +315,9 @@ describe('VehicleResults', () => {
       ]
 
       const mockedSettings = {
-        getSetting: jest.fn(),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn(),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -357,7 +358,7 @@ describe('VehicleResults', () => {
       const searchedFromTextInput = screen.getByLabelText('Searched from')
       const searchedToTextInput = screen.getByLabelText('Searched to')
       const numberOfViolationsCheckbox = screen.getByRole('checkbox', {
-        name: 'Number of violations ≥ ...',
+        name: 'Number of violations ≥...',
       })
       const numberOfViolationsSlider = screen.getByRole('slider')
 
@@ -491,9 +492,9 @@ describe('VehicleResults', () => {
       ]
 
       const mockedSettings = {
-        getSetting: jest.fn(),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn(),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -534,7 +535,7 @@ describe('VehicleResults', () => {
       const searchedFromTextInput = screen.getByLabelText('Searched from')
       const searchedToTextInput = screen.getByLabelText('Searched to')
       const numberOfViolationsCheckbox = screen.getByRole('checkbox', {
-        name: 'Number of violations ≥ ...',
+        name: 'Number of violations ≥...',
       })
       const numberOfViolationsSlider = screen.getByRole('slider')
 

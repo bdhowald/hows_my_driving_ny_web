@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import Sort from 'constants/sortOptions'
 import Violation from 'models/Violation/Violation'

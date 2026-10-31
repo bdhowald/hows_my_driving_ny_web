@@ -1,4 +1,4 @@
-import React from 'react'
+import { vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
@@ -12,9 +12,9 @@ describe('ViolationCardList', () => {
   const setViolationsListVisibility = () => null
 
   const mockedSettings = {
-    getSetting: jest.fn(),
-    removeSetting: jest.fn(),
-    updateSetting: jest.fn(),
+    getSetting: vi.fn(),
+    removeSetting: vi.fn(),
+    updateSetting: vi.fn(),
   }
 
   describe('renders without error', () => {
@@ -191,7 +191,7 @@ describe('ViolationCardList', () => {
           screen.getByText('2 parking and camera violations'),
         ).toBeInTheDocument()
       } else {
-        fail('number of violations is unexpected')
+        throw new Error('number of violations is unexpected')
       }
     },
   )

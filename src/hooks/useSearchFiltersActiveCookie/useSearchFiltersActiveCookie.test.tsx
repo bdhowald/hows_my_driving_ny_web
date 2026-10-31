@@ -1,4 +1,3 @@
-import React from 'react'
 import { render, renderHook } from '@testing-library/react'
 import { Cookies, CookiesProvider } from 'react-cookie'
 

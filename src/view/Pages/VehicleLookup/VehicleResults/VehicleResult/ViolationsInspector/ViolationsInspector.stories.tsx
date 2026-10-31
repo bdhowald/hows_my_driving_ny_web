@@ -1,13 +1,13 @@
-import React, { ReactNode } from 'react'
-import type { Meta, StoryObj } from '@storybook/react'
-import { userEvent, within, expect } from '@storybook/test'
+import { ReactNode } from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
+import { userEvent, within, expect } from 'storybook/test'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
 import { ViolationFactory } from '__fixtures__/models/Violation'
 import {
   newStyleDisplayDecorator,
   oldStyleDisplayDecorator,
-} from 'tests/utils/withStyleDisplayDecorator/withStyleDisplayDecorator'
+} from 'utils/tests/withStyleDisplayDecorator/withStyleDisplayDecorator'
 
 import ViolationsInspector from './ViolationsInspector'
 

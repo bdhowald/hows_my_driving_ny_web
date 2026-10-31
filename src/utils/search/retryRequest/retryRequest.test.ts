@@ -1,3 +1,5 @@
+import { vi } from 'vitest'
+
 import retryRequest from './retryRequest'
 
 describe('retryRequest', () => {
@@ -14,7 +16,7 @@ describe('retryRequest', () => {
   describe('should retry', () => {
     it('should not retry the async function passed to retryRequest if the async function fulfills', async () => {
       const shouldRetry = () => true
-      const mockFunction = jest.fn()
+      const mockFunction = vi.fn()
       const asyncRequestFunction = async () => mockFunction()
 
       await retryRequest({ asyncRequestFunction, shouldRetry })
@@ -24,7 +26,7 @@ describe('retryRequest', () => {
 
     it('should retry the async function passed to retryRequest if the async function rejects and shouldRetry evaluates to true', async () => {
       const shouldRetry = () => true
-      const mockFunction = jest
+      const mockFunction = vi
         .fn()
         .mockImplementationOnce(() => {
           throw Error('This fails the first time.')
@@ -41,7 +43,7 @@ describe('retryRequest', () => {
       const shouldRetry = () => false
       const errorMessage = 'This fails the first and only time.'
 
-      const mockFunction = jest
+      const mockFunction = vi
         .fn()
         .mockImplementationOnce(() => {
           throw Error(errorMessage)
@@ -63,7 +65,7 @@ describe('retryRequest', () => {
       const shouldRetry = () => true
       const errorMessage = 'This fails a few times...'
 
-      const mockFunction = jest.fn().mockImplementation(() => {
+      const mockFunction = vi.fn().mockImplementation(() => {
         throw Error(errorMessage)
       })
       const asyncRequestFunction = async () => mockFunction()

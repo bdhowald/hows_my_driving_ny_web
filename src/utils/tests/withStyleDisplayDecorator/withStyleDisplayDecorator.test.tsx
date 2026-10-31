@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { Decorator, StoryContext, StrictArgs } from '@storybook/react'
 import { render, screen } from '@testing-library/react'
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
@@ -62,7 +61,7 @@ describe('ShowViolationsButton', () => {
         } else if (!hasViolations && !listIsVisible) {
           expect(screen.getByText('no violations')).toBeInTheDocument()
         } else {
-          fail('this scenario is undefined')
+          throw new Error('this scenario is undefined')
         }
       },
     )

@@ -1,5 +1,6 @@
 import React from 'react'
 import * as htmlToImage from 'html-to-image'
+import { vi, Mock } from 'vitest'
 import { act, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -10,9 +11,9 @@ import ShareLookupMenu from './ShareLookupMenu'
 
 describe('ShareLookupMenu', () => {
   const mockedSettings = {
-    getSetting: jest.fn().mockReturnValue(true),
-    removeSetting: jest.fn(),
-    updateSetting: jest.fn(),
+    getSetting: vi.fn().mockReturnValue(true),
+    removeSetting: vi.fn(),
+    updateSetting: vi.fn(),
   }
 
   const vehicle = VehicleFactory.build()
@@ -38,7 +39,7 @@ describe('ShareLookupMenu', () => {
   describe('button clicks', () => {
     it('should copy the link to the lookup when the user presses the copy link button of a lookup', async () => {
       const bodyRef = React.createRef<HTMLUListElement>()
-      const writeText = jest.fn()
+      const writeText = vi.fn()
 
       Object.assign(navigator, {
         clipboard: {
@@ -72,21 +73,21 @@ describe('ShareLookupMenu', () => {
 
     it('should copy an image of the lookup when the user presses the copy photo button of a lookup', async () => {
       const bodyRef = React.createRef<HTMLUListElement>()
-      const write = jest.fn()
+      const write = vi.fn()
 
       const mockPngData = 'data:image/png;base64...'
 
-      jest
+      vi
         .spyOn(global, 'fetch')
         .mockImplementation(
-          jest.fn(() =>
+          vi.fn(() =>
             Promise.resolve({ blob: () => Promise.resolve(mockPngData) }),
-          ) as jest.Mock,
+          ) as Mock,
         )
 
-      // jest.spyOn(window, 'ClipboardItem').mockReturnValueOnce({})
+      // vi.spyOn(window, 'ClipboardItem').mockReturnValueOnce({})
 
-      const toPngSpy = jest.spyOn(htmlToImage, 'toPng')
+      const toPngSpy = vi.spyOn(htmlToImage, 'toPng')
       toPngSpy.mockResolvedValueOnce(mockPngData)
 
       Object.assign(navigator, {
@@ -159,7 +160,7 @@ describe('ShareLookupMenu', () => {
       ({ service }) => {
         const bodyRef = React.createRef<HTMLUListElement>()
 
-        const mockedOpen = jest.fn()
+        const mockedOpen = vi.fn()
         global.open = mockedOpen
 
         render(

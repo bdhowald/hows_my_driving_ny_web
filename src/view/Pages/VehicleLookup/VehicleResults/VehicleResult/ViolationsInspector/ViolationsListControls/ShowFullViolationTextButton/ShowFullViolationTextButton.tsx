@@ -1,5 +1,3 @@
-import React from 'react'
-
 import L10N from 'constants/display'
 
 type ShowFullViolationTextButtonProps = {

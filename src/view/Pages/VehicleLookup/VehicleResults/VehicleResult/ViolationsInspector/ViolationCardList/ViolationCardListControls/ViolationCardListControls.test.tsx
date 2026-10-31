@@ -1,4 +1,4 @@
-import React from 'react'
+import { vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -8,9 +8,9 @@ import { ViolationFactory } from '__fixtures__/models/Violation'
 import ViolationCardListControls from './ViolationCardListControls'
 
 describe('ViolationCardListControls', () => {
-  const setViolationsListVisibilityFunction = jest.fn()
-  const toggleShowFullFineDataFunction = jest.fn()
-  const toggleShowFullLocationDataFunction = jest.fn()
+  const setViolationsListVisibilityFunction = vi.fn()
+  const toggleShowFullFineDataFunction = vi.fn()
+  const toggleShowFullLocationDataFunction = vi.fn()
 
   describe('renders without error', () => {
     test.each([
@@ -105,7 +105,7 @@ describe('ViolationCardListControls', () => {
           // button is disabled, click does not trigger function
           expect(setViolationsListVisibilityFunction).not.toHaveBeenCalled()
         } else {
-          fail('this scenario is undefined')
+          throw new Error('this scenario is undefined')
         }
       },
     )

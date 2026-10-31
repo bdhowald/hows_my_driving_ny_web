@@ -1,15 +1,12 @@
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { Cookies, CookiesProvider } from 'react-cookie'
-import type { Meta, StoryObj } from '@storybook/react'
-import {
-  // withRouter,
-  reactRouterParameters,
-} from 'storybook-addon-remix-react-router'
+import { MemoryRouter, Route, Routes } from 'react-router-dom'
+import type { Decorator, Meta, StoryObj } from '@storybook/react-vite'
 
 import {
   newStyleDisplayDecorator,
   oldStyleDisplayDecorator,
-} from 'tests/utils/withStyleDisplayDecorator/withStyleDisplayDecorator'
+} from 'utils/tests/withStyleDisplayDecorator/withStyleDisplayDecorator'
 
 import VehicleLookup from './VehicleLookup'
 
@@ -84,34 +81,29 @@ export const OneLookupFromStorageOldStyleDisplay: Story = {
   decorators: [oldStyleDisplayDecorator(ParentHtml)],
 }
 
-const reactRouterParametersForStory = {
-  reactRouter: reactRouterParameters({
-    location: {
-      pathParams: { uniqueIdentifier: lookupIdentifierFromSharedLookup },
-    },
-    routing: {
-      path: '/:uniqueIdentifier',
-    },
-  }),
-}
+const withUniqueIdentifierRoute: Decorator = (Story) => (
+  <MemoryRouter initialEntries={[`/${lookupIdentifierFromSharedLookup}`]}>
+    <Routes>
+      <Route path='/:uniqueIdentifier' element={<Story />}/>
+    </Routes>
+  </MemoryRouter>
+)
 
 export const OneLookupFromSharedLookupNewStyleDisplay: Story = {
-  decorators: [newStyleDisplayDecorator(ParentHtml)],
+  decorators: [newStyleDisplayDecorator(ParentHtml), withUniqueIdentifierRoute],
   loaders: [
     () => {
       window.localStorage.clear()
     },
   ],
-  parameters: reactRouterParametersForStory,
 }
 export const OneLookupFromSharedLookupOldStyleDisplay: Story = {
-  decorators: [oldStyleDisplayDecorator(ParentHtml)],
+  decorators: [oldStyleDisplayDecorator(ParentHtml), withUniqueIdentifierRoute],
   loaders: [
     () => {
       window.localStorage.clear()
     },
   ],
-  parameters: reactRouterParametersForStory,
 }
 
 // export const OneLookupEachFromLocalLookupAndSharedLookupNewStyleDisplay: Story =

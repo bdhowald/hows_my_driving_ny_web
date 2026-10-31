@@ -1,5 +1,5 @@
-import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
+import { vi } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -9,9 +9,9 @@ import Navigation from './Navigation'
 
 describe('Navigation', () => {
   const mockedSettings = {
-    getSetting: jest.fn(),
-    removeSetting: jest.fn(),
-    updateSetting: jest.fn(),
+    getSetting: vi.fn(),
+    removeSetting: vi.fn(),
+    updateSetting: vi.fn(),
   }
 
   describe('rendering', () => {

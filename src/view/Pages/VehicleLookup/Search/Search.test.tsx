@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -58,9 +58,9 @@ describe('Search', () => {
       'renders successfully when lookupInFlight is $lookupInFlight and $uniqueIdentifier is uniqueIdentifier and the display is new style ($useNewStyleDisplay)',
       ({ lookupInFlight, uniqueIdentifier, useNewStyleDisplay }) => {
         const mockedSettings = {
-          getSetting: jest.fn().mockReturnValue(useNewStyleDisplay),
-          removeSetting: jest.fn(),
-          updateSetting: jest.fn(),
+          getSetting: vi.fn().mockReturnValue(useNewStyleDisplay),
+          removeSetting: vi.fn(),
+          updateSetting: vi.fn(),
         }
 
         render(
@@ -109,9 +109,9 @@ describe('Search', () => {
 
     it('should ensure only uppercase letters for entered plate input', () => {
       const mockedSettings = {
-        getSetting: jest.fn(),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn(),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(

@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
+import { vi } from 'vitest'
 import { renderHook } from '@testing-library/react'
 
 import { SettingsContext } from 'context/SettingsContext/SettingsContext'
@@ -12,9 +13,9 @@ describe('useSettingsStorage', () => {
 
   it('should expose the functions from the hook/function', () => {
     const mockedUseSettingsStorage = {
-      getSetting: jest.fn(),
-      removeSetting: jest.fn(),
-      updateSetting: jest.fn(),
+      getSetting: vi.fn(),
+      removeSetting: vi.fn(),
+      updateSetting: vi.fn(),
     }
     const wrapper = ({ children }: { children: ReactNode }) => (
       <SettingsContext.Provider value={mockedUseSettingsStorage}>

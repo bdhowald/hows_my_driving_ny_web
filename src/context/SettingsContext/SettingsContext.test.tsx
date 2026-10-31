@@ -1,4 +1,5 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
+import { vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -20,15 +21,15 @@ describe('SettingsContext', () => {
   }
 
   it('should expose settings', () => {
-    const mockGetSettingsFunction = jest.fn()
+    const mockGetSettingsFunction = vi.fn()
 
     const mockedUseSettingsFunctions = {
       getSetting: mockGetSettingsFunction,
-      removeSetting: jest.fn(),
-      updateSetting: jest.fn(),
+      removeSetting: vi.fn(),
+      updateSetting: vi.fn(),
     }
 
-    jest
+    vi
       .spyOn(useSettingsStorage, 'default')
       .mockReturnValue(mockedUseSettingsFunctions)
 

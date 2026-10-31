@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import L10N from 'constants/display'
 
 import 'view/Pages/VehicleLookup/VehicleResults/VehicleResult/FinesBreakdown/CombinedViolationsFinesBreakdown/CombinedViolationsFinesBreakdown.css'

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { useCookies } from 'react-cookie'
 
 import { USE_SEARCH_FILTERS_STORAGE_KEY } from 'constants/storage'

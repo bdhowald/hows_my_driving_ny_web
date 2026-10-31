@@ -1,4 +1,3 @@
-import React from 'react'
 import { IconProp, library } from '@fortawesome/fontawesome-svg-core'
 import { faCircle, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

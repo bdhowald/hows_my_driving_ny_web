@@ -1,4 +1,4 @@
-import React from 'react'
+import { vi } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -17,9 +17,9 @@ import ViolationSummary from './ViolationSummary'
 describe('ViolationSummary', () => {
   describe('renders without error', () => {
     const mockedSettings = {
-      getSetting: jest.fn().mockReturnValueOnce(true),
-      removeSetting: jest.fn(),
-      updateSetting: jest.fn(),
+      getSetting: vi.fn().mockReturnValueOnce(true),
+      removeSetting: vi.fn(),
+      updateSetting: vi.fn(),
     }
 
     it('renders without error with the new-style display', () => {
@@ -51,9 +51,9 @@ describe('ViolationSummary', () => {
 
     it('renders without error with the old-style display', () => {
       const mockedSettings = {
-        getSetting: jest.fn().mockReturnValueOnce(false),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValueOnce(false),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       const vehicle = VehicleFactory.build({
@@ -86,9 +86,9 @@ describe('ViolationSummary', () => {
   describe('render violation aspect counts', () => {
     describe('new-style display', () => {
       const mockedSettings = {
-        getSetting: jest.fn().mockReturnValue(true),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(true),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       test.each([
@@ -479,9 +479,9 @@ describe('ViolationSummary', () => {
 
     describe('old-style display', () => {
       const mockedSettings = {
-        getSetting: jest.fn().mockReturnValue(false),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(false),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       let savedGlobalWidth: number

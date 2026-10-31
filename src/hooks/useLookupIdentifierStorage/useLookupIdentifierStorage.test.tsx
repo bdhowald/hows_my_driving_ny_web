@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { act, render, renderHook } from '@testing-library/react'
 
 import useLookupIdentifierStorage from './useLookupIdentifierStorage'

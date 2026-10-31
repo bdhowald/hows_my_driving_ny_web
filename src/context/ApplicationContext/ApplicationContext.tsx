@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState, ReactNode } from 'react'
+import { createContext, useEffect, useState, ReactNode } from 'react'
 
 import {
   MIXPANEL_IDLE_TIMEOUT_MILLISECONDS,
@@ -42,7 +42,7 @@ const ApplicationProvider = ({ children }: { children: ReactNode }) => {
       record_sessions_percent: MIXPANEL_RECORD_SESSIONS_PERCENT,
       track_pageview: 'url-with-path-and-query-string',
     })
-  }, [])
+  }, [tracker])
 
   return (
     <ApplicationContext.Provider value={applicationContext}>

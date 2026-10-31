@@ -1,4 +1,5 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
+import { vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -15,11 +16,8 @@ const DummyComponent = () => {
 
 describe('ApplicationContext', () => {
   it('should expose a tracker instance', () => {
-    const mockedTracker = new AnalyticsTracker.default([])
-    const mockTrackFunction = jest.spyOn(mockedTracker, 'trackEvent')
-
-    jest.spyOn(AnalyticsTracker, 'default').mockReturnValue(mockedTracker)
-
+    const mockTrackFunction = vi.spyOn(AnalyticsTracker.default.prototype, 'trackEvent')
+    
     render(
       <ApplicationProvider>
         <DummyComponent />

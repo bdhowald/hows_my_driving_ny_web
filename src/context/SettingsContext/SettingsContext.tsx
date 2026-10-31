@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, ReactNode } from 'react'
+import { createContext, useEffect, ReactNode } from 'react'
 
 import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import useSettingsStorage from 'hooks/useSettingsStorage/useSettingsStorage'
@@ -28,7 +28,7 @@ const SettingsProvider = ({ children }: { children: ReactNode }) => {
     }
 
     initializeDefaultSettings()
-  }, [])
+  }, [settings])
 
   return (
     <SettingsContext.Provider value={settings}>

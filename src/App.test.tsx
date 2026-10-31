@@ -1,6 +1,6 @@
-import * as React from 'react'
 import { CookiesProvider } from 'react-cookie'
 import * as reactRouterDom from 'react-router-dom'
+import { vi } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
@@ -36,7 +36,7 @@ describe('App', () => {
 
     const vehicle = VehicleFactory.build({ plate, uniqueIdentifier })
 
-    const getPreviousLookupSpy = jest.spyOn(
+    const getPreviousLookupSpy = vi.spyOn(
       boundaryFunctions,
       'getPreviousLookup',
     )
@@ -72,7 +72,7 @@ describe('App', () => {
     // Set lookupIdentifiers cookie to have a previous lookup unique identifier
     document.cookie = `lookupIdentifiers=${uniqueIdentifier}; expires=Fri, 31 Dec 9999 23:59:59 GMT; SameSite=None;`
 
-    const getPreviousLookupSpy = jest.spyOn(
+    const getPreviousLookupSpy = vi.spyOn(
       boundaryFunctions,
       'getPreviousLookup',
     )

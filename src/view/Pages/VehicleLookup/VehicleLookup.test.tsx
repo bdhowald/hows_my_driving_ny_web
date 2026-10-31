@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { vi } from 'vitest'
 import { act, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -20,9 +20,9 @@ describe('VehicleLookup', () => {
 
   it('should render successfully', async () => {
     const mockedSettings = {
-      getSetting: jest.fn(),
-      removeSetting: jest.fn(),
-      updateSetting: jest.fn(),
+      getSetting: vi.fn().mockReturnValue(true),
+      removeSetting: vi.fn(),
+      updateSetting: vi.fn(),
     }
 
     render(
@@ -60,7 +60,7 @@ describe('VehicleLookup', () => {
 
   describe('perform lookups', () => {
     it('should perform a lookup when the appropriate inputs are typed in', async () => {
-      const performNewLookupSpy = jest.spyOn(
+      const performNewLookupSpy = vi.spyOn(
         boundaryFunctions,
         'performNewLookup',
       )
@@ -76,9 +76,10 @@ describe('VehicleLookup', () => {
       })
 
       const mockedSettings = {
-        getSetting: jest.fn(),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        // We need to mock retrieving values.
+        getSetting: vi.fn().mockReturnValue(true),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -113,7 +114,7 @@ describe('VehicleLookup', () => {
         { plate: 'XXX1122', state: 'IN', plateType: 'commercial' },
         { plate: 'VOTE4ME', state: 'CA' },
       ]
-      const performNewLookupSpy = jest.spyOn(
+      const performNewLookupSpy = vi.spyOn(
         boundaryFunctions,
         'performNewLookup',
       )
@@ -148,9 +149,9 @@ describe('VehicleLookup', () => {
         })
 
       const mockedSettings = {
-        getSetting: jest.fn(),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(true),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -254,13 +255,13 @@ describe('VehicleLookup', () => {
     })
 
     it('should scroll to the new lookup when the lookup completes', async () => {
-      const scrollIntoViewFunction = jest.fn()
+      const scrollIntoViewFunction = vi.fn()
 
       Object.assign(window.HTMLElement.prototype, {
         scrollIntoView: scrollIntoViewFunction,
       })
 
-      const performNewLookupSpy = jest.spyOn(
+      const performNewLookupSpy = vi.spyOn(
         boundaryFunctions,
         'performNewLookup',
       )
@@ -276,9 +277,9 @@ describe('VehicleLookup', () => {
       })
 
       const mockedSettings = {
-        getSetting: jest.fn(),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(true),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -313,7 +314,7 @@ describe('VehicleLookup', () => {
 
     describe('new-style display', () => {
       it('should populate the lookup on the page when a plate is queried', async () => {
-        const performNewLookupSpy = jest.spyOn(
+        const performNewLookupSpy = vi.spyOn(
           boundaryFunctions,
           'performNewLookup',
         )
@@ -378,9 +379,9 @@ describe('VehicleLookup', () => {
         })
 
         const mockedSettings = {
-          getSetting: jest.fn().mockReturnValue(true),
-          removeSetting: jest.fn(),
-          updateSetting: jest.fn(),
+          getSetting: vi.fn().mockReturnValue(true),
+          removeSetting: vi.fn(),
+          updateSetting: vi.fn(),
         }
 
         render(
@@ -462,7 +463,7 @@ describe('VehicleLookup', () => {
       })
 
       it('should populate the lookup on the page when a plate is queried', async () => {
-        const performNewLookupSpy = jest.spyOn(
+        const performNewLookupSpy = vi.spyOn(
           boundaryFunctions,
           'performNewLookup',
         )
@@ -527,9 +528,9 @@ describe('VehicleLookup', () => {
         })
 
         const mockedSettings = {
-          getSetting: jest.fn().mockReturnValueOnce(false),
-          removeSetting: jest.fn(),
-          updateSetting: jest.fn(),
+          getSetting: vi.fn().mockReturnValue(false),
+          removeSetting: vi.fn(),
+          updateSetting: vi.fn(),
         }
 
         render(
@@ -601,7 +602,7 @@ describe('VehicleLookup', () => {
     })
 
     it('should display a message when there is an error', async () => {
-      const performNewLookupSpy = jest.spyOn(
+      const performNewLookupSpy = vi.spyOn(
         boundaryFunctions,
         'performNewLookup',
       )
@@ -614,9 +615,9 @@ describe('VehicleLookup', () => {
         .mockRejectedValueOnce(new Error('something broke'))
 
       const mockedSettings = {
-        getSetting: jest.fn(),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(true),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -653,7 +654,7 @@ describe('VehicleLookup', () => {
     }, 12500)
 
     it('should display an error message from the server if available', async () => {
-      const performNewLookupSpy = jest.spyOn(
+      const performNewLookupSpy = vi.spyOn(
         boundaryFunctions,
         'performNewLookup',
       )
@@ -676,9 +677,9 @@ describe('VehicleLookup', () => {
       })
 
       const mockedSettings = {
-        getSetting: jest.fn(),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(true),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -717,13 +718,13 @@ describe('VehicleLookup', () => {
     }, 12500)
 
     it('should not scroll when the lookup errors out', async () => {
-      const scrollIntoViewFunction = jest.fn()
+      const scrollIntoViewFunction = vi.fn()
 
       Object.assign(window.HTMLElement.prototype, {
         scrollIntoView: scrollIntoViewFunction,
       })
 
-      const performNewLookupSpy = jest.spyOn(
+      const performNewLookupSpy = vi.spyOn(
         boundaryFunctions,
         'performNewLookup',
       )
@@ -736,9 +737,9 @@ describe('VehicleLookup', () => {
         .mockRejectedValueOnce(new Error('something broke'))
 
       const mockedSettings = {
-        getSetting: jest.fn(),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(true),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -780,7 +781,7 @@ describe('VehicleLookup', () => {
     }, 15000)
 
     it('clicking on the close button of a lookup should remove it from the page', async () => {
-      const performNewLookupSpy = jest.spyOn(
+      const performNewLookupSpy = vi.spyOn(
         boundaryFunctions,
         'performNewLookup',
       )
@@ -796,9 +797,9 @@ describe('VehicleLookup', () => {
       })
 
       const mockedSettings = {
-        getSetting: jest.fn(),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(true),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -832,7 +833,7 @@ describe('VehicleLookup', () => {
     })
 
     it('should copy the link to the lookup when the user presses the copy button of a lookup', async () => {
-      const writeText = jest.fn()
+      const writeText = vi.fn()
 
       Object.assign(navigator, {
         clipboard: {
@@ -840,7 +841,7 @@ describe('VehicleLookup', () => {
         },
       })
 
-      const performNewLookupSpy = jest.spyOn(
+      const performNewLookupSpy = vi.spyOn(
         boundaryFunctions,
         'performNewLookup',
       )
@@ -859,9 +860,9 @@ describe('VehicleLookup', () => {
       })
 
       const mockedSettings = {
-        getSetting: jest.fn(),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(true),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -904,13 +905,13 @@ describe('VehicleLookup', () => {
     })
 
     it('should open up a new window to share the lookup details to Twitter', async () => {
-      const windowOpen = jest.fn()
+      const windowOpen = vi.fn()
 
       Object.assign(window, {
         open: windowOpen,
       })
 
-      const performNewLookupSpy = jest.spyOn(
+      const performNewLookupSpy = vi.spyOn(
         boundaryFunctions,
         'performNewLookup',
       )
@@ -929,9 +930,9 @@ describe('VehicleLookup', () => {
       })
 
       const mockedSettings = {
-        getSetting: jest.fn(),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(true),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -988,9 +989,9 @@ describe('VehicleLookup', () => {
       const vehicle = VehicleFactory.build({ plate, uniqueIdentifier })
 
       const mockedSettings = {
-        getSetting: jest.fn(),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(true),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       // set item in local storage to mock already queried vehicle, a la setting initial cookies
@@ -999,7 +1000,7 @@ describe('VehicleLookup', () => {
         encodeURIComponent(JSON.stringify(uniqueIdentifier)),
       )
 
-      const getPreviousLookupSpy = jest.spyOn(
+      const getPreviousLookupSpy = vi.spyOn(
         boundaryFunctions,
         'getPreviousLookup',
       )
@@ -1042,9 +1043,9 @@ describe('VehicleLookup', () => {
       })
 
       const mockedSettings = {
-        getSetting: jest.fn(),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(true),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       // set item in local storage to mock already queried vehicle, a la setting initial cookies
@@ -1053,11 +1054,11 @@ describe('VehicleLookup', () => {
         encodeURIComponent(JSON.stringify(previousLookupUniqueIdentifier)),
       )
 
-      const getPreviousLookupSpy = jest.spyOn(
+      const getPreviousLookupSpy = vi.spyOn(
         boundaryFunctions,
         'getPreviousLookup',
       )
-      const performNewLookupSpy = jest.spyOn(
+      const performNewLookupSpy = vi.spyOn(
         boundaryFunctions,
         'performNewLookup',
       )
@@ -1162,9 +1163,9 @@ describe('VehicleLookup', () => {
     })
 
     const mockedSettings = {
-      getSetting: jest.fn(),
-      removeSetting: jest.fn(),
-      updateSetting: jest.fn(),
+      getSetting: vi.fn().mockReturnValue(true),
+      removeSetting: vi.fn(),
+      updateSetting: vi.fn(),
     }
 
     // set item in local storage to mock already queried vehicle, a la setting initial cookies
@@ -1173,11 +1174,11 @@ describe('VehicleLookup', () => {
       encodeURIComponent(JSON.stringify(previousLookupUniqueIdentifier)),
     )
 
-    const getPreviousLookupSpy = jest.spyOn(
+    const getPreviousLookupSpy = vi.spyOn(
       boundaryFunctions,
       'getPreviousLookup',
     )
-    const performNewLookupSpy = jest.spyOn(
+    const performNewLookupSpy = vi.spyOn(
       boundaryFunctions,
       'performNewLookup',
     )

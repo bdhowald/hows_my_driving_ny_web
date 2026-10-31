@@ -1,11 +1,11 @@
-import React, { ReactNode } from 'react'
-import type { Meta, StoryObj } from '@storybook/react'
+import { ReactNode } from 'react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
 import {
   newStyleDisplayDecorator,
   oldStyleDisplayDecorator,
-} from 'tests/utils/withStyleDisplayDecorator/withStyleDisplayDecorator'
+} from 'utils/tests/withStyleDisplayDecorator/withStyleDisplayDecorator'
 
 import VehicleResult from './VehicleResult'
 

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 
 import { USER_SETTINGS_STORAGE_KEYS } from 'constants/userSettings'
 import L10N from 'constants/display'

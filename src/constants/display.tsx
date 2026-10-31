@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 const EASTERN_TIME_ZONE = 'America/New_York'
 
 const EASTERN_TIME_ZONE_DATE_FORMAT = new Intl.DateTimeFormat('en-US', {

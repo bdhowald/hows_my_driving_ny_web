@@ -1,4 +1,4 @@
-import React from 'react'
+import { vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
@@ -13,9 +13,9 @@ describe('Body', () => {
         const vehicle = VehicleFactory.build()
 
         const mockedSettings = {
-          getSetting: jest.fn().mockReturnValueOnce(true),
-          removeSetting: jest.fn(),
-          updateSetting: jest.fn(),
+          getSetting: vi.fn().mockReturnValueOnce(true),
+          removeSetting: vi.fn(),
+          updateSetting: vi.fn(),
         }
 
         render(
@@ -42,9 +42,9 @@ describe('Body', () => {
         const vehicle = VehicleFactory.build()
 
         const mockedSettings = {
-          getSetting: jest.fn().mockReturnValueOnce(true),
-          removeSetting: jest.fn(),
-          updateSetting: jest.fn(),
+          getSetting: vi.fn().mockReturnValueOnce(true),
+          removeSetting: vi.fn(),
+          updateSetting: vi.fn(),
         }
 
         render(
@@ -77,9 +77,9 @@ describe('Body', () => {
         const vehicle = VehicleFactory.build()
 
         const mockedSettings = {
-          getSetting: jest.fn().mockReturnValueOnce(false),
-          removeSetting: jest.fn(),
-          updateSetting: jest.fn(),
+          getSetting: vi.fn().mockReturnValueOnce(false),
+          removeSetting: vi.fn(),
+          updateSetting: vi.fn(),
         }
 
         render(
@@ -106,9 +106,9 @@ describe('Body', () => {
         const vehicle = VehicleFactory.build()
 
         const mockedSettings = {
-          getSetting: jest.fn().mockReturnValueOnce(false),
-          removeSetting: jest.fn(),
-          updateSetting: jest.fn(),
+          getSetting: vi.fn().mockReturnValueOnce(false),
+          removeSetting: vi.fn(),
+          updateSetting: vi.fn(),
         }
 
         render(
@@ -148,9 +148,9 @@ describe('Body', () => {
     })
 
     const mockedSettings = {
-      getSetting: jest.fn().mockReturnValueOnce(true),
-      removeSetting: jest.fn(),
-      updateSetting: jest.fn(),
+      getSetting: vi.fn().mockReturnValueOnce(true),
+      removeSetting: vi.fn(),
+      updateSetting: vi.fn(),
     }
 
     render(
@@ -178,9 +178,9 @@ describe('Body', () => {
     })
 
     const mockedSettings = {
-      getSetting: jest.fn().mockReturnValueOnce(false),
-      removeSetting: jest.fn(),
-      updateSetting: jest.fn(),
+      getSetting: vi.fn().mockReturnValueOnce(false),
+      removeSetting: vi.fn(),
+      updateSetting: vi.fn(),
     }
 
     render(

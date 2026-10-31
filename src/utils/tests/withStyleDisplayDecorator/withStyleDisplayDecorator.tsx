@@ -1,4 +1,4 @@
-import React, { ComponentType, ReactNode } from 'react'
+import { ComponentType, ReactNode } from 'react'
 import { Decorator, StoryFn } from '@storybook/react'
 
 import { SettingsContext } from 'context/SettingsContext/SettingsContext'

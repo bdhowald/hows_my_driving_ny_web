@@ -1,11 +1,11 @@
-import React from 'react'
+import { vi } from 'vitest'
 import { act, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import RefreshLookupButton from './RefreshLookupButton'
 
 describe('RefreshLookupButton', () => {
-  const refreshLookupFunction = jest.fn()
+  const refreshLookupFunction = vi.fn()
 
   describe('renders without error', () => {
     it('should render successfully', () => {

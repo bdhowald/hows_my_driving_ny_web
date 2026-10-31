@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Violation from 'models/Violation/Violation'

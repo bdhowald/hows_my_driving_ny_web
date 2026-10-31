@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import Card from 'react-bootstrap/Card'
 
 import Vehicle from 'models/Vehicle/Vehicle'

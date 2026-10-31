@@ -151,7 +151,7 @@ describe('SearchControls', () => {
       state: 'NY',
     }
 
-    const handleSubmitFunction = jest.fn((e) => e.preventDefault())
+    const handleSubmitFunction = vi.fn((e) => e.preventDefault())
 
     render(
       <SearchControls
@@ -178,7 +178,7 @@ describe('SearchControls', () => {
       state: 'NY',
     }
 
-    const handleSubmitFunction = jest.fn((e) => e.preventDefault())
+    const handleSubmitFunction = vi.fn((e) => e.preventDefault())
 
     render(
       <SearchControls

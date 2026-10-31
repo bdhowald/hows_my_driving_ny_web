@@ -549,7 +549,7 @@ describe('getVehicleMake', () => {
       const make = getVehicleMake(makeish)
 
       if (!make) {
-        fail('make is not defined')
+        throw new Error('make is not defined')
       }
 
       expect(make).toBe(outputMake)

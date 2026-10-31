@@ -1,4 +1,4 @@
-import React from 'react'
+import { vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -28,9 +28,9 @@ describe('SocialShareButton', () => {
     ([className, SocialShareButtonClass], _) => {
       describe(`${className}`, () => {
         const mockedSettings = {
-          getSetting: jest.fn(),
-          removeSetting: jest.fn(),
-          updateSetting: jest.fn(),
+          getSetting: vi.fn(),
+          removeSetting: vi.fn(),
+          updateSetting: vi.fn(),
         }
 
         describe('renders without error', () => {
@@ -48,7 +48,7 @@ describe('SocialShareButton', () => {
         })
 
         it(`should open a new window to share to when the ${className} share button is clicked.`, () => {
-          const mockedOpen = jest.fn()
+          const mockedOpen = vi.fn()
           global.open = mockedOpen
 
           render(

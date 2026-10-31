@@ -57,7 +57,7 @@ async function httpRequest(
 
   // use native browser implementation if it supports aborting
   const abortableFetch =
-    'signal' in new Request('') ? window.fetch : fetchWithAbort
+    'signal' in new Request('http://localhost/') ? window.fetch : fetchWithAbort
 
   const requestBody = payload
     ? { body: JSON.stringify(decamelizeKeys(payload)) }

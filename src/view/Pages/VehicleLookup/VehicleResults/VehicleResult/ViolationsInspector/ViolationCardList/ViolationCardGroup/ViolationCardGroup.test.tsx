@@ -1,4 +1,4 @@
-import React from 'react'
+import { vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -13,9 +13,9 @@ describe('ViolationCardGroup', () => {
   const showOffCanvasFunction = (_: Violation) => null
 
   const mockedSettings = {
-    getSetting: jest.fn(),
-    removeSetting: jest.fn(),
-    updateSetting: jest.fn(),
+    getSetting: vi.fn(),
+    removeSetting: vi.fn(),
+    updateSetting: vi.fn(),
   }
 
   const violations = [

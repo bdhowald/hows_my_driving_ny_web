@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import FingerprintJS, { Agent } from '@fingerprintjs/fingerprintjs'
 import { useParams } from 'react-router-dom'
 import smoothscroll from 'smoothscroll-polyfill'
@@ -83,7 +83,7 @@ const VehicleLookup = () => {
     if (!lookupInFlight && listRef.current && !searchError) {
       listRef.current?.scrollIntoView({ behavior: 'smooth' })
     }
-  }, [lookupInFlight])
+  }, [lookupInFlight, searchError])
 
   const refreshLookup = async (vehicle: Vehicle) => {
     // Prevent another button press/submission
@@ -161,6 +161,17 @@ const VehicleLookup = () => {
     })
 
     setQueriedVehicles(newList)
+  }
+
+  const useNewStyleDisplaySettingPresent =
+    getSetting(USER_SETTINGS_STORAGE_KEYS.useNewStyleDisplay) !== undefined
+
+  if (!useNewStyleDisplaySettingPresent) {
+    return(
+      <div
+        className={`col-md-12 vehicle-lookup-content-container ${newStyleDisplayClassName}`}
+      />
+    )
   }
 
   return (

@@ -1,22 +1,23 @@
-import { jest } from '@jest/globals'
+import { vi } from 'vitest'
+import '@testing-library/jest-dom/vitest'
 
 // jest-dom adds custom jest matchers for asserting on DOM nodes.
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom/vitest'
 
 Object.defineProperty(window, 'matchMedia', {
   get: function () {
-    return jest.fn().mockImplementation((query) => ({
+    return vi.fn().mockImplementation((query) => ({
       matches: false,
       media: query,
       onchange: null,
-      addListener: jest.fn(), // deprecated
-      removeListener: jest.fn(), // deprecated
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      dispatchEvent: jest.fn(),
+      addListener: vi.fn(), // deprecated
+      removeListener: vi.fn(), // deprecated
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      dispatchEvent: vi.fn(),
     }))
   },
 })

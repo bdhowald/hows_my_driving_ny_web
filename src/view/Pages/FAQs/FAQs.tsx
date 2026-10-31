@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 import Accordion from 'react-bootstrap/Accordion'
 
 import L10N from 'constants/display'

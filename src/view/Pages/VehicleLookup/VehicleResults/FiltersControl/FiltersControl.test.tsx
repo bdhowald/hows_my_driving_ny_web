@@ -1,4 +1,5 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
+import { vi } from 'vitest'
 import { render, renderHook, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -7,13 +8,13 @@ import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 import FiltersControl from './FiltersControl'
 
 describe('FiltersControl', () => {
-  const clearFilterFunction = jest.fn()
-  const handleFilterFormSubmitFunction = jest.fn()
+  const clearFilterFunction = vi.fn()
+  const handleFilterFormSubmitFunction = vi.fn()
 
   const mockedSettings = {
-    getSetting: jest.fn().mockReturnValue(true),
-    removeSetting: jest.fn(),
-    updateSetting: jest.fn(),
+    getSetting: vi.fn().mockReturnValue(true),
+    removeSetting: vi.fn(),
+    updateSetting: vi.fn(),
   }
 
   const defaultResultsFilters = {

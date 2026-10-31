@@ -1,4 +1,4 @@
-import React from 'react'
+import { vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
@@ -10,9 +10,9 @@ describe('LookupInfo', () => {
   describe('renders without error', () => {
     describe('new-style display', () => {
       const mockedSettings = {
-        getSetting: jest.fn().mockReturnValue(true),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(true),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       test.each([
@@ -110,9 +110,9 @@ describe('LookupInfo', () => {
 
     describe('old-style display', () => {
       const mockedSettings = {
-        getSetting: jest.fn().mockReturnValue(false),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(false),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       test.each([
@@ -212,9 +212,9 @@ describe('LookupInfo', () => {
   describe('render the correct language', () => {
     describe('new-style display', () => {
       const mockedSettings = {
-        getSetting: jest.fn().mockReturnValue(false),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(false),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       it("should describe the region as 'State' when it is a U.S. state", () => {
@@ -481,9 +481,9 @@ describe('LookupInfo', () => {
 
     describe('old-style display', () => {
       const mockedSettings = {
-        getSetting: jest.fn().mockReturnValue(false),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValue(false),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       it("should describe the region as 'State' when it is a U.S. state", () => {

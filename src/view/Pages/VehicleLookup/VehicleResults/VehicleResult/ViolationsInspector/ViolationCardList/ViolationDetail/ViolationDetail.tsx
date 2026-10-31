@@ -1,4 +1,3 @@
-import React from 'react'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 
 import { SMALL_BREAKPOINT } from 'constants/breakpoints'

@@ -1,4 +1,3 @@
-import React from 'react'
 import L10N from 'constants/display'
 
 const FAQS_CONTENT = [

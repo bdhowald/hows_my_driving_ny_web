@@ -1,5 +1,5 @@
-import * as React from 'react'
 import { MemoryRouter } from 'react-router-dom'
+import { vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 
 import { SettingsContext } from 'context/SettingsContext/SettingsContext'
@@ -8,9 +8,9 @@ import SiteContainer from './SiteContainer'
 
 describe('SiteContainer', () => {
   const mockedSettings = {
-    getSetting: jest.fn(),
-    removeSetting: jest.fn(),
-    updateSetting: jest.fn(),
+    getSetting: vi.fn(),
+    removeSetting: vi.fn(),
+    updateSetting: vi.fn(),
   }
 
   it('should render successfully', () => {

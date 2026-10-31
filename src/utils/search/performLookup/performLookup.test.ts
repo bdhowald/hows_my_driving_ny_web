@@ -1,10 +1,12 @@
+import { vi } from 'vitest'
+
 import * as boundaryFunctions from 'boundaries/http'
 
 import performLookup from './performLookup'
 
 describe('performLookup', () => {
   it('should call performNewLookup with plate and state', () => {
-    const performNewLookupSpy = jest.spyOn(
+    const performNewLookupSpy = vi.spyOn(
       boundaryFunctions,
       'performNewLookup',
     )
@@ -21,7 +23,7 @@ describe('performLookup', () => {
   })
 
   it('should call performNewLookup with plate, plateType, and state when they are provided', () => {
-    const performNewLookupSpy = jest.spyOn(
+    const performNewLookupSpy = vi.spyOn(
       boundaryFunctions,
       'performNewLookup',
     )
@@ -40,7 +42,7 @@ describe('performLookup', () => {
   })
 
   it('should call performNewLookup with plate and state, and fingerprintId and mixpanelId, if they are present', () => {
-    const performNewLookupSpy = jest.spyOn(
+    const performNewLookupSpy = vi.spyOn(
       boundaryFunctions,
       'performNewLookup',
     )

@@ -1,4 +1,4 @@
-import React from 'react'
+import { vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 
 import { VehicleFactory } from '__fixtures__/models/Vehicle'
@@ -7,8 +7,8 @@ import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 import VehicleResult from './VehicleResult'
 
 describe('VehicleResult', () => {
-  const refreshLookupFunction = jest.fn()
-  const removeLookupFunction = jest.fn()
+  const refreshLookupFunction = vi.fn()
+  const removeLookupFunction = vi.fn()
 
   const vehicle = VehicleFactory.build()
 
@@ -21,9 +21,9 @@ describe('VehicleResult', () => {
 
   it('renders successfully', () => {
     const mockedSettings = {
-      getSetting: jest.fn(),
-      removeSetting: jest.fn(),
-      updateSetting: jest.fn(),
+      getSetting: vi.fn(),
+      removeSetting: vi.fn(),
+      updateSetting: vi.fn(),
     }
 
     render(
@@ -47,9 +47,9 @@ describe('VehicleResult', () => {
   describe('new-style display', () => {
     it('shows the violation list when `showViolationsList` is true', () => {
       const mockedSettings = {
-        getSetting: jest.fn().mockReturnValueOnce(true),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValueOnce(true),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -70,9 +70,9 @@ describe('VehicleResult', () => {
 
     it('hides the violation list when `showViolationsList` is false', () => {
       const mockedSettings = {
-        getSetting: jest.fn().mockReturnValueOnce(true),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValueOnce(true),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -95,9 +95,9 @@ describe('VehicleResult', () => {
   describe('old-style display', () => {
     it('shows the violation list when `showViolationsList` is true', () => {
       const mockedSettings = {
-        getSetting: jest.fn().mockReturnValueOnce(false),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValueOnce(false),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(
@@ -118,9 +118,9 @@ describe('VehicleResult', () => {
 
     it('hides the violation list when `showViolationsList` is false', () => {
       const mockedSettings = {
-        getSetting: jest.fn().mockReturnValueOnce(false),
-        removeSetting: jest.fn(),
-        updateSetting: jest.fn(),
+        getSetting: vi.fn().mockReturnValueOnce(false),
+        removeSetting: vi.fn(),
+        updateSetting: vi.fn(),
       }
 
       render(

@@ -1,4 +1,4 @@
-import React from 'react'
+import { vi } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import { fireEvent } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
@@ -6,8 +6,8 @@ import userEvent from '@testing-library/user-event'
 import FilterMenu from './FilterMenu'
 
 describe('FilterMenu', () => {
-  const handleFilterFormSubmitFunction = jest.fn()
-  const hideFiltersFunction = jest.fn()
+  const handleFilterFormSubmitFunction = vi.fn()
+  const hideFiltersFunction = vi.fn()
 
   const defaultResultsFilters = {
     numberOfViolations: undefined,
@@ -89,7 +89,7 @@ describe('FilterMenu', () => {
       const searchedFromTextInput = screen.getByLabelText('Searched from')
       const searchedToTextInput = screen.getByLabelText('Searched to')
       const numberOfViolationsCheckbox = screen.getByRole('checkbox', {
-        name: 'Number of violations ≥ 15',
+        name: 'Number of violations ≥15',
       })
       const numberOfViolationsSlider = screen.getByRole('slider')
 
@@ -139,7 +139,7 @@ describe('FilterMenu', () => {
     const searchedFromTextInput = screen.getByLabelText('Searched from')
     const searchedToTextInput = screen.getByLabelText('Searched to')
     const numberOfViolationsCheckbox = screen.getByRole('checkbox', {
-      name: 'Number of violations ≥ ...',
+      name: 'Number of violations ≥...',
     })
     const numberOfViolationsSlider = screen.getByRole('slider')
 

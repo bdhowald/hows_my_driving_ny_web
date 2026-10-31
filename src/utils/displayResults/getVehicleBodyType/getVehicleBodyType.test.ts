@@ -431,7 +431,7 @@ describe('getVehicleBodyType', () => {
       const make = getVehicleBodyType(bodyTypeish)
 
       if (!make) {
-        fail('make is not defined')
+        throw new Error('make is not defined')
       }
 
       expect(make).toBe(outputBodyType)

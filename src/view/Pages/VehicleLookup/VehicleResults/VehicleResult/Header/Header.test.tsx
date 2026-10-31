@@ -1,5 +1,5 @@
-import React from 'react'
 import { MemoryRouter, useLocation } from 'react-router-dom'
+import { vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -9,13 +9,13 @@ import { SettingsContext } from 'context/SettingsContext/SettingsContext'
 import Header from './Header'
 
 describe('Header', () => {
-  const refreshLookupFunction = jest.fn()
-  const removeLookupFunction = jest.fn()
+  const refreshLookupFunction = vi.fn()
+  const removeLookupFunction = vi.fn()
 
   const mockedSettings = {
-    getSetting: jest.fn().mockReturnValue(true),
-    removeSetting: jest.fn(),
-    updateSetting: jest.fn(),
+    getSetting: vi.fn().mockReturnValue(true),
+    removeSetting: vi.fn(),
+    updateSetting: vi.fn(),
   }
 
   let savedWindowOpen = global.open

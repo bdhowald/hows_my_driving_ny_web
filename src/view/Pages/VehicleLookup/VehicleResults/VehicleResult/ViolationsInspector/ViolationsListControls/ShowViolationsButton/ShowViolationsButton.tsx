@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import L10N from 'constants/display'
 import Vehicle from 'models/Vehicle/Vehicle'
 
